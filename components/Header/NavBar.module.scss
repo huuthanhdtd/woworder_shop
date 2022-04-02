@@ -1,0 +1,271 @@
+
+.headerNav {
+    display: flex;
+    list-style: none;
+    margin-bottom: 6px;
+    align-items: center;
+    margin-top: 40px;
+    .headerNavLi {
+        cursor: pointer;
+        margin: 0 2px;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        position: relative;
+        .navsItem {
+            position: absolute;
+            list-style: none;
+            top: 37px;
+            background-color: #fff;
+            padding: 0;
+            left: 0;
+            // width: 250px;
+            transform: scale(0);
+            transform-origin: top left;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 5px 4px 10px 6px #888888;
+            z-index: 100;
+
+            .navsItemLi {
+
+                padding: 2px 6px;
+                font-size: 12px;
+                border-bottom: 1px solid var(--primary-color-);
+                transition: all 0.3s ease-in-out;
+
+                h5 {
+                    margin: 4px;
+                    white-space: nowrap;
+                    color: var(--primary-color-);
+                    font-size: 14px;
+                    transition: all 0.3s ease-in-out;
+
+                }
+                &:hover{
+                    color: var(--hover-color-);
+                    border-color: var(--hover-color-);
+                    h5 {
+                        color: var(--hover-color-);
+
+                    }
+                }
+            }
+        }
+        
+        
+        &:hover .navsItemLi{
+            cursor: pointer;
+            transform: scale(1)
+        }
+        &:hover h4{
+            cursor: pointer;
+            color: var(--hover-color-)
+        }
+        
+        
+        h4 {
+            margin-top: 0;
+            margin-bottom: 0 ;
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--primary-color-);
+            transition: all 0.25s ease-in-out;
+
+        }
+        h4.active {
+            color: var(--hover-color-)
+
+        }
+        .rightIcon {
+            display: none;
+        }
+        .navItemLine {
+            content: "";
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: scale(0);
+            transition: all 0.3s ease-in-out;
+            border-bottom: 2px solid var(--hover-color-);
+        }
+        .navItemLine.active {
+            transform: scale(1)
+        }
+        &:hover .navsItem{
+            cursor: pointer;
+            transform: scale(1)
+        }
+        &:hover .navItemLine {
+            cursor: pointer;
+            transform: scale(1)
+        }
+    }
+    .navLanguage {
+        margin-left: 8px;
+        cursor: pointer;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        font-weight: 500;
+        border: 1px solid rgb(241, 241, 241);
+        border-radius: 50%;
+        color: var(--hover-color-);
+        transition: all 0.25s ease-in-out;
+
+        p {
+            margin: auto;
+        }
+        &:hover {
+            border-color: var(--hover-color-) ;
+            color: var(--hover-color-);
+            cursor: pointer;
+        }
+    }
+    
+    .navSearch {
+        color: var(--hover-color-);
+        border: 1px solid rgb(241, 241, 241);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+        .icon {
+            margin: auto;
+        }
+        &:hover {
+            color: var(--hover-color-);
+            border-color: var(--hover-color-) ;
+    
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+    .headerNav {
+        display: flex;
+        list-style: none;
+        margin-bottom: 6px;
+        align-items: center;
+        margin-top: 40px;
+        .headerNavLi {
+            padding: 4px;
+            h4 {
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 12px;
+            }
+        } 
+        
+    } 
+}
+        
+
+@media (max-width: 960px)  {
+    .headerNav {
+        flex-direction: column;
+        padding-left: 10px;
+        align-items: flex-start;
+        display: flex;
+        .headerNavLi {
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .navsItem {
+                background-color: #fff;
+                display: none;
+                z-index: 28;
+                color:var(--primary-color-);
+                width: 70%;
+                left: -70%;
+                top: 2px;
+                transform-origin: top right;
+
+                .navsItemLi {
+                    width: 100%;
+                }
+            }
+            &:hover .navsItemLi{
+                cursor: pointer;
+                display: none;
+            }
+            h4 {
+                margin: 10px 0;
+                font-size: 12px;
+            }
+            .rightIcon {
+                display: block;
+            }
+        
+            .navItemLine {
+                content: "";
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                transform: scale(0);
+                transition: all 0.3s ease-in-out;
+                border-bottom: 2px solid var(--hover-color-);
+            }
+            
+        }
+        .navSearch {
+            margin: 10px;
+        }
+        .navLanguage {
+            margin: 10px;
+        }
+    }
+     
+}
+
+
+@media (max-width: 600px) {
+    .headerNav {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        align-items: flex-start;
+        .headerNavLi {
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .navsItem {
+                background-color: #fff;
+                z-index: 28;
+                left: 50%;
+                transform-origin: top right;
+
+                .navsItemLi {
+                    width: 100%;
+                }
+            }
+            
+            
+            .headerNavLiH4{
+                margin-top: 0;
+                margin-bottom: 0 ;
+                font-size: 12px;
+            }
+            .rightIcon {
+                display: block;
+            }
+        
+            .navItemLine {
+                content: "";
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                transform: scale(0);
+                transition: all 0.3s ease-in-out;
+                border-bottom: 2px solid var(--hover-color-);
+            }
+        }
+    }
+    
+}

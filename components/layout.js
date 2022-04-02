@@ -1,5 +1,10 @@
-import Nav from "./nav"
+import Header from "./Header"
 
-const Layout = ({ children, categories, seo }) => <>{children}</>
+const Layout = ({ children, categories, seo }) => (
+  <>
+    <Header />
+    {children}
+  </>
+)
 
 export default Layout

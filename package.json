@@ -12,13 +12,17 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "clsx": "^1.1.1",
     "moment": "^2.24.0",
     "next": "^11.0.0",
     "qs": "^6.10.1",
     "react": "17.0.0",
     "react-dom": "17.0.0",
     "react-markdown": "^4.2.2",
-    "react-moment": "^0.9.6"
+    "react-moment": "^0.9.6",
+    "sass": "^1.49.11"
   },
   "license": "MIT",
   "devDependencies": {
