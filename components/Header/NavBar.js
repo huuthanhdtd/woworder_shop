@@ -14,7 +14,7 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
     },
     {
       title: "giới thiệu",
-      link: "/",
+      link: "/gioi-thieu",
     },
     {
       title: "dự án",

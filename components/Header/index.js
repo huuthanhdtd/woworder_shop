@@ -7,6 +7,8 @@ import HeaderNavBar from "./NavBar"
 import MenuIcon from "@material-ui/icons/Menu"
 import CloseIcon from "@material-ui/icons/Close"
 import SearchIcon from "@material-ui/icons/Search"
+import Image from "next/image"
+import Logo from "../../public/logo_anphu.svg"
 
 function Header() {
   const [isNavBar, setIsNavBar] = useState(false)
@@ -29,7 +31,7 @@ function Header() {
       <Container maxWidth="lg">
         <div className={styles.headerNovaland}>
           <div className={styles.logoImage}>
-            <img src="https://www.novaland.com.vn/Data/Sites/1/media/Default/logo-nvl.jpg" />
+            <Image src={Logo} />
           </div>
           <div
             className={clsx(styles.headerContent, {
@@ -39,7 +41,7 @@ function Header() {
             <CloseIcon className={styles.closeIcon} onClick={handleCloseBars} />
 
             <span className={styles.numberPhone}>
-              <h4>Tổng đài CSKH:</h4>
+              <h4>Tổng đài CSKH: </h4>
               <h3>1900 63 6666</h3>
             </span>
             <HeaderNavBar

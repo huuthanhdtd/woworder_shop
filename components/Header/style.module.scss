@@ -57,7 +57,7 @@
         background-color: #fff;
     
         .logoImage {
-            width: 120px;
+            width: 200px;
             img {
                 width: 100%;
                 cursor: pointer;
@@ -87,12 +87,21 @@
                     margin-top: 6px;
                     margin-bottom: 6px;
                     color: var(--hover-color-);
+                    font-family: 'Minion Pro';
+                    line-height: 20px;
+                    margin-left: 6px;
+                    padding: 0;
+
                 }
                 h4{
                     margin-top: 6px;
                     margin-bottom: 6px;
-                    color: rgb(93, 107, 142)
-                
+                    color: rgb(93, 107, 142);
+                    font-family: 'Minion Pro';
+                    font-size: 20px;
+                    line-height: 20px;
+                    padding: 0;
+
                 
                 }
             }
@@ -192,7 +201,10 @@
                 transform: translateX(0);
             }
             .barIcon {
+                width: 30px;
+                height: 30px;
                 visibility: visible;
+                right: 2px;
             }
         }
     }
@@ -282,6 +294,8 @@
                 transform: translateX(0);
             }
             .barIcon {
+                width: 30px;
+                height: 30px;
                 visibility: visible;
                 right: 2px;
             }
