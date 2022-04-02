@@ -57,19 +57,6 @@ function Header() {
           />
         </div>
       </Container>
-      <div
-        className={clsx(styles.wrapper, {
-          [styles.active]: isSearchBlock,
-        })}
-      ></div>
-      <span
-        className={clsx(styles.searchBlock, {
-          [styles.active]: isSearchBlock,
-        })}
-      >
-        <input type="text" />
-        <SearchIcon className={styles.searchBlockIcon} />
-      </span>
     </div>
   )
 }

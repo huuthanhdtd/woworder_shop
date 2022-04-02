@@ -7,7 +7,7 @@
     margin-top: 40px;
     .headerNavLi {
         cursor: pointer;
-        margin: 0 2px;
+        margin:10px 10px 0;
         padding: 8px;
         font-size: 14px;
         font-weight: 400;
@@ -15,11 +15,10 @@
         .navsItem {
             position: absolute;
             list-style: none;
-            top: 37px;
+            top: 40px;
             background-color: #fff;
-            padding: 0;
+            padding: 4px 10px;
             left: 0;
-            // width: 250px;
             transform: scale(0);
             transform-origin: top left;
             transition: all 0.3s ease-in-out;
@@ -27,17 +26,15 @@
             z-index: 100;
 
             .navsItemLi {
-
-                padding: 2px 6px;
-                font-size: 12px;
+                padding: 3px 20px 3px 10px ;
                 border-bottom: 1px solid var(--primary-color-);
                 transition: all 0.3s ease-in-out;
-
                 h5 {
                     margin: 4px;
                     white-space: nowrap;
                     color: var(--primary-color-);
                     font-size: 14px;
+                    font-family: Minion Pro;
                     transition: all 0.3s ease-in-out;
 
                 }
@@ -67,7 +64,7 @@
             margin-top: 0;
             margin-bottom: 0 ;
             font-weight: 500;
-            font-size: 13px;
+            font-size: 18px;
             color: var(--primary-color-);
             transition: all 0.25s ease-in-out;
             font-family: Minion Pro;
@@ -102,46 +99,7 @@
             transform: scale(1)
         }
     }
-    .navLanguage {
-        margin-left: 8px;
-        cursor: pointer;
-        display: flex;
-        width: 40px;
-        height: 40px;
-        font-weight: 500;
-        border: 1px solid rgb(241, 241, 241);
-        border-radius: 50%;
-        color: var(--hover-color-);
-        transition: all 0.25s ease-in-out;
-
-        p {
-            margin: auto;
-        }
-        &:hover {
-            border-color: var(--hover-color-) ;
-            color: var(--hover-color-);
-            cursor: pointer;
-        }
-    }
     
-    .navSearch {
-        color: var(--hover-color-);
-        border: 1px solid rgb(241, 241, 241);
-        width: 40px;
-        height: 40px;
-        display: flex;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.25s ease-in-out;
-        .icon {
-            margin: auto;
-        }
-        &:hover {
-            color: var(--hover-color-);
-            border-color: var(--hover-color-) ;
-    
-        }
-    }
 }
 
 @media (max-width: 1280px) {

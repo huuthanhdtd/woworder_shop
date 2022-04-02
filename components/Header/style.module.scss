@@ -17,38 +17,6 @@
     .wrapper.active {
         display: flex
     }
-    .searchBlock.active {
-        visibility: visible;
-        transition: all 0.3s ease-in-out;
-
-    }
-    .searchBlock {
-        position: fixed;
-        top: 110px;
-        right: 120px;
-        z-index: 1000000;
-        align-items: center;
-        visibility: hidden;
-        display: flex;
-        height: 40px;
-        padding: 8px;
-        border: 1px solid var(--hover-color-);
-        background-color: #fff;
-
-        .searchBlockIcon {
-            color: var(--hover-color-);
-        }
-        input {
-            border-top: none;
-            border-bottom: none;
-            border-left: none;
-            border-right: 1px solid var(--hover-color-);
-            border-radius: none;
-            height: 30px;
-            margin-right: 8px;
-            outline: none;
-        }
-    }
     .headerNovaland {
         display: flex;
         flex-direction: row;

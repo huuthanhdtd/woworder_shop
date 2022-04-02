@@ -15,46 +15,46 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
     {
       title: "giới thiệu",
       link: "/gioi-thieu",
+      list: [
+        {
+          title: "giới thiệu chung",
+          link: "/",
+        },
+        {
+          title: "tầm nhìn - sứ mệnh",
+          link: "/",
+        },
+        {
+          title: "giá trị cốt lõi",
+          link: "/",
+        },
+        {
+          title: "lịch sử phát triển",
+          link: "/",
+        },
+        {
+          title: "ban lãnh đạo",
+          link: "/",
+        },
+        {
+          title: "giải thưởng",
+          link: "/",
+        },
+        {
+          title: "bộ quy tắt  ứng xử",
+          link: "/",
+        },
+      ],
     },
     {
       title: "dự án",
       list: [
         {
-          title: "bất động sản đô thị",
+          title: "dự án đá hoàn thành",
           link: "/",
         },
         {
-          title: "bất động sản đô thị du lịch",
-          link: "/",
-        },
-      ],
-      link: "/",
-    },
-    {
-      title: "quan hệ đầu tư",
-      list: [
-        {
-          title: "thông tin về tập đoàn novaland",
-          link: "/",
-        },
-        {
-          title: "quản trị doanh nghiệp",
-          link: "/",
-        },
-        {
-          title: "công bố thông tin",
-          link: "/",
-        },
-        {
-          title: "đại hội đồng cổ đông",
-          link: "/",
-        },
-        {
-          title: "hoạt động nhà đầu tư",
-          link: "/",
-        },
-        {
-          title: "giá cổ phiếu và thông tin thị trường",
+          title: "dự án đang triển khai",
           link: "/",
         },
       ],
@@ -81,44 +81,6 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
         },
       ],
       link: "/containers/News",
-    },
-    {
-      title: "phát triển bền vững",
-      list: [
-        {
-          title: "thông điệp novaland",
-          link: "/",
-        },
-        {
-          title: "hội đồng phát triển bền vững",
-          link: "/",
-        },
-        {
-          title: "quản trị tập đoàn",
-          link: "/",
-        },
-        {
-          title: "quản trị nguồn nhân lực",
-          link: "/",
-        },
-        {
-          title: "quản trị thương hiêu novaland",
-          link: "/",
-        },
-        {
-          title: "môi trường",
-          link: "/",
-        },
-        {
-          title: "hoạt động cộng đồng",
-          link: "/",
-        },
-        {
-          title: "thông tin phát triển bền vững",
-          link: "/",
-        },
-      ],
-      link: "/",
     },
     {
       title: "tuyển dụng",
@@ -181,15 +143,6 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
           )}
         </li>
       ))}
-      <div
-        className={styles.navSearch}
-        onClick={() => setIsSearchBlock((prev) => !prev)}
-      >
-        <SearchIcon className={styles.icon} />
-      </div>
-      <span className={styles.navLanguage}>
-        <p>EN</p>
-      </span>
     </ul>
   )
 }
