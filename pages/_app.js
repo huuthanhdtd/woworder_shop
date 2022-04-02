@@ -4,6 +4,7 @@ import "../assets/css/style.css"
 import { createContext } from "react"
 import { fetchAPI } from "../lib/api"
 import { getStrapiMedia } from "../lib/media"
+import Layout from "../components/layout"
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({})
@@ -20,7 +21,9 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </GlobalContext.Provider>
     </>
   )

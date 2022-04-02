@@ -1,12 +1,15 @@
 {
-  "extends": [
-    "next",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ],
-  "rules": {
-    "prettier/prettier": "error"
+  "extends": ["plugin:prettier/recommended"],
+  "env": {
+    "jest": true,
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "globals": {
+    "browser": true,
+    "$": true,
+    "before": true,
+    "document": true
   }
 }
