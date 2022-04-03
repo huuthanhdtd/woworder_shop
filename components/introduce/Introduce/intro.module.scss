@@ -1,0 +1,84 @@
+.page {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 200px;
+  margin-bottom: 30px;
+  h1 {
+    padding: 2%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 80px;
+      background: #2db34b;
+      margin: 10px auto 25px;
+    }
+  }
+  .MainIntroduction {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    .CompanyProfile{
+      width: 50%;
+      p {   
+        text-align: justify;
+        strong {
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+      }
+    }
+    .ImgCompany{
+      width: 50%;
+    }
+   
+  }
+}
+@media screen and (max-width: 960px) {
+  .page {
+    .MainIntroduction {
+      padding: 0 13.125px;
+    }
+  }
+  .page2 {
+    .page2_about {
+      padding: 0 13.125px;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .page {
+    margin-top: 50px;
+    .MainIntroduction {
+      padding: 0 13.125px;
+      display: block;
+      width: 94%;
+      .CompanyProfile{
+        width: 100%;
+        p {   
+          text-align: justify;
+          strong {
+            text-transform: uppercase;
+            font-weight: bold;
+          }
+        }
+      }
+      .ImgCompany{
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+  .page2 {
+    .page2_about {
+      padding: 0 13.125px;
+    }
+  }
+}
+

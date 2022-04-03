@@ -1,0 +1,14 @@
+.rule{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    p{
+        text-align: justify;
+    }
+}
+@media screen and (max-width: 600px) {
+    .rule {
+      
+        width: 93%;
+    }
+  }

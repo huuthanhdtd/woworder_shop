@@ -1,0 +1,155 @@
+.page5 {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  h2 {
+    padding: 2%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 80px;
+      background: #2db34b;
+      margin: 10px auto 25px;
+    }
+  }
+  .page5_about {
+    width: 100%;
+    margin: 0 auto;
+    ul {
+      padding: 0;
+      text-align: center;
+      li {
+        margin-left: 5px;
+        display: inline-block;
+        margin-bottom: 20px;
+        // padding-left: 0;
+        // background: none;
+        // width: auto;
+        text-transform: uppercase;
+        border-color: #d9d9d9;
+        span.active_tabs {
+          transition: all 0.3s ease-in-out;
+          background: #354772;
+        }
+        span {
+          cursor: pointer;
+          text-decoration: none;
+          background: #2db34b;
+          color: #fff;
+          padding: 5px 10px;
+          font-weight: 400;
+          &:hover {
+            transition: all 0.3s ease-in-out;
+            background: #354772;
+          }
+        }
+      }
+      .Staff {
+        width: 80%;
+        margin: 0 auto;
+          .media {
+            display: flex;
+            padding: 20px 25px;
+            background: url("https://www.novaland.com.vn/Data/Sites/1/skins/default/images/brochure-bg.png");
+            .avatar {
+              width: 30%;
+              img {
+                width: 100%;
+              }
+            }
+            .description {
+              width: 70%;
+              padding-left: 10px;
+              h4 {
+                font-size: 15px;
+                color: #2db34b;
+                font-weight: 700;
+                margin: 0 0 15px;
+              }
+              p {
+                color: #898989;
+                font-size: 16px;
+              }
+              ul {
+                li {
+                  list-style: none;
+                  line-height: 20px;
+                  background: url("https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.png")
+                    no-repeat 0 5px;
+                  padding-left: 20px;
+                  margin-bottom: 20px;
+                  text-align: left;
+                }
+              }
+            }
+          }
+      }
+      .content {
+        display: none;
+      }
+    }
+  }
+  .descimg {
+    img {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 960px) {
+  .page5 {
+    .page5_about {
+      ul {
+        .Staff {
+            margin: 0 auto;
+            width: 85%;
+            .media {
+              padding: 0;
+              margin-bottom: 20px;
+              width: 100%;
+              display: flex;
+              .avatar {
+                width: 30%;
+                padding: 10px;
+              
+              }
+              .description {
+                width: 70%;
+                padding: 10px;
+                
+              
+              }
+            }
+      }
+    }
+  }
+}
+}
+@media screen and (max-width: 600px) {
+  .page5 {
+    .page5_about {
+      ul {
+        .Staff {
+          width: 93%;
+            .media {
+              width: 100%;
+              .avatar {
+                padding: 10px;
+                width: 40%;
+                
+              }
+              .description {
+                padding: 10px;
+                width: 60%;
+              }
+            }
+      }
+    }
+  }
+}
+}

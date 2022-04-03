@@ -1,0 +1,49 @@
+.page3 {
+  width: 100%;
+  margin-bottom: 30px;
+  h2 {
+    margin: 0;
+    padding: 2%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 80px;
+      background: #2db34b;
+      margin: 10px auto 25px;
+    }
+  }
+  .page3_about {
+        p{
+          text-align: center;
+          font-weight: bold;
+          color: #b28b64;
+          margin-bottom: 40px;
+        }
+  }
+  .banner{
+    width: 100%;
+  margin-bottom: 30px;
+    img{
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+    .page3_about {
+      width: 93%;
+      margin: 0 auto;
+      padding: 0 13.125px;
+    }
+    .banner{
+      width: 100%;
+      img{
+        width: 100%;
+      }
+    }
+}
