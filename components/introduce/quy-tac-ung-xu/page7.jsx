@@ -8,12 +8,14 @@ export default function Page7() {
     <div className={styles.rule}>
       <Grid container spacing={2}>
         <Grid item sm={12} md={12} lg={2}>
-          <Link href="/">
-            <img
-              src="https://www.novaland.com.vn/Data/Sites/1/media/Default/icon_qtux.png"
-              alt=""
-            />
-          </Link>
+          <div className={styles.all}>
+            <Link href="/">
+              <img
+                src="https://www.novaland.com.vn/Data/Sites/1/media/Default/icon_qtux.png"
+                alt=""
+              />
+            </Link>
+          </div>
         </Grid>
         <Grid item sm={12} md={12} lg={10}>
           <p>

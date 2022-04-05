@@ -42,6 +42,7 @@
 }
 @media screen and (max-width: 960px) {
   .page {
+    margin-top: 70px;
     .MainIntroduction {
       padding: 0 13.125px;
     }
@@ -54,11 +55,11 @@
 }
 @media screen and (max-width: 600px) {
   .page {
-    margin-top: 50px;
+    margin-top: 70px;
     .MainIntroduction {
       padding: 0 13.125px;
       display: block;
-      width: 94%;
+      width: 93%;
       .CompanyProfile{
         width: 100%;
         p {   
