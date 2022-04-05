@@ -6,6 +6,7 @@ import styles from "./page7.module.scss"
 export default function Page7() {
   return (
     <div className={styles.rule}>
+      <h2>bộ quy tắc ứng xử</h2>
       <Grid container spacing={2}>
         <Grid item sm={12} md={12} lg={2}>
           <div className={styles.all}>

@@ -2,6 +2,22 @@
     width: 80%;
     margin: 0 auto;
     margin-bottom: 100px;
+    h2 {
+        padding: 2%;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--primary-color-);
+        text-transform: uppercase;
+        text-align: center;
+        &::after {
+          content: "";
+          display: block;
+          height: 3px;
+          width: 80px;
+          background: var(--border-color-);
+          margin: 10px auto 25px;
+        }
+      }
     .all{ cursor: pointer;
         a{
             img{
