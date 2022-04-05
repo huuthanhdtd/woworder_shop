@@ -1,0 +1,89 @@
+$OpensSans: "Opens sans", sans-serif;
+.container {
+  transition: all 0.5s;
+  background: #6666;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: inherit;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .title {
+    position: absolute;
+    background: var(--primary-color-);
+    bottom: 0;
+    width: 100%;
+    transition: inherit;
+    cursor: pointer;
+    h6 {
+      color: white;
+      font-weight: bold;
+      padding: 10px 15px;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    &:hover {
+      background: var(--hover-color-);
+    }
+  }
+}
+@media screen and(max-width: 1280px) {
+  .container {
+    img {
+    }
+    .title {
+      h6 {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 960px) {
+  .container {
+    img {
+    }
+    .title {
+      h6 {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .container {
+    img {
+    }
+    .title {
+      h6 {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .container {
+    margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .title {
+      h6 {
+        font-size: 1rem;
+      }
+    }
+  }
+}

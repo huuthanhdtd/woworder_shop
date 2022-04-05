@@ -1,29 +1,31 @@
 @font-face {
-  font-family: 'Minion Pro';
-  src: url('../font/MinionPro-Bold.woff2') format('woff2'),
-      url('../font/MinionPro-Bold.woff') format('woff');
+  font-family: "Minion Pro";
+  src: url("../font/MinionPro-Bold.woff2") format("woff2"),
+    url("../font/MinionPro-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-Italic.woff2') format('woff2'),
-      url('../font/OpenSans-Italic.woff') format('woff');
+  font-family: "Open Sans";
+  src: url("../font/OpenSans-Italic.woff2") format("woff2"),
+    url("../font/OpenSans-Italic.woff") format("woff");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-Regular.woff2') format('woff2'),
-      url('../font/OpenSans-Regular.woff') format('woff');
+  font-family: "Open Sans";
+  src: url("../font/OpenSans-Regular.woff2") format("woff2"),
+    url("../font/OpenSans-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-
+* {
+  box-sizing: border-box;
+}
 
 a {
   text-decoration: none;
@@ -68,9 +70,8 @@ img:hover {
 }
 
 :root {
-  --primary-color- : rgb(29, 46, 100);
-  --hover-color- : rgb(253, 198, 114);
-  --hover-rgba- : rgba(253, 198, 114, 0.7);
-  --border-color- : rgba(29, 46, 100, 0.5)
+  --primary-color-: rgb(29, 46, 100);
+  --hover-color-: rgb(253, 198, 114);
+  --hover-rgba-: rgba(253, 198, 114, 0.7);
+  --border-color-: rgba(29, 46, 100, 0.5);
 }
-

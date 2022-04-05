@@ -1,11 +1,14 @@
 import Footer from "./Footer"
 import Header from "./Header"
+import ContextProvider from "../constants/Context"
 
 const Layout = ({ children, categories, seo }) => (
   <>
-    <Header />
-    {children}
-    <Footer />
+    <ContextProvider>
+      <Header />
+      {children}
+      <Footer />
+    </ContextProvider>
   </>
 )
 
