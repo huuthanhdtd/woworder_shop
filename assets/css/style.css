@@ -74,18 +74,3 @@ img:hover {
   --border-color- : rgba(29, 46, 100, 0.5)
 }
 
-.slick-next:before {
-  font-family: "FontAwesome" !important;
-  content: "\f105" !important;
-    opacity: 1 !important;
-    line-height: 36px;
-    font-size: 20px;
-    color: white;
-    -webkit-font-smoothing: antialiased;
-}
-
-@media screen and (max-width: 960px) {
-  .slick-arrow{
-    display: none !important;
-  }
-}
