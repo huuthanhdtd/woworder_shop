@@ -58,7 +58,7 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
           link: "/",
         },
       ],
-      link: "/",
+      link: "/du-an",
     },
     {
       title: "tin tức",
@@ -80,15 +80,15 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
           link: "/",
         },
       ],
-      link: "/containers/News",
+      link: "/tin-tuc",
     },
     {
       title: "tuyển dụng",
-      link: "/",
+      link: "/tuyen-dung",
     },
     {
       title: "liên hệ",
-      link: "/",
+      link: "/lien-he",
     },
   ]
 

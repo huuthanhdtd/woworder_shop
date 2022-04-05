@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import clsx from "clsx"
+import Link from "next/link"
 
 import Container from "@material-ui/core/Container"
 import styles from "./style.module.scss"
@@ -30,9 +31,11 @@ function Header() {
     <div className={styles.headerNovalandMax}>
       <Container maxWidth="lg">
         <div className={styles.headerNovaland}>
-          <div className={styles.logoImage}>
-            <Image src={Logo} />
-          </div>
+          <Link href="/">
+            <div className={styles.logoImage}>
+              <Image src={Logo} />
+            </div>
+          </Link>
           <div
             className={clsx(styles.headerContent, {
               [styles.showBars]: isNavBar,
