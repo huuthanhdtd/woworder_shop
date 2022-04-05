@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./Page3.module.scss"
+import styles from "./page3.module.scss"
 
 export default function Page3() {
   return (

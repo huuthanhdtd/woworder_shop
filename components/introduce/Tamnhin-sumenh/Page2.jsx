@@ -8,15 +8,7 @@ export default function Page2() {
       <div className={styles.page2_about}>
         <div className={styles.mrb10}></div>
         <div className={styles.vision}>
-          <p
-            style={{
-              textAlign: "center",
-              color: "#f79646",
-              textTransform: "uppercase",
-              fontWeight: "bold",
-              marginBottom: "14px",
-            }}
-          >
+          <p>
             <span>Tầm nhìn</span>
           </p>
           <hr />
