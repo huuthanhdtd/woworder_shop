@@ -5,3 +5,14 @@
     left: 50%;
     transform: translateX(-50%);
 }
+@media (max-width: 960px) {
+    .homePage {
+        margin-top: 78px;
+    }
+    
+}
+@media (max-width: 600px) {
+    .homePage {
+        margin-top: 60px;
+    }
+}

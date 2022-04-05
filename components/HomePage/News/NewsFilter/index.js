@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 import clsx from "clsx"
 import styles from "./styles.module.scss"
 import { Grid } from "@material-ui/core"
-import ArrowRightIcon from "@material-ui/icons/ArrowRight"
-import AccessTimeIcon from "@material-ui/icons/AccessTime"
 import Link from "next/link"
+import { GoTriangleRight } from "react-icons/go"
+import { BsClockHistory } from "react-icons/bs"
 
 function NewsMarket({ articles }) {
   const [activeIndex, setactiveIndex] = useState(0)
@@ -38,7 +38,7 @@ function NewsMarket({ articles }) {
             news.map((item, index) => (
               <div key={index} className={styles.content}>
                 <div className={styles.times}>
-                  <AccessTimeIcon style={{ fontSize: 20 }} />
+                  <BsClockHistory style={{ fontSize: 20 }} />
                   <h3>
                     {new Intl.DateTimeFormat("en-GB").format(
                       new Date(item.attributes.updatedAt)
@@ -49,7 +49,7 @@ function NewsMarket({ articles }) {
                   <div className={styles.titleBlock}>
                     <h2>
                       {item.attributes.title}
-                      <ArrowRightIcon className={styles.rightIcon} />
+                      <GoTriangleRight className={styles.rightIcon} />
                     </h2>
                   </div>
                 </Link>
@@ -59,7 +59,7 @@ function NewsMarket({ articles }) {
         </div>
         <div className={styles.btnShowAll}>
           <h3>XEM TẤT CẢ</h3>
-          <ArrowRightIcon className={styles.icon} />
+          <GoTriangleRight className={styles.icon} />
         </div>
       </div>
     </div>

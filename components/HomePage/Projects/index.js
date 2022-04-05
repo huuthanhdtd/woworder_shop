@@ -2,8 +2,7 @@ import { Container } from "@material-ui/core"
 import clsx from "clsx"
 import React, { useEffect, useState } from "react"
 import styles from "./styles.module.scss"
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
-import ChevronRightIcon from "@material-ui/icons/ChevronRight"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
 const listOne = [
   {
@@ -174,10 +173,10 @@ const Projects = () => {
         ))}
         <div className={clsx(styles.controls)}>
           <div className={styles.prev} onClick={hadleClickPrev}>
-            <ChevronLeftIcon className={styles.prevIcon} />
+            <FaChevronLeft className={styles.prevIcon} />
           </div>
           <div className={styles.next} onClick={hadleClickNext}>
-            <ChevronRightIcon className={styles.nextIcon} />
+            <FaChevronRight className={styles.nextIcon} />
           </div>
         </div>
       </div>

@@ -47,8 +47,8 @@ function FooterTop() {
     },
   ]
   return (
-    <Container maxWidth="lg">
-      <div className={styles.footerNovaland}>
+    <Container maxWidth="lg" className={styles.all}>
+      <div className={styles.footerTop}>
         {footerList.map((footerItem, index) => (
           <Grid
             className={styles.footerNovalandItem}
