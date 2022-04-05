@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
 import styles from "./styles.module.scss"
 import { Grid } from "@material-ui/core"
-import ArrowRightIcon from "@material-ui/icons/ArrowRight"
+import { BsClockHistory } from "react-icons/bs"
+
 import AccessTimeIcon from "@material-ui/icons/AccessTime"
 import Link from "next/link"
 import NextImage from "./image"
+import { GoTriangleRight } from "react-icons/go"
+
 const options = {
   year: "numeric",
   month: "numeric",
@@ -46,18 +49,17 @@ function HotNews({ articles }) {
                   )}
                 </div>
                 <div className={styles.times}>
-                  <AccessTimeIcon style={{ fontSize: 20 }} />
+                  <BsClockHistory style={{ fontSize: 20 }} />
                   <h3>
                     {new Intl.DateTimeFormat("en-GB").format(
-                      new Date(item.attributes.updatedAt),
-                      "dd/mm/yyyy"
+                      new Date(item.attributes.updatedAt)
                     )}
                   </h3>
                 </div>
                 <Link href="/">
                   <div className={styles.titleBlock}>
                     <h2>{item.attributes.title}</h2>
-                    <ArrowRightIcon className={styles.rightIcon} />
+                    <GoTriangleRight className={styles.rightIcon} />
                   </div>
                 </Link>
                 <h4>{item.attributes.description}</h4>

@@ -126,4 +126,127 @@
 
 }
 
+@media (max-width: 960px) {
+    .connective {
+        
+    
+        .formRegister {
+            
+    
+            h2 {
+                
+            }
+            h3 {
+                
+            
+            }
+            div {
+                
+                input {
+                    
+                }
+                button {
+                    
+                }
+            }
+        }
+       
+        .brochure {
+            
+            .brochureIcon {
+                
+                .icon {
+                    
+                }
+                
+            }
+    
+            .content {
+                
+                h2 {
+                    
+                }
+                a {
+                   
+                }
+                p {
+                }
+            }
+        }
+        .contacts {
+            span{
+                
+                h2 {
+                }
+                h3 {
+                
+                }
+    
+            }
+    
+        }
+    
+    }
+}
+
+@media (max-width: 960px) {
+    .connective {
+        .formRegister {
+            h2 {
+                margin-bottom: 0px;
+            }
+            p {
+                 margin: 5px 0;   
+            
+            }
+            div {
+                
+                input {
+                }
+                button {
+                    
+                }
+            }
+            
+        }
+       
+        .brochure {
+            margin-top: 15px;
+            .brochureIcon {
+                
+                .icon {
+                    
+                }
+                
+            }
+    
+            .content {
+                
+                h2 {
+                    margin:  8px;
+                }
+                a {
+                   
+                }
+                p {
+                    font-size: 12px;
+                }
+            }
+        }
+        .contacts {
+            span{
+                
+                h2 {
+                }
+                h3 {
+                
+                }
+    
+            }
+    
+        }
+    
+    }
+}
+
 

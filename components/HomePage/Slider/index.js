@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react"
 import styles from "./styles.module.scss"
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
-import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import clsx from "clsx"
 import NextImage from "./imageSlide"
 import Link from "next/link"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
 const list = [
   {
@@ -194,10 +193,10 @@ function Slider({ slides, projects, articles }) {
           ))}
         <div className={styles.controls}>
           <div className={styles.btn} onClick={handleClickLeft}>
-            <ChevronLeftIcon className={styles.icon} />
+            <FaChevronLeft className={styles.icon} />
           </div>
           <div className={styles.btn} onClick={handleClickRight}>
-            <ChevronRightIcon className={styles.icon} />
+            <FaChevronRight className={styles.icon} />
           </div>
         </div>
         <div className={styles.contents}>
@@ -208,38 +207,14 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: index === Number(activeIndex),
               })}
             >
-              {/* {item.attributes.title !== null && (
-                <span className={styles.title}>
-                  {item.attributes.title}
-                  
-                </span>
-              )} */}
-
               <span className={styles.title}>{item.title}</span>
 
               <div className={styles.desc}>
-                {/* {item.attributes.description !== null && (
-                  <span className={styles.descCt}>
-                    {item.attributes.description}
-                  </span>
-                )} */}
-
                 {list[index].desc.map((it, i) => (
                   <span key={i} className={styles.descCt}>
                     {it.title}
                   </span>
                 ))}
-
-                {/* <a href={item.attributes.url && item.attributes.url}>
-                  {item.attributes.url !== null && (
-                    <div className={styles.button}>
-                      <h4>XEM THÊM</h4>
-                      <div className={styles.btn}>
-                        <ChevronRightIcon className={styles.icon} />
-                      </div>
-                    </div>
-                  )}
-                </a> */}
               </div>
             </div>
           ))}

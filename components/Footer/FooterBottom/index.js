@@ -8,12 +8,13 @@ import {
   FaYoutubeSquare,
   FaInstagram,
 } from "react-icons/fa"
+import clsx from "clsx"
 
 function FooterBottom() {
   return (
     <Container maxWidth="lg">
       <div className={styles.footerLast}>
-        <Grid className={styles.footerLastContent} item xs={12} sm={8} lg={8}>
+        <Grid className={styles.footerLastContent} item xs={12} sm={12} lg={8}>
           <p>Chính sách bảo mật</p>
           <p>CÔNG TY CỔ PHẦN TẬP ĐOÀN ĐẦU TƯ ĐỊA ỐC NO VA</p>
           <p>
@@ -29,12 +30,12 @@ function FooterBottom() {
             quyền được bảo hộ.
           </p>
         </Grid>
-        <Grid className={styles.footerLastIcon} item xs={12} sm={4} lg={4}>
+        <Grid className={styles.footerLastIcon} item xs={12} sm={12} lg={4}>
           <span className={styles.footerLastIconTop}>
-            <FaFacebookF className={styles.iconFb} />
-            <FaYoutubeSquare className={styles.iconYt} />
-            <FaInstagram className={styles.iconIns} />
-            <FaTiktok className={styles.iconTiktok} />
+            <FaFacebookF className={clsx(styles.icon, styles.iconFb)} />
+            <FaYoutubeSquare className={clsx(styles.icon, styles.iconYt)} />
+            <FaInstagram className={clsx(styles.icon, styles.iconIns)} />
+            <FaTiktok className={clsx(styles.icon, styles.iconTiktok)} />
           </span>
         </Grid>
       </div>
