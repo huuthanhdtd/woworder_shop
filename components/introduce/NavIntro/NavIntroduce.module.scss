@@ -1,6 +1,7 @@
 .Main {
   .NavIntroduce {
-    z-index: 1;
+    max-width: 1440px;
+    z-index: 999;
     position: fixed;
     top: 118px;
     width: 100%;

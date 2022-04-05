@@ -10,7 +10,7 @@ import Page2 from "./Tamnhin-sumenh/Page2"
 
 export default function Introduce() {
   return (
-    <div>
+    <div style={{ maxWidth: "1440px", margin: "0 auto" }}>
       <NavIntroduce />
       <Intro />
       <Page2 />
