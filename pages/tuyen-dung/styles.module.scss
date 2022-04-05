@@ -1,0 +1,18 @@
+.careerPage {
+    margin-top: 115px;
+    max-width: 1440px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@media (max-width: 960px) {
+    .careerPage {
+        margin-top: 78px;
+    }
+    
+}
+@media (max-width: 600px) {
+    .careerPage {
+        margin-top: 60px;
+    }
+}

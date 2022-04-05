@@ -117,3 +117,4 @@ build
 .next
 package-lock.json
 backend/package-lock.json
+yarn.lock
