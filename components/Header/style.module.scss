@@ -1,11 +1,13 @@
 .headerNovalandMax {
+    max-width: 1440px;
     width: 100%;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10000000;
     background-color: #fff;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
     .wrapper {
         position: fixed;
         background-color: rgba(0, 0, 0, 0.8);
@@ -55,7 +57,7 @@
                     margin-top: 6px;
                     margin-bottom: 6px;
                     color: var(--hover-color-);
-                    font-family: 'Minion Pro';
+                    font-family: Minion Pro;
                     line-height: 20px;
                     margin-left: 6px;
                     padding: 0;
@@ -101,6 +103,8 @@
         position: fixed;
         top: 0;
         left: 0;
+        padding: 20px 0 ;
+        transform: translateX(0);
         z-index: 10000;
         background-color: #fff;
         .searchBlock {
@@ -159,7 +163,7 @@
                     h4{
                         margin-top: 6px;
                         margin-bottom: 6px;
-                        color: rgb(93, 107, 142)
+                        color: var(--primary-color-)
                     
                     
                     }
@@ -182,18 +186,10 @@
 
 @media (max-width: 600px) {
     .headerNovalandMax {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
+        padding: 15px 0 ;
         z-index: 10000000;
-        background-color: #fff;
         .wrapper {
-            position: fixed;
-            background-color: rgba(0, 0, 0, 0.8);
             width: 100%;
-            height: 100vh;
-
         }
         .searchBlock {
             top: 20px;
@@ -209,63 +205,21 @@
             .logoImage {
                 width: 100px;
                 img {
-                    width: 100%;
-                    position: relative;
                     left: -16px;
-                    cursor: pointer;
                 }
             }
             .headerContent {
-                position: fixed;
-                display: flex;
-                flex-direction: column;
-                right: 0;
-                top: 0;
                 width: 100%;
-                box-shadow: 5px 4px 10px 6px #888888;
-                z-index: 10;
-                transition: all 0.3s ease-in-out;
-                transform: translateX(110%);
-                height: 100vh;
                 .closeIcon {
-                    display: block;
-                    visibility: visible;
-                    border-radius: 0;
-                    font-size: 18px;
-                    font-weight: 700;
-                    border: none;
-                    color: #fff;
                 }
                 .numberPhone {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    position: absolute;
-                    right: 0;
-                    cursor: pointer;
-                    margin-right: 10px;
-                    h3{
-                        margin-top: 6px;
-                        margin-bottom: 6px;
-                        color: var(--hover-color-);
-                    }
-                    h4{
-                        margin-top: 6px;
-                        margin-bottom: 6px;
-                        color: rgb(93, 107, 142)
                     
-                    
-                    }
                 }
             }
-            .headerContent.showBars {
-                transform: translateX(0);
-            }
+            
             .barIcon {
-                width: 30px;
-                height: 30px;
-                visibility: visible;
-                right: 2px;
+                width: 25px;
+                height: 25px;
             }
         }
     }

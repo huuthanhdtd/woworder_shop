@@ -2,6 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     .footerLastContent{
+        p {
+            font-family: Open Sans;
+
+        }
 
     }
     .footerLastIcon {
@@ -12,22 +16,27 @@
             position: absolute;
             right: 0;
             font-size: 24px;
-            color: rgb(45, 179, 75);
             margin: 12px;
 
             .iconFb {
                 margin: 6px;
                 cursor: pointer;
+                color: var(--hover-color-);
+                transition: all 0.25s ease-in-out;
                 &:hover {
-                    opacity: 0.6;
+                color: var(--primary-color-);
+
                 }
             }
             .iconYt {
                 margin: 6px;
                 cursor: pointer;
+                color: var(--hover-color-);
+                transition: all 0.25s ease-in-out;
 
                 &:hover {
-                    opacity: 0.6;
+                color: var(--primary-color-);
+
                 }
             }
         }
@@ -40,8 +49,6 @@
 
             img{
                 width: 100%;
-            
-                
             }
         }
     }

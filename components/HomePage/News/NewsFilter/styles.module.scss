@@ -1,0 +1,298 @@
+.newsFilter {
+    width: 100%;
+    height: 100%;
+    .newsFilterWrapper {
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        
+        .filters {
+            display: flex;
+            span {
+                padding: 0 16px;
+                margin-right: 2px;
+                background-color: #d9d9d9;
+                font-weight: 600;
+                border-top: 4px solid #d9d9d9;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                h3 {
+                    margin: 6px 0;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: var(--primary-color-);
+                }
+            }
+            span.active {
+                background-color: #fff;
+                border-color: var(--hover-color-);
+                border-right: 1px solid var(--hover-color-);
+                border-left: 1px solid var(--hover-color-);
+                h3 {
+                    color: var(--hover-color-);
+
+                }
+            
+            }
+        }
+        .newsList {
+            padding: 10px 0;
+            .content {
+                background-color: #fff;
+                margin: 20px 10px;
+                overflow: hidden;
+                background-color: #fff;
+                border-bottom: 1px solid var(--border-color-);
+                
+                .times {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 6px;
+                    h3 {
+                        margin: 4px;
+                        font-size: 14px;
+    
+                    }
+                }
+                .titleBlock {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    h2 {
+                        color: var(--primary-color-);
+                        font-size: 18px;
+                        transition: all 0.25s ease-in-out;
+                        margin: 0;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        font-family: Minion Pro;
+                        .rightIcon {
+                            color: var(--primary-color-);
+                            transition: all 0.25s ease-in-out;
+                            margin: 0 0px 8px;
+        
+                        }
+                        
+                    }
+                    &:hover {
+                        h2 {
+    
+                            color: var(--hover-color-);
+                            .rightIcon {
+                                color: var(--hover-color-);
+                                transform: translateX(4px);
+                            }
+                        }
+                    }
+                    
+                }
+        
+                h4{
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 25px;
+                    -webkit-line-clamp: 2;
+                    height: 50px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    margin: 2px 0 10px;
+                    font-family: Open Sans;
+                    font-size: 16px;
+    
+                }
+            }
+        }
+        .btnShowAll {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 14px;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            right: 0;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            h3{ 
+                margin-left: 12px;
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+                transition: all 0.2s ease-in-out;
+
+            }
+            .icon{
+                margin: 0;
+                transition: all 0.2s ease-in-out;
+            }
+            &:hover {
+                color: var(--hover-color-);
+                cursor: pointer;
+                h3 {
+                    transform: translateX(-10px);
+                    color: var(--hover-color-);
+
+                }
+            }
+        }
+    }
+}
+
+// .newsListActive h3{
+//     font-size: 12px;
+//     margin: 4px;
+// }
+
+@media (max-width: 1200px)  {
+    .inforMarketAll {
+        width: 100%;
+        .inforMarket {
+            
+            
+            .inforMarketHeader {
+                span {
+                }
+                span.active {
+                
+                }
+            }
+            .newsListActive {
+                p{
+                    margin: 6px;
+                    height: 36px;
+                    display: block;
+                    display: -webkit-box;
+                    --webkit-box-orient: vertical;
+                    --webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
+                
+            }
+            
+        }
+    }
+}
+@media (max-width: 990px) {
+    .inforMarketAll {
+        width: 100%;
+        .inforMarket {
+            
+            
+            .inforMarketHeader {
+                span {
+                }
+                span.active {
+                
+                }
+            }
+            .newsListActive {
+                p{
+                    margin: 6px;
+                    height: 36px;
+                    display: block;
+                    display: -webkit-box;
+                    --webkit-box-orient: vertical;
+                    --webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
+                
+            }
+            
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .inforMarketAll {
+        width: 100%;
+        .inforMarket {
+            padding-top: 0px ;
+            .inforMarketHeader {
+                span {
+                    padding: 6px 8px;
+                    margin-right: 2px;
+                    font-size: 8px;
+                }
+            }
+            .newsListActive {
+                margin: 0px;
+                h3{
+                    font-size: 8px;
+                }
+                h2 {
+                    margin: 4px;
+                    font-size: 10px;
+                
+                }
+                p{
+                    margin: 6px;
+                    height: 30px;
+                    display: block;
+                    display: -webkit-box;
+                    --webkit-box-orient: vertical;
+                    --webkit-line-clamp: 2;
+                    overflow: hidden;
+                    font-size: 10px
+                }
+            }
+            .btnShowAll {
+                display: flex;
+                flex-direction: row;
+                align-self: flex-end;
+
+                align-items: center;
+                margin: 8px;
+                font-size: 10px;
+                h3 {
+                    margin: 0
+                }
+            }
+        }
+    }
+}
+@media (max-width: 480px) {
+    .inforMarketAll {
+        width: 100%;
+        .inforMarket {
+            padding-top: 0px ;
+            .inforMarketHeader {
+                span {
+                    margin-right: 2px;
+                    font-size: 8px;
+                    padding: 4px 6px;
+            
+                }
+            }
+            .newsListActive {
+                margin: 0px;
+                a{
+                    font-size: 8px;
+                    h2 {
+                        margin: 4px;
+                        font-size: 10px;
+                    
+                    }
+                }
+                p{
+                    margin: 6px;
+                    height: 30px;
+                    display: block;
+                    display: -webkit-box;
+                    --webkit-box-orient: vertical;
+                    --webkit-line-clamp: 2;
+                    overflow: hidden;
+                    font-size: 11px
+                }
+            }
+            .btnShowAll {
+                display: flex;
+                flex-direction: row;
+                align-self: flex-end;
+                align-items: center;
+                margin: 8px;
+                font-size: 8px;
+            }
+        }
+    }  
+    
+}
