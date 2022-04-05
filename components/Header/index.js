@@ -5,9 +5,8 @@ import Link from "next/link"
 import Container from "@material-ui/core/Container"
 import styles from "./style.module.scss"
 import HeaderNavBar from "./NavBar"
-import MenuIcon from "@material-ui/icons/Menu"
-import CloseIcon from "@material-ui/icons/Close"
-import SearchIcon from "@material-ui/icons/Search"
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
+
 import Image from "next/image"
 import Logo from "../../public/logo_anphu.svg"
 
@@ -41,7 +40,10 @@ function Header() {
               [styles.showBars]: isNavBar,
             })}
           >
-            <CloseIcon className={styles.closeIcon} onClick={handleCloseBars} />
+            <AiOutlineClose
+              className={styles.closeIcon}
+              onClick={handleCloseBars}
+            />
 
             <span className={styles.numberPhone}>
               <h4>Tổng đài CSKH: </h4>
@@ -52,7 +54,7 @@ function Header() {
               setIsSearchBlock={setIsSearchBlock}
             />
           </div>
-          <MenuIcon
+          <AiOutlineMenu
             className={clsx(styles.barIcon, {
               [styles.hidden]: isNavBar === true,
             })}
