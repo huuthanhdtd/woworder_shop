@@ -1,8 +1,13 @@
 import React, { useState } from "react"
 import styles from "./styles.module.scss"
 import { Container, Grid } from "@material-ui/core"
-import FacebookIcon from "@material-ui/icons/Facebook"
-import YouTubeIcon from "@material-ui/icons/YouTube"
+
+import {
+  FaTiktok,
+  FaFacebookF,
+  FaYoutubeSquare,
+  FaInstagram,
+} from "react-icons/fa"
 
 function FooterBottom() {
   return (
@@ -26,11 +31,10 @@ function FooterBottom() {
         </Grid>
         <Grid className={styles.footerLastIcon} item xs={12} sm={4} lg={4}>
           <span className={styles.footerLastIconTop}>
-            <FacebookIcon className={styles.iconFb} />
-            <YouTubeIcon className={styles.iconYt} />
-          </span>
-          <span className={styles.footerLastIconBottom}>
-            <img src="https://www.novaland.com.vn/Data/Sites/1/media/Default/logosalenoti-(1).png" />
+            <FaFacebookF className={styles.iconFb} />
+            <FaYoutubeSquare className={styles.iconYt} />
+            <FaInstagram className={styles.iconIns} />
+            <FaTiktok className={styles.iconTiktok} />
           </span>
         </Grid>
       </div>

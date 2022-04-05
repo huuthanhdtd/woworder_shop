@@ -39,6 +39,27 @@
 
                 }
             }
+            .iconIns {
+                margin: 6px;
+                cursor: pointer;
+                color: var(--hover-color-);
+                transition: all 0.25s ease-in-out;
+
+                &:hover {
+                color: var(--primary-color-);
+
+                }
+            }
+            .iconTiktok {
+                margin: 6px;
+                cursor: pointer;
+                color: var(--hover-color-);
+                transition: all 0.25s ease-in-out;
+                &:hover {
+                color: var(--primary-color-);
+
+                }
+            }
         }
         .footerLastIconBottom {
             position: absolute;
