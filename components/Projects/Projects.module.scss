@@ -1,4 +1,4 @@
-$OpensSan: "Opens sans", sans-serif;
+$OpensSan: 'Opens sans', sans-serif;
 .layout {
   max-width: 1440px;
   margin: 0 auto;
@@ -13,7 +13,7 @@ $OpensSan: "Opens sans", sans-serif;
       position: relative;
       margin-bottom: 20px;
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 3px;
         width: 50px;

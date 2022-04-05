@@ -1,6 +1,6 @@
-import React from "react"
-import styles from "./Projects.module.scss"
-import Banner from "../Banner/Banner"
+import React from 'react';
+import styles from './Projects.module.scss';
+import Banner from '../Banner/Banner';
 
 function LayoutProject({ children }) {
   return (
@@ -8,7 +8,7 @@ function LayoutProject({ children }) {
       <Banner />
       {children}
     </div>
-  )
+  );
 }
 
-export default LayoutProject
+export default LayoutProject;

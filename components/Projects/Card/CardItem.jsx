@@ -1,8 +1,8 @@
-import Link from "next/link"
-import NextImage from "../../image"
-import React from "react"
-import styles from "./CardItem.module.scss"
-import { Typography } from "@material-ui/core"
+import Link from 'next/link';
+import NextImage from '../../image';
+import React from 'react';
+import styles from './CardItem.module.scss';
+import { Typography } from '@material-ui/core';
 
 function CardProject({ project }) {
   return (
@@ -17,7 +17,7 @@ function CardProject({ project }) {
         </div>
       </Link>
     </>
-  )
+  );
 }
 
-export default CardProject
+export default CardProject;
