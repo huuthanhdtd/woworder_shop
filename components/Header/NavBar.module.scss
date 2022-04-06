@@ -1,187 +1,173 @@
-
 .headerNav {
+  display: flex;
+  list-style: none;
+  margin-bottom: 6px;
+  align-items: center;
+  margin-top: 30px;
+  .headerNavLi {
+    cursor: pointer;
+    margin: 10px 10px 0;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    .navsItem {
+      position: absolute;
+      list-style: none;
+      top: 40px;
+      background-color: #fff;
+      padding: 4px 10px;
+      left: 0;
+      transform: scale(0);
+      transform-origin: top left;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+
+      .navsItemLi {
+        padding: 3px 20px 3px 10px;
+        border-bottom: 1px solid var(--primary-color-);
+        transition: all 0.3s ease-in-out;
+        h5 {
+          margin: 4px;
+          white-space: nowrap;
+          color: var(--primary-color-);
+          font-family: Open Sans;
+          font-size: 14px !important;
+          font-weight: 500 !important;
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover {
+          color: var(--hover-color-);
+          border-color: var(--hover-color-);
+          h5 {
+            color: var(--hover-color-);
+          }
+        }
+      }
+    }
+
+    &:hover .navsItemLi {
+      cursor: pointer;
+      transform: scale(1);
+    }
+    &:hover h4 {
+      cursor: pointer;
+      color: var(--hover-color-);
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0;
+      color: var(--primary-color-);
+      transition: all 0.25s ease-in-out;
+      font-family: Open Sans;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+    }
+    h4.active {
+      color: var(--hover-color-);
+    }
+    .rightIcon {
+      display: none;
+    }
+    .navItemLine {
+      content: '';
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transform: scale(0);
+      transition: all 0.3s ease-in-out;
+      border-bottom: 2px solid var(--hover-color-);
+    }
+    .navItemLine.active {
+      transform: scale(1);
+    }
+    &:hover .navsItem {
+      cursor: pointer;
+      transform: scale(1);
+    }
+    &:hover .navItemLine {
+      cursor: pointer;
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .headerNav {
     display: flex;
     list-style: none;
     margin-bottom: 6px;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 40px;
     .headerNavLi {
+      padding: 4px;
+      h4 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .headerNav {
+    flex-direction: column;
+    padding-left: 10px;
+    align-items: flex-start;
+    display: flex;
+    .headerNavLi {
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .navsItem {
+        display: none;
+      }
+      &:hover .navsItemLi {
         cursor: pointer;
-        margin:10px 10px 0;
-        padding: 8px;
-        font-size: 14px;
-        font-weight: 400;
-        position: relative;
-        .navsItem {
-            position: absolute;
-            list-style: none;
-            top: 40px;
-            background-color: #fff;
-            padding: 4px 10px;
-            left: 0;
-            transform: scale(0);
-            transform-origin: top left;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-            z-index: 100;
+        display: none;
+      }
+      h4 {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      .rightIcon {
+        display: block;
+      }
 
-            .navsItemLi {
-                padding: 3px 20px 3px 10px ;
-                border-bottom: 1px solid var(--primary-color-);
-                transition: all 0.3s ease-in-out;
-                h5 {
-                    margin: 4px;
-                    white-space: nowrap;
-                    color: var(--primary-color-);
-                    font-family: Open Sans;
-                    font-size: 14px !important;
-                    font-weight: 500 !important;
-                    transition: all 0.3s ease-in-out;
-
-                }
-                &:hover{
-                    color: var(--hover-color-);
-                    border-color: var(--hover-color-);
-                    h5 {
-                        color: var(--hover-color-);
-
-                    }
-                }
-            }
-        }
-        
-        
-        &:hover .navsItemLi{
-            cursor: pointer;
-            transform: scale(1)
-        }
-        &:hover h4{
-            cursor: pointer;
-            color: var(--hover-color-)
-        }
-        
-        
-        h4 {
-            margin-top: 0;
-            margin-bottom: 0 ;
-            color: var(--primary-color-);
-            transition: all 0.25s ease-in-out;
-            font-family: Open Sans;
-            font-size: 16px !important;
-            font-weight: 600 !important;
-
-        }
-        h4.active {
-            color: var(--hover-color-)
-
-        }
-        .rightIcon {
-            display: none;
-        }
-        .navItemLine {
-            content: "";
-            width: 100%;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            transform: scale(0);
-            transition: all 0.3s ease-in-out;
-            border-bottom: 2px solid var(--hover-color-);
-        }
-        .navItemLine.active {
-            transform: scale(1)
-        }
-        &:hover .navsItem{
-            cursor: pointer;
-            transform: scale(1)
-        }
-        &:hover .navItemLine {
-            cursor: pointer;
-            transform: scale(1)
-        }
+      .navItemLine {
+        content: '';
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: scale(0);
+        transition: all 0.3s ease-in-out;
+        border-bottom: 2px solid var(--hover-color-);
+      }
     }
-    
-}
-
-@media (max-width: 1280px) {
-    .headerNav {
-        display: flex;
-        list-style: none;
-        margin-bottom: 6px;
-        align-items: center;
-        margin-top: 40px;
-        .headerNavLi {
-            padding: 4px;
-            h4 {
-                margin-top: 0;
-                margin-bottom: 0;
-                font-size: 12px;
-            }
-        } 
-        
-    } 
-}
-        
-
-@media (max-width: 960px)  {
-    .headerNav {
-        flex-direction: column;
-        padding-left: 10px;
-        align-items: flex-start;
-        display: flex;
-        .headerNavLi {
-            width: 95%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .navsItem {
-                display: none;
-            }
-            &:hover .navsItemLi{
-                cursor: pointer;
-                display: none;
-            }
-            h4 {
-                margin: 10px 0;
-                font-size: 16px;
-            }
-            .rightIcon {
-                display: block;
-            }
-        
-            .navItemLine {
-                content: "";
-                width: 100%;
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                transform: scale(0);
-                transition: all 0.3s ease-in-out;
-                border-bottom: 2px solid var(--hover-color-);
-            }
-            
-        }
-        .navSearch {
-            margin: 10px;
-        }
-        .navLanguage {
-            margin: 10px;
-        }
+    .navSearch {
+      margin: 10px;
     }
-     
+    .navLanguage {
+      margin: 10px;
+    }
+  }
 }
-
 
 @media (max-width: 600px) {
-    .headerNav {
-        display: flex;
-        flex-direction: column;
-        padding-left: 10px;
-        align-items: flex-start;
-        .headerNavLi {
-            .rightIcon {
-            }
-        }   
+  .headerNav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    align-items: flex-start;
+    .headerNavLi {
+      .rightIcon {
+      }
     }
-    
+  }
 }
