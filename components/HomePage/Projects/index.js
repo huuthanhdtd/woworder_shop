@@ -1,85 +1,53 @@
-import { Container } from "@material-ui/core"
-import clsx from "clsx"
-import React, { useEffect, useState } from "react"
-import styles from "./styles.module.scss"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { Container, Grid } from '@material-ui/core';
+import clsx from 'clsx';
+import React, { useEffect, useState } from 'react';
+import styles from './styles.module.scss';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const listOne = [
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
 
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-0125.png",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-0125.png',
   },
   {
-    title: "sứ mệnh",
+    title: 'sứ mệnh',
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png',
   },
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
   },
   {
-    title: "sứ mệnh",
+    title: 'sứ mệnh',
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
   },
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
   },
   {
-    title: "sứ mệnh",
+    title: 'sứ mệnh',
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
   },
-]
+];
 
-const listTwo = [
-  {
-    title: "sứ mệnh",
-    image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png",
-  },
-  {
-    title: "giá trị cốt lõi",
-    image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg",
-  },
-  {
-    title: "sứ mệnh",
-    image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg",
-  },
-  {
-    title: "giá trị cốt lõi",
-    image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg",
-  },
-  {
-    title: "sứ mệnh",
-    image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-aqua.jpg",
-  },
-  {
-    title: "giá trị cốt lõi",
-    image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg",
-  },
-]
 const Projects = () => {
-  const [startX, setStartX] = useState(null)
-  const [moveX, setMoveX] = useState(null)
+  const [startX, setStartX] = useState(null);
+  const [moveX, setMoveX] = useState(null);
   const [positions, setPositions] = useState({
     one: 0,
     two: 1,
     three: 2,
     four: 3,
     five: 4,
-  })
+  });
 
   const hadleClickPrev = () => {
     const timeOut = setTimeout(() => {
@@ -89,10 +57,10 @@ const Projects = () => {
         three: positions.three === 0 ? listOne.length - 1 : positions.three - 1,
         four: positions.four === 0 ? listOne.length - 1 : positions.four - 1,
         five: positions.five === 0 ? listOne.length - 1 : positions.five - 1,
-      })
-    }, 200)
-    return () => clearTimeout(timeOut)
-  }
+      });
+    }, 200);
+    return () => clearTimeout(timeOut);
+  };
   const hadleClickNext = () => {
     const timeOut = setTimeout(() => {
       setPositions({
@@ -101,17 +69,17 @@ const Projects = () => {
         three: positions.three === listOne.length - 1 ? 0 : positions.three + 1,
         four: positions.four === listOne.length - 1 ? 0 : positions.four + 1,
         five: positions.five === listOne.length - 1 ? 0 : positions.five + 1,
-      })
-    }, 200)
-    return () => clearTimeout(timeOut)
-  }
+      });
+    }, 200);
+    return () => clearTimeout(timeOut);
+  };
 
   const handleTouchStart = (e) => {
-    setStartX(Number(e.touches[0].clientX))
-  }
+    setStartX(Number(e.touches[0].clientX));
+  };
   const handleTouchMove = (e) => {
-    setMoveX(Number(e.touches[0].clientX))
-  }
+    setMoveX(Number(e.touches[0].clientX));
+  };
 
   const handleTouchEnd = () => {
     if (moveX > startX) {
@@ -123,9 +91,9 @@ const Projects = () => {
             positions.three === 0 ? listOne.length - 1 : positions.three - 1,
           four: positions.four === 0 ? listOne.length - 1 : positions.four - 1,
           five: positions.five === 0 ? listOne.length - 1 : positions.five - 1,
-        })
-      }, 200)
-      return () => clearTimeout(timeOut)
+        });
+      }, 200);
+      return () => clearTimeout(timeOut);
     }
     if (moveX < startX) {
       const timeOut = setTimeout(() => {
@@ -136,11 +104,11 @@ const Projects = () => {
             positions.three === listOne.length - 1 ? 0 : positions.three + 1,
           four: positions.four === listOne.length - 1 ? 0 : positions.four + 1,
           five: positions.five === listOne.length - 1 ? 0 : positions.five + 1,
-        })
-      }, 200)
-      return () => clearTimeout(timeOut)
+        });
+      }, 200);
+      return () => clearTimeout(timeOut);
     }
-  }
+  };
 
   return (
     <div className={styles.projects}>
@@ -168,7 +136,15 @@ const Projects = () => {
                 positions.three - index >= 3 || positions.three - index <= -3,
             })}
           >
-            <img src={item.image} />
+            {/* <img src={item.image} /> */}
+
+            <Grid container className={styles.listGrid}>
+              {listOne.map((it, i) => (
+                <Grid key={i} item xs={6} sm={4} md={4} className={styles.item}>
+                  <img src={it.image} />
+                </Grid>
+              ))}
+            </Grid>
           </div>
         ))}
         <div className={clsx(styles.controls)}>
@@ -181,6 +157,6 @@ const Projects = () => {
         </div>
       </div>
     </div>
-  )
-}
-export default Projects
+  );
+};
+export default Projects;

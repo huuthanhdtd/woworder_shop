@@ -1,174 +1,175 @@
-import React, { useEffect, useState } from "react"
-import styles from "./styles.module.scss"
-import clsx from "clsx"
-import NextImage from "./imageSlide"
-import Link from "next/link"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import React, { useEffect, useState } from 'react';
+import styles from './styles.module.scss';
+import clsx from 'clsx';
+import NextImage from './imageSlide';
+import Link from 'next/link';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { Grid } from '@material-ui/core';
 
 const list = [
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
     desc: [
       {
-        title: "hiệu quả - chính trực - chuyên nghiệp",
+        title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-0125.png",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-0125.png',
   },
   {
-    title: "sứ mệnh",
+    title: 'sứ mệnh',
     desc: [
       {
-        title: "- kiến tạo cộng đồng",
+        title: '- kiến tạo cộng đồng',
       },
       {
-        title: "- hiệu quả - chính trực - chuyên nghiệp",
+        title: '- hiệu quả - chính trực - chuyên nghiệp',
       },
       {
-        title: "- kiến tạo cộng đồng",
+        title: '- kiến tạo cộng đồng',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png',
   },
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
     desc: [
       {
-        title: "hiệu quả - chính trực - chuyên nghiệp",
+        title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
   },
   {
-    title: "sứ mệnh",
+    title: 'sứ mệnh',
     desc: [
       {
-        title: "- kiến tạo cộng đồng",
+        title: '- kiến tạo cộng đồng',
       },
       {
-        title: "- hiệu quả - chính trực - chuyên nghiệp",
+        title: '- hiệu quả - chính trực - chuyên nghiệp',
       },
       {
-        title: "- kiến tạo cộng đồng",
+        title: '- kiến tạo cộng đồng',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
   },
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
     desc: [
       {
-        title: "hiệu quả - chính trực - chuyên nghiệp",
+        title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg',
   },
   {
-    title: "sứ mệnh",
+    title: 'sứ mệnh',
     desc: [
       {
-        title: "- kiến tạo cộng đồng",
+        title: '- kiến tạo cộng đồng',
       },
       {
-        title: "- hiệu quả - chính trực - chuyên nghiệp",
+        title: '- hiệu quả - chính trực - chuyên nghiệp',
       },
       {
-        title: "- kiến tạo cộng đồng",
+        title: '- kiến tạo cộng đồng',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-aqua.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-aqua.jpg',
   },
   {
-    title: "giá trị cốt lõi",
+    title: 'giá trị cốt lõi',
     desc: [
       {
-        title: "hiệu quả - chính trực - chuyên nghiệp",
+        title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
     image:
-      "https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/aqua-2.jpg",
+      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/aqua-2.jpg',
   },
-]
+];
 
 function Slider({ slides, projects, articles }) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [startX, setStartX] = useState(null)
-  const [moveX, setMoveX] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [startX, setStartX] = useState(null);
+  const [moveX, setMoveX] = useState(null);
   // const [slidesArray, setSlidesArray] = useState(
   //   articles.filter((item) => item.attributes.image.data !== null)
   // )
-  const [slidesArray, setSlidesArray] = useState(list)
+  const [slidesArray, setSlidesArray] = useState(list);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => {
         if (prev < slidesArray.length - 1) {
-          return prev + 1
+          return prev + 1;
         }
         if (prev >= slidesArray.length - 1) {
-          return 0
+          return 0;
         }
-      })
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [activeIndex])
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [activeIndex]);
 
   const handleClickLeft = () => {
     setActiveIndex((prev) => {
       if (prev > 0) {
-        return prev - 1
+        return prev - 1;
       }
       if (prev === 0) {
-        return Number(slidesArray.length - 1)
+        return Number(slidesArray.length - 1);
       }
-    })
-  }
+    });
+  };
   const handleClickRight = () => {
     setActiveIndex((prev) => {
       if (prev < slidesArray.length - 1) {
-        return prev + 1
+        return prev + 1;
       }
       if (prev >= slidesArray.length - 1) {
-        return 0
+        return 0;
       }
-    })
-  }
+    });
+  };
 
   const handleTouchStart = (e) => {
-    setStartX(Number(e.touches[0].clientX))
-  }
+    setStartX(Number(e.touches[0].clientX));
+  };
   const handleTouchMove = (e) => {
-    setMoveX(Number(e.touches[0].clientX))
-  }
+    setMoveX(Number(e.touches[0].clientX));
+  };
   const handleTouchEnd = () => {
     if (moveX > startX) {
       setActiveIndex((prev) => {
         if (prev > 0) {
-          return prev - 1
+          return prev - 1;
         } else {
-          return slidesArray.length - 1
+          return slidesArray.length - 1;
         }
-      })
+      });
     }
     if (moveX < startX) {
       setActiveIndex((prev) => {
         if (prev < slidesArray.length - 1) {
-          return prev + 1
+          return prev + 1;
         } else {
-          return 0
+          return 0;
         }
-      })
+      });
     }
-  }
+  };
   const handleClickDot = (index) => {
-    setActiveIndex(index)
-  }
+    setActiveIndex(index);
+  };
   return (
     <div className={styles.slider}>
       <div className={styles.wrapper}>
@@ -183,11 +184,6 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              {/* {item.attributes.image.data !== null && (
-                <NextImage
-                  image={item.attributes.image && item.attributes.image}
-                />
-              )} */}
               <img src={item.image} />
             </div>
           ))}
@@ -232,7 +228,7 @@ function Slider({ slides, projects, articles }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Slider
+export default Slider;
