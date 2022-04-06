@@ -38,41 +38,6 @@ const listOne = [
   },
 ];
 
-<<<<<<< HEAD
-const listTwo = [
-  {
-    title: 'sứ mệnh',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png',
-  },
-  {
-    title: 'giá trị cốt lõi',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
-  },
-  {
-    title: 'sứ mệnh',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
-  },
-  {
-    title: 'giá trị cốt lõi',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg',
-  },
-  {
-    title: 'sứ mệnh',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-aqua.jpg',
-  },
-  {
-    title: 'giá trị cốt lõi',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg',
-  },
-];
-=======
->>>>>>> 106cf597af97f2d8eae2b8689d9e49f019f082e1
 const Projects = () => {
   const [startX, setStartX] = useState(null);
   const [moveX, setMoveX] = useState(null);
