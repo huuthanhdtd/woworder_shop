@@ -8,7 +8,7 @@ export default function Page5() {
     setActive(index);
   };
   return (
-    <div className={styles.page5} id="lanh-dao">
+    <div className={styles.page5}>
       <h2>BAN LÃNH ĐẠO</h2>
       <div className={styles.page5_about}>
         <ul

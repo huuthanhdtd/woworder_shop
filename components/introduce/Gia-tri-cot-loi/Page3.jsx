@@ -3,7 +3,7 @@ import styles from './page3.module.scss';
 
 export default function Page3() {
   return (
-    <div className={styles.page3} id="gia-tri">
+    <div className={styles.page3}>
       <h2>GIÁ TRỊ CỐT LÕI</h2>
       <div className={styles.page3_about}>
         <p>HIỆU QUẢ - CHÍNH TRỰC - CHUYÊN NGHIỆP</p>

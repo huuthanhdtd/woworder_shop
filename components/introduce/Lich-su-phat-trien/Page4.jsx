@@ -4,7 +4,7 @@ import styles from './page4.module.scss';
 
 export default function Page6() {
   return (
-    <div className={styles.page4} id="lich-su">
+    <div className={styles.page4}>
       <h2>LỊCH SỬ PHÁT TRIỂN</h2>
       <PauseOnHover />
       <div className={styles.banner}>

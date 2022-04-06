@@ -21,7 +21,7 @@ export default function NavIntroduce() {
               <div className={styles.container} key={index}>
                 <ul>
                   <li>
-                    <Link href={data.idNav}>{data.title}</Link>
+                    <Link href={`#${data.idNav}`}>{data.title}</Link>
                   </li>
                 </ul>
               </div>

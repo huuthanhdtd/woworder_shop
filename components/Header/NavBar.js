@@ -8,13 +8,15 @@ import clsx from 'clsx';
 import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
 
-function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
+function HeaderNavBar({ setIsNavBar, setNavItemActive, navItemActive }) {
   const { handleClickMenuIntroduce } = useContext(Context);
 
-  const [navItemActive, setNavItemActive] = useState(0);
   const handleClickNavItem = (index) => {
     setIsNavBar(false);
     setNavItemActive(index);
+  };
+  const handleClickNavIntro = () => {
+    setNavItemActive(1);
   };
   return (
     <ul className={styles.headerNav}>
@@ -38,7 +40,11 @@ function HeaderNavBar({ setIsSearchBlock, setIsNavBar }) {
           {nav.list && (
             <ul className={styles.navsItem}>
               {navs[index].list.map((item, i) => (
-                <li key={i} className={clsx(styles.navsItemLi)}>
+                <li
+                  key={i}
+                  className={clsx(styles.navsItemLi)}
+                  onClick={handleClickNavIntro}
+                >
                   <h5
                     onClick={() =>
                       handleClickMenuIntroduce(item.idNav, navItemActive)

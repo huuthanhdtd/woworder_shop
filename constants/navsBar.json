@@ -10,37 +10,37 @@
         {
           "title": "giới thiệu chung",
           "link": "/",
-          "idNav": "#gioi-thieu-chung"
+          "idNav": "gioi-thieu-chung"
         },
         {
           "title": "tầm nhìn - sứ mệnh",
           "link": "/",
-          "idNav": "#tam-nhin"
+          "idNav": "tam-nhin"
         },
         {
           "title": "giá trị cốt lõi",
           "link": "/",
-          "idNav": "#gia-tri"
+          "idNav": "gia-tri"
         },
         {
           "title": "lịch sử phát triển",
           "link": "/",
-          "idNav": "#lich-su"
+          "idNav": "lich-su"
         },
         {
           "title": "ban lãnh đạo",
           "link": "/",
-          "idNav": "#lanh-dao"
+          "idNav": "lanh-dao"
         },
         {
           "title": "giải thưởng",
           "link": "/",
-          "idNav": "#giai-thuong"
+          "idNav": "giai-thuong"
         },
         {
           "title": "bộ quy tắc ứng xử",
           "link": "/",
-          "idNav": "#quy-tac"
+          "idNav": "quy-tac"
         }
       ]
     },

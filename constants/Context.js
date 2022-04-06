@@ -5,7 +5,7 @@ export default function ContextProvider({ children }) {
   const [type, setType] = useState(null);
   const [isFilter, setFilters] = useState(false);
   const [isActive, setIsActive] = useState(1);
-  const [introduveTpye, setIntroduceType] = useState(null);
+  const [introduceTpye, setIntroduceType] = useState(null);
   const router = useRouter();
 
   const handleTypeProjects = (type, id) => {
@@ -14,8 +14,9 @@ export default function ContextProvider({ children }) {
     setType(type);
     setIsActive(id);
   };
-  const handleClickMenuIntroduce = () => {
+  const handleClickMenuIntroduce = (idNav, thien) => {
     router.push('/gioi-thieu');
+    setIntroduceType(idNav);
   };
 
   const value = {
@@ -26,7 +27,7 @@ export default function ContextProvider({ children }) {
     isActive,
     handleClickMenuIntroduce,
     setIntroduceType,
-    introduveTpye,
+    introduceTpye,
   };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

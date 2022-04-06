@@ -5,7 +5,7 @@ import styles from './page7.module.scss';
 
 export default function Page7() {
   return (
-    <section id="quy-tac">
+    <section>
       <div className={styles.rule}>
         <h2>bộ quy tắc ứng xử</h2>
         <Grid container spacing={2}>

@@ -17,7 +17,7 @@ export default function Intro({ nav }) {
     },
   ];
   return (
-    <div className={styles.page} id="gioi-thieu-chung">
+    <div className={styles.page}>
       <h1>Giới thiệu chung</h1>
       {intro &&
         intro.map((data, index) => (

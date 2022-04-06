@@ -3,7 +3,7 @@ import styles from './Page2.module.scss';
 
 export default function Page2() {
   return (
-    <div className={styles.page2} id="tam-nhin">
+    <div className={styles.page2}>
       <h2>TẦM NHÌN - SỨ MỆNH</h2>
       <div className={styles.page2_about}>
         <div className={styles.mrb10}></div>
