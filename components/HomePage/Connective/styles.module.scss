@@ -1,255 +1,210 @@
 .connective {
-    background: url(../../../public/bgFooter/bg1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background: url(../../../public/bgFooter/bg1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 40px;
+  padding: 20px 10px;
+
+  .formRegister {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: row ;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top: 40px;
-    padding: 20px 10px;
+    flex-direction: column;
+    // margin: 20px 0;
 
-    .formRegister {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        // margin: 20px 0;
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 4px;
-            color: var(--primary-color-);
-            font-weight: 600 !important;
-            font-family: Open Sans;
-            font-size: 16px;
-        }
-        h3 {
-            margin-top: 0;
-            margin-bottom: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        
-        }
-        div {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            input {
-                font-size: 14px;
-                padding: 6px;
-                width: 65%;
-                height: 30px;
-            }
-            button {
-                font-size: 14px;
-                color: #fff;
-                height: 35px;
-                background-color:var(--hover-color-);
-                border: none;
-                border-radius: 3px;
-                width: 25%;
-                margin-right: 10px;
-                &:hover {
-                    opacity: 0.7;
-                    cursor: pointer;
-                }
-            }
-        }
+    h2 {
+      margin-top: 0;
+      margin-bottom: 4px;
+      color: var(--primary-color-);
+      font-weight: 600 !important;
+      font-family: Open Sans;
+      font-size: 16px;
     }
-   
+    h3 {
+      margin-top: 0;
+      margin-bottom: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    div {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      input {
+        font-size: 14px;
+        padding: 6px;
+        width: 65%;
+        height: 30px;
+      }
+      button {
+        font-size: 14px;
+        color: #fff;
+        height: 35px;
+        background-color: var(--hover-color-);
+        border: none;
+        border-radius: 3px;
+        width: 25%;
+        margin-right: 10px;
+        &:hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .brochure {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    .brochureIcon {
+      display: flex;
+      background-color: var(--hover-color-);
+      margin: 0 6px;
+      width: 50%;
+      border-radius: 6px;
+      .icon {
+        font-size: 100px;
+        margin: auto;
+        color: #fff;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        margin: 0 0 12px 8px;
+        font-size: 18px;
+        color: var(--primary-color-);
+        font-weight: 600 !important;
+        font-family: Open Sans;
+      }
+      a {
+        margin: 10px 6px;
+
+        text-decoration: none;
+        color: var(--hover-color-);
+      }
+      p {
+        margin: auto 12px auto 6px;
+      }
+    }
+  }
+  .contacts {
+    margin-top: 20px;
+    span {
+      display: flex;
+      align-items: center;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 4px;
+        font-size: 16px;
+        color: var(--primary-color-);
+        font-weight: 600 !important;
+        font-family: Open Sans;
+        margin-right: 6px;
+      }
+      h3 {
+        color: var(--hover-color-);
+        margin-top: 0;
+        margin-bottom: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .connective {
+    .formRegister {
+      h2 {
+      }
+      h3 {
+      }
+      div {
+        input {
+        }
+        button {
+        }
+      }
+    }
+
     .brochure {
-        display: flex;
-        height: 100%;
-        width: 100%;
-        .brochureIcon {
-            display: flex;
-            background-color: var(--hover-color-);
-            margin: 0 6px;
-            width: 50%;
-            border-radius: 6px;
-            .icon {
-                font-size: 100px;
-                margin: auto;
-                color: #fff;
-            }
-            
+      .brochureIcon {
+        .icon {
         }
+      }
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            h2 {
-                margin: 0 0 12px 8px;
-            font-size: 18px;
-            color: var(--primary-color-);
-            font-weight: 600 !important;
-            font-family: Open Sans;
-            }
-            a {
-                margin: 10px 6px;
-
-                text-decoration: none;
-                color:var(--hover-color-);
-            }
-            p {
-                margin: auto 12px auto 6px;
-            }
+      .content {
+        h2 {
         }
+        a {
+        }
+        p {
+        }
+      }
     }
     .contacts {
-        margin-top: 20px;
-        span{
-            display: flex;
-            align-items: center;
-
-            h2 {
-                margin-top: 0;
-                margin-bottom: 4px;
-                font-size: 16px;
-                color: var(--primary-color-);
-                font-weight: 600 !important;
-                font-family: Open Sans;
-                margin-right: 6px;
-            }
-            h3 {
-                color:var(--hover-color-);
-                margin-top: 0;
-                margin-bottom: 4px;
-                cursor: pointer;
-                font-size: 16px
-
-            
-            }
-
+      span {
+        h2 {
         }
-
+        h3 {
+        }
+      }
     }
-
+  }
 }
 
 @media (max-width: 960px) {
-    .connective {
-        
-    
-        .formRegister {
-            
-    
-            h2 {
-                
-            }
-            h3 {
-                
-            
-            }
-            div {
-                
-                input {
-                    
-                }
-                button {
-                    
-                }
-            }
+  .connective {
+    .formRegister {
+      h2 {
+        margin-bottom: 0px;
+      }
+      p {
+        margin: 5px 0;
+      }
+      div {
+        input {
         }
-       
-        .brochure {
-            
-            .brochureIcon {
-                
-                .icon {
-                    
-                }
-                
-            }
-    
-            .content {
-                
-                h2 {
-                    
-                }
-                a {
-                   
-                }
-                p {
-                }
-            }
+        button {
         }
-        .contacts {
-            span{
-                
-                h2 {
-                }
-                h3 {
-                
-                }
-    
-            }
-    
-        }
-    
+      }
     }
-}
 
-@media (max-width: 960px) {
-    .connective {
-        .formRegister {
-            h2 {
-                margin-bottom: 0px;
-            }
-            p {
-                 margin: 5px 0;   
-            
-            }
-            div {
-                
-                input {
-                }
-                button {
-                    
-                }
-            }
-            
+    .brochure {
+      margin-top: 15px;
+      .brochureIcon {
+        .icon {
         }
-       
-        .brochure {
-            margin-top: 15px;
-            .brochureIcon {
-                
-                .icon {
-                    
-                }
-                
-            }
-    
-            .content {
-                
-                h2 {
-                    margin:  8px;
-                }
-                a {
-                   
-                }
-                p {
-                    font-size: 12px;
-                }
-            }
+      }
+
+      .content {
+        h2 {
+          margin: 8px;
         }
-        .contacts {
-            span{
-                
-                h2 {
-                }
-                h3 {
-                
-                }
-    
-            }
-    
+        a {
         }
-    
+        p {
+          font-size: 12px;
+        }
+      }
     }
+    .contacts {
+      span {
+        h2 {
+        }
+        h3 {
+        }
+      }
+    }
+  }
 }
-
-

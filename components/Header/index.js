@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
@@ -14,6 +14,9 @@ function Header() {
   const [isNavBar, setIsNavBar] = useState(false);
   const [isSearchBlock, setIsSearchBlock] = useState(false);
   const [navItemActive, setNavItemActive] = useState(0);
+  useEffect(() => {
+    setNavItemActive(localStorage.getItem('navActive'));
+  }, []);
 
   const handleShowNav = () => {
     setIsNavBar(!isNavBar);

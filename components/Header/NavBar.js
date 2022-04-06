@@ -1,7 +1,4 @@
 import React, { useState, useContext } from 'react';
-
-import SearchIcon from '@material-ui/icons/Search';
-
 import styles from './NavBar.module.scss';
 import Link from 'next/link';
 import clsx from 'clsx';
@@ -13,9 +10,11 @@ function HeaderNavBar({ setIsNavBar, setNavItemActive, navItemActive }) {
 
   const handleClickNavItem = (index) => {
     setIsNavBar(false);
+    localStorage.setItem('navActive', index);
     setNavItemActive(index);
   };
   const handleClickNavIntro = () => {
+    localStorage.setItem('navActive', 1);
     setNavItemActive(1);
   };
   return (
