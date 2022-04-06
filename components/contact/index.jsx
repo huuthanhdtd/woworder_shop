@@ -1,9 +1,9 @@
-import { Grid } from "@material-ui/core"
-import React from "react"
-import Link from "next/link"
-import styles from "./index.module.scss"
-import Address from "./Address"
-import Map from "./Map"
+import { Grid } from '@material-ui/core';
+import React from 'react';
+import Link from 'next/link';
+import styles from './index.module.scss';
+import Address from './Address';
+import Map from './Map';
 
 export default function Index() {
   return (
@@ -26,7 +26,7 @@ export default function Index() {
           sm={12}
           md={12}
           lg={6}
-          style={{ padding: "0 13.125px" }}
+          style={{ padding: '0 13.125px' }}
         >
           <Map />
         </Grid>
@@ -36,11 +36,11 @@ export default function Index() {
           sm={12}
           md={12}
           lg={6}
-          style={{ padding: "0 13.125px" }}
+          style={{ padding: '0 13.125px' }}
         >
           <Address />
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }

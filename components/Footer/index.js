@@ -1,7 +1,7 @@
-import React from "react"
-import FooterBottom from "./FooterBottom"
-import FooterTop from "./FooterTop"
-import styles from "./styles.module.scss"
+import React from 'react';
+import FooterBottom from './FooterBottom';
+import FooterTop from './FooterTop';
+import styles from './styles.module.scss';
 
 const Footer = () => {
   return (
@@ -9,6 +9,6 @@ const Footer = () => {
       <FooterTop />
       <FooterBottom />
     </div>
-  )
-}
-export default Footer
+  );
+};
+export default Footer;

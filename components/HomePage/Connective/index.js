@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import styles from "./styles.module.scss"
-import { Container, Grid } from "@material-ui/core"
-import GetAppIcon from "@material-ui/icons/GetApp"
-import clsx from "clsx"
+import React, { useState } from 'react';
+import styles from './styles.module.scss';
+import { Container, Grid } from '@material-ui/core';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import clsx from 'clsx';
 
 function Connective() {
   return (
@@ -41,7 +41,7 @@ function Connective() {
         </Grid>
       </div>
     </Container>
-  )
+  );
 }
 
-export default Connective
+export default Connective;

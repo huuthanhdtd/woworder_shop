@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react"
-import clsx from "clsx"
-import styles from "./styles.module.scss"
-import { Grid } from "@material-ui/core"
-import Link from "next/link"
-import { GoTriangleRight } from "react-icons/go"
-import { BsClockHistory } from "react-icons/bs"
+import React, { useEffect, useState } from 'react';
+import clsx from 'clsx';
+import styles from './styles.module.scss';
+import { Grid } from '@material-ui/core';
+import Link from 'next/link';
+import { GoTriangleRight } from 'react-icons/go';
+import { BsClockHistory } from 'react-icons/bs';
 
 function NewsMarket({ articles }) {
-  const [activeIndex, setactiveIndex] = useState(0)
+  const [activeIndex, setactiveIndex] = useState(0);
   const [news, setNews] = useState(
     articles.filter(
       (item, index) => item.attributes.image.data !== null && index < 3
     )
-  )
-  const btns = ["THÔNG TIN THỊ TRƯỜNG", "TIN TỨC"]
+  );
+  const btns = ['THÔNG TIN THỊ TRƯỜNG', 'TIN TỨC'];
   const handleChangList = (index) => {
-    setactiveIndex(index)
-  }
+    setactiveIndex(index);
+  };
   return (
     <div className={styles.newsFilter}>
       <div className={styles.newsFilterWrapper}>
@@ -40,7 +40,7 @@ function NewsMarket({ articles }) {
                 <div className={styles.times}>
                   <BsClockHistory style={{ fontSize: 20 }} />
                   <h3>
-                    {new Intl.DateTimeFormat("en-GB").format(
+                    {new Intl.DateTimeFormat('en-GB').format(
                       new Date(item.attributes.updatedAt)
                     )}
                   </h3>
@@ -63,7 +63,7 @@ function NewsMarket({ articles }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default NewsMarket
+export default NewsMarket;

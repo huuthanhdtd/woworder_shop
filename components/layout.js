@@ -1,6 +1,6 @@
-import Footer from "./Footer"
-import Header from "./Header"
-import ContextProvider from "../constants/Context"
+import Footer from './Footer';
+import Header from './Header';
+import ContextProvider from '../constants/Context';
 
 const Layout = ({ children, categories, seo }) => (
   <>
@@ -10,6 +10,6 @@ const Layout = ({ children, categories, seo }) => (
       <Footer />
     </ContextProvider>
   </>
-)
+);
 
-export default Layout
+export default Layout;
