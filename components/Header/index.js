@@ -12,26 +12,11 @@ import Logo from '../../public/logo_anphu.svg';
 
 function Header() {
   const [isNavBar, setIsNavBar] = useState(false);
-  const [isSearchBlock, setIsSearchBlock] = useState(false);
-  const [navItemActive, setNavItemActive] = useState(0);
-  useEffect(() => {
-    setNavItemActive(localStorage.getItem('navActive'));
-  }, []);
-
   const handleShowNav = () => {
     setIsNavBar(!isNavBar);
-    if (isSearchBlock) {
-      setIsSearchBlock(false);
-    }
   };
   const handleCloseBars = () => {
     setIsNavBar(!isNavBar);
-    if (isSearchBlock) {
-      setIsSearchBlock(false);
-    }
-  };
-  const handleClickLogo = () => {
-    setNavItemActive(0);
   };
 
   return (
@@ -39,7 +24,7 @@ function Header() {
       <Container maxWidth="lg">
         <div className={styles.headerNovaland}>
           <Link href="/">
-            <div className={styles.logoImage} onClick={handleClickLogo}>
+            <div className={styles.logoImage}>
               <Image src={Logo} />
             </div>
           </Link>
@@ -57,12 +42,7 @@ function Header() {
               <h4>Tổng đài CSKH: </h4>
               <h3>1900 63 6666</h3>
             </span>
-            <HeaderNavBar
-              setIsNavBar={setIsNavBar}
-              setIsSearchBlock={setIsSearchBlock}
-              setNavItemActive={setNavItemActive}
-              navItemActive={navItemActive}
-            />
+            <HeaderNavBar setIsNavBar={setIsNavBar} />
           </div>
           <AiOutlineMenu
             className={clsx(styles.barIcon, {

@@ -4,19 +4,16 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
+import { useRouter } from 'next/router';
 
-function HeaderNavBar({ setIsNavBar, setNavItemActive, navItemActive }) {
+function HeaderNavBar({ setIsNavBar }) {
   const { handleClickMenuIntroduce } = useContext(Context);
+  const router = useRouter();
 
   const handleClickNavItem = (index) => {
     setIsNavBar(false);
-    localStorage.setItem('navActive', index);
-    setNavItemActive(index);
   };
-  const handleClickNavIntro = () => {
-    localStorage.setItem('navActive', 1);
-    setNavItemActive(1);
-  };
+  const handleClickNavIntro = () => {};
   return (
     <ul className={styles.headerNav}>
       {navs.map((nav, index) => (
@@ -24,7 +21,10 @@ function HeaderNavBar({ setIsNavBar, setNavItemActive, navItemActive }) {
           <Link href={nav.link}>
             <h4
               className={clsx({
-                [styles.active]: index === Number(navItemActive),
+                [styles.active]:
+                  router.asPath == `${nav.link}` ||
+                  router.route == `${nav.link}` ||
+                  router.route == `${nav.link}/[slug]`,
               })}
               onClick={() => handleClickNavItem(index)}
             >
@@ -33,7 +33,10 @@ function HeaderNavBar({ setIsNavBar, setNavItemActive, navItemActive }) {
           </Link>
           <span
             className={clsx(styles.navItemLine, {
-              [styles.active]: index === Number(navItemActive),
+              [styles.active]:
+                router.asPath == `${nav.link}` ||
+                router.route == `${nav.link}` ||
+                router.route == `${nav.link}/[slug]`,
             })}
           ></span>
           {nav.list && (
