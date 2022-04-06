@@ -1,7 +1,7 @@
-import { Button, Grid, TextField } from "@material-ui/core"
-import Link from "next/link"
-import styles from "./address.module.scss"
-import React from "react"
+import { Button, Grid, TextField } from '@material-ui/core';
+import Link from 'next/link';
+import styles from './address.module.scss';
+import React from 'react';
 
 export default function Address() {
   return (
@@ -17,7 +17,7 @@ export default function Address() {
           </select>
         </div>
       </div>
-      <Grid container spacing={2} style={{ marginBottom: "10px" }}>
+      <Grid container spacing={2} style={{ marginBottom: '10px' }}>
         <Grid item xs={12} sm={12} md={6}>
           <div className={styles.media}>
             <div className={styles.media_left}>
@@ -51,7 +51,7 @@ export default function Address() {
               </div>
               <div className={styles.phone}>
                 Tổng đài CSKH:
-                <Link href={"tel:1900 63 6666"}>1900 63 6666</Link>
+                <Link href={'tel:1900 63 6666'}>1900 63 6666</Link>
               </div>
             </div>
             <div className={styles.cskh}>
@@ -114,5 +114,5 @@ export default function Address() {
         <Button>GỬI ĐI</Button>
       </div>
     </div>
-  )
+  );
 }

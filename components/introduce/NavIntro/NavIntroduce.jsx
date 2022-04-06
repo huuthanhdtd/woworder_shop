@@ -10,6 +10,7 @@ export default function NavIntroduce() {
   const [active, setActive] = useState(0);
   const handleClickNav = (index) => {
     setActive(index);
+    console.log(index);
   };
   const [isMobile, setIsMobile] = useState(false);
   return (
@@ -20,9 +21,14 @@ export default function NavIntroduce() {
             nav[1].list.map((data, index) => (
               <div className={styles.container} key={index}>
                 <ul>
-                  <li>
-                    <Link href={`#${data.idNav}`}>{data.title}</Link>
-                  </li>
+                  <Link href={`#${data.idNav}`}>
+                    <li
+                      onClick={() => handleClickNav(index)}
+                      className={active === index ? styles.items : null}
+                    >
+                      {data.title}
+                    </li>
+                  </Link>
                 </ul>
               </div>
             ))}
@@ -50,7 +56,7 @@ export default function NavIntroduce() {
           {nav[1].list &&
             nav[1].list.map((data, index) => (
               <ul key={index}>
-                <Link href={data.idNav}>
+                <Link href={`#${data.idNav}`}>
                   <li
                     onClick={() => handleClickNav(index)}
                     className={Number(active) === index ? styles.items : null}
