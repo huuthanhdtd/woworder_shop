@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react"
-import styles from "./styles.module.scss"
-import { Container } from "@material-ui/core"
-import Grid from "@material-ui/core/Grid"
-import NewsFilter from "./NewsFilter"
-import HotNews from "./HotNews"
+import React, { useEffect, useState } from 'react';
+import styles from './styles.module.scss';
+import { Container } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import NewsFilter from './NewsFilter';
+import HotNews from './HotNews';
 
 function News({ articles }) {
   return (
@@ -25,7 +25,7 @@ function News({ articles }) {
         </div>
       </Container>
     </div>
-  )
+  );
 }
 
-export default News
+export default News;

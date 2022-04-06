@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import styles from "./styles.module.scss"
-import { Container, Grid } from "@material-ui/core"
+import React, { useState } from 'react';
+import styles from './styles.module.scss';
+import { Container, Grid } from '@material-ui/core';
 
 import {
   FaTiktok,
   FaFacebookF,
   FaYoutubeSquare,
   FaInstagram,
-} from "react-icons/fa"
-import clsx from "clsx"
+} from 'react-icons/fa';
+import clsx from 'clsx';
 
 function FooterBottom() {
   return (
@@ -40,7 +40,7 @@ function FooterBottom() {
         </Grid>
       </div>
     </Container>
-  )
+  );
 }
 
-export default FooterBottom
+export default FooterBottom;

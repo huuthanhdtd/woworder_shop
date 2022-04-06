@@ -1,7 +1,6 @@
-import Articles from '../../components/articles';
 import { fetchAPI } from '../../lib/api';
-import Layout from '../../components/layout';
 import Seo from '../../components/seo';
+import { Categories } from '../../components/News/Categories';
 
 const Category = ({ category, categories }) => {
   const seo = {
@@ -10,15 +9,10 @@ const Category = ({ category, categories }) => {
   };
 
   return (
-    <Layout categories={categories.data}>
+    <>
       <Seo seo={seo} />
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <h1>{category.attributes.name}</h1>
-          <Articles articles={category.attributes.articles.data} />
-        </div>
-      </div>
-    </Layout>
+      <Categories articles={category.attributes.articles.data} />
+    </>
   );
 };
 

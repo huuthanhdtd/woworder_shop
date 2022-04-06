@@ -1,10 +1,10 @@
-import React from "react"
-import News from "../../components/HomePage/News"
-import Slider from "../../components/HomePage/Slider"
-import Projects from "../../components/HomePage/Projects"
+import React from 'react';
+import News from '../../components/HomePage/News';
+import Slider from '../../components/HomePage/Slider';
+import Projects from '../../components/HomePage/Projects';
 
-import styles from "./styles.module.scss"
-import Connective from "../../components/HomePage/Connective"
+import styles from './styles.module.scss';
+import Connective from '../../components/HomePage/Connective';
 
 const HomePage = ({ articles, categories, slides, projects, homepage }) => {
   return (
@@ -14,6 +14,6 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
       <Projects />
       <Connective />
     </div>
-  )
-}
-export default HomePage
+  );
+};
+export default HomePage;

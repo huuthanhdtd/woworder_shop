@@ -1,51 +1,51 @@
-import React, { useState } from "react"
-import styles from "./styles.module.scss"
-import { Container, Grid } from "@material-ui/core"
+import React, { useState } from 'react';
+import styles from './styles.module.scss';
+import { Container, Grid } from '@material-ui/core';
 
 function FooterTop() {
   const footerList = [
     {
-      title: "Giới thiệu",
+      title: 'Giới thiệu',
       list: [
-        "Giới thiệu chung",
-        "Tầm nhìn - Sứ mệnh",
-        "Giá trị cốt lõi",
-        "Lịch sử phát triển",
-        "Ban ãnh đạo",
-        "Giải thưởng",
-        "Bộ quy tắc ứng sử",
+        'Giới thiệu chung',
+        'Tầm nhìn - Sứ mệnh',
+        'Giá trị cốt lõi',
+        'Lịch sử phát triển',
+        'Ban ãnh đạo',
+        'Giải thưởng',
+        'Bộ quy tắc ứng sử',
       ],
     },
 
     {
-      title: "Dự án",
-      list: ["Bất động sản Đô thị", "Bất động sản Đô thị Du lịch"],
+      title: 'Dự án',
+      list: ['Bất động sản Đô thị', 'Bất động sản Đô thị Du lịch'],
     },
     {},
     {
-      title: "Tin tức",
+      title: 'Tin tức',
       list: [
-        "Thông tin thị trường",
-        "Thông tin Novaland",
-        "Thông tin báo chí",
-        "Video",
+        'Thông tin thị trường',
+        'Thông tin Novaland',
+        'Thông tin báo chí',
+        'Video',
       ],
     },
     {
-      title: "Phát triển bền vững",
+      title: 'Phát triển bền vững',
       list: [
-        "Hội đồng phát triển bền vững",
-        "Quản trị Tập đoàn",
-        "Quản trị nguồn nhân lực",
-        "Quản trị thương hiệu Novaland",
-        "Môi trường",
-        "Hoạt động Cộng đồng",
+        'Hội đồng phát triển bền vững',
+        'Quản trị Tập đoàn',
+        'Quản trị nguồn nhân lực',
+        'Quản trị thương hiệu Novaland',
+        'Môi trường',
+        'Hoạt động Cộng đồng',
       ],
     },
     {
-      title: "Tuyển dụng",
+      title: 'Tuyển dụng',
     },
-  ]
+  ];
   return (
     <Container maxWidth="lg" className={styles.all}>
       <div className={styles.footerTop}>
@@ -74,7 +74,7 @@ function FooterTop() {
         trước.
       </p>
     </Container>
-  )
+  );
 }
 
-export default FooterTop
+export default FooterTop;
