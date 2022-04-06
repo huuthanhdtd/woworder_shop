@@ -55,13 +55,13 @@ export default function NavIntroduce() {
           </div>
           {nav[1].list &&
             nav[1].list.map((data, index) => (
-              <ul key={index}
-              onClick={() => handleClickNav(index)}
-              className={Number(active) === index ? styles.items : null}>
+              <ul
+                key={index}
+                onClick={() => handleClickNav(index)}
+                className={Number(active) === index ? styles.items : null}
+              >
                 <Link href={`#${data.idNav}`}>
-                  <li>
-                    {data.title}
-                  </li>
+                  <li>{data.title}</li>
                 </Link>
               </ul>
             ))}

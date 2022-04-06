@@ -6,7 +6,7 @@
     top: 113px;
     width: 100%;
     height: 46px;
-    background: var(--primary-color-);;
+    background: var(--hover-color-);
     .ModuleContent {
       max-width: 1060px;
       margin: 0 auto;
@@ -17,21 +17,19 @@
         margin: 0 auto;
         ul {
           list-style: none;
-          .items{
-            border-bottom:2px solid var(--hover-color-) ;
+          .items {
+            border-bottom: 2px solid var(--primary-color-);
           }
-          li{
+          li {
             cursor: pointer;
             text-transform: uppercase;
-            color: #fff;
+            color: var(--primary-color-);
             font-size: 14px;
-            padding: 11px 0;
-            &:hover{
-              border-bottom:2px solid var(--hover-color-) ;
-
+            padding: 11.5px 0;
+            &:hover {
+              border-bottom: 2px solid var(--primary-color-);
             }
           }
-         
         }
       }
     }
@@ -47,7 +45,6 @@
       display: none;
     }
     .test {
-     
       display: block;
       right: 0;
       max-width: 1140px;
@@ -65,13 +62,14 @@
         .btnNav {
           cursor: pointer;
           top: 0px;
-          background: var(--primary-color-);;
-          color: #fff;
+          background: var(--hover-color-);
+          color: var(--primary-color-);
           width: 126px;
-          height: 40px;
+          height: 36px;
           font-size: 15px;
           display: flex;
-          padding: 10px;
+          padding: 7px;
+          font-weight: 700;
           svg {
             margin-left: 10px;
             font-size: 1.4em;
@@ -87,7 +85,7 @@
       right: -1000px;
       width: 50%;
       transition: all 0.5s ease-in-out;
-      background:var(--primary-color-);;
+      background: var(--hover-color-);
       box-shadow: 0 0 10px rgb(0 0 0 / 66%);
       .Navmobile {
         margin-top: 45px;
@@ -112,18 +110,17 @@
           cursor: pointer;
           margin: 0;
           list-style: none;
-          padding:10px;
-          color: #fff;
+          padding: 10px;
+          color: var(--primary-color-);
           li {
             font-size: 16px;
             display: block;
             text-decoration: none;
             text-transform: uppercase;
             padding: 0 20px;
-            
           }
         }
-        .items{
+        .items {
           background: #fff;
           color: var(--primary-color-);
         }
@@ -142,20 +139,16 @@
         top: 65px;
         right: 10px;
         .btnNav {
-       
         }
       }
     }
     .mobile {
       top: 94px;
       width: 50%;
-      
     }
   }
   @media screen and (max-width: 600px) {
-   
     .test {
-    
       .btnWrapper {
         z-index: 99;
         display: block;
@@ -166,15 +159,13 @@
         top: 50px;
         right: 10px;
         .btnNav {
-       
         }
       }
     }
     .mobile {
       top: 75px;
       width: 100%;
-      height: 100%  ;
-      
+      height: 100%;
     }
   }
-  }
+}

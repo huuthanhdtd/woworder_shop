@@ -10,7 +10,7 @@
     text-transform: uppercase;
     text-align: center;
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: 3px;
       width: 80px;
@@ -28,67 +28,64 @@
         margin-left: 5px;
         display: inline-block;
         margin-bottom: 20px;
-        // padding-left: 0;
-        // background: none;
-        // width: auto;
         text-transform: uppercase;
         border-color: #d9d9d9;
         span.active_tabs {
           transition: all 0.3s ease-in-out;
-          background: #354772;
+          background: var(--hover-color-);
         }
         span {
           cursor: pointer;
           text-decoration: none;
-          background: #2db34b;
+          background: var(--primary-color-);
           color: #fff;
           padding: 5px 10px;
           font-weight: 400;
           &:hover {
             transition: all 0.3s ease-in-out;
-            background: #354772;
+            background: var(--hover-color-);
           }
         }
       }
       .Staff {
         width: 80%;
         margin: 0 auto;
-          .media {
-            display: flex;
-            padding: 20px 25px;
-            background: url("https://www.novaland.com.vn/Data/Sites/1/skins/default/images/brochure-bg.png");
-            .avatar {
-              width: 30%;
-              img {
-                width: 100%;
-              }
+        .media {
+          display: flex;
+          padding: 20px 25px;
+          background: url('https://www.novaland.com.vn/Data/Sites/1/skins/default/images/brochure-bg.png');
+          .avatar {
+            width: 30%;
+            img {
+              width: 100%;
             }
-            .description {
-              width: 70%;
-              padding-left: 10px;
-              h4 {
-                font-size: 15px;
-                color: #2db34b;
-                font-weight: 700;
-                margin: 0 0 15px;
-              }
-              p {
-                color: #898989;
-                font-size: 16px;
-              }
-              ul {
-                li {
-                  list-style: none;
-                  line-height: 20px;
-                  background: url("https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.png")
-                    no-repeat 0 5px;
-                  padding-left: 20px;
-                  margin-bottom: 20px;
-                  text-align: left;
-                }
+          }
+          .description {
+            width: 70%;
+            padding-left: 10px;
+            h4 {
+              font-size: 15px;
+              color: #2db34b;
+              font-weight: 700;
+              margin: 0 0 15px;
+            }
+            p {
+              color: #898989;
+              font-size: 16px;
+            }
+            ul {
+              li {
+                list-style: none;
+                line-height: 20px;
+                background: url('https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.png')
+                  no-repeat 0 5px;
+                padding-left: 20px;
+                margin-bottom: 20px;
+                text-align: left;
               }
             }
           }
+        }
       }
       .content {
         display: none;
@@ -106,29 +103,26 @@
     .page5_about {
       ul {
         .Staff {
-            margin: 0 auto;
-            width: 85%;
-            .media {
-              padding: 0;
-              margin-bottom: 20px;
-              width: 100%;
-              display: flex;
-              .avatar {
-                width: 30%;
-                padding: 10px;
-              
-              }
-              .description {
-                width: 70%;
-                padding: 10px;
-                
-              
-              }
+          margin: 0 auto;
+          width: 85%;
+          .media {
+            padding: 0;
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            .avatar {
+              width: 30%;
+              padding: 10px;
             }
+            .description {
+              width: 70%;
+              padding: 10px;
+            }
+          }
+        }
       }
     }
   }
-}
 }
 @media screen and (max-width: 600px) {
   .page5 {
@@ -136,20 +130,19 @@
       ul {
         .Staff {
           width: 93%;
-            .media {
-              width: 100%;
-              .avatar {
-                padding: 10px;
-                width: 40%;
-                
-              }
-              .description {
-                padding: 10px;
-                width: 60%;
-              }
+          .media {
+            width: 100%;
+            .avatar {
+              padding: 10px;
+              width: 40%;
             }
+            .description {
+              padding: 10px;
+              width: 60%;
+            }
+          }
+        }
       }
     }
   }
-}
 }
