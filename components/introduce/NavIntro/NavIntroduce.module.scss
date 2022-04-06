@@ -96,12 +96,13 @@
           top: -45px;
           right: 0;
           width: 50px;
-          height: 45px;
+          height: 40px;
           font-size: 1.4em;
           background: #fff;
           width: auto;
-          padding: 0 10px;
+          padding: 1px 8px;
           font-weight: bolder;
+          cursor: pointer;
           svg {
             font-weight: 700;
             font-size: 38px;
@@ -112,19 +113,19 @@
           margin: 0;
           list-style: none;
           padding:10px;
-          .items{
-            background: #fff;
-            color: var(--primary-color-);
-          }
+          color: #fff;
           li {
             font-size: 16px;
             display: block;
-            color: #fff;
             text-decoration: none;
             text-transform: uppercase;
             padding: 0 20px;
             
           }
+        }
+        .items{
+          background: #fff;
+          color: var(--primary-color-);
         }
       }
     }

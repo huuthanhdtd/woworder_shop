@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/Link';
 import styles from './NavIntroduce.module.scss';
 import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
 import { GrFormClose } from 'react-icons/gr';
 import nav from '../../../constants/navsBar.json';
 
 export default function NavIntroduce() {
+  const [isMobile, setIsMobile] = useState(false);
   const [active, setActive] = useState(0);
   const handleClickNav = (index) => {
     setActive(index);
+    setIsMobile(false);
     console.log(index);
   };
-  const [isMobile, setIsMobile] = useState(false);
   return (
     <div className={styles.Main}>
       <div className={styles.NavIntroduce}>
@@ -55,12 +55,11 @@ export default function NavIntroduce() {
           </div>
           {nav[1].list &&
             nav[1].list.map((data, index) => (
-              <ul key={index}>
+              <ul key={index}
+              onClick={() => handleClickNav(index)}
+              className={Number(active) === index ? styles.items : null}>
                 <Link href={`#${data.idNav}`}>
-                  <li
-                    onClick={() => handleClickNav(index)}
-                    className={Number(active) === index ? styles.items : null}
-                  >
+                  <li>
                     {data.title}
                   </li>
                 </Link>

@@ -27,16 +27,18 @@ export default function Address() {
               />
             </div>
             <div className={styles.media_body}>
-              Tòa nhà văn phòng Novaland,
+              28 Phan Bội Châu, 
               <br></br>
-              152 Điện Biên Phủ, P.25,
+              Phường Hòa Thuận,
               <br></br>
-              Q.Bình Thạnh, TP.HCM
+              Thành phố Tam Kỳ, 
+              <br></br>
+              Tỉnh Quảng Nam.
               <br></br>
               <br></br>
-              ĐT: (84) 906 35 38 38
+              ĐT: (84) 797 797 797
               <br></br>
-              Fax: (028) 377 52 999
+              Fax: 4000440174
             </div>
           </div>
         </Grid>
