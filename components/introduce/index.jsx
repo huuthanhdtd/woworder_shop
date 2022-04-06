@@ -9,14 +9,12 @@ import Page7 from './quy-tac-ung-xu/page7';
 import Page2 from './Tamnhin-sumenh/Page2';
 import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
-import clsx from 'clsx';
 import { useRouter } from 'next/router';
 
 const data = navs[1];
 export default function Introduce() {
   const { introduceTpye } = useContext(Context);
   const router = useRouter();
-
   useEffect(() => {
     router.push(`#${introduceTpye}`);
   }, [introduceTpye]);
@@ -28,7 +26,6 @@ export default function Introduce() {
           {index === 0 && <Intro />}
           {index === 1 && <Page2 />}
           {index === 2 && <Page3 />}
-
           {index === 3 && <Page4 />}
           {index === 4 && <Page5 />}
           {index === 5 && <Page6 />}
