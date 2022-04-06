@@ -13,11 +13,12 @@
     .container {
         margin-top: 30px;
         h2 {
-            font-family: Minion Pro;
+            font-family: Open Sans;
+            font-weight: 600 !important;
             color: var(--primary-color-);
-            font-weight: 600;
             position: relative;
             margin-bottom: 30px;
+            font-size: 16px !important;
             &::before {
                 content: "";
                 width: 120px;
@@ -60,7 +61,7 @@
                         margin: 0;
                         text-transform: uppercase;
                         font-weight: 500;
-                        font-family: Minion Pro;
+                        font-family: Open Sans;
     
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -94,6 +95,13 @@
                     font-size: 16px;
     
                 }
+            }
+        }
+        .pagination {
+            .paginationBlock {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
             }
         }
     }

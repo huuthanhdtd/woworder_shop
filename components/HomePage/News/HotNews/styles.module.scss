@@ -31,12 +31,12 @@
                 cursor: pointer;
                 h2 {
                     color: var(--primary-color-);
-                    font-size: 20px;
                     transition: all 0.25s ease-in-out;
                     margin: 0;
                     text-transform: uppercase;
-                    font-weight: 500;
-                    font-family: Minion Pro;
+                    font-family: Open Sans;
+                    font-size: 16px !important;
+                    font-weight: 600 !important;
 
                     overflow: hidden;
                     text-overflow: ellipsis;
