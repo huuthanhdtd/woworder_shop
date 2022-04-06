@@ -2,8 +2,6 @@ import {
   Button,
   FormControl,
   Grid,
-  InputLabel,
-  Link,
   MenuItem,
   Select,
   Typography,
@@ -79,9 +77,9 @@ function ProjectsPage({ projects }) {
               <Button
                 key={item.id}
                 className={clsx(styles.buttonType, {
-                  [styles.active]: isActive == item.id,
+                  [styles.active]: isActive == item.type,
                 })}
-                onClick={() => handleTypeProjects(item.type, item.id)}
+                onClick={() => handleTypeProjects(item.type)}
               >
                 <Typography variant="h6">{item.title}</Typography>
               </Button>

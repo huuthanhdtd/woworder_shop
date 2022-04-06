@@ -3,15 +3,19 @@ import styles from './NavBar.module.scss';
 import Link from 'next/link';
 import clsx from 'clsx';
 import navs from '../../constants/navsBar.json';
+import navProject from '../../constants/navProject.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
 
 function HeaderNavBar({ setIsNavBar }) {
-  const { handleClickMenuIntroduce } = useContext(Context);
+  const { handleClickMenuIntroduce, setType, setIsActive } =
+    useContext(Context);
   const router = useRouter();
 
   const handleClickNavItem = (index) => {
     setIsNavBar(false);
+    setType(null);
+    setIsActive(null);
   };
   const handleClickNavIntro = () => {};
   return (
@@ -47,7 +51,11 @@ function HeaderNavBar({ setIsNavBar }) {
                   className={clsx(styles.navsItemLi)}
                   onClick={handleClickNavIntro}
                 >
-                  <h5 onClick={() => handleClickMenuIntroduce(item.idNav)}>
+                  <h5
+                    onClick={() =>
+                      handleClickMenuIntroduce(item.idNav, item.link, item.type)
+                    }
+                  >
                     {item.title.toUpperCase()}
                   </h5>
                 </li>

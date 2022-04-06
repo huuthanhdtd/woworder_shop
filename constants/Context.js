@@ -4,19 +4,21 @@ export const Context = createContext();
 export default function ContextProvider({ children }) {
   const [type, setType] = useState(null);
   const [isFilter, setFilters] = useState(false);
-  const [isActive, setIsActive] = useState(1);
+  const [isActive, setIsActive] = useState(null);
   const [introduceTpye, setIntroduceType] = useState(null);
   const router = useRouter();
 
-  const handleTypeProjects = (type, id) => {
-    // router.push("/du-an")
+  const handleTypeProjects = (type) => {
     setFilters(true);
     setType(type);
-    setIsActive(id);
+    setIsActive(type);
   };
-  const handleClickMenuIntroduce = (idNav) => {
-    router.push('/gioi-thieu');
+  const handleClickMenuIntroduce = (idNav, link, type) => {
+    router.push(`${link}`);
     setIntroduceType(idNav);
+    setFilters(true);
+    setType(type);
+    setIsActive(type);
   };
 
   const value = {
@@ -28,6 +30,7 @@ export default function ContextProvider({ children }) {
     handleClickMenuIntroduce,
     setIntroduceType,
     introduceTpye,
+    setIsActive,
   };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
