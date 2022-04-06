@@ -102,23 +102,23 @@ export default function PauseOnHover() {
       <Slider {...settings} className={styles.slickactive}>
         {historys &&
           historys.map((data, index) => (
-            <>
-              <div className={styles.carousel} key={index}>
+            <div key={index}>
+              <div className={styles.carousel}>
                 <h5>{data.since}</h5>
                 {historys[index].history &&
                   historys[index].history.map((e, i) => (
                     <div key={i} className={styles.title}>
                       {e.titles &&
                         e.titles.map((item, v) => (
-                          <>
-                            <p key={v}>{item}</p>
-                          </>
+                          <div key={v}>
+                            <p>{item}</p>
+                          </div>
                         ))}
                       <img src={e.img} />
                     </div>
                   ))}
               </div>
-            </>
+            </div>
           ))}
       </Slider>
     </div>

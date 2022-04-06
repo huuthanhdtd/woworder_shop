@@ -1,8 +1,8 @@
-import React from "react"
-import Slider from "react-slick"
-import styles from "./slick.module.scss"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import React from 'react';
+import Slider from 'react-slick';
+import styles from './slick.module.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function PauseOnHover() {
   var settings = {
@@ -23,116 +23,116 @@ export default function PauseOnHover() {
       {
         breakpoint: 960,
         settings: {
-          width: "720px",
+          width: '720px',
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
     ],
-  }
+  };
   const gifts = [
     {
-      since: "1992",
+      since: '1992',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/vietnam-property.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/vietnam-property.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1993",
+      since: '1993',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/tuyen-dung-asia.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/tuyen-dung-asia.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1994",
+      since: '1994',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2012.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2012.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1995",
+      since: '1995',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2019/cup-well_known1.png",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2019/cup-well_known1.png',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1996",
+      since: '1996',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/topten.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/topten.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1997",
+      since: '1997',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2020/giai-thuong-01.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2020/giai-thuong-01.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1998",
+      since: '1998',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2019/awards---propertyguru_rz.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2019/awards---propertyguru_rz.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "1999",
+      since: '1999',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/choice-braand.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/choice-braand.jpg',
           title:
-            "Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp",
+            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
         },
       ],
     },
     {
-      since: "2000",
+      since: '2000',
       gift: [
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2020/health-promotion-category---area-2020.jpg",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2020/health-promotion-category---area-2020.jpg',
           title:
-            "NovaGroup thực hiện tái cấu trúc lần 2 - đặt ra các mục tiêu hoạt động & phát triển với Tầm nhìn là ",
+            'NovaGroup thực hiện tái cấu trúc lần 2 - đặt ra các mục tiêu hoạt động & phát triển với Tầm nhìn là ',
         },
         {
-          img: "https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/asia-respon.jpg",
-          title: "Tập đoàn Novaland giới thiệu dự án đầu tiên ",
+          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/asia-respon.jpg',
+          title: 'Tập đoàn Novaland giới thiệu dự án đầu tiên ',
         },
       ],
     },
-  ]
+  ];
   return (
     <div className={styles.slider}>
       <Slider {...settings} className={styles.slickactive}>
         {gifts &&
           gifts.map((data, index) => (
-            <>
-              <div className={styles.carousel} key={index}>
+            <div key={index}>
+              <div className={styles.carousel}>
                 <h5>{data.since}</h5>
                 {gifts[index].gift &&
                   gifts[index].gift.map((e, i) => (
@@ -142,9 +142,9 @@ export default function PauseOnHover() {
                     </div>
                   ))}
               </div>
-            </>
+            </div>
           ))}
       </Slider>
     </div>
-  )
+  );
 }
