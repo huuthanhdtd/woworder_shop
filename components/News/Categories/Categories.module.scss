@@ -1,89 +1,98 @@
-.marketNews {
+.container {
   max-width: 1440px;
-  margin: 115px auto 50px;
-  position: relative;
+  margin: 0 auto;
+  margin-top: 117px;
   .newsBar {
-    padding: 20px 120px;
+    padding: 20px 8%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: rgba(230, 228, 228, 0.96);
+    background: rgba(228, 226, 226, 0.5);
     a {
-      font-size: 0.9rem;
       color: var(--primary-color-);
+      font-size: 0.9rem;
+      transition: all 0.5s ease;
     }
     .arrowIcon {
+      color: var(--primary-color-);
       margin: 0 2px;
       font-size: 0.7rem;
       text-transform: capitalize;
-      color: var(--primary-color-);
     }
     a:hover {
       text-decoration: underline;
       color: var(--hover-color-);
     }
   }
-  .category {
-    text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-    position: relative;
-    width: fit-content;
-    padding: 0 0 10px;
-    margin-bottom: 20px;
-    color: var(--primary-color-);
-    &::before {
-      content: '';
-      position: absolute;
-      height: 3px;
-      background: var(--hover-color-);
-      border-radius: 5px;
-      width: 50%;
-      bottom: 5px;
-    }
-  }
-  .containerMarketNews {
+  .categoryNews {
     padding: 30px 0;
+    .category {
+      text-transform: uppercase;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      position: relative;
+      width: fit-content;
+      padding: 0 0 10px;
+      margin-bottom: 20px;
+      color: var(--primary-color-);
+      &::before {
+        content: '';
+        position: absolute;
+        height: 3px;
+        background: var(--hover-color-);
+        border-radius: 5px;
+        width: 50%;
+        bottom: 5px;
+      }
+    }
     .pagination {
       display: flex;
       justify-content: center;
+      margin-bottom: 30px;
+    }
+    .rightBar {
+      padding: 0 20px;
     }
   }
 }
 
 @media screen and(max-width: 1280px) {
-  .marketNews {
-    min-width: 1280px;
-    padding: 0 10px;
-    margin-top: 65px;
+  .container {
     .newsBar {
-      position: relative;
-      width: 100%;
+      padding: 10px 4%;
+    }
+    .categoryNews {
+      .rightBar {
+        padding: 0;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        justify-content: space-between;
+      }
     }
   }
 }
 
 @media screen and(max-width: 960px) {
-  .marketNews {
-    min-width: 960px;
-    margin: 75px auto 10px;
-    padding: 0 10px;
+  .container {
+    margin-top: 77px;
     .newsBar {
-      position: relative;
-      width: 100%;
+      padding: 10px 8%;
+    }
+    .categoryNews {
+      .rightBar {
+        padding: 0;
+        display: block;
+      }
     }
   }
 }
 
 @media screen and(max-width: 600px) {
-  .marketNews {
-    min-width: 600px;
-    margin: 63px auto 10px;
-    padding: 0 10px;
+  .container {
+    margin-top: 63px;
     .newsBar {
-      position: relative;
-      width: 100%;
+      padding: 10px 4%;
     }
   }
 }

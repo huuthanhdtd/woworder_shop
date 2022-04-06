@@ -1,9 +1,9 @@
-.newsPage {
+.container {
   max-width: 1440px;
-  margin: 120px auto 0;
-  position: relative;
+  margin: 0 auto;
+  margin-top: 117px;
   .newsBar {
-    padding: 20px 120px;
+    padding: 20px 8%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -77,17 +77,14 @@
       }
     }
     .rightBar {
-      padding: 0 20px;
+      padding: 10px;
     }
   }
 }
-
 @media screen and (max-width: 1280px) {
-  .newsPage {
-    min-width: 1280px;
-    // margin-top: 75px;
+  .container {
     .newsBar {
-      padding: 20px 30px;
+      padding: 20px 5%;
       width: 100%;
     }
     .containerNews {
@@ -95,31 +92,44 @@
     }
   }
 }
-
 @media screen and (max-width: 960px) {
-  .newsPage {
-    min-width: 960px;
+  .container {
+    margin-top: 75px;
     .newsBar {
-      padding: 20px 30px;
+      padding: 20px 5%;
       width: 100%;
     }
     .containerNews {
-      margin: 10px 0;
+      padding: 10px;
       .rightBar {
-        padding: 0;
+        padding: 0px 0px;
       }
     }
   }
 }
-
-@media screen and (max-width: 600px) {
-  .newsPage {
-    min-width: 600px;
-    margin-top: 65px;
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: 76px;
     .newsBar {
-      padding: 20px 10px;
+      padding: 20px 5%;
       width: 100%;
-      position: sticky;
+    }
+    .containerNews {
+      padding: 10px;
+      .rightBar {
+        padding: 0px 0px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    margin-top: 62px;
+    .newsBar {
+      padding: 20px 5%;
+      a {
+        font-size: 1rem;
+      }
     }
     .containerNews {
       padding: 10px;

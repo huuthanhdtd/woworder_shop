@@ -10,6 +10,7 @@ import { MdDownload } from 'react-icons/md';
 import VideoCompany from '../Video/VideoCompany';
 import { AiOutlineRight } from 'react-icons/ai';
 import { Pagination } from '@material-ui/lab';
+import DownLoadBox from '../Download';
 const firstIndex = 0;
 
 export const Categories = ({ articles }) => {
@@ -26,106 +27,49 @@ export const Categories = ({ articles }) => {
     );
   };
   return (
-    <div className={styles.marketNews}>
-      <BannerMain />
-      <div className={styles.newsBar}>
-        <Link href="/">Trang chủ</Link>
-        <AiOutlineRight className={styles.arrowIcon} />
-        <Link href="/tin-tuc">Tin tức</Link>
-        <AiOutlineRight className={styles.arrowIcon} />
-        <Link href="/tin-tuc/tin-tuc">Tin thị trường</Link>
-      </div>
-      <Grid
-        container
-        justifyContent="center"
-        className={styles.containerMarketNews}
-      >
-        <Grid item lg={10} sm={10} xs={12}>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item lg={9} sm={12} xs={12}>
-              <Typography variant="h5" className={styles.category}>
-                Tin thị trường
-              </Typography>
-              <Grid container spacing={2}>
-                {data.map((article, index) => (
-                  <Grid key={index} item xs={4}>
-                    <CardItem article={article} />
-                  </Grid>
-                ))}
-              </Grid>
-              <div className={styles.pagination}>
-                <Pagination
-                  color="primary"
-                  count={Math.ceil(articles.length / pageSize)}
-                  page={page}
-                  variant="outlined"
-                  shape="rounded"
-                  onChange={handleChange}
-                  size="small"
-                />
-              </div>
+    <>
+      <div className={styles.container}>
+        <BannerMain />
+        <div className={styles.newsBar}>
+          <Link href="/">Trang chủ</Link>
+          <AiOutlineRight className={styles.arrowIcon} />
+          <Link href="/tin-tuc">Tin tức</Link>
+          <AiOutlineRight className={styles.arrowIcon} />
+          <Link href="/tin-tuc/tin-tuc">Tin thị trường</Link>
+        </div>
+        <Grid container justifyContent="center" className={styles.categoryNews}>
+          <Grid item lg={7} md={11} sm={10} xs={11}>
+            <Typography variant="h5" className={styles.category}>
+              Tin thị trường
+            </Typography>
+            <Grid container spacing={2}>
+              {data.map((article, index) => (
+                <Grid key={index} item md={4} sm={6} xs={12}>
+                  <CardItem article={article} />
+                </Grid>
+              ))}
             </Grid>
-            <Grid item lg={3} sm={12} xs={12}>
-              <Grid container spacing={2}>
-                <Grid item lg={12} sm={12} xs={12}>
-                  <ListsMenu />
-                </Grid>
-                <Grid item lg={12} sm={6} xs={12}>
-                  <VideoCompany articles={articles.slice(0, 3)} />
-                </Grid>
-                <Grid item lg={12} sm={6} xs={12}>
-                  <CardMedia
-                    style={{
-                      backgroundRepeat: 'repeat',
-                      backgroundSize: 'auto',
-                      height: 300,
-                      padding: 18,
-                    }}
-                    image="https://www.novaland.com.vn/Data/Sites/1/skins/default/images/brochure-bg.png"
-                  >
-                    <h2 style={{ color: 'var(--primary-color-)' }}>
-                      Brochure Công ty
-                    </h2>
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '50% auto',
-                      }}
-                    >
-                      <div
-                        className={styles.brochureIcon}
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <MdDownload
-                          style={{
-                            fontSize: 120,
-                            color: 'white',
-                            background: 'var(--hover-color-)',
-                            borderRadius: 10,
-                          }}
-                        />
-                        <a href="#" style={{ color: 'var(--primary-color-)' }}>
-                          Tải Brochure
-                        </a>
-                      </div>
-                      <span className={styles.content}>
-                        <p>
-                          Download Bruchure mới nhất của Novaland để hiểu rõ hơn
-                          về chứng tôi
-                        </p>
-                      </span>
-                    </div>
-                  </CardMedia>
-                </Grid>
-              </Grid>
-            </Grid>
+            <div className={styles.pagination}>
+              <Pagination
+                color="primary"
+                count={Math.ceil(articles.length / pageSize)}
+                page={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={handleChange}
+                size="small"
+              />
+            </div>
+          </Grid>
+          <Grid item lg={3} md={11} sm={10} xs={11}>
+            <div className={styles.rightBar}>
+              <ListsMenu />
+              <VideoCompany articles={articles.slice(0, 3)} />
+              <DownLoadBox />
+            </div>
           </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 };

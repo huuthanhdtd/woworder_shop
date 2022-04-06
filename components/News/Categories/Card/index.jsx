@@ -20,14 +20,18 @@ function CardItem({ article }) {
             {formatDate(new Date(article.attributes.createdAt))}
           </Typography> */}
           <Typography variant="h5">
+            {/* {article.attributes.title} */}
             {`${article.attributes.title.slice(
               0,
-              article.attributes.title.slice(0, 35).lastIndexOf(' ')
+              article.attributes.title.slice(0, 50).lastIndexOf(' ')
             )}...`}
             <BsCaretRightFill />
           </Typography>
           <Typography variant="body2">{article.attributes.address}</Typography>
-          <Typography variant="body2">{`${article.attributes.description.slice(
+          <Typography
+            variant="body2"
+            className={styles.description}
+          >{`${article.attributes.description.slice(
             0,
             article.attributes.description.slice(0, 100).lastIndexOf(' ')
           )}...`}</Typography>
