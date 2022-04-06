@@ -47,11 +47,7 @@ function HeaderNavBar({ setIsNavBar }) {
                   className={clsx(styles.navsItemLi)}
                   onClick={handleClickNavIntro}
                 >
-                  <h5
-                    onClick={() =>
-                      handleClickMenuIntroduce(item.idNav, navItemActive)
-                    }
-                  >
+                  <h5 onClick={() => handleClickMenuIntroduce(item.idNav)}>
                     {item.title.toUpperCase()}
                   </h5>
                 </li>

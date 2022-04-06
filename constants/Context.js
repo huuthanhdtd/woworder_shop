@@ -14,7 +14,7 @@ export default function ContextProvider({ children }) {
     setType(type);
     setIsActive(id);
   };
-  const handleClickMenuIntroduce = (idNav, thien) => {
+  const handleClickMenuIntroduce = (idNav) => {
     router.push('/gioi-thieu');
     setIntroduceType(idNav);
   };

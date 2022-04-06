@@ -25,6 +25,7 @@
 }
 * {
   box-sizing: border-box;
+  scroll-margin-top: 150px;
 }
 
 a {
