@@ -3,6 +3,7 @@
   overflow: hidden;
   position: relative;
   margin-top: 30px;
+  height: 100%;
   .newsTitle {
     display: flex;
     flex-direction: column;
@@ -23,21 +24,62 @@
   }
   .wrapper {
     position: relative;
-    height: 22.5vw;
+    height: 30vw;
     width: 80%;
     left: 10%;
     .projectItem {
       width: 100%;
       position: absolute;
       left: 0;
+      height: 100%;
       transition: all 0.8s ease-in-out;
 
       .listGrid {
+        height: 100%;
+
         .item {
           width: 100%;
           padding: 1px;
+          height: 50%;
+          overflow: hidden;
+          position: relative;
+          cursor: pointer;
+          display: flex;
           img {
+            height: 100%;
+            transform: scaleX(1.5);
+            transform-origin: left;
+            margin: 1px;
+            margin: auto;
+          }
+          span {
+            position: absolute;
+            bottom: 0;
+            background-color: var(--primary-color-);
             width: 100%;
+            font-size: 20px;
+            color: #fff;
+            padding: 10px;
+            font-family: Open Sans;
+          }
+          &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            transition: all 0.25s ease-in-out;
+            z-index: 33333;
+          }
+          &:hover {
+            &::before {
+              background-color: transparent;
+            }
+            span {
+              color: var(--hover-color-);
+            }
           }
         }
       }
@@ -146,12 +188,41 @@
         font-size: 30px;
       }
     }
+    .wrapper {
+      height: 35vw;
+      .projectItem {
+        .listGrid {
+          .item {
+            height: 50%;
+            img {
+            }
+            span {
+              font-size: 12px;
+              padding: 6px;
+            }
+          }
+        }
+      }
+    }
   }
 }
 @media (max-width: 600px) {
   .projects {
     .wrapper {
-      height: 52.5vw;
+      height: 70vw;
+      .projectItem {
+        .listGrid {
+          .item {
+            height: 33.3334%;
+            img {
+            }
+            span {
+              font-size: 10px;
+              padding: 6px;
+            }
+          }
+        }
+      }
       .controls {
         display: none;
       }

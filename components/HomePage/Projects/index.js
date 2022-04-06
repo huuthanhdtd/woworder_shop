@@ -142,6 +142,7 @@ const Projects = () => {
               {listOne.map((it, i) => (
                 <Grid key={i} item xs={6} sm={4} md={4} className={styles.item}>
                   <img src={it.image} />
+                  <span>{it.title.toUpperCase()}</span>
                 </Grid>
               ))}
             </Grid>
