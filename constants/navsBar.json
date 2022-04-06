@@ -1,0 +1,91 @@
+[
+    {
+      "title": "trang chủ",
+      "link": "/"
+    },
+    {
+      "title": "giới thiệu",
+      "link": "/gioi-thieu",
+      "list": [
+        {
+          "title": "giới thiệu chung",
+          "link": "/",
+          "idNav": "gioi-thieu-chung"
+        },
+        {
+          "title": "tầm nhìn - sứ mệnh",
+          "link": "/",
+          "idNav": "tam-nhin"
+        },
+        {
+          "title": "giá trị cốt lõi",
+          "link": "/",
+          "idNav": "gia-tri"
+        },
+        {
+          "title": "lịch sử phát triển",
+          "link": "/",
+          "idNav": "lich-su"
+        },
+        {
+          "title": "ban lãnh đạo",
+          "link": "/",
+          "idNav": "lanh-dao"
+        },
+        {
+          "title": "giải thưởng",
+          "link": "/",
+          "idNav": "giai-thuong"
+        },
+        {
+          "title": "bộ quy tắt  ứng xử",
+          "link": "/",
+          "idNav": "quy-tat"
+        }
+      ]
+    },
+    {
+      "title": "dự án",
+      "list": [
+        {
+          "title": "dự án đá hoàn thành",
+          "link": "/"
+        },
+        {
+          "title": "dự án đang triển khai",
+          "link": "/"
+        }
+      ],
+      "link": "/du-an"
+    },
+    {
+      "title": "tin tức",
+      "list": [
+        {
+          "title": "thông tin thị trường",
+          "link": "/containers/News"
+        },
+        {
+          "title": "thông tin novaland",
+          "link": "/containers/News"
+        },
+        {
+          "title": "thông tin báo chí",
+          "link": "/"
+        },
+        {
+          "title": "video",
+          "link": "/"
+        }
+      ],
+      "link": "/tin-tuc"
+    },
+    {
+      "title": "tuyển dụng",
+      "link": "/tuyen-dung"
+    },
+    {
+      "title": "liên hệ",
+      "link": "/lien-he"
+    }
+  ]
