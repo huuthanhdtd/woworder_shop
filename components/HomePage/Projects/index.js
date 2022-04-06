@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
@@ -38,6 +38,7 @@ const listOne = [
   },
 ];
 
+<<<<<<< HEAD
 const listTwo = [
   {
     title: 'sứ mệnh',
@@ -70,6 +71,8 @@ const listTwo = [
       'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg',
   },
 ];
+=======
+>>>>>>> 106cf597af97f2d8eae2b8689d9e49f019f082e1
 const Projects = () => {
   const [startX, setStartX] = useState(null);
   const [moveX, setMoveX] = useState(null);
@@ -168,7 +171,15 @@ const Projects = () => {
                 positions.three - index >= 3 || positions.three - index <= -3,
             })}
           >
-            <img src={item.image} />
+            {/* <img src={item.image} /> */}
+
+            <Grid container className={styles.listGrid}>
+              {listOne.map((it, i) => (
+                <Grid key={i} item xs={6} sm={4} md={4} className={styles.item}>
+                  <img src={it.image} />
+                </Grid>
+              ))}
+            </Grid>
           </div>
         ))}
         <div className={clsx(styles.controls)}>

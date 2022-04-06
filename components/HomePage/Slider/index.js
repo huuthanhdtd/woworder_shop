@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import NextImage from './imageSlide';
 import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { Grid } from '@material-ui/core';
 
 const list = [
   {
@@ -183,11 +184,6 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              {/* {item.attributes.image.data !== null && (
-                <NextImage
-                  image={item.attributes.image && item.attributes.image}
-                />
-              )} */}
               <img src={item.image} />
             </div>
           ))}
