@@ -1,10 +1,10 @@
-import React from "react"
-import PauseOnHover from "./slick"
-import styles from "./page4.module.scss"
+import React from 'react';
+import PauseOnHover from './slick';
+import styles from './page4.module.scss';
 
 export default function Page6() {
   return (
-    <div className={styles.page4}>
+    <div className={styles.page4} id="lich-su">
       <h2>LỊCH SỬ PHÁT TRIỂN</h2>
       <PauseOnHover />
       <div className={styles.banner}>
@@ -14,5 +14,5 @@ export default function Page6() {
         />
       </div>
     </div>
-  )
+  );
 }

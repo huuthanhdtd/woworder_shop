@@ -6,7 +6,7 @@
     top: 118px;
     width: 100%;
     height: 52px;
-    background: var(--hover-color-);
+    background: var(--primary-color-);;
     .ModuleContent {
       .container {
         max-width: 1231px;
@@ -14,12 +14,17 @@
         ul {
           list-style: none;
           li {
+            
             a {
               text-decoration: none;
-              color: var(--primary-color-);
+              color: #fff;
               float: left;
               margin-left: 38px;
               text-transform: uppercase;
+              &:hover{
+                margin-top: 5px;
+                border-bottom: 1px solid #fff;
+              }
             }
           }
         }
@@ -37,18 +42,17 @@
       display: none;
     }
     .test {
-      display: none;
-      // display: block;
+     
+      display: block;
       right: 0;
       max-width: 1140px;
       margin: 0 auto;
       background: black;
       .btnWrapper {
         z-index: 99;
-        display: none;
-        // display: block;
+        display: block;
         position: fixed;
-        color: var(--primary-color-);
+        color: #fff;
         margin-top: 22px;
         border: none;
         top: 110px;
@@ -56,11 +60,11 @@
         .btnNav {
           cursor: pointer;
           top: 0px;
-          background: var(--hover-color-);
-          color: var(--primary-color-);
-          width: 115px;
-          height: 30px;
-          font-size: 16px;
+          background: var(--primary-color-);;
+          color: #fff;
+          width: 126px;
+          height: 40px;
+          font-size: 15px;
           display: flex;
           padding: 10px;
           svg {
@@ -71,15 +75,14 @@
       }
     }
     .mobile {
-      display: none;
-      // display: block;
+      display: block;
       position: fixed;
       z-index: 100;
       top: 137px;
       right: -1000px;
       width: 50%;
       transition: all 0.5s ease-in-out;
-      background: #fff;
+      background:var(--primary-color-);;
       box-shadow: 0 0 10px rgb(0 0 0 / 66%);
       .Navmobile {
         margin-top: 45px;
@@ -91,13 +94,12 @@
           height: 45px;
           font-size: 1.4em;
           background: #fff;
-          color: var(--primary-color-);
           width: auto;
-          padding: 5px 15px;
+          padding: 0 10px;
           font-weight: bolder;
-
           svg {
-            font-weight: bolder;
+            font-weight: 700;
+            font-size: 38px;
           }
         }
         ul {
@@ -105,12 +107,17 @@
           margin: 0;
           list-style: none;
           padding:10px;
+          .items{
+            background: #fff;
+            color: var(--primary-color-);
+          }
           li {
             font-size: 16px;
             display: block;
-            color: var(--primary-color-);
+            color: #fff;
             text-decoration: none;
             text-transform: uppercase;
+            
           }
         }
       }
@@ -159,6 +166,7 @@
     .mobile {
       top: 75px;
       width: 100%;
+      height: 100%  ;
       
     }
   }

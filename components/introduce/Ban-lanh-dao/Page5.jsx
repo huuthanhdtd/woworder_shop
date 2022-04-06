@@ -1,19 +1,19 @@
-import { Grid } from "@material-ui/core"
-import React, { useState } from "react"
-import styles from "./page5.module.scss"
+import { Grid } from '@material-ui/core';
+import React, { useState } from 'react';
+import styles from './page5.module.scss';
 
 export default function Page5() {
-  const [active, setActive] = useState(1)
+  const [active, setActive] = useState(1);
   const handleClickNav = (index) => {
-    setActive(index)
-  }
+    setActive(index);
+  };
   return (
-    <div className={styles.page5}>
+    <div className={styles.page5} id="lanh-dao">
       <h2>BAN LÃNH ĐẠO</h2>
       <div className={styles.page5_about}>
         <ul
           style={{
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           <li onClick={() => handleClickNav(1)}>
@@ -45,7 +45,7 @@ export default function Page5() {
                     </div>
                     <div className={styles.description}>
                       <h4>Ông Bùi Thanh Nhơn</h4>
-                      <p style={{ textAlign: "justify", color: "#898989" }}>
+                      <p style={{ textAlign: 'justify', color: '#898989' }}>
                         Nhà sáng lập, Chủ tịch Hội đồng Quản trị NovaGroup
                       </p>
                       <ul>
@@ -54,10 +54,10 @@ export default function Page5() {
                           HSB-TUCK, Đại học Dartmouth, Hoa Kỳ.
                         </li>
                       </ul>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Con người NovaGroup với giá trị cốt lõi:
                       </p>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Hiệu quả - Chính trực - Chuyên nghiệp là tài sản quý báu
                         của Tập đoàn; là chìa khóa của sự thành công, sẽ sớm
                         hiện thực được Sứ mạng, Hoài bão của NovaGroup".
@@ -75,7 +75,7 @@ export default function Page5() {
                     </div>
                     <div className={styles.description}>
                       <h4>Ông Bùi Thanh Nhơn</h4>
-                      <p style={{ textAlign: "justify", color: "#898989" }}>
+                      <p style={{ textAlign: 'justify', color: '#898989' }}>
                         Nhà sáng lập, Chủ tịch Hội đồng Quản trị NovaGroup
                       </p>
                       <ul>
@@ -84,10 +84,10 @@ export default function Page5() {
                           HSB-TUCK, Đại học Dartmouth, Hoa Kỳ.
                         </li>
                       </ul>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Con người NovaGroup với giá trị cốt lõi:
                       </p>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Hiệu quả - Chính trực - Chuyên nghiệp là tài sản quý báu
                         của Tập đoàn; là chìa khóa của sự thành công, sẽ sớm
                         hiện thực được Sứ mạng, Hoài bão của NovaGroup".
@@ -105,7 +105,7 @@ export default function Page5() {
                     </div>
                     <div className={styles.description}>
                       <h4>Ông Bùi Thanh Nhơn</h4>
-                      <p style={{ textAlign: "justify", color: "#898989" }}>
+                      <p style={{ textAlign: 'justify', color: '#898989' }}>
                         Nhà sáng lập, Chủ tịch Hội đồng Quản trị NovaGroup
                       </p>
                       <ul>
@@ -114,10 +114,10 @@ export default function Page5() {
                           HSB-TUCK, Đại học Dartmouth, Hoa Kỳ.
                         </li>
                       </ul>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Con người NovaGroup với giá trị cốt lõi:
                       </p>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Hiệu quả - Chính trực - Chuyên nghiệp là tài sản quý báu
                         của Tập đoàn; là chìa khóa của sự thành công, sẽ sớm
                         hiện thực được Sứ mạng, Hoài bão của NovaGroup".
@@ -142,7 +142,7 @@ export default function Page5() {
                     </div>
                     <div className={styles.description}>
                       <h4>Ông Bùi Thanh Nhơn</h4>
-                      <p style={{ textAlign: "justify", color: "#898989" }}>
+                      <p style={{ textAlign: 'justify', color: '#898989' }}>
                         Nhà sáng lập, Chủ tịch Hội đồng Quản trị NovaGroup
                       </p>
                       <ul>
@@ -151,10 +151,10 @@ export default function Page5() {
                           HSB-TUCK, Đại học Dartmouth, Hoa Kỳ.
                         </li>
                       </ul>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Con người NovaGroup với giá trị cốt lõi:
                       </p>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Hiệu quả - Chính trực - Chuyên nghiệp là tài sản quý báu
                         của Tập đoàn; là chìa khóa của sự thành công, sẽ sớm
                         hiện thực được Sứ mạng, Hoài bão của NovaGroup".
@@ -172,7 +172,7 @@ export default function Page5() {
                     </div>
                     <div className={styles.description}>
                       <h4>Ông Bùi Thanh Nhơn</h4>
-                      <p style={{ textAlign: "justify", color: "#898989" }}>
+                      <p style={{ textAlign: 'justify', color: '#898989' }}>
                         Nhà sáng lập, Chủ tịch Hội đồng Quản trị NovaGroup
                       </p>
                       <ul>
@@ -181,10 +181,10 @@ export default function Page5() {
                           HSB-TUCK, Đại học Dartmouth, Hoa Kỳ.
                         </li>
                       </ul>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Con người NovaGroup với giá trị cốt lõi:
                       </p>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Hiệu quả - Chính trực - Chuyên nghiệp là tài sản quý báu
                         của Tập đoàn; là chìa khóa của sự thành công, sẽ sớm
                         hiện thực được Sứ mạng, Hoài bão của NovaGroup".
@@ -202,7 +202,7 @@ export default function Page5() {
                     </div>
                     <div className={styles.description}>
                       <h4>Ông Bùi Thanh Nhơn</h4>
-                      <p style={{ textAlign: "justify", color: "#898989" }}>
+                      <p style={{ textAlign: 'justify', color: '#898989' }}>
                         Nhà sáng lập, Chủ tịch Hội đồng Quản trị NovaGroup
                       </p>
                       <ul>
@@ -211,10 +211,10 @@ export default function Page5() {
                           HSB-TUCK, Đại học Dartmouth, Hoa Kỳ.
                         </li>
                       </ul>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Con người NovaGroup với giá trị cốt lõi:
                       </p>
-                      <p style={{ textAlign: "justify", color: "#00b050" }}>
+                      <p style={{ textAlign: 'justify', color: '#00b050' }}>
                         Hiệu quả - Chính trực - Chuyên nghiệp là tài sản quý báu
                         của Tập đoàn; là chìa khóa của sự thành công, sẽ sớm
                         hiện thực được Sứ mạng, Hoài bão của NovaGroup".
@@ -234,5 +234,5 @@ export default function Page5() {
         />
       </div>
     </div>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import React from "react"
-import styles from "./Page2.module.scss"
+import React from 'react';
+import styles from './Page2.module.scss';
 
 export default function Page2() {
   return (
-    <div className={styles.page2}>
+    <div className={styles.page2} id="tam-nhin">
       <h2>TẦM NHÌN - SỨ MỆNH</h2>
       <div className={styles.page2_about}>
         <div className={styles.mrb10}></div>
@@ -29,5 +29,5 @@ export default function Page2() {
         <div className={styles.mrb10}></div>
       </div>
     </div>
-  )
+  );
 }

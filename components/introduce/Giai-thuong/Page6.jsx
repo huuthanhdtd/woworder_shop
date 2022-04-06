@@ -1,10 +1,10 @@
-import React from "react"
-import PauseOnHover from "./slick"
-import styles from "./page6.module.scss"
+import React from 'react';
+import PauseOnHover from './slick';
+import styles from './page6.module.scss';
 
 export default function Page6() {
   return (
-    <div className={styles.page6}>
+    <div className={styles.page6} id="giai-thuong">
       <h2>GIẢI THƯỞNG</h2>
       <p>
         Những thành tựu của Tập đoàn Novaland được ghi nhận và vinh danh qua
@@ -23,5 +23,5 @@ export default function Page6() {
         />
       </div>
     </div>
-  )
+  );
 }
