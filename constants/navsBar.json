@@ -64,20 +64,16 @@
     "title": "tin tức",
     "list": [
       {
-        "title": "thông tin thị trường",
-        "link": "/containers/News"
+        "title": "Tin tức thị trường",
+        "link": "/tin-tuc/tin-tuc"
       },
       {
-        "title": "thông tin novaland",
-        "link": "/containers/News"
-      },
-      {
-        "title": "thông tin báo chí",
-        "link": "/"
+        "title": "Tin dự án",
+        "link": "/tin-tuc/tuyen-dung"
       },
       {
         "title": "video",
-        "link": "/"
+        "link": "/tin-tuc/tin-tuc"
       }
     ],
     "link": "/tin-tuc"
