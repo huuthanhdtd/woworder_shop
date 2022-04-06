@@ -27,17 +27,17 @@ export default function Address() {
               />
             </div>
             <div className={styles.media_body}>
-              28 Phan Bội Châu, 
-              <br></br>
+              28 Phan Bội Châu,
+              <br />
               Phường Hòa Thuận,
-              <br></br>
-              Thành phố Tam Kỳ, 
-              <br></br>
+              <br />
+              Thành phố Tam Kỳ,
+              <br />
               Tỉnh Quảng Nam.
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               ĐT: (84) 797 797 797
-              <br></br>
+              <br />
               Fax: 4000440174
             </div>
           </div>
