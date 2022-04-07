@@ -9,14 +9,14 @@ export default function Address({ setMaps }) {
     {
       id: 'HCM',
       label: 'Trụ sở chính',
-      map: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31353.692419396757!2d106.721907!3d10.795103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1372288295caf7c7!2sC%C3%B4ng%20vi%C3%AAn%20Vinhomes%20Central%20Park!5e0!3m2!1svi!2sus!4v1649321658815!5m2!1svi!2sus',
+      map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d496.15518777385637!2d108.4674185773137!3d15.58454297229425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3169dd043fcfaf8d%3A0x3ae83e857c9cc3cb!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24gxJDhuqd1IFTGsCAtIFBow6F0IFRyaeG7g24gxJDDtCBUaOG7iyDDgm4gUGjDug!5e1!3m2!1svi!2sus!4v1649323027192!5m2!1svi!2sus',
       data: [
         {
           title: [
-            '165 đại lộ 3,',
-            'Phường Phước Bình,',
-            'Quận 9,',
-            'Thành phố Hồ Chí Minh.',
+            '28 Phan Bội Châu,',
+            'Phường Hòa Thuận,',
+            'Thành phố Tam Kỳ,',
+            'Tỉnh Quảng Nam.',
           ],
           phone: '(84) 393 939 393',
           fax: '4000440174',
@@ -26,17 +26,12 @@ export default function Address({ setMaps }) {
     {
       id: 'DN',
       label: 'Văn phòng đại diện tại Đà Nẵng',
-      map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.837067686746!2d108.23580131485771!3d16.002751988922046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314211dc8f79cebb%3A0x9c095b5d22ac0295!2zQ8O0bmcgdHkgw4JuIHBow7o!5e1!3m2!1svi!2s!4v1649303507365!5m2!1svi!2s',
+      map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1665.4185156936517!2d108.23706977177439!3d16.00275416610039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314211dc8f79cebb%3A0x9c095b5d22ac0295!2zQ8O0bmcgdHkgw4JuIHBow7o!5e1!3m2!1svi!2sus!4v1649322871643!5m2!1svi!2sus',
       data: [
         {
-          title: [
-            '28 Phan Bội Châu,',
-            'Phường Hòa Thuận,',
-            'Thành phố Tam Kỳ,',
-            'Tỉnh Quảng Nam.',
-          ],
+          title: ['Hoà Quý', 'Ngũ Hành Sơn', 'Đà Nẵng'],
           phone: '(84) 797 797 797',
-          fax: '4000440174',
+          fax: '4000440174-001',
         },
       ],
     },
@@ -69,7 +64,11 @@ export default function Address({ setMaps }) {
           </select>
         </div>
       </div>
-      <Grid container spacing={2} style={{ marginBottom: '10px' }}>
+      <Grid
+        container
+        spacing={2}
+        style={{ marginBottom: '10px', height: '208px' }}
+      >
         <Grid item xs={12} sm={12} md={6}>
           {ab &&
             ab.map((data, index) => (
