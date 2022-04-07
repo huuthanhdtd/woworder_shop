@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import CardItem from './Card';
 import styles from './NewsPage.module.scss';
-import { Button, CardMedia, Grid, Typography } from '@material-ui/core';
-import { ArrowForwardIos, ArrowRight } from '@material-ui/icons';
-import { BsCaretRightFill, BsStopwatch } from 'react-icons/bs';
+import { Button, Grid, Typography } from '@material-ui/core';
+import { BsCaretRightFill } from 'react-icons/bs';
 import { AiOutlineRight } from 'react-icons/ai';
-import { MdDownload } from 'react-icons/md';
-
 import VideoCompany from './Video/VideoCompany';
 import ListNews from './ListNews/ListNews';
 import ListsMenu from './ListsMenu/ListMenu';
@@ -60,9 +57,11 @@ const NewsPage = ({ articles, title }) => {
               </Grid>
             </div>
             <div className={styles.boardNews}>
-              <Typography className={styles.nameCategory} variant="h5">
-                <Link href="/tin-tuc/tin-tuc">Tin Dự án</Link>
-              </Typography>
+              <Link href="/tin-tuc/tuyen-dung">
+                <Typography className={styles.nameCategory} variant="h5">
+                  Tin Dự án
+                </Typography>
+              </Link>
               <Grid container spacing={1} justifyContent="center">
                 <Grid item md={7} sm={7} xs={12}>
                   {articles.slice(0, 1).map((article, index) => (

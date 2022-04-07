@@ -15,7 +15,7 @@ const Category = ({ category }) => {
   return (
     <>
       <Seo seo={seo} />
-      <Categories articles={data} />
+      <Categories articles={data} title={category} />
     </>
   );
 };

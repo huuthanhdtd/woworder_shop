@@ -39,10 +39,6 @@
           margin-bottom: 20px;
           width: fit-content;
           transition: all 0.5s ease;
-          a {
-            color: var(--primary-color-);
-            transition: all 0.5s ease;
-          }
           cursor: pointer;
           &::after {
             content: '';
@@ -54,9 +50,7 @@
             background: var(--hover-color-);
           }
           &:hover {
-            a {
-              color: var(--hover-color-);
-            }
+            color: var(--hover-color-);
           }
         }
         .listNews {

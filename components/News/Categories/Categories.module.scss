@@ -28,7 +28,7 @@
     padding: 30px 0;
     .category {
       text-transform: uppercase;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Opens Sans', sans-serif;
       font-weight: 600;
       font-size: 1.3rem;
       position: relative;
@@ -36,14 +36,19 @@
       padding: 0 0 10px;
       margin-bottom: 20px;
       color: var(--primary-color-);
+      transition: all 0.5s ease;
+      cursor: pointer;
       &::before {
         content: '';
         position: absolute;
         height: 3px;
         background: var(--hover-color-);
         border-radius: 5px;
-        width: 50%;
+        width: 100%;
         bottom: 5px;
+      }
+      &:hover {
+        color: var(--hover-color-);
       }
     }
     .pagination {
