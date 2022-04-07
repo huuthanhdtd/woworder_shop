@@ -1,17 +1,21 @@
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
 import { Categories } from '../../components/News/Categories';
+import React, { useMemo } from 'react';
+import { reverse } from '../../lib/reverse';
 
-const Category = ({ category, categories }) => {
+const Category = ({ category }) => {
   const seo = {
     metaTitle: category.attributes.name,
     metaDescription: `All ${category.attributes.name} articles`,
   };
-
+  const data = useMemo(() => {
+    return reverse(category.attributes.articles.data);
+  }, [category.attributes.articles.data]);
   return (
     <>
       <Seo seo={seo} />
-      <Categories articles={category.attributes.articles.data} />
+      <Categories articles={data} />
     </>
   );
 };
@@ -38,12 +42,10 @@ export async function getStaticProps({ params }) {
       },
     },
   });
-  const allCategories = await fetchAPI('/categories');
 
   return {
     props: {
       category: matchingCategories.data[0],
-      categories: allCategories,
     },
     revalidate: 1,
   };

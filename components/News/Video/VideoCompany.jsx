@@ -23,7 +23,7 @@ const VideoCompany = ({ articles }) => {
       <Typography variant="h5">video</Typography>
       <CardMedia
         className={styles.thumbnail}
-        image="https://www.novaland.com.vn/Data/Sites/1/News/8679/700x394/0214-3-1.jpeg"
+        image="/Tin-tuc/cong-bo.jpeg"
         onClick={handleOpen}
       />
       <div>
@@ -52,16 +52,7 @@ const VideoCompany = ({ articles }) => {
         }}
       >
         <Fade in={open}>
-          <div
-            // style={{
-            //   width: 700,
-            //   height: 400,
-            //   background: "crimson",
-            //   margin: "auto",
-            //   marginTop: 100,
-            // }}
-            className={styles.videoYoutube}
-          >
+          <div className={styles.videoYoutube}>
             <iframe
               width="100%"
               height="100%"

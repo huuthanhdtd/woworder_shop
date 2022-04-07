@@ -6,7 +6,6 @@ import { Typography } from '@material-ui/core';
 import { BsCaretRightFill, BsStopwatch } from 'react-icons/bs';
 import Image from 'next/image';
 import photo from '../../../../public/Du-an/1.jpg';
-import formatDate from '../../../../constants/ConvertTime';
 
 function CardItem({ article }) {
   return (
@@ -20,7 +19,6 @@ function CardItem({ article }) {
             {formatDate(new Date(article.attributes.createdAt))}
           </Typography> */}
           <Typography variant="h5">
-            {/* {article.attributes.title} */}
             {`${article.attributes.title.slice(
               0,
               article.attributes.title.slice(0, 50).lastIndexOf(' ')

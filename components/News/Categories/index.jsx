@@ -35,12 +35,12 @@ export const Categories = ({ articles }) => {
           <AiOutlineRight className={styles.arrowIcon} />
           <Link href="/tin-tuc">Tin tức</Link>
           <AiOutlineRight className={styles.arrowIcon} />
-          <Link href="/tin-tuc/tin-tuc">Tin thị trường</Link>
+          <Link href="/tin-tuc/tin-tuc">Tin tức thị trường</Link>
         </div>
         <Grid container justifyContent="center" className={styles.categoryNews}>
           <Grid item lg={7} md={11} sm={10} xs={11}>
             <Typography variant="h5" className={styles.category}>
-              Tin thị trường
+              Tin tức thị trường
             </Typography>
             <Grid container spacing={2}>
               {data.map((article, index) => (

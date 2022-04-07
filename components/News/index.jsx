@@ -38,7 +38,7 @@ const NewsPage = ({ articles, title }) => {
           >
             <div className={styles.boardNews}>
               <Typography className={styles.nameCategory} variant="h5">
-                <Link href="/tin-tuc/tin-du-an">Tin tức thị trường</Link>
+                <Link href="/tin-tuc/tin-tuc">Tin tức thị trường</Link>
               </Typography>
               <Grid container spacing={1} justifyContent="center">
                 <Grid item md={7} sm={7} xs={12}>
@@ -59,7 +59,7 @@ const NewsPage = ({ articles, title }) => {
             </div>
             <div className={styles.boardNews}>
               <Typography className={styles.nameCategory} variant="h5">
-                <Link href="/tin-tuc/tin-du-an">Tin Dự án</Link>
+                <Link href="/tin-tuc/tin-tuc">Tin Dự án</Link>
               </Typography>
               <Grid container spacing={1} justifyContent="center">
                 <Grid item md={7} sm={7} xs={12}>

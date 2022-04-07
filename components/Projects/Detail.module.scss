@@ -4,12 +4,16 @@
   max-width: 1440px;
   .title {
     margin-top: 30px;
-    h4 {
-      font-size: 1.8rem;
-      a,
-      span {
-        color: var(--primary-color-);
+    h5 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      font-family: 'Opens sans', sans-serif;
+      text-transform: capitalize;
+      color: var(--primary-color-);
+      a {
         transition: all 0.5s ease;
+        color: var(--primary-color-);
+        text-transform: uppercase;
       }
       span {
         margin-left: 10px;
@@ -117,40 +121,46 @@
 }
 
 @media screen and(max-width: 960px) {
-  .title {
-    h4 {
-      font-size: 1.6rem;
+  .container {
+    margin-top: 76px;
+    .title {
+      h4 {
+        font-size: 1.6rem;
+      }
     }
-  }
-  .content {
-    iframe {
-      height: 315px;
-      width: 100%;
-    }
-    h1,
-    h2 {
-      font-size: 1.2rem;
-    }
-    p,
-    li {
-      font-size: 0.9rem;
+    .content {
+      iframe {
+        height: 315px;
+        width: 100%;
+      }
+      h1,
+      h2 {
+        font-size: 1.2rem;
+      }
+      p,
+      li {
+        font-size: 0.9rem;
+      }
     }
   }
 }
 
 @media screen and(max-width: 600px) {
-  .title {
-    h4 {
-      font-size: 1.6rem;
+  .container {
+    margin-top: 61px;
+    .title {
+      h4 {
+        font-size: 1.6rem;
+      }
     }
-  }
-  .content {
-    iframe {
-      height: 255px;
-    }
-    h1,
-    h2 {
-      font-size: 1.2rem;
+    .content {
+      iframe {
+        height: 255px;
+      }
+      h1,
+      h2 {
+        font-size: 1.2rem;
+      }
     }
   }
 }

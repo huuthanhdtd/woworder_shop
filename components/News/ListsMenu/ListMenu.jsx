@@ -11,14 +11,14 @@ const ListsMenu = () => {
     <div className={styles.container}>
       <List className={styles.listsMenu}>
         <MenuItem
-          className={router.asPath === '/tin-tuc/thi-truong' ? styles.item : ''}
+          className={router.asPath === '/tin-tuc/tin-tuc' ? styles.item : ''}
         >
-          <Link href="/tin-tuc/thi-truong">Tin tức thị trường</Link>
+          <Link href="/tin-tuc/tin-tuc">Tin tức thị trường</Link>
         </MenuItem>
         <MenuItem
-          className={router.asPath === '/tin-tuc/du-an' ? styles.item : ''}
+          className={router.asPath === '/tin-tuc/tuyen-dung' ? styles.item : ''}
         >
-          <Link href="/tin-tuc/du-an">Tin tức dự án</Link>
+          <Link href="/tin-tuc/tuyen-dung">Tin tức dự án</Link>
         </MenuItem>
 
         <MenuItem>

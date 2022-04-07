@@ -1,13 +1,11 @@
-import ReactMarkdown from 'react-markdown';
-import Moment from 'react-moment';
 import { fetchAPI } from '../../lib/api';
-import Layout from '../../components/layout';
-import NextImage from '../../components/image';
 import Seo from '../../components/seo';
 import { getStrapiMedia } from '../../lib/media';
 import DetailArticle from '../../components/Article';
+import { reverse } from '../../lib/reverse';
+import { useMemo } from 'react';
 
-const Article = ({ article, categories }) => {
+const Article = ({ article, articles }) => {
   const imageUrl = getStrapiMedia(article.attributes.image);
 
   const seo = {
@@ -17,12 +15,17 @@ const Article = ({ article, categories }) => {
     article: true,
   };
 
+  const data = useMemo(() => {
+    return reverse(articles);
+  }, [articles]);
+
   return (
     <>
       <Seo seo={seo} />
       <DetailArticle
         article={article}
         title={article.attributes.category.data.attributes}
+        anotherArticle={data}
       />
     </>
   );
@@ -48,10 +51,22 @@ export async function getStaticProps({ params }) {
     },
     populate: '*',
   });
-  const categoriesRes = await fetchAPI('/categories');
+  const allArticles = await fetchAPI('/articles', {
+    filters: {
+      category: {
+        slug: 'tin-tuc',
+      },
+    },
+    populate: '*',
+  });
 
   return {
-    props: { article: articlesRes.data[0], categories: categoriesRes },
+    props: {
+      article: articlesRes.data[0],
+      articles: allArticles.data.filter(
+        (article) => article.attributes.slug !== params.slug
+      ),
+    },
     revalidate: 1,
   };
 }

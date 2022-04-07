@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Detail from '../../components/Projects/Detail';
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
+import { reverse } from '../../lib/reverse';
 function DetailProject({ project, projects }) {
   const seo = {
     metaTitle: project.attributes.title,
@@ -9,10 +10,14 @@ function DetailProject({ project, projects }) {
     shareImage: project.attributes.image,
     article: true,
   };
+
+  const data = useMemo(() => {
+    return reverse(projects);
+  }, [projects]);
   return (
     <>
       <Seo seo={seo} />
-      <Detail project={project} projects={projects} />
+      <Detail project={project} projects={data} />
     </>
   );
 }

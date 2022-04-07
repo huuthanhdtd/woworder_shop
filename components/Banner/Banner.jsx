@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './Banner.module.scss';
 import { CardMedia } from '@material-ui/core';
+import NextImage from 'next/image';
+import url from '../../public/Banner/banner.jpg';
 
 function Banner({ getImage }) {
   return (
     <>
-      <CardMedia className={styles.image} image="/Banner/banner.jpg" />
+      <NextImage className={styles.image} src={url} />
     </>
   );
 }

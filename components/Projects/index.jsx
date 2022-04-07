@@ -6,6 +6,7 @@ import {
   Select,
   Typography,
 } from '@material-ui/core';
+import Link from 'next/link';
 import { Pagination } from '@material-ui/lab';
 import React, { useState, useEffect, useContext } from 'react';
 import CardProject from './Card/CardItem';
@@ -47,9 +48,11 @@ function ProjectsPage({ projects }) {
     <LayoutProject>
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item md={10} sm={11} xs={11}>
-          <Typography variant="h6" className={styles.caption}>
-            Dự án {type}
-          </Typography>
+          <Link href="/du-an">
+            <Typography variant="h5" className={styles.caption}>
+              Dự án {type}
+            </Typography>
+          </Link>
           <FormControl
             variant="outlined"
             size="small"

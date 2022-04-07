@@ -33,7 +33,7 @@
           text-transform: uppercase;
           font-family: 'Open Sans', sans-serif;
           font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
           position: relative;
           width: fit-content;
           padding: 0 0 10px;
@@ -41,6 +41,7 @@
           transition: all 0.5s ease;
           a {
             color: var(--primary-color-);
+            transition: all 0.5s ease;
           }
           cursor: pointer;
           &::before {
@@ -53,7 +54,9 @@
             bottom: 5px;
           }
           &:hover {
-            color: #2db24a;
+            a {
+              color: var(--hover-color-);
+            }
           }
         }
         .listNews {

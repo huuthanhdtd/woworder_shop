@@ -1,24 +1,24 @@
 @font-face {
-  font-family: "Minion Pro";
-  src: url("../font/MinionPro-Bold.woff2") format("woff2"),
-    url("../font/MinionPro-Bold.woff") format("woff");
+  font-family: 'Minion Pro';
+  src: url('../font/MinionPro-Bold.woff2') format('woff2'),
+    url('../font/MinionPro-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Open Sans";
-  src: url("../font/OpenSans-Italic.woff2") format("woff2"),
-    url("../font/OpenSans-Italic.woff") format("woff");
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-Italic.woff2') format('woff2'),
+    url('../font/OpenSans-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Open Sans";
-  src: url("../font/OpenSans-Regular.woff2") format("woff2"),
-    url("../font/OpenSans-Regular.woff") format("woff");
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-Regular.woff2') format('woff2'),
+    url('../font/OpenSans-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -29,10 +29,10 @@
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 h1 {
@@ -81,13 +81,12 @@ img:hover {
 }
 
 @media screen and (max-width: 960px) {
-  *{
+  * {
     scroll-margin-top: 100px;
   }
 }
 @media screen and (max-width: 600px) {
-  *{
+  * {
     scroll-margin-top: 90px;
   }
 }
-

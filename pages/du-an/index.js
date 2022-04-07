@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProjectsPage from '../../components/Projects';
 import Seo from '../../components/seo';
 import { fetchAPI } from '../../lib/api';
