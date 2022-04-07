@@ -8,13 +8,13 @@ import { GoTriangleRight } from 'react-icons/go';
 import { BsClockHistory } from 'react-icons/bs';
 import Link from 'next/link';
 import { Pagination } from '@material-ui/lab';
-
+import { AiOutlineRight } from 'react-icons/ai';
 const firstIndex = 0;
 const Career = ({ articles }) => {
   const [active, setActive] = useState(1);
-  const [pageSize, setPageSize] = useState(6);
+  const [pageSize, setPageSize] = useState(8);
   const [page, setPage] = useState(1);
-  const [data, setData] = useState(articles.slice(0, 6));
+  const [data, setData] = useState(articles.slice(0, 8));
   const handleChange = (event, value) => {
     setPage(value);
     setData(
@@ -26,6 +26,11 @@ const Career = ({ articles }) => {
       <div className={styles.banner}>
         <Image src={Banner} />
       </div>
+      <div className={styles.newsBar}>
+        <Link href="/">Trang chủ</Link>
+        <AiOutlineRight className={styles.arrowIcon} />
+        <Link href="/tuyen-dung">Tuyển dụng</Link>
+      </div>
       <Container maxWidth="lg" className={styles.container}>
         <h2>TUYỂN DỤNG</h2>
         <Grid container spacing={2}>
@@ -36,20 +41,13 @@ const Career = ({ articles }) => {
                 item
                 xs={12}
                 sm={6}
-                md={4}
+                md={3}
                 className={styles.gridItem}
               >
                 <div className={styles.wrapper}>
                   <div className={styles.image}>
-                    <NextImage image={item.attributes.image} />
-                  </div>
-                  <div className={styles.times}>
-                    <BsClockHistory style={{ fontSize: 20 }} />
-                    <h3>
-                      {new Intl.DateTimeFormat('en-GB').format(
-                        new Date(item.attributes.updatedAt)
-                      )}
-                    </h3>
+                    {/* <NextImage image={item.attributes.image} /> */}
+                    <img src="https://www.novaland.com.vn/Data/Sites/1/media/du-an/du-an-tieu-bieu-2021/tgm.jpg" />
                   </div>
                   <Link href="/">
                     <div className={styles.titleBlock}>
@@ -63,7 +61,7 @@ const Career = ({ articles }) => {
           <Grid item xs={12} sm={12} md={12} className={styles.pagination}>
             <Pagination
               className={styles.paginationBlock}
-              color="secondary"
+              color="primary"
               count={Math.ceil(articles.length / pageSize)}
               page={page}
               variant="outlined"
