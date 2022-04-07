@@ -1,74 +1,50 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Link from 'next/Link';
 import styles from './NavIntroduce.module.scss';
 import MenuIcon from '@material-ui/icons/Menu';
-import { GrFormClose } from 'react-icons/gr';
+import { AiOutlineClose } from 'react-icons/ai';
 import nav from '../../../constants/navsBar.json';
 import { Context } from '../../../constants/Context';
+import { Container } from '@material-ui/core';
+import clsx from 'clsx';
 
 export default function NavIntroduce() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [active, setActive] = useState(0);
+  const [isMenu, setIsMenu] = useState(false);
   const { introduceTpye, setIntroduceType } = useContext(Context);
   const handleClickNav = (idNav) => {
-    // setActive(index);
-    setIsMobile(false);
     setIntroduceType(idNav);
+    setIsMenu(false);
   };
+  const handleClose = () => setIsMenu(false);
   return (
     <div className={styles.Main}>
-      <div className={styles.NavIntroduce}>
-        <div className={styles.ModuleContent}>
-          {nav[1].list &&
-            nav[1].list.map((data, index) => (
-              <div className={styles.container} key={index}>
-                <ul>
-                  <Link href={`#${data.idNav}`}>
-                    <li
-                      onClick={() => handleClickNav(data.idNav)}
-                      className={
-                        introduceTpye === data.idNav ? styles.items : null
-                      }
-                    >
-                      {data.title}
-                    </li>
-                  </Link>
-                </ul>
-              </div>
-            ))}
-        </div>
-      </div>
-      <div className={styles.test}>
-        <div className={styles.btnWrapper} onClick={() => setIsMobile(true)}>
-          <div className={styles.btnNav}>
-            GIỚI THIỆU <MenuIcon />
-          </div>
-        </div>
-      </div>
       <div
-        className={styles.mobile}
-        style={{
-          transform: isMobile
-            ? 'translate(-1000px, -7px)'
-            : 'translate(0px, -7px)',
-        }}
+        className={clsx(styles.NavIntroduce, {
+          [styles.show]: isMenu === true,
+        })}
       >
-        <div className={styles.Navmobile} style={{ position: 'relative' }}>
-          <div className={styles.iconClose} onClick={() => setIsMobile(false)}>
-            <GrFormClose />
-          </div>
+        <Container className={styles.ModuleContent}>
           {nav[1].list &&
             nav[1].list.map((data, index) => (
-              <ul
-                key={index}
-                onClick={() => handleClickNav(index)}
-                className={Number(active) === index ? styles.items : null}
-              >
-                <Link href={`#${data.idNav}`}>
-                  <li>{data.title}</li>
-                </Link>
-              </ul>
+              <Link href={`#${data.idNav}`} key={index}>
+                <li
+                  onClick={() => handleClickNav(data.idNav)}
+                  className={clsx({
+                    [styles.active]: introduceTpye === data.idNav,
+                  })}
+                >
+                  {data.title}
+                </li>
+              </Link>
             ))}
+          <div className={styles.close} onClick={handleClose}>
+            <AiOutlineClose />
+          </div>
+        </Container>
+      </div>
+      <div className={styles.btnWrapper} onClick={() => setIsMenu(true)}>
+        <div className={styles.btnNav}>
+          GIỚI THIỆU <MenuIcon />
         </div>
       </div>
     </div>

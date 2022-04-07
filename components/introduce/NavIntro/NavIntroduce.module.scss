@@ -1,4 +1,5 @@
 .Main {
+  position: relative;
   .NavIntroduce {
     max-width: 1440px;
     z-index: 999;
@@ -8,166 +9,154 @@
     height: 46px;
     background: var(--hover-color-);
     .ModuleContent {
-      max-width: 1060px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-items: center;
-      .container {
-        margin: 0 auto;
-        ul {
-          list-style: none;
-          .items {
-            border-bottom: 2px solid var(--primary-color-);
-          }
-          li {
-            cursor: pointer;
-            text-transform: uppercase;
-            color: var(--primary-color-);
-            font-size: 13px;
-            padding: 12px 0;
-            font-weight: 500;
-            &:hover {
-              border-bottom: 2px solid var(--primary-color-);
-            }
-          }
+      justify-content: space-between;
+      li {
+        cursor: pointer;
+        text-transform: uppercase;
+        color: var(--primary-color-);
+        font-size: 13px;
+        padding: 12px 0;
+        font-weight: 500;
+        list-style: none;
+        position: relative;
+        &::before {
+          content: '';
+          width: 100%;
+          height: 2px;
+          background-color: transparent;
+          position: absolute;
+          bottom: 0;
+          left: 0;
         }
+        &:hover {
+          &::before {
+            background-color: var(--primary-color-);
+
+          } 
+        }
+      }
+      li.active {
+        &::before {
+          background-color: var(--primary-color-);
+
+        }
+
+      }
+      .close {
+        display: none;
       }
     }
   }
   .test {
     display: none;
   }
-  .mobile {
-    display: none;
-  }
-  @media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 960px) {
+  .Main {
     .NavIntroduce {
-      display: none;
-    }
-    .test {
-      display: block;
+      position: fixed;
+      width: 50vw;
+      height: 400px;
       right: 0;
-      max-width: 1140px;
-      margin: 0 auto;
-      background: black;
-      .btnWrapper {
-        z-index: 99;
-        display: block;
-        position: fixed;
-        color: #fff;
-        margin-top: 22px;
-        border: none;
-        top: 110px;
-        right: 10px;
-        .btnNav {
-          cursor: pointer;
-          top: 0px;
-          background: var(--hover-color-);
-          color: var(--primary-color-);
-          width: 126px;
-          height: 36px;
-          font-size: 15px;
+      transform: translateX(120%);
+      top: 80px;
+      transition: all 0.4s ease-in-out;
+      .ModuleContent {
+        display: flex;
+        flex-direction: column;
+        background: var(--hover-color-);
+        justify-content: flex-start;
+        position: relative;
+        padding: 35px 0;
+        li { 
+          width: 100%;
+          padding-left: 20px;
+          &::before {
+            display: none;
+          }
+          &:hover {
+            background-color: var(--primary-color-);
+          color: #fff;
+          }
+        }
+        .close {
+          position: absolute;
+          background-color: #fff;
+          top: 0;
+          right: 0;
           display: flex;
-          padding: 7px;
-          font-weight: 500;
           svg {
-            margin-left: 10px;
-            font-size: 1.4em;
+            margin: auto;
+            font-size: 30px;
+            color: var(--hover-color-);
           }
         }
       }
     }
-    .mobile {
+    .NavIntroduce.show {
+      transform: translateX(0);
+      .ModuleContent {
+        
+        li.active {
+          background-color: var(--primary-color-);
+          color: #fff;
+        }
+      }
+
+    }
+    .btnWrapper {
+      z-index: 99;
       display: block;
       position: fixed;
-      z-index: 100;
-      top: 137px;
-      right: -1000px;
-      width: 50%;
-      transition: all 0.5s ease-in-out;
-      background: var(--hover-color-);
-      box-shadow: 0 0 10px rgb(0 0 0 / 66%);
-      .Navmobile {
-        margin-top: 45px;
-        .iconClose {
-          position: absolute;
-          top: -45px;
-          right: 0;
-          width: 50px;
-          height: 40px;
+      color: #fff;
+      border: none;
+      top: 80px;
+      right: 10px;
+      .btnNav {
+        display: flex;
+        cursor: pointer;
+        background: var(--hover-color-);
+        color: var(--primary-color-);
+        padding: 0 10px;
+        height: 36px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        svg {
+          margin-left: 10px;
           font-size: 1.4em;
-          background: #fff;
-          width: auto;
-          padding: 1px 8px;
-          font-weight: bolder;
-          cursor: pointer;
-          svg {
-            font-weight: 700;
-            font-size: 38px;
-          }
-        }
-        ul {
-          cursor: pointer;
-          margin: 0;
-          list-style: none;
-          padding: 10px;
-          color: var(--primary-color-);
-          li {
-            font-size: 16px;
-            display: block;
-            text-decoration: none;
-            text-transform: uppercase;
-            padding: 0 20px;
-            font-weight: 500;
-          }
-        }
-        .items {
-          background: #fff;
           color: var(--primary-color-);
         }
       }
     }
   }
-  @media screen and (max-width: 960px) {
-    .test {
-      .btnWrapper {
-        z-index: 99;
-        display: block;
-        position: fixed;
-        color: white;
-        margin-top: 22px;
-        border: none;
-        top: 65px;
-        right: 10px;
-        .btnNav {
-        }
+}
+@media screen and (max-width: 600px) {
+  .Main {
+    .NavIntroduce {
+      position: fixed;
+      width: 100vw;
+      height: 400px;
+      right: 0;
+      transform: translateX(120%);
+      top: 65px;
+      transition: all 0.4s ease-in-out;
+      .ModuleContent { 
       }
     }
-    .mobile {
-      top: 94px;
-      width: 50%;
-    }
-  }
-  @media screen and (max-width: 600px) {
-    .test {
-      .btnWrapper {
-        z-index: 99;
-        display: block;
-        position: fixed;
-        color: white;
-        margin-top: 22px;
-        border: none;
-        top: 39px;
-        right: 10px;
-        .btnNav {
+    .btnWrapper {
+      top: 65px;
+      .btnNav {
+        font-family: Open Sans;
+        font-weight: 600;
+        font-size: 13px;
+        svg {
         }
       }
-    }
-    .mobile {
-      top: 68px;
-      width: 100%;
-      height: 100%;
     }
   }
 }
