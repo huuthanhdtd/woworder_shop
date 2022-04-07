@@ -12,10 +12,7 @@ export default function Page7() {
           <Grid item sm={12} md={12} lg={2}>
             <div className={styles.all}>
               <Link href="/">
-                <img
-                  src="https://www.novaland.com.vn/Data/Sites/1/media/Default/icon_qtux.png"
-                  alt=""
-                />
+                <img src="/gioi-thieu/icon.png" alt="" />
               </Link>
             </div>
           </Grid>

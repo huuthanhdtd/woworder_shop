@@ -11,7 +11,6 @@ export default function NavIntroduce() {
   const handleClickNav = (index) => {
     setActive(index);
     setIsMobile(false);
-    console.log(index);
   };
   return (
     <div className={styles.Main}>

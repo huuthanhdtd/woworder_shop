@@ -9,18 +9,17 @@
     text-transform: uppercase;
     text-align: center;
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: 3px;
       width: 80px;
-      background: var(--border-color-);
+      background: var(--hover-color-);
       margin: 10px auto 25px;
     }
   }
-  .banner{
-    img{
+  .banner {
+    img {
       width: 100%;
     }
   }
 }
-

@@ -10,46 +10,46 @@
     text-transform: uppercase;
     text-align: center;
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: 3px;
       width: 80px;
-      background: var(--border-color-);
+      background: var(--hover-color-);
       margin: 10px auto 25px;
     }
   }
-  .page2_about{
+  .page2_about {
     margin: 0 auto;
     width: 80%;
     display: flex;
-    .mrb10{
+    .mrb10 {
       flex: 2;
     }
-    .vision{
+    .vision {
       flex: 4;
       padding: 0 13.125px;
       text-align: justify;
-      p{
-        span{
+      p {
+        span {
           display: block;
-            text-align: center;
-            color: #f79646;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-bottom: 14px;
+          text-align: center;
+          color: var(--primary-color-);
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-bottom: 14px;
         }
       }
     }
-    .mission{
-      flex:4;
+    .mission {
+      flex: 4;
       padding: 0 13.125px;
       text-align: justify;
-      p{
-         span{ 
-           display: block;
+      p {
+        span {
+          display: block;
           text-align: center;
-          color: #f79646;
-          text-Transform: Uppercase;
+          color: var(--primary-color-);
+          text-transform: Uppercase;
           font-weight: bold;
           margin-bottom: 14px;
         }
@@ -59,8 +59,8 @@
 }
 @media screen and (max-width: 960px) {
   .page2 {
-    .page2_about{
-      .mrb10{
+    .page2_about {
+      .mrb10 {
         display: none;
       }
     }
@@ -69,20 +69,20 @@
 @media screen and (max-width: 600px) {
   .page2 {
     width: 100%;
-    .page2_about{
+    .page2_about {
       margin: 0 auto;
       width: 93%;
       display: block;
-      .mrb10{
+      .mrb10 {
         flex: 2;
       }
-      .vision{
+      .vision {
         flex: 4;
         padding: 0 13.125px;
         text-align: justify;
       }
-      .mission{
-        flex:4;
+      .mission {
+        flex: 4;
         padding: 0 13.125px;
         text-align: justify;
       }

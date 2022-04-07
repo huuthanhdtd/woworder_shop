@@ -9,26 +9,25 @@
     text-transform: uppercase;
     text-align: center;
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: 3px;
       width: 80px;
-      background: var(--border-color-);
+      background: var(--hover-color-);
       margin: 10px auto 25px;
     }
   }
-  p{
-      width: 80%;
-      margin: 0 auto;
-      margin-bottom: 30px;
-      text-align: justify;
+  p {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: justify;
   }
 }
 @media screen and (max-width: 600px) {
   .page6 {
-    p{
+    p {
       width: 93%;
-  }
+    }
   }
 }
-

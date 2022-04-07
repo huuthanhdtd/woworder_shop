@@ -19,7 +19,7 @@ export default function Introduce() {
     router.push(`#${introduceTpye}`);
   }, [introduceTpye]);
   return (
-    <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '1440px', margin: '0 auto', color: '#000' }}>
       <NavIntroduce />
       {data.list.map((item, index) => (
         <div key={index} id={item.idNav}>

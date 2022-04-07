@@ -10,40 +10,40 @@
     text-transform: uppercase;
     text-align: center;
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: 3px;
       width: 80px;
-      background: var(--border-color-);
+      background: var(--hover-color-);
       margin: 10px auto 25px;
     }
   }
   .page3_about {
-        p{
-          text-align: center;
-          font-weight: bold;
-          color: #b28b64;
-          margin-bottom: 40px;
-        }
+    p {
+      text-align: center;
+      font-weight: bold;
+      color: var(--primary-color-);
+      margin-bottom: 40px;
+    }
   }
-  .banner{
+  .banner {
     width: 100%;
-  margin-bottom: 30px;
-    img{
+    margin-bottom: 30px;
+    img {
       width: 100%;
     }
   }
 }
 @media screen and (max-width: 600px) {
-    .page3_about {
-      width: 93%;
-      margin: 0 auto;
-      padding: 0 13.125px;
-    }
-    .banner{
+  .page3_about {
+    width: 93%;
+    margin: 0 auto;
+    padding: 0 13.125px;
+  }
+  .banner {
+    width: 100%;
+    img {
       width: 100%;
-      img{
-        width: 100%;
-      }
     }
+  }
 }
