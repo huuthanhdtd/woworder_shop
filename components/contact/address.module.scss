@@ -83,8 +83,12 @@
     }
     Button {
       width: 100%;
-      background-color: var(--primary-color-);
-      color: #fff;
+      background-color: var(--hover-color-);
+      color: var(--primary-color-);
+      &:hover {
+        background: var(--primary-color-);
+        color: var(--hover-color-);
+      }
     }
   }
 }

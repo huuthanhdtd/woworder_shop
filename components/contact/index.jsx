@@ -4,20 +4,15 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import Address from './Address';
 import Map from './Map';
+import { AiOutlineRight } from 'react-icons/ai';
 
 export default function Index() {
   return (
     <div className={styles.contact}>
-      <div className={styles.menuContact}>
-        <ul>
-          <li>
-            <Link href="/">trang chủ</Link>
-          </li>
-          <li>&gt;</li>
-          <li>
-            <Link href="/Lien-he">Liên hệ</Link>
-          </li>
-        </ul>
+      <div className={styles.newsBar}>
+        <Link href="/">Trang chủ</Link>
+        <AiOutlineRight className={styles.arrowIcon} />
+        <Link href="/lien-he">Liên hệ</Link>
       </div>
       <Grid container spacing={4} className={styles.Main}>
         <Grid

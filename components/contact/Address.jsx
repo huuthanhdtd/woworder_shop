@@ -93,7 +93,7 @@ export default function Address() {
           variant="outlined"
           name="address"
           type="text"
-          label="địa chỉ"
+          label="Địa chỉ"
           className={styles.text}
         />
         <TextField
@@ -101,7 +101,7 @@ export default function Address() {
           variant="outlined"
           name="email"
           type="email"
-          label="email"
+          label="Email"
           className={styles.textb}
         />
         <TextField
