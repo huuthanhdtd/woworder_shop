@@ -45,7 +45,6 @@ export default function Address({ setMaps }) {
   }, [selects]);
   const handleSelects = (e) => {
     setSelects(e.target.value);
-    console.log(e.target.value);
   };
   return (
     <div className={styles.address}>
@@ -64,11 +63,7 @@ export default function Address({ setMaps }) {
           </select>
         </div>
       </div>
-      <Grid
-        container
-        spacing={2}
-        style={{ marginBottom: '10px', height: '208px' }}
-      >
+      <Grid container spacing={2} style={{ marginBottom: '10px' }}>
         <Grid item xs={12} sm={12} md={6}>
           {ab &&
             ab.map((data, index) => (
