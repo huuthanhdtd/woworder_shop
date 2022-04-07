@@ -25,7 +25,8 @@ function HeaderNavBar({ setIsNavBar }) {
       setIsPushIntro(false);
     }
   };
-  const handleClickNavIntro = (link) => {
+  const handleClickNavIntro = (idNav, link, type) => {
+    handleClickMenuIntroduce(idNav, link, type);
     if (isPushIntro === false && link === '/gioi-thieu') {
       router.push('/gioi-thieu');
       setIsPushIntro(true);
@@ -59,14 +60,10 @@ function HeaderNavBar({ setIsNavBar }) {
           {nav.list && (
             <ul className={styles.navsItem}>
               {navs[index].list.map((item, i) => (
-                <li
-                  key={i}
-                  className={clsx(styles.navsItemLi)}
-                  onClick={() => handleClickNavIntro(item.link)}
-                >
+                <li key={i} className={clsx(styles.navsItemLi)}>
                   <h5
                     onClick={() =>
-                      handleClickMenuIntroduce(item.idNav, item.link, item.type)
+                      handleClickNavIntro(item.idNav, item.link, item.type)
                     }
                   >
                     {item.title.toUpperCase()}

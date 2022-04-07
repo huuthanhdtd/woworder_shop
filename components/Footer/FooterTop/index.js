@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './styles.module.scss';
 import { Container, Grid } from '@material-ui/core';
 import navs from '../../../constants/navsBar.json';
+import { Context } from '../../../constants/Context';
+import { useRouter } from 'next/router';
 
 function FooterTop() {
+  const router = useRouter();
+
+  const { handleClickMenuIntroduce, setIsPushIntro, isPushIntro } =
+    useContext(Context);
+
+  const handleClickMenuFooter = (idNav, link, type) => {
+    handleClickMenuIntroduce(idNav, link, type);
+    if (isPushIntro === false && link === '/gioi-thieu') {
+      router.push('/gioi-thieu');
+      setIsPushIntro(true);
+    }
+  };
   return (
     <Container maxWidth="lg" className={styles.all}>
       <div className={styles.footerTop}>
@@ -21,9 +35,13 @@ function FooterTop() {
             )}
             {item.list &&
               navs[index].list.map((it, i) => (
-                <a key={i} href="#">
+                <h6
+                  onClick={() =>
+                    handleClickMenuFooter(it.idNav, it.link, it.type)
+                  }
+                >
                   {`${it.title[0].toUpperCase()}${it.title.slice(1)}`}
-                </a>
+                </h6>
               ))}
           </Grid>
         ))}

@@ -13,10 +13,12 @@ import { useRouter } from 'next/router';
 
 const data = navs[1];
 export default function Introduce() {
-  const { introduceTpye } = useContext(Context);
+  const { introduceTpye, isPushIntro } = useContext(Context);
   const router = useRouter();
   useEffect(() => {
-    router.push(`#${introduceTpye}`);
+    if (isPushIntro === true) {
+      router.push(`#${introduceTpye}`);
+    }
   }, [introduceTpye]);
   return (
     <div style={{ maxWidth: '1440px', margin: '0 auto', color: '#000' }}>

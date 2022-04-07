@@ -15,14 +15,15 @@ export default function ContextProvider({ children }) {
     setType(type);
     setIsActive(type);
   };
-  const handleClickMenuIntroduce = (idNav, link, type) => {
+  const handleClickMenuIntroduce = (idNav, link, typePj) => {
     if (link !== '/gioi-thieu') {
       router.push(`/${link}`);
+      setIsPushIntro(false);
     }
     setIntroduceType(idNav);
     setFilters(true);
-    setType(type);
-    setIsActive(type);
+    setType(typePj);
+    setIsActive(typePj);
   };
 
   const value = {
