@@ -40,6 +40,9 @@
           width: fit-content;
           transition: all 0.5s ease;
           cursor: pointer;
+          a {
+            color: var(--primary-color-);
+          }
           &::after {
             content: '';
             position: absolute;
@@ -50,7 +53,10 @@
             background: var(--hover-color-);
           }
           &:hover {
-            color: var(--hover-color-);
+            a {
+              color: var(--hover-color-);
+              transition: inherit;
+            }
           }
         }
         .listNews {

@@ -42,13 +42,13 @@ export const Categories = ({ articles, title }) => {
         </div>
         <Grid container justifyContent="center" className={styles.categoryNews}>
           <Grid item lg={7} md={11} sm={10} xs={11}>
-            <Link href={`/tin-tuc/${title.attributes.slug}`}>
-              <Typography variant="h5" className={styles.category}>
+            <Typography variant="h5" className={styles.category}>
+              <Link href={`/tin-tuc/${title.attributes.slug}`} target="_blank">
                 {title.attributes.name === 'tuyển dụng'
                   ? 'Tin tức dự án'
                   : 'Tin tức thị trường'}
-              </Typography>
-            </Link>
+              </Link>
+            </Typography>
             <Grid container spacing={2}>
               {data.map((article, index) => (
                 <Grid key={index} item md={4} sm={6} xs={12}>

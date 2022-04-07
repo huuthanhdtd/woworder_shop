@@ -35,9 +35,11 @@
       width: fit-content;
       padding: 0 0 10px;
       margin-bottom: 20px;
-      color: var(--primary-color-);
       transition: all 0.5s ease;
       cursor: pointer;
+      a {
+        color: var(--primary-color-);
+      }
       &::before {
         content: '';
         position: absolute;
@@ -48,7 +50,10 @@
         bottom: 5px;
       }
       &:hover {
-        color: var(--hover-color-);
+        a {
+          color: var(--hover-color-);
+          transition: inherit;
+        }
       }
     }
     .pagination {

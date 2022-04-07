@@ -6,7 +6,6 @@ import styles from './ListsMenu.module.scss';
 
 const ListsMenu = () => {
   const router = useRouter();
-
   return (
     <div className={styles.container}>
       <List className={styles.listsMenu}>
@@ -20,7 +19,6 @@ const ListsMenu = () => {
         >
           <Link href="/tin-tuc/tuyen-dung">Tin tức dự án</Link>
         </MenuItem>
-
         <MenuItem>
           <Link href="/tin-tuc ">Video</Link>
         </MenuItem>

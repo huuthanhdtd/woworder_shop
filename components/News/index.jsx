@@ -34,11 +34,9 @@ const NewsPage = ({ articles, title }) => {
             className={styles.contentNews}
           >
             <div className={styles.boardNews}>
-              <Link href="/tin-tuc/tin-tuc">
-                <Typography className={styles.nameCategory} variant="h5">
-                  Tin tức thị trường
-                </Typography>
-              </Link>
+              <Typography className={styles.nameCategory} variant="h5">
+                <Link href="/tin-tuc/tin-tuc">Tin tức thị trường</Link>
+              </Typography>
               <Grid container spacing={1} justifyContent="center">
                 <Grid item md={7} sm={7} xs={12}>
                   {articles.slice(0, 1).map((article, index) => (
@@ -57,11 +55,9 @@ const NewsPage = ({ articles, title }) => {
               </Grid>
             </div>
             <div className={styles.boardNews}>
-              <Link href="/tin-tuc/tuyen-dung">
-                <Typography className={styles.nameCategory} variant="h5">
-                  Tin Dự án
-                </Typography>
-              </Link>
+              <Typography className={styles.nameCategory} variant="h5">
+                <Link href="/tin-tuc/tuyen-dung">Tin Dự án</Link>
+              </Typography>
               <Grid container spacing={1} justifyContent="center">
                 <Grid item md={7} sm={7} xs={12}>
                   {articles.slice(0, 1).map((article, index) => (
