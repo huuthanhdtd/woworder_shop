@@ -31,17 +31,19 @@
         span.active_tabs {
           transition: all 0.3s ease-in-out;
           background: var(--hover-color-);
+          color: var(--primary-color-);
         }
         span {
           cursor: pointer;
           text-decoration: none;
           background: var(--primary-color-);
-          color: #fff;
+          color: var(--hover-color-);
           padding: 5px 10px;
           font-weight: 400;
           &:hover {
             transition: all 0.3s ease-in-out;
             background: var(--hover-color-);
+            color: var(--primary-color-);
           }
         }
       }
