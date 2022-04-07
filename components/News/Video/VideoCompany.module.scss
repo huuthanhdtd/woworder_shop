@@ -3,6 +3,7 @@
   background: rgb(243, 240, 240);
   margin-bottom: 20px;
   height: 100%;
+
   h5 {
     text-transform: uppercase;
     font-family: 'Open Sans', Arial, sans-serif;
@@ -61,5 +62,16 @@
     height: 400px;
     background: black;
     margin: auto;
+    position: relative;
+    .close {
+      background: var(--hover-color-);
+      color: var(--primary-color-);
+      font-size: 30px;
+      position: absolute;
+      right: 0;
+      top: -2px;
+      transform: translateX(105%);
+      cursor: pointer;
+    }
   }
 }

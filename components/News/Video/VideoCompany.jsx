@@ -9,6 +9,7 @@ import React from 'react';
 import { useState } from 'react';
 import styles from './VideoCompany.module.scss';
 import { BsCaretRightFill } from 'react-icons/bs';
+import { FaWindowClose } from 'react-icons/fa';
 
 const VideoCompany = ({ articles }) => {
   const [open, setOpen] = useState(false);
@@ -53,6 +54,11 @@ const VideoCompany = ({ articles }) => {
       >
         <Fade in={open}>
           <div className={styles.videoYoutube}>
+            <FaWindowClose
+              className={styles.close}
+              fontSize={30}
+              onClick={handleClose}
+            />
             <iframe
               width="100%"
               height="100%"
