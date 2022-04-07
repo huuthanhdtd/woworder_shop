@@ -16,12 +16,8 @@ export default function ContextProvider({ children }) {
     setIsActive(type);
   };
   const handleClickMenuIntroduce = (idNav, link, type) => {
-    // if (isPushIntro === true) {
-    //   router.push('/gioi-thieu');
-    //   setIsPushIntro(false);
-    // }
-    if (link === '/du-an') {
-      router.push(`/du-an`);
+    if (link !== '/gioi-thieu') {
+      router.push(`/${link}`);
     }
     setIntroduceType(idNav);
     setFilters(true);

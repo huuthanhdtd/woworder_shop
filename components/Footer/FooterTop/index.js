@@ -1,55 +1,13 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { Container, Grid } from '@material-ui/core';
+import navs from '../../../constants/navsBar.json';
 
 function FooterTop() {
-  const footerList = [
-    {
-      title: 'Giới thiệu',
-      list: [
-        'Giới thiệu chung',
-        'Tầm nhìn - Sứ mệnh',
-        'Giá trị cốt lõi',
-        'Lịch sử phát triển',
-        'Ban ãnh đạo',
-        'Giải thưởng',
-        'Bộ quy tắc ứng sử',
-      ],
-    },
-
-    {
-      title: 'Dự án',
-      list: ['Bất động sản Đô thị', 'Bất động sản Đô thị Du lịch'],
-    },
-    {},
-    {
-      title: 'Tin tức',
-      list: [
-        'Thông tin thị trường',
-        'Thông tin Novaland',
-        'Thông tin báo chí',
-        'Video',
-      ],
-    },
-    {
-      title: 'Phát triển bền vững',
-      list: [
-        'Hội đồng phát triển bền vững',
-        'Quản trị Tập đoàn',
-        'Quản trị nguồn nhân lực',
-        'Quản trị thương hiệu Novaland',
-        'Môi trường',
-        'Hoạt động Cộng đồng',
-      ],
-    },
-    {
-      title: 'Tuyển dụng',
-    },
-  ];
   return (
     <Container maxWidth="lg" className={styles.all}>
       <div className={styles.footerTop}>
-        {footerList.map((footerItem, index) => (
+        {navs.map((item, index) => (
           <Grid
             className={styles.footerNovalandItem}
             item
@@ -58,11 +16,13 @@ function FooterTop() {
             lg={2}
             key={index}
           >
-            {footerItem.title && <h2>{footerItem.title}</h2>}
-            {footerItem.list &&
-              footerList[index].list.map((item, i) => (
+            {item.title && (
+              <h2>{`${item.title[0].toUpperCase()}${item.title.slice(1)}`}</h2>
+            )}
+            {item.list &&
+              navs[index].list.map((it, i) => (
                 <a key={i} href="#">
-                  {item}
+                  {`${it.title[0].toUpperCase()}${it.title.slice(1)}`}
                 </a>
               ))}
           </Grid>
