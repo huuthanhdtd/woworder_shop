@@ -5,6 +5,8 @@ export default function ContextProvider({ children }) {
   const [type, setType] = useState(null);
   const [isFilter, setFilters] = useState(false);
   const [isActive, setIsActive] = useState(null);
+  const [isPushIntro, setIsPushIntro] = useState(false);
+
   const [introduceTpye, setIntroduceType] = useState(null);
   const router = useRouter();
 
@@ -14,7 +16,13 @@ export default function ContextProvider({ children }) {
     setIsActive(type);
   };
   const handleClickMenuIntroduce = (idNav, link, type) => {
-    router.push(`${link}`);
+    // if (isPushIntro === true) {
+    //   router.push('/gioi-thieu');
+    //   setIsPushIntro(false);
+    // }
+    if (link === '/du-an') {
+      router.push(`/du-an`);
+    }
     setIntroduceType(idNav);
     setFilters(true);
     setType(type);
@@ -31,6 +39,8 @@ export default function ContextProvider({ children }) {
     setIntroduceType,
     introduceTpye,
     setIsActive,
+    setIsPushIntro,
+    isPushIntro,
   };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

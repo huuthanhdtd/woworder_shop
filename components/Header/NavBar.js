@@ -8,16 +8,29 @@ import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
 
 function HeaderNavBar({ setIsNavBar }) {
-  const { handleClickMenuIntroduce, setType, setIsActive } =
-    useContext(Context);
+  const {
+    handleClickMenuIntroduce,
+    setType,
+    setIsActive,
+    setIsPushIntro,
+    isPushIntro,
+  } = useContext(Context);
   const router = useRouter();
 
   const handleClickNavItem = (index) => {
     setIsNavBar(false);
     setType(null);
     setIsActive(null);
+    if (index !== 1) {
+      setIsPushIntro(false);
+    }
   };
-  const handleClickNavIntro = () => {};
+  const handleClickNavIntro = (link) => {
+    if (isPushIntro === false && link === '/gioi-thieu') {
+      router.push('/gioi-thieu');
+      setIsPushIntro(true);
+    }
+  };
   return (
     <ul className={styles.headerNav}>
       {navs.map((nav, index) => (
@@ -49,7 +62,7 @@ function HeaderNavBar({ setIsNavBar }) {
                 <li
                   key={i}
                   className={clsx(styles.navsItemLi)}
-                  onClick={handleClickNavIntro}
+                  onClick={() => handleClickNavIntro(item.link)}
                 >
                   <h5
                     onClick={() =>
