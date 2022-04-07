@@ -35,7 +35,7 @@ function Detail({ project, projects }) {
                 {project.attributes.articles.data.map((article) => (
                   <Link
                     key={article.id}
-                    href={`/article/${article.attributes.slug}`}
+                    href={`/bai-viet/${article.attributes.slug}`}
                   >
                     {article.attributes.title}
                   </Link>
