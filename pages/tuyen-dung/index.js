@@ -2,12 +2,20 @@ import React from 'react';
 import Career from '../../components/Career';
 import styles from './styles.module.scss';
 import { fetchAPI } from '../../lib/api';
+import Seo from '../../components/seo';
 
 const CareerPage = ({ articles }) => {
+  const seo = {
+    metaTitle: 'Tuyển dụng',
+    metaDescription: `Career`,
+  };
   return (
-    <div className={styles.careerPage}>
-      <Career articles={articles} />
-    </div>
+    <>
+      <Seo seo={seo} />
+      <div className={styles.careerPage}>
+        <Career articles={articles} />
+      </div>
+    </>
   );
 };
 

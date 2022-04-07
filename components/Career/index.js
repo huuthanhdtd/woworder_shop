@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import Banner from '../../public/tuyen-dung-bg.jpg';
 import Image from 'next/image';
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, Typography } from '@material-ui/core';
 import NextImage from '../HomePage/News/HotNews/image';
-import { GoTriangleRight } from 'react-icons/go';
-import { BsClockHistory } from 'react-icons/bs';
 import Link from 'next/link';
 import { Pagination } from '@material-ui/lab';
 import { AiOutlineRight } from 'react-icons/ai';
+import { GoTriangleRight } from 'react-icons/go';
+
 const firstIndex = 0;
 const Career = ({ articles }) => {
-  const [active, setActive] = useState(1);
   const [pageSize, setPageSize] = useState(8);
   const [page, setPage] = useState(1);
   const [data, setData] = useState(articles.slice(0, 8));
@@ -32,7 +31,11 @@ const Career = ({ articles }) => {
         <Link href="/tuyen-dung">Tuyển dụng</Link>
       </div>
       <Container maxWidth="lg" className={styles.container}>
-        <h2>TUYỂN DỤNG</h2>
+        <Link href="/tuyen-dung">
+          <Typography variant="h5" className={styles.caption}>
+            Tuyển dụng
+          </Typography>
+        </Link>
         <Grid container spacing={2}>
           {data &&
             data.map((item, index) => (
@@ -51,7 +54,15 @@ const Career = ({ articles }) => {
                   </div>
                   <Link href="/">
                     <div className={styles.titleBlock}>
-                      <h2>{item.attributes.title}</h2>
+                      <h2>
+                        {`${item.attributes.description.slice(
+                          0,
+                          item.attributes.description
+                            .slice(0, 50)
+                            .lastIndexOf(' ')
+                        )}...`}{' '}
+                        <GoTriangleRight className={styles.rightIcon} />
+                      </h2>
                     </div>
                   </Link>
                   <h4>{item.attributes.description}</h4>
