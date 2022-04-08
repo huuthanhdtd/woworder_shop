@@ -36,6 +36,7 @@ function FooterTop() {
             {item.list &&
               navs[index].list.map((it, i) => (
                 <h6
+                  key={i}
                   onClick={() =>
                     handleClickMenuFooter(it.idNav, it.link, it.type)
                   }

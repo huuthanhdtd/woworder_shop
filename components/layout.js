@@ -3,10 +3,11 @@ import Footer from './Footer';
 import Header from './Header';
 import ContextProvider from '../constants/Context';
 import { useState, useEffect } from 'react';
+import { fetchAPI } from '../lib/api';
 
-const Layout = ({ children, categories, seo }) => {
+const Layout = ({ children, corpInfor }) => {
   const [scrollState, setScrollState] = useState(false);
-  //Scroll button
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollState(window.scrollY >= 100);
@@ -32,9 +33,10 @@ const Layout = ({ children, categories, seo }) => {
         <Header />
         {children}
         <ButtonToTop onClick={scrollToTop} show={scrollState} />
-        <Footer />
+        <Footer corpInfor={corpInfor} />
       </ContextProvider>
     </>
   );
 };
+
 export default Layout;

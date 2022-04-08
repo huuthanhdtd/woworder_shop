@@ -42,16 +42,6 @@
         overflow: hidden;
         background-color: #fff;
         border-bottom: 1px solid var(--border-color-);
-
-        .times {
-          display: flex;
-          align-items: center;
-          margin-bottom: 6px;
-          h3 {
-            margin: 4px;
-            font-size: 14px;
-          }
-        }
         .titleBlock {
           display: flex;
           align-items: center;
@@ -145,11 +135,6 @@
       .newsList {
         .content {
           margin-top: 0;
-          .times {
-            h3 {
-              font-size: 12px;
-            }
-          }
           .titleBlock {
             h2 {
               font-size: 14px;

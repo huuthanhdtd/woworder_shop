@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import { Container, Grid } from '@material-ui/core';
-
 import {
   FaTiktok,
   FaFacebookF,
@@ -10,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import clsx from 'clsx';
 
-function FooterBottom() {
+function FooterBottom({ corpInfor }) {
   return (
     <Container maxWidth="lg">
       <div className={styles.footerLast}>
@@ -28,10 +27,18 @@ function FooterBottom() {
         </Grid>
         <Grid className={styles.footerLastIcon} item xs={12} sm={12} lg={4}>
           <span className={styles.footerLastIconTop}>
-            <FaFacebookF className={clsx(styles.icon, styles.iconFb)} />
-            <FaYoutubeSquare className={clsx(styles.icon, styles.iconYt)} />
-            <FaInstagram className={clsx(styles.icon, styles.iconIns)} />
-            <FaTiktok className={clsx(styles.icon, styles.iconTiktok)} />
+            <a href={corpInfor.attributes.facbook_page}>
+              <FaFacebookF className={clsx(styles.icon, styles.iconFb)} />
+            </a>
+            <a href={corpInfor.attributes.youtube}>
+              <FaYoutubeSquare className={clsx(styles.icon, styles.iconYt)} />
+            </a>
+            <a href={corpInfor.attributes.Instagram}>
+              <FaInstagram className={clsx(styles.icon, styles.iconIns)} />
+            </a>
+            <a href={corpInfor.attributes.tiktok}>
+              <FaTiktok className={clsx(styles.icon, styles.iconTiktok)} />
+            </a>
           </span>
         </Grid>
       </div>

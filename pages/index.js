@@ -1,6 +1,4 @@
 import React from 'react';
-import Articles from '../components/articles';
-import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { fetchAPI } from '../lib/api';
 import HomePage from './trang-chu';
@@ -22,6 +20,7 @@ export async function getStaticProps() {
       fetchAPI('/categories', { populate: '*' }),
       fetchAPI('/slides', { populate: '*' }),
       fetchAPI('/projects', { populate: '*' }),
+
       fetchAPI('/homepage', {
         populate: {
           hero: '*',

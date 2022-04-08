@@ -37,14 +37,6 @@ function NewsMarket({ articles }) {
           {news &&
             news.map((item, index) => (
               <div key={index} className={styles.content}>
-                <div className={styles.times}>
-                  <BsClockHistory style={{ fontSize: 20 }} />
-                  <h3>
-                    {new Intl.DateTimeFormat('en-GB').format(
-                      new Date(item.attributes.updatedAt)
-                    )}
-                  </h3>
-                </div>
                 <Link href="/">
                   <div className={styles.titleBlock}>
                     <h2>

@@ -3,11 +3,11 @@ import FooterBottom from './FooterBottom';
 import FooterTop from './FooterTop';
 import styles from './styles.module.scss';
 
-const Footer = () => {
+const Footer = ({ corpInfor }) => {
   return (
     <div className={styles.footer}>
       <FooterTop />
-      <FooterBottom />
+      <FooterBottom corpInfor={corpInfor} />
     </div>
   );
 };

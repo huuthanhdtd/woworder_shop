@@ -11,8 +11,7 @@ import Layout from '../components/layout';
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global } = pageProps;
-
+  const { global, corpInfor } = pageProps;
   return (
     <>
       <Head>
@@ -22,7 +21,7 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <Layout>
+        <Layout corpInfor={corpInfor}>
           <Component {...pageProps} />
         </Layout>
       </GlobalContext.Provider>
@@ -38,16 +37,24 @@ MyApp.getInitialProps = async (ctx) => {
   // Calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Tpcapi
-  const globalRes = await fetchAPI('/global', {
-    populate: {
-      favicon: '*',
-      defaultSeo: {
-        populate: '*',
+
+  const [globalRes, corpRes] = await Promise.all([
+    fetchAPI('/global', {
+      populate: {
+        favicon: '*',
+        defaultSeo: {
+          populate: '*',
+        },
       },
-    },
-  });
+    }),
+    fetchAPI('/corp-infor'),
+  ]);
+
   // Pass the data to our page via props
-  return { ...appProps, pageProps: { global: globalRes.data } };
+  return {
+    ...appProps,
+    pageProps: { global: globalRes.data, corpInfor: corpRes.data },
+  };
 };
 
 export default MyApp;

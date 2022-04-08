@@ -11,16 +11,6 @@
       .imageHot {
       }
 
-      .times {
-        display: flex;
-        align-items: center;
-        padding: 0 10px;
-        margin-bottom: 6px;
-        h3 {
-          margin: 4px;
-          font-size: 14px;
-        }
-      }
       .titleBlock {
         display: flex;
         align-items: center;
@@ -83,9 +73,7 @@
   .hotNews {
     .newsContentItem {
       .content {
-        .times {
-          font-size: 10px;
-        }
+        
         .titleBlock {
           h2 {
             margin: 0 6px;
