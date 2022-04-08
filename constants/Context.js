@@ -17,7 +17,7 @@ export default function ContextProvider({ children }) {
   };
   const handleClickMenuIntroduce = (idNav, link, typePj) => {
     if (link !== '/gioi-thieu') {
-      router.push(`/${link}`);
+      router.push(`${link}`);
       setIsPushIntro(false);
     }
     setIntroduceType(idNav);

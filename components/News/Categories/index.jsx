@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Grid, Typography } from '@material-ui/core';
 import BannerMain from '../Banner/Banner';
@@ -16,9 +16,6 @@ export const Categories = ({ articles, title }) => {
   const [pageSize, setPageSize] = useState(5);
   const [page, setPage] = useState(1);
   const [data, setData] = useState(articles.slice(firstIndex, pageSize));
-  useEffect(() => {
-    setData(articles.slice(0, pageSize));
-  }, [articles, pageSize]);
   const handleChange = (event, value) => {
     setPage(value);
     setData(
