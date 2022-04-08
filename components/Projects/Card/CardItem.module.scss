@@ -11,7 +11,7 @@ $OpensSans: 'Opens sans', sans-serif;
     width: 100%;
     height: 100%;
     cursor: pointer;
-    transition: inherit;
+    transition: all 0.5s ease;
     &:hover {
       transform: scale(1.1);
     }

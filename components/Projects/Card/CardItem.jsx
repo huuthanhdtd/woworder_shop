@@ -9,8 +9,8 @@ function CardProject({ project }) {
     <>
       <Link href={`/du-an/${project.attributes.slug}`}>
         <div className={styles.container}>
-          {/* <NextImage image={project.attributes.image} /> */}
-          <img src={`/Du-an/${project.id}.jpg`} alt="" />
+          <NextImage image={project.attributes.image} />
+          {/* <img src={`/Du-an/${project.id}.jpg`} alt="" /> */}
           <div className={styles.title}>
             <Typography variant="h6">{project.attributes.title}</Typography>
           </div>
