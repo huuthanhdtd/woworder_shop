@@ -7,7 +7,6 @@ import { fetchAPI } from '../lib/api';
 
 const Layout = ({ children, corpInfor }) => {
   const [scrollState, setScrollState] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollState(window.scrollY >= 100);
@@ -33,7 +32,7 @@ const Layout = ({ children, corpInfor }) => {
         <Header />
         {children}
         <ButtonToTop onClick={scrollToTop} show={scrollState} />
-        <Footer corpInfor={corpInfor} />
+        {corpInfor !== undefined && <Footer corpInfor={corpInfor} />}
       </ContextProvider>
     </>
   );
