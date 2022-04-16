@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Button, Grid, TextField } from '@material-ui/core';
 import Link from 'next/link';
 import styles from './address.module.scss';
-import isEmpty from 'validator/lib/isEmpty';
-import isEmail from 'validator/lib/isEmail';
-import axios from 'axios';
-import TransitionsModal from './Modal';
+// import isEmpty from 'validator/lib/isEmpty';
+// import isEmail from 'validator/lib/isEmail';
+// import axios from 'axios';
+// import TransitionsModal from './Modal';
 
 export default function Address({ setMaps }) {
   const [selects, setSelects] = useState('HCM');
-  const [openModal, setOpenModal] = React.useState(false);
+  // const [openModal, setOpenModal] = React.useState(false);
   const [ab, setAb] = useState();
-  const [validationMsg, setValidationMsg] = useState({});
-  const [userName, setUserName] = useState('');
-  const [formValue, setFormValue] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    content: '',
-  });
-  const { name, email, phone, address, content } = formValue;
+  // const [validationMsg, setValidationMsg] = useState({});
+  // const [userName, setUserName] = useState('');
+  // const [formValue, setFormValue] = useState({
+  //   name: '',
+  //   email: '',
+  //   phone: '',
+  //   address: '',
+  //   content: '',
+  // });
+  // const { name, email, phone, address, content } = formValue;
   const add = [
     {
       id: 'HCM',
@@ -60,60 +60,60 @@ export default function Address({ setMaps }) {
   const handleSelects = (e) => {
     setSelects(e.target.value);
   };
-  const validatorAll = () => {
-    const msg = {};
-    if (isEmpty(name)) {
-      msg.name = 'Vui lòng nhập tên của bạn!';
-    }
-    // ----check email
-    if (isEmpty(email)) {
-      msg.email = 'Vui lòng nhập Email của bạn!';
-    } else if (!isEmail(email)) {
-      msg.email = 'Vui lòng nhập đúng Email của bạn!';
-    }
-    if (isEmpty(phone)) {
-      msg.phone = 'Vui lòng nhập SĐT của bạn!';
-    }
-    if (formValue.phone.length < 9) {
-      msg.phone = 'Vui lòng nhập SĐT của bạn';
-    }
-    if (isEmpty(address)) {
-      msg.address = 'Vui lòng nhập địa chỉ của bạn!';
-    }
+  // const validatorAll = () => {
+  //   const msg = {};
+  //   if (isEmpty(name)) {
+  //     msg.name = 'Vui lòng nhập tên của bạn!';
+  //   }
+  //   // ----check email
+  //   if (isEmpty(email)) {
+  //     msg.email = 'Vui lòng nhập Email của bạn!';
+  //   } else if (!isEmail(email)) {
+  //     msg.email = 'Vui lòng nhập đúng Email của bạn!';
+  //   }
+  //   if (isEmpty(phone)) {
+  //     msg.phone = 'Vui lòng nhập SĐT của bạn!';
+  //   }
+  //   if (formValue.phone.length < 9) {
+  //     msg.phone = 'Vui lòng nhập SĐT của bạn';
+  //   }
+  //   if (isEmpty(address)) {
+  //     msg.address = 'Vui lòng nhập địa chỉ của bạn!';
+  //   }
 
-    setValidationMsg(msg);
-    if (Object.keys(msg).length > 0) return false;
-    return true;
-  };
-  const handleOnChange = (e) => {
-    let { name, value } = e.target;
-    setFormValue({ ...formValue, [name]: value });
-  };
-  const handleSubmit = () => {
-    const isValid = validatorAll();
-    if (!isValid) return;
-    if (isValid) {
-      const formData = {
-        data: formValue,
-      };
-      axios
-        .post('https://tipicicms.herokuapp.com/api/contact-forms', formData)
-        .then(function (response) {
-          setUserName(response.data.data.attributes.name);
-          setOpenModal(true);
-        })
-        .catch(function (error) {
-          alert('Đã có lỗi xảy ra. Vui lòng thử lại');
-        });
-      setFormValue({
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-        content: '',
-      });
-    }
-  };
+  //   setValidationMsg(msg);
+  //   if (Object.keys(msg).length > 0) return false;
+  //   return true;
+  // };
+  // const handleOnChange = (e) => {
+  //   let { name, value } = e.target;
+  //   setFormValue({ ...formValue, [name]: value });
+  // };
+  // const handleSubmit = () => {
+  //   const isValid = validatorAll();
+  //   if (!isValid) return;
+  //   if (isValid) {
+  //     const formData = {
+  //       data: formValue,
+  //     };
+  //     axios
+  //       .post('https://tipicicms.herokuapp.com/api/contact-forms', formData)
+  //       .then(function (response) {
+  //         setUserName(response.data.data.attributes.name);
+  //         setOpenModal(true);
+  //       })
+  //       .catch(function (error) {
+  //         alert('Đã có lỗi xảy ra. Vui lòng thử lại');
+  //       });
+  //     setFormValue({
+  //       name: '',
+  //       email: '',
+  //       phone: '',
+  //       address: '',
+  //       content: '',
+  //     });
+  //   }
+  // };
   return (
     <div className={styles.address}>
       <div className={styles.mrb20}>
@@ -195,25 +195,25 @@ export default function Address({ setMaps }) {
         <TextField
           size="small"
           variant="outlined"
-          value={name || ''}
-          onChange={handleOnChange}
+          // value={name || ''}
+          // onChange={handleOnChange}
           name="name"
           type="text"
           label="Họ và tên"
-          error={validationMsg.name && true}
-          helperText={validationMsg.name}
+          // error={validationMsg.name && true}
+          // helperText={validationMsg.name}
           className={styles.text}
         />
         <TextField
           size="small"
           variant="outlined"
-          onChange={handleOnChange}
+          // onChange={handleOnChange}
           name="phone"
           type="number"
           label="Điện thoại"
-          value={phone || ''}
-          error={validationMsg.phone && true}
-          helperText={validationMsg.phone}
+          // value={phone || ''}
+          // error={validationMsg.phone && true}
+          // helperText={validationMsg.phone}
           className={styles.textb}
         />
         <TextField
@@ -222,10 +222,10 @@ export default function Address({ setMaps }) {
           name="address"
           type="text"
           label="Địa chỉ"
-          onChange={handleOnChange}
-          value={address || ''}
-          error={validationMsg.address && true}
-          helperText={validationMsg.address}
+          // onChange={handleOnChange}
+          // value={address || ''}
+          // error={validationMsg.address && true}
+          // helperText={validationMsg.address}
           className={styles.text}
         />
         <TextField
@@ -234,10 +234,10 @@ export default function Address({ setMaps }) {
           name="email"
           type="email"
           label="Email"
-          onChange={handleOnChange}
-          value={email || ''}
-          error={validationMsg.email && true}
-          helperText={validationMsg.email}
+          // onChange={handleOnChange}
+          // value={email || ''}
+          // error={validationMsg.email && true}
+          // helperText={validationMsg.email}
           className={styles.textb}
         />
         <TextField
@@ -247,18 +247,19 @@ export default function Address({ setMaps }) {
           multiline
           rows={4}
           label="Nội Dung"
-          onChange={handleOnChange}
-          value={content || ''}
-          error={validationMsg.content && true}
-          helperText={validationMsg.content}
+          // onChange={handleOnChange}
+          // value={content || ''}
+          // error={validationMsg.content && true}
+          // helperText={validationMsg.content}
           className={styles.texta}
         />
-        <Button onClick={handleSubmit}>GỬI ĐI</Button>
-        <TransitionsModal
+        <Button>GỬI ĐI</Button>
+        {/* <Button onClick={handleSubmit}>GỬI ĐI</Button> */}
+        {/* <TransitionsModal
           userName={userName}
           setOpenModal={setOpenModal}
           openModal={openModal}
-        />
+        /> */}
       </div>
     </div>
   );
