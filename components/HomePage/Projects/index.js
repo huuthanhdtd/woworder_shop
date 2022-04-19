@@ -8,35 +8,23 @@ const listOne = [
   {
     title: 'giá trị cốt lõi',
 
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-0125.png',
+    image: 'https://ddireal.vn/wp-content/uploads/2022/03/dat-nen-ddireal.jpg',
   },
   {
     title: 'sứ mệnh',
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png',
+      'https://ddireal.vn/wp-content/uploads/2022/03/shophouse-ddireal.jpg',
   },
   {
     title: 'giá trị cốt lõi',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
+    image: 'https://ddireal.vn/wp-content/uploads/2022/03/biet-thu-ddireal.jpg',
   },
   {
     title: 'sứ mệnh',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
-  },
-  {
-    title: 'giá trị cốt lõi',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
-  },
-  {
-    title: 'sứ mệnh',
-    image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
+    image: 'https://ddireal.vn/wp-content/uploads/2022/03/can-ho-ddireal.jpg',
   },
 ];
+const count = [1, 2, 3, 4, 5, 6];
 
 const Projects = () => {
   const [startX, setStartX] = useState(null);
@@ -52,11 +40,11 @@ const Projects = () => {
   const hadleClickPrev = () => {
     const timeOut = setTimeout(() => {
       setPositions({
-        one: positions.one === 0 ? listOne.length - 1 : positions.one - 1,
-        two: positions.two === 0 ? listOne.length - 1 : positions.two - 1,
-        three: positions.three === 0 ? listOne.length - 1 : positions.three - 1,
-        four: positions.four === 0 ? listOne.length - 1 : positions.four - 1,
-        five: positions.five === 0 ? listOne.length - 1 : positions.five - 1,
+        one: positions.one === 0 ? count.length - 1 : positions.one - 1,
+        two: positions.two === 0 ? count.length - 1 : positions.two - 1,
+        three: positions.three === 0 ? count.length - 1 : positions.three - 1,
+        four: positions.four === 0 ? count.length - 1 : positions.four - 1,
+        five: positions.five === 0 ? count.length - 1 : positions.five - 1,
       });
     }, 200);
     return () => clearTimeout(timeOut);
@@ -64,11 +52,11 @@ const Projects = () => {
   const hadleClickNext = () => {
     const timeOut = setTimeout(() => {
       setPositions({
-        one: positions.one === listOne.length - 1 ? 0 : positions.one + 1,
-        two: positions.two === listOne.length - 1 ? 0 : positions.two + 1,
-        three: positions.three === listOne.length - 1 ? 0 : positions.three + 1,
-        four: positions.four === listOne.length - 1 ? 0 : positions.four + 1,
-        five: positions.five === listOne.length - 1 ? 0 : positions.five + 1,
+        one: positions.one === count.length - 1 ? 0 : positions.one + 1,
+        two: positions.two === count.length - 1 ? 0 : positions.two + 1,
+        three: positions.three === count.length - 1 ? 0 : positions.three + 1,
+        four: positions.four === count.length - 1 ? 0 : positions.four + 1,
+        five: positions.five === count.length - 1 ? 0 : positions.five + 1,
       });
     }, 200);
     return () => clearTimeout(timeOut);
@@ -122,7 +110,7 @@ const Projects = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {listOne.map((item, index) => (
+        {count.map((item, index) => (
           <div
             key={index}
             className={clsx(styles.projectItem, {
@@ -140,7 +128,7 @@ const Projects = () => {
 
             <Grid container className={styles.listGrid}>
               {listOne.map((it, i) => (
-                <Grid key={i} item xs={6} sm={4} md={4} className={styles.item}>
+                <Grid key={i} item xs={6} sm={3} md={3} className={styles.item}>
                   <img src={it.image} />
                   <span>{it.title.toUpperCase()}</span>
                 </Grid>

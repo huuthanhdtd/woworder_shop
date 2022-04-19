@@ -25,10 +25,9 @@ function News({ articles }) {
     return rs;
   }, [articles]);
 
-  const handleClick =()=> {
+  const handleClick = () => {
     router.push('/tin-tuc');
-
-  }
+  };
   return (
     <div className={styles.newInfor}>
       <div className={styles.container}>

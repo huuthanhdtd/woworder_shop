@@ -40,25 +40,26 @@
         .item {
           width: 100%;
           padding: 1px;
-          height: 50%;
+          height: 100%;
           overflow: hidden;
           position: relative;
           cursor: pointer;
           display: flex;
           img {
             height: 100%;
-            transform: scaleX(1.5);
-            transform-origin: left;
+            // transform: scaleX(1.5);
+            // transform-origin: left;
             margin: 1px;
             margin: auto;
           }
           span {
             position: absolute;
             bottom: 0;
-            background-color: var(--primary-color-);
+            background-image: linear-gradient(to top, var(--primary-color-), transparent);
             width: 100%;
             font-size: 20px;
             color: #fff;
+            height: 100px;
             padding: 10px;
             font-family: Open Sans;
           }
