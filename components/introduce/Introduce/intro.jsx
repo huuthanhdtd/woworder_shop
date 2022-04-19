@@ -36,10 +36,10 @@ export default function Intro({ nav }) {
         ))}
 
       <div>
-        <img
+        {/* <img
           src="https://www.novaland.com.vn/Data/Sites/1/News/20/gioithieu-1.jpg"
           width="100%"
-        />
+        /> */}
       </div>
     </div>
   );

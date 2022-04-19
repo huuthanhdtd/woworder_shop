@@ -6,6 +6,7 @@ import { createContext } from 'react';
 import { fetchAPI } from '../lib/api';
 import { getStrapiMedia } from '../lib/media';
 import Layout from '../components/layout';
+import 'aos/dist/aos.css';
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({});
