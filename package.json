@@ -28,6 +28,7 @@
     "react-moment": "^0.9.6",
     "react-parallax": "^3.3.0",
     "react-slick": "^0.28.1",
+    "react-use": "^17.3.2",
     "sass": "^1.49.11",
     "slick-carousel": "^1.8.1",
     "validator": "^13.7.0"

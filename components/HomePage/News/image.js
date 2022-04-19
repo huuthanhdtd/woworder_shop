@@ -1,4 +1,4 @@
-import { getStrapiMedia } from '../../../../lib/media';
+import { getStrapiMedia } from '../../../lib/media';
 import NextImage from 'next/image';
 
 const Image = ({ image, style }) => {
@@ -13,8 +13,8 @@ const Image = ({ image, style }) => {
       // loader={loader}
       layout="responsive"
       width={width}
-      height={width / 2}
-      objectFit="contain"
+      height={width / 1.6}
+      objectFit="cover"
       src={getStrapiMedia(image)}
       alt={alternativeText || ''}
     />
