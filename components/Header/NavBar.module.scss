@@ -17,12 +17,12 @@
       background-color: #fff;
       padding: 4px 10px;
       left: 0;
-      margin-top: 0;
+      margin-top: 10px;
       transform: scale(0);
       transform-origin: top left;
       transition: all 0.3s ease-in-out;
       box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-      z-index: 100;
+      z-index: 1000;
       .navsItemLi {
         padding: 3px 20px 3px 10px;
         border-bottom: 1px solid var(--primary-color-);
