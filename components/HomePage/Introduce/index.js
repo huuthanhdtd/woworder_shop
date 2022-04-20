@@ -4,11 +4,13 @@ import Image from 'next/image';
 import Logo from '../../../public/logo_anphu.svg';
 import { FaChevronRight } from 'react-icons/fa';
 import { Grid } from '@material-ui/core';
+import { useRouter } from 'next/router';
 
 const IntroduceHome = ({ statisticalRef, elementIntoView }) => {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     if (elementIntoView === 'gioi-thieu') {
@@ -59,7 +61,7 @@ const IntroduceHome = ({ statisticalRef, elementIntoView }) => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.title}>
-          <h2>GIỚI THIỆU</h2>
+          <h2>Giới thiệu</h2>
         </div>
         <div className={styles.logo}>
           <Image src={Logo} />
@@ -69,7 +71,7 @@ const IntroduceHome = ({ statisticalRef, elementIntoView }) => {
           Hoạt động trong lĩnh vực môi giới, phân phối, đầu tư các dự án bất
           động sản trên toàn quốc.
         </p>
-        <button>
+        <button onClick={() => router.push('/gioi-thieu')}>
           Giới thiệu chi tiết
           <div>
             <FaChevronRight className={styles.rightIcon} />

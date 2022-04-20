@@ -12,7 +12,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-0125.png',
+      'https://investone-law.com/wp-content/uploads/2018/10/kinh-doanh-bat-dong-san.jpg',
   },
   {
     title: 'sứ mệnh',
@@ -28,7 +28,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609.png',
+      'https://file4.batdongsan.com.vn/2021/07/20/20210720085039-e922_wm.jpg',
   },
   {
     title: 'giá trị cốt lõi',
@@ -38,7 +38,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-web-novagroup-1440x609px---florida---resize.jpg',
+      'https://news.meeycdn.com/uploads/2020/08/Nh%E1%BB%AFng-gi%C3%A1-tr%E1%BB%8B-l%E1%BB%9Bn-m%C3%A0-c%C3%B4ng-ngh%E1%BB%87-%C4%91em-l%E1%BA%A1i-cho-ng%C3%A0nh-b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n.jpg',
   },
   {
     title: 'sứ mệnh',
@@ -54,7 +54,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-hotram.jpg',
+      'https://danviet.mediacdn.vn/296231569849192448/2021/7/21/novalandaquacity-1626837551060367617341.jpg',
   },
   {
     title: 'giá trị cốt lõi',
@@ -64,7 +64,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/banner-1440-x-609-100.jpg',
+      'https://khudothivanphuc.com.vn/uploads/TongTheNgay01_R4_Vuong-1920-030.jpg',
   },
   {
     title: 'sứ mệnh',
@@ -80,7 +80,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/web-nvl-aqua.jpg',
+      'https://baoxaydung.com.vn/stores/news_dataimages/hiep/122021/17/12/2521_image001.jpg',
   },
   {
     title: 'giá trị cốt lõi',
@@ -90,7 +90,7 @@ const list = [
       },
     ],
     image:
-      'https://www.novaland.com.vn/Data/Sites/1/Banner/1440x605/aqua-2.jpg',
+      'http://thongtinnhadat.info.vn/wp-content/uploads/2019/05/phoi-canh-khu-nha-pho-du-an-thanh-xuan-riverside-2.jpg',
   },
 ];
 
