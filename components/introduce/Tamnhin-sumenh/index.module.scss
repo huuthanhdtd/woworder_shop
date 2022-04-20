@@ -1,0 +1,14 @@
+.sison {
+  display: block;
+}
+.Page2 {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .sison {
+    display: none;
+  }
+  .Page2 {
+    display: block;
+  }
+}

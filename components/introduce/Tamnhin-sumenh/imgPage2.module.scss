@@ -1,89 +1,39 @@
-.image {
-  position: relative;
-  height: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  .page2 {
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    max-width: 1440px;
-    overflow: hidden;
-    h2 {
-      padding: 2%;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-color-);
-      text-transform: uppercase;
-      text-align: center;
-      &::after {
-        content: '';
-        display: block;
-        height: 3px;
-        width: 80px;
-        background: var(--hover-color-);
-        margin: 10px auto 25px;
-      }
-    }
-    .page2_about {
-      margin: 0 auto;
-      width: 80%;
-      display: flex;
-      .mrb10 {
-        flex: 2;
-      }
-      .vision {
-        flex: 4;
-        padding: 0 13.125px;
-        text-align: justify;
-        p {
-          color: #fff;
-          span {
-            display: block;
-            text-align: center;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-bottom: 14px;
-          }
-        }
-      }
-      .mission {
-        flex: 4;
-        padding: 0 13.125px;
-        text-align: justify;
-        p {
-          color: #fff;
-          span {
-            display: block;
-            text-align: center;
-            color: #fff;
-            text-transform: Uppercase;
-            font-weight: bold;
-            margin-bottom: 14px;
-          }
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 960px) {
-    .page2 {
-      .page2_about {
-        .mrb10 {
-          display: none;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 600px) {
+.settion {
+  background-color: rgba(0, 85, 138);
+  .image {
+    opacity: 0.9;
+    position: relative;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     .page2 {
       width: 100%;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      max-width: 1440px;
+      overflow: hidden;
+      h2 {
+        padding: 2%;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--primary-color-);
+        text-transform: uppercase;
+        text-align: center;
+        &::after {
+          content: '';
+          display: block;
+          height: 3px;
+          width: 80px;
+          background: var(--hover-color-);
+          margin: 10px auto 25px;
+        }
+      }
       .page2_about {
         margin: 0 auto;
-        width: 93%;
-        display: block;
+        width: 80%;
+        display: flex;
         .mrb10 {
           flex: 2;
         }
@@ -91,11 +41,66 @@
           flex: 4;
           padding: 0 13.125px;
           text-align: justify;
+          p {
+            color: #fff;
+            span {
+              display: block;
+              text-align: center;
+              color: #fff;
+              text-transform: uppercase;
+              font-weight: bold;
+              margin-bottom: 14px;
+            }
+          }
         }
         .mission {
           flex: 4;
           padding: 0 13.125px;
           text-align: justify;
+          p {
+            color: #fff;
+            span {
+              display: block;
+              text-align: center;
+              color: #fff;
+              text-transform: Uppercase;
+              font-weight: bold;
+              margin-bottom: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      .page2 {
+        .page2_about {
+          .mrb10 {
+            display: none;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .page2 {
+        width: 100%;
+        .page2_about {
+          margin: 0 auto;
+          width: 93%;
+          display: block;
+          .mrb10 {
+            flex: 2;
+          }
+          .vision {
+            flex: 4;
+            padding: 0 13.125px;
+            text-align: justify;
+          }
+          .mission {
+            flex: 4;
+            padding: 0 13.125px;
+            text-align: justify;
+          }
         }
       }
     }

@@ -21,7 +21,13 @@ export default function Page6() {
         vào sự phát triển bền vững của toàn xã hội.
       </p>
       <PauseOnHover />
-      <div></div>
+      <div>
+        {/* <img
+          src="https://www.novaland.com.vn/Data/Sites/1/News/24/02-gioithieu.jpg"
+          alt=""
+          width="100%"
+        /> */}
+      </div>
     </div>
   );
 }

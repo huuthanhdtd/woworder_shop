@@ -6,8 +6,7 @@ import Intro from './Introduce/intro';
 import Page4 from './Lich-su-phat-trien/Page4';
 import NavIntroduce from './NavIntro/NavIntroduce';
 import Page7 from './quy-tac-ung-xu/page7';
-import Page2 from './Tamnhin-sumenh/Page2';
-import SisionImg from './Tamnhin-sumenh/ImgPage2';
+import Index from './Tamnhin-sumenh/index';
 import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
@@ -27,7 +26,7 @@ export default function Introduce() {
       {data.list.map((item, index) => (
         <div key={index} id={item.idNav}>
           <div data-aos="fade-down">{index === 0 && <Intro />}</div>
-          <div>{index === 1 && <SisionImg />}</div>
+          <div>{index === 1 && <Index />}</div>
           <div>{index === 2 && <Page3 />}</div>
           <div>{index === 3 && <Page4 />}</div>
           <div>{index === 4 && <Page5 />}</div>

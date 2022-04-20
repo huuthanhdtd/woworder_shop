@@ -73,7 +73,7 @@ export default function Page3() {
   return (
     <div className={styles.page3}>
       <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
-        Dối Tác
+        Đối Tác
       </h2>
       <div
         className={styles.page3_about}
