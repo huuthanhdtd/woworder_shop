@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
-import NextImage from './imageSlide';
-import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { Grid } from '@material-ui/core';
 
 const list = [
   {

@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import styles from './styles.module.scss';
-import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import NextImage from './image';
 import Link from 'next/link';
@@ -37,7 +36,7 @@ function News({ articles, newsRef, newsIntoView }) {
           <div className={styles.newsLine}></div>
         </div>
         <div className={styles.newsContent}>
-          <Grid container spacing={2} className={styles.newsList}>
+          <Grid container className={styles.newsList}>
             {data &&
               data.map((item, index) => (
                 <Grid key={index} item md={3}>

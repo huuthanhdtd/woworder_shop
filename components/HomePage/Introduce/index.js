@@ -81,18 +81,25 @@ const IntroduceHome = ({ statisticalRef, elementIntoView }) => {
           className={styles.statistical}
           ref={statisticalRef}
           id="statisticalId"
+          spacing={2}
         >
-          <Grid item md={4} className={styles.item}>
-            <h1>{countOne}</h1>
-            <h3>Nhân sự trên toàn bộ hệ thống</h3>
+          <Grid item xs={12} md={4} className={styles.item}>
+            <div>
+              <h1>{countOne}</h1>
+              <h3>Nhân sự trên toàn bộ hệ thống</h3>
+            </div>
           </Grid>
-          <Grid item md={4} className={styles.item}>
-            <h1>{countTwo}</h1>
-            <h3>Dự án đã triển khai thành công</h3>
+          <Grid item xs={12} md={4} className={styles.item}>
+            <div>
+              <h1>{countTwo}</h1>
+              <h3>Dự án đã triển khai thành công</h3>
+            </div>
           </Grid>
-          <Grid item md={4} className={styles.item}>
-            <h1>{countThree}</h1>
-            <h3>Sản phẩm đã giao dịch thành công</h3>
+          <Grid item xs={12} md={4} className={styles.item}>
+            <div>
+              <h1>{countThree}</h1>
+              <h3>Sản phẩm đã giao dịch thành công</h3>
+            </div>
           </Grid>
         </Grid>
       </div>

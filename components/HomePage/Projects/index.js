@@ -1,26 +1,26 @@
-import { Container, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const listOne = [
   {
-    title: 'giá trị cốt lõi',
+    title: 'Aqua City',
 
     image: 'https://ddireal.vn/wp-content/uploads/2022/03/dat-nen-ddireal.jpg',
   },
   {
-    title: 'sứ mệnh',
+    title: 'The Grand Manhattan',
     image:
       'https://ddireal.vn/wp-content/uploads/2022/03/shophouse-ddireal.jpg',
   },
   {
-    title: 'giá trị cốt lõi',
+    title: 'Novalan Phan Thiết',
     image: 'https://ddireal.vn/wp-content/uploads/2022/03/biet-thu-ddireal.jpg',
   },
   {
-    title: 'sứ mệnh',
+    title: 'Saigon royal',
     image: 'https://ddireal.vn/wp-content/uploads/2022/03/can-ho-ddireal.jpg',
   },
 ];
@@ -73,12 +73,11 @@ const Projects = ({ projectIntoView, projectRef }) => {
     if (moveX > startX) {
       const timeOut = setTimeout(() => {
         setPositions({
-          one: positions.one === 0 ? listOne.length - 1 : positions.one - 1,
-          two: positions.two === 0 ? listOne.length - 1 : positions.two - 1,
-          three:
-            positions.three === 0 ? listOne.length - 1 : positions.three - 1,
-          four: positions.four === 0 ? listOne.length - 1 : positions.four - 1,
-          five: positions.five === 0 ? listOne.length - 1 : positions.five - 1,
+          one: positions.one === 0 ? count.length - 1 : positions.one - 1,
+          two: positions.two === 0 ? count.length - 1 : positions.two - 1,
+          three: positions.three === 0 ? count.length - 1 : positions.three - 1,
+          four: positions.four === 0 ? count.length - 1 : positions.four - 1,
+          five: positions.five === 0 ? count.length - 1 : positions.five - 1,
         });
       }, 200);
       return () => clearTimeout(timeOut);
@@ -86,12 +85,11 @@ const Projects = ({ projectIntoView, projectRef }) => {
     if (moveX < startX) {
       const timeOut = setTimeout(() => {
         setPositions({
-          one: positions.one === listOne.length - 1 ? 0 : positions.one + 1,
-          two: positions.two === listOne.length - 1 ? 0 : positions.two + 1,
-          three:
-            positions.three === listOne.length - 1 ? 0 : positions.three + 1,
-          four: positions.four === listOne.length - 1 ? 0 : positions.four + 1,
-          five: positions.five === listOne.length - 1 ? 0 : positions.five + 1,
+          one: positions.one === count.length - 1 ? 0 : positions.one + 1,
+          two: positions.two === count.length - 1 ? 0 : positions.two + 1,
+          three: positions.three === count.length - 1 ? 0 : positions.three + 1,
+          four: positions.four === count.length - 1 ? 0 : positions.four + 1,
+          five: positions.five === count.length - 1 ? 0 : positions.five + 1,
         });
       }, 200);
       return () => clearTimeout(timeOut);

@@ -2,6 +2,8 @@
     width: 100%;
     position: relative;
     padding-bottom: 20px;
+    max-width: 100%;
+    width: 100%;
     .wrapper {
       position: relative;
       width: 100%;
@@ -126,6 +128,7 @@
   }
   @media (max-width: 960px) {
     .slider {
+      
       .wrapper {
         .controls {
           .btn {
@@ -159,7 +162,7 @@
           }
         }
         .dots {
-          bottom: 20px;
+          display: none;
         }
       }
     }

@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './NavBar.module.scss';
 import Link from 'next/link';
 import clsx from 'clsx';
 import navs from '../../constants/navsBar.json';
-import navProject from '../../constants/navProject.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
 

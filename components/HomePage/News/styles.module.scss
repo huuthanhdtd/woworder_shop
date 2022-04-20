@@ -10,6 +10,7 @@
     .newsTitle {
       display: flex;
       flex-direction: column;
+      margin-left: 20px;
       h1 {
         color: #fff;
         font-size: 30px;
@@ -26,12 +27,14 @@
       width: 100%;
       margin-top: 20px;
       .newsList {
+        padding: 20px;
         .wrapper {
           background-color: #fff;
           border-radius: 5px;
           overflow: hidden;
           opacity: 0;
           transform: translateY(300px);
+          margin: 10px;
           // transition: all  0.7s ease-in-out;
           .image {
             // display: flex;
@@ -114,6 +117,8 @@
         justify-content: center;
         transition: all 0.25s ease-in-out;
         cursor: pointer;
+      margin-right: 20px;
+
         div {
           border: 1px solid #fff;
           width: 20px;
@@ -145,11 +150,80 @@
 @media (max-width: 960px) {
   .newInfor {
     .newsTitle {
+      margin-left: 20px;
       h1 {
-        font-size: 30px;
+        font-size: 25px;
+      }
+    }
+    .container {
+      .newsTitle {
+        h1 {
+        }
+        .newsLine {
+        }
+      }
+
+      .newsContent {
+        width: 100%;
+        margin-top: 20px;
+        .newsList {
+          .wrapper {
+            // margin: 0 10px;
+            h3 {
+              font-size: 20px;
+              margin: 5px 0;
+
+            }
+            p {
+              font-size: 20px;
+              margin: 5px 0;
+            }
+          }
+        }
+      }
+      .btnWrapper {
+        
+        button {
+          font-size: 14px;
+          padding: 5px 10px;
+          margin-right: 10px;
+          div {
+            
+            .rightIcon {
+             
+            }
+          }
+          
+        }
       }
     }
   }
 }
 @media (max-width: 600px) {
+  .newInfor {
+    
+    .container {
+      
+
+      .newsContent {
+        width: 100%;
+        margin-top: 20px;
+        .newsList {
+          padding: 5px;
+          .wrapper {
+            h3 {
+              font-size: 16px;
+              margin: 5px 0;
+
+            }
+            p {
+              font-size: 14px;
+              margin: 5px 0;
+            }
+          }
+        }
+      }
+      
+    }
+  }
 }

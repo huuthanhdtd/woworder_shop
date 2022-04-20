@@ -7,10 +7,17 @@ import { fetchAPI } from '../lib/api';
 
 const Layout = ({ children, corpInfor }) => {
   const [scrollState, setScrollState] = useState(false);
+  const [isBarsSmall, setIsBarsSmall] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollState(window.scrollY >= 100);
     };
+    if (window.scrollY >= 100) {
+      setIsBarsSmall(true);
+    } else {
+      setIsBarsSmall(false);
+    }
 
     window.addEventListener('scroll', handleScroll);
 
@@ -29,7 +36,7 @@ const Layout = ({ children, corpInfor }) => {
   return (
     <>
       <ContextProvider>
-        <Header />
+        <Header isBarsSmall={isBarsSmall} />
         {children}
         <ButtonToTop onClick={scrollToTop} show={scrollState} />
         {corpInfor !== undefined && <Footer corpInfor={corpInfor} />}

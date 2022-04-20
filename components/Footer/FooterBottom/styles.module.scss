@@ -1,6 +1,9 @@
 .footerLast {
   display: flex;
   flex-wrap: wrap;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   .footerLastContent {
     p {
       font-family: Open Sans;

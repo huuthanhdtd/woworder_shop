@@ -1,104 +1,181 @@
 .container {
-    width: 100%;
-    position: relative;
-    background-image: url('../../../public/home/bg-gioithieu.jpg');
+  width: 100%;
+  position: relative;
+  background-image: url('../../../public/home/bg-gioithieu.jpg');
+  display: flex;
+
+  .wrapper {
+    width: 1440px;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
     display: flex;
-    
-    .wrapper{
-        width: 1440px;
-        margin: auto;
-        align-items: center;
-        flex-direction: column;
+    justify-content: center;
+    padding: 100px 0;
+    .title {
+      width: 100%;
+      h2 {
+        color: var(--primary-color-);
+        font-family: Open Sans;
+        font-weight: 700;
+        font-size: 30px;
+      }
+    }
+    .logo {
+    }
+    p {
+      font-size: 20px;
+      text-align: center;
+      padding: 0 150px;
+      font-weight: 600;
+      font-family: Open Sans;
+    }
+    button {
+      border: 2px solid var(--primary-color-);
+      padding: 10px 20px;
+      background-color: transparent;
+      border-radius: 50px;
+      font-size: 20px;
+      color: var(--primary-color-);
+      font-weight: 500;
+      font-family: Open Sans;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+      div {
+        border: 1px solid var(--primary-color-);
+        width: 20px;
+        height: 20px;
         display: flex;
+        border-radius: 50%;
+        margin-left: 10px;
+        .rightIcon {
+          margin: auto;
+          font-size: 10px;
+        }
+      }
+      &:hover {
+        background-color: var(--primary-color-);
+        color: #fff;
+        div {
+          border-color: #fff;
+        }
+      }
+    }
+    .statistical {
+      margin-top: 20px;
+      .item {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        padding: 100px 0;
-        .title {
-            width: 100%;
-            h2 {
-                color: var(--primary-color-);
-                font-family: Open Sans;
-                font-weight: 700;
-                font-size: 30px;
-            }
-        }
-        .logo {
-
-        }
-        p{
-            font-size: 20px;
+        div {
+          h1 {
             text-align: center;
-            padding: 0 150px;
-            font-weight: 600;
+            font-size: 50px;
             font-family: Open Sans;
-        }
-        button {
-            border: 2px solid var(--primary-color-);
-            padding: 10px 20px;
-            background-color: transparent;
-            border-radius: 50px;
-            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: var(--primary-color-);
-            font-weight: 500;
+          }
+          h3 {
+            text-align: center;
+            color: var(--primary-color-);
+            font-size: 20px;
             font-family: Open Sans;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s ease-in-out;
-            cursor: pointer;
-            div {
-                border: 1px solid var(--primary-color-);
-                width: 20px;
-                height: 20px;
-                display: flex;
-                border-radius: 50%;
-                margin-left: 10px;
-                .rightIcon {
-                    margin: auto;
-                    font-size: 10px;
-                }
-            }
-            &:hover {
-                background-color: var(--primary-color-);
-                color: #fff;
-                div {
-                    border-color: #fff;
-                }
-            }
+            font-weight: 600;
+          }
         }
-        .statistical {
-            margin-top: 20px;
-            .item {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                h1 {
-                    text-align: center;
-                    font-size: 50px;
-                    font-family: Open Sans;
-                    font-weight: 700;
-                    margin-bottom: 10px;
-                    color: var(--primary-color-);
-                }
-                h3 {
-                    text-align: center;
-                    color: var(--primary-color-);
-                    font-size: 20px;
-                    font-family: Open Sans;
-                    font-weight: 600;
-
-                }
-            }
-        }
+      }
     }
-    }
+  }
+}
 @media (max-width: 960px) {
-    .homePage {
-        // margin-top: 78px;
+  .container {
+    .wrapper {
+      padding: 50px 20px;
+      .title {
+        h2 {
+        }
+      }
+      .logo {
+      }
+      p {
+        padding: 0 50px;
+      }
+      button {
+        div {
+          .rightIcon {
+          }
+        }
+        &:hover {
+          div {
+          }
+        }
+      }
+      .statistical {
+          flex-wrap: nowrap;
+        .item {
+          div {
+            padding: 10px;
+            h1 {
+              font-size: 30px;
+              white-space: pre-wrap;
+            }
+            h3 {
+              font-size: 20px;
+              white-space: pre-wrap;
+            }
+          }
+        }
+      }
     }
-    
+  }
 }
 @media (max-width: 600px) {
-    .homePage {
-        // margin-top: 60px;
-    }
+    .container {
+        .wrapper {
+          padding: 50px 20px;
+          .title {
+            h2 {
+                font-size: 25px;
+            }
+          }
+          .logo {
+              width: 160px;
+          }
+          p {
+            padding: 0 10px;
+            font-size: 16px;
+          }
+          button {
+            div {
+              .rightIcon {
+              }
+            }
+            &:hover {
+              div {
+              }
+            }
+          }
+          .statistical {
+              flex-wrap: wrap;
+            .item {
+              div {
+                padding: 10px;
+                h1 {
+                  font-size: 30px;
+                  white-space: pre-wrap;
+                }
+                h3 {
+                  font-size: 20px;
+                  white-space: pre-wrap;
+                  margin: 10px 0;
+                }
+              }
+            }
+          }
+        }
+      }
 }
