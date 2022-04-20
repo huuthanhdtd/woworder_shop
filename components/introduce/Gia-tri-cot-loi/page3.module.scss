@@ -26,12 +26,54 @@
       margin-bottom: 40px;
     }
   }
-  .banner {
-    width: 100%;
+  .slider {
+    width: 80%;
+    margin: 0 auto;
     margin-bottom: 30px;
-    img {
-      width: 100%;
+    max-width: 1440px;
+    overflow: hidden;
+    p {
+      border-bottom: 1px solid gray;
+      padding-bottom: 40px;
+      margin: 0;
     }
+    .partner {
+      padding: 20px 0 30px;
+      border-bottom: 1px solid gray;
+
+      span {
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-weight: bold;
+      }
+      .modules {
+        .media {
+          margin: 5px;
+          padding: 2%;
+          .module {
+            width: 150.152px;
+            margin-right: 45px;
+            height: 70px;
+            img {
+              display: block;
+              width: 100%;
+              cursor: pointer;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+      Button {
+        display: none;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .slider {
+    padding: 0 13.125px;
+    width: 93%;
   }
 }
 @media screen and (max-width: 600px) {

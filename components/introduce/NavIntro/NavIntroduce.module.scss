@@ -1,13 +1,12 @@
 .Main {
   position: relative;
   .NavIntroduce {
-    max-width: 1440px;
     z-index: 999;
     position: fixed;
     top: 113px;
     width: 100%;
     height: 46px;
-    background: var(--hover-color-);
+    background: rgba(0, 104, 56);
     .ModuleContent {
       margin: 0 auto;
       display: flex;
@@ -18,7 +17,7 @@
       li {
         cursor: pointer;
         text-transform: uppercase;
-        color: var(--primary-color-);
+        color: #fff;
         font-size: 15px;
         padding: 12px 0;
         font-weight: 500;
@@ -35,13 +34,13 @@
         }
         &:hover {
           &::before {
-            background-color: var(--primary-color-);
+            background-color: #fff;
           }
         }
       }
       li.active {
         &::before {
-          background-color: var(--primary-color-);
+          background-color: #fff;
         }
       }
       .close {
@@ -52,6 +51,9 @@
   .test {
     display: none;
   }
+}
+.btnWrapper {
+  display: none;
 }
 @media screen and (max-width: 960px) {
   .Main {
@@ -67,7 +69,7 @@
       .ModuleContent {
         display: flex;
         flex-direction: column;
-        background: var(--hover-color-);
+        background: rgba(0, 104, 56);
         justify-content: flex-start;
         position: relative;
         padding: 35px 0;
@@ -79,7 +81,7 @@
             display: none;
           }
           &:hover {
-            background-color: var(--primary-color-);
+            background-color: rgba(0, 104, 56);
             color: #fff;
           }
         }
@@ -94,7 +96,7 @@
           svg {
             margin: auto;
             font-size: 30px;
-            color: var(--hover-color-);
+            color: rgba(0, 104, 56);
           }
         }
       }
@@ -119,8 +121,8 @@
       .btnNav {
         display: flex;
         cursor: pointer;
-        background: var(--hover-color-);
-        color: var(--primary-color-);
+        background: rgba(0, 104, 56);
+        color: #fff;
         padding: 0 10px;
         height: 36px;
         font-size: 15px;
@@ -130,7 +132,7 @@
         svg {
           margin-left: 10px;
           font-size: 1.4em;
-          color: var(--primary-color-);
+          color: #fff;
         }
       }
     }

@@ -30,13 +30,13 @@
     }
   }
   Button {
-    background: var(--hover-color-) !important;
+    background: rgb(74 126 102) !important;
     width: 36px;
     height: 36px;
     margin: 0 -20px;
     z-index: 1;
     &:hover {
-      background: var(--primary-color-) !important;
+      background: rgba(2, 110, 60) !important;
     }
   }
 }

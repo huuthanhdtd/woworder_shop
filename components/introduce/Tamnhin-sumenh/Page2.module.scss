@@ -2,6 +2,8 @@
   width: 100%;
   margin: 0 auto;
   margin-bottom: 30px;
+  max-width: 1440px;
+  overflow: hidden;
   h2 {
     padding: 2%;
     font-size: 18px;
@@ -22,6 +24,7 @@
     margin: 0 auto;
     width: 80%;
     display: flex;
+    overflow: hidden;
     .mrb10 {
       flex: 2;
     }
@@ -56,6 +59,14 @@
       }
     }
   }
+}
+.parallax {
+  background-image: url('https://ddireal.vn/wp-content/uploads/2022/03/ddi-dathanh-3.jpg');
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @media screen and (max-width: 960px) {
   .page2 {

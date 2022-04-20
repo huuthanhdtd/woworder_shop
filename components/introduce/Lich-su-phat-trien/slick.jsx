@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import styles from './slick.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Aos from 'aos';
 
 export default function PauseOnHover() {
+  useEffect(() => {
+    Aos.init({
+      easing: 'ease-in-sine',
+      offset: 0,
+    });
+  }, []);
   var settings = {
     infinite: true,
     slidesToShow: 4,
@@ -98,7 +105,12 @@ export default function PauseOnHover() {
     },
   ];
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      data-aos="fade-down"
+      data-aos-duration="500"
+      data-delay="500"
+    >
       <Slider {...settings} className={styles.slickactive}>
         {historys &&
           historys.map((data, index) => (

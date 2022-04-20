@@ -1,7 +1,7 @@
 .slider {
   width: 80%;
   margin: 0 auto;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   .carousel {
     margin: 5px;
     padding: 1%;
@@ -27,6 +27,7 @@
     }
   }
   Button {
+    display: none;
     background: var(--hover-color-) !important;
     width: 36px;
     height: 36px;

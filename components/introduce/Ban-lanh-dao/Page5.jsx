@@ -1,12 +1,19 @@
 import { Grid } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './page5.module.scss';
+import Aos from 'aos';
 
 export default function Page5() {
   const [active, setActive] = useState(1);
   const handleClickNav = (index) => {
     setActive(index);
   };
+  useEffect(() => {
+    Aos.init({
+      easing: 'ease-in-sine',
+      offset: 0,
+    });
+  }, []);
   const staff = [
     {
       img: 'https://www.novaland.com.vn/Data/Sites/1/media/gioi-thieu/chu-tich-0322.png',
@@ -79,14 +86,21 @@ export default function Page5() {
   ];
   return (
     <div className={styles.page5}>
-      <h2>BAN LÃNH ĐẠO</h2>
+      <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+        BAN LÃNH ĐẠO
+      </h2>
       <div className={styles.page5_about}>
         <ul
           style={{
             textAlign: 'center',
           }}
         >
-          <li onClick={() => handleClickNav(1)}>
+          <li
+            onClick={() => handleClickNav(1)}
+            data-aos="flip-right"
+            data-aos-duration="500"
+            data-delay="500"
+          >
             <span
               className={
                 Number(active) === 1 ? styles.active_tabs : styles.tabs
@@ -95,7 +109,11 @@ export default function Page5() {
               HỘI ĐÔNG QUẢN TRỊ
             </span>
           </li>
-          <li onClick={() => handleClickNav(2)}>
+          <li
+            onClick={() => handleClickNav(2)}
+            data-aos="flip-left"
+            data-aos-duration="500"
+          >
             <span className={active === 2 ? styles.active_tabs : styles.tabs}>
               BAN GIÁM ĐỐC
             </span>
@@ -104,7 +122,13 @@ export default function Page5() {
             <div
               className={active === 1 ? styles.active_content : styles.content}
             >
-              <Grid container spacing={2}>
+              <Grid
+                container
+                spacing={2}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-delay="500"
+              >
                 {staff &&
                   staff.map((data, index) => (
                     <Grid item sm={12} md={6} lg={6} key={index}>
@@ -133,7 +157,13 @@ export default function Page5() {
             <div
               className={active === 2 ? styles.active_content : styles.content}
             >
-              <Grid container spacing={2}>
+              <Grid
+                container
+                spacing={2}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-delay="500"
+              >
                 {CEO &&
                   CEO.map((data, index) => (
                     <Grid item sm={12} md={6} lg={6} key={index}>
@@ -165,12 +195,7 @@ export default function Page5() {
           </div>
         </ul>
       </div>
-      <div className={styles.descimg}>
-        <img
-          src="https://www.novaland.com.vn/Data/Sites/1/News/24/02-gioithieu.jpg"
-          alt=""
-        />
-      </div>
+      <div className={styles.descimg}></div>
     </div>
   );
 }

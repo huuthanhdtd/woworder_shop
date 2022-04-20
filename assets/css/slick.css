@@ -1,24 +1,28 @@
 .slick-next:before {
-    /* font-family: "FontAwesome" !important; */
-    /* content: "\f105" !important; */
-      opacity: 1 !important;
-      line-height: 36px;
-      font-size: 20px;
-      color: white;
-      -webkit-font-smoothing: antialiased;
+  /* font-family: "FontAwesome" !important; */
+  /* content: "\f105" !important; */
+  opacity: 1 !important;
+  line-height: 36px;
+  font-size: 20px;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+.slick-prev:before {
+  /* font-family: "FontAwesome" !important; */
+  /* content: "\f105" !important; */
+  opacity: 1 !important;
+  line-height: 36px;
+  font-size: 20px;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+.slick-track {
+  /* display: flex !important;
+  align-items: center !important; */
+}
+
+@media screen and (max-width: 960px) {
+  .slick-arrow {
+    display: none !important;
   }
-  .slick-prev:before {
-    /* font-family: "FontAwesome" !important; */
-    /* content: "\f105" !important; */
-      opacity: 1 !important;
-      line-height: 36px;
-      font-size: 20px;
-      color: white;
-      -webkit-font-smoothing: antialiased;
-  }
-  
-  @media screen and (max-width: 960px) {
-    .slick-arrow{
-      display: none !important;
-    }
-  }
+}
