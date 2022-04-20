@@ -11,7 +11,9 @@ export default function Page6() {
   }, []);
   return (
     <div className={styles.page6}>
-      <h2>GIẢI THƯỞNG</h2>
+      <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+        GIẢI THƯỞNG
+      </h2>
       <p data-aos="fade-down" data-aos-duration="500" data-delay="500">
         Những thành tựu của Tập đoàn Novaland được ghi nhận và vinh danh qua
         nhiều giải thưởng và danh hiệu uy tín trong và ngoài nước, thể hiện nỗ

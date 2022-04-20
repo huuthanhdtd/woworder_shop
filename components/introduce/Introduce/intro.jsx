@@ -18,7 +18,7 @@ export default function Intro({ nav }) {
   ];
   return (
     <div className={styles.page}>
-      <h1>Giới thiệu chung</h1>
+      <h2>Giới thiệu chung</h2>
       {intro &&
         intro.map((data, index) => (
           <div className={styles.MainIntroduction} key={index}>

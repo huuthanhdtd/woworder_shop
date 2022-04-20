@@ -5,7 +5,7 @@
   margin-bottom: 30px;
   max-width: 1440px;
   overflow: hidden;
-  h1 {
+  h2 {
     padding: 2%;
     font-size: 18px;
     font-weight: 700;
@@ -26,8 +26,9 @@
     display: flex;
     margin: 0 auto;
     margin-bottom: 40px;
+    justify-content: space-between;
     .CompanyProfile {
-      width: 50%;
+      width: 49%;
       p {
         text-align: justify;
         strong {
@@ -38,7 +39,7 @@
       }
     }
     .ImgCompany {
-      width: 50%;
+      width: 49%;
     }
   }
 }

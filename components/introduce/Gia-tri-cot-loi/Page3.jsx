@@ -15,7 +15,16 @@ export default function Page3() {
 
   const partner = [
     {
-      partners: 'ĐỐI TÁC TƯ VẤN, QUẢN LÝ, KHAI THÁC, VẬN HÀNH',
+      partners: 'ĐỐI TÁC CHIẾN LƯỢC',
+      image: [
+        'https://danhkhoi.com.vn/static/upload/images/Logo-Doi-Tac/Anabuki.svg',
+        'https://danhkhoi.com.vn/static/upload/images/Logo-Doi-Tac/Meldia.jpg',
+        'https://danhkhoi.com.vn/static/upload/images/Logo-Doi-Tac/G7.svg',
+        'https://danhkhoi.com.vn/static/upload/images/Logo-Doi-Tac/Kien-Vang-01.png',
+      ],
+    },
+    {
+      partners: 'ĐỐI TÁC XÂY DỰNG',
       image: [
         'https://danhkhoi.com.vn/static/upload/images/Logo-Doi-Tac/Logo-Savills.svg',
         'https://danhkhoi.com.vn/static/upload/images/Logo-Doi-Tac/Logo-Cbre.svg',
@@ -37,7 +46,7 @@ export default function Page3() {
     },
   ];
   var settings = {
-    infinite: true,
+    infinite: false,
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
@@ -56,6 +65,7 @@ export default function Page3() {
       {
         breakpoint: 600,
         settings: {
+          infinite: false,
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,

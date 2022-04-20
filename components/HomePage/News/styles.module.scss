@@ -118,7 +118,7 @@
         justify-content: center;
         transition: all 0.25s ease-in-out;
         cursor: pointer;
-      margin-right: 20px;
+        margin-right: 20px;
 
         div {
           border: 1px solid #fff;
@@ -173,7 +173,6 @@
             h3 {
               font-size: 20px;
               margin: 5px 0;
-
             }
             p {
               font-size: 20px;
@@ -183,18 +182,14 @@
         }
       }
       .btnWrapper {
-        
         button {
           font-size: 14px;
           padding: 5px 10px;
           margin-right: 10px;
           div {
-            
             .rightIcon {
-             
             }
           }
-          
         }
       }
     }
@@ -202,10 +197,7 @@
 }
 @media (max-width: 600px) {
   .newInfor {
-    
     .container {
-      
-
       .newsContent {
         width: 100%;
         margin-top: 20px;
@@ -215,7 +207,6 @@
             h3 {
               font-size: 16px;
               margin: 5px 0;
-
             }
             p {
               font-size: 14px;
@@ -224,7 +215,6 @@
           }
         }
       }
-      
     }
   }
 }
