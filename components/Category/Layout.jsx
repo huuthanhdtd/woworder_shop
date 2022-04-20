@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Projects.module.scss';
-import Banner from '../Banner/Banner';
+import Banner from './Banner/Banner';
 
 function LayoutProject({ children }) {
   return (

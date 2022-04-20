@@ -9,17 +9,18 @@ import {
 import Link from 'next/link';
 import { Pagination } from '@material-ui/lab';
 import React, { useState, useEffect, useContext } from 'react';
-import CardProject from './Card/CardItem';
+import CardItem from './Card';
 import styles from './Projects.module.scss';
 import LayoutProject from './Layout';
-import NavProject from '../../constants/navProject.json';
+import NavNews from '../../constants/navNews.json';
+import NavRecruitment from '../../constants/navRecruitment.json';
 import { Context } from '../../constants/Context';
 import clsx from 'clsx';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 const firstIndex = 0;
 
-function ProjectsPage({ projects }) {
+function CategoryPage({ articles, title }) {
   const { type, handleTypeProjects, isFilter, isActive } = useContext(Context);
   const [pageSize, setPageSize] = useState(5);
   const [page, setPage] = useState(1);
@@ -32,7 +33,7 @@ function ProjectsPage({ projects }) {
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
-    const res = projects.sort(function (a, b) {
+    const res = articles.sort(function (a, b) {
       return (
         new Date(b.attributes.updatedAt) - new Date(a.attributes.updatedAt)
       );
@@ -40,62 +41,55 @@ function ProjectsPage({ projects }) {
     setData(res);
     if (type !== null)
       setData(res.filter((project) => project.attributes.type === type));
-  }, [projects, type]);
+  }, [articles, type]);
   const handleChange = (event, value) => {
     setPage(value);
     setData(
-      projects.slice(firstIndex + pageSize * (value - 1), pageSize * value)
+      articles.slice(firstIndex + pageSize * (value - 1), pageSize * value)
     );
   };
   return (
     <LayoutProject>
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item md={10} sm={11} xs={11}>
-          <Link href="/du-an">
+          <Link href={title == 'Tin tức' ? '/tin-tuc' : '/tuyen-dung'}>
             <Typography
               variant="h5"
               className={styles.caption}
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              Dự án {type}
+              {title} {type}
             </Typography>
           </Link>
-          <FormControl
-            variant="outlined"
-            size="small"
-            className={styles.formControl}
-            data-aos="fade-up"
+          <div
+            className={styles.categories}
+            data-aos="fade-right"
+            data-aos-duration="1500"
           >
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={isSelect}
-              onChange={handleSelect}
-            >
-              {NavProject.map((item) => (
-                <MenuItem
-                  key={item.id}
-                  value={item.id}
-                  onClick={() => handleTypeProjects(item.type, item.id)}
-                >
-                  {item.title}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <div className={styles.categories} data-aos="fade-up">
-            {NavProject.map((item) => (
-              <Button
-                key={item.id}
-                className={clsx(styles.buttonType, {
-                  [styles.active]: isActive == item.type,
-                })}
-                onClick={() => handleTypeProjects(item.type)}
-              >
-                <Typography variant="h6">{item.title}</Typography>
-              </Button>
-            ))}
+            {title == 'Tin tức'
+              ? NavNews.map((item) => (
+                  <Button
+                    key={item.id}
+                    className={clsx(styles.buttonType, {
+                      [styles.active]: isActive == item.type,
+                    })}
+                    // onClick={() => handleTypeProjects(item.type)}
+                  >
+                    <Typography variant="h6">{item.title}</Typography>
+                  </Button>
+                ))
+              : NavRecruitment.map((item) => (
+                  <Button
+                    key={item.id}
+                    className={clsx(styles.buttonType, {
+                      [styles.active]: isActive == item.type,
+                    })}
+                    // onClick={() => handleTypeProjects(item.type)}
+                  >
+                    <Typography variant="h6">{item.title}</Typography>
+                  </Button>
+                ))}
           </div>
           <Grid
             container
@@ -104,19 +98,21 @@ function ProjectsPage({ projects }) {
           >
             {isFilter && type !== null
               ? data
-                  .filter((project) => project.attributes.type === type)
-                  .map((project) => (
-                    <CardProject
+                  .filter((article) => article.attributes.type === type)
+                  .map((article, index) => (
+                    <CardItem
                       dataAos="fade-up"
-                      key={project.id}
-                      project={project}
+                      dataAosDelay={`${index}00`}
+                      key={article.id}
+                      article={article}
                     />
                   ))
-              : data.map((project) => (
-                  <CardProject
+              : data.map((article, index) => (
+                  <CardItem
                     dataAos="fade-up"
-                    key={project.id}
-                    project={project}
+                    dataAosDelay={`${index}00`}
+                    key={article.id}
+                    article={article}
                   />
                 ))}
           </Grid>
@@ -126,10 +122,10 @@ function ProjectsPage({ projects }) {
               count={
                 isFilter && type !== null
                   ? Math.ceil(
-                      data.filter((project) => project.attributes.type === type)
+                      data.filter((article) => article.attributes.type === type)
                         .length / pageSize
                     )
-                  : Math.ceil(projects.length / pageSize)
+                  : Math.ceil(articles.length / pageSize)
               }
               page={page}
               variant="outlined"
@@ -143,4 +139,4 @@ function ProjectsPage({ projects }) {
   );
 }
 
-export default ProjectsPage;
+export default CategoryPage;

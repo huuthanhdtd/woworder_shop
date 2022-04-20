@@ -48,7 +48,7 @@
     "title": "dự án",
     "list": [
       {
-        "title": "dự án đá hoàn thành",
+        "title": "dự án đã hoàn thành",
         "link": "/du-an",
         "type": "Đã hoàn thành"
       },
@@ -65,15 +65,15 @@
     "list": [
       {
         "title": "Tin tức thị trường",
-        "link": "/tin-tuc/tin-tuc"
+        "link": "/tin-tuc"
       },
       {
         "title": "Tin dự án",
-        "link": "/tin-tuc/tuyen-dung"
+        "link": "/tin-tuc"
       },
       {
         "title": "video",
-        "link": "/tin-tuc/tin-tuc"
+        "link": "/tin-tuc"
       }
     ],
     "link": "/tin-tuc"

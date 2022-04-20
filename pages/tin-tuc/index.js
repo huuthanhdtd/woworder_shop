@@ -1,8 +1,8 @@
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
-import NewsPage from '../../components/News';
 import React, { useMemo } from 'react';
 import { reverse } from '../../lib/reverse';
+import CategoryPage from '../../components/Category';
 
 const Category = ({ category }) => {
   const seo = {
@@ -15,7 +15,7 @@ const Category = ({ category }) => {
   return (
     <>
       <Seo seo={seo} />
-      <NewsPage articles={data} title={category.attributes.name} />
+      <CategoryPage articles={data} title={category.attributes.name} />
     </>
   );
 };

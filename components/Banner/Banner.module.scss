@@ -1,6 +1,134 @@
+$OpensSans: 'Opens sans', sans-serif;
 .image {
   width: 100%;
-  height: 400px;
+  height: 100vh;
   position: relative;
   background-size: contain;
+  background: rgba(255, 255, 255, 0.5);
+}
+.container {
+  height: 100%;
+  background: rgba(0, 85, 138, 0.5);
+  .content {
+    padding: 0 5vw;
+    p,
+    span {
+      color: white;
+      font-family: $OpensSans;
+      font-size: 1.1rem;
+    }
+    h4 {
+      color: white;
+      font-family: $OpensSans;
+      font-weight: 600;
+    }
+  }
+  .detail {
+    padding: 0 5vw;
+    display: grid;
+    grid-template-columns: 47% 47%;
+    grid-gap: 6%;
+    .item {
+      padding: 20px 0;
+      h3 {
+        color: white;
+        font-family: 'Opens sans', sans-serif;
+        font-weight: 600;
+      }
+      p {
+        color: white;
+        font-size: 1.1rem;
+      }
+      .divider {
+        background: var(--hover-color-);
+        height: 2px;
+      }
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .right {
+    }
+  }
+}
+@media screen and(max-width: 1280px) {
+  .image {
+    margin-top: 71px;
+    height: 100vh;
+    .container {
+      padding: 2% 0;
+      .content {
+        p,
+        span {
+          font-size: 1rem;
+        }
+        h4 {
+          font-size: 1.8rem;
+        }
+      }
+      .detail {
+        .item {
+          h3 {
+            font-size: 1.5rem;
+          }
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .image {
+    margin-top: 61px;
+    height: 100%;
+    .container {
+      padding: 2% 0;
+      .content {
+        p,
+        span {
+          font-size: 0.8rem;
+        }
+        h4 {
+          font-size: 1.5rem;
+        }
+      }
+      .detail {
+        .item {
+          h3 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and(max-width:300px) {
+  .image {
+    .container {
+      padding-bottom: 20px;
+      .detail {
+        grid-template-columns: 100%;
+        .item {
+          padding: 3% 0;
+          h3 {
+            font-size: 1.2rem;
+          }
+          p {
+            font-size: 0.6rem;
+          }
+          .divider {
+            width: 45%;
+          }
+        }
+      }
+    }
+  }
 }

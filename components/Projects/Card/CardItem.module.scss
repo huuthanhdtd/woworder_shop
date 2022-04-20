@@ -17,21 +17,56 @@ $OpensSans: 'Opens sans', sans-serif;
     }
   }
   .title {
+    padding: 30px 15px;
     position: absolute;
-    background: var(--primary-color-);
+    background: linear-gradient(
+      to top,
+      rgba(0, 85, 138, 1),
+      rgba(0, 85, 138, 0.6),
+      transparent
+    );
     bottom: 0;
     width: 100%;
-    transition: inherit;
+    height: 30%;
+    transition: all 0.5s ease;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     h6 {
       color: white;
       font-weight: bold;
-      padding: 10px 15px;
       font-size: 1rem;
       text-transform: uppercase;
     }
+    .type,
+    .location {
+      font-size: 0.8rem;
+      color: white;
+      text-transform: uppercase;
+      position: absolute;
+      bottom: 0;
+      transform: translateY(100%);
+    }
+    .location {
+      padding: 2%;
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
     &:hover {
-      background: var(--hover-color-);
+      height: 100%;
+      h6 {
+        display: none;
+      }
+      .type {
+        bottom: 60%;
+        font-size: 1.3rem;
+      }
+      .location {
+        bottom: 50%;
+      }
     }
   }
 }

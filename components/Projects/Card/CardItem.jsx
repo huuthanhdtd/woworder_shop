@@ -4,15 +4,23 @@ import React from 'react';
 import styles from './CardItem.module.scss';
 import { Typography } from '@material-ui/core';
 
-function CardProject({ project }) {
+function CardProject({ project, dataAos }) {
   return (
     <>
       <Link href={`/du-an/${project.attributes.slug}`}>
-        <div className={styles.container}>
+        <div className={styles.container} data-aos={dataAos}>
           <NextImage image={project.attributes.image} />
-          {/* <img src={`/Du-an/${project.id}.jpg`} alt="" /> */}
           <div className={styles.title}>
             <Typography variant="h6">{project.attributes.title}</Typography>
+            <Typography variant="body2" className={styles.type}>
+              {project.attributes.title}
+            </Typography>
+            <Typography variant="body2" className={styles.location}>
+              {`${project.attributes.description.slice(
+                0,
+                project.attributes.description.slice(0, 100).lastIndexOf(' ')
+              )}`}
+            </Typography>
           </div>
         </div>
       </Link>

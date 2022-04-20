@@ -10,8 +10,8 @@ import { AiOutlineRight } from 'react-icons/ai';
 function Detail({ project, projects }) {
   return (
     <>
-      <Banner />
       <Grid container justifyContent="center" className={styles.container}>
+        <Banner />
         <Grid item xs={9}>
           <div className={styles.title}>
             <Typography variant="h5">

@@ -1,13 +1,10 @@
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
-import { getStrapiMedia } from '../../lib/media';
 import DetailArticle from '../../components/Article';
 import { reverse } from '../../lib/reverse';
 import { useMemo } from 'react';
 
 const Article = ({ article, articles }) => {
-  const imageUrl = getStrapiMedia(article.attributes.image);
-
   const seo = {
     metaTitle: article.attributes.title,
     metaDescription: article.attributes.description,
@@ -18,7 +15,6 @@ const Article = ({ article, articles }) => {
   const data = useMemo(() => {
     return reverse(articles);
   }, [articles]);
-
   return (
     <>
       <Seo seo={seo} />

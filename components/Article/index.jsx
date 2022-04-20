@@ -2,30 +2,33 @@ import Link from 'next/link';
 import React, { useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import styles from './Detail.module.scss';
-import { Button, Typography, Container } from '@material-ui/core';
+import { Button, Typography, Container, CardMedia } from '@material-ui/core';
 import { Visibility } from '@material-ui/icons';
 import { AiOutlineRight } from 'react-icons/ai';
-import NextImage from 'next/image';
-import photo from '../../public/Tin-tuc/banner.jpg';
+import { reverse } from '../../lib/reverse';
 
 function DetailArticle({ article, title, anotherArticle }) {
   const data = useMemo(() => {
-    const rs = anotherArticle.sort(function (a, b) {
-      return (
-        new Date(b.attributes.updatedAt) - new Date(a.attributes.updatedAt)
-      );
-    });
-    return rs;
+    return reverse(anotherArticle);
   }, [anotherArticle]);
   return (
     <>
-      <div className={styles.banner}>
-        <NextImage src={photo} className={styles.image} />
-      </div>
+      <CardMedia
+        className={styles.banner}
+        image={
+          title.slug == 'tin-tuc'
+            ? '/Tin-tuc/banner.jpg'
+            : '/tuyen-dung/tuyendung.jpg'
+        }
+      >
+        <div className={styles.cover}></div>
+      </CardMedia>
       <Container className={styles.container}>
         <div className={styles.title}>
           <Typography variant="h5">
-            <Link href="/tin-tuc">{title.name}</Link>
+            <Link href={title.slug == 'tin-tuc' ? '/tin-tuc' : '/tuyen-dung'}>
+              {title.name}
+            </Link>
             <span>
               <AiOutlineRight fontSize={15} />
             </span>

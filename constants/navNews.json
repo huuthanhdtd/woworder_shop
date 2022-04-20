@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Tất cả tin tức",
+    "type": null
+  },
+  {
+    "id": 2,
+    "title": "Tin tức dự án",
+    "type": "Dự án"
+  },
+  {
+    "id": 3,
+    "title": "Tin tức thị trường",
+    "type": "Thị trường"
+  }
+]

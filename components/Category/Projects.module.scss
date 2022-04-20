@@ -30,9 +30,6 @@ $OpensSan: 'Opens sans', sans-serif;
         color: var(--hover-color-);
       }
     }
-    .formControl {
-      display: none;
-    }
     .categories {
       display: flex;
       justify-content: center;
@@ -69,8 +66,8 @@ $OpensSan: 'Opens sans', sans-serif;
     .projectList {
       padding: 20px 0;
       display: grid;
-      grid-template-columns: 32% 32% 32%;
-      grid-gap: 3% 2%;
+      grid-template-columns: 23% 23% 23% 23%;
+      grid-gap: 2.7%;
     }
     .pagination {
       display: flex;
@@ -85,16 +82,17 @@ $OpensSan: 'Opens sans', sans-serif;
       .categories {
         width: 100%;
       }
+      .projectList {
+        grid-template-columns: 32% 32% 32%;
+        grid-gap: 2%;
+      }
     }
   }
 }
 
-@media screen and(max-width: 960px) {
-  .layout {
-  }
-}
 @media screen and(max-width: 768px) {
   .layout {
+    margin-top: 20px;
     .container {
       .formControl {
         display: block;
@@ -112,11 +110,11 @@ $OpensSan: 'Opens sans', sans-serif;
 
 @media screen and(max-width: 600px) {
   .layout {
-    margin-top: 50px;
+    margin-top: 70px;
     .container {
       .projectList {
-        grid-template-columns: 100%;
-        grid-gap: 1%;
+        grid-template-columns: auto;
+        grid-gap: 0px;
       }
     }
   }

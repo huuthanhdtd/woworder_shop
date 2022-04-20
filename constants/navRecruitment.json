@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Tất cả tin tuyển dụng",
+    "type": null
+  },
+  {
+    "id": 2,
+    "title": "Đang tuyển dụng",
+    "type": "đang tuyển"
+  }
+]
