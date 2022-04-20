@@ -25,22 +25,12 @@ function CategoryPage({ articles, title }) {
   const [pageSize, setPageSize] = useState(5);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
-  const [isSelect, setSelect] = useState(1);
-
-  const handleSelect = (event) => {
-    setSelect(event.target.value);
-  };
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
-    const res = articles.sort(function (a, b) {
-      return (
-        new Date(b.attributes.updatedAt) - new Date(a.attributes.updatedAt)
-      );
-    });
-    setData(res);
+    setData(articles);
     if (type !== null)
-      setData(res.filter((project) => project.attributes.type === type));
+      setData(articles.filter((project) => project.attributes.type === type));
   }, [articles, type]);
   const handleChange = (event, value) => {
     setPage(value);

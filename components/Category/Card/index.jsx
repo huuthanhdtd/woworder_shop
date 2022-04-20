@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import NextImage from '../../image';
 import React from 'react';
 import styles from './CardItem.module.scss';
-import { Button, Divider, Typography } from '@material-ui/core';
-import { BsCaretRightFill, BsStopwatch } from 'react-icons/bs';
+import { Typography } from '@material-ui/core';
+import { BsCaretRightFill } from 'react-icons/bs';
 import Image from './image';
 import photo from '../../../public/Du-an/1.jpg';
 
@@ -13,7 +12,7 @@ function CardItem({ article, dataAos, dataAosDelay }) {
       <div
         className={styles.container}
         data-aos={dataAos}
-        data-aos-delay={dataAosDelay}
+        data-aos-delay={dataAosDelay / 2}
       >
         <Image src={photo} image={article.attributes.image} />
         <div className={styles.content}>

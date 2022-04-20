@@ -3,7 +3,7 @@ import styles from './Banner.module.scss';
 import { div, CardMedia, Divider, Grid, Typography } from '@material-ui/core';
 import { autoCount } from '../../lib/Count';
 
-function Banner({ getImage }) {
+function Banner({ bannerRef, focusBanner }) {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
@@ -11,19 +11,27 @@ function Banner({ getImage }) {
   const [countFive, setCountFive] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      //Budget Land
-      autoCount(795, 6, 1, setCountOne);
-      //Products
-      autoCount(50, 100, 1, setCountTwo);
-      //Projects
-      autoCount(50, 100, 1, setCountThree);
-      //Provinces
-      autoCount(9, 400, 1, setCountFour);
-      //Customers
-      autoCount(40, 90, 1, setCountFive);
-    }, 500);
-  }, []);
+    if (focusBanner) {
+      setTimeout(() => {
+        //Budget Land
+        autoCount(795, 6, 1, setCountOne);
+        //Products
+        autoCount(50, 100, 1, setCountTwo);
+        //Projects
+        autoCount(50, 100, 1, setCountThree);
+        //Provinces
+        autoCount(9, 400, 1, setCountFour);
+        //Customers
+        autoCount(40, 90, 1, setCountFive);
+      }, 500);
+    } else {
+      setCountOne(0);
+      setCountTwo(0);
+      setCountThree(0);
+      setCountFour(0);
+      setCountFive(0);
+    }
+  }, [focusBanner]);
   return (
     <>
       <CardMedia className={styles.image} image="/Banner/banner.jpg">
@@ -32,6 +40,7 @@ function Banner({ getImage }) {
           justifyContent="center"
           alignItems="center"
           className={styles.container}
+          ref={bannerRef}
         >
           <Grid item sm={6} xs={12} className={styles.content}>
             <Typography variant="caption">

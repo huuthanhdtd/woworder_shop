@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { fetchAPI } from '../../lib/api';
+import { reverse } from '../../lib/reverse';
 import Seo from '../../components/seo';
 import CategoryPage from '../../components/Category';
-import { reverse } from '../../lib/reverse';
 
 const CareerPage = ({ category }) => {
   const seo = {
-    metaTitle: 'Tuyển dụng',
-    metaDescription: `Career`,
+    metaTitle: category.attributes.name,
+    metaDescription: `All ${category.attributes.name} articles`,
   };
   const data = useMemo(() => {
     return reverse(category.attributes.articles.data);

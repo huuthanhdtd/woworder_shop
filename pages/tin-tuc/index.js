@@ -1,7 +1,7 @@
-import { fetchAPI } from '../../lib/api';
-import Seo from '../../components/seo';
 import React, { useMemo } from 'react';
+import { fetchAPI } from '../../lib/api';
 import { reverse } from '../../lib/reverse';
+import Seo from '../../components/seo';
 import CategoryPage from '../../components/Category';
 
 const Category = ({ category }) => {

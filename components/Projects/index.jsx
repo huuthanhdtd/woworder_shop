@@ -6,17 +6,19 @@ import {
   Select,
   Typography,
 } from '@material-ui/core';
-import Link from 'next/link';
 import { Pagination } from '@material-ui/lab';
 import React, { useState, useEffect, useContext } from 'react';
+import Link from 'next/link';
 import CardProject from './Card/CardItem';
 import styles from './Projects.module.scss';
 import LayoutProject from './Layout';
 import NavProject from '../../constants/navProject.json';
 import { Context } from '../../constants/Context';
+import { reverse } from '../../lib/reverse';
 import clsx from 'clsx';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+
 const firstIndex = 0;
 
 function ProjectsPage({ projects }) {
@@ -32,15 +34,14 @@ function ProjectsPage({ projects }) {
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
-    const res = projects.sort(function (a, b) {
-      return (
-        new Date(b.attributes.updatedAt) - new Date(a.attributes.updatedAt)
-      );
-    });
+
+    const res = reverse(projects);
     setData(res);
+
     if (type !== null)
       setData(res.filter((project) => project.attributes.type === type));
   }, [projects, type]);
+
   const handleChange = (event, value) => {
     setPage(value);
     setData(
@@ -68,8 +69,7 @@ function ProjectsPage({ projects }) {
             data-aos="fade-up"
           >
             <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
+              labelId="select-outlined-label"
               value={isSelect}
               onChange={handleSelect}
             >
