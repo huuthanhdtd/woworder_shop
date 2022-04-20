@@ -5,13 +5,13 @@ import Logo from '../../../public/logo_anphu.svg';
 import { FaChevronRight } from 'react-icons/fa';
 import { Grid } from '@material-ui/core';
 
-const IntroduceHome = ({ countActive, statisticalRef }) => {
+const IntroduceHome = ({ statisticalRef, elementIntoView }) => {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
 
   useEffect(() => {
-    if (countActive) {
+    if (elementIntoView === 'gioi-thieu') {
       const interval = setInterval(() => {
         setCountOne((prev) => {
           if (prev < 246) {
@@ -52,7 +52,7 @@ const IntroduceHome = ({ countActive, statisticalRef }) => {
       setCountTwo(0);
       setCountThree(0);
     }
-  }, [countActive]);
+  }, [elementIntoView]);
 
   // const statisticalRef = useRef(null)
   return (

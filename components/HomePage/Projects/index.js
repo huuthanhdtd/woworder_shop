@@ -26,7 +26,7 @@ const listOne = [
 ];
 const count = [1, 2, 3, 4, 5, 6];
 
-const Projects = () => {
+const Projects = ({ projectIntoView, projectRef }) => {
   const [startX, setStartX] = useState(null);
   const [moveX, setMoveX] = useState(null);
   const [positions, setPositions] = useState({
@@ -99,10 +99,12 @@ const Projects = () => {
   };
 
   return (
-    <div className={styles.projects}>
+    <div className={styles.projects} ref={projectRef}>
       <div className={styles.newsTitle}>
-        <h1>Dự án tiêu biểu</h1>
-        <div className={styles.newsLine}></div>
+        <div className={styles.newsTitleBlock}>
+          <h1>Dự án tiêu biểu</h1>
+          <div className={styles.newsLine}></div>
+        </div>
       </div>
       <div
         className={styles.wrapper}
@@ -130,7 +132,18 @@ const Projects = () => {
               {listOne.map((it, i) => (
                 <Grid key={i} item xs={6} sm={3} md={3} className={styles.item}>
                   <img src={it.image} />
-                  <span>{it.title.toUpperCase()}</span>
+                  <span>
+                    <h2
+                      className={clsx({
+                        [styles.active]: projectIntoView === true,
+                      })}
+                      style={{
+                        transition: `all  ${i / 3 + 0.4}s ease-in-out`,
+                      }}
+                    >
+                      {it.title.toUpperCase()}
+                    </h2>
+                  </span>
                 </Grid>
               ))}
             </Grid>

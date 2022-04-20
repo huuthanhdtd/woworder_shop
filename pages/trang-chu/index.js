@@ -10,28 +10,44 @@ import IntroduceHome from '../../components/HomePage/Introduce';
 
 const HomePage = ({ articles, categories, slides, projects, homepage }) => {
   const statisticalRef = useRef(null);
+  const newsRef = useRef(null);
+  const projectRef = useRef(null);
+
   const { y: pageYOffset } = useWindowScroll();
-  const [countActive, setCountActive] = useState(false);
+  const [elementIntoView, setElementIntoView] = useState('');
+  const [newsIntoView, setNewsIntoView] = useState(false);
+  const [projectIntoView, setProjectIntoView] = useState(false);
+
   useEffect(() => {
-    const element = statisticalRef.current;
     if (
-      pageYOffset > element.offsetTop &&
-      pageYOffset < element.offsetTop + 1000
+      pageYOffset > statisticalRef.current.offsetTop &&
+      pageYOffset < newsRef.current.offsetTop
     ) {
-      setCountActive(true);
-    } else {
-      setCountActive(false);
+      setElementIntoView('gioi-thieu');
+    }
+    if (
+      pageYOffset > newsRef.current.offsetTop - 500 &&
+      pageYOffset < newsRef.current.offsetTop + 1500
+    ) {
+      setNewsIntoView(true);
+    }
+
+    if (
+      pageYOffset > projectRef.current.offsetTop - 500 &&
+      pageYOffset < projectRef.current.offsetTop + 1500
+    ) {
+      setProjectIntoView(true);
     }
   }, [pageYOffset]);
   return (
     <div className={styles.homePage}>
       <Slider slides={slides} projects={projects} articles={articles} />
       <IntroduceHome
-        countActive={countActive}
+        elementIntoView={elementIntoView}
         statisticalRef={statisticalRef}
       />
-      <News articles={articles} />
-      <Projects />
+      <News articles={articles} newsRef={newsRef} newsIntoView={newsIntoView} />
+      <Projects projectIntoView={projectIntoView} projectRef={projectRef} />
       <Connective />
     </div>
   );

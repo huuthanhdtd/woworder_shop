@@ -37,11 +37,6 @@ function Header() {
               className={styles.closeIcon}
               onClick={handleCloseBars}
             />
-
-            <span className={styles.numberPhone}>
-              <h4>Tổng đài CSKH: </h4>
-              <h3>1900 63 6666</h3>
-            </span>
             <HeaderNavBar setIsNavBar={setIsNavBar} />
           </div>
           <AiOutlineMenu

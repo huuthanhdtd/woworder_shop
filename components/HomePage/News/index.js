@@ -7,8 +7,9 @@ import Link from 'next/link';
 import { GoTriangleRight } from 'react-icons/go';
 import { FaChevronRight } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import clsx from 'clsx';
 
-function News({ articles }) {
+function News({ articles, newsRef, newsIntoView }) {
   const router = useRouter();
 
   const data = useMemo(() => {
@@ -29,7 +30,7 @@ function News({ articles }) {
     router.push('/tin-tuc');
   };
   return (
-    <div className={styles.newInfor}>
+    <div className={styles.newInfor} ref={newsRef}>
       <div className={styles.container}>
         <div className={styles.newsTitle}>
           <h1>Thông tin mới</h1>
@@ -40,7 +41,14 @@ function News({ articles }) {
             {data &&
               data.map((item, index) => (
                 <Grid key={index} item md={3}>
-                  <div className={styles.wrapper}>
+                  <div
+                    className={clsx(styles.wrapper, {
+                      [styles.active]: newsIntoView === true,
+                    })}
+                    style={{
+                      transition: `all  ${index / 3 + 0.4}s ease-in-out`,
+                    }}
+                  >
                     <div className={styles.image}>
                       {item.attributes.image.data !== null && (
                         <NextImage
@@ -71,7 +79,11 @@ function News({ articles }) {
               ))}
           </Grid>
         </div>
-        <div className={styles.btnWrapper}>
+        <div
+          className={clsx(styles.btnWrapper, {
+            [styles.active]: newsIntoView === true,
+          })}
+        >
           <button onClick={handleClick}>
             Chuyển đến phần tin tức
             <div>

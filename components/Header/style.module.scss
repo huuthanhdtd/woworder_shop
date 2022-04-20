@@ -50,36 +50,7 @@
         width: 30px;
         height: 30px;
       }
-      .numberPhone {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-        margin-right: 10px;
-        h3 {
-          margin-top: 6px;
-          margin-bottom: 6px;
-          color: var(--hover-color-);
-          font-family: Open Sans;
-          font-size: 16px !important;
-          font-weight: 600 !important;
-          line-height: 20px;
-          margin-left: 6px;
-          padding: 0;
-        }
-        h4 {
-          margin-top: 6px;
-          margin-bottom: 6px;
-          color: #fff;
-          font-family: Open Sans;
-          font-size: 16px !important;
-          font-weight: 600 !important;
-          line-height: 20px;
-          padding: 0;
-        }
-      }
+      
     }
     .barIcon {
       background-color: var(--hover-color-);
@@ -147,25 +118,6 @@
           font-weight: 700;
           border: none;
           color: #fff;
-        }
-        .numberPhone {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          position: absolute;
-          right: 0;
-          cursor: pointer;
-          margin-right: 10px;
-          h3 {
-            margin-top: 6px;
-            margin-bottom: 6px;
-            color: var(--hover-color-);
-          }
-          h4 {
-            margin-top: 6px;
-            margin-bottom: 6px;
-            color: var(--primary-color-);
-          }
         }
       }
       .headerContent.showBars {
