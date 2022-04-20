@@ -5,56 +5,62 @@ import Logo from '../../../public/logo_anphu.svg';
 import { FaChevronRight } from 'react-icons/fa';
 import { Grid } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import { autoCount } from '../../../lib/Count';
 
-const IntroduceHome = ({ statisticalRef, elementIntoView }) => {
+const IntroduceHome = ({ statisticalRef, introduceIntoView }) => {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
-    if (elementIntoView === 'gioi-thieu') {
-      const interval = setInterval(() => {
-        setCountOne((prev) => {
-          if (prev < 246) {
-            return prev + 4;
-          }
+    if (introduceIntoView === true) {
+      setTimeout(() => {
+        autoCount(250, 50, 4, setCountOne);
+        autoCount(16, 180, 1, setCountTwo);
+        autoCount(3500, 100, 100, setCountThree);
+      }, 200);
+      // const interval = setInterval(() => {
+      //   setCountOne((prev) => {
+      //     if (prev < 246) {
+      //       return prev + 4;
+      //     }
 
-          if (prev >= 246) {
-            clearInterval(interval);
-            return 250;
-          }
-        });
-      }, 50);
-      const intervalTwo = setInterval(() => {
-        setCountTwo((prev) => {
-          if (prev < 16) {
-            return prev + 1;
-          }
-          if (prev >= 16) {
-            clearInterval(intervalTwo);
-            return 16;
-          }
-        });
-      }, 180);
+      //     if (prev >= 246) {
+      //       clearInterval(interval);
+      //       return 250;
+      //     }
+      //   });
+      // }, 50);
+      // const intervalTwo = setInterval(() => {
+      //   setCountTwo((prev) => {
+      //     if (prev < 16) {
+      //       return prev + 1;
+      //     }
+      //     if (prev >= 16) {
+      //       clearInterval(intervalTwo);
+      //       return 16;
+      //     }
+      //   });
+      // }, 180);
 
-      const intervalThree = setInterval(() => {
-        setCountThree((prev) => {
-          if (prev < 3500) {
-            return prev + 100;
-          }
-          if (prev >= 3500) {
-            clearInterval(intervalThree);
-            return 3500;
-          }
-        });
-      }, 100);
+      // const intervalThree = setInterval(() => {
+      //   setCountThree((prev) => {
+      //     if (prev < 3500) {
+      //       return prev + 100;
+      //     }
+      //     if (prev >= 3500) {
+      //       clearInterval(intervalThree);
+      //       return 3500;
+      //     }
+      //   });
+      // }, 100);
     } else {
       setCountOne(0);
       setCountTwo(0);
       setCountThree(0);
     }
-  }, [elementIntoView]);
+  }, [introduceIntoView]);
 
   // const statisticalRef = useRef(null)
   return (

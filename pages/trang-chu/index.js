@@ -14,7 +14,7 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
   const projectRef = useRef(null);
 
   const { y: pageYOffset } = useWindowScroll();
-  const [elementIntoView, setElementIntoView] = useState('');
+  const [introduceIntoView, setIntroduceIntoView] = useState(false);
   const [newsIntoView, setNewsIntoView] = useState(false);
   const [projectIntoView, setProjectIntoView] = useState(false);
 
@@ -23,27 +23,27 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
       pageYOffset > statisticalRef.current.offsetTop &&
       pageYOffset < newsRef.current.offsetTop
     ) {
-      setElementIntoView('gioi-thieu');
-    }
+      setIntroduceIntoView(true);
+    } else setIntroduceIntoView(false);
     if (
       pageYOffset > newsRef.current.offsetTop - 500 &&
-      pageYOffset < newsRef.current.offsetTop + 1500
+      pageYOffset < newsRef.current.offsetTop + 200
     ) {
       setNewsIntoView(true);
-    }
+    } else setNewsIntoView(false);
 
     if (
       pageYOffset > projectRef.current.offsetTop - 500 &&
-      pageYOffset < projectRef.current.offsetTop + 1500
+      pageYOffset < projectRef.current.offsetTop + 200
     ) {
       setProjectIntoView(true);
-    }
+    } else setProjectIntoView(false);
   }, [pageYOffset]);
   return (
     <div className={styles.homePage}>
       <Slider slides={slides} projects={projects} articles={articles} />
       <IntroduceHome
-        elementIntoView={elementIntoView}
+        introduceIntoView={introduceIntoView}
         statisticalRef={statisticalRef}
       />
       <News articles={articles} newsRef={newsRef} newsIntoView={newsIntoView} />
