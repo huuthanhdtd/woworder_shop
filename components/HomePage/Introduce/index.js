@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import Logo from '../../../public/logo_anphu.svg';
+import Logo from '../../../public/logo_anphu-2.svg';
 import { FaChevronRight } from 'react-icons/fa';
 import { Grid } from '@material-ui/core';
 import { useRouter } from 'next/router';
@@ -20,41 +20,6 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView }) => {
         autoCount(16, 180, 1, setCountTwo);
         autoCount(3500, 100, 100, setCountThree);
       }, 200);
-      // const interval = setInterval(() => {
-      //   setCountOne((prev) => {
-      //     if (prev < 246) {
-      //       return prev + 4;
-      //     }
-
-      //     if (prev >= 246) {
-      //       clearInterval(interval);
-      //       return 250;
-      //     }
-      //   });
-      // }, 50);
-      // const intervalTwo = setInterval(() => {
-      //   setCountTwo((prev) => {
-      //     if (prev < 16) {
-      //       return prev + 1;
-      //     }
-      //     if (prev >= 16) {
-      //       clearInterval(intervalTwo);
-      //       return 16;
-      //     }
-      //   });
-      // }, 180);
-
-      // const intervalThree = setInterval(() => {
-      //   setCountThree((prev) => {
-      //     if (prev < 3500) {
-      //       return prev + 100;
-      //     }
-      //     if (prev >= 3500) {
-      //       clearInterval(intervalThree);
-      //       return 3500;
-      //     }
-      //   });
-      // }, 100);
     } else {
       setCountOne(0);
       setCountTwo(0);

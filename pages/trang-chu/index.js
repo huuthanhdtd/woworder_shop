@@ -19,23 +19,14 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
   const [projectIntoView, setProjectIntoView] = useState(false);
 
   useEffect(() => {
-    if (
-      pageYOffset > statisticalRef.current.offsetTop &&
-      pageYOffset < newsRef.current.offsetTop
-    ) {
+    if (pageYOffset > statisticalRef.current.offsetTop) {
       setIntroduceIntoView(true);
     } else setIntroduceIntoView(false);
-    if (
-      pageYOffset > newsRef.current.offsetTop - 500 &&
-      pageYOffset < newsRef.current.offsetTop + 200
-    ) {
+    if (pageYOffset > newsRef.current.offsetTop - 500) {
       setNewsIntoView(true);
     } else setNewsIntoView(false);
 
-    if (
-      pageYOffset > projectRef.current.offsetTop - 500 &&
-      pageYOffset < projectRef.current.offsetTop + 200
-    ) {
+    if (pageYOffset > projectRef.current.offsetTop - 500) {
       setProjectIntoView(true);
     } else setProjectIntoView(false);
   }, [pageYOffset]);
