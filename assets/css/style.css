@@ -74,7 +74,7 @@ img:hover {
 }
 
 :root {
-  --primary-color-: rgba(0, 85, 138, 1);
+  --primary-color-: rgba(4, 28, 72, 1);
   --hover-color-: rgb(253, 198, 114);
   --hover-rgba-: rgba(253, 198, 114, 0.7);
   --border-color-: rgba(29, 46, 100, 0.5);
