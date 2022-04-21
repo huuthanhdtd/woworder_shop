@@ -9,12 +9,14 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
   const [countThree, setCountThree] = useState(0);
   const [countFour, setCountFour] = useState(0);
   const [countFive, setCountFive] = useState(0);
+  const [countSix, setCountSix] = useState(0);
+  const [countSeven, setCountSeven] = useState(0);
 
   useEffect(() => {
     if (focusBanner) {
       setTimeout(() => {
         //Budget Land
-        autoCount(795, 6, 1, setCountOne);
+        autoCount(7950, 2, 8, setCountOne);
         //Products
         autoCount(50, 100, 1, setCountTwo);
         //Projects
@@ -22,7 +24,11 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
         //Provinces
         autoCount(9, 400, 1, setCountFour);
         //Customers
-        autoCount(41, 90, 1, setCountFive);
+        autoCount(40, 90, 1, setCountFive);
+        //Rest product
+        autoCount(41, 90, 1, setCountSix);
+        //Area
+        autoCount(795, 6, 1, setCountSeven);
       }, 500);
     } else {
       setCountOne(0);
@@ -30,6 +36,8 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
       setCountThree(0);
       setCountFour(0);
       setCountFive(0);
+      setCountSix(0);
+      setCountSeven(0);
     }
   }, [focusBanner]);
   return (
@@ -68,30 +76,44 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
           <Grid item sm={6} xs={12} className={styles.detail}>
             <div className={styles.left}>
               <div className={styles.item}>
-                <Typography variant="h3">{countOne}ha</Typography>
-                <Typography variant="body2">Diện tích</Typography>
+                <Typography variant="h3">
+                  {changeBanner ? `${countSeven} ha` : `${countOne} ha`}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Diện tích' : 'Quỹ đất'}
+                </Typography>
                 <Divider className={styles.divider} />
               </div>
               <div className={styles.item}>
                 <Typography variant="h3">{countTwo}.000</Typography>
-                <Typography variant="body2">Khách hàng phục vụ</Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
+                </Typography>
                 <Divider className={styles.divider} />
               </div>
             </div>
             <div className={styles.right}>
               <div className={styles.item}>
                 <Typography variant="h3">{countThree}</Typography>
-                <Typography variant="body2">Tổng sản phẩm</Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
+                </Typography>
                 <Divider className={styles.divider} />
               </div>
               <div className={styles.item}>
                 <Typography variant="h3">{countFour}</Typography>
-                <Typography variant="body2">Sản phẩm đã bán</Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
+                </Typography>
                 <Divider className={styles.divider} />
               </div>
               <div className={styles.item}>
-                <Typography variant="h3">{countFive}</Typography>
-                <Typography variant="body2">Sản phẩm còn lại</Typography>
+                <Typography variant="h3">
+                  {changeBanner ? countSix : `${countFive}.000`}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}
+                </Typography>
                 <Divider className={styles.divider} />
               </div>
             </div>
