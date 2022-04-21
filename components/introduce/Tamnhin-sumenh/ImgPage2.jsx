@@ -15,9 +15,7 @@ const SisionImg = () => (
           data-deylay="500"
           className={styles.vision}
         >
-          <p>
-            <span>Tầm nhìn</span>
-          </p>
+          <h3>Tầm nhìn</h3>
           <hr />
           <p data-aos="fade-up" data-aos-duration="500" data-deylay="500">
             Novaland là Nhà phát triển Bất động sản hàng đầu Việt Nam:{' '}
@@ -38,9 +36,7 @@ const SisionImg = () => (
           data-delay="500"
           className={styles.mission}
         >
-          <p>
-            <span>Sứ mệnh</span>
-          </p>
+          <h3>Sứ mệnh</h3>
           <hr />
           <p data-aos="fade-up" data-aos-duration="500" data-deylay="500">
             - Bất động sản Đô thị

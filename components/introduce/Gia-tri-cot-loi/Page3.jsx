@@ -91,9 +91,9 @@ export default function Page3() {
         data-aos-duration="500"
         data-delay="500"
       >
-        <p data-aos="fade-up-right" data-aos-duration="500" data-delay="500">
+        <h3 data-aos="fade-up-right" data-aos-duration="500" data-delay="500">
           HIỆU QUẢ - CHÍNH TRỰC - CHUYÊN NGHIỆP
-        </p>
+        </h3>
       </div>
       <div className={styles.slider}>
         <p data-aos="fade-up" data-aos-duration="500" data-delay="500">

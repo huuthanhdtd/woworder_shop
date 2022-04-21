@@ -7,7 +7,6 @@
   overflow: hidden;
   h2 {
     padding: 2%;
-    font-size: 18px;
     font-weight: 700;
     color: var(--primary-color-);
     text-transform: uppercase;
@@ -29,7 +28,7 @@
     justify-content: space-between;
     .CompanyProfile {
       width: 49%;
-      p {
+      h3 {
         text-align: justify;
         strong {
           color: var(--primary-color-);

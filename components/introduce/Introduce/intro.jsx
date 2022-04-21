@@ -23,9 +23,9 @@ export default function Intro({ nav }) {
         intro.map((data, index) => (
           <div className={styles.MainIntroduction} key={index}>
             <div className={styles.CompanyProfile}>
-              <p>
+              <h3>
                 <strong>{data.title}</strong>
-              </p>
+              </h3>
               {intro[index] &&
                 intro[index].list.map((item, i) => <p key={i}>{item}</p>)}
             </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Page5 from './Ban-lanh-dao/Page5';
+import Page5edit from './Ban-lanh-dao/Page5edit';
 import Page3 from './Gia-tri-cot-loi/Page3';
 import Page6 from './Giai-thuong/Page6';
 import Intro from './Introduce/intro';
@@ -29,7 +30,7 @@ export default function Introduce() {
           <div>{index === 1 && <Index />}</div>
           <div>{index === 2 && <Page3 />}</div>
           <div>{index === 3 && <Page4 />}</div>
-          <div>{index === 4 && <Page5 />}</div>
+          <div>{index === 4 && <Page5edit />}</div>
           <div>{index === 5 && <Page6 />}</div>
           <div>{index === 6 && <Page7 />}</div>
         </div>

@@ -1,0 +1,169 @@
+.main {
+  .Page5 {
+    position: relative;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    overflow: hidden;
+    h2 {
+      padding: 2%;
+      font-weight: 700;
+      color: var(--primary-color-);
+      text-transform: uppercase;
+      text-align: center;
+      &::after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 80px;
+        background: var(--hover-color-);
+        margin: 10px auto 25px;
+      }
+    }
+    // ::-webkit-scrollbar {
+    //   width: 6px;
+    //   background-color: gray;
+    // }
+    // .info {
+    //   margin: 0 auto;
+    //   bottom: 0;
+    //   left: 0;
+    //   right: 0;
+    //   top: 100px;
+    //   overflow-x: hidden;
+    //   overflow-y: auto;
+    //   display: none;
+    //   width: 80%;
+    //   height: auto;
+    //   z-index: 999;
+    //   background: var(--primary-color-);
+    //   position: absolute;
+    //   padding: 20px;
+    //   box-shadow: 0 2px 16px rgb(0 0 0 / 56%);
+    // }
+    // .info.show {
+    //   display: block;
+
+    //   color: #fff;
+    //   Button {
+    //     background: #fff;
+    //     position: absolute;
+    //     right: 0;
+    //     top: 0;
+    //     svg {
+    //       color: var(--primary-color-);
+    //     }
+    //   }
+    // }
+    .staff {
+      margin: 0 auto;
+      width: 80%;
+      position: relative;
+      overflow: hidden;
+      .media {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        background: url('https://www.novaland.com.vn/Data/Sites/1/skins/default/images/brochure-bg.png');
+        height: 100%;
+        .avatar {
+          padding: 10px;
+          width: 30%;
+          img {
+            width: 100%;
+          }
+        }
+        .description {
+          padding-top: 10px;
+          width: 70%;
+          position: relative;
+          h4 {
+            font-size: 15px;
+            color: var(--primary-color-);
+            font-weight: 700;
+            margin: 0 0 15px;
+          }
+          p {
+            text-align: justify;
+            font-size: 14px;
+          }
+          ul {
+            li {
+              color: #000;
+              list-style: none;
+              line-height: 20px;
+              background: url('https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.png')
+                no-repeat 0 5px;
+              padding-left: 20px;
+              margin-bottom: 20px;
+              text-align: justify;
+            }
+          }
+
+          .title {
+            padding: 30px 15px;
+            position: absolute;
+            background: linear-gradient(
+              to top,
+              rgba(0, 85, 138, 1),
+              rgba(0, 85, 138, 0.6),
+              transparent
+            );
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            h6 {
+              color: white;
+              font-weight: bold;
+              font-size: 13px;
+              text-transform: uppercase;
+              Button {
+                color: #fff;
+              }
+            }
+            // .type,
+            // .location {
+            //   font-size: 0.8rem;
+            //   color: white;
+            //   text-transform: uppercase;
+            //   position: absolute;
+            //   bottom: 0;
+            //   transform: translateY(100%);
+            // }
+            // .location {
+            //   padding: 2%;
+            //   text-transform: lowercase;
+            //   text-align: justify;
+            //   &::first-letter {
+            //     text-transform: uppercase;
+            //   }
+            // }
+          }
+          &:hover {
+            .title {
+              height: 60%;
+              h6 {
+                border-radius: 5px;
+                background: var(--primary-color-);
+              }
+              //   .type {
+              //     bottom: 60%;
+              //     font-size: 1.3rem;
+              //   }
+              //   .location {
+              //     bottom: 50%;
+              //   }
+            }
+          }
+        }
+      }
+    }
+  }
+}
