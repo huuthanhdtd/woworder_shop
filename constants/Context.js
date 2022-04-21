@@ -1,7 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { useWindowScroll } from 'react-use';
+
 export const Context = createContext();
 export default function ContextProvider({ children }) {
+  //Banner
+  const bannerRef = useRef(null);
+  const [focusBanner, setFocusBanner] = useState(false);
+
+  //WindowScroll
+  const { y: pageYOffset } = useWindowScroll();
+
   const [type, setType] = useState(null);
   const [isFilter, setFilters] = useState(false);
   const [isActive, setIsActive] = useState(null);
@@ -38,6 +47,10 @@ export default function ContextProvider({ children }) {
     setIsActive,
     setIsPushIntro,
     isPushIntro,
+    bannerRef,
+    focusBanner,
+    setFocusBanner,
+    pageYOffset,
   };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

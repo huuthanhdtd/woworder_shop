@@ -1,12 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styles from './Projects.module.scss';
 import Banner from '../Banner/Banner';
-import { useWindowScroll } from 'react-use';
+import { Context } from '../../constants/Context';
 
 function LayoutProject({ children }) {
-  const bannerRef = useRef(null);
-  const [focusBanner, setFocusBanner] = useState(false);
-  const { y: pageYOffset } = useWindowScroll();
+  const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
+    useContext(Context);
   useEffect(() => {
     if (
       pageYOffset >= bannerRef.current.offsetTop &&

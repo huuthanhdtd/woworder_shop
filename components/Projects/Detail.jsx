@@ -1,16 +1,34 @@
 import { Typography, Grid } from '@material-ui/core';
 import Link from 'next/link';
-import React, { useMemo } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './Detail.module.scss';
 import { Visibility } from '@material-ui/icons';
 import ReactMarkdown from 'react-markdown';
 import Banner from '../Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
+import { Context } from '../../constants/Context';
 
 function Detail({ project, projects }) {
+  const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
+    useContext(Context);
+  useEffect(() => {
+    if (
+      pageYOffset >= bannerRef.current.offsetTop &&
+      pageYOffset < bannerRef.current.offsetTop + 600
+    ) {
+      setFocusBanner(true);
+    } else {
+      setFocusBanner(false);
+    }
+  }, [pageYOffset]);
   return (
     <>
-      <Banner />
+      <Banner
+        bannerRef={bannerRef}
+        focusBanner={focusBanner}
+        project={project}
+        changeBanner={true}
+      />
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item xs={9}>
           <div className={styles.title}>
