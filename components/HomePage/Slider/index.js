@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 const list = [
   {
@@ -11,8 +12,7 @@ const list = [
         title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
-    image:
-      'https://investone-law.com/wp-content/uploads/2018/10/kinh-doanh-bat-dong-san.jpg',
+    image: require('../../../public/slider/slide1.jpg'),
   },
   {
     title: 'sứ mệnh',
@@ -27,8 +27,7 @@ const list = [
         title: '- kiến tạo cộng đồng',
       },
     ],
-    image:
-      'https://file4.batdongsan.com.vn/2021/07/20/20210720085039-e922_wm.jpg',
+    image: require('../../../public/slider/slide2.jpg'),
   },
   {
     title: 'giá trị cốt lõi',
@@ -37,8 +36,7 @@ const list = [
         title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
-    image:
-      'https://news.meeycdn.com/uploads/2020/08/Nh%E1%BB%AFng-gi%C3%A1-tr%E1%BB%8B-l%E1%BB%9Bn-m%C3%A0-c%C3%B4ng-ngh%E1%BB%87-%C4%91em-l%E1%BA%A1i-cho-ng%C3%A0nh-b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n.jpg',
+    image: require('../../../public/slider/slide3.jpg'),
   },
   {
     title: 'sứ mệnh',
@@ -53,8 +51,7 @@ const list = [
         title: '- kiến tạo cộng đồng',
       },
     ],
-    image:
-      'https://danviet.mediacdn.vn/296231569849192448/2021/7/21/novalandaquacity-1626837551060367617341.jpg',
+    image: require('../../../public/slider/slide4.jpg'),
   },
   {
     title: 'giá trị cốt lõi',
@@ -63,8 +60,7 @@ const list = [
         title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
-    image:
-      'https://khudothivanphuc.com.vn/uploads/TongTheNgay01_R4_Vuong-1920-030.jpg',
+    image: require('../../../public/slider/slide5.jpg'),
   },
   {
     title: 'sứ mệnh',
@@ -79,8 +75,7 @@ const list = [
         title: '- kiến tạo cộng đồng',
       },
     ],
-    image:
-      'https://baoxaydung.com.vn/stores/news_dataimages/hiep/122021/17/12/2521_image001.jpg',
+    image: require('../../../public/slider/slide6.jpg'),
   },
   {
     title: 'giá trị cốt lõi',
@@ -89,8 +84,7 @@ const list = [
         title: 'hiệu quả - chính trực - chuyên nghiệp',
       },
     ],
-    image:
-      'http://thongtinnhadat.info.vn/wp-content/uploads/2019/05/phoi-canh-khu-nha-pho-du-an-thanh-xuan-riverside-2.jpg',
+    image: require('../../../public/slider/slide7.jpg'),
   },
 ];
 
@@ -181,7 +175,7 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              <img src={item.image} />
+              <Image src={item.image} />
             </div>
           ))}
         <div className={styles.controls}>

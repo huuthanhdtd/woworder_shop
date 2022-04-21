@@ -19,7 +19,7 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
   const [projectIntoView, setProjectIntoView] = useState(false);
 
   useEffect(() => {
-    if (pageYOffset > statisticalRef.current.offsetTop) {
+    if (pageYOffset > statisticalRef.current.offsetTop - 200) {
       setIntroduceIntoView(true);
     } else setIntroduceIntoView(false);
     if (pageYOffset > newsRef.current.offsetTop - 500) {
