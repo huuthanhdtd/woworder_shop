@@ -122,9 +122,10 @@
             h6 {
               color: white;
               font-weight: bold;
-              font-size: 13px;
+              font-size: 11px;
               text-transform: uppercase;
-              Button {
+              transition: all 0.1s linear;
+              span {
                 color: #fff;
               }
             }
@@ -148,18 +149,90 @@
           }
           &:hover {
             .title {
-              height: 60%;
+              height: 100%;
               h6 {
-                border-radius: 5px;
-                background: var(--primary-color-);
+                font-size: 13px;
+                transform: translateY(190%);
+                span {
+                  color: var(--hover-color-);
+                }
               }
-              //   .type {
-              //     bottom: 60%;
-              //     font-size: 1.3rem;
-              //   }
-              //   .location {
-              //     bottom: 50%;
-              //   }
+              // .type {
+              //   bottom: 60%;
+              //   font-size: 1.3rem;
+              // }
+              // .location {
+              //   bottom: 50%;
+              // }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 960px) {
+  .main {
+    .Page5 {
+      .staff {
+        .media {
+          .avatar {
+            img {
+            }
+          }
+          .description {
+            .title {
+              h6 {
+                color: white;
+                font-weight: bold;
+                font-size: 13px;
+                text-transform: uppercase;
+                span {
+                  color: #fff;
+                }
+              }
+            }
+            &:hover {
+              .title {
+                height: 100%;
+                h6 {
+                  transform: translateY(300%);
+                  color: var(--hover-color-);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .main {
+    .Page5 {
+      .staff {
+        .media {
+          .avatar {
+            img {
+            }
+          }
+          .description {
+            .title {
+              h6 {
+                font-size: 11px;
+                Button {
+                  color: #fff;
+                }
+              }
+            }
+            &:hover {
+              .title {
+                height: 100%;
+                h6 {
+                  transform: translateY(0%);
+                  color: var(--hover-color-);
+                }
+              }
             }
           }
         }

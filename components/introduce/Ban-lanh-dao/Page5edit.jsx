@@ -80,6 +80,7 @@ export default function Page5edit() {
             staff.map((data, index) => (
               <Grid
                 item
+                xs={12}
                 sm={12}
                 md={6}
                 lg={6}
@@ -112,11 +113,14 @@ export default function Page5edit() {
                     >
                       <span>{data.position}</span>
                     </p>
-                    <div className={styles.title}>
+                    <div
+                      className={styles.title}
+                      onClick={() => handleShow(data.id)}
+                    >
                       <Typography variant="h6">
-                        <Button onClick={() => handleShow(data.id)}>
-                          Xem thông tin chi tiêt
-                        </Button>
+                        <span onClick={() => handleShow(data.id)}>
+                          Xem thông tin chi tiết...
+                        </span>
                       </Typography>
                     </div>
                   </div>
