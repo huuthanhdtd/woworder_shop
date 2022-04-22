@@ -93,3 +93,11 @@ img:hover {
 .MuiFormHelperText-marginDense {
   margin-top: -16px !important;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color-);
+  border-radius: 5px;
+}

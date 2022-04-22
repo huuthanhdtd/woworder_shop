@@ -5,12 +5,12 @@ import styles from './page7.module.scss';
 import Aos from 'aos';
 
 export default function Page7() {
-  // useEffect(() => {
-  //   Aos.init({
-  //     easing: 'ease-in-sine',
-  //     offset: 0,
-  //   });
-  // }, []);
+  useEffect(() => {
+    Aos.init({
+      easing: 'ease-in-sine',
+      offset: 0,
+    });
+  }, []);
   return (
     <section>
       <div className={styles.rule}>
