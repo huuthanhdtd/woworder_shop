@@ -15,6 +15,7 @@
       text-transform: uppercase;
       transition: all 0.3s ease-in-out;
       clear: both;
+      width: 84px;
       &::after {
         content: '';
         display: block;
@@ -37,6 +38,9 @@
 @media screen and (max-width: 960px) {
   .contact {
     margin-top: 75px;
+    .title_page {
+      padding: 0;
+    }
   }
 }
 @media screen and (max-width: 600px) {
