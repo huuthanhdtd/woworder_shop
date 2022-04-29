@@ -1,28 +1,32 @@
 .contact {
   max-width: 1440px;
   margin: 0 auto;
-  margin-top: 117px;
-  .newsBar {
-    padding: 20px 8%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background: rgba(228, 226, 226, 0.5);
-    margin-bottom: 20px;
-    a {
+  margin-top: 150px;
+  .title_page {
+    margin: 0 auto;
+    width: 90%;
+    padding: 0 13.125px;
+    h5 {
+      margin-top: 75px;
+      font-size: 1.3rem;
+      font-weight: 600;
       color: var(--primary-color-);
-      font-size: 0.9rem;
-      transition: all 0.5s ease;
-    }
-    .arrowIcon {
-      color: var(--primary-color-);
-      margin: 0 2px;
-      font-size: 0.7rem;
-      text-transform: capitalize;
-    }
-    a:hover {
-      text-decoration: underline;
-      color: var(--hover-color-);
+      font-family: 'Opens sans', sans-serif;
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+      clear: both;
+      &::after {
+        content: '';
+        display: block;
+        height: 3px;
+        margin: 5px 0 30px;
+        width: 84px;
+        background: var(--hover-color-);
+      }
+      &:hover {
+        color: var(--hover-color-);
+        cursor: pointer;
+      }
     }
   }
   .Main {

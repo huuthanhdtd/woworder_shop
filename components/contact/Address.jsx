@@ -117,9 +117,6 @@ export default function Address({ setMaps }) {
   return (
     <div className={styles.address}>
       <div className={styles.mrb20}>
-        <div className={styles.title_page}>
-          <h5>LIÊN HỆ</h5>
-        </div>
         <div className={styles.selection}>
           <select onChange={handleSelects}>
             {add &&

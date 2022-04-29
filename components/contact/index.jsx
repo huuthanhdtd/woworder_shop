@@ -10,10 +10,8 @@ export default function Index() {
   const [maps, setMaps] = useState('');
   return (
     <div className={styles.contact}>
-      <div className={styles.newsBar}>
-        <Link href="/">Trang chủ</Link>
-        <AiOutlineRight className={styles.arrowIcon} />
-        <Link href="/lien-he">Liên hệ</Link>
+      <div className={styles.title_page}>
+        <h5>LIÊN HỆ</h5>
       </div>
       <Grid container spacing={4} className={styles.Main}>
         <Grid
