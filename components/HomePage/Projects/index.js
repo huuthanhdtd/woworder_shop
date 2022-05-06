@@ -3,25 +3,24 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-
+import Image from 'next/image';
 const listOne = [
   {
-    title: 'Aqua City',
+    title: 'Khu đô thị Ân Phú Buôn Ma Thuột',
 
-    image: 'https://ddireal.vn/wp-content/uploads/2022/03/dat-nen-ddireal.jpg',
+    image: require('../../../public/home/project/bg1.jpg'),
   },
   {
-    title: 'The Grand Manhattan',
-    image:
-      'https://ddireal.vn/wp-content/uploads/2022/03/shophouse-ddireal.jpg',
+    title: 'Khu dân cư số 2 Điện An',
+    image: require('../../../public/home/project/bg2.jpg'),
   },
   {
-    title: 'Novalan Phan Thiết',
-    image: 'https://ddireal.vn/wp-content/uploads/2022/03/biet-thu-ddireal.jpg',
+    title: 'Khu dân cư Đông Tân Thiện',
+    image: require('../../../public/home/project/bg2.jpg'),
   },
   {
-    title: 'Saigon royal',
-    image: 'https://ddireal.vn/wp-content/uploads/2022/03/can-ho-ddireal.jpg',
+    title: 'Khu đô thị Sa Huỳnh',
+    image: require('../../../public/home/project/bg4.jpg'),
   },
 ];
 const count = [1, 2, 3, 4, 5, 6];
@@ -124,13 +123,12 @@ const Projects = ({ projectIntoView, projectRef }) => {
                 positions.three - index >= 3 || positions.three - index <= -3,
             })}
           >
-            {/* <img src={item.image} /> */}
-
             <Grid container className={styles.listGrid}>
               {listOne.map((it, i) => (
                 <Grid key={i} item xs={6} sm={3} md={3} className={styles.item}>
-                  <img src={it.image} />
-                  <span>
+                  <Image src={it.image} />
+                  <div className={styles.bgFake}></div>
+                  <div className={styles.itemTitle}>
                     <h2
                       className={clsx({
                         [styles.active]: projectIntoView === true,
@@ -141,7 +139,7 @@ const Projects = ({ projectIntoView, projectRef }) => {
                     >
                       {it.title.toUpperCase()}
                     </h2>
-                  </span>
+                  </div>
                 </Grid>
               ))}
             </Grid>
