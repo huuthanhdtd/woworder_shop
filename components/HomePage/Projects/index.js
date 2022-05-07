@@ -16,7 +16,7 @@ const listOne = [
   },
   {
     title: 'Khu dân cư Đông Tân Thiện',
-    image: require('../../../public/home/project/bg2.jpg'),
+    image: require('../../../public/home/project/bg3.jpg'),
   },
   {
     title: 'Khu đô thị Sa Huỳnh',
