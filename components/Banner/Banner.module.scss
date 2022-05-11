@@ -3,60 +3,64 @@ $OpensSans: 'Opens sans', sans-serif;
   width: 100%;
   height: 100vh;
   position: relative;
-  background-size: contain;
+  background-size: cover;
+  // background-clip: content-box;
+  // background-repeat: no-repeat;
+  background-position-y: top;
   background: rgba(255, 255, 255, 0.5);
-}
-.container {
-  height: 100%;
-  background: rgba(0, 85, 138, 0.5);
-  .content {
-    padding: 0 5vw;
-    p,
-    span {
-      color: white;
-      font-family: $OpensSans;
-      font-size: 1.1rem;
-    }
-    h4 {
-      color: white;
-      font-family: $OpensSans;
-      font-weight: 600;
-    }
-  }
-  .detail {
-    padding: 0 5vw;
-    display: grid;
-    grid-template-columns: 47% 47%;
-    grid-gap: 6%;
-    .item {
-      padding: 20px 0;
-      h3 {
+
+  .container {
+    height: 100%;
+    background: rgba(0, 85, 138, 0.5);
+    .content {
+      padding: 0 5vw;
+      p,
+      span {
         color: white;
-        font-family: 'Opens sans', sans-serif;
-        font-weight: 600;
-      }
-      p {
-        color: white;
+        font-family: $OpensSans;
         font-size: 1.1rem;
       }
-      .divider {
-        background: var(--hover-color-);
-        height: 2px;
+      h4 {
+        color: white;
+        font-family: $OpensSans;
+        font-weight: 600;
       }
     }
-    .left {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-    .right {
+    .detail {
+      padding: 0 5vw;
+      display: grid;
+      grid-template-columns: 47% 47%;
+      grid-gap: 6%;
+      .item {
+        padding: 20px 0;
+        h3 {
+          color: white;
+          font-family: 'Opens sans', sans-serif;
+          font-weight: 600;
+        }
+        p {
+          color: white;
+          font-size: 1.1rem;
+        }
+        .divider {
+          background: var(--hover-color-);
+          height: 2px;
+        }
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .right {
+      }
     }
   }
 }
 @media screen and(max-width: 1280px) {
   .image {
     margin-top: 71px;
-    height: 100vh;
+    height: 50vh;
     .container {
       padding: 2% 0;
       .content {
