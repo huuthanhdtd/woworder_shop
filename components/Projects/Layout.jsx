@@ -3,7 +3,7 @@ import styles from './Projects.module.scss';
 import Banner from '../Banner/Banner';
 import { Context } from '../../constants/Context';
 
-function LayoutProject({ children }) {
+function LayoutProject({ children, bannerProject }) {
   const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
     useContext(Context);
   useEffect(() => {
@@ -18,7 +18,11 @@ function LayoutProject({ children }) {
   }, [pageYOffset]);
   return (
     <>
-      <Banner bannerRef={bannerRef} focusBanner={focusBanner} />
+      <Banner
+        bannerRef={bannerRef}
+        focusBanner={focusBanner}
+        bannerProject={bannerProject}
+      />
       <div className={styles.layout}>{children}</div>
     </>
   );

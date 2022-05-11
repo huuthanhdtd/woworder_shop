@@ -2,8 +2,15 @@ import React, { useEffect, useState } from 'react';
 import styles from './Banner.module.scss';
 import { div, CardMedia, Divider, Grid, Typography } from '@material-ui/core';
 import { autoCount } from '../../lib/Count';
+import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 
-function Banner({ bannerRef, focusBanner, project, changeBanner }) {
+function Banner({
+  bannerRef,
+  focusBanner,
+  project,
+  changeBanner,
+  bannerProject,
+}) {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
@@ -11,24 +18,40 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
   const [countFive, setCountFive] = useState(0);
   const [countSix, setCountSix] = useState(0);
   const [countSeven, setCountSeven] = useState(0);
+  const [countEight, setCountEight] = useState(0);
+  const [countNine, setCountNine] = useState(0);
+  const [countTen, setCountTen] = useState(0);
 
   useEffect(() => {
     if (focusBanner) {
       setTimeout(() => {
         //Budget Land
-        autoCount(7950, 2, 8, setCountOne);
+        autoCount(bannerProject.attributes.acreage, 2, 8, setCountOne);
         //Products
-        autoCount(50, 100, 1, setCountTwo);
+        autoCount(bannerProject.attributes.product, 1, 33, setCountTwo);
         //Projects
-        autoCount(50, 100, 1, setCountThree);
+        autoCount(bannerProject.attributes.Project, 100, 1, setCountThree);
         //Provinces
-        autoCount(9, 400, 1, setCountFour);
+        autoCount(bannerProject.attributes.province, 400, 1, setCountFour);
         //Customers
-        autoCount(40, 90, 1, setCountFive);
-        //Rest product
-        autoCount(41, 90, 1, setCountSix);
-        //Area
-        autoCount(795, 6, 1, setCountSeven);
+        autoCount(bannerProject.attributes.customer, 1, 15, setCountFive);
+        if (project) {
+          //Rest product
+          autoCount(
+            project.attributes.total_product - project.attributes.products_sold,
+            100,
+            1,
+            setCountSix
+          );
+          //Area
+          autoCount(project.attributes.acreage, 200, 1, setCountSeven);
+          //Customer Detail Project
+          autoCount(project.attributes.customer, 50, 1, setCountEight);
+          //Products Sold Detail Project
+          autoCount(project.attributes.products_sold, 5, 1, setCountNine);
+          //Total Products Detail Project
+          autoCount(project.attributes.total_product, 5, 1, setCountTen);
+        }
       }, 500);
     } else {
       setCountOne(0);
@@ -38,13 +61,22 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
       setCountFive(0);
       setCountSix(0);
       setCountSeven(0);
+      setCountEight(0);
+      setCountNine(0);
+      setCountTen(0);
     }
   }, [focusBanner]);
   return (
     <>
       <CardMedia
         className={styles.image}
-        image={changeBanner ? '/Banner/detail.jpg' : '/Banner/banner.jpg'}
+        image={
+          changeBanner
+            ? getMediaFollowSize(
+                project.attributes.image.data.attributes.formats.large
+              )
+            : getStrapiMedia(bannerProject.attributes.background)
+        }
       >
         <Grid
           container
@@ -85,7 +117,9 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
                 <Divider className={styles.divider} />
               </div>
               <div className={styles.item}>
-                <Typography variant="h3">{countTwo}.000</Typography>
+                <Typography variant="h3">
+                  {changeBanner ? countEight : countTwo}
+                </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
                 </Typography>
@@ -94,14 +128,18 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
             </div>
             <div className={styles.right}>
               <div className={styles.item}>
-                <Typography variant="h3">{countThree}</Typography>
+                <Typography variant="h3">
+                  {changeBanner ? countTen : countThree}
+                </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
                 </Typography>
                 <Divider className={styles.divider} />
               </div>
               <div className={styles.item}>
-                <Typography variant="h3">{countFour}</Typography>
+                <Typography variant="h3">
+                  {changeBanner ? countNine : countFour}
+                </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
                 </Typography>
@@ -109,7 +147,7 @@ function Banner({ bannerRef, focusBanner, project, changeBanner }) {
               </div>
               <div className={styles.item}>
                 <Typography variant="h3">
-                  {changeBanner ? countSix : `${countFive}.000`}
+                  {changeBanner ? countSix : `${countFive}`}
                 </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}

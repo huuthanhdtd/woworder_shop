@@ -3,7 +3,7 @@ import Detail from '../../components/Projects/Detail';
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
 import { reverse } from '../../lib/reverse';
-function DetailProject({ project, projects }) {
+function DetailProject({ project, projects, projectCommon }) {
   const seo = {
     metaTitle: project.attributes.title,
     metaDescription: project.attributes.description,
@@ -17,7 +17,7 @@ function DetailProject({ project, projects }) {
   return (
     <>
       <Seo seo={seo} />
-      <Detail project={project} projects={data} />
+      <Detail project={project} projects={data} projectCommon={projectCommon} />
     </>
   );
 }
@@ -36,17 +36,21 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }) {
-  const projectRes = await fetchAPI('/projects', {
-    filters: {
-      slug: params.slug,
-    },
-    populate: '*',
-  });
+  const [projectRes, projectCommonRes] = await Promise.all([
+    fetchAPI('/projects', {
+      filters: {
+        slug: params.slug,
+      },
+      populate: '*',
+    }),
+    fetchAPI('/page-project', { populate: '*' }),
+  ]);
   const allProject = await fetchAPI('/projects', { populate: '*' });
   return {
     props: {
       project: projectRes.data[0],
       projects: allProject.data,
+      projectCommon: projectCommonRes.data,
     },
     revalidate: 1,
   };

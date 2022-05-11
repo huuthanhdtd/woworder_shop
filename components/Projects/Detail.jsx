@@ -8,7 +8,7 @@ import Banner from '../Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 import { Context } from '../../constants/Context';
 
-function Detail({ project, projects }) {
+function Detail({ project, projects, projectCommon }) {
   const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
     useContext(Context);
   useEffect(() => {
@@ -28,6 +28,7 @@ function Detail({ project, projects }) {
         focusBanner={focusBanner}
         project={project}
         changeBanner={true}
+        bannerProject={projectCommon}
       />
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item xs={9}>
@@ -46,7 +47,7 @@ function Detail({ project, projects }) {
               escapeHtml={false}
             />
           </div>
-          {project.attributes.articles.data.length > 0 ? (
+          {project.attributes.news_articles.data.length > 0 ? (
             <div className={styles.relativeNews}>
               <Typography variant="h5">Tin liên quan</Typography>
               <div className={styles.linkNews}>
