@@ -3,9 +3,9 @@
  */
 const nextConfig = {
   images: {
-    loader: "default",
-    domains: ["localhost", "tipicicms.herokuapp.com"],
+    loader: 'default',
+    domains: ['localhost', 'anphu-tpc.herokuapp.com'],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
