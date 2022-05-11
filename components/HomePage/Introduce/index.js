@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
-import Image from 'next/image';
-import Logo from '../../../public/logo_anphu-2.svg';
+import NextImage from './imageLogo';
 import { FaChevronRight } from 'react-icons/fa';
 import { Grid } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { autoCount } from '../../../lib/Count';
 
-const IntroduceHome = ({ statisticalRef, introduceIntoView }) => {
+const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
@@ -16,9 +15,9 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView }) => {
   useEffect(() => {
     if (introduceIntoView === true) {
       setTimeout(() => {
-        autoCount(250, 50, 4, setCountOne);
-        autoCount(16, 180, 1, setCountTwo);
-        autoCount(3500, 100, 100, setCountThree);
+        autoCount(homepage.attributes.personnel, 50, 4, setCountOne);
+        autoCount(homepage.attributes.project, 180, 1, setCountTwo);
+        autoCount(homepage.attributes.product, 100, 100, setCountThree);
       }, 200);
     } else {
       setCountOne(0);
@@ -35,13 +34,9 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView }) => {
           <h2>Giới thiệu</h2>
         </div>
         <div className={styles.logo}>
-          <Image src={Logo} />
+          <NextImage image={homepage.attributes.logo} />
         </div>
-        <p>
-          Ân Phú hướng đến là thương hiệu hàng đầu trong ngành Bất động sản.
-          Hoạt động trong lĩnh vực môi giới, phân phối, đầu tư các dự án bất
-          động sản trên toàn quốc.
-        </p>
+        <p>{homepage.attributes.seo.metaDescription}</p>
         <button onClick={() => router.push('/gioi-thieu')}>
           Giới thiệu chi tiết
           <div>

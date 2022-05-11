@@ -8,7 +8,13 @@ import styles from './styles.module.scss';
 import Connective from '../../components/HomePage/Connective';
 import IntroduceHome from '../../components/HomePage/Introduce';
 
-const HomePage = ({ articles, categories, slides, projects, homepage }) => {
+const HomePage = ({
+  articles,
+  //  categories,
+  slides,
+  typicalProjects,
+  homepage,
+}) => {
   const statisticalRef = useRef(null);
   const newsRef = useRef(null);
   const projectRef = useRef(null);
@@ -16,7 +22,6 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
   const { y: pageYOffset } = useWindowScroll();
   const [introduceIntoView, setIntroduceIntoView] = useState(false);
   const [newsIntoView, setNewsIntoView] = useState(false);
-  const [projectIntoView, setProjectIntoView] = useState(false);
 
   useEffect(() => {
     if (pageYOffset > statisticalRef.current.offsetTop - 200) {
@@ -25,20 +30,20 @@ const HomePage = ({ articles, categories, slides, projects, homepage }) => {
     if (pageYOffset > newsRef.current.offsetTop - 500) {
       setNewsIntoView(true);
     } else setNewsIntoView(false);
-
-    if (pageYOffset > projectRef.current.offsetTop - 500) {
-      setProjectIntoView(true);
-    } else setProjectIntoView(false);
   }, [pageYOffset]);
   return (
     <div className={styles.homePage}>
-      <Slider slides={slides} projects={projects} articles={articles} />
+      <Slider
+        slides={slides}
+        //  projects={projects} articles={articles}
+      />
       <IntroduceHome
+        homepage={homepage}
         introduceIntoView={introduceIntoView}
         statisticalRef={statisticalRef}
       />
       <News articles={articles} newsRef={newsRef} newsIntoView={newsIntoView} />
-      <Projects projectIntoView={projectIntoView} projectRef={projectRef} />
+      <Projects typicalProjects={typicalProjects} projectRef={projectRef} />
       <Connective />
     </div>
   );

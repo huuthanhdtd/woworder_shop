@@ -13,7 +13,7 @@ const Image = ({ image, style }) => {
       // loader={loader}
       layout="responsive"
       width={width}
-      height={width / 2}
+      height={1.5 * width}
       objectFit="cover"
       src={getStrapiMedia(image)}
       alt={alternativeText || ''}
