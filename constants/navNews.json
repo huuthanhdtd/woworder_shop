@@ -7,11 +7,16 @@
   {
     "id": 2,
     "title": "Tin tức dự án",
-    "type": "Dự án"
+    "type": "project news"
   },
   {
     "id": 3,
     "title": "Tin tức thị trường",
-    "type": "Thị trường"
+    "type": "market news"
+  },
+  {
+    "id": 4,
+    "title": "Video",
+    "type": "video"
   }
 ]

@@ -23,7 +23,7 @@ const firstIndex = 0;
 
 function ProjectsPage({ projects, bannerProject }) {
   const { type, handleTypeProjects, isFilter, isActive } = useContext(Context);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(6);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [isSelect, setSelect] = useState(1);
@@ -36,7 +36,7 @@ function ProjectsPage({ projects, bannerProject }) {
     Aos.init({ duration: 1500 });
 
     const res = reverse(projects);
-    setData(res);
+    setData(res.slice(firstIndex, pageSize));
 
     if (type !== null)
       setData(res.filter((project) => project.attributes.type === type));

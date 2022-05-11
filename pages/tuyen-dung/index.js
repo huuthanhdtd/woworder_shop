@@ -4,38 +4,40 @@ import { reverse } from '../../lib/reverse';
 import Seo from '../../components/seo';
 import CategoryPage from '../../components/Category';
 
-const CareerPage = ({ category }) => {
+const CareerPage = ({ articles, recruitmentCommon }) => {
   const seo = {
-    metaTitle: category.attributes.name,
-    metaDescription: `All ${category.attributes.name} articles`,
+    metaTitle: recruitmentCommon.attributes.seo.metaTitle,
+    metaDescription: `All ${recruitmentCommon.attributes.seo.metaDescription} articles`,
+    shareImage: recruitmentCommon.attributes.background,
   };
   const data = useMemo(() => {
-    return reverse(category.attributes.articles.data);
-  }, [category.attributes.articles.data]);
+    return reverse(articles);
+  }, [articles]);
+  console.log(data, recruitmentCommon);
   return (
     <>
       <Seo seo={seo} />
-      <div>
-        <CategoryPage articles={data} title={category.attributes.name} />
-      </div>
+      <CategoryPage
+        articles={data}
+        title={recruitmentCommon.attributes.seo.metaTitle}
+      />
     </>
   );
 };
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const matchingCategories = await fetchAPI('/categories', {
-    filters: { slug: 'tuyen-dung' },
-    populate: {
-      articles: {
-        populate: '*',
-      },
-    },
-  });
+  const [recruitmentRes, recruimentCommonRes] = await Promise.all([
+    fetchAPI('/hiring-articles', {
+      populate: '*',
+    }),
+    fetchAPI('/hire-page', { populate: '*' }),
+  ]);
 
   return {
     props: {
-      category: matchingCategories.data[0],
+      articles: recruitmentRes.data,
+      recruitmentCommon: recruimentCommonRes.data,
     },
     revalidate: 1,
   };

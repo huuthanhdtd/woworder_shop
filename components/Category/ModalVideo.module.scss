@@ -1,0 +1,28 @@
+.container {
+  color: red;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: black;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .content {
+    position: relative;
+
+    iframe {
+      height: 500px;
+      width: 900px;
+    }
+
+    .closeBtn {
+      position: absolute;
+      right: 0;
+      transform: translateX(100%);
+      color: var(--hover-color-);
+      font-size: 50px;
+    }
+  }
+}

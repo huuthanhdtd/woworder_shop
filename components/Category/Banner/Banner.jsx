@@ -2,6 +2,7 @@ import { CardMedia } from '@material-ui/core';
 import React from 'react';
 import styles from './Banner.module.scss';
 import { useRouter } from 'next/router';
+import { getMediaFollowSize, getStrapiMedia } from '../../../lib/media';
 
 function BannerMain({ image }) {
   const router = useRouter();
@@ -9,7 +10,7 @@ function BannerMain({ image }) {
     <CardMedia
       image={
         router.pathname == '/tin-tuc'
-          ? '/Tin-tuc/banner.jpg'
+          ? getStrapiMedia(image)
           : '/tuyen-dung/tuyendung.jpg'
       }
       className={styles.banner}

@@ -15,6 +15,8 @@ export default function ContextProvider({ children }) {
   const [isFilter, setFilters] = useState(false);
   const [isActive, setIsActive] = useState(null);
   const [isPushIntro, setIsPushIntro] = useState(false);
+  const [openVideo, setOpenVideo] = useState(false);
+  const [contentVideo, setContentVideo] = useState('');
 
   const [introduceTpye, setIntroduceType] = useState(null);
   const router = useRouter();
@@ -51,6 +53,10 @@ export default function ContextProvider({ children }) {
     focusBanner,
     setFocusBanner,
     pageYOffset,
+    openVideo,
+    setOpenVideo,
+    contentVideo,
+    setContentVideo,
   };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

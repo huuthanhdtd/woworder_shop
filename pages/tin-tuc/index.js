@@ -4,35 +4,39 @@ import { reverse } from '../../lib/reverse';
 import Seo from '../../components/seo';
 import CategoryPage from '../../components/Category';
 
-const Category = ({ category }) => {
+const Category = ({ articlesData, newsCommon }) => {
   const seo = {
-    metaTitle: category.attributes.name,
-    metaDescription: `All ${category.attributes.name} articles`,
+    metaTitle: newsCommon.attributes.seo.metaTitle,
+    metaDescription: `All ${newsCommon.attributes.seo.metaDescription} articles`,
+    shareImage: newsCommon.attributes.background,
   };
   const data = useMemo(() => {
-    return reverse(category.attributes.articles.data);
-  }, [category.attributes.articles.data]);
+    return reverse(articlesData);
+  }, [articlesData]);
   return (
     <>
       <Seo seo={seo} />
-      <CategoryPage articles={data} title={category.attributes.name} />
+      <CategoryPage
+        articles={data}
+        title={newsCommon.attributes.seo.metaTitle}
+        image={newsCommon.attributes.background}
+      />
     </>
   );
 };
 
 export async function getStaticProps() {
-  const matchingCategories = await fetchAPI('/categories', {
-    filters: { slug: 'tin-tuc' },
-    populate: {
-      articles: {
-        populate: '*',
-      },
-    },
-  });
+  const [matchingCategories, newsPageRes] = await Promise.all([
+    fetchAPI('/news-articles', {
+      populate: '*',
+    }),
+    fetchAPI('/news-page', { populate: '*' }),
+  ]);
 
   return {
     props: {
-      category: matchingCategories.data[0],
+      articlesData: matchingCategories.data,
+      newsCommon: newsPageRes.data,
     },
     revalidate: 1,
   };

@@ -20,7 +20,7 @@ const Article = ({ article, articles }) => {
       <Seo seo={seo} />
       <DetailArticle
         article={article}
-        title={article.attributes.category.data.attributes}
+        title={article.attributes.title}
         anotherArticle={data}
       />
     </>
@@ -28,7 +28,7 @@ const Article = ({ article, articles }) => {
 };
 
 export async function getStaticPaths() {
-  const articlesRes = await fetchAPI('/articles', { fields: ['slug'] });
+  const articlesRes = await fetchAPI('/news-articles', { fields: ['slug'] });
 
   return {
     paths: articlesRes.data.map((article) => ({
@@ -41,18 +41,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const articlesRes = await fetchAPI('/articles', {
+  const articlesRes = await fetchAPI('/news-articles', {
     filters: {
       slug: params.slug,
     },
     populate: '*',
   });
-  const allArticles = await fetchAPI('/articles', {
-    filters: {
-      category: {
-        slug: 'tin-tuc',
-      },
-    },
+  const allArticles = await fetchAPI('/news-articles', {
     populate: '*',
   });
 

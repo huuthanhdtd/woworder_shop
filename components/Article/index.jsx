@@ -6,6 +6,7 @@ import { Button, Typography, Container, CardMedia } from '@material-ui/core';
 import { Visibility } from '@material-ui/icons';
 import { AiOutlineRight } from 'react-icons/ai';
 import { reverse } from '../../lib/reverse';
+import { getStrapiMedia } from '../../lib/media';
 
 function DetailArticle({ article, title, anotherArticle }) {
   const data = useMemo(() => {
@@ -15,20 +16,14 @@ function DetailArticle({ article, title, anotherArticle }) {
     <>
       <CardMedia
         className={styles.banner}
-        image={
-          title.slug == 'tin-tuc'
-            ? '/Tin-tuc/banner.jpg'
-            : '/tuyen-dung/tuyendung.jpg'
-        }
+        image={getStrapiMedia(article.attributes.image)}
       >
         <div className={styles.cover}></div>
       </CardMedia>
       <Container className={styles.container}>
         <div className={styles.title}>
           <Typography variant="h5">
-            <Link href={title.slug == 'tin-tuc' ? '/tin-tuc' : '/tuyen-dung'}>
-              {title.name}
-            </Link>
+            <Link href="/tin-tuc">Tin tức</Link>
             <span>
               <AiOutlineRight fontSize={15} />
             </span>
