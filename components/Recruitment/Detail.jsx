@@ -4,10 +4,10 @@ import React, { useMemo } from 'react';
 import styles from './Detail.module.scss';
 import { Visibility } from '@material-ui/icons';
 import ReactMarkdown from 'react-markdown';
-import Banner from '../Banner/Banner';
+import Banner from './Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 
-function Detail({ project, projects }) {
+function DetailRecruitment({ article, title, anotherArticle }) {
   return (
     <>
       <Grid container justifyContent="center" className={styles.container}>
@@ -15,53 +15,36 @@ function Detail({ project, projects }) {
         <Grid item xs={9}>
           <div className={styles.title}>
             <Typography variant="h5">
-              <Link href="/du-an">Dự án</Link>
+              <Link href="/tuyen-dung">Tuyển dụng</Link>
               <span>
                 <AiOutlineRight fontSize={15} />
               </span>
-              <span>{project.attributes.title}</span>
+              <span>{article.attributes.title}</span>
             </Typography>
           </div>
           <div className={styles.content}>
             <ReactMarkdown
-              source={project.attributes.content}
+              source={article.attributes.content}
               escapeHtml={false}
             />
           </div>
-          {project.attributes.articles.data.length > 0 ? (
-            <div className={styles.relativeNews}>
-              <Typography variant="h5">Tin liên quan</Typography>
+          {anotherArticle.length > 0 ? (
+            <div className={styles.anotherNews}>
+              <Typography variant="h5">Các dự án khác</Typography>
+
               <div className={styles.linkNews}>
-                {project.attributes.articles.data.map((article) => (
+                {anotherArticle.slice(0, 5).map((article) => (
                   <Link
                     key={article.id}
-                    href={`/bai-viet/${article.attributes.slug}`}
+                    href={`/tuyen-dung/${article.attributes.slug}`}
                   >
                     {article.attributes.title}
                   </Link>
                 ))}
               </div>
-            </div>
-          ) : (
-            ' '
-          )}
-          {projects.length > 0 ? (
-            <div className={styles.anotherNews}>
-              <Typography variant="h5">Các dự án khác</Typography>
-
-              <div className={styles.linkNews}>
-                {projects.slice(0, 5).map((project) => (
-                  <Link
-                    key={project.id}
-                    href={`/du-an/${project.attributes.slug}`}
-                  >
-                    {project.attributes.title}
-                  </Link>
-                ))}
-              </div>
               <div className={styles.button}>
                 <Visibility />
-                <Link href="/du-an">Xem thêm</Link>
+                <Link href="/tuyen-dung">Xem thêm</Link>
               </div>
             </div>
           ) : (
@@ -73,4 +56,4 @@ function Detail({ project, projects }) {
   );
 }
 
-export default Detail;
+export default DetailRecruitment;

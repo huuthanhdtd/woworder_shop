@@ -2,13 +2,14 @@ import React, { useMemo } from 'react';
 import { fetchAPI } from '../../lib/api';
 import { reverse } from '../../lib/reverse';
 import Seo from '../../components/seo';
-import CategoryPage from '../../components/Category';
+import CategoryPage from '../../components/News';
 
 const Category = ({ articlesData, newsCommon }) => {
   const seo = {
     metaTitle: newsCommon.attributes.seo.metaTitle,
     metaDescription: `All ${newsCommon.attributes.seo.metaDescription} articles`,
     shareImage: newsCommon.attributes.background,
+    article: true,
   };
   const data = useMemo(() => {
     return reverse(articlesData);
