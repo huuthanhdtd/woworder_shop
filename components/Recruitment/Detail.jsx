@@ -7,11 +7,11 @@ import ReactMarkdown from 'react-markdown';
 import Banner from './Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 
-function DetailRecruitment({ article, title, anotherArticle }) {
+function DetailRecruitment({ article, title, anotherArticle, image }) {
   return (
     <>
+      <Banner image={image} />
       <Grid container justifyContent="center" className={styles.container}>
-        <Banner />
         <Grid item xs={9}>
           <div className={styles.title}>
             <Typography variant="h5">

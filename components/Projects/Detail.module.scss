@@ -81,7 +81,7 @@
       &:hover {
         a,
         svg {
-          color: var(--color-hover-);
+          color: var(--hover-color-);
           background: transparent;
           margin-right: 5px;
         }
@@ -121,9 +121,12 @@
       transition: all 0.5s;
       margin-bottom: 5px;
       font-size: 0.9rem;
-
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
       &:hover {
-        color: var(--color-hover-);
+        color: var(--hover-color-);
         letter-spacing: 0.1em;
       }
     }

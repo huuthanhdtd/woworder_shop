@@ -7,7 +7,6 @@ import Image from './image';
 import photo from '../../../public/Du-an/1.jpg';
 
 function CardItem({ article, dataAos, dataAosDelay }) {
-  console.log(article);
   return (
     <Link href={`/tuyen-dung/${article.attributes.slug}`}>
       <div

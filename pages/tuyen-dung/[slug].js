@@ -4,11 +4,11 @@ import DetailRecruitment from '../../components/Recruitment/Detail';
 import { reverse } from '../../lib/reverse';
 import { useMemo } from 'react';
 
-const Article = ({ article, articles }) => {
+const Article = ({ article, articles, hireCommon }) => {
   const seo = {
     metaTitle: article.attributes.title,
     metaDescription: article.attributes.description,
-    // shareImage: article.attributes.image,
+    shareImage: hireCommon.attributes.background,
     article: true,
   };
 
@@ -22,6 +22,7 @@ const Article = ({ article, articles }) => {
         article={article}
         title={article.attributes.title}
         anotherArticle={data}
+        image={hireCommon.attributes.background}
       />
     </>
   );
@@ -47,9 +48,12 @@ export async function getStaticProps({ params }) {
     },
     populate: '*',
   });
-  const allArticles = await fetchAPI('/hiring-articles', {
-    populate: '*',
-  });
+  const [allArticles, hireCommonRes] = await Promise.all([
+    fetchAPI('/hiring-articles', {
+      populate: '*',
+    }),
+    fetchAPI('/hire-page', { populate: '*' }),
+  ]);
 
   return {
     props: {
@@ -57,6 +61,7 @@ export async function getStaticProps({ params }) {
       articles: allArticles.data.filter(
         (article) => article.attributes.slug !== params.slug
       ),
+      hireCommon: hireCommonRes.data,
     },
     revalidate: 1,
   };

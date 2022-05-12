@@ -5,21 +5,24 @@ import styles from './Detail.module.scss';
 import { Button, Typography, Container, CardMedia } from '@material-ui/core';
 import { Visibility } from '@material-ui/icons';
 import { AiOutlineRight } from 'react-icons/ai';
-import { getStrapiMedia } from '../../lib/media';
+import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 
 function DetailArticle({ article, title, anotherArticle }) {
+  const preLinkNews = '/tin-tuc';
   return (
     <>
       <CardMedia
         className={styles.banner}
-        image={getStrapiMedia(article.attributes.image)}
+        image={getMediaFollowSize(
+          article.attributes.image.data.attributes.formats.large
+        )}
       >
         <div className={styles.cover}></div>
       </CardMedia>
       <Container className={styles.container}>
         <div className={styles.title}>
           <Typography variant="h5">
-            <Link href="/tin-tuc">Tin tức</Link>
+            <Link href={preLinkNews}>Tin tức</Link>
             <span>
               <AiOutlineRight fontSize={15} />
             </span>
@@ -40,7 +43,7 @@ function DetailArticle({ article, title, anotherArticle }) {
               {anotherArticle.map((article) => (
                 <Link
                   key={article.id}
-                  href={`/tin-tuc/${article.attributes.slug}`}
+                  href={`${preLinkNews}/${article.attributes.slug}`}
                 >
                   {article.attributes.title}
                 </Link>
@@ -48,7 +51,7 @@ function DetailArticle({ article, title, anotherArticle }) {
             </div>
             <div className={styles.button}>
               <Visibility />
-              <Link href="/tin-tuc">
+              <Link href={preLinkNews}>
                 <Button>Xem thêm</Button>
               </Link>
             </div>

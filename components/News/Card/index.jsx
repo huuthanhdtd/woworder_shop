@@ -1,7 +1,7 @@
-// import Link from 'next/link';
+import Link from 'next/link';
 import React from 'react';
 import styles from './CardItem.module.scss';
-import { Typography, Link } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { BsCaretRightFill } from 'react-icons/bs';
 import Image from './image';
 import photo from '../../../public/Du-an/1.jpg';
@@ -25,7 +25,7 @@ function CardItem({
   };
   return (
     <>
-      {/* // <Link href={`/bai-viet/${article.attributes.slug}`}> */}
+      {/* <Link href={`/tin-tuc/${article.attributes.slug}`}> */}
       <div
         onClick={() => clickToDetail(article)}
         className={styles.container}
@@ -43,6 +43,7 @@ function CardItem({
           article.attributes.description.slice(0, 70).lastIndexOf(' ')
         )}...`}</Typography>
       </div>
+      {/* </Link> */}
     </>
   );
 }

@@ -11,6 +11,8 @@ import { Context } from '../../constants/Context';
 function Detail({ project, projects, projectCommon }) {
   const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
     useContext(Context);
+  const preLinkNews = '/tin-tuc';
+  const preLinkProject = '/du-an';
   useEffect(() => {
     if (
       pageYOffset >= bannerRef.current.offsetTop &&
@@ -34,7 +36,7 @@ function Detail({ project, projects, projectCommon }) {
         <Grid item xs={9}>
           <div className={styles.title}>
             <Typography variant="h5">
-              <Link href="/du-an">Dự án</Link>
+              <Link href={preLinkProject}>Dự án</Link>
               <span>
                 <AiOutlineRight fontSize={15} />
               </span>
@@ -54,7 +56,7 @@ function Detail({ project, projects, projectCommon }) {
                 {project.attributes.news_articles.data.map((article) => (
                   <Link
                     key={article.id}
-                    href={`/bai-viet/${article.attributes.slug}`}
+                    href={`${preLinkNews}/${article.attributes.slug}`}
                   >
                     {article.attributes.title}
                   </Link>
@@ -72,7 +74,11 @@ function Detail({ project, projects, projectCommon }) {
                 {projects.slice(0, 5).map((project) => (
                   <Link
                     key={project.id}
-                    href={`/du-an/${project.attributes.slug}`}
+                    href={
+                      project.attributes.link !== null
+                        ? `${project.attributes.link}`
+                        : `${preLinkProject}/${project.attributes.slug}`
+                    }
                   >
                     {project.attributes.title}
                   </Link>
@@ -80,7 +86,7 @@ function Detail({ project, projects, projectCommon }) {
               </div>
               <div className={styles.button}>
                 <Visibility />
-                <Link href="/du-an">Xem thêm</Link>
+                <Link href={preLinkProject}>Xem thêm</Link>
               </div>
             </div>
           ) : (

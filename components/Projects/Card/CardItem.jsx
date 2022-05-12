@@ -5,7 +5,6 @@ import styles from './CardItem.module.scss';
 import { Typography } from '@material-ui/core';
 
 function CardProject({ project, dataAos }) {
-  console.log(project);
   return (
     <>
       <Link

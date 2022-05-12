@@ -11,59 +11,83 @@ function Banner({
   changeBanner,
   bannerProject,
 }) {
-  const [countOne, setCountOne] = useState(0);
-  const [countTwo, setCountTwo] = useState(0);
-  const [countThree, setCountThree] = useState(0);
-  const [countFour, setCountFour] = useState(0);
-  const [countFive, setCountFive] = useState(0);
-  const [countSix, setCountSix] = useState(0);
-  const [countSeven, setCountSeven] = useState(0);
-  const [countEight, setCountEight] = useState(0);
-  const [countNine, setCountNine] = useState(0);
-  const [countTen, setCountTen] = useState(0);
+  const [budgetLand, setBudgetLand] = useState(0);
+  const [product, setProduct] = useState(0);
+  const [projectsTotal, setProjectsTotal] = useState(0);
+  const [provinces, setProvinces] = useState(0);
+  const [customers, setCustomers] = useState(0);
+  const [resProducts, setRestProducts] = useState(0);
+  const [areaProject, setAreaProject] = useState(0);
+  const [customerProject, setCustomerProject] = useState(0);
+  const [productsSold, setProductsSold] = useState(0);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   useEffect(() => {
     if (focusBanner) {
       setTimeout(() => {
         //Budget Land
-        autoCount(bannerProject.attributes.acreage, 2, 8, setCountOne);
+        autoCount(bannerProject.attributes.acreage, 2, 8, setBudgetLand);
         //Products
-        autoCount(bannerProject.attributes.product, 1, 33, setCountTwo);
+        autoCount(bannerProject.attributes.product, 1, 33, setProduct);
         //Projects
-        autoCount(bannerProject.attributes.Project, 100, 1, setCountThree);
+        autoCount(bannerProject.attributes.Project, 100, 1, setProjectsTotal);
         //Provinces
-        autoCount(bannerProject.attributes.province, 400, 1, setCountFour);
+        autoCount(bannerProject.attributes.province, 400, 1, setProvinces);
         //Customers
-        autoCount(bannerProject.attributes.customer, 1, 15, setCountFive);
+        autoCount(bannerProject.attributes.customer, 1, 15, setCustomers);
         if (project) {
           //Rest product
           autoCount(
             project.attributes.total_product - project.attributes.products_sold,
-            100,
-            1,
-            setCountSix
+            80,
+            project.attributes.total_product -
+              project.attributes.products_sold >
+              50
+              ? 6
+              : 1,
+            setRestProducts
           );
-          //Area
-          autoCount(project.attributes.acreage, 200, 1, setCountSeven);
+          //Area project
+          autoCount(
+            project.attributes.acreage,
+            project.attributes.acreage > 40 ? 80 : 200,
+            1,
+            setAreaProject
+          );
           //Customer Detail Project
-          autoCount(project.attributes.customer, 50, 1, setCountEight);
+          autoCount(
+            project.attributes.customer,
+            project.attributes.customer > 100 ? 20 : 50,
+            1,
+            setCustomerProject
+          );
           //Products Sold Detail Project
-          autoCount(project.attributes.products_sold, 5, 1, setCountNine);
+          autoCount(
+            project.attributes.products_sold,
+            5,
+            project.attributes.products_sold > 400 ? 9 : 1,
+            setProductsSold
+          );
           //Total Products Detail Project
-          autoCount(project.attributes.total_product, 5, 1, setCountTen);
+          autoCount(
+            project.attributes.total_product,
+            5,
+            project.attributes.products_sold > 400 ? 11 : 1,
+            setTotalProducts
+          );
         }
       }, 500);
     } else {
-      setCountOne(0);
-      setCountTwo(0);
-      setCountThree(0);
-      setCountFour(0);
-      setCountFive(0);
-      setCountSix(0);
-      setCountSeven(0);
-      setCountEight(0);
-      setCountNine(0);
-      setCountTen(0);
+      setBudgetLand(0);
+      setProduct(0);
+      setProjectsTotal(0);
+      setProvinces(0);
+      setCustomers(0);
+      setRestProducts(0);
+      setAreaProject(0);
+      setCustomerProject(0);
+      setProductsSold(0);
+      setTotalProducts(0);
     }
   }, [focusBanner]);
   return (
@@ -109,7 +133,7 @@ function Banner({
             <div className={styles.left}>
               <div className={styles.item}>
                 <Typography variant="h3">
-                  {changeBanner ? `${countSeven} ha` : `${countOne} ha`}
+                  {changeBanner ? `${areaProject} ha` : `${budgetLand} ha`}
                 </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Diện tích' : 'Quỹ đất'}
@@ -118,7 +142,7 @@ function Banner({
               </div>
               <div className={styles.item}>
                 <Typography variant="h3">
-                  {changeBanner ? countEight : countTwo}
+                  {changeBanner ? customerProject : product}
                 </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
@@ -129,7 +153,7 @@ function Banner({
             <div className={styles.right}>
               <div className={styles.item}>
                 <Typography variant="h3">
-                  {changeBanner ? countTen : countThree}
+                  {changeBanner ? totalProducts : projectsTotal}
                 </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
@@ -138,7 +162,7 @@ function Banner({
               </div>
               <div className={styles.item}>
                 <Typography variant="h3">
-                  {changeBanner ? countNine : countFour}
+                  {changeBanner ? productsSold : provinces}
                 </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
@@ -147,7 +171,7 @@ function Banner({
               </div>
               <div className={styles.item}>
                 <Typography variant="h3">
-                  {changeBanner ? countSix : `${countFive}`}
+                  {changeBanner ? resProducts : `${customers}`}
                 </Typography>
                 <Typography variant="body2">
                   {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}

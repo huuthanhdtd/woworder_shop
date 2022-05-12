@@ -20,6 +20,7 @@ const CareerPage = ({ articles, recruitmentCommon }) => {
       <CategoryPage
         articles={data}
         title={recruitmentCommon.attributes.seo.metaTitle}
+        image={recruitmentCommon.attributes.background}
       />
     </>
   );

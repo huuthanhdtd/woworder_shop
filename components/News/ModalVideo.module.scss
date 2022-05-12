@@ -11,15 +11,20 @@
   align-items: center;
   .content {
     position: relative;
-
+    background-color: #0e0e0e;
+    height: 550px;
+    width: 950px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     iframe {
       height: 500px;
       width: 900px;
     }
-
     .closeBtn {
       position: absolute;
       right: 0;
+      top: 0;
       transform: translateX(100%);
       color: var(--hover-color-);
       font-size: 50px;
