@@ -5,7 +5,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CloseIcon from '@material-ui/icons/Close';
 import Fade from '@material-ui/core/Fade';
 import { Button, Grid } from '@material-ui/core';
-import { Translate } from '@material-ui/icons';
+import ReactMarkdown from 'react-markdown';
+import Image from './image';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -30,20 +31,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({
-  setOpenModal,
-  openModal,
-  img,
-  name,
-  Education,
-  position,
-  specialized,
-}) {
+export default function TransitionsModal({ setOpenModal, openModal, maps }) {
   const classes = useStyles();
   const handleClose = () => {
     setOpenModal(false);
   };
-
   return (
     <div>
       <Modal
@@ -79,17 +71,19 @@ export default function TransitionsModal({
               <CloseIcon />
             </Button>
             <Grid container spacing={2} className={classes.detail}>
-              <Grid item sm={3} md={2}>
-                <img src={img} alt="" />
+              <Grid item sm={3} md={2} xs={12}>
+                {/* <img
+                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Fanphu-tpc.herokuapp.com%2Fuploads%2Fthumbnail_chu_tich_0322_4afe4271f8.png&w=1920&q=75"
+                  alt=""
+                /> */}
+                <Image image={maps.attributes.image} />
               </Grid>
-              <Grid item sm={9} md={10} className={classes.desc}>
-                <p>{name}</p>
-                <p>{position}</p>
-                <ul>
-                  {Education &&
-                    Education.map((data, index) => <li key={index}>{data}</li>)}
-                </ul>
-                <p>{specialized}</p>
+              <Grid item sm={9} md={10} xs={12} className={classes.desc}>
+                <p>{maps.attributes.title}</p>
+                <ReactMarkdown
+                  source={maps.attributes.content}
+                  escapeHtml={false}
+                />
               </Grid>
             </Grid>
           </div>

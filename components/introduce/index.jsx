@@ -13,7 +13,7 @@ import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
 
 const data = navs[1];
-export default function Introduce() {
+export default function Introduce({ category, parent, introductoryArticle }) {
   const { introduceTpye, isPushIntro } = useContext(Context);
   const router = useRouter();
   useEffect(() => {
@@ -26,13 +26,45 @@ export default function Introduce() {
       {/* <NavIntroduce /> */}
       {data.list.map((item, index) => (
         <div key={index} id={item.idNav}>
-          <div data-aos="fade-down">{index === 0 && <Intro />}</div>
-          <div>{index === 1 && <Index />}</div>
-          <div>{index === 2 && <Page3 />}</div>
-          <div>{index === 3 && <Page4 />}</div>
-          <div>{index === 4 && <Page5edit />}</div>
-          <div>{index === 5 && <Page6 />}</div>
-          <div>{index === 6 && <Page7 />}</div>
+          <div data-aos="fade-down">
+            {index === 0 && <Intro category={category} />}
+          </div>
+          <div>
+            {index === 1 && (
+              <Index
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            )}
+          </div>
+          <div>
+            {index === 2 && <Page3 category={category} parent={parent} />}
+          </div>
+          <div>
+            {index === 3 && (
+              <Page4
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            )}
+          </div>
+          <div>
+            {index === 4 && (
+              <Page5edit
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            )}
+          </div>
+          <div>
+            {index === 5 && (
+              <Page6
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            )}
+          </div>
+          <div>{index === 6 && <Page7 category={category} />}</div>
         </div>
       ))}
     </div>

@@ -4,10 +4,11 @@ import styles from './slick.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Aos from 'aos';
+import Image from './image';
 
-export default function PauseOnHover() {
+export default function PauseOnHover({ company }) {
   var settings = {
-    infinite: true,
+    infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -31,102 +32,7 @@ export default function PauseOnHover() {
       },
     ],
   };
-  const gifts = [
-    {
-      since: '1992',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/vietnam-property.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1993',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/tuyen-dung-asia.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1994',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2012.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1995',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2019/cup-well_known1.png',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1996',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/topten.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1997',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2020/giai-thuong-01.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1998',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2019/awards---propertyguru_rz.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '1999',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/choice-braand.jpg',
-          title:
-            'Tập đoàn Novaland giới thiệu dự án đầu tiên – Khu phức hợp cao cấp',
-        },
-      ],
-    },
-    {
-      since: '2000',
-      gift: [
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/2020/health-promotion-category---area-2020.jpg',
-          title:
-            'NovaGroup thực hiện tái cấu trúc lần 2 - đặt ra các mục tiêu hoạt động & phát triển với Tầm nhìn là ',
-        },
-        {
-          img: 'https://www.novaland.com.vn/Data/Sites/1/media/giai-thuong/giai-thuong/asia-respon.jpg',
-          title: 'Tập đoàn Novaland giới thiệu dự án đầu tiên ',
-        },
-      ],
-    },
-  ];
+
   useEffect(() => {
     Aos.init({
       easing: 'ease-in-sine',
@@ -142,21 +48,23 @@ export default function PauseOnHover() {
       data-delay="500"
     >
       <Slider {...settings} className={styles.slickactive}>
-        {gifts &&
-          gifts.map((data, index) => (
-            <div key={index}>
-              <div className={styles.carousel}>
-                <h5>{data.since}</h5>
-                {gifts[index].gift &&
-                  gifts[index].gift.map((e, i) => (
-                    <div key={i} className={styles.title}>
-                      <img src={e.img} />
-                      <span>{e.title}</span>
+        {company &&
+          company.map(
+            (data, index) => (
+              console.log(data),
+              (
+                <div key={index}>
+                  <div className={styles.carousel}>
+                    <h5>{data.attributes.title}</h5>
+                    <div className={styles.title}>
+                      <Image image={data.attributes.image} />
+                      <span></span>
                     </div>
-                  ))}
-              </div>
-            </div>
-          ))}
+                  </div>
+                </div>
+              )
+            )
+          )}
       </Slider>
     </div>
   );

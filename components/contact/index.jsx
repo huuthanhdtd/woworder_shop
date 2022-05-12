@@ -4,9 +4,8 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import Address from './Address';
 import Map from './Map';
-import { AiOutlineRight } from 'react-icons/ai';
 
-export default function Index() {
+export default function Index({ contacts }) {
   const [maps, setMaps] = useState('');
   return (
     <div className={styles.contact}>
@@ -22,7 +21,7 @@ export default function Index() {
           lg={6}
           style={{ padding: '0 13.125px' }}
         >
-          <Map maps={maps} />
+          <Map maps={maps} contacts={contacts} />
         </Grid>
         <Grid
           item
@@ -32,7 +31,7 @@ export default function Index() {
           lg={6}
           style={{ padding: '0 13.125px' }}
         >
-          <Address setMaps={setMaps} />
+          <Address setMaps={setMaps} contacts={contacts} />
         </Grid>
       </Grid>
     </div>

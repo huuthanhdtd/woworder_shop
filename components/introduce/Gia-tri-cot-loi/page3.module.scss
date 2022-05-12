@@ -1,6 +1,8 @@
 .page3 {
+  margin: 0 auto;
   width: 100%;
   margin-bottom: 30px;
+  max-width: 1140px;
   h2 {
     margin: 0;
     padding: 2%;
@@ -26,7 +28,7 @@
     }
   }
   .slider {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 30px;
     max-width: 1440px;
@@ -70,39 +72,39 @@
   }
 }
 @media screen and (max-width: 960px) {
-  .slider {
-    p {
-    }
-    .partner {
-      span {
-      }
-      .modules {
-        .media {
-          padding: 2%;
-          .module {
-            margin: 0;
-            height: 70px;
-            img {
-              display: block;
-              width: 100%;
-              cursor: pointer;
-              height: 100%;
-              object-fit: contain;
+  .page3 {
+    padding: 0 13.125px;
+    .slider {
+      .partner {
+        span {
+        }
+        .modules {
+          .media {
+            padding: 2%;
+            .module {
+              margin: 0;
+              height: 70px;
+              img {
+                display: block;
+                width: 100%;
+                cursor: pointer;
+                height: 100%;
+                object-fit: contain;
+              }
             }
           }
         }
-      }
-      Button {
-        display: none;
+        Button {
+          display: none;
+        }
       }
     }
   }
 }
+
 @media screen and (max-width: 600px) {
   .page3_about {
-    width: 93%;
     margin: 0 auto;
-    padding: 0 13.125px;
   }
   .banner {
     width: 100%;
