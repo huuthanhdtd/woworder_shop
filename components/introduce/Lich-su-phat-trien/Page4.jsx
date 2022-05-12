@@ -12,6 +12,7 @@ export default function Page6({ category, introductoryArticle }) {
     });
     const history = introductoryArticle.filter(
       (item) =>
+        item.attributes.category.data !== null &&
         item.attributes.category.data.attributes.name === 'Lịch sử phát triển'
     );
     const rs = history.sort(function (a, b) {

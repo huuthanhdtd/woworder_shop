@@ -11,7 +11,9 @@ export default function Page6({ category, introductoryArticle }) {
       easing: 'ease-in-sine',
     });
     const history = introductoryArticle.filter(
-      (item) => item.attributes.category.data.attributes.name === 'Giải thưởng'
+      (item) =>
+        item.attributes.category.data !== null &&
+        item.attributes.category.data.attributes.name === 'Giải thưởng'
     );
     const rs = history.sort(function (a, b) {
       return (
