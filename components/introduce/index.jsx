@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Page5 from './Ban-lanh-dao/Page5';
 import Page5edit from './Ban-lanh-dao/Page5edit';
 import Page3 from './Gia-tri-cot-loi/Page3';
@@ -11,8 +11,9 @@ import Index from './Tamnhin-sumenh/index';
 import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
+import { reverse } from '../../lib/reverse';
 
-const data = navs[1];
+// const data = navs[1];
 export default function Introduce({ category, parent, introductoryArticle }) {
   const { introduceTpye, isPushIntro } = useContext(Context);
   const router = useRouter();
@@ -21,16 +22,112 @@ export default function Introduce({ category, parent, introductoryArticle }) {
       router.push(`#${introduceTpye}`);
     }
   }, [introduceTpye]);
+  const data = useMemo(() => {
+    const rs = category.sort(function (a, b) {
+      return a.attributes.priority - b.attributes.priority;
+    });
+    console.log(rs);
+    return rs;
+  }, []);
   useEffect(() => {
     category.map((i) => {
       console.log(i.attributes.slug);
     });
+
+    console.log(category);
   }, []);
+
+  const Render = (slug) => {
+    // return <h1>112</h1>;
+    switch (slug) {
+      case 'gioi-thieu-chung':
+        return <Intro category={category} />;
+      case 'tam-nhin-su-menh':
+        return (
+          <Index
+            category={category}
+            introductoryArticle={introductoryArticle}
+          />
+        );
+      case 'doi-tac':
+        return <Page3 category={category} parent={parent} />;
+      case 'lich-su-phat-trien':
+        return (
+          <Page4
+            category={category}
+            introductoryArticle={introductoryArticle}
+          />
+        );
+      case 'ban-lanh-dao':
+        return (
+          <Page5edit
+            category={category}
+            introductoryArticle={introductoryArticle}
+          />
+        );
+      case 'giai-thuong':
+        return (
+          <Page6
+            category={category}
+            introductoryArticle={introductoryArticle}
+          />
+        );
+      case 'bo-quy-tac-ung-xu':
+        return <Page7 category={category} />;
+      default:
+        return <></>;
+      // break;
+    }
+  };
   return (
     <div style={{ margin: '0 auto', color: '#000' }}>
       {/* <NavIntroduce /> */}
-      {data.list.map((item, index) => (
-        <div key={index} id={item.idNav}>
+
+      {data.map((item) => {
+        switch (item.attributes.slug) {
+          case 'gioi-thieu-chung':
+            return <Intro category={category} />;
+          case 'tam-nhin-su-menh':
+            return (
+              <Index
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            );
+          case 'doi-tac':
+            return <Page3 category={category} parent={parent} />;
+          case 'lich-su-phat-trien':
+            return (
+              <Page4
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            );
+          case 'ban-lanh-dao':
+            return (
+              <Page5edit
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            );
+          case 'giai-thuong':
+            return (
+              <Page6
+                category={category}
+                introductoryArticle={introductoryArticle}
+              />
+            );
+          case 'bo-quy-tac-ung-xu':
+            return <Page7 category={category} />;
+          default:
+            return <></>;
+          // break;
+        }
+      })}
+
+      {/* {data.map((item) => (
+        <div key={item.attributes.priority} id={item.idNav}>
+          <Render slug={item.attributes.slug} />
           <div data-aos="fade-down">
             {index === 0 && <Intro category={category} />}
           </div>
@@ -71,7 +168,8 @@ export default function Introduce({ category, parent, introductoryArticle }) {
           </div>
           <div>{index === 6 && <Page7 category={category} />}</div>
         </div>
-      ))}
+      ))} */}
+
       {/* {category
         .sort((a, b) => a.atribute.priority - b.atribute.priority)
         .map((item) => (
