@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Banner.module.scss';
-import { div, CardMedia, Divider, Grid, Typography } from '@material-ui/core';
+import { CardMedia, Divider, Grid, Typography } from '@material-ui/core';
 import { autoCount } from '../../lib/Count';
 import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 function Banner({
   bannerRef,
@@ -23,6 +25,7 @@ function Banner({
   const [totalProducts, setTotalProducts] = useState(0);
 
   useEffect(() => {
+    Aos.init({ duration: 1000 });
     if (focusBanner) {
       setTimeout(() => {
         //Budget Land
@@ -76,7 +79,7 @@ function Banner({
             setTotalProducts
           );
         }
-      }, 500);
+      }, 800);
     } else {
       setBudgetLand(0);
       setProduct(0);
@@ -109,7 +112,14 @@ function Banner({
           className={styles.container}
           ref={bannerRef}
         >
-          <Grid item sm={6} xs={12} className={styles.content}>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+            className={styles.content}
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
             <Typography variant="caption">
               Các dự án của Tập đoàn Ân Phú
             </Typography>
@@ -129,7 +139,14 @@ function Banner({
               quốc tế hàng đầu.`}
             </Typography>
           </Grid>
-          <Grid item sm={6} xs={12} className={styles.detail}>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+            className={styles.detail}
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
             <div className={styles.left}>
               <div className={styles.item}>
                 <Typography variant="h3">

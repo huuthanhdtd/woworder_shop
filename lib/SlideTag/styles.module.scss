@@ -7,10 +7,13 @@
     width: 100%;
     position: absolute;
     left: 0;
-    height: 100%;
+    height: inherit;
     transition: all 0.8s ease-in-out;
+    .listGrid {
+      position: relative;
+      height: inherit;
+    }
   }
-
   .projectItem.none {
     opacity: 0;
   }
