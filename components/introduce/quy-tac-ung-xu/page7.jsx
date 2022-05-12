@@ -29,23 +29,23 @@ export default function Page7({ category }) {
                 data-aos-duration="500"
                 data-delay="500"
                 item
+                xs={12}
                 sm={12}
                 md={12}
                 lg={2}
               >
-                <div className={styles.all}>
-                  {/* {console.log(data.attributes)} */}
-                  <Link href={data.attributes.link}>
-                    {/* <img src="/gioi-thieu/icon.png" alt="" /> */}
+                <Link href={data.attributes.link}>
+                  <div className={styles.all}>
                     <Image image={data.attributes.image} />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </Grid>
               <Grid
                 data-aos="fade-right"
                 data-aos-duration="500"
                 data-delay="500"
                 item
+                xs={12}
                 sm={12}
                 md={12}
                 lg={10}

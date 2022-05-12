@@ -1,0 +1,254 @@
+[33mcommit 434fddca76169b1e006b8adfd5f5845d106209be[m[33m ([m[1;36mHEAD -> [m[1;32manphu[m[33m, [m[1;31morigin/anphu[m[33m)[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu May 12 15:02:42 2022 +0700
+
+    edit header logo
+
+[33mcommit 469bdc1a90b05ac08cd3e9778533aadb3d330776[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu May 12 14:21:52 2022 +0700
+
+    add link homepage news
+
+[33mcommit 70f5889e43259954c62fbaa8aea57ba1e6d2386e[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Thu May 12 14:17:26 2022 +0700
+
+    add file 404, edit du-an page, tin-tuc page
+
+[33mcommit 8e2fb05397c5b335ded6a8e96f9203920a42d8c8[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu May 12 13:51:33 2022 +0700
+
+    edit homepage project
+
+[33mcommit 021b7de662e022dbbe7140e8725f64fcc7078047[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu May 12 11:36:39 2022 +0700
+
+    edit header, footer
+
+[33mcommit 88c9c4f1958687740d8a5722057766a3fa681989[m
+Merge: ff1be2a 3ff189e
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Thu May 12 11:24:06 2022 +0700
+
+    Merge branch 'anphu' of https://github.com/tipici/tipicicms-frontend into anphu
+
+[33mcommit ff1be2a55951268cb7ed838ec0919a22ff9fe648[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Thu May 12 11:21:37 2022 +0700
+
+    get api page lien-he, gioi-thieu
+
+[33mcommit 3ff189ee932ed17fb7d6b323ce39736a2ebac91e[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu May 12 09:15:05 2022 +0700
+
+    upload data footer
+
+[33mcommit 0412758263093ff3d56d25b4961669111c2bfe30[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Thu May 12 09:09:06 2022 +0700
+
+    edit navbar tin-tuc, fix error detail du-an
+
+[33mcommit 1744089cf8bb0715e337ee4d1cab00b60270f446[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed May 11 21:37:15 2022 +0700
+
+    display date tuyen-dung page, edit folder tin-tuc page
+
+[33mcommit fb107ddbdc8be81ade0902ebc4c451251a4a852b[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Wed May 11 17:44:09 2022 +0700
+
+    upload data homepage
+
+[33mcommit 8404668f8c18c2a50c75b6cc36de4f42f67a43b4[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed May 11 17:39:55 2022 +0700
+
+    display data tin-tuc page, edit video tin-tuc page
+
+[33mcommit 82b3598d21e57ba5f2c0b74a1a7d93afa8f6b235[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed May 11 14:17:13 2022 +0700
+
+    edit image card du-an page
+
+[33mcommit eef7e5c87ab32e61e825ab2c630de1c4a90894e8[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed May 11 11:35:50 2022 +0700
+
+    display data du-an page
+
+[33mcommit 8e9e900a6ab4fff62e5e4d86b6621775f17e6195[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed May 11 09:28:24 2022 +0700
+
+    edit file next.config.js, set api
+
+[33mcommit 466b549330c5d86e0c0f3cb311668dced45aaf00[m
+Author: shanks-tipici <shanks.tipici@gmail.com>
+Date:   Sat May 7 11:42:11 2022 +0700
+
+    fix image
+
+[33mcommit 29fe5e671ceea1a834cab8a9c69a8a221f0db39d[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Fri May 6 15:03:02 2022 +0700
+
+    clean code project
+
+[33mcommit 14745f8a8a7503f45cc06a907397943544c77dbd[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Fri May 6 13:59:23 2022 +0700
+
+    edit project
+
+[33mcommit 714757349a566e13e6813760b42a72a457d80ce3[m
+Author: shanks-tipici <shanks.tipici@gmail.com>
+Date:   Fri May 6 11:17:38 2022 +0700
+
+    change color, image
+
+[33mcommit ada09f61768ea592acda03205e9dc276e8252467[m
+Author: shanks-tipici <shanks.tipici@gmail.com>
+Date:   Fri May 6 09:36:41 2022 +0700
+
+    upload heroku
+
+[33mcommit 96e1f575a95d1ae63285dccd3a1d2c94e7b593db[m
+Author: shanks-tipici <shanks.tipici@gmail.com>
+Date:   Fri May 6 09:35:39 2022 +0700
+
+    change logo
+
+[33mcommit b46e2fc8fcae414f0e00d5249b26a67dcc5f5c99[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Fri Apr 29 09:38:24 2022 +0700
+
+    update page lien-he
+
+[33mcommit 636e90380cc219284e5a5d40101ea6b474a14fb4[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Fri Apr 29 09:29:37 2022 +0700
+
+    update page lien-he
+
+[33mcommit 821a0a8dc04de05cb95ca9dbf29bf404d2e850e1[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Fri Apr 22 13:39:52 2022 +0700
+
+    css section page gioi-thieu
+
+[33mcommit ac55af5c841358f842d6671ecdfbafb889afdac7[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Fri Apr 22 09:37:39 2022 +0700
+
+    update section lanh-dao page gioi-thieu
+
+[33mcommit adc1798fefc46d448096609754c15f6a6710c731[m
+Author: shanks-tipici <shanks.tipici@gmail.com>
+Date:   Thu Apr 21 17:43:02 2022 +0700
+
+    add new logo, change primary color
+
+[33mcommit b5496a22613f7e2906aa045073dd8cce45881ed2[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Thu Apr 21 17:28:34 2022 +0700
+
+    update lanh-dao page gioi-thieu
+
+[33mcommit bc986f642468306877c4e0a1803a5d8e0020c4d8[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu Apr 21 10:25:25 2022 +0700
+
+    edit Image slide homepage
+
+[33mcommit b657578ff69a78d1ed9af58cea2f74700bdfbc28[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Thu Apr 21 10:10:52 2022 +0700
+
+    edit banner du an
+
+[33mcommit 781afb1573ab644778ee2724f69718e9c0785f7d[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Thu Apr 21 09:46:41 2022 +0700
+
+    edit banner detail du an
+
+[33mcommit cd009581aba51f9eea5fda95f13705597e7c3307[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Thu Apr 21 09:11:22 2022 +0700
+
+    edit logo
+
+[33mcommit 002a4c00e867437d0f004c1bc9d0bba8b0e58f36[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Wed Apr 20 21:37:46 2022 +0700
+
+    update page gioi-thieu
+
+[33mcommit 3fdaf6a9822342a4639d411b7b9e55939c48f774[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed Apr 20 17:14:54 2022 +0700
+
+    edit css card item du an,edit  banner du an
+
+[33mcommit 7ca928d0e29b85661808efeb1f0b8aea2822f02e[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Wed Apr 20 16:53:20 2022 +0700
+
+    edit animate homepage
+
+[33mcommit f12bf06286bb8fdd3f6c784e18f55aecbe2ef752[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Wed Apr 20 14:12:02 2022 +0700
+
+    update page gioi-thieu
+
+[33mcommit 1926c9d7b68c61dbca6540bd7b904d23f3b6aa98[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Wed Apr 20 13:36:43 2022 +0700
+
+    edit slide homapage
+
+[33mcommit c857751f1de4dcb809a31ab2ae4dc51837a6f9a6[m
+Author: minhquyn1204 <68966267+minhquyn1204@users.noreply.github.com>
+Date:   Wed Apr 20 12:02:03 2022 +0700
+
+    update page gioi-thieu
+
+[33mcommit 585dbf506254ae17f50e5103dfd9e19c42eb0d52[m
+Author: quanghuyTipici <quanghuy.tipici@gmail.com>
+Date:   Wed Apr 20 11:58:48 2022 +0700
+
+    edit css du-an, tin-tuc, tuyen-dung
+
+[33mcommit 676bcd84c8f5b03a62dd61611e614cebb8430fe7[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Wed Apr 20 11:18:03 2022 +0700
+
+    edit css header
+
+[33mcommit 71f3966647a1eefcb154568e0feea130b9b3c125[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Wed Apr 20 11:04:21 2022 +0700
+
+    edit header, add bgground footer, edit responsvie homepage
+
+[33mcommit ea9d4c5ae69cc85fc5db7eb790870b1c17ecaeff[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Wed Apr 20 08:38:40 2022 +0700
+
+    up homepage, edit header, edit footer
+
+[33mcommit 75abfcdcc2e1721c81e20550f64c242072b4f883[m
+Author: thienle010897 <100331648+thienle010897@users.noreply.github.com>
+Date:   Tue Apr 19 17:38:57 2022 +0700
+
+    up primary-color
+
+[3

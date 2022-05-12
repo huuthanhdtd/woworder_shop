@@ -68,7 +68,10 @@ export default function ImgPage2({ category, introductoryArticle }) {
             </div>
             <div className={styles.section}>
               <Parallax
-                bgImage={<Image image={data.attributes.image} />}
+                bgImage={
+                  `https://anphu-tpc.herokuapp.com` +
+                  data.attributes.image.data.attributes.url
+                }
                 strength={300}
                 className={styles.image}
               ></Parallax>

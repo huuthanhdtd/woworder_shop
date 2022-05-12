@@ -12,6 +12,7 @@ import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
 import { reverse } from '../../lib/reverse';
+import Indextest from './test';
 
 // const data = navs[1];
 export default function Introduce({ category, parent, introductoryArticle }) {
@@ -120,92 +121,9 @@ export default function Introduce({ category, parent, introductoryArticle }) {
           case 'bo-quy-tac-ung-xu':
             return <Page7 category={category} />;
           default:
-            return <></>;
-          // break;
+            return;
         }
       })}
-
-      {/* {data.map((item) => (
-        <div key={item.attributes.priority} id={item.idNav}>
-          <Render slug={item.attributes.slug} />
-          <div data-aos="fade-down">
-            {index === 0 && <Intro category={category} />}
-          </div>
-          <div>
-            {index === 1 && (
-              <Index
-                category={category}
-                introductoryArticle={introductoryArticle}
-              />
-            )}
-          </div>
-          <div>
-            {index === 2 && <Page3 category={category} parent={parent} />}
-          </div>
-          <div>
-            {index === 3 && (
-              <Page4
-                category={category}
-                introductoryArticle={introductoryArticle}
-              />
-            )}
-          </div>
-          <div>
-            {index === 4 && (
-              <Page5edit
-                category={category}
-                introductoryArticle={introductoryArticle}
-              />
-            )}
-          </div>
-          <div>
-            {index === 5 && (
-              <Page6
-                category={category}
-                introductoryArticle={introductoryArticle}
-              />
-            )}
-          </div>
-          <div>{index === 6 && <Page7 category={category} />}</div>
-        </div>
-      ))} */}
-
-      {/* {category
-        .sort((a, b) => a.atribute.priority - b.atribute.priority)
-        .map((item) => (
-          <Section key={item.id} data={item} />
-        ))} */}
-      {/* <Intro category={category} /> */}
-      {/* <Index category={category} introductoryArticle={introductoryArticle} />
-      <Page3 category={category} parent={parent} />
-      <Page4 category={category} introductoryArticle={introductoryArticle} />
-      <Page5edit
-        category={category}
-        introductoryArticle={introductoryArticle}
-      />
-      <Page6 category={category} introductoryArticle={introductoryArticle} />
-      <Page7 category={category} /> */}
     </div>
   );
 }
-// const Section = ({ data }) => {
-//   console.log('Data cua toi la:', data);
-//   switch (data.id) {
-//     case 6:
-//       return <Intro data={data} />;
-// case 7:
-//   return;
-// case 8:
-//   return;
-// case 9:
-//   return;
-// case 10:
-//   return;
-// case 11:
-//   return;
-// case 12:
-//   return;
-//     default:
-//       return;
-//   }
-// };

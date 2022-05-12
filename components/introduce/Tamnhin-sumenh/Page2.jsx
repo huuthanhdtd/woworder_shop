@@ -76,3 +76,12 @@ export default function Page2({ category, introductoryArticle }) {
     </>
   );
 }
+// style={{
+//   backgroundImage:
+//     'https://ddireal.vn/wp-content/uploads/2022/03/ddi-dathanh-3.jpg',
+//   minHeight: '500px',
+//   backgroundAttachment: 'fixed',
+//   backgroundPosition: 'center',
+//   backgroundRepeat: 'no-repeat',
+//   backgroundSize: 'cover',
+// }}

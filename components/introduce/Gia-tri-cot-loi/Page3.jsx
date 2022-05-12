@@ -22,7 +22,6 @@ export default function Page3({ category, parent }) {
     }, []);
     return rs;
   }, []);
-
   var settings = {
     infinite: false,
     slidesToShow: 5,
@@ -36,13 +35,13 @@ export default function Page3({ category, parent }) {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: false,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          infinite: true,
+          infinite: false,
           slidesToShow: 2,
           slidesToScroll: 1,
           initialSlide: 1,
@@ -51,7 +50,7 @@ export default function Page3({ category, parent }) {
       {
         breakpoint: 480,
         settings: {
-          infinite: true,
+          infinite: false,
           slidesToShow: 2,
           slidesToScroll: 1,
         },
