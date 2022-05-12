@@ -72,10 +72,6 @@ export default function TransitionsModal({ setOpenModal, openModal, maps }) {
             </Button>
             <Grid container spacing={2} className={classes.detail}>
               <Grid item sm={3} md={2} xs={12}>
-                {/* <img
-                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Fanphu-tpc.herokuapp.com%2Fuploads%2Fthumbnail_chu_tich_0322_4afe4271f8.png&w=1920&q=75"
-                  alt=""
-                /> */}
                 <Image image={maps.attributes.image} />
               </Grid>
               <Grid item sm={9} md={10} xs={12} className={classes.desc}>

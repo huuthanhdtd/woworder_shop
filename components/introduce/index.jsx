@@ -21,6 +21,11 @@ export default function Introduce({ category, parent, introductoryArticle }) {
       router.push(`#${introduceTpye}`);
     }
   }, [introduceTpye]);
+  useEffect(() => {
+    category.map((i) => {
+      console.log(i.attributes.slug);
+    });
+  }, []);
   return (
     <div style={{ margin: '0 auto', color: '#000' }}>
       {/* <NavIntroduce /> */}
@@ -67,6 +72,42 @@ export default function Introduce({ category, parent, introductoryArticle }) {
           <div>{index === 6 && <Page7 category={category} />}</div>
         </div>
       ))}
+      {/* {category
+        .sort((a, b) => a.atribute.priority - b.atribute.priority)
+        .map((item) => (
+          <Section key={item.id} data={item} />
+        ))} */}
+      {/* <Intro category={category} /> */}
+      {/* <Index category={category} introductoryArticle={introductoryArticle} />
+      <Page3 category={category} parent={parent} />
+      <Page4 category={category} introductoryArticle={introductoryArticle} />
+      <Page5edit
+        category={category}
+        introductoryArticle={introductoryArticle}
+      />
+      <Page6 category={category} introductoryArticle={introductoryArticle} />
+      <Page7 category={category} /> */}
     </div>
   );
 }
+// const Section = ({ data }) => {
+//   console.log('Data cua toi la:', data);
+//   switch (data.id) {
+//     case 6:
+//       return <Intro data={data} />;
+// case 7:
+//   return;
+// case 8:
+//   return;
+// case 9:
+//   return;
+// case 10:
+//   return;
+// case 11:
+//   return;
+// case 12:
+//   return;
+//     default:
+//       return;
+//   }
+// };

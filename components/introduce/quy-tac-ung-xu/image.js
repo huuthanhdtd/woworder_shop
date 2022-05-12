@@ -8,7 +8,7 @@ const Image = ({ image, style }) => {
   // const loader = () => {
   //   return getStrapiMedia(image)
   // }
-
+  // console.log(url);
   return (
     <NextImage
       // loader={loader}

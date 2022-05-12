@@ -2,9 +2,9 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
 import styles from './imgPage2.module.scss';
+import Image from './image';
 
 export default function ImgPage2({ category, introductoryArticle }) {
-  console.log('tnsm', introductoryArticle);
   return (
     <>
       {category
@@ -68,7 +68,7 @@ export default function ImgPage2({ category, introductoryArticle }) {
             </div>
             <div className={styles.section}>
               <Parallax
-                bgImage="/Banner/banner.jpg"
+                bgImage={<Image image={data.attributes.image} />}
                 strength={300}
                 className={styles.image}
               ></Parallax>

@@ -34,7 +34,7 @@ export default function Page7({ category }) {
                 lg={2}
               >
                 <div className={styles.all}>
-                  {/* {console.log(data.attributes.image)} */}
+                  {/* {console.log(data.attributes)} */}
                   <Link href={data.attributes.link}>
                     {/* <img src="/gioi-thieu/icon.png" alt="" /> */}
                     <Image image={data.attributes.image} />

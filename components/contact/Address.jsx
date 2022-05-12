@@ -6,6 +6,8 @@ import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import axios from 'axios';
 import TransitionsModal from './Modal';
+import ReCAPTCHA from 'react-google-recaptcha';
+import clsx from 'clsx';
 
 export default function Address({ setMaps, contacts }) {
   const [selects, setSelects] = useState(1);
@@ -13,6 +15,8 @@ export default function Address({ setMaps, contacts }) {
   const [ab, setAb] = useState();
   const [validationMsg, setValidationMsg] = useState({});
   const [userName, setUserName] = useState('');
+  const [isCaptCha, setIsCaptCha] = useState(true);
+  const [captChaActive, setCaptChaActive] = useState(false);
   const [formValue, setFormValue] = useState({
     name: '',
     email: '',
@@ -37,7 +41,18 @@ export default function Address({ setMaps, contacts }) {
     setAb(rs);
     setMaps(rs[0].attributes.locationURL);
   }, [selects]);
-
+  const handleOnChange = (e) => {
+    let { name, value } = e.target;
+    if (name === 'email' && isEmail(value)) {
+      setCaptChaActive(true);
+    } else {
+      setCaptChaActive(false);
+    }
+    setFormValue({ ...formValue, [name]: value });
+  };
+  const handleOnChangeCaptCha = () => {
+    setIsCaptCha(!isCaptCha);
+  };
   const validatorAll = () => {
     const msg = {};
     if (isEmpty(name)) {
@@ -63,10 +78,7 @@ export default function Address({ setMaps, contacts }) {
     if (Object.keys(msg).length > 0) return false;
     return true;
   };
-  const handleOnChange = (e) => {
-    let { name, value } = e.target;
-    setFormValue({ ...formValue, [name]: value });
-  };
+
   const handleSubmit = () => {
     const isValid = validatorAll();
     if (!isValid) return;
@@ -197,6 +209,7 @@ export default function Address({ setMaps, contacts }) {
           helperText={validationMsg.address}
           className={styles.text}
         />
+
         <TextField
           size="small"
           variant="outlined"
@@ -209,6 +222,7 @@ export default function Address({ setMaps, contacts }) {
           helperText={validationMsg.email}
           className={styles.textb}
         />
+
         <TextField
           variant="outlined"
           name="content"
@@ -222,7 +236,20 @@ export default function Address({ setMaps, contacts }) {
           helperText={validationMsg.content}
           className={styles.texta}
         />
-        <Button onClick={handleSubmit}>GỬI ĐI</Button>
+        <ReCAPTCHA
+          className={clsx(styles.captCha, {
+            [styles.active]: captChaActive == true,
+          })}
+          sitekey="6LddCeMfAAAAAJUIU_r54QcbeqL4wkpZOAefcOCX"
+          onChange={handleOnChangeCaptCha}
+        />
+
+        <Button
+          onClick={handleSubmit}
+          // disabled={isCaptCha === true && 'disabled'}
+        >
+          Gửi đi
+        </Button>
         <TransitionsModal
           userName={userName}
           setOpenModal={setOpenModal}

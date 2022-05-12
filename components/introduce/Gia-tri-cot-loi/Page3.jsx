@@ -21,7 +21,6 @@ export default function Page3({ category, parent }) {
         : [...prev, cur];
     }, []);
     return rs;
-    // console.log(rs);
   }, []);
 
   var settings = {
