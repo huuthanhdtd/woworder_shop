@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import NextImage from './image';
 import Link from 'next/link';
 import { GoTriangleRight } from 'react-icons/go';
-import { FaChevronRight } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { reverse } from '../../../lib/reverse';
 import clsx from 'clsx';
@@ -57,7 +56,7 @@ function News({ articles, newsRef, newsIntoView }) {
                       )}
                     </div>
 
-                    <Link href="/">
+                    <Link href={`/tin-tuc/${item.attributes.slug}`}>
                       <h3>
                         {`${item.attributes.title.slice(
                           0,

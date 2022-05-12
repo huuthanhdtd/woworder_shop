@@ -10,7 +10,6 @@ import 'aos/dist/aos.css';
 
 const Projects = ({ projectRef, typicalProjects, projects }) => {
   useEffect(() => {
-    console.log(projects);
     Aos.init({ duration: 2500 });
   }, []);
   return (

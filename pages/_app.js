@@ -12,7 +12,7 @@ import 'aos/dist/aos.css';
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global, corpInfor, categories } = pageProps;
+  const { global, corpInfor, categories, homepage } = pageProps;
   return (
     <>
       <Head>
@@ -22,7 +22,11 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <Layout corpInfor={corpInfor} categories={categories}>
+        <Layout
+          corpInfor={corpInfor}
+          categories={categories}
+          homepage={homepage}
+        >
           <Component {...pageProps} />
         </Layout>
       </GlobalContext.Provider>
@@ -39,7 +43,7 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Tpcapi
 
-  const [globalRes, corpRes, categoriesRes] = await Promise.all([
+  const [globalRes, corpRes, categoriesRes, homepageRes] = await Promise.all([
     fetchAPI('/global', {
       populate: {
         favicon: '*',
@@ -50,6 +54,7 @@ MyApp.getInitialProps = async (ctx) => {
     }),
     fetchAPI('/corp-infor'),
     fetchAPI('/categories'),
+    fetchAPI('/homepage'),
   ]);
 
   // Pass the data to our page via props
@@ -59,6 +64,7 @@ MyApp.getInitialProps = async (ctx) => {
       global: globalRes.data,
       corpInfor: corpRes.data,
       categories: categoriesRes.data,
+      homepage: homepageRes.data,
     },
   };
 };

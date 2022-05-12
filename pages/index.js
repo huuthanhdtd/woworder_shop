@@ -12,7 +12,6 @@ const Home = ({
   slides,
   projects,
 }) => {
-  console.log(projects);
   return (
     <>
       <Seo seo={homepage.attributes.seo} />

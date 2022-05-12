@@ -6,10 +6,11 @@ import Container from '@material-ui/core/Container';
 import styles from './style.module.scss';
 import HeaderNavBar from './NavBar';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Logo from '../../public/logo_anphu.svg';
+import ImageLogo from '../HomePage/Introduce/imageLogo';
 
-function Header({ isBarsSmall, navs }) {
+function Header({ isBarsSmall, navs, homepage }) {
   const [isNavBar, setIsNavBar] = useState(false);
   const handleShowNav = () => {
     setIsNavBar(!isNavBar);
@@ -28,7 +29,10 @@ function Header({ isBarsSmall, navs }) {
         <div className={styles.headerNovaland}>
           <Link href="/">
             <div className={styles.logoImage}>
-              <Image src={Logo} />
+              {homepage.attributes.menu_logo && (
+                <ImageLogo image={homepage.attributes.menu_logo} />
+              )}
+              {/* <Image src={Logo} /> */}
             </div>
           </Link>
           <div

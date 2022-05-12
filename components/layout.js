@@ -5,7 +5,7 @@ import ContextProvider from '../constants/Context';
 import { useState, useEffect, useMemo } from 'react';
 import navs from '../constants/navsBar.json';
 
-const Layout = ({ children, corpInfor, categories }) => {
+const Layout = ({ children, corpInfor, categories, homepage }) => {
   const [scrollState, setScrollState] = useState(false);
   const [isBarsSmall, setIsBarsSmall] = useState(false);
 
@@ -49,7 +49,12 @@ const Layout = ({ children, corpInfor, categories }) => {
   return (
     <>
       <ContextProvider>
-        <Header isBarsSmall={isBarsSmall} navs={newNav} />
+        <Header
+          isBarsSmall={isBarsSmall}
+          navs={newNav}
+          homepage={homepage}
+          corpInfor={corpInfor}
+        />
         {children}
         <ButtonToTop onClick={scrollToTop} show={scrollState} />
         {corpInfor !== undefined && (
