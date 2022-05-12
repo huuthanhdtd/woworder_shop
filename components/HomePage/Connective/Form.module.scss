@@ -21,6 +21,7 @@
     position: relative;
     height: 40px;
     overflow: hidden;
+    display: flex;
     &:hover {
       background: var(--hover-color-);
       .textButton {
@@ -32,25 +33,22 @@
       }
     }
     .textButton {
-      position: absolute;
       display: block;
-      top: 10px;
+      margin: auto;
       color: #fff;
       transition: all 0.25s ease;
       font-weight: 600;
     }
-    .icon {
-      position: absolute;
-      transform: rotate(-45deg);
-      bottom: -30px;
-      transition: all 0.25s ease;
-    }
+    // .icon {
+    //   position: absolute;
+    //   transform: rotate(-45deg);
+    //   bottom: -30px;
+    //   transition: all 0.25s ease;
+    // }
   }
   .captCha {
     margin-top: 10px;
-    // display: none;
-    // opacity: 0;
-    // transform: scaleY(0);
+    
     overflow: hidden;
     height: 0;
     transform-origin: top;
@@ -58,9 +56,6 @@
     justify-content: flex-end !important;
   }
   .captCha.active {
-    // transform: scaleY(1);
     height: 80px;
-
-    // display: flex;
   }
 }

@@ -120,17 +120,9 @@
         cursor: pointer;
         margin-right: 20px;
 
-        div {
-          border: 1px solid #fff;
-          width: 20px;
-          height: 20px;
-          display: flex;
-          border-radius: 50%;
-          margin-left: 10px;
-          .rightIcon {
-            margin: auto;
-            font-size: 10px;
-          }
+        .rightIcon {
+          margin-left: 8px;
+          font-size: 20px;
         }
         &:hover {
           background-color: #fff;

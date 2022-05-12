@@ -5,7 +5,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import clsx from 'clsx';
 import FormNews from './FormNews';
 
-function Connective() {
+function Connective({ corpInfor }) {
   return (
     <div className={styles.connectiveBg}>
       <Container maxWidth="lg">
@@ -35,7 +35,7 @@ function Connective() {
           <Grid className={clsx(styles.contacts)} item xs={12} sm={6} lg={4}>
             <span>
               <h2>Email:</h2>
-              <h3>chamsockhachang@novaland.com</h3>
+              <h3>{corpInfor.attributes.email}</h3>
             </span>
           </Grid>
         </div>

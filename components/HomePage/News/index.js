@@ -8,12 +8,15 @@ import { FaChevronRight } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { reverse } from '../../../lib/reverse';
 import clsx from 'clsx';
+import { ImCircleRight } from 'react-icons/im';
+
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 function News({ articles, newsRef, newsIntoView }) {
   const router = useRouter();
   useEffect(() => {
+    console.log(articles);
     Aos.init({ duration: 2500 });
   }, []);
   const data = useMemo(() => {
@@ -84,9 +87,7 @@ function News({ articles, newsRef, newsIntoView }) {
         >
           <button onClick={handleClick}>
             Chuyển đến phần tin tức
-            <div>
-              <FaChevronRight className={styles.rightIcon} />
-            </div>
+            <ImCircleRight className={styles.rightIcon} />
           </button>
         </div>
       </div>

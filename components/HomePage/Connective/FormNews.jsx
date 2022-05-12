@@ -99,17 +99,6 @@ function FormNews() {
           <Progress />
         </div>
       )}
-      {/* <div > */}
-
-      {/* <SnackbarContent
-        message="I love candy. I love cookies. I love cupcakes."
-        action={action}
-      /> */}
-      {/* <Snackbar open={open} autoHideDuration={600000} >
-        <Alert  severity="success">
-          This is a success message!
-        </Alert>
-      </Snackbar> */}
       <ActionAlerts
         className={styles.alert}
         setOpenSuccess={setOpenSuccess}
@@ -130,9 +119,9 @@ function FormNews() {
         fullWidth
         className={styles.button}
         onClick={handleSubmit}
-        disabled={isCaptCha === true && 'disabled'}
+        disabled={isCaptCha === true && true}
       >
-        <span className={styles.textButton}>Đăng ký</span>
+        <p className={styles.textButton}>Đăng ký</p>
         {/* <SendRoundedIcon className={styles.icon} /> */}
       </Button>
     </form>

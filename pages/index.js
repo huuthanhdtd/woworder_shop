@@ -3,15 +3,23 @@ import Seo from '../components/seo';
 import { fetchAPI } from '../lib/api';
 import HomePage from './trang-chu';
 
-const Home = ({ articles, categories, homepage, typicalProjects, slides }) => {
+const Home = ({
+  articles,
+  categories,
+  homepage,
+  typicalProjects,
+  corpInfor,
+  slides,
+}) => {
   return (
     <>
-      {/* <Seo seo={homepage.attributes.seo} /> */}
+      <Seo seo={homepage.attributes.seo} />
       <HomePage
         homepage={homepage}
         typicalProjects={typicalProjects}
         articles={articles}
         slides={slides}
+        corpInfor={corpInfor}
       />
     </>
   );
@@ -25,12 +33,14 @@ export async function getStaticProps() {
     slidesRes,
     typicalProjectsRes,
     homepageRes,
+    corpInforRes,
   ] = await Promise.all([
     fetchAPI('/news-articles', { populate: '*' }),
     // fetchAPI('/categories', { populate: '*' }),
     fetchAPI('/slides', { populate: '*' }),
     fetchAPI('/typical-projects', { populate: '*' }),
     fetchAPI('/homepage', { populate: '*' }),
+    fetchAPI('/corp-infor', { populate: '*' }),
 
     // fetchAPI('/homepage', {
     //   populate: {
@@ -47,6 +57,7 @@ export async function getStaticProps() {
       slides: slidesRes.data,
       typicalProjects: typicalProjectsRes.data,
       homepage: homepageRes.data,
+      corpInfor: corpInforRes.data,
     },
     revalidate: 1,
   };

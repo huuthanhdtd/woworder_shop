@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import NextImage from './imageLogo';
-import { FaChevronRight } from 'react-icons/fa';
 import { Grid } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { autoCount } from '../../../lib/Count';
+import { ImCircleRight } from 'react-icons/im';
 
 const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   const [countOne, setCountOne] = useState(0);
@@ -39,11 +39,9 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
         <p>{homepage.attributes.seo.metaDescription}</p>
         <button onClick={() => router.push('/gioi-thieu')}>
           Giới thiệu chi tiết
-          <div>
-            <FaChevronRight className={styles.rightIcon} />
-          </div>
+          <ImCircleRight className={styles.rightIcon} />
         </button>
-        <div></div>
+        {/* <div></div> */}
         <Grid
           container
           className={styles.statistical}
