@@ -69,6 +69,7 @@
         font-family: Open Sans;
         font-weight: 700;
         position: absolute;
+        // margin: 0 5px;
         transition: all 0.8s ease-in-out;
         width: 100%;
         top: 85%;
@@ -122,14 +123,14 @@
       span {
         display: flex;
 
-        span {
-          display: flex;
-          img {
-            margin: auto;
-            object-fit: cover;
-            height: 35vw !important;
-          }
-        }
+        // span {
+        //   display: flex;
+        //   img {
+        //     margin: auto;
+        //     object-fit: cover;
+        //     height: 35vw !important;
+        //   }
+        // }
       }
       .itemTitle {
         h2 {
@@ -167,15 +168,15 @@
       span {
         display: flex;
 
-        span {
-          display: flex;
-          img {
-            margin: auto;
-            width: 50vw !important;
-            object-fit: cover;
-            height: 70vw !important;
-          }
-        }
+        // span {
+        //   display: flex;
+        //   img {
+        //     margin: auto;
+        //     width: 50vw !important;
+        //     object-fit: cover;
+        //     height: 70vw !important;
+        //   }
+        // }
       }
       .itemTitle {
         h2 {

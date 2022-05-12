@@ -52,9 +52,9 @@ MyApp.getInitialProps = async (ctx) => {
         },
       },
     }),
-    fetchAPI('/corp-infor'),
-    fetchAPI('/categories'),
-    fetchAPI('/homepage'),
+    fetchAPI('/corp-infor', { populate: '*' }),
+    fetchAPI('/categories', { populate: '*' }),
+    fetchAPI('/homepage', { populate: '*' }),
   ]);
 
   // Pass the data to our page via props

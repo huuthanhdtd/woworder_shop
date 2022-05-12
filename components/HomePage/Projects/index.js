@@ -24,30 +24,26 @@ const Projects = ({ projectRef, typicalProjects, projects }) => {
           <div className={styles.newsLine}></div>
         </div>
       </div>
-      <SlideTag>
-        {projects
-          .filter((it) => it.attributes.typical_project === 'yes')
-          .map((item, i) => (
-            <Link key={i} href={`/du-an/${item.attributes.slug}`}>
-              <Grid
-                item
-                xs={6}
-                sm={3}
-                md={3}
-                className={styles.item}
-                data-aos="fade-up"
-              >
-                <div className={styles.itemImage}>
-                  <NextImage image={item.attributes.image} />
-                </div>
-                <div className={styles.bgFake}></div>
-                <div className={styles.itemTitle}>
-                  <h2>{item.attributes.title.toUpperCase()}</h2>
-                </div>
-              </Grid>
-            </Link>
-          ))}
-      </SlideTag>
+
+      <div data-aos="fade-up">
+        <SlideTag>
+          {projects
+            .filter((it) => it.attributes.typical_project === 'yes')
+            .map((item, i) => (
+              <Link key={i} href={`/du-an/${item.attributes.slug}`}>
+                <Grid item xs={6} sm={3} md={3} className={styles.item}>
+                  <div className={styles.itemImage}>
+                    <NextImage image={item.attributes.image} />
+                  </div>
+                  <div className={styles.bgFake}></div>
+                  <div className={styles.itemTitle}>
+                    <h2>{item.attributes.title.toUpperCase()}</h2>
+                  </div>
+                </Grid>
+              </Link>
+            ))}
+        </SlideTag>
+      </div>
     </div>
   );
 };
