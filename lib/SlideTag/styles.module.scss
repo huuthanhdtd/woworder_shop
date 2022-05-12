@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  height: 30vw;
+  height: 35vw;
   width: 80%;
   left: 10%;
   .projectItem {
@@ -108,23 +108,22 @@
   }
 }
 @media (max-width: 960px) {
-   
-    .wrapper {
-      height: 35vw;
-    }
+  .wrapper {
+    height: 35vw;
   }
+}
 @media (max-width: 600px) {
-    .wrapper {
+  .wrapper {
+    height: 140vw;
+    .projectItem {
+      // width: 100%;
+      // position: absolute;
+      left: 0;
       height: 140vw;
-      .projectItem {
-        // width: 100%;
-        // position: absolute;
-        left: 0;
-        height: 140vw;
-        transition: all 0.8s ease-in-out;
-      }
-      .controls {
-        display: none;
-      }
+      transition: all 0.8s ease-in-out;
+    }
+    .controls {
+      display: none;
     }
   }
+}

@@ -2,15 +2,15 @@ import { Grid } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import Image from 'next/image';
+import Link from 'next/link';
 import NextImage from './imagePj';
 import SlideTag from '../../../lib/SlideTag';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const Projects = ({ projectRef, typicalProjects }) => {
-  // console.log(typicalProjects);
+const Projects = ({ projectRef, typicalProjects, projects }) => {
   useEffect(() => {
+    console.log(projects);
     Aos.init({ duration: 2500 });
   }, []);
   return (
@@ -26,25 +26,28 @@ const Projects = ({ projectRef, typicalProjects }) => {
         </div>
       </div>
       <SlideTag>
-        {typicalProjects.map((item, i) => (
-          <Grid
-            key={i}
-            item
-            xs={6}
-            sm={3}
-            md={3}
-            className={styles.item}
-            data-aos="fade-up"
-          >
-            <div className={styles.itemImage}>
-              <NextImage image={item.attributes.image} />
-            </div>
-            <div className={styles.bgFake}></div>
-            <div className={styles.itemTitle}>
-              <h2>{item.attributes.name.toUpperCase()}</h2>
-            </div>
-          </Grid>
-        ))}
+        {projects
+          .filter((it) => it.attributes.typical_project === 'yes')
+          .map((item, i) => (
+            <Link key={i} href={`/du-an/${item.attributes.slug}`}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                md={3}
+                className={styles.item}
+                data-aos="fade-up"
+              >
+                <div className={styles.itemImage}>
+                  <NextImage image={item.attributes.image} />
+                </div>
+                <div className={styles.bgFake}></div>
+                <div className={styles.itemTitle}>
+                  <h2>{item.attributes.title.toUpperCase()}</h2>
+                </div>
+              </Grid>
+            </Link>
+          ))}
       </SlideTag>
     </div>
   );

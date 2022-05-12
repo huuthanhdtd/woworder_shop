@@ -15,6 +15,7 @@ const HomePage = ({
   typicalProjects,
   homepage,
   corpInfor,
+  projects,
 }) => {
   const statisticalRef = useRef(null);
   const newsRef = useRef(null);
@@ -44,7 +45,11 @@ const HomePage = ({
         statisticalRef={statisticalRef}
       />
       <News articles={articles} newsRef={newsRef} newsIntoView={newsIntoView} />
-      <Projects typicalProjects={typicalProjects} projectRef={projectRef} />
+      <Projects
+        typicalProjects={typicalProjects}
+        projects={projects}
+        projectRef={projectRef}
+      />
       <Connective corpInfor={corpInfor} />
     </div>
   );

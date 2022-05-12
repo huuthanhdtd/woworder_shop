@@ -10,7 +10,9 @@ const Home = ({
   typicalProjects,
   corpInfor,
   slides,
+  projects,
 }) => {
+  console.log(projects);
   return (
     <>
       <Seo seo={homepage.attributes.seo} />
@@ -20,6 +22,7 @@ const Home = ({
         articles={articles}
         slides={slides}
         corpInfor={corpInfor}
+        projects={projects}
       />
     </>
   );
@@ -34,6 +37,7 @@ export async function getStaticProps() {
     typicalProjectsRes,
     homepageRes,
     corpInforRes,
+    projectsRes,
   ] = await Promise.all([
     fetchAPI('/news-articles', { populate: '*' }),
     // fetchAPI('/categories', { populate: '*' }),
@@ -41,6 +45,7 @@ export async function getStaticProps() {
     fetchAPI('/typical-projects', { populate: '*' }),
     fetchAPI('/homepage', { populate: '*' }),
     fetchAPI('/corp-infor', { populate: '*' }),
+    fetchAPI('/projects', { populate: '*' }),
 
     // fetchAPI('/homepage', {
     //   populate: {
@@ -58,6 +63,7 @@ export async function getStaticProps() {
       typicalProjects: typicalProjectsRes.data,
       homepage: homepageRes.data,
       corpInfor: corpInforRes.data,
+      projects: projectsRes.data,
     },
     revalidate: 1,
   };

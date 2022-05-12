@@ -16,7 +16,6 @@ import 'aos/dist/aos.css';
 function News({ articles, newsRef, newsIntoView }) {
   const router = useRouter();
   useEffect(() => {
-    console.log(articles);
     Aos.init({ duration: 2500 });
   }, []);
   const data = useMemo(() => {

@@ -2,95 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { BsArrowRightCircle } from 'react-icons/bs';
 import { ImCircleRight } from 'react-icons/im';
 import Image from './imageSlide';
-
-// import Image from 'next/image';
-
-const list = [
-  {
-    title: 'giá trị cốt lõi',
-    desc: [
-      {
-        title: 'hiệu quả - chính trực - chuyên nghiệp',
-      },
-    ],
-    image: require('../../../public/slider/slide1.jpg'),
-  },
-  {
-    title: 'sứ mệnh',
-    desc: [
-      {
-        title: '- kiến tạo cộng đồng',
-      },
-      {
-        title: '- hiệu quả - chính trực - chuyên nghiệp',
-      },
-      {
-        title: '- kiến tạo cộng đồng',
-      },
-    ],
-    image: require('../../../public/slider/slide2.jpg'),
-  },
-  {
-    title: 'giá trị cốt lõi',
-    desc: [
-      {
-        title: 'hiệu quả - chính trực - chuyên nghiệp',
-      },
-    ],
-    image: require('../../../public/slider/slide3.jpg'),
-  },
-  {
-    title: 'sứ mệnh',
-    desc: [
-      {
-        title: '- kiến tạo cộng đồng',
-      },
-      {
-        title: '- hiệu quả - chính trực - chuyên nghiệp',
-      },
-      {
-        title: '- kiến tạo cộng đồng',
-      },
-    ],
-    image: require('../../../public/slider/slide4.jpg'),
-  },
-  {
-    title: 'giá trị cốt lõi',
-    desc: [
-      {
-        title: 'hiệu quả - chính trực - chuyên nghiệp',
-      },
-    ],
-    image: require('../../../public/slider/slide5.jpg'),
-  },
-  {
-    title: 'sứ mệnh',
-    desc: [
-      {
-        title: '- kiến tạo cộng đồng',
-      },
-      {
-        title: '- hiệu quả - chính trực - chuyên nghiệp',
-      },
-      {
-        title: '- kiến tạo cộng đồng',
-      },
-    ],
-    image: require('../../../public/slider/slide6.jpg'),
-  },
-  {
-    title: 'giá trị cốt lõi',
-    desc: [
-      {
-        title: 'hiệu quả - chính trực - chuyên nghiệp',
-      },
-    ],
-    image: require('../../../public/slider/slide7.jpg'),
-  },
-];
+import Link from 'next/link';
 
 function Slider({ slides, projects, articles }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -199,10 +113,12 @@ function Slider({ slides, projects, articles }) {
               >
                 <span className={styles.title}>
                   {item.attributes.title}
-                  <span className={styles.btnDetail}>
-                    Xem
-                    <ImCircleRight className={styles.btnDetailIcon} />
-                  </span>
+                  <Link href={`${item.attributes.url}`}>
+                    <span className={styles.btnDetail}>
+                      Xem
+                      <ImCircleRight className={styles.btnDetailIcon} />
+                    </span>
+                  </Link>
                 </span>
                 <span className={styles.desc}>
                   <p className={styles.descCt}>{item.attributes.description}</p>
