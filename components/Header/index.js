@@ -9,7 +9,7 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import Image from 'next/image';
 import Logo from '../../public/logo_anphu.svg';
 
-function Header({ isBarsSmall }) {
+function Header({ isBarsSmall, navs }) {
   const [isNavBar, setIsNavBar] = useState(false);
   const handleShowNav = () => {
     setIsNavBar(!isNavBar);
@@ -40,7 +40,7 @@ function Header({ isBarsSmall }) {
               className={styles.closeIcon}
               onClick={handleCloseBars}
             />
-            <HeaderNavBar setIsNavBar={setIsNavBar} />
+            <HeaderNavBar setIsNavBar={setIsNavBar} navs={navs} />
           </div>
           <AiOutlineMenu
             className={clsx(styles.barIcon, {

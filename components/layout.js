@@ -2,10 +2,10 @@ import ButtonToTop from './ScrollButton/ScrollButton';
 import Footer from './Footer';
 import Header from './Header';
 import ContextProvider from '../constants/Context';
-import { useState, useEffect } from 'react';
-import { fetchAPI } from '../lib/api';
+import { useState, useEffect, useMemo } from 'react';
+import navs from '../constants/navsBar.json';
 
-const Layout = ({ children, corpInfor }) => {
+const Layout = ({ children, corpInfor, categories }) => {
   const [scrollState, setScrollState] = useState(false);
   const [isBarsSmall, setIsBarsSmall] = useState(false);
 
@@ -33,13 +33,28 @@ const Layout = ({ children, corpInfor }) => {
       behavior: 'smooth',
     });
   };
+
+  const newNav = useMemo(() => {
+    const newAr = categories.map((item) => {
+      return {
+        title: item.attributes.name,
+        link: '/gioi-thieu',
+        idNav: item.attributes.slug,
+      };
+    });
+    const rr = navs;
+    rr.find((item) => item.title === 'giới thiệu').list = newAr;
+    return rr;
+  }, []);
   return (
     <>
       <ContextProvider>
-        <Header isBarsSmall={isBarsSmall} />
+        <Header isBarsSmall={isBarsSmall} navs={newNav} />
         {children}
         <ButtonToTop onClick={scrollToTop} show={scrollState} />
-        {corpInfor !== undefined && <Footer corpInfor={corpInfor} />}
+        {corpInfor !== undefined && (
+          <Footer corpInfor={corpInfor} navs={newNav} categories={categories} />
+        )}
       </ContextProvider>
     </>
   );

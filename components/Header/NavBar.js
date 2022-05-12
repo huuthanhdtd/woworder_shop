@@ -2,11 +2,10 @@ import React, { useContext } from 'react';
 import styles from './NavBar.module.scss';
 import Link from 'next/link';
 import clsx from 'clsx';
-import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
 
-function HeaderNavBar({ setIsNavBar }) {
+function HeaderNavBar({ setIsNavBar, navs }) {
   const {
     handleClickMenuIntroduce,
     setType,
