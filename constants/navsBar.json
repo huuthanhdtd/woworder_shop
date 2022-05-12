@@ -65,15 +65,18 @@
     "list": [
       {
         "title": "Tin tức thị trường",
-        "link": "/tin-tuc"
+        "link": "/tin-tuc",
+        "type": "market news"
       },
       {
         "title": "Tin dự án",
-        "link": "/tin-tuc"
+        "link": "/tin-tuc",
+        "type": "project news"
       },
       {
         "title": "video",
-        "link": "/tin-tuc"
+        "link": "/tin-tuc",
+        "type": "video"
       }
     ],
     "link": "/tin-tuc"

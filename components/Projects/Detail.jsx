@@ -51,7 +51,7 @@ function Detail({ project, projects, projectCommon }) {
             <div className={styles.relativeNews}>
               <Typography variant="h5">Tin liên quan</Typography>
               <div className={styles.linkNews}>
-                {project.attributes.articles.data.map((article) => (
+                {project.attributes.news_articles.data.map((article) => (
                   <Link
                     key={article.id}
                     href={`/bai-viet/${article.attributes.slug}`}
