@@ -29,9 +29,9 @@ function Banner({
     if (focusBanner) {
       setTimeout(() => {
         //Budget Land
-        autoCount(bannerProject.attributes.acreage, 2, 8, setBudgetLand);
+        autoCount(bannerProject.attributes.acreage, 1, 16, setBudgetLand);
         //Products
-        autoCount(bannerProject.attributes.product, 1, 33, setProduct);
+        autoCount(bannerProject.attributes.product, 1, 43, setProduct);
         //Projects
         autoCount(bannerProject.attributes.Project, 100, 1, setProjectsTotal);
         //Provinces
@@ -118,7 +118,7 @@ function Banner({
             xs={12}
             className={styles.content}
             data-aos="fade-right"
-            data-aos-duration="1000"
+            // data-aos-duration="1000"
           >
             <Typography variant="caption">
               Các dự án của Tập đoàn Ân Phú
@@ -145,7 +145,7 @@ function Banner({
             xs={12}
             className={styles.detail}
             data-aos="fade-left"
-            data-aos-duration="1000"
+            // data-aos-duration="1000"
           >
             <div className={styles.left}>
               <div className={styles.item}>

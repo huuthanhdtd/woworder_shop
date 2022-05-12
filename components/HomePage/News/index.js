@@ -8,14 +8,13 @@ import { useRouter } from 'next/router';
 import { reverse } from '../../../lib/reverse';
 import clsx from 'clsx';
 import { ImCircleRight } from 'react-icons/im';
-
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 function News({ articles, newsRef, newsIntoView }) {
   const router = useRouter();
   useEffect(() => {
-    Aos.init({ duration: 2500 });
+    Aos.init({ duration: 1000 });
   }, []);
   const data = useMemo(() => {
     const result = reverse(articles);
@@ -30,7 +29,7 @@ function News({ articles, newsRef, newsIntoView }) {
         <div
           className={styles.newsTitle}
           data-aos="fade-right"
-          // data-aos-duration="5000"
+          data-aos-duration="2000"
         >
           <h1>Thông tin mới</h1>
           <div className={styles.newsLine}></div>

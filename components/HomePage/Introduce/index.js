@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { autoCount } from '../../../lib/Count';
 import { ImCircleRight } from 'react-icons/im';
+import 'aos/dist/aos.css';
 
 const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   const [countOne, setCountOne] = useState(0);
@@ -26,11 +27,14 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
     }
   }, [introduceIntoView]);
 
-  // const statisticalRef = useRef(null)
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.title}>
+        <div
+          className={styles.title}
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
           <h2>Giới thiệu</h2>
         </div>
         <div className={styles.logo}>
@@ -41,7 +45,6 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
           Giới thiệu chi tiết
           <ImCircleRight className={styles.rightIcon} />
         </button>
-        {/* <div></div> */}
         <Grid
           container
           className={styles.statistical}

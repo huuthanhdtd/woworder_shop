@@ -3,24 +3,14 @@ import News from '../../components/HomePage/News';
 import Slider from '../../components/HomePage/Slider';
 import Projects from '../../components/HomePage/Projects';
 import { useWindowScroll } from 'react-use';
-
 import styles from './styles.module.scss';
 import Connective from '../../components/HomePage/Connective';
 import IntroduceHome from '../../components/HomePage/Introduce';
 
-const HomePage = ({
-  articles,
-  //  categories,
-  slides,
-  typicalProjects,
-  homepage,
-  corpInfor,
-  projects,
-}) => {
+const HomePage = ({ articles, slides, homepage, corpInfor, projects }) => {
   const statisticalRef = useRef(null);
   const newsRef = useRef(null);
   const projectRef = useRef(null);
-
   const { y: pageYOffset } = useWindowScroll();
   const [introduceIntoView, setIntroduceIntoView] = useState(false);
   const [newsIntoView, setNewsIntoView] = useState(false);
@@ -35,21 +25,14 @@ const HomePage = ({
   }, [pageYOffset]);
   return (
     <div className={styles.homePage}>
-      <Slider
-        slides={slides}
-        //  projects={projects} articles={articles}
-      />
+      <Slider slides={slides} />
       <IntroduceHome
         homepage={homepage}
         introduceIntoView={introduceIntoView}
         statisticalRef={statisticalRef}
       />
       <News articles={articles} newsRef={newsRef} newsIntoView={newsIntoView} />
-      <Projects
-        typicalProjects={typicalProjects}
-        projects={projects}
-        projectRef={projectRef}
-      />
+      <Projects projects={projects} projectRef={projectRef} />
       <Connective corpInfor={corpInfor} />
     </div>
   );
