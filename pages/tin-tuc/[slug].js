@@ -1,6 +1,6 @@
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
-import DetailArticle from '../../components/Article';
+import DetailArticle from '../../components/News/Detail';
 import { reverse } from '../../lib/reverse';
 import { useMemo } from 'react';
 
@@ -51,12 +51,24 @@ export async function getStaticProps({ params }) {
     populate: '*',
   });
 
+  const filter = {
+    category: 'video',
+    slug: params.slug,
+  };
+
   return {
     props: {
       article: articlesRes.data[0],
-      articles: allArticles.data.filter(
-        (article) => article.attributes.slug !== params.slug
-      ),
+      articles: allArticles.data.filter((article) => {
+        for (let key in filter) {
+          if (
+            article.attributes[key] === undefined ||
+            article.attributes[key] === filter[key]
+          )
+            return false;
+        }
+        return true;
+      }),
     },
     revalidate: 1,
   };

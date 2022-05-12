@@ -1,54 +1,47 @@
 import { Grid } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
+import NextImage from './imagePj';
 import SlideTag from '../../../lib/SlideTag';
-const listOne = [
-  {
-    title: 'Khu đô thị Ân Phú Buôn Ma Thuột',
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
-    image: require('../../../public/home/project/bg1.jpg'),
-  },
-  {
-    title: 'Khu dân cư số 2 Điện An',
-    image: require('../../../public/home/project/bg2.jpg'),
-  },
-  {
-    title: 'Khu dân cư Đông Tân Thiện',
-    image: require('../../../public/home/project/bg3.jpg'),
-  },
-  {
-    title: 'Khu đô thị Sa Huỳnh',
-    image: require('../../../public/home/project/bg4.jpg'),
-  },
-];
-
-const Projects = ({ projectIntoView, projectRef }) => {
+const Projects = ({ projectRef, typicalProjects }) => {
+  // console.log(typicalProjects);
+  useEffect(() => {
+    Aos.init({ duration: 2500 });
+  }, []);
   return (
     <div className={styles.projects} ref={projectRef}>
       <div className={styles.newsTitle}>
-        <div className={styles.newsTitleBlock}>
+        <div
+          className={styles.newsTitleBlock}
+          data-aos="fade-right"
+          // data-aos-duration="1500"
+        >
           <h1>Dự án tiêu biểu</h1>
           <div className={styles.newsLine}></div>
         </div>
       </div>
       <SlideTag>
-        {listOne.map((it, i) => (
-          <Grid key={i} item xs={6} sm={3} md={3} className={styles.item}>
-            <Image src={it.image} />
+        {typicalProjects.map((item, i) => (
+          <Grid
+            key={i}
+            item
+            xs={6}
+            sm={3}
+            md={3}
+            className={styles.item}
+            data-aos="fade-up"
+          >
+            <div className={styles.itemImage}>
+              <NextImage image={item.attributes.image} />
+            </div>
             <div className={styles.bgFake}></div>
             <div className={styles.itemTitle}>
-              <h2
-                className={clsx({
-                  [styles.active]: projectIntoView === true,
-                })}
-                style={{
-                  transition: `all  ${i / 3 + 0.4}s ease-in-out`,
-                }}
-              >
-                {it.title.toUpperCase()}
-              </h2>
+              <h2>{item.attributes.name.toUpperCase()}</h2>
             </div>
           </Grid>
         ))}

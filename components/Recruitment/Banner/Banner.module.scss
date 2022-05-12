@@ -1,0 +1,23 @@
+.banner {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-position: center bottom;
+  background-size: contain;
+  .cover {
+    height: 100%;
+    background: rgba(0, 85, 138, 0.5);
+  }
+}
+
+@media screen and(max-width: 960px) {
+  .banner {
+    height: 300px;
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .banner {
+    height: 0;
+  }
+}

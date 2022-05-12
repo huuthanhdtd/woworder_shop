@@ -64,7 +64,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 20;
+    z-index: 21;
 
     .prev {
       width: 50px;
@@ -111,7 +111,6 @@
    
     .wrapper {
       height: 35vw;
-      
     }
   }
 @media (max-width: 600px) {

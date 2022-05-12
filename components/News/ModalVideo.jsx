@@ -6,7 +6,6 @@ import styles from './ModalVideo.module.scss';
 
 const ModalVideo = ({ contentVideo }) => {
   const { openVideo, setOpenVideo } = useContext(Context);
-  console.log(contentVideo);
   return (
     <>
       {openVideo && (

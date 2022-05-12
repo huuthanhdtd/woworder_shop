@@ -3,8 +3,9 @@ import styles from './styles.module.scss';
 import { Container, Grid } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import clsx from 'clsx';
+import FormNews from './FormNews';
 
-function Connective() {
+function Connective({ corpInfor }) {
   return (
     <div className={styles.connectiveBg}>
       <Container maxWidth="lg">
@@ -12,10 +13,11 @@ function Connective() {
           <Grid className={styles.formRegister} item xs={12} sm={6} lg={4}>
             <h2>Đăng ký nhận bảng tin</h2>
             <p>Kết nối với chúng tôi để theo dõi thông tin mới nhất.</p>
-            <div>
+            <FormNews />
+            {/* <div>
               <input type="text" placeholder="Địa chỉ emai" />
               <button>Đăng ký</button>
-            </div>
+            </div> */}
           </Grid>
           <Grid className={styles.brochure} item xs={12} sm={6} lg={4}>
             <div className={styles.brochureIcon}>
@@ -32,12 +34,8 @@ function Connective() {
           </Grid>
           <Grid className={clsx(styles.contacts)} item xs={12} sm={6} lg={4}>
             <span>
-              <h2>Tổng đài CSKH:</h2>
-              <h3>1900 63 6666</h3>
-            </span>
-            <span>
               <h2>Email:</h2>
-              <h3>chamsockhachang@novaland.com</h3>
+              <h3>{corpInfor.attributes.email}</h3>
             </span>
           </Grid>
         </div>

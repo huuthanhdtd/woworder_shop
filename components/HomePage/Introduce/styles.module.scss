@@ -23,6 +23,14 @@
       }
     }
     .logo {
+      width: 300px;
+      span {
+        span {
+          img {
+            width: 300px;
+          }
+        }
+      }
     }
     p {
       font-size: 20px;
@@ -45,24 +53,14 @@
       justify-content: center;
       transition: all 0.25s ease-in-out;
       cursor: pointer;
-      div {
-        border: 1px solid var(--primary-color-);
-        width: 20px;
-        height: 20px;
-        display: flex;
-        border-radius: 50%;
-        margin-left: 10px;
-        .rightIcon {
-          margin: auto;
-          font-size: 10px;
-        }
+
+      .rightIcon {
+        margin-left: 5px;
+        font-size: 20px;
       }
       &:hover {
         background-color: var(--primary-color-);
         color: #fff;
-        div {
-          border-color: #fff;
-        }
       }
     }
     .statistical {
@@ -116,7 +114,7 @@
         }
       }
       .statistical {
-          flex-wrap: nowrap;
+        flex-wrap: nowrap;
         .item {
           div {
             padding: 10px;
@@ -135,48 +133,48 @@
   }
 }
 @media (max-width: 600px) {
-    .container {
-        .wrapper {
-          padding: 50px 20px;
-          .title {
-            h2 {
-                font-size: 25px;
+  .container {
+    .wrapper {
+      padding: 50px 20px;
+      .title {
+        h2 {
+          font-size: 25px;
+        }
+      }
+      .logo {
+        width: 160px;
+      }
+      p {
+        padding: 0 10px;
+        font-size: 16px;
+      }
+      button {
+        div {
+          .rightIcon {
+          }
+        }
+        &:hover {
+          div {
+          }
+        }
+      }
+      .statistical {
+        flex-wrap: wrap;
+        .item {
+          div {
+            padding: 10px;
+            h1 {
+              font-size: 30px;
+              white-space: pre-wrap;
             }
-          }
-          .logo {
-              width: 160px;
-          }
-          p {
-            padding: 0 10px;
-            font-size: 16px;
-          }
-          button {
-            div {
-              .rightIcon {
-              }
-            }
-            &:hover {
-              div {
-              }
-            }
-          }
-          .statistical {
-              flex-wrap: wrap;
-            .item {
-              div {
-                padding: 10px;
-                h1 {
-                  font-size: 30px;
-                  white-space: pre-wrap;
-                }
-                h3 {
-                  font-size: 20px;
-                  white-space: pre-wrap;
-                  margin: 10px 0;
-                }
-              }
+            h3 {
+              font-size: 20px;
+              white-space: pre-wrap;
+              margin: 10px 0;
             }
           }
         }
       }
+    }
+  }
 }

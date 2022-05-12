@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import Image from 'next/image';
+import { BsArrowRightCircle } from 'react-icons/bs';
+import { ImCircleRight } from 'react-icons/im';
+import Image from './imageSlide';
+
+// import Image from 'next/image';
 
 const list = [
   {
@@ -92,18 +96,14 @@ function Slider({ slides, projects, articles }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [startX, setStartX] = useState(null);
   const [moveX, setMoveX] = useState(null);
-  // const [slidesArray, setSlidesArray] = useState(
-  //   articles.filter((item) => item.attributes.image.data !== null)
-  // )
-  const [slidesArray, setSlidesArray] = useState(list);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => {
-        if (prev < slidesArray.length - 1) {
+        if (prev < slides.length - 1) {
           return prev + 1;
         }
-        if (prev >= slidesArray.length - 1) {
+        if (prev >= slides.length - 1) {
           return 0;
         }
       });
@@ -117,16 +117,16 @@ function Slider({ slides, projects, articles }) {
         return prev - 1;
       }
       if (prev === 0) {
-        return Number(slidesArray.length - 1);
+        return Number(slides.length - 1);
       }
     });
   };
   const handleClickRight = () => {
     setActiveIndex((prev) => {
-      if (prev < slidesArray.length - 1) {
+      if (prev < slides.length - 1) {
         return prev + 1;
       }
-      if (prev >= slidesArray.length - 1) {
+      if (prev >= slides.length - 1) {
         return 0;
       }
     });
@@ -144,13 +144,13 @@ function Slider({ slides, projects, articles }) {
         if (prev > 0) {
           return prev - 1;
         } else {
-          return slidesArray.length - 1;
+          return slides.length - 1;
         }
       });
     }
     if (moveX < startX) {
       setActiveIndex((prev) => {
-        if (prev < slidesArray.length - 1) {
+        if (prev < slides.length - 1) {
           return prev + 1;
         } else {
           return 0;
@@ -164,8 +164,8 @@ function Slider({ slides, projects, articles }) {
   return (
     <div className={styles.slider}>
       <div className={styles.wrapper}>
-        {list &&
-          list.map((item, index) => (
+        {slides &&
+          slides.map((item, index) => (
             <div
               key={index}
               onTouchStart={handleTouchStart}
@@ -175,7 +175,9 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              <Image src={item.image} />
+              {item.attributes.image.data !== null && (
+                <Image image={item.attributes.image && item.attributes.image} />
+              )}
             </div>
           ))}
         <div className={styles.controls}>
@@ -187,27 +189,29 @@ function Slider({ slides, projects, articles }) {
           </div>
         </div>
         <div className={styles.contents}>
-          {list.map((item, index) => (
-            <div
-              key={index}
-              className={clsx(styles.content, {
-                [styles.active]: index === Number(activeIndex),
-              })}
-            >
-              <span className={styles.title}>{item.title}</span>
-
-              <div className={styles.desc}>
-                {list[index].desc.map((it, i) => (
-                  <span key={i} className={styles.descCt}>
-                    {it.title}
+          {slides &&
+            slides.map((item, index) => (
+              <div
+                key={index}
+                className={clsx(styles.content, {
+                  [styles.active]: index === Number(activeIndex),
+                })}
+              >
+                <span className={styles.title}>
+                  {item.attributes.title}
+                  <span className={styles.btnDetail}>
+                    Xem
+                    <ImCircleRight className={styles.btnDetailIcon} />
                   </span>
-                ))}
+                </span>
+                <span className={styles.desc}>
+                  <p className={styles.descCt}>{item.attributes.description}</p>
+                </span>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <div className={clsx(styles.dots)}>
-          {slidesArray.map((item, index) => (
+          {slides.map((item, index) => (
             <div
               key={index}
               className={clsx({

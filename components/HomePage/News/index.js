@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styles from './styles.module.scss';
 import Grid from '@material-ui/core/Grid';
 import NextImage from './image';
@@ -6,32 +6,34 @@ import Link from 'next/link';
 import { GoTriangleRight } from 'react-icons/go';
 import { FaChevronRight } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import { reverse } from '../../../lib/reverse';
 import clsx from 'clsx';
+import { ImCircleRight } from 'react-icons/im';
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 function News({ articles, newsRef, newsIntoView }) {
   const router = useRouter();
-
+  useEffect(() => {
+    console.log(articles);
+    Aos.init({ duration: 2500 });
+  }, []);
   const data = useMemo(() => {
-    const news = articles.filter(
-      (item) => item.attributes.category.data.attributes.slug === 'tin-tuc'
-    );
-    const rs = news
-      .sort(function (a, b) {
-        return (
-          new Date(b.attributes.updatedAt) - new Date(a.attributes.updatedAt)
-        );
-      })
-      .slice(news.length - 4);
-    return rs;
-  }, [articles]);
-
+    const result = reverse(articles);
+    return result.slice(0, 4);
+  }, []);
   const handleClick = () => {
     router.push('/tin-tuc');
   };
   return (
     <div className={styles.newInfor} ref={newsRef}>
       <div className={styles.container}>
-        <div className={styles.newsTitle}>
+        <div
+          className={styles.newsTitle}
+          data-aos="fade-right"
+          // data-aos-duration="5000"
+        >
           <h1>Thông tin mới</h1>
           <div className={styles.newsLine}></div>
         </div>
@@ -85,9 +87,7 @@ function News({ articles, newsRef, newsIntoView }) {
         >
           <button onClick={handleClick}>
             Chuyển đến phần tin tức
-            <div>
-              <FaChevronRight className={styles.rightIcon} />
-            </div>
+            <ImCircleRight className={styles.rightIcon} />
           </button>
         </div>
       </div>

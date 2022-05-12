@@ -15,15 +15,9 @@ function FooterBottom({ corpInfor }) {
       <div className={styles.footerLast}>
         <Grid className={styles.footerLastContent} item xs={12} sm={12} lg={8}>
           <p>Chính sách bảo mật</p>
-          <p>CÔNG TY CỔ PHẦN ĐẦU TƯ - PHÁT TRIỂN ĐÔ THỊ ÂN PHÚ</p>
-          <p>
-            Giấy chứng nhận đăng ký doanh nghiệp số 4000440174 do Sở Kế hoạch và
-            Đầu tư Tỉnh Quảng Nam cấp lần đầu ngày 07/04/2006
-          </p>
-          <p>
-            Địa chỉ: 28 Phan Bội Châu, Phường Hòa Thuận, Thành phố Tam Kỳ, Tỉnh
-            Quảng Nam
-          </p>
+          <p>{corpInfor.attributes.name.toUpperCase()}</p>
+          <p>{corpInfor.attributes.tax}</p>
+          <p>{corpInfor.attributes.address}</p>
         </Grid>
         <Grid className={styles.footerLastIcon} item xs={12} sm={12} lg={4}>
           <span className={styles.footerLastIconTop}>

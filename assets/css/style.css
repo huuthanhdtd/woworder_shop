@@ -101,3 +101,13 @@ img:hover {
   background-color: var(--primary-color-);
   border-radius: 5px;
 }
+
+.MuiSnackbar-root {
+  position: relative !important;
+}
+.MuiSnackbar-anchorOriginBottomCenter {
+  bottom: 0 !important;
+}
+.MuiSnackbar-anchorOriginBottomCenter {
+
+}
