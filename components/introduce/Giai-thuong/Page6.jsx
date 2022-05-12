@@ -4,7 +4,7 @@ import styles from './page6.module.scss';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
 
-export default function Page6({ category, introductoryArticle }) {
+export default function Page6({ item, introductoryArticle }) {
   const [company, setCompany] = useState([]);
   useEffect(() => {
     Aos.init({
@@ -25,30 +25,28 @@ export default function Page6({ category, introductoryArticle }) {
   }, []);
   return (
     <>
-      {category
-        .filter((item) => item.attributes.slug === 'giai-thuong')
-        .map((data, index) => (
-          <div className={styles.page6} key={index}>
-            <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
-              {data.attributes.name}
-            </h2>
-            <ReactMarkdown
-              data-aos="fade-down"
-              data-aos-duration="500"
-              data-delay="500"
-              source={data.attributes.content}
-              escapeHtml={false}
-            />
-            <PauseOnHover company={company} />
-            <div>
-              {/* <img
+      {item && (
+        <div className={styles.page6}>
+          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+            {item.attributes.name}
+          </h2>
+          <ReactMarkdown
+            data-aos="fade-down"
+            data-aos-duration="500"
+            data-delay="500"
+            source={item.attributes.content}
+            escapeHtml={false}
+          />
+          <PauseOnHover company={company} />
+          <div>
+            {/* <img
           src="https://www.novaland.com.vn/Data/Sites/1/News/24/02-gioithieu.jpg"
           alt=""
           width="100%"
         /> */}
-            </div>
           </div>
-        ))}
+        </div>
+      )}
     </>
   );
 }

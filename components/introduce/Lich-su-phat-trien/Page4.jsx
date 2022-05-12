@@ -3,7 +3,7 @@ import PauseOnHover from './slick';
 import styles from './page4.module.scss';
 import Aos from 'aos';
 
-export default function Page6({ category, introductoryArticle }) {
+export default function Page6({ item, introductoryArticle }) {
   const [company, setCompany] = useState([]);
   useEffect(() => {
     Aos.init({
@@ -24,17 +24,15 @@ export default function Page6({ category, introductoryArticle }) {
   }, []);
   return (
     <>
-      {category
-        .filter((item) => item.attributes.slug === 'lich-su-phat-trien')
-        .map((data, index) => (
-          <div className={styles.page4} key={index}>
-            <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
-              {data.attributes.name}
-            </h2>
-            <PauseOnHover company={company} />
-            <div className={styles.banner}></div>
-          </div>
-        ))}
+      {item && (
+        <div className={styles.page4}>
+          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+            {item.attributes.name}
+          </h2>
+          <PauseOnHover company={company} />
+          <div className={styles.banner}></div>
+        </div>
+      )}
       <div>
         {/* <img
           src="https://www.novaland.com.vn/Data/Sites/1/News/24/02-gioithieu.jpg"

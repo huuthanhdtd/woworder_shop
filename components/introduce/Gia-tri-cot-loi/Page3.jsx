@@ -7,7 +7,7 @@ import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
 import Image from './image';
 
-export default function Page3({ category, parent }) {
+export default function Page3({ item, parent }) {
   useEffect(() => {
     Aos.init({
       easing: 'ease-in-sine',
@@ -59,58 +59,56 @@ export default function Page3({ category, parent }) {
   };
   return (
     <>
-      {category
-        .filter((item) => item.attributes.slug === 'doi-tac')
-        .map((data, index) => (
-          <div className={styles.page3} key={index}>
-            <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
-              {data.attributes.name}
-            </h2>
-            <div
-              className={styles.page3_about}
-              data-aos="fade-down"
+      {item && (
+        <div className={styles.page3}>
+          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+            {item.attributes.name}
+          </h2>
+          <div
+            className={styles.page3_about}
+            data-aos="fade-down"
+            data-aos-duration="500"
+            data-delay="500"
+          >
+            <ReactMarkdown
+              data-aos="fade-up-right"
               data-aos-duration="500"
               data-delay="500"
-            >
-              <ReactMarkdown
-                data-aos="fade-up-right"
-                data-aos-duration="500"
-                data-delay="500"
-                source={data.attributes.content}
-                escapeHtml={false}
-              />
-            </div>
-            {rerult &&
-              rerult.map((data, index) => (
-                <div className={styles.slider} key={index}>
-                  <div
-                    className={styles.partner}
-                    data-aos="zoom-in"
-                    data-aos-duration="900"
-                    data-delay="500"
-                  >
-                    <span>{data.attributes.type}</span>
-                    <br />
-                    <br />
-                    <Slider {...settings} className={styles.modules}>
-                      {parent &&
-                        parent
-                          .filter(
-                            (it) => it.attributes.type === data.attributes.type
-                          )
-                          .map((d, x) => (
-                            <div className={styles.media} key={x}>
-                              <div className={styles.module}>
-                                <Image image={d.attributes.image} />
-                              </div>
-                            </div>
-                          ))}
-                    </Slider>
-                  </div>
-                </div>
-              ))}
+              source={item.attributes.content}
+              escapeHtml={false}
+            />
           </div>
-        ))}
+          {rerult &&
+            rerult.map((data, index) => (
+              <div className={styles.slider} key={index}>
+                <div
+                  className={styles.partner}
+                  data-aos="zoom-in"
+                  data-aos-duration="900"
+                  data-delay="500"
+                >
+                  <span>{data.attributes.type}</span>
+                  <br />
+                  <br />
+                  <Slider {...settings} className={styles.modules}>
+                    {parent &&
+                      parent
+                        .filter(
+                          (it) => it.attributes.type === data.attributes.type
+                        )
+                        .map((d, x) => (
+                          <div className={styles.media} key={x}>
+                            <div className={styles.module}>
+                              <Image image={d.attributes.image} />
+                            </div>
+                          </div>
+                        ))}
+                  </Slider>
+                </div>
+              </div>
+            ))}
+        </div>
+      )}
     </>
   );
 }
