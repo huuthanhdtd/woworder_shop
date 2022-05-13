@@ -35,7 +35,10 @@ const Layout = ({ children, corpInfor, categories, homepage }) => {
   };
 
   const newNav = useMemo(() => {
-    const newAr = categories.map((item) => {
+    const newCategory = categories.reverse().sort(function (a, b) {
+      return a.attributes.priority - b.attributes.priority;
+    });
+    const newAr = newCategory.map((item) => {
       return {
         title: item.attributes.name,
         link: '/gioi-thieu',
