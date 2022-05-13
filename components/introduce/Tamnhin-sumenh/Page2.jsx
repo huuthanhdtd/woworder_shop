@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Page2.module.scss';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
+import { getMediaFollowSize, getStrapiMedia } from '../../../lib/media';
 
 export default function Page2({ item, introductoryArticle }) {
   useEffect(() => {
@@ -9,6 +10,10 @@ export default function Page2({ item, introductoryArticle }) {
       easing: 'ease-in-sine',
       offset: 0,
     });
+    function Update(pic) {
+      const src = item.attributes.image.data.attributes.url;
+      console.log('a', src);
+    }
   }, []);
   return (
     <>
@@ -70,7 +75,18 @@ export default function Page2({ item, introductoryArticle }) {
           </div>
         </div>
       )}
-      <div className={styles.parallax}></div>
+      <div
+        className={styles.parallax}
+        style={{
+          backgroundImage: `url(${
+            process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
+          }${item.attributes.image.data.attributes.formats.medium.url})`,
+        }}
+        // image={getMediaFollowSize(
+        // https://anphu-tpc.herokuapp.com
+        //   item.attributes.image.data.attributes.formats.large
+        // )}
+      ></div>
     </>
   );
 }

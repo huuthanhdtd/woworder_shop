@@ -1,6 +1,23 @@
 .more {
   max-width: 1140px;
   margin: 0 auto;
+  h3 {
+    padding: 2%;
+    font-weight: 700;
+    font-size: 1.7rem;
+    line-height: 1.3;
+    color: var(--primary-color-);
+    text-transform: uppercase;
+    text-align: center;
+    &::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 80px;
+      background: var(--hover-color-);
+      margin: 10px auto 25px;
+    }
+  }
 }
 .mrb8 {
   position: relative;

@@ -6,8 +6,6 @@ import TransitionsModal from './Modal';
 import Image from './image';
 
 export default function Page5edit({ item, introductoryArticle }) {
-  //   const [active, setActive] = useState(false);
-  //   const handleClose = () => setActive(false);
   const [ab, setAb] = useState(1);
   const [maps, setMap] = useState(introductoryArticle[0]);
   const [openModal, setOpenModal] = React.useState(false);
@@ -15,9 +13,9 @@ export default function Page5edit({ item, introductoryArticle }) {
     setOpenModal(true);
     setAb(data);
   };
-
+  console.log(maps.id);
   useEffect(() => {
-    setMap(introductoryArticle[ab - 1]);
+    setMap(introductoryArticle[ab - 5]);
     Aos.init({
       easing: 'ease-in-sine',
       offset: 0,
@@ -73,7 +71,12 @@ export default function Page5edit({ item, introductoryArticle }) {
                         data-aos-duration="500"
                         data-delay="500"
                       >
-                        <span>{data.position}</span>
+                        <span>
+                          {data.attributes.content.slice(
+                            0,
+                            data.attributes.content.indexOf('\n')
+                          )}
+                        </span>
                       </p>
                       <div
                         className={styles.title}

@@ -15,7 +15,6 @@ import Test from './test/Test';
 
 // const data = navs[1];
 export default function Introduce({ category, parent, introductoryArticle }) {
-  console.log(category);
   const { introduceTpye, isPushIntro } = useContext(Context);
   const router = useRouter();
   useEffect(() => {
@@ -41,13 +40,14 @@ export default function Introduce({ category, parent, introductoryArticle }) {
             item={item}
             introductoryArticle={introductoryArticle}
             parent={parent}
+            category={category}
           />
         );
       })}
     </div>
   );
 }
-const Section = ({ item, introductoryArticle, parent }) => {
+const Section = ({ item, introductoryArticle, parent, category }) => {
   switch (item.attributes.slug) {
     case 'gioi-thieu-chung':
       return <Intro item={item} />;
@@ -59,7 +59,11 @@ const Section = ({ item, introductoryArticle, parent }) => {
       return <Page4 item={item} introductoryArticle={introductoryArticle} />;
     case 'ban-lanh-dao':
       return (
-        <Page5edit item={item} introductoryArticle={introductoryArticle} />
+        <Page5edit
+          item={item}
+          category={category}
+          introductoryArticle={introductoryArticle}
+        />
       );
     case 'giai-thuong':
       return <Page6 item={item} introductoryArticle={introductoryArticle} />;

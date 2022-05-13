@@ -62,8 +62,10 @@ export default function ImgPage2({ item, introductoryArticle }) {
           <div className={styles.section}>
             <Parallax
               bgImage={
-                `https://anphu-tpc.herokuapp.com` +
-                item.attributes.image.data.attributes.url
+                `${
+                  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
+                  'http://localhost:1337'
+                }` + item.attributes.image.data.attributes.formats.large.url
               }
               strength={300}
               className={styles.image}

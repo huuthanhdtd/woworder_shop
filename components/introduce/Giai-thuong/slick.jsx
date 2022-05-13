@@ -50,12 +50,12 @@ export default function PauseOnHover({ company }) {
       <Slider {...settings} className={styles.slickactive}>
         {company &&
           company.map((data, index) => (
-            <div key={index}>
+            <div key={index} className={styles.active}>
               <div className={styles.carousel}>
                 <h5>{data.attributes.title}</h5>
                 <div className={styles.title}>
                   <Image image={data.attributes.image} />
-                  <span></span>
+                  <span>{data.attributes.content}</span>
                 </div>
               </div>
             </div>
