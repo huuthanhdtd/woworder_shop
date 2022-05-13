@@ -7,7 +7,7 @@ import styles from './test.module.scss';
 export default function Test({ item }) {
   return (
     <>
-      {item.attributes.image.data.attributes.url !== null ? (
+      {item.attributes.image.data.attributes.formats.sm.url !== null ? (
         <div className={styles.mrb8}>
           <div className={styles.page2}>
             <h3 data-aos="fade-down" data-aos-duration="400" data-deylay="500">
@@ -31,7 +31,7 @@ export default function Test({ item }) {
                 `${
                   process.env.NEXT_PUBLIC_STRAPI_API_URL ||
                   'http://localhost:1337'
-                }` + item.attributes.image.data.attributes.formats.large.url
+                }` + item.attributes.image.data.attributes.formats.sm.url
               }
               strength={300}
               className={styles.image}

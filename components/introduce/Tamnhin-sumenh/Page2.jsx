@@ -80,7 +80,7 @@ export default function Page2({ item, introductoryArticle }) {
         style={{
           backgroundImage: `url(${
             process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
-          }${item.attributes.image.data.attributes.formats.medium.url})`,
+          }${item.attributes.image.data.attributes.formats.lg.url})`,
         }}
         // image={getMediaFollowSize(
         // https://anphu-tpc.herokuapp.com

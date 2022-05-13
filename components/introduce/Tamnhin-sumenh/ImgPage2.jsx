@@ -65,7 +65,7 @@ export default function ImgPage2({ item, introductoryArticle }) {
                 `${
                   process.env.NEXT_PUBLIC_STRAPI_API_URL ||
                   'http://localhost:1337'
-                }` + item.attributes.image.data.attributes.formats.large.url
+                }` + item.attributes.image.data.attributes.formats.lg.url
               }
               strength={300}
               className={styles.image}

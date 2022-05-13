@@ -6,21 +6,23 @@ import TransitionsModal from './Modal';
 import Image from './image';
 
 export default function Page5edit({ item, introductoryArticle }) {
-  const [ab, setAb] = useState(1);
-  const [maps, setMap] = useState(introductoryArticle[0]);
+  const [ab, setAb] = useState();
+  const [maps, setMap] = useState();
   const [openModal, setOpenModal] = React.useState(false);
   const handleShow = (data) => {
     setOpenModal(true);
     setAb(data);
   };
-  console.log(maps.id);
+  console.log(maps);
   useEffect(() => {
-    setMap(introductoryArticle[ab - 5]);
+    const rs = introductoryArticle.filter((item) => item.id === ab);
+    setMap(rs);
     Aos.init({
       easing: 'ease-in-sine',
       offset: 0,
     });
   }, [ab]);
+
   return (
     <div className={styles.main}>
       {item && (
@@ -97,6 +99,7 @@ export default function Page5edit({ item, introductoryArticle }) {
             setOpenModal={setOpenModal}
             openModal={openModal}
             maps={maps}
+            introductoryArticle={introductoryArticle}
           />
         </div>
       )}

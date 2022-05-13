@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Image from './image';
 import styles from './intro.module.scss';
-export default function Intro({ category, item }) {
+export default function Intro({ item }) {
   return (
     <>
       {item && (

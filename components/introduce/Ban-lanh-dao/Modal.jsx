@@ -31,7 +31,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({ setOpenModal, openModal, maps }) {
+export default function TransitionsModal({
+  setOpenModal,
+  openModal,
+  maps,
+  introductoryArticle,
+}) {
   const classes = useStyles();
   const handleClose = () => {
     setOpenModal(false);
@@ -70,18 +75,26 @@ export default function TransitionsModal({ setOpenModal, openModal, maps }) {
             >
               <CloseIcon />
             </Button>
-            <Grid container spacing={2} className={classes.detail}>
-              <Grid item sm={3} md={2} xs={12}>
-                <Image image={maps.attributes.image} />
-              </Grid>
-              <Grid item sm={9} md={10} xs={12} className={classes.desc}>
-                <p>{maps.attributes.title}</p>
-                <ReactMarkdown
-                  source={maps.attributes.content}
-                  escapeHtml={false}
-                />
-              </Grid>
-            </Grid>
+            {maps &&
+              maps.map((data, index) => (
+                <Grid
+                  container
+                  spacing={2}
+                  className={classes.detail}
+                  key={index}
+                >
+                  <Grid item sm={3} md={2} xs={12}>
+                    {<Image image={data.attributes.image} />}
+                  </Grid>
+                  <Grid item sm={9} md={10} xs={12} className={classes.desc}>
+                    <p>{data.attributes.content}</p>
+                    <ReactMarkdown
+                      source={data.attributes.content}
+                      escapeHtml={false}
+                    />
+                  </Grid>
+                </Grid>
+              ))}
           </div>
         </Fade>
       </Modal>
