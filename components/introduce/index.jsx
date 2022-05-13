@@ -11,6 +11,7 @@ import Index from './Tamnhin-sumenh/index';
 import navs from '../../constants/navsBar.json';
 import { Context } from '../../constants/Context';
 import { useRouter } from 'next/router';
+import Test from './test/Test';
 
 // const data = navs[1];
 export default function Introduce({ category, parent, introductoryArticle }) {
@@ -62,6 +63,8 @@ const Section = ({ item, introductoryArticle, parent }) => {
       );
     case 'giai-thuong':
       return <Page6 item={item} introductoryArticle={introductoryArticle} />;
+    case 'nhap':
+      return <Test item={item} />;
     case 'bo-quy-tac-ung-xu':
       return <Page7 item={item} />;
     default:

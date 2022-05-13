@@ -2,7 +2,6 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
 import styles from './imgPage2.module.scss';
-import Image from './image';
 
 export default function ImgPage2({ item, introductoryArticle }) {
   return (
@@ -65,7 +64,6 @@ export default function ImgPage2({ item, introductoryArticle }) {
               bgImage={
                 `https://anphu-tpc.herokuapp.com` +
                 item.attributes.image.data.attributes.url
-                // 'https://anphu-tpc.herokuapp.com/uploads/khu_do_thi_an_phu_a3bc87ce86.jpg'
               }
               strength={300}
               className={styles.image}
