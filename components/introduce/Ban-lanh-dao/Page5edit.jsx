@@ -26,7 +26,7 @@ export default function Page5edit({ item, introductoryArticle }) {
   return (
     <div className={styles.main}>
       {item && (
-        <div className={styles.Page5} key={index}>
+        <div className={styles.Page5}>
           <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
             {item.attributes.name}
           </h2>
