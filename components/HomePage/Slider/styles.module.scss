@@ -2,28 +2,19 @@
   width: 100%;
   position: relative;
   max-width: 100%;
+  height: 60vw;
   .wrapper {
     position: relative;
     width: 100%;
-    height: 50vw;
+    height: inherit;
     overflow: hidden;
     .bg {
       position: absolute;
       left: 0;
       width: 100%;
       opacity: 0;
+      height: inherit;
       transition: all 0.9s ease-in-out;
-      // display: flex;
-      // span {
-      //   span {
-      //     img {
-      //       margin: auto;
-      //       width: 100vw !important;
-      //       object-fit: cover;
-      //       height: 45vw !important;
-      //     }
-      //   }
-      // }
     }
     .bg.active {
       opacity: 1;
@@ -236,7 +227,7 @@
           }
           .desc {
             margin-top: 2px;
-            position: relative; 
+            position: relative;
             .descCt {
               padding: 1px;
               font-size: 9px;

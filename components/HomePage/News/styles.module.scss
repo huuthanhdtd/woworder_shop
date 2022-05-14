@@ -30,22 +30,24 @@
       .newsList {
         padding: 20px;
         .wrapper {
+          width: 100%;
           background-color: #fff;
           border-radius: 5px;
           overflow: hidden;
           opacity: 0;
           transform: translateY(300px);
-          margin: 10px;
-          // transition: all  0.7s ease-in-out;
-          .image {
-            // display: flex;
-            img {
+          .imageBg {
+            width: 100%;
+            overflow: hidden;
+            // height: inherit;
+            .image {
+              width: 100%;
               transition: all 0.25s ease-in-out;
-              margin: auto;
-              cursor: pointer;
               &:hover {
                 transform: scale(1.1);
               }
+              // height: 10px;
+              // display: flex;
             }
           }
           h3 {

@@ -50,27 +50,58 @@ export default function Introduce({ category, parent, introductoryArticle }) {
 const Section = ({ item, introductoryArticle, parent, category }) => {
   switch (item.attributes.slug) {
     case 'gioi-thieu-chung':
-      return <Intro item={item} />;
+      return (
+        <div id="gioi-thieu-chung">
+          <Intro item={item} />
+        </div>
+      );
     case 'tam-nhin-su-menh':
-      return <Index item={item} introductoryArticle={introductoryArticle} />;
+      return (
+        <div id="tam-nhin-su-menh">
+          <Index item={item} introductoryArticle={introductoryArticle} />
+        </div>
+      );
     case 'doi-tac':
-      return <Page3 item={item} parent={parent} />;
+      return (
+        <div id="doi-tac">
+          <Page3 item={item} parent={parent} />
+        </div>
+      );
     case 'lich-su-phat-trien':
-      return <Page4 item={item} introductoryArticle={introductoryArticle} />;
+      return (
+        <div id="lich-su-phat-trien">
+          <Page4 item={item} introductoryArticle={introductoryArticle} />
+        </div>
+      );
     case 'ban-lanh-dao':
       return (
-        <Page5edit
-          item={item}
-          category={category}
-          introductoryArticle={introductoryArticle}
-        />
+        <div id="ban-lanh-dao">
+          <Page5edit
+            item={item}
+            category={category}
+            introductoryArticle={introductoryArticle}
+          />
+        </div>
       );
     case 'giai-thuong':
-      return <Page6 item={item} introductoryArticle={introductoryArticle} />;
+      return (
+        <div id="giai-thuong">
+          <Page6 item={item} introductoryArticle={introductoryArticle} />
+        </div>
+      );
     case 'nhap':
-      return <Test item={item} />;
+      return (
+        <div id="nhap">
+          <Test item={item} />
+        </div>
+      );
     case 'bo-quy-tac-ung-xu':
-      return <Page7 item={item} />;
+      return (
+        <div id="bo-quy-tac-ung-xu">
+          <Page7 item={item} />
+        </div>
+      );
+
     default:
       return <></>;
   }

@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { ImCircleRight } from 'react-icons/im';
-import Image from './imageSlide';
 import Link from 'next/link';
-
+import { useWindowSize } from 'react-use';
+import RenderImage from '../SelectSizeImg';
+import { getMediaFollowSize } from '../../../lib/media';
 function Slider({ slides, projects, articles }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [startX, setStartX] = useState(null);
   const [moveX, setMoveX] = useState(null);
+  const { width } = useWindowSize();
 
+  useEffect(() => {
+    console.log(width);
+    console.log(slides);
+  }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => {
@@ -75,6 +81,7 @@ function Slider({ slides, projects, articles }) {
   const handleClickDot = (index) => {
     setActiveIndex(index);
   };
+
   return (
     <div className={styles.slider}>
       <div className={styles.wrapper}>
@@ -89,8 +96,12 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              {item.attributes.image.data !== null && (
-                <Image image={item.attributes.image && item.attributes.image} />
+              {item.attributes.image && (
+                <RenderImage
+                  data={item.attributes.image}
+                  heightImg={'60vw'}
+                  widthImg={width}
+                />
               )}
             </div>
           ))}
