@@ -54,7 +54,6 @@ export default function Page3({ item, parent }) {
       );
     });
     setSlidersss(rs3);
-    console.log(rs3);
   }, []);
   var settings = {
     infinite: false,
