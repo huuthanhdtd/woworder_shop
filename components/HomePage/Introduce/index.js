@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import NextImage from './imageLogo';
 import { Grid } from '@material-ui/core';
@@ -6,12 +6,16 @@ import { useRouter } from 'next/router';
 import { autoCount } from '../../../lib/Count';
 import { ImCircleRight } from 'react-icons/im';
 import 'aos/dist/aos.css';
+import RenderImage from '../SelectSizeImg';
+import { useWindowSize } from 'react-use';
 
 const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   const [countOne, setCountOne] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
   const [countThree, setCountThree] = useState(0);
   const router = useRouter();
+
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (introduceIntoView === true) {
@@ -29,6 +33,14 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.bg}>
+        <RenderImage
+          data={homepage.attributes.background}
+          heightImg={'100%'}
+          widthImg={width}
+          bgSize="250%"
+        />
+      </div>
       <div className={styles.wrapper}>
         <div
           className={styles.title}

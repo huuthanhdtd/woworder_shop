@@ -1,16 +1,24 @@
 import { CardMedia, Grid } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import SlideTag from '../../../lib/SlideTag';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { getStrapiMedia } from '../../../lib/media';
+import SelectSizeImg from '../SelectSizeImg';
+import { useWindowSize } from 'react-use';
 
 const Projects = ({ projectRef, projects }) => {
+  const { width } = useWindowSize();
+  const [sizeImg, setSizeImg] = useState(0);
+
+  const imgRef = useRef();
+
   useEffect(() => {
     Aos.init({ duration: 1000 });
-  }, []);
+    setSizeImg(imgRef.current.clientWidth * 2);
+  }, [width]);
   return (
     <div className={styles.projects} ref={projectRef}>
       <div className={styles.newsTitle}>
@@ -31,17 +39,14 @@ const Projects = ({ projectRef, projects }) => {
             .map((item, i) => (
               <Link key={i} href={`/du-an/${item.attributes.slug}`}>
                 <Grid item xs={6} sm={3} md={3} className={styles.item}>
-                  <div className={styles.itemImage}>
-                    <CardMedia
-                      image={getStrapiMedia(item.attributes.image)}
-                      style={{
-                        height: 'inherit',
-                        width: 500,
-                        backgroundPosition: 'center center',
-                        backgroundSize: '200%',
-                        backgroundRepeat: 'no-repeat',
-                      }}
-                    />
+                  <div className={styles.itemImage} ref={imgRef}>
+                    {item.attributes.image.data !== null && (
+                      <SelectSizeImg
+                        data={item.attributes.image}
+                        heightImg="inherit"
+                        widthImg={sizeImg}
+                      />
+                    )}
                   </div>
                   <div className={styles.bgFake}></div>
                   <div className={styles.itemTitle}>

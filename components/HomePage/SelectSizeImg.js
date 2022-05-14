@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { getMediaFollowSize } from '../../lib/media';
 import { CardMedia } from '@material-ui/core';
 
-const RenderImage = ({ heightImg, data, widthImg }) => {
+const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
   const curr = data.data.attributes.formats;
   const [img, setImg] = useState(curr.thumbnail);
   useEffect(() => {
@@ -57,6 +57,7 @@ const RenderImage = ({ heightImg, data, widthImg }) => {
           objectFit: 'contain',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
+          backgroundSize: bgSize,
         }}
       />
     </>
