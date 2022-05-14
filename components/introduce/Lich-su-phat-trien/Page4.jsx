@@ -17,11 +17,13 @@ export default function Page6({ item, introductoryArticle }) {
     );
     const rs = history.sort(function (a, b) {
       return (
-        parseInt(a.attributes.title, 10) - parseInt(b.attributes.title, 10)
+        a.attributes.category.data.attributes.priority -
+        b.attributes.category.data.attributes.priority
       );
     });
     setCompany(rs);
   }, []);
+  console.log(company);
   return (
     <>
       {item && (

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Page2.module.scss';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
-import { getMediaFollowSize, getStrapiMedia } from '../../../lib/media';
+import { api } from '../api';
 
 export default function Page2({ item, introductoryArticle }) {
   useEffect(() => {
@@ -78,9 +78,9 @@ export default function Page2({ item, introductoryArticle }) {
       <div
         className={styles.parallax}
         style={{
-          backgroundImage: `url(${
-            process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
-          }${item.attributes.image.data.attributes.formats.lg.url})`,
+          backgroundImage: `url(${api}${item.attributes.image.data.attributes.formats.lg.url})`,
+          width: `${item.attributes.image.data.attributes.formats.lg.width}`,
+          height: `${item.attributes.image.data.attributes.formats.lg.height}`,
         }}
       ></div>
     </>

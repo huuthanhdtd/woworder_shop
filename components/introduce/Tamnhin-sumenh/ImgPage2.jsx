@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
+import { api } from '../api';
 import styles from './imgPage2.module.scss';
 
 export default function ImgPage2({ item, introductoryArticle }) {
@@ -62,10 +63,7 @@ export default function ImgPage2({ item, introductoryArticle }) {
           <div className={styles.section}>
             <Parallax
               bgImage={
-                `${
-                  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
-                  'http://localhost:1337'
-                }` + item.attributes.image.data.attributes.formats.lg.url
+                `${api}` + item.attributes.image.data.attributes.formats.lg.url
               }
               strength={300}
               className={styles.image}
