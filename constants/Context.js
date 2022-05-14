@@ -7,7 +7,7 @@ export default function ContextProvider({ children }) {
   //Banner
   const bannerRef = useRef(null);
   const [focusBanner, setFocusBanner] = useState(false);
-
+  const [sizeImage, setSizeImage] = useState('');
   //WindowScroll
   const { y: pageYOffset } = useWindowScroll();
 
@@ -37,6 +37,18 @@ export default function ContextProvider({ children }) {
     setIsActive(typePj);
   };
 
+  //Get Dimensions Screen
+  const hasWindow = typeof window !== 'undefined';
+
+  function getWindowDimensions() {
+    const width = hasWindow ? window.innerWidth : null;
+    const height = hasWindow ? window.innerHeight : null;
+    return {
+      width,
+      height,
+    };
+  }
+
   const value = {
     type,
     handleTypeProjects,
@@ -57,6 +69,9 @@ export default function ContextProvider({ children }) {
     setOpenVideo,
     contentVideo,
     setContentVideo,
+    getWindowDimensions,
+    sizeImage,
+    setSizeImage,
   };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }

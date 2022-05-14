@@ -11,14 +11,13 @@ const Image = ({ image, style }) => {
   return (
     <NextImage
       // loader={loader}
-      width={formats.medium.width}
-      height={450}
+      width={formats.sm.width}
+      height={560}
       objectPosition="top center"
-      src={getMediaFollowSize(formats.medium)}
+      src={getMediaFollowSize(formats.md)}
       alt={alternativeText || ''}
       layout="responsive"
       objectFit="cover"
-      quality={100}
     />
   );
 };

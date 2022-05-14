@@ -8,10 +8,11 @@ import 'aos/dist/aos.css';
 
 function Banner({
   bannerRef,
-  focusBanner,
   project,
   changeBanner,
   bannerProject,
+  urlImageResize,
+  focusBanner,
 }) {
   const [budgetLand, setBudgetLand] = useState(0);
   const [product, setProduct] = useState(0);
@@ -93,112 +94,117 @@ function Banner({
       setTotalProducts(0);
     }
   }, [focusBanner]);
+
   return (
     <>
-      <CardMedia
-        className={styles.image}
-        image={
-          changeBanner
-            ? getMediaFollowSize(
-                project.attributes.image.data.attributes.formats.large
-              )
-            : getStrapiMedia(bannerProject.attributes.background)
-        }
-      >
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          className={styles.container}
-          ref={bannerRef}
+      <div className={styles.cover}>
+        <CardMedia
+          className={styles.image}
+          image={
+            urlImageResize
+            // changeBanner
+            //   ? urlImageResize
+            //   : getMediaFollowSize(
+            //       bannerProject.attributes.background.data.attributes.formats
+            //         .large
+            //     )
+          }
         >
           <Grid
-            item
-            sm={6}
-            xs={12}
-            className={styles.content}
-            data-aos="fade-right"
-            // data-aos-duration="1000"
+            container
+            justifyContent="center"
+            alignItems="center"
+            className={styles.container}
+            ref={bannerRef}
           >
-            <Typography variant="caption">
-              Các dự án của Tập đoàn Ân Phú
-            </Typography>
-            <Typography variant="h4">
-              {project
-                ? `${project.attributes.title}`
-                : 'Đa dạng tại nhiều tỉnh thành'}
-            </Typography>
-            <Typography variant="body2">
-              {project
-                ? `${project.attributes.description}`
-                : `Năng lực của Tập đoàn Ân Phú đã được chứng minh qua các sản phẩm
+            <Grid
+              item
+              sm={6}
+              xs={6}
+              className={styles.content}
+              data-aos="fade-right"
+              // data-aos-duration="1000"
+            >
+              <Typography variant="caption">
+                Các dự án của Tập đoàn Ân Phú
+              </Typography>
+              <Typography variant="h4">
+                {project
+                  ? `${project.attributes.title}`
+                  : 'Đa dạng tại nhiều tỉnh thành'}
+              </Typography>
+              <Typography variant="body2">
+                {project
+                  ? `${project.attributes.description}`
+                  : `Năng lực của Tập đoàn Ân Phú đã được chứng minh qua các sản phẩm
               và dịch vụ chất lượng chuẩn mực. Tập đoàn ngày càng khẳng định
               được vị thế trong lĩnh vực bất động sản và đang vững bước tiến vào
               kỷ nguyên mới với các dự án được đầu tư bài bản từ khâu nghiên cứu
               nhu cầu, phát triển ý tưởng, triển khai cùng các đối tác tư vấn
               quốc tế hàng đầu.`}
-            </Typography>
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              sm={6}
+              xs={6}
+              className={styles.detail}
+              data-aos="fade-left"
+              // data-aos-duration="1000"
+            >
+              <div className={styles.left}>
+                <div className={styles.item}>
+                  <Typography variant="h3">
+                    {changeBanner ? `${areaProject} ha` : `${budgetLand} ha`}
+                  </Typography>
+                  <Typography variant="body2">
+                    {changeBanner ? 'Diện tích' : 'Quỹ đất'}
+                  </Typography>
+                  <Divider className={styles.divider} />
+                </div>
+                <div className={styles.item}>
+                  <Typography variant="h3">
+                    {changeBanner ? customerProject : product}
+                  </Typography>
+                  <Typography variant="body2">
+                    {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
+                  </Typography>
+                  <Divider className={styles.divider} />
+                </div>
+              </div>
+              <div className={styles.right}>
+                <div className={styles.item}>
+                  <Typography variant="h3">
+                    {changeBanner ? totalProducts : projectsTotal}
+                  </Typography>
+                  <Typography variant="body2">
+                    {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
+                  </Typography>
+                  <Divider className={styles.divider} />
+                </div>
+                <div className={styles.item}>
+                  <Typography variant="h3">
+                    {changeBanner ? productsSold : provinces}
+                  </Typography>
+                  <Typography variant="body2">
+                    {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
+                  </Typography>
+                  <Divider className={styles.divider} />
+                </div>
+                <div className={styles.item}>
+                  <Typography variant="h3">
+                    {changeBanner ? resProducts : `${customers}`}
+                  </Typography>
+                  <Typography variant="body2">
+                    {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}
+                  </Typography>
+                  <Divider className={styles.divider} />
+                </div>
+              </div>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-            className={styles.detail}
-            data-aos="fade-left"
-            // data-aos-duration="1000"
-          >
-            <div className={styles.left}>
-              <div className={styles.item}>
-                <Typography variant="h3">
-                  {changeBanner ? `${areaProject} ha` : `${budgetLand} ha`}
-                </Typography>
-                <Typography variant="body2">
-                  {changeBanner ? 'Diện tích' : 'Quỹ đất'}
-                </Typography>
-                <Divider className={styles.divider} />
-              </div>
-              <div className={styles.item}>
-                <Typography variant="h3">
-                  {changeBanner ? customerProject : product}
-                </Typography>
-                <Typography variant="body2">
-                  {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
-                </Typography>
-                <Divider className={styles.divider} />
-              </div>
-            </div>
-            <div className={styles.right}>
-              <div className={styles.item}>
-                <Typography variant="h3">
-                  {changeBanner ? totalProducts : projectsTotal}
-                </Typography>
-                <Typography variant="body2">
-                  {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
-                </Typography>
-                <Divider className={styles.divider} />
-              </div>
-              <div className={styles.item}>
-                <Typography variant="h3">
-                  {changeBanner ? productsSold : provinces}
-                </Typography>
-                <Typography variant="body2">
-                  {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
-                </Typography>
-                <Divider className={styles.divider} />
-              </div>
-              <div className={styles.item}>
-                <Typography variant="h3">
-                  {changeBanner ? resProducts : `${customers}`}
-                </Typography>
-                <Typography variant="body2">
-                  {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}
-                </Typography>
-                <Divider className={styles.divider} />
-              </div>
-            </div>
-          </Grid>
-        </Grid>
-      </CardMedia>
+        </CardMedia>
+      </div>
     </>
   );
 }

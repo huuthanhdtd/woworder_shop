@@ -1,18 +1,37 @@
 import { Typography, Grid } from '@material-ui/core';
 import Link from 'next/link';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Detail.module.scss';
 import { Visibility } from '@material-ui/icons';
 import ReactMarkdown from 'react-markdown';
 import Banner from '../Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 import { Context } from '../../constants/Context';
+import { getNewImageUrl } from '../../lib/resizeMarkdown';
+import { getStrapiMedia } from '../../lib/media';
 
 function Detail({ project, projects, projectCommon }) {
-  const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
-    useContext(Context);
+  const {
+    bannerRef,
+    focusBanner,
+    setFocusBanner,
+    pageYOffset,
+    getWindowDimensions,
+    sizeImage,
+    setSizeImage,
+  } = useContext(Context);
   const preLinkNews = '/tin-tuc';
   const preLinkProject = '/du-an';
+  const [contentMarkdown, setContentMarkdown] = useState(
+    project.attributes.content
+  );
+  const [urlImageResize, setUrlImageResize] = useState(
+    getStrapiMedia(project.attributes.image)
+  );
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
   useEffect(() => {
     if (
       pageYOffset >= bannerRef.current.offsetTop &&
@@ -22,7 +41,69 @@ function Detail({ project, projects, projectCommon }) {
     } else {
       setFocusBanner(false);
     }
-  }, [pageYOffset]);
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+    if (windowDimensions.width) {
+      if (windowDimensions.width > 2600) {
+        setSizeImage('');
+        setContentMarkdown(
+          getNewImageUrl(sizeImage, project.attributes.content)
+        );
+        setUrlImageResize(
+          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
+        );
+      }
+      if (windowDimensions.width <= 2600) {
+        setSizeImage('xl_');
+        setContentMarkdown(
+          getNewImageUrl(sizeImage, project.attributes.content)
+        );
+        setUrlImageResize(
+          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
+        );
+      }
+      if (windowDimensions.width <= 1900) {
+        setSizeImage('lg_');
+        setContentMarkdown(
+          getNewImageUrl(sizeImage, project.attributes.content)
+        );
+        setUrlImageResize(
+          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
+        );
+      }
+      if (windowDimensions.width <= 1280) {
+        setSizeImage('md_');
+        setContentMarkdown(
+          getNewImageUrl(sizeImage, project.attributes.content)
+        );
+        setUrlImageResize(
+          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
+        );
+      }
+      if (windowDimensions.width <= 960) {
+        setSizeImage('sm_');
+        setContentMarkdown(
+          getNewImageUrl(sizeImage, project.attributes.content)
+        );
+        setUrlImageResize(
+          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
+        );
+      }
+      if (windowDimensions.width <= 600) {
+        setSizeImage('xs_');
+        setContentMarkdown(
+          getNewImageUrl(sizeImage, project.attributes.content)
+        );
+        setUrlImageResize(
+          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
+        );
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [pageYOffset, windowDimensions.width]);
   return (
     <>
       <Banner
@@ -31,6 +112,10 @@ function Detail({ project, projects, projectCommon }) {
         project={project}
         changeBanner={true}
         bannerProject={projectCommon}
+        urlImageResize={urlImageResize}
+        sizeImage={sizeImage}
+        width={windowDimensions.width}
+        pageYOffset={pageYOffset}
       />
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item xs={9}>
@@ -45,7 +130,9 @@ function Detail({ project, projects, projectCommon }) {
           </div>
           <div className={styles.content}>
             <ReactMarkdown
-              source={project.attributes.content}
+              source={
+                sizeImage !== '' ? contentMarkdown : project.attributes.content
+              }
               escapeHtml={false}
             />
           </div>

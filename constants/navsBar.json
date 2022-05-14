@@ -6,43 +6,7 @@
   {
     "title": "giới thiệu",
     "link": "/gioi-thieu",
-    "list": [
-      {
-        "title": "giới thiệu chung",
-        "link": "/gioi-thieu",
-        "idNav": "gioi-thieu-chung"
-      },
-      {
-        "title": "tầm nhìn - sứ mệnh",
-        "link": "/gioi-thieu",
-        "idNav": "tam-nhin"
-      },
-      {
-        "title": "đối tác",
-        "link": "/gioi-thieu",
-        "idNav": "doi-tac"
-      },
-      {
-        "title": "lịch sử phát triển",
-        "link": "/gioi-thieu",
-        "idNav": "lich-su"
-      },
-      {
-        "title": "ban lãnh đạo",
-        "link": "/gioi-thieu",
-        "idNav": "lanh-dao"
-      },
-      {
-        "title": "giải thưởng",
-        "link": "/gioi-thieu",
-        "idNav": "giai-thuong"
-      },
-      {
-        "title": "bộ quy tắc ứng xử",
-        "link": "/gioi-thieu",
-        "idNav": "quy-tac"
-      }
-    ]
+    "list": []
   },
   {
     "title": "dự án",
