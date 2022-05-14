@@ -20,8 +20,9 @@ const Article = ({ article, articles }) => {
       <Seo seo={seo} />
       <DetailArticle
         article={article}
-        title={article.attributes.title}
+        articleMarkdown={article.attributes.content}
         anotherArticle={data}
+        image={article.attributes.image}
       />
     </>
   );

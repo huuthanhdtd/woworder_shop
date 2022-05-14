@@ -21,7 +21,7 @@ import 'aos/dist/aos.css';
 
 const firstIndex = 0;
 
-function ProjectsPage({ projects, bannerProject }) {
+function ProjectsPage({ projects, bannerProject, image }) {
   const { type, handleTypeProjects, isFilter, isActive } = useContext(Context);
   const [pageSize, setPageSize] = useState(6);
   const [page, setPage] = useState(1);
@@ -49,7 +49,7 @@ function ProjectsPage({ projects, bannerProject }) {
     );
   };
   return (
-    <LayoutProject bannerProject={bannerProject}>
+    <LayoutProject bannerProject={bannerProject} image={image}>
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item md={10} sm={11} xs={11}>
           <Link href="/du-an">

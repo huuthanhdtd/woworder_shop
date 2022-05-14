@@ -9,28 +9,24 @@ import { AiOutlineRight } from 'react-icons/ai';
 import { Context } from '../../constants/Context';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
 import { getStrapiMedia } from '../../lib/media';
+import { useWindowSize } from 'react-use';
 
-function Detail({ project, projects, projectCommon }) {
-  const {
-    bannerRef,
-    focusBanner,
-    setFocusBanner,
-    pageYOffset,
-    getWindowDimensions,
-    sizeImage,
-    setSizeImage,
-  } = useContext(Context);
+function Detail({
+  project,
+  projects,
+  projectCommon,
+  image,
+  projectContentMarkdown,
+}) {
+  const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
+    useContext(Context);
   const preLinkNews = '/tin-tuc';
   const preLinkProject = '/du-an';
   const [contentMarkdown, setContentMarkdown] = useState(
-    project.attributes.content
+    projectContentMarkdown
   );
-  const [urlImageResize, setUrlImageResize] = useState(
-    getStrapiMedia(project.attributes.image)
-  );
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
+  const [urlImageResize, setUrlImageResize] = useState(getStrapiMedia(image));
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (
@@ -41,69 +37,59 @@ function Detail({ project, projects, projectCommon }) {
     } else {
       setFocusBanner(false);
     }
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-    if (windowDimensions.width) {
-      if (windowDimensions.width > 2600) {
-        setSizeImage('');
-        setContentMarkdown(
-          getNewImageUrl(sizeImage, project.attributes.content)
-        );
-        setUrlImageResize(
-          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
-        );
-      }
-      if (windowDimensions.width <= 2600) {
-        setSizeImage('xl_');
-        setContentMarkdown(
-          getNewImageUrl(sizeImage, project.attributes.content)
-        );
-        setUrlImageResize(
-          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
-        );
-      }
-      if (windowDimensions.width <= 1900) {
-        setSizeImage('lg_');
-        setContentMarkdown(
-          getNewImageUrl(sizeImage, project.attributes.content)
-        );
-        setUrlImageResize(
-          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
-        );
-      }
-      if (windowDimensions.width <= 1280) {
-        setSizeImage('md_');
-        setContentMarkdown(
-          getNewImageUrl(sizeImage, project.attributes.content)
-        );
-        setUrlImageResize(
-          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
-        );
-      }
-      if (windowDimensions.width <= 960) {
-        setSizeImage('sm_');
-        setContentMarkdown(
-          getNewImageUrl(sizeImage, project.attributes.content)
-        );
-        setUrlImageResize(
-          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
-        );
-      }
-      if (windowDimensions.width <= 600) {
-        setSizeImage('xs_');
-        setContentMarkdown(
-          getNewImageUrl(sizeImage, project.attributes.content)
-        );
-        setUrlImageResize(
-          getNewImageUrl(sizeImage, getStrapiMedia(project.attributes.image))
-        );
-      }
-    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [pageYOffset, windowDimensions.width]);
+    if (width) {
+      if (width > 2600) {
+        setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
+        setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+      }
+      if (width <= 2600) {
+        if (image.data.attributes.formats.xl === undefined) {
+          setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setContentMarkdown(getNewImageUrl('md_', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('xl_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 1900) {
+        if (image.data.attributes.formats.lg === undefined) {
+          setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setContentMarkdown(getNewImageUrl('md_', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('lg_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 1280) {
+        if (image.data.attributes.formats.md === undefined) {
+          setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setContentMarkdown(getNewImageUrl('md_', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('md_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 960) {
+        if (image.data.attributes.formats.sm === undefined) {
+          setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setContentMarkdown(getNewImageUrl('sm_', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('sm_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 600) {
+        if (image.data.attributes.formats.xs === undefined) {
+          setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setContentMarkdown(getNewImageUrl('xs_', projectContentMarkdown));
+          setUrlImageResize(getNewImageUrl('xs_', getStrapiMedia(image)));
+        }
+      }
+    }
+  }, [pageYOffset, width]);
   return (
     <>
       <Banner
@@ -113,8 +99,6 @@ function Detail({ project, projects, projectCommon }) {
         changeBanner={true}
         bannerProject={projectCommon}
         urlImageResize={urlImageResize}
-        sizeImage={sizeImage}
-        width={windowDimensions.width}
         pageYOffset={pageYOffset}
       />
       <Grid container justifyContent="center" className={styles.container}>
@@ -129,12 +113,7 @@ function Detail({ project, projects, projectCommon }) {
             </Typography>
           </div>
           <div className={styles.content}>
-            <ReactMarkdown
-              source={
-                sizeImage !== '' ? contentMarkdown : project.attributes.content
-              }
-              escapeHtml={false}
-            />
+            <ReactMarkdown source={contentMarkdown} escapeHtml={false} />
           </div>
           {project.attributes.news_articles.data.length > 0 ? (
             <div className={styles.relativeNews}>

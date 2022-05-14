@@ -4,23 +4,14 @@ import Banner from '../Banner/Banner';
 import { Context } from '../../constants/Context';
 import { getStrapiMedia } from '../../lib/media';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
+import { useWindowSize } from 'react-use';
 
-function LayoutProject({ children, bannerProject }) {
-  const {
-    bannerRef,
-    focusBanner,
-    setFocusBanner,
-    pageYOffset,
-    getWindowDimensions,
-    sizeImage,
-    setSizeImage,
-  } = useContext(Context);
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-  const [urlImageResize, setUrlImageResize] = useState(
-    getStrapiMedia(bannerProject.attributes.background)
-  );
+function LayoutProject({ children, bannerProject, image }) {
+  const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
+    useContext(Context);
+
+  const [urlImageResize, setUrlImageResize] = useState(getStrapiMedia(image));
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (
@@ -31,69 +22,48 @@ function LayoutProject({ children, bannerProject }) {
     } else {
       setFocusBanner(false);
     }
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-    if (windowDimensions.width) {
-      if (windowDimensions.width > 2600) {
-        setSizeImage('');
-        setUrlImageResize(
-          getNewImageUrl(
-            sizeImage,
-            getStrapiMedia(bannerProject.attributes.background)
-          )
-        );
-      }
-      if (windowDimensions.width <= 2600) {
-        setSizeImage('xl_');
-        setUrlImageResize(
-          getNewImageUrl(
-            sizeImage,
-            getStrapiMedia(bannerProject.attributes.background)
-          )
-        );
-      }
-      if (windowDimensions.width <= 1900) {
-        setSizeImage('lg_');
-        setUrlImageResize(
-          getNewImageUrl(
-            sizeImage,
-            getStrapiMedia(bannerProject.attributes.background)
-          )
-        );
-      }
-      if (windowDimensions.width <= 1280) {
-        setSizeImage('md_');
-        setUrlImageResize(
-          getNewImageUrl(
-            sizeImage,
-            getStrapiMedia(bannerProject.attributes.background)
-          )
-        );
-      }
-      if (windowDimensions.width <= 960) {
-        setSizeImage('sm_');
-        setUrlImageResize(
-          getNewImageUrl(
-            sizeImage,
-            getStrapiMedia(bannerProject.attributes.background)
-          )
-        );
-      }
-      if (windowDimensions.width <= 600) {
-        setSizeImage('xs_');
-        setUrlImageResize(
-          getNewImageUrl(
-            sizeImage,
-            getStrapiMedia(bannerProject.attributes.background)
-          )
-        );
-      }
-    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [pageYOffset, windowDimensions.width]);
+    if (width) {
+      if (width > 2600) {
+        setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+      }
+      if (width <= 2600) {
+        if (image.data.attributes.formats.xl === undefined) {
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setUrlImageResize(getNewImageUrl('xl_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 1900) {
+        if (image.data.attributes.formats.lg === undefined) {
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setUrlImageResize(getNewImageUrl('lg_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 1280) {
+        if (image.data.attributes.formats.md === undefined) {
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setUrlImageResize(getNewImageUrl('md_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 960) {
+        if (image.data.attributes.formats.sm === undefined) {
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setUrlImageResize(getNewImageUrl('sm_', getStrapiMedia(image)));
+        }
+      }
+      if (width <= 600) {
+        if (image.data.attributes.formats.xs === undefined) {
+          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        } else {
+          setUrlImageResize(getNewImageUrl('xs_', getStrapiMedia(image)));
+        }
+      }
+    }
+  }, [pageYOffset, width]);
   return (
     <>
       <Banner

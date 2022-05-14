@@ -17,7 +17,13 @@ function DetailProject({ project, projects, projectCommon }) {
   return (
     <>
       <Seo seo={seo} />
-      <Detail project={project} projects={data} projectCommon={projectCommon} />
+      <Detail
+        project={project}
+        projects={data}
+        projectContentMarkdown={project.attributes.content}
+        projectCommon={projectCommon}
+        image={project.attributes.image}
+      />
     </>
   );
 }

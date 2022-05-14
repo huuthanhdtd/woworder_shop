@@ -13,6 +13,7 @@ function CardItem({
   dataAosDelay,
   setOpenVideo,
   setContentVideo,
+  type,
 }) {
   const router = useRouter();
   const clickToDetail = (data) => {
@@ -35,6 +36,9 @@ function CardItem({
         <Image src={photo} image={article.attributes.image} />
         <div className={styles.content}>
           <Typography variant="h5">
+            {article.attributes.category === 'video' && type === null
+              ? 'Video: '
+              : ''}
             {article.attributes.title} <BsCaretRightFill fontSize="small" />
           </Typography>
         </div>

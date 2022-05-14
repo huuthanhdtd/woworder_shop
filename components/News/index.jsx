@@ -112,6 +112,7 @@ function CategoryPage({ articles, title, image }) {
                         article={article}
                         setOpenVideo={setOpenVideo}
                         setContentVideo={setContentVideo}
+                        type={type}
                       />
                     ))
                 : data.map((article, index) => (
@@ -122,6 +123,7 @@ function CategoryPage({ articles, title, image }) {
                       article={article}
                       setOpenVideo={setOpenVideo}
                       setContentVideo={setContentVideo}
+                      type={type}
                     />
                   ))}
             </Grid>

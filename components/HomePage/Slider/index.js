@@ -14,10 +14,6 @@ function Slider({ slides, projects, articles }) {
   const { width } = useWindowSize();
 
   useEffect(() => {
-    console.log(width);
-    console.log(slides);
-  }, []);
-  useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => {
         if (prev < slides.length - 1) {

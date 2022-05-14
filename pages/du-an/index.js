@@ -12,7 +12,11 @@ function Project({ projects, projectCommon }) {
   return (
     <>
       <Seo seo={seo} />
-      <ProjectsPage projects={projects} bannerProject={projectCommon} />
+      <ProjectsPage
+        projects={projects}
+        bannerProject={projectCommon}
+        image={projectCommon.attributes.background}
+      />
     </>
   );
 }

@@ -20,6 +20,7 @@ const Article = ({ article, articles, hireCommon }) => {
       <Seo seo={seo} />
       <DetailRecruitment
         article={article}
+        articleMarkdown={article.attributes.content}
         title={article.attributes.title}
         anotherArticle={data}
         image={hireCommon.attributes.background}

@@ -98,18 +98,7 @@ function Banner({
   return (
     <>
       <div className={styles.cover}>
-        <CardMedia
-          className={styles.image}
-          image={
-            urlImageResize
-            // changeBanner
-            //   ? urlImageResize
-            //   : getMediaFollowSize(
-            //       bannerProject.attributes.background.data.attributes.formats
-            //         .large
-            //     )
-          }
-        >
+        <CardMedia className={styles.image} image={urlImageResize}>
           <Grid
             container
             justifyContent="center"
@@ -123,7 +112,6 @@ function Banner({
               xs={6}
               className={styles.content}
               data-aos="fade-right"
-              // data-aos-duration="1000"
             >
               <Typography variant="caption">
                 Các dự án của Tập đoàn Ân Phú
@@ -150,7 +138,6 @@ function Banner({
               xs={6}
               className={styles.detail}
               data-aos="fade-left"
-              // data-aos-duration="1000"
             >
               <div className={styles.left}>
                 <div className={styles.item}>

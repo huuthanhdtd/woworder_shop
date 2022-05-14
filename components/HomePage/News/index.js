@@ -26,7 +26,6 @@ function News({ articles, newsRef, newsIntoView }) {
   }, [width]);
   const data = useMemo(() => {
     const result = reverse(articles);
-    console.log(result);
     return result.slice(0, 4);
   }, []);
   const handleClick = () => {
