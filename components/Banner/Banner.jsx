@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Banner.module.scss';
 import { CardMedia, Divider, Grid, Typography } from '@material-ui/core';
 import { autoCount } from '../../lib/Count';
-import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
+import { getMediaFollowSize } from '../../lib/media';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -94,11 +94,13 @@ function Banner({
       setTotalProducts(0);
     }
   }, [focusBanner]);
-
   return (
     <>
       <div className={styles.cover}>
-        <CardMedia className={styles.image} image={urlImageResize}>
+        <CardMedia
+          className={styles.image}
+          image={getMediaFollowSize(urlImageResize)}
+        >
           <Grid
             container
             justifyContent="center"

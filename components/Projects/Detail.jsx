@@ -25,7 +25,10 @@ function Detail({
   const [contentMarkdown, setContentMarkdown] = useState(
     projectContentMarkdown
   );
-  const [urlImageResize, setUrlImageResize] = useState(getStrapiMedia(image));
+  const imageURLCurrent = image.data.attributes.formats;
+  const [urlImageResize, setUrlImageResize] = useState(
+    imageURLCurrent.thumbnail
+  );
   const { width } = useWindowSize();
 
   useEffect(() => {
@@ -41,55 +44,55 @@ function Detail({
     if (width) {
       if (width > 2600) {
         setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
-        setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        setUrlImageResize(image.data.attributes);
       }
       if (width <= 2600) {
-        if (image.data.attributes.formats.xl === undefined) {
+        if (imageURLCurrent.xl === undefined) {
           setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+          setUrlImageResize(image.data.attributes);
         } else {
           setContentMarkdown(getNewImageUrl('md_', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('xl_', getStrapiMedia(image)));
+          setUrlImageResize(imageURLCurrent.xl);
         }
       }
       if (width <= 1900) {
-        if (image.data.attributes.formats.lg === undefined) {
+        if (imageURLCurrent.lg === undefined) {
           setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+          setUrlImageResize(image.data.attributes);
         } else {
           setContentMarkdown(getNewImageUrl('md_', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('lg_', getStrapiMedia(image)));
+          setUrlImageResize(imageURLCurrent.lg);
         }
       }
       if (width <= 1280) {
-        if (image.data.attributes.formats.md === undefined) {
+        if (imageURLCurrent.md === undefined) {
           setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+          setUrlImageResize(image.data.attributes);
         } else {
           setContentMarkdown(getNewImageUrl('md_', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('md_', getStrapiMedia(image)));
+          setUrlImageResize(imageURLCurrent.md);
         }
       }
       if (width <= 960) {
-        if (image.data.attributes.formats.sm === undefined) {
+        if (imageURLCurrent.sm === undefined) {
           setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+          setUrlImageResize(image.data.attributes);
         } else {
           setContentMarkdown(getNewImageUrl('sm_', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('sm_', getStrapiMedia(image)));
+          setUrlImageResize(imageURLCurrent.sm);
         }
       }
       if (width <= 600) {
-        if (image.data.attributes.formats.xs === undefined) {
+        if (imageURLCurrent.xs === undefined) {
           setContentMarkdown(getNewImageUrl('', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+          setUrlImageResize(image.data.attributes);
         } else {
           setContentMarkdown(getNewImageUrl('xs_', projectContentMarkdown));
-          setUrlImageResize(getNewImageUrl('xs_', getStrapiMedia(image)));
+          setUrlImageResize(imageURLCurrent.xs);
         }
       }
     }
-  }, [pageYOffset, width]);
+  }, [pageYOffset, width, image, projectContentMarkdown]);
   return (
     <>
       <Banner

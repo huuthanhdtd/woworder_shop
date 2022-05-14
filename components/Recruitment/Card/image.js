@@ -4,7 +4,6 @@ import NextImage from 'next/image';
 const Image = ({ image, style }) => {
   const { url, alternativeText, width, height, formats } =
     image.data.attributes;
-
   // const loader = () => {
   //   return getStrapiMedia(image)
   // }
@@ -13,10 +12,10 @@ const Image = ({ image, style }) => {
     <NextImage
       // loader={loader}
       layout="responsive"
-      width={formats.small.width}
-      height={formats.small.height}
+      width={formats.thumbnail.width}
+      height={formats.thumbnail.height}
       objectFit="cover"
-      src={getMediaFollowSize(formats.small)}
+      src={getMediaFollowSize(formats.thumbnail)}
       alt={alternativeText || ''}
     />
   );

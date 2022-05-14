@@ -1,55 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Projects.module.scss';
+import styles from './Recruitment.module.scss';
 import Banner from './Banner/Banner';
 import { useWindowSize } from 'react-use';
-import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import { getStrapiMedia } from '../../lib/media';
 
 function LayoutProject({ children, image }) {
-  const [urlImageResize, setUrlImageResize] = useState(getStrapiMedia(image));
+  const urlCurrent = image.data.attributes.formats;
+  const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
   const { width } = useWindowSize();
   useEffect(() => {
     if (width) {
       if (width > 2600) {
-        setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        setUrlImageResize(image.data.attributes);
       }
       if (width <= 2600) {
-        if (image.data.attributes.formats.xl === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.xl === undefined) {
+          setUrlImageResize(image.data.attributes);
         } else {
-          setUrlImageResize(getNewImageUrl('xl_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.xl);
         }
       }
       if (width <= 1900) {
-        if (image.data.attributes.formats.lg === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.lg === undefined) {
+          setUrlImageResize(image.data.attributes);
         } else {
-          setUrlImageResize(getNewImageUrl('lg_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.lg);
         }
       }
       if (width <= 1280) {
-        if (image.data.attributes.formats.md === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.md === undefined) {
+          setUrlImageResize(image.data.attributes);
         } else {
-          setUrlImageResize(getNewImageUrl('md_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.md);
         }
       }
       if (width <= 960) {
-        if (image.data.attributes.formats.sm === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.sm === undefined) {
+          setUrlImageResize(image.data.attributes);
         } else {
-          setUrlImageResize(getNewImageUrl('sm_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.sm);
         }
       }
       if (width <= 600) {
-        if (image.data.attributes.formats.xs === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.xs === undefined) {
+          setUrlImageResize(image.data.attributes);
         } else {
-          setUrlImageResize(getNewImageUrl('xs_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.xs);
         }
       }
     }
-  }, [width]);
+  }, [width, image]);
   return (
     <>
       <Banner urlImageResize={urlImageResize} />

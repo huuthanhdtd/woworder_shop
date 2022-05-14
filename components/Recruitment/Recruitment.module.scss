@@ -30,6 +30,9 @@ $OpensSan: 'Opens sans', sans-serif;
         color: var(--hover-color-);
       }
     }
+    .formControl {
+      display: none;
+    }
     .categories {
       display: flex;
       justify-content: center;

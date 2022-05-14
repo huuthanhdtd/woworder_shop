@@ -9,12 +9,10 @@ import {
 import Link from 'next/link';
 import { Pagination } from '@material-ui/lab';
 import React, { useState, useEffect, useContext } from 'react';
-import { AiOutlineCloseSquare } from 'react-icons/ai';
 import CardItem from './Card';
-import styles from './Projects.module.scss';
+import styles from './NewsPage.module.scss';
 import LayoutProject from './Layout';
 import NavNews from '../../constants/navNews.json';
-import NavRecruitment from '../../constants/navRecruitment.json';
 import { Context } from '../../constants/Context';
 import clsx from 'clsx';
 import Aos from 'aos';
@@ -36,13 +34,17 @@ function CategoryPage({ articles, title, image }) {
   const [pageSize, setPageSize] = useState(4);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
+  const [isSelect, setSelect] = useState(1);
+  const handleSelect = (event) => {
+    setSelect(event.target.value);
+  };
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
     setData(articles.slice(firstIndex, pageSize));
     if (type !== null)
       setData(
-        articles.filter((project) => project.attributes.category === type)
+        articles.filter((article) => article.attributes.category === type)
       );
   }, [articles, type]);
   const handleChange = (event, value) => {
@@ -57,7 +59,7 @@ function CategoryPage({ articles, title, image }) {
       <LayoutProject image={image}>
         <Grid container justifyContent="center" className={styles.container}>
           <Grid item md={10} sm={11} xs={11}>
-            <Link href={title == 'Tin tức' ? '/tin-tuc' : '/tuyen-dung'}>
+            <Link href="/tin-tuc">
               <Typography
                 variant="h5"
                 className={styles.caption}
@@ -67,34 +69,44 @@ function CategoryPage({ articles, title, image }) {
                 {title}
               </Typography>
             </Link>
+            <FormControl
+              variant="outlined"
+              size="small"
+              className={styles.formControl}
+              data-aos="fade-up"
+            >
+              <Select
+                labelId="select-outlined-label"
+                value={isSelect}
+                onChange={handleSelect}
+              >
+                {NavNews.map((item) => (
+                  <MenuItem
+                    key={item.id}
+                    value={item.id}
+                    onClick={() => handleTypeProjects(item.type, item.id)}
+                  >
+                    {item.title}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <div
               className={styles.categories}
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              {title == 'Tin tức'
-                ? NavNews.map((item) => (
-                    <Button
-                      key={item.id}
-                      className={clsx(styles.buttonType, {
-                        [styles.active]: isActive == item.type,
-                      })}
-                      onClick={() => handleTypeProjects(item.type)}
-                    >
-                      <Typography variant="h6">{item.title}</Typography>
-                    </Button>
-                  ))
-                : NavRecruitment.map((item) => (
-                    <Button
-                      key={item.id}
-                      className={clsx(styles.buttonType, {
-                        [styles.active]: isActive == item.type,
-                      })}
-                      onClick={() => handleTypeProjects(item.type)}
-                    >
-                      <Typography variant="h6">{item.title}</Typography>
-                    </Button>
-                  ))}
+              {NavNews.map((item) => (
+                <Button
+                  key={item.id}
+                  className={clsx(styles.buttonType, {
+                    [styles.active]: isActive == item.type,
+                  })}
+                  onClick={() => handleTypeProjects(item.type)}
+                >
+                  <Typography variant="h6">{item.title}</Typography>
+                </Button>
+              ))}
             </div>
             <Grid
               container

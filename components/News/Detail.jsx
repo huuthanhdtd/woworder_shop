@@ -5,72 +5,76 @@ import styles from './Detail.module.scss';
 import { Button, Typography, Container, CardMedia } from '@material-ui/core';
 import { Visibility } from '@material-ui/icons';
 import { AiOutlineRight } from 'react-icons/ai';
-import { getStrapiMedia } from '../../lib/media';
+import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
 import { useWindowSize } from 'react-use';
 
 function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
   const preLinkNews = '/tin-tuc';
   const title = 'Tin tức';
-  const [contentMarkdown, setContentMarkdown] = useState(articleMarkdown);
-  const [urlImageResize, setUrlImageResize] = useState(getStrapiMedia(image));
+  const urlCurrent = image.data.attributes.formats;
+  const [contentMarkdown, setContentMarkdown] = useState();
+  const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
   const { width } = useWindowSize();
   useEffect(() => {
     if (width) {
       if (width > 2600) {
         setContentMarkdown(getNewImageUrl('', articleMarkdown));
-        setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        setUrlImageResize(image.data.attributes);
       }
       if (width <= 2600) {
-        if (image.data.attributes.formats.xl === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
-          setContentMarkdown(getNewImageUrl('', articleMarkdown));
+        if (urlCurrent.xl === undefined) {
+          setUrlImageResize(image.data.attributes);
+          setContentMarkdown(getNewImageUrl('', article.attributes.content));
         } else {
           setContentMarkdown(getNewImageUrl('md_', articleMarkdown));
-          setUrlImageResize(getNewImageUrl('xl_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.xl);
         }
       }
       if (width <= 1900) {
-        if (image.data.attributes.formats.lg === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.lg === undefined) {
+          setUrlImageResize(image.data.attributes);
           setContentMarkdown(getNewImageUrl('', articleMarkdown));
         } else {
           setContentMarkdown(getNewImageUrl('md_', articleMarkdown));
-          setUrlImageResize(getNewImageUrl('lg_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.lg);
         }
       }
       if (width <= 1280) {
-        if (image.data.attributes.formats.md === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.md === undefined) {
+          setUrlImageResize(image.data.attributes);
           setContentMarkdown(getNewImageUrl('', articleMarkdown));
         } else {
           setContentMarkdown(getNewImageUrl('md_', articleMarkdown));
-          setUrlImageResize(getNewImageUrl('md_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.md);
         }
       }
       if (width <= 960) {
-        if (image.data.attributes.formats.sm === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.sm === undefined) {
+          setUrlImageResize(image.data.attributes);
           setContentMarkdown(getNewImageUrl('', articleMarkdown));
         } else {
           setContentMarkdown(getNewImageUrl('sm_', articleMarkdown));
-          setUrlImageResize(getNewImageUrl('sm_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.sm);
         }
       }
       if (width <= 600) {
-        if (image.data.attributes.formats.xs === undefined) {
-          setUrlImageResize(getNewImageUrl('', getStrapiMedia(image)));
+        if (urlCurrent.xs === undefined) {
+          setUrlImageResize(image.data.attributes);
           setContentMarkdown(getNewImageUrl('', articleMarkdown));
         } else {
           setContentMarkdown(getNewImageUrl('xs_', articleMarkdown));
-          setUrlImageResize(getNewImageUrl('xs_', getStrapiMedia(image)));
+          setUrlImageResize(urlCurrent.xs);
         }
       }
     }
-  }, [width]);
+  }, [width, image, articleMarkdown]);
   return (
     <>
-      <CardMedia className={styles.banner} image={urlImageResize}>
+      <CardMedia
+        className={styles.banner}
+        image={getMediaFollowSize(urlImageResize)}
+      >
         <div className={styles.cover}></div>
       </CardMedia>
       <Container className={styles.container}>

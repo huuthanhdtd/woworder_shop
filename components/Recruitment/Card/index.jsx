@@ -3,8 +3,7 @@ import React from 'react';
 import styles from './CardItem.module.scss';
 import { Typography } from '@material-ui/core';
 import { BsCaretRightFill } from 'react-icons/bs';
-import Image from './image';
-import photo from '../../../public/Du-an/1.jpg';
+import NextImage from './image';
 
 function CardItem({ article, dataAos, dataAosDelay }) {
   return (
@@ -15,7 +14,7 @@ function CardItem({ article, dataAos, dataAosDelay }) {
         data-aos-delay={dataAosDelay / 2}
       >
         {article.attributes.image && (
-          <Image src={photo} image={article.attributes.image} />
+          <NextImage image={article.attributes.image} />
         )}
         <div className={styles.content}>
           <Typography variant="h5">

@@ -1,11 +1,12 @@
 import { CardMedia } from '@material-ui/core';
 import React from 'react';
+import { getMediaFollowSize } from '../../../lib/media';
 import styles from './Banner.module.scss';
 
-function BannerMain({ urlImageResize, image }) {
+function BannerMain({ urlImageResize }) {
   return (
     <CardMedia
-      image={urlImageResize ? urlImageResize : '/Tin-tuc/banner.jpg'}
+      image={getMediaFollowSize(urlImageResize)}
       className={styles.banner}
     >
       <div className={styles.cover}></div>
