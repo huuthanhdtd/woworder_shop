@@ -34,7 +34,7 @@ export default function Page7({ item }) {
             >
               <Link href={item.attributes.link}>
                 <div className={styles.all}>
-                  <Image image={item.attributes.image} />
+                  {/* <Image image={item.attributes.image} /> */}
                 </div>
               </Link>
             </Grid>

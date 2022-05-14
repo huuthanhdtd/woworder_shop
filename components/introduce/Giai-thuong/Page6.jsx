@@ -38,13 +38,7 @@ export default function Page6({ item, introductoryArticle }) {
             escapeHtml={false}
           />
           <PauseOnHover company={company} />
-          <div>
-            {/* <img
-          src="https://www.novaland.com.vn/Data/Sites/1/News/24/02-gioithieu.jpg"
-          alt=""
-          width="100%"
-        /> */}
-          </div>
+          <div></div>
         </div>
       )}
     </>

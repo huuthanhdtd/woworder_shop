@@ -23,7 +23,6 @@ export default function Page6({ item, introductoryArticle }) {
     });
     setCompany(rs);
   }, []);
-  console.log(company);
   return (
     <>
       {item && (
@@ -35,13 +34,6 @@ export default function Page6({ item, introductoryArticle }) {
           <div className={styles.banner}></div>
         </div>
       )}
-      <div>
-        {/* <img
-          src="https://www.novaland.com.vn/Data/Sites/1/News/24/02-gioithieu.jpg"
-          alt=""
-          width="100%"
-        /> */}
-      </div>
     </>
   );
 }
