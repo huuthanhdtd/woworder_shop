@@ -1,7 +1,7 @@
-import { withWidth } from '@material-ui/core';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
+import { api } from '../api';
 import styles from './test.module.scss';
 
 export default function Test({ item }) {
@@ -28,12 +28,13 @@ export default function Test({ item }) {
           <div className={styles.section}>
             <Parallax
               bgImage={
-                `${
-                  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
-                  'http://localhost:1337'
-                }` + item.attributes.image.data.attributes.formats.sm.url
+                `${api}` + item.attributes.image.data.attributes.formats.md.url
               }
               strength={300}
+              bgImageStyle={{
+                width: `${item.attributes.image.data.attributes.formats.md.width}`,
+                height: `${item.attributes.image.data.attributes.formats.md.height}`,
+              }}
               className={styles.image}
             ></Parallax>
           </div>

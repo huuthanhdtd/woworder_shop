@@ -18,7 +18,8 @@ export default function PauseOnHover({ company }) {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          infinite: true,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },

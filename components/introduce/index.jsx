@@ -22,6 +22,7 @@ export default function Introduce({ category, parent, introductoryArticle }) {
       router.push(`#${introduceTpye}`);
     }
   }, [introduceTpye]);
+
   const data = useMemo(() => {
     const rs = category.reverse().sort(function (a, b) {
       return a.attributes.priority - b.attributes.priority;
