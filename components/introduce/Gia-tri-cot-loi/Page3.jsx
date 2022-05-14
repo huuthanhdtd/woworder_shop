@@ -54,6 +54,7 @@ export default function Page3({ item, parent }) {
       );
     });
     setSlidersss(rs3);
+    console.log(rs3);
   }, []);
   var settings = {
     infinite: false,
@@ -147,7 +148,7 @@ export default function Page3({ item, parent }) {
                   data-delay="500"
                   style={{ borderBottom: '1px solid gray' }}
                 >
-                  <span>Đối Tác Chiến Lược</span>
+                  <span>Đối Tác Ngân Hàng</span>
                   <Slider {...settings} className={styles.modules}>
                     {sliderss &&
                       sliderss.map((data, index) => (
@@ -168,7 +169,7 @@ export default function Page3({ item, parent }) {
                   data-delay="500"
                   style={{ borderBottom: '1px solid gray' }}
                 >
-                  <span>Đối Tác Chiến Lược</span>
+                  <span>Đối Tác Xây Dựng</span>
                   <Slider {...settings} className={styles.modules}>
                     {slidersss &&
                       slidersss.map((data, index) => (
