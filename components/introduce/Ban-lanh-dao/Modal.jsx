@@ -87,7 +87,7 @@ export default function TransitionsModal({
                     {<Image image={data.attributes.image} />}
                   </Grid>
                   <Grid item sm={9} md={10} xs={12} className={classes.desc}>
-                    <p>{data.attributes.content}</p>
+                    <p>{data.attributes.title}</p>
                     <ReactMarkdown
                       source={data.attributes.content}
                       escapeHtml={false}

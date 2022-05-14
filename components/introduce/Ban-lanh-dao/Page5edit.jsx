@@ -13,7 +13,6 @@ export default function Page5edit({ item, introductoryArticle }) {
     setOpenModal(true);
     setAb(data);
   };
-  console.log(maps);
   useEffect(() => {
     const rs = introductoryArticle.filter((item) => item.id === ab);
     setMap(rs);

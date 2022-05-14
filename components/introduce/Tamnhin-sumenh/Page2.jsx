@@ -82,10 +82,6 @@ export default function Page2({ item, introductoryArticle }) {
             process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
           }${item.attributes.image.data.attributes.formats.lg.url})`,
         }}
-        // image={getMediaFollowSize(
-        // https://anphu-tpc.herokuapp.com
-        //   item.attributes.image.data.attributes.formats.large
-        // )}
       ></div>
     </>
   );
