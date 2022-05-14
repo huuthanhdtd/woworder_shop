@@ -65,13 +65,14 @@
         overflow: hidden;
         position: relative;
         display: flex;
-        background: url('https://www.novaland.com.vn/Data/Sites/1/skins/default/images/brochure-bg.png');
+        background: url('../../../public//gioi-thieu/brochure.png');
         height: 100%;
         .avatar {
           padding: 10px;
           width: 30%;
           img {
             width: 100%;
+            display: none;
           }
         }
         .description {
@@ -84,22 +85,20 @@
             font-weight: 700;
             margin: 0 0 15px;
           }
-          p {
-            text-align: justify;
-            font-size: 14px;
-          }
-          ul {
-            li {
-              color: #000;
-              list-style: none;
-              line-height: 20px;
-              background: url('https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.png')
-                no-repeat 0 5px;
-              padding-left: 20px;
-              margin-bottom: 20px;
-              text-align: justify;
-            }
-          }
+          // p {
+          //   text-align: justify;
+          //   font-size: 14px;
+          // }
+          // ul {
+          //   li {
+          //     color: #000;
+          //     list-style: none;
+          //     line-height: 20px;
+          //     padding-left: 20px;
+          //     margin-bottom: 20px;
+          //     text-align: justify;
+          //   }
+          // }
 
           .title {
             padding: 30px 15px;
@@ -129,23 +128,6 @@
                 color: #fff;
               }
             }
-            // .type,
-            // .location {
-            //   font-size: 0.8rem;
-            //   color: white;
-            //   text-transform: uppercase;
-            //   position: absolute;
-            //   bottom: 0;
-            //   transform: translateY(100%);
-            // }
-            // .location {
-            //   padding: 2%;
-            //   text-transform: lowercase;
-            //   text-align: justify;
-            //   &::first-letter {
-            //     text-transform: uppercase;
-            //   }
-            // }
           }
           &:hover {
             .title {
@@ -157,13 +139,6 @@
                   color: var(--hover-color-);
                 }
               }
-              // .type {
-              //   bottom: 60%;
-              //   font-size: 1.3rem;
-              // }
-              // .location {
-              //   bottom: 50%;
-              // }
             }
           }
         }

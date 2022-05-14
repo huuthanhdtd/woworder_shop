@@ -17,8 +17,7 @@ export default function Page6({ item, introductoryArticle }) {
     );
     const rs = history.sort(function (a, b) {
       return (
-        a.attributes.category.data.attributes.priority -
-        b.attributes.category.data.attributes.priority
+        parseInt(a.attributes.title, 10) - parseInt(b.attributes.title, 10)
       );
     });
     setCompany(rs);

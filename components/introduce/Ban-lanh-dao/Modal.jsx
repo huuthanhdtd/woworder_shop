@@ -7,6 +7,7 @@ import Fade from '@material-ui/core/Fade';
 import { Button, Grid } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from './image';
+import { api } from '../api';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -31,12 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({
-  setOpenModal,
-  openModal,
-  maps,
-  introductoryArticle,
-}) {
+export default function TransitionsModal({ setOpenModal, openModal, maps }) {
   const classes = useStyles();
   const handleClose = () => {
     setOpenModal(false);
@@ -84,6 +80,11 @@ export default function TransitionsModal({
                   key={index}
                 >
                   <Grid item sm={3} md={2} xs={12}>
+                    {/* <img
+                      src={`${api}${data.attributes.image.data.attributes.formats.thumbnail.url}`}
+                      alt=""
+                      height="50%"
+                    /> */}
                     {<Image image={data.attributes.image} />}
                   </Grid>
                   <Grid item sm={9} md={10} xs={12} className={classes.desc}>

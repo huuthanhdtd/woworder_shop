@@ -28,7 +28,9 @@
     justify-content: space-between;
     .CompanyProfile {
       width: 49%;
+
       h3 {
+        font-weight: 600;
         text-align: justify;
         strong {
           color: var(--primary-color-);

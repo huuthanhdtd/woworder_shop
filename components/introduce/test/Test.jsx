@@ -1,29 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
 import { api } from '../api';
 import styles from './test.module.scss';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Aos from 'aos';
 
-export default function Test({ item }) {
+export default function Test({ item, slug, introductoryArticle }) {
+  const [first, setfirst] = useState([]);
+  useEffect(() => {
+    const ex = introductoryArticle.filter(
+      (item) => item.attributes.category.data.attributes.slug === slug
+    );
+    setfirst(ex);
+    Aos.init({
+      easing: 'ease-in-sine',
+      offset: 0,
+    });
+  }, []);
+  var settings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          width: '720px',
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <>
       {item.attributes.image.data.attributes.formats.sm.url !== null ? (
         <div className={styles.mrb8}>
-          <div className={styles.page2}>
-            <h3 data-aos="fade-down" data-aos-duration="400" data-deylay="500">
-              {item.attributes.name}
-            </h3>
-            <div className={styles.page2_about}>
-              <div className={styles.mrb10}></div>
-              <ReactMarkdown
-                data-aos="fade-up"
-                data-aos-duration="500"
-                data-deylay="500"
-                source={item.attributes.content}
-                escapeHtml={false}
-              />
-              <div className={styles.mrb10}></div>
-            </div>
+          <div
+            className={styles.slider}
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-delay="500"
+            style={{ color: '#fff' }}
+          >
+            <h3>{item.attributes.name}</h3>
+
+            <Slider {...settings} className={styles.slickactive}>
+              {first &&
+                first.map((data, index) => (
+                  <div key={index}>
+                    <ReactMarkdown
+                      data-aos="fade-up"
+                      data-aos-duration="500"
+                      data-deylay="500"
+                      source={data.attributes.content}
+                      escapeHtml={false}
+                    />
+                  </div>
+                ))}
+            </Slider>
           </div>
           <div className={styles.section}>
             <Parallax
@@ -40,17 +81,32 @@ export default function Test({ item }) {
           </div>
         </div>
       ) : (
-        <div className={styles.more}>
-          <h3 data-aos="fade-down" data-aos-duration="400" data-deylay="500">
-            {item.attributes.name}
-          </h3>
-          <ReactMarkdown
+        <div className={styles.hai}>
+          <div
+            className={styles.more}
             data-aos="fade-up"
             data-aos-duration="500"
-            data-deylay="500"
-            source={item.attributes.content}
-            escapeHtml={false}
-          />
+            data-delay="500"
+            style={{ color: '#000' }}
+          >
+            <h3>{item.attributes.name}</h3>
+
+            <Slider {...settings} className={styles.slickactive}>
+              {first &&
+                first.map((data, index) => (
+                  <div key={index}>
+                    <ReactMarkdown
+                      data-aos="fade-up"
+                      data-aos-duration="500"
+                      data-deylay="500"
+                      source={data.attributes.content}
+                      escapeHtml={false}
+                      className={styles.Scroll}
+                    />
+                  </div>
+                ))}
+            </Slider>
+          </div>
         </div>
       )}
     </>

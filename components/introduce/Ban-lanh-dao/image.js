@@ -13,10 +13,10 @@ const Image = ({ image, style }) => {
     <NextImage
       // loader={loader}
       layout="responsive"
-      width={formats.thumbnail.width}
-      height={formats.thumbnail.height}
-      // objectFit="cover"
-      src={getMediaFollowSize(formats.thumbnail)}
+      width="100%"
+      height="100%"
+      objectFit="cover"
+      src={getStrapiMedia(image)}
       alt={alternativeText || ''}
     />
   );

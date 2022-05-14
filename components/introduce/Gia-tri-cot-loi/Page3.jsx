@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './page3.module.scss';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -8,19 +8,52 @@ import ReactMarkdown from 'react-markdown';
 import Image from './image';
 
 export default function Page3({ item, parent }) {
+  // const rerult = useMemo(() => {
+  //   const rs = parent.reduce((prev, cur) => {
+  //     return prev.find((it) => it.attributes.type === cur.attributes.type)
+  //       ? prev
+  //       : [...prev, cur];
+  //   }, []);
+  //   return rs;
+  // }, []);
+  const [sliders, setSliders] = useState([]);
+  const [sliderss, setSliderss] = useState([]);
+  const [slidersss, setSlidersss] = useState([]);
   useEffect(() => {
     Aos.init({
       easing: 'ease-in-sine',
       offset: 0,
     });
-  }, []);
-  const rerult = useMemo(() => {
-    const rs = parent.reduce((prev, cur) => {
-      return prev.find((it) => it.attributes.type === cur.attributes.type)
-        ? prev
-        : [...prev, cur];
-    }, []);
-    return rs;
+    const fil1 = parent.filter(
+      (item) => item.attributes.type === 'strategic partnership'
+    );
+    const rs1 = fil1.sort(function (a, b) {
+      return (
+        parseInt(a.attributes.priority, 10) -
+        parseInt(b.attributes.priority, 10)
+      );
+    });
+    setSliders(rs1);
+    const fil2 = parent.filter(
+      (item) => item.attributes.type === 'bank partner'
+    );
+    const rs2 = fil2.sort(function (a, b) {
+      return (
+        parseInt(a.attributes.priority, 10) -
+        parseInt(b.attributes.priority, 10)
+      );
+    });
+    setSliderss(rs2);
+    const fil3 = parent.filter(
+      (item) => item.attributes.type === 'construction partner'
+    );
+    const rs3 = fil3.sort(function (a, b) {
+      return (
+        parseInt(a.attributes.priority, 10) -
+        parseInt(b.attributes.priority, 10)
+      );
+    });
+    setSlidersss(rs3);
   }, []);
   var settings = {
     infinite: false,
@@ -78,35 +111,78 @@ export default function Page3({ item, parent }) {
               escapeHtml={false}
             />
           </div>
-          {rerult &&
-            rerult.map((data, index) => (
-              <div className={styles.slider} key={index}>
+          <div className={styles.slider}>
+            <div
+              className={styles.partner}
+              data-aos="zoom-in"
+              data-aos-duration="900"
+              data-delay="500"
+            >
+              <div className={styles.slider}>
                 <div
                   className={styles.partner}
                   data-aos="zoom-in"
                   data-aos-duration="900"
                   data-delay="500"
+                  style={{ borderBottom: '1px solid gray' }}
                 >
-                  <span>{data.attributes.type}</span>
-                  <br />
-                  <br />
+                  <span>Đối Tác Chiến Lược</span>
                   <Slider {...settings} className={styles.modules}>
-                    {parent &&
-                      parent
-                        .filter(
-                          (it) => it.attributes.type === data.attributes.type
-                        )
-                        .map((d, x) => (
-                          <div className={styles.media} key={x}>
-                            <div className={styles.module}>
-                              <Image image={d.attributes.image} />
-                            </div>
+                    {sliders &&
+                      sliders.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
                           </div>
-                        ))}
+                        </div>
+                      ))}
                   </Slider>
                 </div>
               </div>
-            ))}
+              <div className={styles.slider}>
+                <div
+                  className={styles.partner}
+                  data-aos="zoom-in"
+                  data-aos-duration="900"
+                  data-delay="500"
+                  style={{ borderBottom: '1px solid gray' }}
+                >
+                  <span>Đối Tác Chiến Lược</span>
+                  <Slider {...settings} className={styles.modules}>
+                    {sliderss &&
+                      sliderss.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                          </div>
+                        </div>
+                      ))}
+                  </Slider>
+                </div>
+              </div>
+              <div className={styles.slider}>
+                <div
+                  className={styles.partner}
+                  data-aos="zoom-in"
+                  data-aos-duration="900"
+                  data-delay="500"
+                  style={{ borderBottom: '1px solid gray' }}
+                >
+                  <span>Đối Tác Chiến Lược</span>
+                  <Slider {...settings} className={styles.modules}>
+                    {slidersss &&
+                      slidersss.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                          </div>
+                        </div>
+                      ))}
+                  </Slider>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

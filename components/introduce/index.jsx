@@ -84,12 +84,6 @@ const Section = ({ item, introductoryArticle, parent, category }) => {
           <Page6 item={item} introductoryArticle={introductoryArticle} />
         </div>
       );
-    case 'nhap':
-      return (
-        <div id="nhap">
-          <Test item={item} />
-        </div>
-      );
     case 'bo-quy-tac-ung-xu':
       return (
         <div id="bo-quy-tac-ung-xu">
@@ -98,6 +92,14 @@ const Section = ({ item, introductoryArticle, parent, category }) => {
       );
 
     default:
-      return <></>;
+      return (
+        <div id={item.attributes.slug}>
+          <Test
+            item={item}
+            slug={item.attributes.slug}
+            introductoryArticle={introductoryArticle}
+          />
+        </div>
+      );
   }
 };
