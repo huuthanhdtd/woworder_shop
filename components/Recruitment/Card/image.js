@@ -7,15 +7,18 @@ const Image = ({ image, style }) => {
   // const loader = () => {
   //   return getStrapiMedia(image)
   // }
-
   return (
     <NextImage
       // loader={loader}
       layout="responsive"
-      width={formats.thumbnail.width}
-      height={formats.thumbnail.height}
+      width={formats && formats.thumbnail ? formats.thumbnail.width : width}
+      height={formats && formats.thumbnail ? formats.thumbnail.height : height}
       objectFit="cover"
-      src={getMediaFollowSize(formats.thumbnail)}
+      src={
+        formats && formats.thumbnail
+          ? getMediaFollowSize(formats.thumbnail)
+          : getStrapiMedia(image)
+      }
       alt={alternativeText || ''}
     />
   );

@@ -18,39 +18,39 @@ function CardProject({ project, dataAos }) {
     });
     if (width) {
       if (width > 2600) {
-        setUrlImage(urlCurrent.sm);
+        setUrlImage(project.attributes.image.data.attributes);
       }
       if (width <= 2600) {
         if (urlCurrent.xl === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(project.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 1900) {
         if (urlCurrent.lg === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(project.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 1280) {
         if (urlCurrent.md === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(project.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 960) {
         if (urlCurrent.sm === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(project.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 600) {
         if (urlCurrent.xs === undefined) {
-          setUrlImage(urlCurrent.xs);
+          setUrlImage(project.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.xs);
         }

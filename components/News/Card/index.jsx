@@ -36,39 +36,39 @@ function CardItem({
     });
     if (width) {
       if (width > 2600) {
-        setUrlImage(urlCurrent.sm);
+        setUrlImage(article.attributes.image.data.attributes);
       }
       if (width <= 2600) {
         if (urlCurrent.xl === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(article.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 1900) {
         if (urlCurrent.lg === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(article.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 1280) {
         if (urlCurrent.md === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(article.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 960) {
         if (urlCurrent.sm === undefined) {
-          setUrlImage(urlCurrent.sm);
+          setUrlImage(article.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.sm);
         }
       }
       if (width <= 600) {
         if (urlCurrent.xs === undefined) {
-          setUrlImage(urlCurrent.xs);
+          setUrlImage(article.attributes.image.data.attributes);
         } else {
           setUrlImage(urlCurrent.xs);
         }
@@ -85,16 +85,30 @@ function CardItem({
         data-aos-delay={dataAosDelay / 2}
         ref={refImage}
       >
-        <CardMedia
-          image={getMediaFollowSize(urlImage)}
-          style={{
-            height: sizeImg.height,
-            width: '100%',
-            objectFit: 'contain',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
+        {urlImage !== undefined ? (
+          <CardMedia
+            image={getMediaFollowSize(urlImage)}
+            style={{
+              height: sizeImg.height,
+              width: '100%',
+              objectFit: 'contain',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+        ) : (
+          <CardMedia
+            style={{
+              height: sizeImg.height,
+              width: '100%',
+              objectFit: 'contain',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            <Typography>Không tìm thấy ảnh này.</Typography>
+          </CardMedia>
+        )}
         <div className={styles.content}>
           <Typography variant="h5">
             {article.attributes.category === 'video' && type === null

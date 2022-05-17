@@ -31,7 +31,7 @@ function CategoryPage({ articles, title, image }) {
     contentVideo,
     setContentVideo,
   } = useContext(Context);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(8);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [isSelect, setSelect] = useState(1);
