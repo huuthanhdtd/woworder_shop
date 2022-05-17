@@ -74,8 +74,8 @@ export default function Page3({ item, parent }) {
       {
         breakpoint: 600,
         settings: {
-          infinite: false,
-          slidesToShow: 2,
+          infinite: true,
+          slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
         },

@@ -94,7 +94,7 @@ img:hover {
   margin-top: -16px !important;
 }
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
   background-color: #fff;
 }
 ::-webkit-scrollbar-thumb {
@@ -109,5 +109,4 @@ img:hover {
   bottom: 0 !important;
 }
 .MuiSnackbar-anchorOriginBottomCenter {
-
 }

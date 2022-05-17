@@ -4,6 +4,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { Button } from '@material-ui/core';
+import { GrFormClose } from 'react-icons/gr';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -18,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
   },
   paperH2: {
     margin: 'auto',
@@ -67,6 +70,12 @@ export default function TransitionsModal({
       >
         <Fade in={openModal}>
           <div className={classes.paper}>
+            <Button
+              onClick={handleClose}
+              style={{ position: 'absolute', top: '0', right: '0px' }}
+            >
+              <GrFormClose style={{ width: '30px' }} />
+            </Button>
             <h2 id="transition-modal-title" className={classes.paperH2}>
               Đã gửi thông tin liên hệ!
             </h2>

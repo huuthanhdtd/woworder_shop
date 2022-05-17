@@ -8,6 +8,7 @@ import axios from 'axios';
 import TransitionsModal from './Modal';
 import ReCAPTCHA from 'react-google-recaptcha';
 import clsx from 'clsx';
+import ReactMarkdown from 'react-markdown';
 
 export default function Address({ setMaps, contacts }) {
   const [selects, setSelects] = useState(1);
@@ -123,20 +124,17 @@ export default function Address({ setMaps, contacts }) {
           {ab &&
             ab.map((data, index) => (
               <div className={styles.media} key={index}>
-                <div className={styles.media_left}>
-                  <img
-                    src="https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.jpg"
-                    alt=""
-                  />
-                </div>
+                <div className={styles.media_left}></div>
                 <div className={styles.media_body}>
                   <div>
-                    {data.attributes.address}
-                    <br />
+                    <ReactMarkdown source={data.attributes.address} />
                   </div>
                   <br />
                   <br />
-                  ĐT: {data.attributes.phone}
+                  ĐT:{' '}
+                  <Link href={`tel:${data.attributes.phone}`}>
+                    {data.attributes.phone}
+                  </Link>
                   <br />
                   Fax: {data.attributes.fax}
                 </div>
@@ -145,24 +143,18 @@ export default function Address({ setMaps, contacts }) {
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           <div className={styles.mrb15}>
-            <div className={styles.cskh}>
+            {/* <div className={styles.cskh}>
               <div className={styles.liststyle}>
-                <img
-                  src="https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.jpg"
-                  alt=""
-                />
+                <img src="./lien-he/bullet.jpg" alt="" />
               </div>
               <div className={styles.phone}>
                 Tổng đài CSKH:
                 <Link href={'tel:1900 63 6666'}>1900 63 6666</Link>
               </div>
-            </div>
+            </div> */}
             <div className={styles.cskh}>
               <div className={styles.liststyle}>
-                <img
-                  src="https://www.novaland.com.vn/Data/Sites/1/media/Default/bullet.jpg"
-                  alt=""
-                />
+                {/* <img src="./lien-he/bullet.jpg" alt="" /> */}
               </div>
               <div className={styles.phone}>
                 Thời gian làm việc: 7:00 - 22:00 (Hàng ngày, cả Thứ Bảy & CN)

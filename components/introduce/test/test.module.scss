@@ -22,6 +22,29 @@
         margin: 10px auto 25px;
       }
     }
+    .slickactive {
+      width: 80%;
+      margin: 0 auto;
+      .actives {
+        margin: 10px;
+        padding: 2%;
+        overflow-x: hidden;
+        .page_title {
+          color: #b28b64;
+          margin: 0;
+          font-size: 18px;
+          font-weight: 700;
+          &:after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 70px;
+            background: #b28b64;
+            margin: 20px 0 15px;
+          }
+        }
+      }
+    }
     Button {
       background: var(--hover-color-) !important;
       width: 36px;
@@ -41,14 +64,13 @@
   max-width: 1440px;
   overflow: hidden;
   .slider {
-    margin: 5px;
-    padding: 1%;
     z-index: 999;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 30px;
     position: absolute;
     text-align: justify;
+
     h3 {
       padding: 2%;
       font-weight: 700;
@@ -69,6 +91,25 @@
     .slickactive {
       width: 80%;
       margin: 0 auto;
+      .actives {
+        margin: 10px;
+        padding: 2%;
+        overflow-x: hidden;
+        .page_title {
+          color: #b28b64;
+          margin: 0;
+          font-size: 18px;
+          font-weight: 700;
+          &:after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 70px;
+            background: #b28b64;
+            margin: 20px 0 15px;
+          }
+        }
+      }
     }
     Button {
       background: var(--hover-color-) !important;
@@ -95,5 +136,27 @@
     }
   }
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 600px) {
+  .mrb8 {
+    .slider {
+      .slickactive {
+        width: 93%;
+        .actives {
+          padding: 4%;
+        }
+      }
+    }
+    .section {
+      background: rgba(0, 85, 138);
+      .image {
+        opacity: 0.5;
+        position: relative;
+        min-height: 500px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
 }

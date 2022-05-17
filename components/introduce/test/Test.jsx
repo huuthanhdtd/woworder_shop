@@ -31,6 +31,7 @@ export default function Test({ item, slug, introductoryArticle }) {
       {
         breakpoint: 960,
         settings: {
+          infinite: true,
           width: '720px',
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -40,7 +41,7 @@ export default function Test({ item, slug, introductoryArticle }) {
   };
   return (
     <>
-      {item.attributes.image.data.attributes.formats.sm.url !== null ? (
+      {item.attributes.image.data.attributes.formats.sm.url !== undefined ? (
         <div className={styles.mrb8}>
           <div
             className={styles.slider}
@@ -54,14 +55,19 @@ export default function Test({ item, slug, introductoryArticle }) {
             <Slider {...settings} className={styles.slickactive}>
               {first &&
                 first.map((data, index) => (
-                  <div key={index}>
-                    <ReactMarkdown
-                      data-aos="fade-up"
-                      data-aos-duration="500"
-                      data-deylay="500"
-                      source={data.attributes.content}
-                      escapeHtml={false}
-                    />
+                  <div key={index} className={styles.actives}>
+                    <div className={styles.page_title}>
+                      {data.attributes.title}
+                    </div>
+                    <div>
+                      <ReactMarkdown
+                        data-aos="fade-up"
+                        data-aos-duration="500"
+                        data-deylay="500"
+                        source={data.attributes.content}
+                        escapeHtml={false}
+                      />
+                    </div>
                   </div>
                 ))}
             </Slider>
@@ -94,15 +100,19 @@ export default function Test({ item, slug, introductoryArticle }) {
             <Slider {...settings} className={styles.slickactive}>
               {first &&
                 first.map((data, index) => (
-                  <div key={index}>
-                    <ReactMarkdown
-                      data-aos="fade-up"
-                      data-aos-duration="500"
-                      data-deylay="500"
-                      source={data.attributes.content}
-                      escapeHtml={false}
-                      className={styles.Scroll}
-                    />
+                  <div key={index} className={styles.actives}>
+                    <div className={styles.page_title}>
+                      {data.attributes.title}
+                    </div>
+                    <div>
+                      <ReactMarkdown
+                        data-aos="fade-up"
+                        data-aos-duration="500"
+                        data-deylay="500"
+                        source={data.attributes.content}
+                        escapeHtml={false}
+                      />
+                    </div>
                   </div>
                 ))}
             </Slider>
