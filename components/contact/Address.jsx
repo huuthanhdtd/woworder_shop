@@ -119,11 +119,16 @@ export default function Address({ setMaps, contacts }) {
           </select>
         </div>
       </div>
-      <Grid container spacing={2} style={{ marginBottom: '10px' }}>
-        <Grid item xs={12} sm={12} md={6}>
-          {ab &&
-            ab.map((data, index) => (
-              <div className={styles.media} key={index}>
+      {ab &&
+        ab.map((data, index) => (
+          <Grid
+            container
+            spacing={2}
+            style={{ marginBottom: '10px' }}
+            key={index}
+          >
+            <Grid item xs={12} sm={12} md={6}>
+              <div className={styles.media}>
                 <div className={styles.media_left}></div>
                 <div className={styles.media_body}>
                   <div>
@@ -139,30 +144,18 @@ export default function Address({ setMaps, contacts }) {
                   Fax: {data.attributes.fax}
                 </div>
               </div>
-            ))}
-        </Grid>
-        <Grid item xs={12} sm={12} md={6}>
-          <div className={styles.mrb15}>
-            {/* <div className={styles.cskh}>
-              <div className={styles.liststyle}>
-                <img src="./lien-he/bullet.jpg" alt="" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+              <div className={styles.mrb15}>
+                <div className={styles.cskh}>
+                  <div className={styles.phone}>
+                    {data.attributes.working_time}
+                  </div>
+                </div>
               </div>
-              <div className={styles.phone}>
-                Tổng đài CSKH:
-                <Link href={'tel:1900 63 6666'}>1900 63 6666</Link>
-              </div>
-            </div> */}
-            <div className={styles.cskh}>
-              <div className={styles.liststyle}>
-                {/* <img src="./lien-he/bullet.jpg" alt="" /> */}
-              </div>
-              <div className={styles.phone}>
-                Thời gian làm việc: 7:00 - 22:00 (Hàng ngày, cả Thứ Bảy & CN)
-              </div>
-            </div>
-          </div>
-        </Grid>
-      </Grid>
+            </Grid>
+          </Grid>
+        ))}
       <div className={styles.mail}>
         <h2>Mọi thắc mắc, ý kiến đóng góp xin vui lòng gửi về email:</h2>
         <TextField
