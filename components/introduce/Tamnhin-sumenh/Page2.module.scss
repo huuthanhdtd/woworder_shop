@@ -61,13 +61,10 @@
   }
 }
 .parallax {
-  background-image: url('../../../public/gioi-thieu/phihanhgia.jpg');
   min-height: 500px;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  // background-attachment: fixed;
   background-position: center;
-  // background-repeat: no-repeat;
   background-size: cover;
 }
 @media screen and (max-width: 960px) {
