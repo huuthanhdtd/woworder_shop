@@ -37,6 +37,31 @@ export default function PauseOnHover({ company }) {
       },
     ],
   };
+  var settings2 = {
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <div
       className={styles.slider}
@@ -44,22 +69,41 @@ export default function PauseOnHover({ company }) {
       data-aos-duration="500"
       data-delay="500"
     >
-      <Slider {...settings} className={styles.slickactive}>
-        {company &&
-          company.map((data, index) => (
-            <div key={index}>
-              <div className={styles.carousel}>
-                <h5>{data.attributes.title}</h5>
-                <div className={styles.title}>
-                  <Image image={data.attributes.image} />
-                  <div>
-                    <p>{data.attributes.content}</p>
+      {company.length > 3 ? (
+        <Slider {...settings} className={styles.slickactive}>
+          {company &&
+            company.map((data, index) => (
+              <div key={index}>
+                <div className={styles.carousel}>
+                  <h5>{data.attributes.title}</h5>
+                  <div className={styles.title}>
+                    <Image image={data.attributes.image} />
+                    <div>
+                      <p>{data.attributes.content}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-      </Slider>
+            ))}
+        </Slider>
+      ) : (
+        <Slider {...settings2} className={styles.slickactive}>
+          {company &&
+            company.map((data, index) => (
+              <div key={index}>
+                <div className={styles.carousel}>
+                  <h5>{data.attributes.title}</h5>
+                  <div className={styles.title}>
+                    <Image image={data.attributes.image} />
+                    <div>
+                      <p>{data.attributes.content}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </Slider>
+      )}
     </div>
   );
 }

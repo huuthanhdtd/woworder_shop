@@ -8,6 +8,32 @@ import Image from './image';
 
 export default function PauseOnHover({ company }) {
   var settings = {
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          width: '720px',
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  var settings2 = {
     infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -48,20 +74,37 @@ export default function PauseOnHover({ company }) {
       data-aos-duration="500"
       data-delay="500"
     >
-      <Slider {...settings} className={styles.slickactive}>
-        {company &&
-          company.map((data, index) => (
-            <div key={index} className={styles.active}>
-              <div className={styles.carousel}>
-                <h5>{data.attributes.title}</h5>
-                <div className={styles.title}>
-                  <Image image={data.attributes.image} />
-                  <span>{data.attributes.content}</span>
+      {company.length > 3 ? (
+        <Slider {...settings} className={styles.slickactive}>
+          {company &&
+            company.map((data, index) => (
+              <div key={index} className={styles.active}>
+                <div className={styles.carousel}>
+                  <h5>{data.attributes.title}</h5>
+                  <div className={styles.title}>
+                    <Image image={data.attributes.image} />
+                    <span>{data.attributes.content}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-      </Slider>
+            ))}
+        </Slider>
+      ) : (
+        <Slider {...settings2} className={styles.slickactive}>
+          {company &&
+            company.map((data, index) => (
+              <div key={index} className={styles.active}>
+                <div className={styles.carousel}>
+                  <h5>{data.attributes.title}</h5>
+                  <div className={styles.title}>
+                    <Image image={data.attributes.image} />
+                    <span>{data.attributes.content}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </Slider>
+      )}
     </div>
   );
 }

@@ -56,6 +56,31 @@ export default function Page3({ item, parent }) {
     setSlidersss(rs3);
   }, []);
   var settings = {
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+    ],
+  };
+  var settings2 = {
     infinite: false,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -78,14 +103,6 @@ export default function Page3({ item, parent }) {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          infinite: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -127,16 +144,29 @@ export default function Page3({ item, parent }) {
                   style={{ borderBottom: '1px solid gray' }}
                 >
                   <span>Đối Tác Chiến Lược</span>
-                  <Slider {...settings} className={styles.modules}>
-                    {sliders &&
-                      sliders.map((data, index) => (
-                        <div className={styles.media} key={index}>
-                          <div className={styles.module}>
-                            <Image image={data.attributes.image} />
+                  {sliders.length > 4 ? (
+                    <Slider {...settings} className={styles.modules}>
+                      {sliders &&
+                        sliders.map((data, index) => (
+                          <div className={styles.media} key={index}>
+                            <div className={styles.module}>
+                              <Image image={data.attributes.image} />
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                  </Slider>
+                        ))}
+                    </Slider>
+                  ) : (
+                    <Slider {...settings2} className={styles.modules}>
+                      {sliders &&
+                        sliders.map((data, index) => (
+                          <div className={styles.media} key={index}>
+                            <div className={styles.module}>
+                              <Image image={data.attributes.image} />
+                            </div>
+                          </div>
+                        ))}
+                    </Slider>
+                  )}
                 </div>
               </div>
               <div className={styles.slider}>
@@ -148,16 +178,29 @@ export default function Page3({ item, parent }) {
                   style={{ borderBottom: '1px solid gray' }}
                 >
                   <span>Đối Tác Ngân Hàng</span>
-                  <Slider {...settings} className={styles.modules}>
-                    {sliderss &&
-                      sliderss.map((data, index) => (
-                        <div className={styles.media} key={index}>
-                          <div className={styles.module}>
-                            <Image image={data.attributes.image} />
+                  {sliderss.length > 4 ? (
+                    <Slider {...settings} className={styles.modules}>
+                      {sliderss &&
+                        sliderss.map((data, index) => (
+                          <div className={styles.media} key={index}>
+                            <div className={styles.module}>
+                              <Image image={data.attributes.image} />
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                  </Slider>
+                        ))}
+                    </Slider>
+                  ) : (
+                    <Slider {...settings2} className={styles.modules}>
+                      {sliderss &&
+                        sliderss.map((data, index) => (
+                          <div className={styles.media} key={index}>
+                            <div className={styles.module}>
+                              <Image image={data.attributes.image} />
+                            </div>
+                          </div>
+                        ))}
+                    </Slider>
+                  )}
                 </div>
               </div>
               <div className={styles.slider}>
@@ -169,16 +212,29 @@ export default function Page3({ item, parent }) {
                   style={{ borderBottom: '1px solid gray' }}
                 >
                   <span>Đối Tác Xây Dựng</span>
-                  <Slider {...settings} className={styles.modules}>
-                    {slidersss &&
-                      slidersss.map((data, index) => (
-                        <div className={styles.media} key={index}>
-                          <div className={styles.module}>
-                            <Image image={data.attributes.image} />
+                  {slidersss.length > 4 ? (
+                    <Slider {...settings} className={styles.modules}>
+                      {slidersss &&
+                        slidersss.map((data, index) => (
+                          <div className={styles.media} key={index}>
+                            <div className={styles.module}>
+                              <Image image={data.attributes.image} />
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                  </Slider>
+                        ))}
+                    </Slider>
+                  ) : (
+                    <Slider {...settings2} className={styles.modules}>
+                      {slidersss &&
+                        slidersss.map((data, index) => (
+                          <div className={styles.media} key={index}>
+                            <div className={styles.module}>
+                              <Image image={data.attributes.image} />
+                            </div>
+                          </div>
+                        ))}
+                    </Slider>
+                  )}
                 </div>
               </div>
             </div>
