@@ -11,14 +11,14 @@ const Category = ({ articlesData, newsCommon }) => {
     shareImage: newsCommon.attributes.background,
     article: true,
   };
-  const data = useMemo(() => {
-    return reverse(articlesData);
-  }, [articlesData]);
+  // const data = useMemo(() => {
+  //   return reverse(articlesData);
+  // }, [articlesData]);
   return (
     <>
       <Seo seo={seo} />
       <CategoryPage
-        articles={data}
+        articles={articlesData}
         title={newsCommon.attributes.seo.metaTitle}
         image={newsCommon.attributes.background}
       />
@@ -36,7 +36,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articlesData: matchingCategories.data,
+      articlesData: reverse(matchingCategories.data),
       newsCommon: newsPageRes.data,
     },
     revalidate: 1,

@@ -17,7 +17,7 @@ import { Context } from '../../constants/Context';
 import clsx from 'clsx';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import ModalVideo from './ModalVideo';
+import ModalVideo from '../ModalVideo/ModalVideo';
 const firstIndex = 0;
 
 function CategoryPage({ articles, title, image }) {
@@ -46,7 +46,7 @@ function CategoryPage({ articles, title, image }) {
       setData(
         articles.filter((article) => article.attributes.category === type)
       );
-  }, [articles, type]);
+  }, [articles, type, data]);
   const handleChange = (event, value) => {
     setPage(value);
     setData(

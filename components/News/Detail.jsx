@@ -7,7 +7,7 @@ import { Visibility } from '@material-ui/icons';
 import { AiOutlineRight } from 'react-icons/ai';
 import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import { useWindowSize } from 'react-use';
+import useWindowDimensions from '../../lib/hook/useWindowDimensions';
 
 function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
   const preLinkNews = '/tin-tuc';
@@ -15,7 +15,8 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
   const urlCurrent = image.data.attributes.formats;
   const [contentMarkdown, setContentMarkdown] = useState();
   const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
-  const { width } = useWindowSize();
+  const { width } = useWindowDimensions();
+
   useEffect(() => {
     if (width) {
       if (width > 2600) {
@@ -68,7 +69,7 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
         }
       }
     }
-  }, [width, image, articleMarkdown]);
+  }, [width, image, articleMarkdown, article, anotherArticle]);
   return (
     <>
       <CardMedia
@@ -95,7 +96,7 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
           <div className={styles.anotherNews}>
             <Typography variant="h5">Các tin khác</Typography>
             <div className={styles.linkNews}>
-              {anotherArticle.map((article) => (
+              {anotherArticle.slice(0, 8).map((article) => (
                 <Link
                   key={article.id}
                   href={`${preLinkNews}/${article.attributes.slug}`}

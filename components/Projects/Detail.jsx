@@ -8,8 +8,7 @@ import Banner from '../Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 import { Context } from '../../constants/Context';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import { getStrapiMedia } from '../../lib/media';
-import { useWindowSize } from 'react-use';
+import useWindowDimensions from '../../lib/hook/useWindowDimensions';
 
 function Detail({
   project,
@@ -29,7 +28,7 @@ function Detail({
   const [urlImageResize, setUrlImageResize] = useState(
     imageURLCurrent.thumbnail
   );
-  const { width } = useWindowSize();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (

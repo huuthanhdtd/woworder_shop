@@ -2,11 +2,11 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './CardItem.module.scss';
 import { CardMedia, Typography } from '@material-ui/core';
-import { useWindowSize } from 'react-use';
 import { getMediaFollowSize } from '../../../lib/media';
+import useWindowDimensions from '../../../lib/hook/useWindowDimensions';
 
 function CardProject({ project, dataAos }) {
-  const { width } = useWindowSize();
+  const { width } = useWindowDimensions();
   const urlCurrent = project.attributes.image.data.attributes.formats;
   const [urlImage, setUrlImage] = useState(urlCurrent.sm);
   const refImage = useRef();

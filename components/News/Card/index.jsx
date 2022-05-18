@@ -4,8 +4,8 @@ import styles from './CardItem.module.scss';
 import { CardMedia, Typography } from '@material-ui/core';
 import { BsCaretRightFill } from 'react-icons/bs';
 import { useRouter } from 'next/router';
-import { useWindowSize } from 'react-use';
-import { getMediaFollowSize } from '../../../lib/media';
+import useWindowDimensions from '../../../lib/hook/useWindowDimensions';
+import NextImage from './image';
 
 function CardItem({
   article,
@@ -21,10 +21,10 @@ function CardItem({
       setOpenVideo(true);
       setContentVideo(article.attributes.content);
     } else {
-      router.push(`/tin-tuc/${article.attributes.slug}`);
+      router.push(`/article/${article.attributes.slug}`);
     }
   };
-  const { width } = useWindowSize();
+  const { width } = useWindowDimensions();
   const urlCurrent = article.attributes.image.data.attributes.formats;
   const [urlImage, setUrlImage] = useState(urlCurrent.sm);
   const refImage = useRef();
@@ -86,18 +86,9 @@ function CardItem({
         ref={refImage}
       >
         {urlImage !== undefined ? (
-          <CardMedia
-            image={getMediaFollowSize(urlImage)}
-            style={{
-              height: sizeImg.height,
-              width: '100%',
-              objectFit: 'contain',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
+          <NextImage image={urlImage} height={sizeImg.height} />
         ) : (
-          <CardMedia
+          <div
             style={{
               height: sizeImg.height,
               width: '100%',
@@ -107,7 +98,7 @@ function CardItem({
             }}
           >
             <Typography>Không tìm thấy ảnh này.</Typography>
-          </CardMedia>
+          </div>
         )}
         <div className={styles.content}>
           <Typography variant="h5">

@@ -1,10 +1,12 @@
+import ReactMarkdown from 'react-markdown';
+import Moment from 'react-moment';
 import { fetchAPI } from '../../lib/api';
+import Layout from '../../components/layout';
+import NextImage from '../../components/image';
 import Seo from '../../components/seo';
-import DetailArticle from '../../components/News/Detail';
-import { reverse } from '../../lib/reverse';
-import { useMemo } from 'react';
+import { getStrapiMedia } from '../../lib/media';
 
-const Article = ({ article, articles }) => {
+const Article = ({ article }) => {
   const seo = {
     metaTitle: article.attributes.title,
     metaDescription: article.attributes.description,
@@ -12,19 +14,9 @@ const Article = ({ article, articles }) => {
     article: true,
   };
 
-  const data = useMemo(() => {
-    return reverse(articles);
-  }, [articles]);
   return (
     <>
       <Seo seo={seo} />
-      <div>alo</div>
-      <DetailArticle
-        article={article}
-        articleMarkdown={article.attributes.content}
-        anotherArticle={data}
-        image={article.attributes.image}
-      />
     </>
   );
 };
@@ -49,20 +41,10 @@ export async function getStaticProps({ params }) {
     },
     populate: '*',
   });
-  const allArticles = await fetchAPI('/news-articles', {
-    populate: '*',
-  });
-
-  // const filter = {
-  //   category: 'video',
-  //   slug: params.slug,
-  // };
+  // const categoriesRes = await fetchAPI('/categories');
 
   return {
-    props: {
-      article: articlesRes.data[0],
-      articles: allArticles.data,
-    },
+    props: { article: articlesRes.data[0] },
     revalidate: 1,
   };
 }

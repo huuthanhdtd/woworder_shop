@@ -6,9 +6,8 @@ import { Visibility } from '@material-ui/icons';
 import ReactMarkdown from 'react-markdown';
 import Banner from './Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
-import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import { useWindowSize } from 'react-use';
+import useWindowDimensions from '../../lib/hook/useWindowDimensions';
 
 function DetailRecruitment({
   article,
@@ -19,7 +18,8 @@ function DetailRecruitment({
   const urlCurrent = image.data.attributes.formats;
   const [contentMarkdown, setContentMarkdown] = useState(articleMarkdown);
   const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
-  const { width } = useWindowSize();
+  // const { width } = useWindowSize();
+  const { width } = useWindowDimensions();
   const preLinkNews = '/tuyen-dung';
   const title = 'Tuyển dụng';
   useEffect(() => {

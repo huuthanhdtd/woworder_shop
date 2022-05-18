@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import News from '../../components/HomePage/News';
 import Slider from '../../components/HomePage/Slider';
 import Projects from '../../components/HomePage/Projects';
@@ -6,6 +6,8 @@ import { useWindowScroll } from 'react-use';
 import styles from './styles.module.scss';
 import Connective from '../../components/HomePage/Connective';
 import IntroduceHome from '../../components/HomePage/Introduce';
+import { Context } from '../../constants/Context';
+import ModalVideo from '../../components/ModalVideo/ModalVideo';
 
 const HomePage = ({ articles, slides, homepage, corpInfor, projects }) => {
   const statisticalRef = useRef(null);
@@ -14,6 +16,7 @@ const HomePage = ({ articles, slides, homepage, corpInfor, projects }) => {
   const { y: pageYOffset } = useWindowScroll();
   const [introduceIntoView, setIntroduceIntoView] = useState(false);
   const [newsIntoView, setNewsIntoView] = useState(false);
+  const { contentVideo } = useContext(Context);
 
   useEffect(() => {
     if (pageYOffset > statisticalRef.current.offsetTop - 200) {
@@ -24,17 +27,24 @@ const HomePage = ({ articles, slides, homepage, corpInfor, projects }) => {
     } else setNewsIntoView(false);
   }, [pageYOffset]);
   return (
-    <div className={styles.homePage}>
-      <Slider slides={slides} />
-      <IntroduceHome
-        homepage={homepage}
-        introduceIntoView={introduceIntoView}
-        statisticalRef={statisticalRef}
-      />
-      <News articles={articles} newsRef={newsRef} newsIntoView={newsIntoView} />
-      <Projects projects={projects} projectRef={projectRef} />
-      <Connective corpInfor={corpInfor} />
-    </div>
+    <>
+      <ModalVideo contentVideo={contentVideo} />
+      <div className={styles.homePage}>
+        <Slider slides={slides} />
+        <IntroduceHome
+          homepage={homepage}
+          introduceIntoView={introduceIntoView}
+          statisticalRef={statisticalRef}
+        />
+        <News
+          articles={articles}
+          newsRef={newsRef}
+          newsIntoView={newsIntoView}
+        />
+        <Projects projects={projects} projectRef={projectRef} />
+        <Connective corpInfor={corpInfor} />
+      </div>
+    </>
   );
 };
 export default HomePage;

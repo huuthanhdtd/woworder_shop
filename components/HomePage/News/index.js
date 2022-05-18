@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
@@ -11,8 +11,10 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import RenderImage from '../SelectSizeImg';
 import { useWindowSize } from 'react-use';
+import { Context } from '../../../constants/Context';
 
 function News({ articles, newsRef, newsIntoView }) {
+  const { setOpenVideo, setContentVideo } = useContext(Context);
   const { width } = useWindowSize();
   const [sizeImg, setSizeImg] = useState({ width: 0, height: 0 });
   const imgRef = useRef();
@@ -30,6 +32,14 @@ function News({ articles, newsRef, newsIntoView }) {
   }, []);
   const handleClick = () => {
     router.push('/tin-tuc');
+  };
+  const clickToDetail = (data) => {
+    if (data.attributes.category === 'video') {
+      setOpenVideo(true);
+      setContentVideo(data.attributes.content);
+    } else {
+      router.push(`/tin-tuc/${data.attributes.slug}`);
+    }
   };
   return (
     <div className={styles.newInfor} ref={newsRef}>
@@ -67,7 +77,8 @@ function News({ articles, newsRef, newsIntoView }) {
                       </div>
                     </div>
 
-                    <Link href={`/tin-tuc/${item.attributes.slug}`}>
+                    {/* <Link href={`/tin-tuc/${item.attributes.slug}`}> */}
+                    <div onClick={() => clickToDetail(item)}>
                       <h3>
                         {`${item.attributes.title.slice(
                           0,
@@ -75,7 +86,8 @@ function News({ articles, newsRef, newsIntoView }) {
                         )}...`}
                         <GoTriangleRight className={styles.rightIcon} />
                       </h3>
-                    </Link>
+                    </div>
+                    {/* </Link> */}
                     <p>
                       {`${item.attributes.description.slice(
                         0,
