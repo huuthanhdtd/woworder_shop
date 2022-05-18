@@ -7,7 +7,7 @@ import { Visibility } from '@material-ui/icons';
 import { AiOutlineRight } from 'react-icons/ai';
 import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import useWindowDimensions from '../../lib/hook/useWindowDimensions';
+import { useWindowSize } from 'react-use';
 
 function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
   const preLinkNews = '/tin-tuc';
@@ -15,7 +15,7 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
   const urlCurrent = image.data.attributes.formats;
   const [contentMarkdown, setContentMarkdown] = useState();
   const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (width) {
@@ -69,6 +69,9 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
         }
       }
     }
+    return () => {
+      setUrlImageResize(urlCurrent.thumbnail);
+    };
   }, [width, image, articleMarkdown, article, anotherArticle]);
   return (
     <>

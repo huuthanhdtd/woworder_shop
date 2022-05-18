@@ -18,11 +18,13 @@ import { reverse } from '../../lib/reverse';
 import clsx from 'clsx';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { useWindowSize } from 'react-use';
 
 const firstIndex = 0;
 
 function ProjectsPage({ projects, bannerProject, image }) {
   const { type, handleTypeProjects, isFilter, isActive } = useContext(Context);
+  const { width } = useWindowSize();
   const [pageSize, setPageSize] = useState(6);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -49,7 +51,7 @@ function ProjectsPage({ projects, bannerProject, image }) {
     );
   };
   return (
-    <LayoutProject bannerProject={bannerProject} image={image}>
+    <LayoutProject bannerProject={bannerProject} image={image} width={width}>
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item md={10} sm={11} xs={11}>
           <Link href="/du-an">
@@ -110,6 +112,7 @@ function ProjectsPage({ projects, bannerProject, image }) {
                       dataAos="fade-up"
                       key={project.id}
                       project={project}
+                      width={width}
                     />
                   ))
               : data.map((project) => (
@@ -117,6 +120,7 @@ function ProjectsPage({ projects, bannerProject, image }) {
                     dataAos="fade-up"
                     key={project.id}
                     project={project}
+                    width={width}
                   />
                 ))}
           </Grid>

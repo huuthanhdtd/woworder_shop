@@ -18,6 +18,7 @@ import clsx from 'clsx';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import ModalVideo from '../ModalVideo/ModalVideo';
+import { useWindowSize } from 'react-use';
 const firstIndex = 0;
 
 function CategoryPage({ articles, title, image }) {
@@ -31,6 +32,7 @@ function CategoryPage({ articles, title, image }) {
     contentVideo,
     setContentVideo,
   } = useContext(Context);
+  const { width } = useWindowSize();
   const [pageSize, setPageSize] = useState(8);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -46,7 +48,7 @@ function CategoryPage({ articles, title, image }) {
       setData(
         articles.filter((article) => article.attributes.category === type)
       );
-  }, [articles, type, data]);
+  }, [type]);
   const handleChange = (event, value) => {
     setPage(value);
     setData(
@@ -56,7 +58,7 @@ function CategoryPage({ articles, title, image }) {
   return (
     <>
       <ModalVideo contentVideo={contentVideo} />
-      <LayoutProject image={image}>
+      <LayoutProject image={image} width={width}>
         <Grid container justifyContent="center" className={styles.container}>
           <Grid item md={10} sm={11} xs={11}>
             <Link href="/tin-tuc">
@@ -125,6 +127,7 @@ function CategoryPage({ articles, title, image }) {
                         setOpenVideo={setOpenVideo}
                         setContentVideo={setContentVideo}
                         type={type}
+                        width={width}
                       />
                     ))
                 : data.map((article, index) => (
@@ -136,6 +139,7 @@ function CategoryPage({ articles, title, image }) {
                       setOpenVideo={setOpenVideo}
                       setContentVideo={setContentVideo}
                       type={type}
+                      width={width}
                     />
                   ))}
             </Grid>

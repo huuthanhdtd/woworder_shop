@@ -8,7 +8,7 @@ import Banner from '../Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 import { Context } from '../../constants/Context';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import useWindowDimensions from '../../lib/hook/useWindowDimensions';
+import { useWindowSize } from 'react-use';
 
 function Detail({
   project,
@@ -19,6 +19,7 @@ function Detail({
 }) {
   const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
     useContext(Context);
+  const { width } = useWindowSize();
   const preLinkNews = '/tin-tuc';
   const preLinkProject = '/du-an';
   const [contentMarkdown, setContentMarkdown] = useState(
@@ -28,7 +29,6 @@ function Detail({
   const [urlImageResize, setUrlImageResize] = useState(
     imageURLCurrent.thumbnail
   );
-  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (
@@ -91,6 +91,9 @@ function Detail({
         }
       }
     }
+    return () => {
+      setUrlImageResize(imageURLCurrent.thumbnail);
+    };
   }, [pageYOffset, width, image, projectContentMarkdown]);
   return (
     <>

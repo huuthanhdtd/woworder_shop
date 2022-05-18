@@ -2,7 +2,6 @@ import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
 import DetailArticle from '../../components/News/Detail';
 import { reverse } from '../../lib/reverse';
-import { useMemo } from 'react';
 
 const Article = ({ article, articles }) => {
   const seo = {
@@ -12,17 +11,13 @@ const Article = ({ article, articles }) => {
     article: true,
   };
 
-  const data = useMemo(() => {
-    return reverse(articles);
-  }, [articles]);
   return (
     <>
       <Seo seo={seo} />
-      <div>alo</div>
       <DetailArticle
         article={article}
         articleMarkdown={article.attributes.content}
-        anotherArticle={data}
+        anotherArticle={articles}
         image={article.attributes.image}
       />
     </>
@@ -53,15 +48,26 @@ export async function getStaticProps({ params }) {
     populate: '*',
   });
 
-  // const filter = {
-  //   category: 'video',
-  //   slug: params.slug,
-  // };
+  const filter = {
+    category: 'video',
+    slug: params.slug,
+  };
 
   return {
     props: {
       article: articlesRes.data[0],
-      articles: allArticles.data,
+      articles: reverse(
+        allArticles.data.filter((article) => {
+          for (let key in filter) {
+            if (
+              article.attributes[key] === undefined ||
+              article.attributes[key] === filter[key]
+            )
+              return false;
+          }
+          return true;
+        })
+      ),
     },
     revalidate: 1,
   };

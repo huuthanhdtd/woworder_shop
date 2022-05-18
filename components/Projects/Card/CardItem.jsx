@@ -3,10 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './CardItem.module.scss';
 import { CardMedia, Typography } from '@material-ui/core';
 import { getMediaFollowSize } from '../../../lib/media';
-import useWindowDimensions from '../../../lib/hook/useWindowDimensions';
 
-function CardProject({ project, dataAos }) {
-  const { width } = useWindowDimensions();
+function CardProject({ project, dataAos, width }) {
   const urlCurrent = project.attributes.image.data.attributes.formats;
   const [urlImage, setUrlImage] = useState(urlCurrent.sm);
   const refImage = useRef();
@@ -56,6 +54,9 @@ function CardProject({ project, dataAos }) {
         }
       }
     }
+    return () => {
+      setUrlImage(urlCurrent.sm);
+    };
   }, [width, project]);
   return (
     <>

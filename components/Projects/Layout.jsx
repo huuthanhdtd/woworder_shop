@@ -2,14 +2,12 @@ import React, { useEffect, useContext, useState } from 'react';
 import styles from './Projects.module.scss';
 import Banner from '../Banner/Banner';
 import { Context } from '../../constants/Context';
-import useWindowDimensions from '../../lib/hook/useWindowDimensions';
 
-function LayoutProject({ children, bannerProject, image }) {
+function LayoutProject({ children, bannerProject, image, width }) {
   const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
     useContext(Context);
   const imageCurrent = image.data.attributes.formats;
   const [urlImageResize, setUrlImageResize] = useState(imageCurrent.thumbnail);
-  const { width } = useWindowDimensions();
   useEffect(() => {
     if (
       pageYOffset >= bannerRef.current.offsetTop &&
@@ -60,6 +58,9 @@ function LayoutProject({ children, bannerProject, image }) {
         }
       }
     }
+    return () => {
+      setUrlImageResize(imageCurrent.thumbnail);
+    };
   }, [pageYOffset, width, image]);
   return (
     <>

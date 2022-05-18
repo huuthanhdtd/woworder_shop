@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './NewsPage.module.scss';
 import Banner from './Banner/Banner';
-import useWindowDimensions from '../../lib/hook/useWindowDimensions';
 
-function LayoutProject({ children, image }) {
+function LayoutProject({ children, image, width }) {
   const urlCurrent = image.data.attributes.formats;
   const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
-  const { width } = useWindowDimensions();
   useEffect(() => {
     if (width) {
       if (width > 2600) {
@@ -48,7 +46,10 @@ function LayoutProject({ children, image }) {
         }
       }
     }
-  }, [width, image]);
+    return () => {
+      setUrlImageResize(urlCurrent.thumbnail);
+    };
+  }, [width]);
   return (
     <>
       <Banner urlImageResize={urlImageResize} />

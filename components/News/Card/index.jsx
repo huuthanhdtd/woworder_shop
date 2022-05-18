@@ -4,7 +4,6 @@ import styles from './CardItem.module.scss';
 import { CardMedia, Typography } from '@material-ui/core';
 import { BsCaretRightFill } from 'react-icons/bs';
 import { useRouter } from 'next/router';
-import useWindowDimensions from '../../../lib/hook/useWindowDimensions';
 import NextImage from './image';
 
 function CardItem({
@@ -14,6 +13,7 @@ function CardItem({
   setOpenVideo,
   setContentVideo,
   type,
+  width,
 }) {
   const router = useRouter();
   const clickToDetail = (data) => {
@@ -21,10 +21,10 @@ function CardItem({
       setOpenVideo(true);
       setContentVideo(article.attributes.content);
     } else {
-      router.push(`/article/${article.attributes.slug}`);
+      router.push(`/tin-tuc/${article.attributes.slug}`);
     }
   };
-  const { width } = useWindowDimensions();
+
   const urlCurrent = article.attributes.image.data.attributes.formats;
   const [urlImage, setUrlImage] = useState(urlCurrent.sm);
   const refImage = useRef();
@@ -74,7 +74,10 @@ function CardItem({
         }
       }
     }
-  }, [width, article]);
+    return () => {
+      setUrlImage(urlCurrent.sm);
+    };
+  }, [width]);
   return (
     <>
       {/* <Link href={`/tin-tuc/${article.attributes.slug}`}> */}

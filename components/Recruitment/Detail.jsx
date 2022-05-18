@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import Banner from './Banner/Banner';
 import { AiOutlineRight } from 'react-icons/ai';
 import { getNewImageUrl } from '../../lib/resizeMarkdown';
-import useWindowDimensions from '../../lib/hook/useWindowDimensions';
+import { useWindowSize } from 'react-use';
 
 function DetailRecruitment({
   article,
@@ -18,8 +18,7 @@ function DetailRecruitment({
   const urlCurrent = image.data.attributes.formats;
   const [contentMarkdown, setContentMarkdown] = useState(articleMarkdown);
   const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
-  // const { width } = useWindowSize();
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   const preLinkNews = '/tuyen-dung';
   const title = 'Tuyển dụng';
   useEffect(() => {
@@ -74,6 +73,9 @@ function DetailRecruitment({
         }
       }
     }
+    return () => {
+      setUrlImageResize(urlCurrent.thumbnail);
+    };
   }, [width, articleMarkdown, image, article]);
   return (
     <>

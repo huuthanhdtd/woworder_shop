@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Recruitment.module.scss';
 import Banner from './Banner/Banner';
-import useWindowDimensions from '../../lib/hook/useWindowDimensions';
+import { useWindowSize } from 'react-use';
 
 function LayoutProject({ children, image }) {
   const urlCurrent = image.data.attributes.formats;
   const [urlImageResize, setUrlImageResize] = useState(urlCurrent.thumbnail);
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   useEffect(() => {
     if (width) {
       if (width > 2600) {
@@ -48,6 +48,9 @@ function LayoutProject({ children, image }) {
         }
       }
     }
+    return () => {
+      setUrlImageResize(urlCurrent.thumbnail);
+    };
   }, [width, image]);
   return (
     <>
