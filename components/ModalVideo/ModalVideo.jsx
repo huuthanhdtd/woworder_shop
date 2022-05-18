@@ -14,7 +14,7 @@ const ModalVideo = ({ contentVideo }) => {
             <ReactMarkdown source={contentVideo} escapeHtml={false} />
             <AiOutlineCloseSquare
               className={styles.closeBtn}
-              onClick={() => setOpenVideo(close)}
+              onClick={() => setOpenVideo(false)}
             />
           </div>
         </div>

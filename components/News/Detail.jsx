@@ -72,7 +72,7 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
     return () => {
       setUrlImageResize(urlCurrent.thumbnail);
     };
-  }, [width, image, articleMarkdown, article, anotherArticle]);
+  }, [width, image, article]);
   return (
     <>
       <CardMedia
