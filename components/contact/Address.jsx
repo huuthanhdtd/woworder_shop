@@ -8,7 +8,6 @@ import axios from 'axios';
 import TransitionsModal from './Modal';
 import ReCAPTCHA from 'react-google-recaptcha';
 import clsx from 'clsx';
-import ReactMarkdown from 'react-markdown';
 
 export default function Address({ setMaps, contacts }) {
   const [selects, setSelects] = useState(1);
