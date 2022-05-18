@@ -129,11 +129,12 @@ export default function Address({ setMaps, contacts }) {
           >
             <Grid item xs={12} sm={12} md={6}>
               <div className={styles.media}>
-                <div className={styles.media_left}></div>
+                <div className={styles.media_left}>
+                  {' '}
+                  <img src="./lien-he/bullet.jpg" alt="" />
+                </div>
                 <div className={styles.media_body}>
-                  <div>
-                    <ReactMarkdown source={data.attributes.address} />
-                  </div>
+                  <div>{data.attributes.address}</div>
                   <br />
                   <br />
                   ĐT:{' '}
@@ -148,8 +149,11 @@ export default function Address({ setMaps, contacts }) {
             <Grid item xs={12} sm={12} md={6}>
               <div className={styles.mrb15}>
                 <div className={styles.cskh}>
+                  <div className={styles.liststyle}>
+                    <img src="./lien-he/bullet.jpg" alt="" />
+                  </div>
                   <div className={styles.phone}>
-                    {data.attributes.working_time}
+                    Thời Gian Làm việc: {data.attributes.working_time}
                   </div>
                 </div>
               </div>
