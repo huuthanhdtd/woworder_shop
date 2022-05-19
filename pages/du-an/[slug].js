@@ -1,65 +1,65 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Detail from '../../components/Projects/Detail';
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
 import { reverse } from '../../lib/reverse';
-function DetailProject({ project, projects, projectCommon }) {
-  const seo = {
-    metaTitle: project.attributes.title,
-    metaDescription: project.attributes.description,
-    shareImage: project.attributes.image,
-    article: true,
-  };
+import { useRouter } from 'next/router';
 
-  const data = useMemo(() => {
-    return reverse(projects);
-  }, [projects]);
+function DetailProject() {
+  const { query } = useRouter();
+  const [resp, setGetData] = useState({
+    projects: null,
+    project: null,
+    seo: null,
+    projectCommon: null,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const [projectRes, projectCommonRes, allProject] = await Promise.all([
+        fetchAPI('/projects', {
+          filters: {
+            slug: query.slug,
+          },
+          populate: '*',
+        }),
+        fetchAPI('/page-project', {
+          populate: '*',
+        }),
+        fetchAPI('/projects', { populate: '*' }),
+      ]);
+
+      setGetData({
+        project: projectRes.data[0],
+        projects: reverse(allProject.data),
+        projectCommon: projectCommonRes.data,
+        seo: {
+          metaTitle: projectRes.data[0].attributes.title,
+          metaDescription: projectRes.data[0].attributes.description,
+          shareImage: projectRes.data[0].attributes.image,
+          article: true,
+        },
+      });
+    };
+
+    fetchData();
+  }, [query]);
   return (
     <>
-      <Seo seo={seo} />
-      <Detail
-        project={project}
-        projects={data}
-        projectContentMarkdown={project.attributes.content}
-        projectCommon={projectCommon}
-        image={project.attributes.image}
-      />
+      {resp.project && (
+        <>
+          <Seo seo={resp.seo} />
+          <Detail
+            project={resp.project}
+            projects={resp.projects}
+            projectContentMarkdown={resp.project.attributes.content}
+            projectCommon={resp.projectCommon}
+            image={resp.project.attributes.image}
+          />
+        </>
+      )}
     </>
   );
-}
-
-export async function getStaticPaths() {
-  const projectsRes = await fetchAPI('/projects', {
-    fields: ['slug  '],
-  });
-  return {
-    paths: projectsRes.data.map((project) => ({
-      params: {
-        slug: project.attributes.slug,
-      },
-    })),
-    fallback: false,
-  };
-}
-export async function getStaticProps({ params }) {
-  const [projectRes, projectCommonRes] = await Promise.all([
-    fetchAPI('/projects', {
-      filters: {
-        slug: params.slug,
-      },
-      populate: '*',
-    }),
-    fetchAPI('/page-project', { populate: '*' }),
-  ]);
-  const allProject = await fetchAPI('/projects', { populate: '*' });
-  return {
-    props: {
-      project: projectRes.data[0],
-      projects: allProject.data,
-      projectCommon: projectCommonRes.data,
-    },
-    revalidate: 1,
-  };
 }
 
 export default DetailProject;
