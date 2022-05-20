@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './CardItem.module.scss';
 import { CardMedia, Typography } from '@material-ui/core';
 import { getMediaFollowSize } from '../../../lib/media';
+import NextImage from './image';
 
 function CardProject({ project, dataAos, width }) {
   const urlCurrent = project.attributes.image.data.attributes.formats;
@@ -68,16 +69,7 @@ function CardProject({ project, dataAos, width }) {
         }
       >
         <div className={styles.container} data-aos={dataAos} ref={refImage}>
-          <CardMedia
-            image={getMediaFollowSize(urlImage)}
-            style={{
-              height: sizeImg.height,
-              width: '100%',
-              objectFit: 'contain',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
+          <NextImage image={urlImage} />
           <div className={styles.title}>
             <Typography variant="h6">{project.attributes.title}</Typography>
             <Typography variant="body2" className={styles.location}>
