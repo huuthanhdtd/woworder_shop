@@ -24,26 +24,34 @@ export default function Address({ setMaps, contacts }) {
     address: '',
     content: '',
   });
+
   const { name, email, phone, address, content } = formValue;
   const handleSelects = (e) => {
     setSelects(e.target.value);
   };
   useEffect(() => {
-    const result = contacts.filter(
-      (item) => item.attributes.priority === Number(selects)
-    );
-    const rs = result.sort(function (a, b) {
+    const rs = contacts.sort(function (a, b) {
       return (
         parseInt(a.attributes.priority, 10) -
         parseInt(b.attributes.priority, 10)
       );
     });
-    setAb(rs);
-    setMaps(rs[0].attributes.locationURL);
+    const result = rs.filter(
+      (item) => item.attributes.priority === Number(selects)
+    );
+    setAb(result);
+    setMaps(result[0].attributes.locationURL);
   }, [selects]);
   const handleOnChange = (e) => {
     let { name, value } = e.target;
     if (name === 'email' && isEmail(value)) {
+      setCaptChaActive(true);
+    } else if (
+      name === 'phone' ||
+      name === 'name' ||
+      name === 'content' ||
+      (name === 'address' && !isEmpty(value))
+    ) {
       setCaptChaActive(true);
     } else {
       setCaptChaActive(false);
@@ -72,6 +80,8 @@ export default function Address({ setMaps, contacts }) {
     }
     if (isEmpty(address)) {
       msg.address = 'Vui lòng nhập địa chỉ của bạn!';
+    }
+    if (isEmpty(content)) {
     }
 
     setValidationMsg(msg);
@@ -232,10 +242,7 @@ export default function Address({ setMaps, contacts }) {
           onChange={handleOnChangeCaptCha}
         />
 
-        <Button
-          onClick={handleSubmit}
-          // disabled={isCaptCha === true && 'disabled'}
-        >
+        <Button onClick={handleSubmit} disabled={isCaptCha === true}>
           Gửi đi
         </Button>
         <TransitionsModal

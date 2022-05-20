@@ -80,11 +80,6 @@ export default function TransitionsModal({ setOpenModal, openModal, maps }) {
                   key={index}
                 >
                   <Grid item sm={3} md={2} xs={12}>
-                    {/* <img
-                      src={`${api}${data.attributes.image.data.attributes.formats.thumbnail.url}`}
-                      alt=""
-                      height="50%"
-                    /> */}
                     {<Image image={data.attributes.image} />}
                   </Grid>
                   <Grid item sm={9} md={10} xs={12} className={classes.desc}>
