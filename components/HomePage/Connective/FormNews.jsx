@@ -67,7 +67,10 @@ function FormNews() {
       setIsSending(true);
       setCaptChaActive(false);
       axios
-        .post('https://anphu-tpc.herokuapp.com/api/contact-forms', formData)
+        .post(
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/contact-forms`,
+          formData
+        )
         .then(function (response) {
           setIsSending(false);
           setOpenSuccess(true);

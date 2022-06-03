@@ -33,12 +33,13 @@ function News({ articles, newsRef, newsIntoView }) {
   const handleClick = () => {
     router.push('/tin-tuc');
   };
-  const clickToDetail = (data) => {
-    if (data.attributes.category === 'video') {
+  const clickToDetail = (item) => {
+    console.log(data);
+    if (item.attributes.category === 'video') {
       setOpenVideo(true);
-      setContentVideo(data.attributes.content);
+      setContentVideo(item.attributes.content);
     } else {
-      router.push(`/tin-tuc/${data.attributes.slug}`);
+      router.push(`/tin-tuc/${item.attributes.slug}`);
     }
   };
   return (

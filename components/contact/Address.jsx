@@ -97,7 +97,10 @@ export default function Address({ setMaps, contacts }) {
         data: formValue,
       };
       axios
-        .post('https://tipicicms.herokuapp.com/api/contact-forms', formData)
+        .post(
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/contact-forms`,
+          formData
+        )
         .then(function (response) {
           setUserName(response.data.data.attributes.name);
           setOpenModal(true);
