@@ -4,7 +4,7 @@
 const nextConfig = {
   images: {
     loader: 'default',
-    domains: ['localhost', 'anphu-tpc.herokuapp.com'],
+    domains: ['localhost', '206.189.83.92'],
   },
 };
 

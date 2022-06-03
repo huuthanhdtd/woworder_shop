@@ -13,10 +13,10 @@ const Image = ({ image, style }) => {
     <NextImage
       // loader={loader}
       layout="responsive"
-      width={formats.sm.width}
-      height={formats.sm.height}
+      width={formats.thumbnail.width}
+      height={formats.thumbnail.height}
       objectFit="cover"
-      src={getMediaFollowSize(formats.sm)}
+      src={getMediaFollowSize(formats.thumbnail)}
       alt={alternativeText || ''}
     />
   );
