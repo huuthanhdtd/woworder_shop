@@ -34,7 +34,6 @@ function News({ articles, newsRef, newsIntoView }) {
     router.push('/tin-tuc');
   };
   const clickToDetail = (item) => {
-    console.log(data);
     if (item.attributes.category === 'video') {
       setOpenVideo(true);
       setContentVideo(item.attributes.content);
