@@ -110,8 +110,9 @@
         z-index: 10;
         transition: all 0.3s ease-in-out;
         transform: translateX(110%);
-        background-color: var(--primary-color-);
-        height: 100vh;
+        background-color: #fff;
+        height: 'auto';
+        padding-bottom: 2rem;
         .closeIcon {
           display: block;
           visibility: visible;

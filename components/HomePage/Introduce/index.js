@@ -24,6 +24,7 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
         autoCount(homepage.attributes.project, 180, 1, setCountTwo);
         autoCount(homepage.attributes.product, 100, 100, setCountThree);
       }, 200);
+      return () => clearTimeout();
     } else {
       setCountOne(0);
       setCountTwo(0);

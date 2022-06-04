@@ -10,8 +10,8 @@ const Image = ({ image, style }) => {
     <NextImage
       // loader={loader}
       layout="responsive"
-      width={width}
-      height={height}
+      width={720}
+      height={440}
       objectFit="cover"
       src={getMediaFollowSize(image)}
       alt={alternativeText || ''}

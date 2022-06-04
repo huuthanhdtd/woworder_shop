@@ -30,13 +30,13 @@ function Banner({
     if (focusBanner) {
       setTimeout(() => {
         //Budget Land
-        autoCount(bannerProject.attributes.acreage, 1, 16, setBudgetLand);
+        autoCount(bannerProject.attributes.acreage, 10, 9, setBudgetLand);
         //Products
-        autoCount(bannerProject.attributes.product, 1, 43, setProduct);
+        autoCount(bannerProject.attributes.product, 10, 23, setProduct);
         //Projects
-        autoCount(bannerProject.attributes.Project, 100, 1, setProjectsTotal);
+        autoCount(bannerProject.attributes.Project, 100, 2, setProjectsTotal);
         //Provinces
-        autoCount(bannerProject.attributes.province, 400, 1, setProvinces);
+        autoCount(bannerProject.attributes.province, 100, 1, setProvinces);
         //Customers
         autoCount(bannerProject.attributes.customer, 1, 15, setCustomers);
         if (project) {
@@ -81,6 +81,7 @@ function Banner({
           );
         }
       }, 800);
+      return () => clearTimeout();
     } else {
       setBudgetLand(0);
       setProduct(0);
