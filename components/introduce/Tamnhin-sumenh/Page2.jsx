@@ -74,9 +74,9 @@ export default function Page2({ item, introductoryArticle }) {
       <div
         className={styles.parallax}
         style={{
-          backgroundImage: `url(${api}${item.attributes.image.data.attributes.formats.xs.url})`,
-          width: `${item.attributes.image.data.attributes.formats.xs.width}`,
-          height: `${item.attributes.image.data.attributes.formats.xs.height}`,
+          backgroundImage: `url(${api}${item.attributes.image.data.attributes.formats.lg.url})`,
+          width: `${item.attributes.image.data.attributes.formats.lg.width}`,
+          height: `${item.attributes.image.data.attributes.formats.lg.height}`,
         }}
       ></div>
     </>
