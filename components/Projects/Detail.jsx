@@ -107,7 +107,7 @@ function Detail({
         pageYOffset={pageYOffset}
       />
       <Grid container justifyContent="center" className={styles.container}>
-        <Grid item xs={9}>
+        <Grid item md={9} sm={10} xs={12}>
           <div className={styles.title}>
             <Typography variant="h5">
               <Link href={preLinkProject}>Dự án</Link>

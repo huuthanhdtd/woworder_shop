@@ -14,7 +14,7 @@ import { useWindowSize } from 'react-use';
 import { Context } from '../../../constants/Context';
 
 function News({ articles, newsRef, newsIntoView }) {
-  const { setOpenVideo, setContentVideo } = useContext(Context);
+  const { setOpenVideo, setContentVideo, openVideo } = useContext(Context);
   const { width } = useWindowSize();
   const [sizeImg, setSizeImg] = useState({ width: 0, height: 0 });
   const imgRef = useRef();
@@ -41,6 +41,7 @@ function News({ articles, newsRef, newsIntoView }) {
       router.push(`/tin-tuc/${item.attributes.slug}`);
     }
   };
+  console.log(openVideo);
   return (
     <div className={styles.newInfor} ref={newsRef}>
       <div className={styles.container}>
@@ -80,7 +81,9 @@ function News({ articles, newsRef, newsIntoView }) {
                     {/* <Link href={`/tin-tuc/${item.attributes.slug}`}> */}
                     <div onClick={() => clickToDetail(item)}>
                       <h3>
-                        {`${item.attributes.title.slice(
+                        {` ${
+                          item.attributes.category === 'video' ? 'Video: ' : ''
+                        } ${item.attributes.title.slice(
                           0,
                           item.attributes.title.slice(0, 40).lastIndexOf(' ')
                         )}...`}

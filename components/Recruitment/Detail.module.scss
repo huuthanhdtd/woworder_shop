@@ -113,26 +113,20 @@
 }
 @media screen and(max-width: 1280px) {
   .content {
-    iframe {
-      height: 450px;
-      width: 100%;
-    }
   }
 }
 
 @media screen and(max-width: 960px) {
   .container {
-    margin-top: 20px;
     .title {
+      margin-top: 10px;
       h4 {
         font-size: 1.6rem;
       }
     }
     .content {
-      iframe {
-        height: 315px;
-        width: 100%;
-      }
+      margin-top: 20px;
+      overflow-x: hidden;
       h1,
       h2 {
         font-size: 1.2rem;
@@ -147,19 +141,62 @@
 
 @media screen and(max-width: 600px) {
   .container {
-    margin-top: 20px;
+    padding: 0 5%;
     .title {
-      h4 {
-        font-size: 1.6rem;
+      margin-top: 10px;
+
+      h5 {
+        font-size: 1.1rem;
       }
     }
     .content {
-      iframe {
-        height: 255px;
-      }
+      margin-top: 10px;
+      overflow-x: hidden;
       h1,
-      h2 {
-        font-size: 1.2rem;
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-size: 1.1rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+@media screen and(max-width: 450px) {
+  .banner {
+  }
+  .container {
+    padding: 0 5%;
+    .title {
+      h5 {
+        font-size: 0.8rem;
+      }
+    }
+    .content {
+      overflow-x: hidden;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-size: 0.8rem;
+      }
+      p {
+        font-size: 0.7rem;
+      }
+    }
+    .anotherNews {
+      h5 {
+        font-size: 0.9rem;
+      }
+      .linkNews {
+        a {
+          font-size: 0.8rem;
+        }
       }
     }
   }

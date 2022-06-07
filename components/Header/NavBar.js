@@ -12,6 +12,7 @@ function HeaderNavBar({ setIsNavBar, navs }) {
     setIsActive,
     setIsPushIntro,
     isPushIntro,
+    setOpenVideo,
   } = useContext(Context);
   const router = useRouter();
 
@@ -19,6 +20,8 @@ function HeaderNavBar({ setIsNavBar, navs }) {
     setIsNavBar(false);
     setType(null);
     setIsActive(null);
+    setOpenVideo(false);
+
     if (index !== 1) {
       setIsPushIntro(false);
     }

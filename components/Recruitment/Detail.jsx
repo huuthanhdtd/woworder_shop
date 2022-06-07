@@ -81,7 +81,7 @@ function DetailRecruitment({
     <>
       <Banner urlImageResize={urlImageResize} />
       <Grid container justifyContent="center" className={styles.container}>
-        <Grid item xs={9}>
+        <Grid item md={9} sm={11} xs={12}>
           <div className={styles.title}>
             <Typography variant="h5">
               <Link href={preLinkNews}>{title}</Link>
@@ -96,7 +96,7 @@ function DetailRecruitment({
           </div>
           {anotherArticle.length > 0 ? (
             <div className={styles.anotherNews}>
-              <Typography variant="h5">Các dự án khác</Typography>
+              <Typography variant="h5">Các tin khác</Typography>
 
               <div className={styles.linkNews}>
                 {anotherArticle.slice(0, 5).map((article) => (

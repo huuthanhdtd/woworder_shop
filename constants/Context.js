@@ -20,7 +20,6 @@ export default function ContextProvider({ children }) {
 
   const [introduceTpye, setIntroduceType] = useState(null);
   const router = useRouter();
-
   const handleTypeProjects = (type) => {
     setFilters(true);
     setType(type);
@@ -35,6 +34,7 @@ export default function ContextProvider({ children }) {
     setFilters(true);
     setType(typePj);
     setIsActive(typePj);
+    setOpenVideo(false);
   };
 
   //Get Dimensions Screen

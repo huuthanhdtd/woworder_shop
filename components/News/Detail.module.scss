@@ -13,8 +13,10 @@
 .container {
   max-width: 1440px;
   text-align: justify;
-  padding: 0 75px !important;
+  padding: 0 8%;
+  margin: 0 auto;
   .title {
+    text-align: left;
     h5 {
       font-size: 1.3rem;
       font-weight: 600;
@@ -109,42 +111,94 @@
       height: 100%;
     }
   }
-  .title {
-    h4 {
-      font-size: 1.6rem;
+  .container {
+    .title {
+      h5 {
+        font-size: 1.2rem;
+      }
     }
-  }
-  .content {
-    iframe {
-      width: 100%;
-    }
-    h1,
-    h2 {
-      font-size: 1.2rem;
-    }
-    p,
-    li {
-      font-size: 0.8rem;
+    .content {
+      iframe {
+        width: 100%;
+      }
+      h1,
+      h2 {
+        font-size: 1.2rem;
+      }
+      p,
+      li {
+        font-size: 0.8rem;
+      }
     }
   }
 }
 
 @media screen and(max-width: 600px) {
   .banner {
+    margin-bottom: 20px;
   }
-  .title {
-    h4 {
-      font-size: 1.6rem;
+  .container {
+    padding: 0 5%;
+    .title {
+      h5 {
+        font-size: 1.1rem;
+      }
+    }
+    .content {
+      padding: 10px 0;
+      iframe {
+        width: 100%;
+        height: 255px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-size: 1.1rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
     }
   }
-  .content {
-    iframe {
-      width: 100%;
-      height: 255px;
+}
+@media screen and(max-width: 450px) {
+  .banner {
+  }
+  .container {
+    padding: 0 5%;
+    .title {
+      h5 {
+        font-size: 0.8rem;
+      }
     }
-    h1,
-    h2 {
-      font-size: 1.2rem;
+    .content {
+      overflow-x: hidden;
+      iframe {
+        width: 100%;
+        height: 255px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-size: 0.8rem;
+      }
+      p {
+        font-size: 0.7rem;
+      }
+    }
+    .anotherNews {
+      h5 {
+        font-size: 0.9rem;
+      }
+      .linkNews {
+        a {
+          font-size: 0.8rem;
+        }
+      }
     }
   }
 }

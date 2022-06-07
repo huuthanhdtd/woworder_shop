@@ -81,7 +81,7 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
       >
         <div className={styles.cover}></div>
       </CardMedia>
-      <Container className={styles.container}>
+      <div className={styles.container}>
         <div className={styles.title}>
           <Typography variant="h5">
             <Link href={preLinkNews}>{title}</Link>
@@ -118,7 +118,7 @@ function DetailArticle({ article, anotherArticle, image, articleMarkdown }) {
         ) : (
           ''
         )}
-      </Container>
+      </div>
     </>
   );
 }

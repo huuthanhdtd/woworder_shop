@@ -113,8 +113,11 @@ $OpensSan: 'Opens sans', sans-serif;
 
 @media screen and(max-width: 600px) {
   .layout {
-    margin-top: 70px;
+    margin-top: 20px;
     .container {
+      .caption {
+        font-size: 1.2rem;
+      }
       .projectList {
         grid-template-columns: auto;
         grid-gap: 0px;
