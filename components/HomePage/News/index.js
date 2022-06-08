@@ -53,10 +53,10 @@ function News({ articles, newsRef, newsIntoView }) {
           <div className={styles.newsLine}></div>
         </div>
         <div className={styles.newsContent}>
-          <Grid container className={styles.newsList} spacing={1}>
+          <Grid container className={styles.newsList} spacing={2}>
             {data &&
               data.map((item, index) => (
-                <Grid key={index} item sm={12} md={3}>
+                <Grid key={index} item sm={6} xs={12} md={3}>
                   <div
                     className={clsx(styles.wrapper, {
                       [styles.active]: newsIntoView === true,

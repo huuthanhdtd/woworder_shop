@@ -42,7 +42,7 @@ const HomePage = ({ articles, slides, homepage, corpInfor, projects }) => {
           newsIntoView={newsIntoView}
         />
         <Projects projects={projects} projectRef={projectRef} />
-        <Connective corpInfor={corpInfor} />
+        <Connective corpInfor={corpInfor} homepage={homepage} />
       </div>
     </>
   );
