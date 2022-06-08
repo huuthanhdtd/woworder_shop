@@ -38,7 +38,7 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
         <RenderImage
           data={homepage.attributes.background}
           heightImg={'100%'}
-          widthImg={width}
+          widthImg={1904}
           bgSize="250%"
         />
       </div>

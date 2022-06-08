@@ -41,7 +41,6 @@ function News({ articles, newsRef, newsIntoView }) {
       router.push(`/tin-tuc/${item.attributes.slug}`);
     }
   };
-  console.log(openVideo);
   return (
     <div className={styles.newInfor} ref={newsRef}>
       <div className={styles.container}>
@@ -57,7 +56,7 @@ function News({ articles, newsRef, newsIntoView }) {
           <Grid container className={styles.newsList} spacing={1}>
             {data &&
               data.map((item, index) => (
-                <Grid key={index} item md={3}>
+                <Grid key={index} item sm={12} md={3}>
                   <div
                     className={clsx(styles.wrapper, {
                       [styles.active]: newsIntoView === true,
