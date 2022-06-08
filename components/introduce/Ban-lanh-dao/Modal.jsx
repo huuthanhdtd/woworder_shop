@@ -6,8 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Fade from '@material-ui/core/Fade';
 import { Button, Grid } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
-import Image from './image';
-import { api } from '../api';
+import Image from '../image';
 
 const useStyles = makeStyles((theme) => ({
   modal: {

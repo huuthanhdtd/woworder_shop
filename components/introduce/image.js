@@ -1,7 +1,7 @@
-import { getMediaFollowSize, getStrapiMedia } from '../../../lib/media';
+import { getMediaFollowSize, getStrapiMedia } from '../../lib/media';
 import NextImage from 'next/image';
-import { useWindowSize } from 'react-use';
 import { useEffect, useState } from 'react';
+import { useWindowSize } from 'react-use';
 
 const Image = ({ image, style }) => {
   const { width } = useWindowSize();
@@ -55,8 +55,8 @@ const Image = ({ image, style }) => {
       {urlImage ? (
         <NextImage
           layout="responsive"
-          width={700}
-          height={450}
+          width={urlImage.width}
+          height={urlImage.height}
           objectFit="cover"
           src={getMediaFollowSize(urlImage)}
           alt={urlImage.alternativeText || ''}

@@ -4,7 +4,7 @@ import styles from './slick.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Aos from 'aos';
-import Image from './image';
+import Image from '../image';
 
 export default function PauseOnHover({ company }) {
   var settings = {

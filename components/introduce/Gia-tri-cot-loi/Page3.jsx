@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
-import Image from './image';
+import Image from '../image';
 
 export default function Page3({ item, parent }) {
   // const rerult = useMemo(() => {

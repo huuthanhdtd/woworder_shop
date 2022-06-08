@@ -1,16 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Page2.module.scss';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
-import { api } from '../api';
+import { useWindowSize } from 'react-use';
+import { getMediaFollowSize } from '../../../lib/media';
 
 export default function Page2({ item, introductoryArticle }) {
+  const { width } = useWindowSize();
+  const [urlImage, setUrlImage] = useState(
+    item.attributes.image.data?.attributes
+  );
   useEffect(() => {
     Aos.init({
       easing: 'ease-in-sine',
       offset: 0,
     });
-  }, []);
+    if (item && item.attributes.image && item.attributes.image.data) {
+      let image = item.attributes.image;
+      if (width) {
+        if (width <= 600) {
+          if (image.data?.attributes.formats?.xs === undefined) {
+            setUrlImage(image.data.attributes);
+          } else {
+            setUrlImage(image.data.attributes.formats.xs);
+          }
+        }
+      }
+    }
+  }, [width]);
   return (
     <>
       {item && (
@@ -74,9 +91,12 @@ export default function Page2({ item, introductoryArticle }) {
       <div
         className={styles.parallax}
         style={{
-          backgroundImage: `url(${api}${item.attributes.image.data.attributes.formats.lg.url})`,
-          width: `${item.attributes.image.data.attributes.formats.lg.width}`,
-          height: `${item.attributes.image.data.attributes.formats.lg.height}`,
+          backgroundImage: urlImage
+            ? `url(${getMediaFollowSize(urlImage)})`
+            : 'url("errorImage.jpg")',
+          backgroundSize: 'contain',
+          width: '100%',
+          height: '100%',
         }}
       ></div>
     </>

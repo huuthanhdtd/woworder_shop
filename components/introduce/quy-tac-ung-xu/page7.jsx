@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from './page7.module.scss';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
-import Image from './image';
+import Image from '../image';
 
 export default function Page7({ item }) {
   useEffect(() => {

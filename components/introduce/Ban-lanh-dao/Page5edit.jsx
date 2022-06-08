@@ -3,7 +3,7 @@ import styles from './page5edit.module.scss';
 import { Grid, Typography } from '@material-ui/core';
 import Aos from 'aos';
 import TransitionsModal from './Modal';
-import Image from './image';
+import Image from '../image';
 
 export default function Page5edit({ item, introductoryArticle }) {
   const [ab, setAb] = useState();

@@ -1,10 +1,58 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
-import { api } from '../api';
+import { useWindowSize } from 'react-use';
+import { getMediaFollowSize } from '../../../lib/media';
 import styles from './imgPage2.module.scss';
 
 export default function ImgPage2({ item, introductoryArticle }) {
+  const { width } = useWindowSize();
+  const [urlImage, setUrlImage] = useState();
+  useEffect(() => {
+    if (item && item.attributes.image && item.attributes.image.data) {
+      let image = item.attributes.image;
+      if (width) {
+        if (width > 2600) {
+          setUrlImage(image.data.attributes);
+        }
+        if (width <= 2600) {
+          if (image.data?.attributes.formats?.xl === undefined) {
+            setUrlImage(image.data.attributes);
+          } else {
+            setUrlImage(image.data.attributes.formats.xl);
+          }
+        }
+        if (width <= 1900) {
+          if (image.data?.attributes.formats?.lg === undefined) {
+            setUrlImage(image.data.attributes);
+          } else {
+            setUrlImage(image.data.attributes.formats.lg);
+          }
+        }
+        if (width <= 1280) {
+          if (image.data?.attributes.formats?.md === undefined) {
+            setUrlImage(image.data.attributes);
+          } else {
+            setUrlImage(image.data.attributes.formats.md);
+          }
+        }
+        if (width <= 960) {
+          if (image.data?.attributes.formats?.sm === undefined) {
+            setUrlImage(image.data.attributes);
+          } else {
+            setUrlImage(image.data.attributes.formats.sm);
+          }
+        }
+        if (width <= 600) {
+          if (image.data?.attributes.formats?.xs === undefined) {
+            setUrlImage(image.data.attributes);
+          } else {
+            setUrlImage(image.data.attributes.formats.xs);
+          }
+        }
+      }
+    }
+  }, [width]);
   return (
     <>
       {item && (
@@ -63,7 +111,7 @@ export default function ImgPage2({ item, introductoryArticle }) {
           <div className={styles.section}>
             <Parallax
               bgImage={
-                `${api}` + item.attributes.image.data.attributes.formats.lg.url
+                urlImage ? getMediaFollowSize(urlImage) : 'errorImage.jpg'
               }
               strength={300}
               className={styles.image}

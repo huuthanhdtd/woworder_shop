@@ -6,7 +6,9 @@ import styles from './Banner.module.scss';
 function BannerMain({ urlImageResize }) {
   return (
     <CardMedia
-      image={getMediaFollowSize(urlImageResize)}
+      image={
+        urlImageResize ? getMediaFollowSize(urlImageResize) : 'errorImage.jpg'
+      }
       className={styles.banner}
     >
       <div className={styles.cover}></div>
