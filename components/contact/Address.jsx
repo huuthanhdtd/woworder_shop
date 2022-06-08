@@ -104,9 +104,11 @@ export default function Address({ setMaps, contacts }) {
         .then(function (response) {
           setUserName(response.data.data.attributes.name);
           setOpenModal(true);
+          setCaptChaActive(false);
         })
         .catch(function (error) {
           alert('Đã có lỗi xảy ra. Vui lòng thử lại');
+          setCaptChaActive(false);
         });
       setFormValue({
         name: '',
