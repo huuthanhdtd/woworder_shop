@@ -16,6 +16,12 @@ $OpensSans: 'Opens sans', sans-serif;
       .content {
         position: relative;
         padding: 0 5vw;
+        .markdown {
+          h2,
+          h3 {
+            color: white;
+          }
+        }
         p,
         span {
           color: white;
@@ -95,9 +101,20 @@ $OpensSans: 'Opens sans', sans-serif;
       .container {
         padding: 2% 0;
         .content {
+          .markdown {
+            h2,
+            h3 {
+              font-size: 1.2rem;
+              margin: 2px 0;
+            }
+            p {
+              margin-top: 5px;
+              font-size: 0.9rem;
+            }
+          }
           p,
           span {
-            font-size: 0.8rem;
+            font-size: 1rem;
           }
           h4 {
             font-size: 1.2rem;
@@ -109,7 +126,7 @@ $OpensSans: 'Opens sans', sans-serif;
               font-size: 1.2rem;
             }
             p {
-              font-size: 0.8rem;
+              font-size: 0.9rem;
             }
           }
         }
@@ -123,21 +140,36 @@ $OpensSans: 'Opens sans', sans-serif;
       .container {
         padding: 2% 0;
         .content {
+          .markdown {
+            h2,
+            h3 {
+              font-size: 1.1rem;
+              margin: 2px 0;
+            }
+            p {
+              margin-top: 5px;
+              font-size: 0.9rem;
+            }
+          }
           p,
           span {
-            font-size: 0.7rem;
+            font-size: 1rem;
           }
           h4 {
             font-size: 1.1rem;
           }
         }
         .detail {
+          padding: 0 2vw;
+
+          grid-gap: 2%;
           .item {
             h3 {
               font-size: 1.1rem;
             }
             p {
-              font-size: 0.7rem;
+              font-size: 0.8rem;
+              font-weight: 600;
             }
           }
         }
@@ -148,29 +180,39 @@ $OpensSans: 'Opens sans', sans-serif;
 
 @media screen and(max-width: 600px) {
   .cover {
-    height: 40vh;
+    height: 50vh;
     .image {
       .container {
         padding: 1% 0;
         .content {
+          text-align: justify;
+          .markdown {
+            h2,
+            h3 {
+              font-size: 1rem;
+              margin: 2px 0;
+            }
+            p {
+              margin-top: 5px;
+              font-size: 0.9rem;
+            }
+          }
           p {
-            font-size: 0.6em;
+            font-size: 0.9rem;
           }
-          span {
-            font-size: 0.55em;
-          }
+
           h4 {
-            font-size: 0.7rem;
+            font-size: 1rem;
           }
         }
         .detail {
           .item {
             padding: 10px 0;
             h3 {
-              font-size: 0.8rem;
+              font-size: 1rem;
             }
             p {
-              font-size: 0.5rem;
+              font-size: 0.7rem;
             }
           }
         }
@@ -180,33 +222,48 @@ $OpensSans: 'Opens sans', sans-serif;
 }
 @media screen and(max-width:400px) {
   .cover {
-    height: 40vh;
+    height: 60vh;
     .image {
       background-position: top;
       .container {
         padding: 0 3%;
         .content {
           padding: 0;
+          text-align: justify;
+          .markdown {
+            h2,
+            h3 {
+              font-size: 0.9rem;
+              margin: 2px 0;
+            }
+            p {
+              margin-top: 5px;
+              font-size: 0.8rem;
+            }
+          }
           p {
-            font-size: 0.55rem;
+            font-size: 0.8rem;
           }
-          span {
-            font-size: 8px;
-          }
+
           h4 {
-            font-size: 0.65rem;
+            font-size: 0.9rem;
           }
         }
         .detail {
           padding: 0;
-          padding-left: 3%;
+          display: flex;
+          flex-direction: column;
+          padding-left: 10%;
+
           .item {
             padding: 2% 0;
+
             h3 {
-              font-size: 0.65rem;
+              font-size: 0.8rem;
+              text-align: left;
             }
             p {
-              font-size: 0.5rem;
+              font-size: 0.7rem;
               font-weight: 100;
             }
             .divider {

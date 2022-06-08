@@ -5,6 +5,7 @@ import { autoCount } from '../../lib/Count';
 import { getMediaFollowSize } from '../../lib/media';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import ReactMarkdown from 'react-markdown';
 
 function Banner({
   bannerRef,
@@ -112,33 +113,33 @@ function Banner({
             <Grid
               item
               sm={6}
-              xs={6}
+              xs={7}
               className={styles.content}
               data-aos="fade-right"
             >
-              <Typography variant="caption">
-                Các dự án của Tập đoàn Ân Phú
-              </Typography>
-              <Typography variant="h4">
-                {project
-                  ? `${project.attributes.title}`
-                  : 'Đa dạng tại nhiều tỉnh thành'}
-              </Typography>
-              <Typography variant="body2">
-                {project
-                  ? `${project.attributes.description}`
-                  : `Năng lực của Tập đoàn Ân Phú đã được chứng minh qua các sản phẩm
-              và dịch vụ chất lượng chuẩn mực. Tập đoàn ngày càng khẳng định
-              được vị thế trong lĩnh vực bất động sản và đang vững bước tiến vào
-              kỷ nguyên mới với các dự án được đầu tư bài bản từ khâu nghiên cứu
-              nhu cầu, phát triển ý tưởng, triển khai cùng các đối tác tư vấn
-              quốc tế hàng đầu.`}
-              </Typography>
+              {project ? (
+                <>
+                  <Typography variant="h4">
+                    {project.attributes.title}
+                  </Typography>
+
+                  <Typography variant="body2">
+                    {project.attributes.description}
+                  </Typography>
+                </>
+              ) : (
+                <div className={styles.markdown}>
+                  <ReactMarkdown
+                    source={bannerProject.attributes.content}
+                    escapeHtml={false}
+                  />
+                </div>
+              )}
             </Grid>
             <Grid
               item
               sm={6}
-              xs={6}
+              xs={5}
               className={styles.detail}
               data-aos="fade-left"
             >
