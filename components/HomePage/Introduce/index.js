@@ -38,11 +38,13 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   return (
     <div className={styles.container}>
       <div className={styles.bg}>
-        <RenderImage
-          data={homepage.attributes.background}
-          heightImg={1904 * 0.6}
-          widthImg={1904}
-        />
+        {homepage.attributes.background.data !== null && (
+          <RenderImage
+            data={homepage.attributes.background}
+            heightImg={1904 * 0.6}
+            widthImg={1904}
+          />
+        )}
       </div>
       <div className={styles.wrapper}>
         <div
@@ -53,7 +55,9 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
           <h2>Giới thiệu</h2>
         </div>
         <div className={styles.logo}>
-          <NextImage image={homepage.attributes.logo} />
+          {homepage.attributes.logo && (
+            <NextImage image={homepage.attributes.logo} />
+          )}
         </div>
         <p>{homepage.attributes.seo.metaDescription}</p>
         <button onClick={() => router.push('/gioi-thieu')}>

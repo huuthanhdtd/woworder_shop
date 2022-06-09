@@ -14,10 +14,6 @@ function Connective({ corpInfor, homepage }) {
             <h2>Đăng ký nhận bảng tin</h2>
             <p>Kết nối với chúng tôi để theo dõi thông tin mới nhất.</p>
             <FormNews />
-            {/* <div>
-              <input type="text" placeholder="Địa chỉ emai" />
-              <button>Đăng ký</button>
-            </div> */}
           </Grid>
           {homepage.attributes.brochure !== null && (
             <Grid className={styles.brochure} item xs={12} sm={6} lg={4}>

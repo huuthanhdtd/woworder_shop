@@ -114,7 +114,7 @@ function FormNews() {
         className={clsx(styles.captCha, {
           [styles.active]: captChaActive === true,
         })}
-        sitekey="6LdCCzUfAAAAADwhTxigz4G49VhARgAtyEJgFbFl"
+        sitekey="6LebPlggAAAAAJDKxPlK6GcLEKnB8Ug6RkVct02h"
         onChange={handleOnChangeCaptCha}
       />
 

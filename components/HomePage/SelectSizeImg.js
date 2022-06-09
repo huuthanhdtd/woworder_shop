@@ -8,9 +8,6 @@ const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
   const curr = data.data !== null && data.data.attributes.formats;
   const [img, setImg] = useState();
   useEffect(() => {
-    console.log(widthImg);
-    console.log(heightImg);
-
     const input = data.data;
     if (input !== null) {
       if (widthImg <= 245) {

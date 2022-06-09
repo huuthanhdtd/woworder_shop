@@ -71,10 +71,15 @@
         margin: 0 6px;
         width: 35%;
         border-radius: 6px;
-        .icon {
-          font-size: 100px;
+        a {
           margin: auto;
-          color: #fff;
+          display: flex;
+
+          .icon {
+            font-size: 100px;
+            margin: auto;
+            color: #fff;
+          }
         }
       }
 
