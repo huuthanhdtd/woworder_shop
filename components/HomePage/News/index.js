@@ -29,7 +29,7 @@ function News({ articles, newsRef, newsIntoView }) {
   const data = useMemo(() => {
     const result = reverse(articles);
     return result.slice(0, 4);
-  }, []);
+  }, [articles]);
   const handleClick = () => {
     router.push('/tin-tuc');
   };
@@ -67,13 +67,13 @@ function News({ articles, newsRef, newsIntoView }) {
                   >
                     <div className={styles.imageBg} ref={imgRef}>
                       <div className={styles.image}>
-                        {item.attributes.image.data !== null && (
-                          <RenderImage
-                            data={item.attributes.image}
-                            heightImg={sizeImg.height}
-                            widthImg={sizeImg.width}
-                          />
-                        )}
+                        {/* {item.attributes.image.data !== null && ( */}
+                        <RenderImage
+                          data={item.attributes.image}
+                          heightImg={sizeImg.height}
+                          widthImg={sizeImg.width}
+                        />
+                        {/* )} */}
                       </div>
                     </div>
 

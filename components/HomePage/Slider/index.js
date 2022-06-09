@@ -6,7 +6,6 @@ import { ImCircleRight } from 'react-icons/im';
 import Link from 'next/link';
 import { useWindowSize } from 'react-use';
 import RenderImage from '../SelectSizeImg';
-import { getMediaFollowSize } from '../../../lib/media';
 function Slider({ slides, projects, articles }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [startX, setStartX] = useState(null);
@@ -92,13 +91,11 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              {item.attributes.image && (
-                <RenderImage
-                  data={item.attributes.image}
-                  heightImg={'60vw'}
-                  widthImg={width}
-                />
-              )}
+              <RenderImage
+                data={item.attributes.image}
+                heightImg={'60vw'}
+                widthImg={width}
+              />
             </div>
           ))}
         <div className={styles.controls}>

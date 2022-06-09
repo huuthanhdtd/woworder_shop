@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import { Container, Grid } from '@material-ui/core';
+import { CardMedia, Container, Grid } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import clsx from 'clsx';
 import FormNews from './FormNews';

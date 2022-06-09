@@ -6,7 +6,7 @@ import SlideTag from '../../../lib/SlideTag';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { getStrapiMedia } from '../../../lib/media';
-import SelectSizeImg from '../SelectSizeImg';
+import RenderImage from '../SelectSizeImg';
 import { useWindowSize } from 'react-use';
 
 const Projects = ({ projectRef, projects }) => {
@@ -40,13 +40,11 @@ const Projects = ({ projectRef, projects }) => {
               <Link key={i} href={`/du-an/${item.attributes.slug}`}>
                 <Grid item xs={6} sm={3} md={3} className={styles.item}>
                   <div className={styles.itemImage} ref={imgRef}>
-                    {item.attributes.image.data !== null && (
-                      <SelectSizeImg
-                        data={item.attributes.image}
-                        heightImg="inherit"
-                        widthImg={sizeImg}
-                      />
-                    )}
+                    <RenderImage
+                      data={item.attributes.image}
+                      heightImg="inherit"
+                      widthImg={sizeImg}
+                    />
                   </div>
                   <div className={styles.bgFake}></div>
                   <div className={styles.itemTitle}>
