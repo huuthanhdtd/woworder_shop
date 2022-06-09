@@ -22,7 +22,11 @@ function Connective({ corpInfor, homepage }) {
           {homepage.attributes.brochure !== null && (
             <Grid className={styles.brochure} item xs={12} sm={6} lg={4}>
               <div className={styles.brochureIcon}>
-                <GetAppIcon className={styles.icon} />
+                <a
+                  href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${homepage.attributes.linkBrochure}`}
+                >
+                  <GetAppIcon className={styles.icon} />
+                </a>
               </div>
               <span className={styles.content}>
                 <h2>Brochure Công ty</h2>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import Grid from '@material-ui/core/Grid';
-import Link from 'next/link';
 import { GoTriangleRight } from 'react-icons/go';
 import { useRouter } from 'next/router';
 import { reverse } from '../../../lib/reverse';
