@@ -9,12 +9,12 @@ class MyDocument extends Document {
           {/* <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Staatliches"
-          />
+          /> */}
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
           />
-          <script
+          {/* <script
             async
             src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"
           />

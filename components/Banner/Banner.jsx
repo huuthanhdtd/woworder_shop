@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Banner.module.scss';
 import { CardMedia, Divider, Grid, Typography } from '@material-ui/core';
 import { autoCount } from '../../lib/Count';
@@ -6,6 +6,7 @@ import { getMediaFollowSize } from '../../lib/media';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import ReactMarkdown from 'react-markdown';
+import Image from './image';
 
 function Banner({
   bannerRef,
@@ -96,109 +97,106 @@ function Banner({
       setTotalProducts(0);
     }
   }, [focusBanner]);
+  const coverRef = useRef();
   return (
     <>
-      <div className={styles.cover}>
-        <CardMedia
-          className={styles.image}
-          image={
-            urlImageResize
-              ? getMediaFollowSize(urlImageResize)
-              : 'errorImage.jpg'
-          }
+      <div className={styles.cover} ref={coverRef}>
+        <div className={styles.image}>
+          <Image
+            image={urlImageResize}
+            height={coverRef.current?.clientHeight}
+            width={coverRef.current?.clientWidth}
+          />
+        </div>
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          className={styles.container}
+          ref={bannerRef}
         >
           <Grid
-            container
-            justifyContent="center"
-            alignItems="center"
-            className={styles.container}
-            ref={bannerRef}
+            item
+            sm={6}
+            xs={7}
+            className={styles.content}
+            data-aos="fade-right"
           >
-            <Grid
-              item
-              sm={6}
-              xs={7}
-              className={styles.content}
-              data-aos="fade-right"
-            >
-              {project ? (
-                <>
-                  <Typography variant="h4">
-                    {project.attributes.title}
-                  </Typography>
+            {project ? (
+              <>
+                <Typography variant="h4">{project.attributes.title}</Typography>
 
-                  <Typography variant="body2">
-                    {project.attributes.description}
-                  </Typography>
-                </>
-              ) : (
-                <div className={styles.markdown}>
-                  <ReactMarkdown
-                    source={bannerProject.attributes.content}
-                    escapeHtml={false}
-                  />
-                </div>
-              )}
-            </Grid>
-            <Grid
-              item
-              sm={6}
-              xs={5}
-              className={styles.detail}
-              data-aos="fade-left"
-            >
-              <div className={styles.left}>
-                <div className={styles.item}>
-                  <Typography variant="h3">
-                    {changeBanner ? `${areaProject} ha` : `${budgetLand} ha`}
-                  </Typography>
-                  <Typography variant="body2">
-                    {changeBanner ? 'Diện tích' : 'Quỹ đất'}
-                  </Typography>
-                  <Divider className={styles.divider} />
-                </div>
-                <div className={styles.item}>
-                  <Typography variant="h3">
-                    {changeBanner ? customerProject : product}
-                  </Typography>
-                  <Typography variant="body2">
-                    {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
-                  </Typography>
-                  <Divider className={styles.divider} />
-                </div>
+                <Typography variant="body2">
+                  {project.attributes.description}
+                </Typography>
+              </>
+            ) : (
+              <div className={styles.markdown}>
+                <ReactMarkdown
+                  source={bannerProject.attributes.content}
+                  escapeHtml={false}
+                />
               </div>
-              <div className={styles.right}>
-                <div className={styles.item}>
-                  <Typography variant="h3">
-                    {changeBanner ? totalProducts : projectsTotal}
-                  </Typography>
-                  <Typography variant="body2">
-                    {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
-                  </Typography>
-                  <Divider className={styles.divider} />
-                </div>
-                <div className={styles.item}>
-                  <Typography variant="h3">
-                    {changeBanner ? productsSold : provinces}
-                  </Typography>
-                  <Typography variant="body2">
-                    {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
-                  </Typography>
-                  <Divider className={styles.divider} />
-                </div>
-                <div className={styles.item}>
-                  <Typography variant="h3">
-                    {changeBanner ? resProducts : `${customers}`}
-                  </Typography>
-                  <Typography variant="body2">
-                    {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}
-                  </Typography>
-                  <Divider className={styles.divider} />
-                </div>
-              </div>
-            </Grid>
+            )}
           </Grid>
-        </CardMedia>
+          <Grid
+            item
+            sm={6}
+            xs={5}
+            className={styles.detail}
+            data-aos="fade-left"
+          >
+            <div className={styles.left}>
+              <div className={styles.item}>
+                <Typography variant="h3">
+                  {changeBanner ? `${areaProject} ha` : `${budgetLand} ha`}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Diện tích' : 'Quỹ đất'}
+                </Typography>
+                <Divider className={styles.divider} />
+              </div>
+              <div className={styles.item}>
+                <Typography variant="h3">
+                  {changeBanner ? customerProject : product}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Khách hàng phục vụ' : 'Đơn vị sản phẩm'}
+                </Typography>
+                <Divider className={styles.divider} />
+              </div>
+            </div>
+            <div className={styles.right}>
+              <div className={styles.item}>
+                <Typography variant="h3">
+                  {changeBanner ? totalProducts : projectsTotal}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Tổng sản phẩm' : 'Dự án đã triển khai'}
+                </Typography>
+                <Divider className={styles.divider} />
+              </div>
+              <div className={styles.item}>
+                <Typography variant="h3">
+                  {changeBanner ? productsSold : provinces}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Sản phẩm đã bán' : 'Tỉnh thành'}
+                </Typography>
+                <Divider className={styles.divider} />
+              </div>
+              <div className={styles.item}>
+                <Typography variant="h3">
+                  {changeBanner ? resProducts : `${customers}`}
+                </Typography>
+                <Typography variant="body2">
+                  {changeBanner ? 'Sản phẩm còn lại' : 'Khánh hàng phục vụ'}
+                </Typography>
+                <Divider className={styles.divider} />
+              </div>
+            </div>
+          </Grid>
+        </Grid>
       </div>
     </>
   );

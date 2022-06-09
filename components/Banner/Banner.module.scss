@@ -1,67 +1,73 @@
 $OpensSans: 'Opens sans', sans-serif;
 .cover {
-  height: 55vw;
+  height: 52vw;
   position: relative;
   .image {
     width: 100%;
     height: inherit;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    position: relative;
-    .container {
+    position: absolute;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
       height: 100%;
-      background: rgba(0, 85, 138, 0.5);
+      width: 100%;
+      background-color: rgba(0, 85, 138, 0.5);
+      z-index: 2;
+    }
+  }
+  .container {
+    height: 100%;
+    position: absolute;
+    z-index: 20;
+    .content {
       position: relative;
-      .content {
-        position: relative;
-        padding: 0 5vw;
-        .markdown {
-          h2,
-          h3 {
-            color: white;
-          }
-        }
-        p,
-        span {
+      padding: 0 5vw;
+      .markdown {
+        h2,
+        h3 {
           color: white;
-          font-family: $OpensSans;
-          font-size: 1.1rem;
-        }
-        h4 {
-          color: white;
-          font-family: $OpensSans;
-          font-weight: 600;
         }
       }
-      .detail {
-        padding: 0 5vw;
-        display: grid;
-        grid-template-columns: 47% 47%;
-        grid-gap: 6%;
-        .item {
-          padding: 20px 0;
-          h3 {
-            color: white;
-            font-family: 'Opens sans', sans-serif;
-            font-weight: 600;
-          }
-          p {
-            color: white;
-            font-size: 1.1rem;
-          }
-          .divider {
-            background: var(--hover-color-);
-            height: 2px;
-          }
+      p,
+      span {
+        color: white;
+        font-family: $OpensSans;
+        font-size: 1.1rem;
+      }
+      h4 {
+        color: white;
+        font-family: $OpensSans;
+        font-weight: 600;
+      }
+    }
+    .detail {
+      padding: 0 5vw;
+      display: grid;
+      grid-template-columns: 47% 47%;
+      grid-gap: 6%;
+      .item {
+        padding: 20px 0;
+        h3 {
+          color: white;
+          font-family: 'Opens sans', sans-serif;
+          font-weight: 600;
         }
-        .left {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
+        p {
+          color: white;
+          font-size: 1.1rem;
         }
-        .right {
+        .divider {
+          background: var(--hover-color-);
+          height: 2px;
         }
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .right {
       }
     }
   }
@@ -69,26 +75,24 @@ $OpensSans: 'Opens sans', sans-serif;
 
 @media screen and(max-width: 1280px) {
   .cover {
-    .image {
-      .container {
-        padding: 2% 0;
-        .content {
-          p,
-          span {
-            font-size: 1rem;
-          }
-          h4 {
-            font-size: 1.4rem;
-          }
+    .container {
+      padding: 2% 0;
+      .content {
+        p,
+        span {
+          font-size: 1rem;
         }
-        .detail {
-          .item {
-            h3 {
-              font-size: 1.5rem;
-            }
-            p {
-              font-size: 1rem;
-            }
+        h4 {
+          font-size: 1.4rem;
+        }
+      }
+      .detail {
+        .item {
+          h3 {
+            font-size: 1.5rem;
+          }
+          p {
+            font-size: 1rem;
           }
         }
       }
@@ -97,37 +101,35 @@ $OpensSans: 'Opens sans', sans-serif;
 }
 @media screen and(max-width: 960px) {
   .cover {
-    .image {
-      .container {
-        padding: 2% 0;
-        .content {
-          .markdown {
-            h2,
-            h3 {
-              font-size: 1.2rem;
-              margin: 2px 0;
-            }
-            p {
-              margin-top: 5px;
-              font-size: 0.9rem;
-            }
-          }
-          p,
-          span {
-            font-size: 1rem;
-          }
-          h4 {
+    .container {
+      padding: 2% 0;
+      .content {
+        .markdown {
+          h2,
+          h3 {
             font-size: 1.2rem;
+            margin: 2px 0;
+          }
+          p {
+            margin-top: 5px;
+            font-size: 0.9rem;
           }
         }
-        .detail {
-          .item {
-            h3 {
-              font-size: 1.2rem;
-            }
-            p {
-              font-size: 0.9rem;
-            }
+        p,
+        span {
+          font-size: 1rem;
+        }
+        h4 {
+          font-size: 1.2rem;
+        }
+      }
+      .detail {
+        .item {
+          h3 {
+            font-size: 1.2rem;
+          }
+          p {
+            font-size: 0.9rem;
           }
         }
       }
@@ -136,41 +138,39 @@ $OpensSans: 'Opens sans', sans-serif;
 }
 @media screen and(max-width: 768px) {
   .cover {
-    .image {
-      .container {
-        padding: 2% 0;
-        .content {
-          .markdown {
-            h2,
-            h3 {
-              font-size: 1.1rem;
-              margin: 2px 0;
-            }
-            p {
-              margin-top: 5px;
-              font-size: 0.9rem;
-            }
-          }
-          p,
-          span {
-            font-size: 1rem;
-          }
-          h4 {
+    .container {
+      padding: 2% 0;
+      .content {
+        .markdown {
+          h2,
+          h3 {
             font-size: 1.1rem;
+            margin: 2px 0;
+          }
+          p {
+            margin-top: 5px;
+            font-size: 0.9rem;
           }
         }
-        .detail {
-          padding: 0 2vw;
+        p,
+        span {
+          font-size: 1rem;
+        }
+        h4 {
+          font-size: 1.1rem;
+        }
+      }
+      .detail {
+        padding: 0 2vw;
 
-          grid-gap: 2%;
-          .item {
-            h3 {
-              font-size: 1.1rem;
-            }
-            p {
-              font-size: 0.8rem;
-              font-weight: 600;
-            }
+        grid-gap: 2%;
+        .item {
+          h3 {
+            font-size: 1.1rem;
+          }
+          p {
+            font-size: 0.8rem;
+            font-weight: 600;
           }
         }
       }
@@ -181,39 +181,37 @@ $OpensSans: 'Opens sans', sans-serif;
 @media screen and(max-width: 600px) {
   .cover {
     height: 50vh;
-    .image {
-      .container {
-        padding: 1% 0;
-        .content {
-          text-align: justify;
-          .markdown {
-            h2,
-            h3 {
-              font-size: 1rem;
-              margin: 2px 0;
-            }
-            p {
-              margin-top: 5px;
-              font-size: 0.9rem;
-            }
+    .container {
+      padding: 1% 0;
+      .content {
+        text-align: justify;
+        .markdown {
+          h2,
+          h3 {
+            font-size: 1rem;
+            margin: 2px 0;
           }
           p {
+            margin-top: 5px;
             font-size: 0.9rem;
           }
+        }
+        p {
+          font-size: 0.9rem;
+        }
 
-          h4 {
+        h4 {
+          font-size: 1rem;
+        }
+      }
+      .detail {
+        .item {
+          padding: 10px 0;
+          h3 {
             font-size: 1rem;
           }
-        }
-        .detail {
-          .item {
-            padding: 10px 0;
-            h3 {
-              font-size: 1rem;
-            }
-            p {
-              font-size: 0.7rem;
-            }
+          p {
+            font-size: 0.7rem;
           }
         }
       }
@@ -223,52 +221,49 @@ $OpensSans: 'Opens sans', sans-serif;
 @media screen and(max-width:400px) {
   .cover {
     height: 60vh;
-    .image {
-      background-position: top;
-      .container {
-        padding: 0 3%;
-        .content {
-          padding: 0;
-          text-align: justify;
-          .markdown {
-            h2,
-            h3 {
-              font-size: 0.9rem;
-              margin: 2px 0;
-            }
-            p {
-              margin-top: 5px;
-              font-size: 0.8rem;
-            }
+    .container {
+      padding: 0 3%;
+      .content {
+        padding: 0;
+        text-align: justify;
+        .markdown {
+          h2,
+          h3 {
+            font-size: 0.9rem;
+            margin: 2px 0;
           }
           p {
+            margin-top: 5px;
             font-size: 0.8rem;
           }
-
-          h4 {
-            font-size: 0.9rem;
-          }
         }
-        .detail {
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          padding-left: 10%;
+        p {
+          font-size: 0.8rem;
+        }
 
-          .item {
-            padding: 2% 0;
+        h4 {
+          font-size: 0.9rem;
+        }
+      }
+      .detail {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10%;
 
-            h3 {
-              font-size: 0.8rem;
-              text-align: left;
-            }
-            p {
-              font-size: 0.7rem;
-              font-weight: 100;
-            }
-            .divider {
-              width: 45%;
-            }
+        .item {
+          padding: 2% 0;
+
+          h3 {
+            font-size: 0.8rem;
+            text-align: left;
+          }
+          p {
+            font-size: 0.7rem;
+            font-weight: 100;
+          }
+          .divider {
+            width: 45%;
           }
         }
       }
