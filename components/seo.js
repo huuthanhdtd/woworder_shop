@@ -15,7 +15,7 @@ const Seo = ({ seo }) => {
     metaTitle: `${seoWithDefaults.metaTitle} | ${siteName}`,
     // Get full image URL
     shareImage: getMediaFollowSize(
-      seoWithDefaults.shareImage.data.attributes.formats.thumbnail
+      seoWithDefaults.shareImage.data?.attributes.formats.thumbnail
     ),
   };
   return (

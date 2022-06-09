@@ -101,7 +101,11 @@ function Banner({
       <div className={styles.cover}>
         <CardMedia
           className={styles.image}
-          image={getMediaFollowSize(urlImageResize)}
+          image={
+            urlImageResize
+              ? getMediaFollowSize(urlImageResize)
+              : 'errorImage.jpg'
+          }
         >
           <Grid
             container

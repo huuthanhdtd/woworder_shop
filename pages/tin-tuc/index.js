@@ -7,7 +7,7 @@ import CategoryPage from '../../components/News';
 const Category = ({ articlesData, newsCommon }) => {
   const seo = {
     metaTitle: newsCommon.attributes.seo.metaTitle,
-    metaDescription: `All ${newsCommon.attributes.seo.metaDescription} articles`,
+    metaDescription: `${newsCommon.attributes.seo.metaDescription}`,
     shareImage: newsCommon.attributes.background,
     article: true,
   };

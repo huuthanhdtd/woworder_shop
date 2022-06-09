@@ -7,7 +7,7 @@ function LayoutProject({ children, image }) {
   const [urlImageResize, setUrlImageResize] = useState();
   const { width } = useWindowSize();
   useEffect(() => {
-    if (image && image.data.attributes) {
+    if (image && image.data?.attributes) {
       const urlCurrent = image.data.attributes.formats;
       if (width) {
         if (width > 2600) {

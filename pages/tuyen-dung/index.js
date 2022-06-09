@@ -7,7 +7,7 @@ import CategoryPage from '../../components/Recruitment';
 const CareerPage = ({ articles, recruitmentCommon }) => {
   const seo = {
     metaTitle: recruitmentCommon.attributes.seo.metaTitle,
-    metaDescription: `All ${recruitmentCommon.attributes.seo.metaDescription} articles`,
+    metaDescription: `${recruitmentCommon.attributes.seo.metaDescription}`,
     shareImage: recruitmentCommon.attributes.background,
     article: true,
   };

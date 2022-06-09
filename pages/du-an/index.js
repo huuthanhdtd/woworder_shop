@@ -8,6 +8,7 @@ function Project({ projects, projectCommon }) {
     metaTitle: `${projectCommon.attributes.seo.metaTitle}`,
     metaDescription: `${projectCommon.attributes.seo.metaDescription}`,
     shareImage: projectCommon.attributes.background,
+    article: true,
   };
   return (
     <>
