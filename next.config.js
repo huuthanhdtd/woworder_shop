@@ -1,12 +1,21 @@
 /**
  * @type {import('next').NextConfig}
  */
+
+const withCss = require('@zeit/next-css');
+const withPurgeCss = require('next-purgecss');
+
+module.exports = withCss(withPurgeCss());
 const nextConfig = {
   images: {
     loader: 'default',
-    // domains: ['localhost', '86c5-14-250-231-16.ngrok.io'],
+    formats: ['image/avif', 'image/webp'],
     domains: ['localhost', '206.189.83.92'],
   },
 };
-
 module.exports = nextConfig;
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+module.exports = withBundleAnalyzer({});
