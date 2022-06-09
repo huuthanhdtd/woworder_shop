@@ -26,7 +26,7 @@ export default function Page5edit({ item, introductoryArticle }) {
     <div className={styles.main}>
       {item && (
         <div className={styles.Page5}>
-          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+          <h2 data-aos="fade-down" data-aos-duration="500">
             {item.attributes.name}
           </h2>
 
@@ -48,7 +48,6 @@ export default function Page5edit({ item, introductoryArticle }) {
                   key={index}
                   data-aos="fade-down"
                   data-aos-duration="500"
-                  data-delay="500"
                 >
                   <div className={styles.media}>
                     <div className={styles.avatar}>
@@ -58,20 +57,11 @@ export default function Page5edit({ item, introductoryArticle }) {
                       className={styles.description}
                       data-aos="fade-up"
                       data-aos-duration="500"
-                      data-delay="500"
                     >
-                      <h4
-                        data-aos="fade-left"
-                        data-aos-duration="500"
-                        data-delay="500"
-                      >
+                      <h4 data-aos="fade-left" data-aos-duration="500">
                         {data.attributes.title}
                       </h4>
-                      <p
-                        data-aos="fade-left"
-                        data-aos-duration="500"
-                        data-delay="500"
-                      >
+                      <p data-aos="fade-left" data-aos-duration="500">
                         <span>
                           {data.attributes.content.slice(
                             0,

@@ -32,7 +32,7 @@ export default function Page2({ item, introductoryArticle }) {
     <>
       {item && (
         <div className={styles.page2}>
-          <h2 data-aos="fade-down" data-aos-duration="700" data-delay="500">
+          <h2 data-aos="fade-down" data-aos-duration="700">
             {item.attributes.name}
           </h2>
           <div className={styles.page2_about}>
@@ -43,7 +43,6 @@ export default function Page2({ item, introductoryArticle }) {
                 <div
                   data-aos="fade-right"
                   data-aos-duration="700"
-                  data-delay="500"
                   className={styles.vision}
                   key={index}
                 >
@@ -67,7 +66,6 @@ export default function Page2({ item, introductoryArticle }) {
                 <div
                   data-aos="fade-left"
                   data-aos-duration="500"
-                  data-delay="500"
                   className={styles.mission}
                   key={index}
                 >

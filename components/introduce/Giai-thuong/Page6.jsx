@@ -27,13 +27,12 @@ export default function Page6({ item, introductoryArticle }) {
     <>
       {item && (
         <div className={styles.page6}>
-          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+          <h2 data-aos="fade-down" data-aos-duration="500">
             {item.attributes.name}
           </h2>
           <ReactMarkdown
             data-aos="fade-down"
             data-aos-duration="500"
-            data-delay="500"
             source={item.attributes.content}
             escapeHtml={false}
           />

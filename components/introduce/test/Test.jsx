@@ -3,10 +3,8 @@ import ReactMarkdown from 'react-markdown';
 import { Parallax } from 'react-parallax';
 import { api } from '../api';
 import styles from './test.module.scss';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import Aos from 'aos';
+import Slider from 'react-slick';
 
 export default function Test({ item, slug, introductoryArticle }) {
   const [first, setfirst] = useState([]);
@@ -47,7 +45,6 @@ export default function Test({ item, slug, introductoryArticle }) {
             className={styles.slider}
             data-aos="fade-up"
             data-aos-duration="500"
-            data-delay="500"
             style={{ color: '#fff' }}
           >
             <h3>{item.attributes.name}</h3>
@@ -92,7 +89,6 @@ export default function Test({ item, slug, introductoryArticle }) {
             className={styles.more}
             data-aos="fade-up"
             data-aos-duration="500"
-            data-delay="500"
             style={{ color: '#000' }}
           >
             <h3>{item.attributes.name}</h3>

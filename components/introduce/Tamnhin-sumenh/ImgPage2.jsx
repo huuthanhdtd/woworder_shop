@@ -90,7 +90,6 @@ export default function ImgPage2({ item, introductoryArticle }) {
                   <div
                     data-aos="fade-left"
                     data-aos-duration="500"
-                    data-delay="500"
                     className={styles.mission}
                     key={index}
                   >

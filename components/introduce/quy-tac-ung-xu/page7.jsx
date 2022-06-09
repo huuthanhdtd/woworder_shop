@@ -17,7 +17,7 @@ export default function Page7({ item }) {
     <section>
       {item && (
         <div className={styles.rule}>
-          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+          <h2 data-aos="fade-down" data-aos-duration="500">
             {item.attributes.name}
           </h2>
 
@@ -25,7 +25,6 @@ export default function Page7({ item }) {
             <Grid
               data-aos="fade-left"
               data-aos-duration="500"
-              data-delay="500"
               item
               xs={12}
               sm={12}
@@ -41,7 +40,6 @@ export default function Page7({ item }) {
             <Grid
               data-aos="fade-right"
               data-aos-duration="500"
-              data-delay="500"
               item
               xs={12}
               sm={12}

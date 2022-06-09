@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-import Slider from 'react-slick';
 import styles from './slick.module.scss';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import Aos from 'aos';
 import Image from '../image';
+import Slider from 'react-slick';
 
 export default function PauseOnHover({ company }) {
   var settings = {
@@ -68,12 +66,7 @@ export default function PauseOnHover({ company }) {
   }, []);
 
   return (
-    <div
-      className={styles.slider}
-      data-aos="fade-up"
-      data-aos-duration="500"
-      data-delay="500"
-    >
+    <div className={styles.slider} data-aos="fade-up" data-aos-duration="500">
       {company.length > 3 ? (
         <Slider {...settings} className={styles.slickactive}>
           {company &&

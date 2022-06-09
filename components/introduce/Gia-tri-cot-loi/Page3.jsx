@@ -1,11 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import styles from './page3.module.scss';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import Aos from 'aos';
 import ReactMarkdown from 'react-markdown';
 import Image from '../image';
+import Slider from 'react-slick';
 
 export default function Page3({ item, parent }) {
   // const rerult = useMemo(() => {
@@ -111,19 +109,17 @@ export default function Page3({ item, parent }) {
     <>
       {item && (
         <div className={styles.page3}>
-          <h2 data-aos="fade-down" data-aos-duration="500" data-delay="500">
+          <h2 data-aos="fade-down" data-aos-duration="500">
             {item.attributes.name}
           </h2>
           <div
             className={styles.page3_about}
             data-aos="fade-down"
             data-aos-duration="500"
-            data-delay="500"
           >
             <ReactMarkdown
               data-aos="fade-up-right"
               data-aos-duration="500"
-              data-delay="500"
               source={item.attributes.content}
               escapeHtml={false}
             />
@@ -133,14 +129,12 @@ export default function Page3({ item, parent }) {
               className={styles.partner}
               data-aos="zoom-in"
               data-aos-duration="900"
-              data-delay="500"
             >
               <div className={styles.slider}>
                 <div
                   className={styles.partner}
                   data-aos="zoom-in"
                   data-aos-duration="900"
-                  data-delay="500"
                   style={{ borderBottom: '1px solid gray' }}
                 >
                   <span>Đối Tác Chiến Lược</span>
@@ -174,7 +168,6 @@ export default function Page3({ item, parent }) {
                   className={styles.partner}
                   data-aos="zoom-in"
                   data-aos-duration="900"
-                  data-delay="500"
                   style={{ borderBottom: '1px solid gray' }}
                 >
                   <span>Đối Tác Ngân Hàng</span>
@@ -208,7 +201,6 @@ export default function Page3({ item, parent }) {
                   className={styles.partner}
                   data-aos="zoom-in"
                   data-aos-duration="900"
-                  data-delay="500"
                   style={{ borderBottom: '1px solid gray' }}
                 >
                   <span>Đối Tác Xây Dựng</span>
