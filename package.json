@@ -38,11 +38,13 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "next-purgecss": "^4.0.0",
     "prettier": "^2.3.1"
   }
 }
