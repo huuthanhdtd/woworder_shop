@@ -167,7 +167,7 @@ export default function Address({ setMaps, contacts }) {
                     <img src="./lien-he/bullet.jpg" alt="" />
                   </div>
                   <div className={styles.phone}>
-                    Thời Gian Làm việc: {data.attributes.working_time}
+                    Thời gian làm việc: {data.attributes.working_time}
                   </div>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function Address({ setMaps, contacts }) {
           className={clsx(styles.captCha, {
             [styles.active]: captChaActive == true,
           })}
-          sitekey="6LddCeMfAAAAAJUIU_r54QcbeqL4wkpZOAefcOCX"
+          sitekey="6LcPE1ggAAAAAOn8O2PI2Ub1ne56L2mhimKQTWyc"
           onChange={handleOnChangeCaptCha}
         />
 
