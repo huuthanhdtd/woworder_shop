@@ -8,6 +8,7 @@ import { ImCircleRight } from 'react-icons/im';
 import 'aos/dist/aos.css';
 import RenderImage from '../SelectSizeImg';
 import { useWindowSize } from 'react-use';
+import Aos from 'aos';
 
 const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   const [countOne, setCountOne] = useState(0);
@@ -18,6 +19,8 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
   const { width } = useWindowSize();
 
   useEffect(() => {
+    Aos.init({ duration: 1000 });
+
     if (introduceIntoView === true) {
       setTimeout(() => {
         autoCount(homepage.attributes.personnel, 50, 4, setCountOne);
@@ -37,9 +40,8 @@ const IntroduceHome = ({ statisticalRef, introduceIntoView, homepage }) => {
       <div className={styles.bg}>
         <RenderImage
           data={homepage.attributes.background}
-          heightImg={'100%'}
+          heightImg={1904 * 0.6}
           widthImg={1904}
-          bgSize="250%"
         />
       </div>
       <div className={styles.wrapper}>

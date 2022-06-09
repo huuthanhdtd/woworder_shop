@@ -22,9 +22,9 @@ const HomePage = ({ articles, slides, homepage, corpInfor, projects }) => {
     if (pageYOffset > statisticalRef.current.offsetTop - 200) {
       setIntroduceIntoView(true);
     } else setIntroduceIntoView(false);
-    if (pageYOffset > newsRef.current.offsetTop - 500) {
-      setNewsIntoView(true);
-    } else setNewsIntoView(false);
+    // if (pageYOffset > newsRef.current.offsetTop - 500) {
+    //   setNewsIntoView(true);
+    // } else setNewsIntoView(false);
   }, [pageYOffset]);
   return (
     <>

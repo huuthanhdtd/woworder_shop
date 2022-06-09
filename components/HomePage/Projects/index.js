@@ -32,19 +32,26 @@ const Projects = ({ projectRef, projects }) => {
         </div>
       </div>
 
-      <div data-aos="fade-up">
+      <div>
         <SlideTag>
           {projects
             .filter((it) => it.attributes.typical_project === 'yes')
             .map((item, i) => (
               <Link key={i} href={`/du-an/${item.attributes.slug}`}>
                 <Grid item xs={6} sm={3} md={3} className={styles.item}>
-                  <div className={styles.itemImage} ref={imgRef}>
-                    <RenderImage
-                      data={item.attributes.image}
-                      heightImg="inherit"
-                      widthImg={sizeImg}
-                    />
+                  <div
+                    className={styles.itemImage}
+                    ref={imgRef}
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    {item.attributes.image.data !== null && (
+                      <RenderImage
+                        data={item.attributes.image}
+                        heightImg={sizeImg * 0.6}
+                        widthImg={sizeImg}
+                      />
+                    )}
                   </div>
                   <div className={styles.bgFake}></div>
                   <div className={styles.itemTitle}>

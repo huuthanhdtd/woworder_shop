@@ -91,11 +91,13 @@ function Slider({ slides, projects, articles }) {
                 [styles.active]: Number(activeIndex) === index,
               })}
             >
-              <RenderImage
-                data={item.attributes.image}
-                heightImg={'60vw'}
-                widthImg={width}
-              />
+              {item.attributes.image.data !== null && (
+                <RenderImage
+                  data={item.attributes.image}
+                  heightImg={width * 0.6}
+                  widthImg={width}
+                />
+              )}
             </div>
           ))}
         <div className={styles.controls}>

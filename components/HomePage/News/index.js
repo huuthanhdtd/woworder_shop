@@ -57,22 +57,20 @@ function News({ articles, newsRef, newsIntoView }) {
               data.map((item, index) => (
                 <Grid key={index} item sm={6} xs={12} md={3}>
                   <div
-                    className={clsx(styles.wrapper, {
-                      [styles.active]: newsIntoView === true,
-                    })}
-                    style={{
-                      transition: `all  ${index / 3 + 0.4}s ease-in-out`,
-                    }}
+                    data-aos="fade-up"
+                    data-aos-duration={`${(index + 1) * 60}0`}
+                    // dataAosDelay={`${index}00`}
+                    className={clsx(styles.wrapper)}
                   >
                     <div className={styles.imageBg} ref={imgRef}>
                       <div className={styles.image}>
-                        {/* {item.attributes.image.data !== null && ( */}
-                        <RenderImage
-                          data={item.attributes.image}
-                          heightImg={sizeImg.height}
-                          widthImg={sizeImg.width}
-                        />
-                        {/* )} */}
+                        {item.attributes.image.data !== null && (
+                          <RenderImage
+                            data={item.attributes.image}
+                            heightImg={sizeImg.height}
+                            widthImg={sizeImg.width}
+                          />
+                        )}
                       </div>
                     </div>
 
