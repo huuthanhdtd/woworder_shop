@@ -145,7 +145,7 @@ export default function Address({ setMaps, contacts }) {
               <div className={styles.media}>
                 <div className={styles.media_left}>
                   {' '}
-                  <img src="./lien-he/bullet.jpg" alt="" />
+                  <img src="./lien-he/bullet.avif" alt="" />
                 </div>
                 <div className={styles.media_body}>
                   <div>{data.attributes.address}</div>
@@ -164,7 +164,7 @@ export default function Address({ setMaps, contacts }) {
               <div className={styles.mrb15}>
                 <div className={styles.cskh}>
                   <div className={styles.liststyle}>
-                    <img src="./lien-he/bullet.jpg" alt="" />
+                    <img src="./lien-he/bullet.avif" alt="" />
                   </div>
                   <div className={styles.phone}>
                     Thời gian làm việc: {data.attributes.working_time}
