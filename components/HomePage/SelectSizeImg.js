@@ -79,7 +79,7 @@ const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
           width={700}
           height={500}
           objectFit="cover"
-          src="/error.png"
+          src="/error.svg"
         />
       )}
       {/* </CardMedia> */}

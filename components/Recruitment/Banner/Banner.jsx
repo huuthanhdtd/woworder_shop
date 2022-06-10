@@ -10,7 +10,7 @@ function BannerMain({ urlImageResize }) {
       <div className={styles.banner}>
         <Image
           src={
-            urlImageResize ? getMediaFollowSize(urlImageResize) : '/error.png'
+            urlImageResize ? getMediaFollowSize(urlImageResize) : '/error.svg'
           }
           layout="fill"
           objectFit="cover"

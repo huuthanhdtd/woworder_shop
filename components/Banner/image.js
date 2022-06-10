@@ -19,7 +19,7 @@ const Image = ({ image, style, height, width }) => {
           // width={700}
           // height={400}
           objectFit="cover"
-          src="/error.png"
+          src="/error.svg"
         />
       )}
     </>

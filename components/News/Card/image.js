@@ -67,7 +67,7 @@ const Image = ({ image, style }) => {
           width={700}
           height={500}
           objectFit="cover"
-          src="/error.png"
+          src="/error.svg"
         />
       )}
     </>

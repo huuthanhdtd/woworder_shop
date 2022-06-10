@@ -15,7 +15,7 @@ module.exports = withBundleAnalyzer({});
 const nextConfig = {
   images: {
     loader: 'default',
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/webp'],
     domains: ['localhost', '206.189.83.92'],
     // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
