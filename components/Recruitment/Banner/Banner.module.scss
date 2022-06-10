@@ -4,20 +4,19 @@
   width: 100%;
   background-position: center bottom;
   background-size: contain;
-  .cover {
-    height: 100%;
-    background: rgba(0, 85, 138, 0.5);
-  }
 }
-
-@media screen and(max-width: 960px) {
-  .banner {
-    height: 300px;
-  }
+.cover {
+  height: 30vw;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  background: rgba(0, 85, 138, 0.5);
 }
 
 @media screen and(max-width: 600px) {
-  .banner {
-    height: 200px;
+  .banner,
+  .cover {
+    height: 0;
   }
 }

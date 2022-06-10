@@ -63,10 +63,12 @@ const Image = ({ image, style }) => {
         />
       ) : (
         <NextImage
+          layout="responsive"
           width={700}
-          height={500}
+          height={400}
           objectFit="cover"
-          src="/errorImage.jpg"
+          src="/error.png"
+          alt="error"
         />
       )}
     </>

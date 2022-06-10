@@ -54,10 +54,11 @@ const Image = ({ image, style }) => {
     <>
       {!urlImage ? (
         <NextImage
+          layout="responsive"
           width={700}
           height={500}
           objectFit="cover"
-          src="/errorImage.jpg"
+          src="/error.png"
         />
       ) : (
         <NextImage

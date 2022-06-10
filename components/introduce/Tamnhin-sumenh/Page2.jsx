@@ -91,7 +91,7 @@ export default function Page2({ item, introductoryArticle }) {
         style={{
           backgroundImage: urlImage
             ? `url(${getMediaFollowSize(urlImage)})`
-            : 'url("errorImage.jpg")',
+            : 'url("error.png")',
           backgroundSize: 'contain',
           width: '100%',
           height: '100%',

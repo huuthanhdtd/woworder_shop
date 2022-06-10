@@ -109,9 +109,7 @@ export default function ImgPage2({ item, introductoryArticle }) {
           </div>
           <div className={styles.section}>
             <Parallax
-              bgImage={
-                urlImage ? getMediaFollowSize(urlImage) : 'errorImage.jpg'
-              }
+              bgImage={urlImage ? getMediaFollowSize(urlImage) : 'error.png'}
               strength={300}
               className={styles.image}
             ></Parallax>
