@@ -14,6 +14,7 @@ function BannerMain({ urlImageResize }) {
           }
           layout="fill"
           objectFit="cover"
+          loading="eager"
         />
       </div>
       <div className={styles.cover}></div>

@@ -48,7 +48,7 @@ function FooterTop({ navs }) {
           ))}
       </div>
       <p>
-        Lưu ý: Hình ảnh mang tính minh họa. Mọi thông tin trẻn website này đúng
+        Lưu ý: Hình ảnh mang tính minh họa. Mọi thông tin trên website này đúng
         tại thời điểm phát hành và có thể được điều chỉnh mà không cần báo
         trước.
       </p>

@@ -71,6 +71,8 @@ const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
           height={heightImg}
           objectFit="fill"
           src={getMediaFollowSize(img)}
+          loading="eager"
+
           // alt={urlImage.alternativeText || ''}
         />
       ) : (
@@ -80,6 +82,7 @@ const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
           height={500}
           objectFit="cover"
           src="/error.svg"
+          loading="eager"
         />
       )}
       {/* </CardMedia> */}

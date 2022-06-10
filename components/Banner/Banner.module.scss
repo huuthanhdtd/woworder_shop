@@ -138,6 +138,7 @@ $OpensSans: 'Opens sans', sans-serif;
 }
 @media screen and(max-width: 768px) {
   .cover {
+    height: 70vw;
     .container {
       padding: 2% 0;
       .content {
@@ -180,11 +181,11 @@ $OpensSans: 'Opens sans', sans-serif;
 
 @media screen and(max-width: 600px) {
   .cover {
-    height: 50vh;
+    height: 80vh;
     .container {
       padding: 1% 0;
       .content {
-        text-align: justify;
+        text-align: left;
         .markdown {
           h2,
           h3 {
@@ -220,12 +221,12 @@ $OpensSans: 'Opens sans', sans-serif;
 }
 @media screen and(max-width:400px) {
   .cover {
-    height: 60vh;
+    height: 80vh;
     .container {
       padding: 0 3%;
       .content {
         padding: 0;
-        text-align: justify;
+        text-align: left;
         .markdown {
           h2,
           h3 {

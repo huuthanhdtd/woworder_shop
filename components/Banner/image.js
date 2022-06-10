@@ -12,6 +12,7 @@ const Image = ({ image, style, height, width }) => {
           objectFit="cover"
           src={getMediaFollowSize(image)}
           alt={image.alternativeText || ''}
+          loading="eager"
         />
       ) : (
         <NextImage
@@ -20,6 +21,7 @@ const Image = ({ image, style, height, width }) => {
           // height={400}
           objectFit="cover"
           src="/error.svg"
+          loading="eager"
         />
       )}
     </>
