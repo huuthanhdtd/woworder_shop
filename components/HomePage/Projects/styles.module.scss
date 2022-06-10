@@ -30,7 +30,6 @@
 
   .item {
     width: 100%;
-    padding: 1px;
     height: inherit;
     overflow: hidden;
     position: relative;
@@ -43,13 +42,7 @@
       position: relative;
       transform: scale(2.5);
       transform-origin: top;
-
-      span {
-        display: flex;
-        img {
-          margin: auto;
-        }
-      }
+      overflow: hidden;
     }
     .itemTitle {
       position: absolute;

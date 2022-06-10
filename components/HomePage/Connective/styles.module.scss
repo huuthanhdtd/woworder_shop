@@ -131,7 +131,7 @@
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1280px) {
   .connectiveBg {
     .connective {
       .formRegister {
@@ -149,8 +149,18 @@
 
       .brochure {
         .brochureIcon {
+        width: 20%;
+
+        a {
+          margin: auto;
+          display: flex;
+
           .icon {
+            font-size: 70px;
+            margin: auto;
+            color: #fff;
           }
+        }
         }
 
         .content {
@@ -179,6 +189,59 @@
     .connective {
       .formRegister {
         h2 {
+        }
+        h3 {
+        }
+        div {
+          input {
+          }
+          button {
+          }
+        }
+      }
+
+      .brochure {
+        .brochureIcon {
+        width: 30%;
+
+        a {
+          margin: auto;
+          display: flex;
+
+          .icon {
+            font-size: 60px;
+            margin: auto;
+            color: #fff;
+          }
+        }
+        }
+
+        .content {
+          h2 {
+          }
+          a {
+          }
+          p {
+          }
+        }
+      }
+      .contacts {
+        span {
+          h2 {
+          }
+          h3 {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .connectiveBg {
+    .connective {
+      .formRegister {
+        h2 {
           margin-bottom: 0px;
         }
         p {
@@ -195,7 +258,16 @@
       .brochure {
         margin-top: 15px;
         .brochureIcon {
-          .icon {
+          width: 16%;
+          a {
+            margin: auto;
+            display: flex;
+  
+            .icon {
+              font-size: 60px;
+              margin: auto;
+              color: #fff;
+            }
           }
         }
 
