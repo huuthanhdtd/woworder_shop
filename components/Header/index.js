@@ -6,8 +6,7 @@ import Container from '@material-ui/core/Container';
 import styles from './style.module.scss';
 import HeaderNavBar from './NavBar';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-// import Image from 'next/image';
-import Logo from '../../public/logo_anphu.svg';
+
 import ImageLogo from '../HomePage/Introduce/imageLogo';
 
 function Header({ isBarsSmall, navs, homepage }) {
@@ -32,7 +31,6 @@ function Header({ isBarsSmall, navs, homepage }) {
               {homepage.attributes.menu_logo && (
                 <ImageLogo image={homepage.attributes.menu_logo} />
               )}
-              {/* <Image src={Logo} /> */}
             </div>
           </Link>
           <div
@@ -40,18 +38,19 @@ function Header({ isBarsSmall, navs, homepage }) {
               [styles.showBars]: isNavBar,
             })}
           >
-            <AiOutlineClose
-              className={styles.closeIcon}
-              onClick={handleCloseBars}
-            />
             <HeaderNavBar setIsNavBar={setIsNavBar} navs={navs} />
           </div>
-          <AiOutlineMenu
-            className={clsx(styles.barIcon, {
-              [styles.hidden]: isNavBar === true,
-            })}
-            onClick={handleShowNav}
-          />
+          {!isNavBar ? (
+            <AiOutlineMenu
+              className={clsx(styles.barIcon)}
+              onClick={handleShowNav}
+            />
+          ) : (
+            <AiOutlineClose
+              className={styles.barIcon}
+              onClick={handleCloseBars}
+            />
+          )}
         </div>
       </Container>
     </div>
