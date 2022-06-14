@@ -7,7 +7,9 @@ import styles from './imgPage2.module.scss';
 
 export default function ImgPage2({ item, introductoryArticle }) {
   const { width } = useWindowSize();
-  const [urlImage, setUrlImage] = useState();
+  const [urlImage, setUrlImage] = useState(
+    item.attributes.image.data?.attributes
+  );
   useEffect(() => {
     if (item && item.attributes.image && item.attributes.image.data) {
       let image = item.attributes.image;

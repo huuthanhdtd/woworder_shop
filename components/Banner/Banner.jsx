@@ -30,7 +30,7 @@ function Banner({
   useEffect(() => {
     Aos.init({ duration: 1000 });
     if (focusBanner) {
-      setTimeout(() => {
+      const startCount = setTimeout(() => {
         //Budget Land
         autoCount(bannerProject.attributes.acreage, 10, 9, setBudgetLand);
         //Products
@@ -83,7 +83,7 @@ function Banner({
           );
         }
       }, 800);
-      return () => clearTimeout();
+      return () => clearTimeout(startCount);
     } else {
       setBudgetLand(0);
       setProduct(0);

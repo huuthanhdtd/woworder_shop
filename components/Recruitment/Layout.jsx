@@ -4,7 +4,7 @@ import Banner from './Banner/Banner';
 import { useWindowSize } from 'react-use';
 
 function LayoutProject({ children, image }) {
-  const [urlImageResize, setUrlImageResize] = useState();
+  const [urlImageResize, setUrlImageResize] = useState(image.data?.attributes);
   const { width } = useWindowSize();
   useEffect(() => {
     if (image && image.data?.attributes) {

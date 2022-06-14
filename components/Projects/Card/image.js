@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const Image = ({ image, style }) => {
   const { width } = useWindowSize();
-  const [urlImage, setUrlImage] = useState();
+  const [urlImage, setUrlImage] = useState(image.data?.attributes);
   useEffect(() => {
     if (image.data?.attributes) {
       if (width) {

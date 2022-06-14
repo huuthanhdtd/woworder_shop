@@ -4,9 +4,10 @@ import { getMediaFollowSize } from '../../lib/media';
 import { CardMedia } from '@material-ui/core';
 import NextImage from 'next/image';
 
-const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
+const RenderImage = ({ heightImg, data, widthImg, bgSize, layout }) => {
   const curr = data.data !== null && data.data.attributes.formats;
-  const [img, setImg] = useState();
+  // const [img, setImg] = useState();
+  const [img, setImg] = useState(data.data?.attributes);
   useEffect(() => {
     const input = data.data;
     if (input !== null) {
@@ -66,10 +67,10 @@ const RenderImage = ({ heightImg, data, widthImg, bgSize }) => {
       > */}
       {img ? (
         <NextImage
-          layout="responsive"
+          layout={layout ? 'fill' : 'responsive'}
           width={widthImg}
           height={heightImg}
-          objectFit="fill"
+          objectFit="cover"
           src={getMediaFollowSize(img)}
           loading="eager"
 

@@ -90,12 +90,16 @@ function Slider({ slides, projects, articles }) {
               className={clsx(styles.bg, {
                 [styles.active]: Number(activeIndex) === index,
               })}
+              // style={{
+              //   w,
+              // }}
             >
               {item.attributes.image.data !== null && (
                 <RenderImage
                   data={item.attributes.image}
                   heightImg={width * 0.6}
                   widthImg={width}
+                  layout="true"
                 />
               )}
             </div>

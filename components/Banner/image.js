@@ -4,11 +4,12 @@ import NextImage from 'next/image';
 const Image = ({ image, style, height, width }) => {
   return (
     <>
-      {image && height & width ? (
+      {image ? (
         <NextImage
-          layout="responsive"
-          width={width}
-          height={height}
+          // layout="responsive"
+          // width={width}
+          // height={height}
+          layout="fill"
           objectFit="cover"
           src={getMediaFollowSize(image)}
           alt={image.alternativeText || ''}

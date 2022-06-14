@@ -3,7 +3,7 @@ import styles from './NewsPage.module.scss';
 import Banner from './Banner/Banner';
 
 function LayoutProject({ children, image, width }) {
-  const [urlImageResize, setUrlImageResize] = useState();
+  const [urlImageResize, setUrlImageResize] = useState(image.data?.attributes);
   useEffect(() => {
     if (image && image.data?.attributes) {
       const urlCurrent = image.data.attributes.formats;

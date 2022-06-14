@@ -7,7 +7,7 @@ function LayoutProject({ children, bannerProject, image, width }) {
   const { bannerRef, focusBanner, setFocusBanner, pageYOffset } =
     useContext(Context);
 
-  const [urlImageResize, setUrlImageResize] = useState();
+  const [urlImageResize, setUrlImageResize] = useState(image.data?.attributes);
   useEffect(() => {
     if (
       pageYOffset >= bannerRef.current.offsetTop &&
