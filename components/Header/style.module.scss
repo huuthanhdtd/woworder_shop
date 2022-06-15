@@ -21,9 +21,10 @@
     background-color: transparent;
     // padding: 20px 0;
     transition: all 0.25s ease-in-out;
-    height: 80px;
+    height: 90px;
     .logoImage {
       width: 200px;
+
       img {
         width: 100%;
         cursor: pointer;
@@ -57,7 +58,7 @@
   background-image: linear-gradient(
     to bottom,
     var(--primary-color-),
-    rgba(186, 35, 35, 0.45)
+    rgb(255 222 222 / 66%)
   );
   padding-bottom: 2px;
 
@@ -85,6 +86,7 @@
       margin: auto;
       .logoImage {
         width: 120px;
+
         img {
           width: 100%;
           cursor: pointer;
@@ -151,7 +153,6 @@
       .headerContent {
         width: 100%;
         top: 45px;
-        
       }
 
       .barIcon {
