@@ -139,15 +139,11 @@ export default function Page3({ item, parent }) {
                     {sliders &&
                       sliders.map((data, index) => (
                         <div className={styles.media} key={index}>
+                          <div className={styles.partnerName}>
+                            {data.attributes.name}
+                          </div>
                           <div className={styles.module}>
                             <Image image={data.attributes.image} />
-                            <div className={styles.partnerName}>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              {data.attributes.name}
-                            </div>
                           </div>
                         </div>
                       ))}
@@ -157,15 +153,11 @@ export default function Page3({ item, parent }) {
                     {sliders &&
                       sliders.map((data, index) => (
                         <div className={styles.media} key={index}>
+                          <div className={styles.partnerName}>
+                            {data.attributes.name}
+                          </div>
                           <div className={styles.module}>
                             <Image image={data.attributes.image} />
-                            <div className={styles.partnerName}>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              {data.attributes.name}
-                            </div>
                           </div>
                         </div>
                       ))}
@@ -189,15 +181,11 @@ export default function Page3({ item, parent }) {
                     {sliderss &&
                       sliderss.map((data, index) => (
                         <div className={styles.media} key={index}>
+                          <div className={styles.partnerName}>
+                            {data.attributes.name}
+                          </div>
                           <div className={styles.module}>
                             <Image image={data.attributes.image} />
-                            <div className={styles.partnerName}>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              {data.attributes.name}
-                            </div>
                           </div>
                         </div>
                       ))}
@@ -207,15 +195,11 @@ export default function Page3({ item, parent }) {
                     {sliderss &&
                       sliderss.map((data, index) => (
                         <div className={styles.media} key={index}>
+                          <div className={styles.partnerName}>
+                            {data.attributes.name}
+                          </div>
                           <div className={styles.module}>
                             <Image image={data.attributes.image} />
-                            <div className={styles.partnerName}>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              {data.attributes.name}
-                            </div>
                           </div>
                         </div>
                       ))}
@@ -239,15 +223,11 @@ export default function Page3({ item, parent }) {
                     {slidersss &&
                       slidersss.map((data, index) => (
                         <div className={styles.media} key={index}>
+                          <div className={styles.partnerName}>
+                            {data.attributes.name}
+                          </div>
                           <div className={styles.module}>
                             <Image image={data.attributes.image} />
-                            <div className={styles.partnerName}>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              {data.attributes.name}
-                            </div>
                           </div>
                         </div>
                       ))}
@@ -257,15 +237,11 @@ export default function Page3({ item, parent }) {
                     {slidersss &&
                       slidersss.map((data, index) => (
                         <div className={styles.media} key={index}>
+                          <div className={styles.partnerName}>
+                            {data.attributes.name}
+                          </div>
                           <div className={styles.module}>
                             <Image image={data.attributes.image} />
-                            <div className={styles.partnerName}>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              {data.attributes.name}
-                            </div>
                           </div>
                         </div>
                       ))}
