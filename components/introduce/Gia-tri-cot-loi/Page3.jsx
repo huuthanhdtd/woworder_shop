@@ -124,113 +124,156 @@ export default function Page3({ item, parent }) {
               escapeHtml={false}
             />
           </div>
-          <div className={styles.slider}>
-            <div
-              className={styles.partner}
-              data-aos="zoom-in"
-              data-aos-duration="900"
-            >
-              <div className={styles.slider}>
-                <div
-                  className={styles.partner}
-                  data-aos="zoom-in"
-                  data-aos-duration="900"
-                  style={{ borderBottom: '1px solid gray' }}
-                >
-                  <span>Đối Tác Chiến Lược</span>
-                  {sliders.length > 4 ? (
-                    <Slider {...settings} className={styles.modules}>
-                      {sliders &&
-                        sliders.map((data, index) => (
-                          <div className={styles.media} key={index}>
-                            <div className={styles.module}>
-                              <Image image={data.attributes.image} />
+          {sliders.length === 0 ? (
+            <></>
+          ) : (
+            <div className={styles.slider}>
+              <div
+                className={styles.partner}
+                data-aos="zoom-in"
+                data-aos-duration="900"
+              >
+                <span>Đối Tác Chiến Lược</span>
+                {sliders.length > 4 ? (
+                  <Slider {...settings} className={styles.modules}>
+                    {sliders &&
+                      sliders.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                            <div className={styles.partnerName}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              {data.attributes.name}
                             </div>
                           </div>
-                        ))}
-                    </Slider>
-                  ) : (
-                    <Slider {...settings2} className={styles.modules}>
-                      {sliders &&
-                        sliders.map((data, index) => (
-                          <div className={styles.media} key={index}>
-                            <div className={styles.module}>
-                              <Image image={data.attributes.image} />
+                        </div>
+                      ))}
+                  </Slider>
+                ) : (
+                  <Slider {...settings2} className={styles.modules}>
+                    {sliders &&
+                      sliders.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                            <div className={styles.partnerName}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              {data.attributes.name}
                             </div>
                           </div>
-                        ))}
-                    </Slider>
-                  )}
-                </div>
-              </div>
-              <div className={styles.slider}>
-                <div
-                  className={styles.partner}
-                  data-aos="zoom-in"
-                  data-aos-duration="900"
-                  style={{ borderBottom: '1px solid gray' }}
-                >
-                  <span>Đối Tác Ngân Hàng</span>
-                  {sliderss.length > 4 ? (
-                    <Slider {...settings} className={styles.modules}>
-                      {sliderss &&
-                        sliderss.map((data, index) => (
-                          <div className={styles.media} key={index}>
-                            <div className={styles.module}>
-                              <Image image={data.attributes.image} />
-                            </div>
-                          </div>
-                        ))}
-                    </Slider>
-                  ) : (
-                    <Slider {...settings2} className={styles.modules}>
-                      {sliderss &&
-                        sliderss.map((data, index) => (
-                          <div className={styles.media} key={index}>
-                            <div className={styles.module}>
-                              <Image image={data.attributes.image} />
-                            </div>
-                          </div>
-                        ))}
-                    </Slider>
-                  )}
-                </div>
-              </div>
-              <div className={styles.slider}>
-                <div
-                  className={styles.partner}
-                  data-aos="zoom-in"
-                  data-aos-duration="900"
-                  style={{ borderBottom: '1px solid gray' }}
-                >
-                  <span>Đối Tác Xây Dựng</span>
-                  {slidersss.length > 4 ? (
-                    <Slider {...settings} className={styles.modules}>
-                      {slidersss &&
-                        slidersss.map((data, index) => (
-                          <div className={styles.media} key={index}>
-                            <div className={styles.module}>
-                              <Image image={data.attributes.image} />
-                            </div>
-                          </div>
-                        ))}
-                    </Slider>
-                  ) : (
-                    <Slider {...settings2} className={styles.modules}>
-                      {slidersss &&
-                        slidersss.map((data, index) => (
-                          <div className={styles.media} key={index}>
-                            <div className={styles.module}>
-                              <Image image={data.attributes.image} />
-                            </div>
-                          </div>
-                        ))}
-                    </Slider>
-                  )}
-                </div>
+                        </div>
+                      ))}
+                  </Slider>
+                )}
               </div>
             </div>
-          </div>
+          )}
+          {sliderss.length === 0 ? (
+            <></>
+          ) : (
+            <div className={styles.slider}>
+              <div
+                className={styles.partner}
+                data-aos="zoom-in"
+                data-aos-duration="900"
+              >
+                <span>Đối Tác Ngân Hàng</span>
+                {sliderss.length > 4 ? (
+                  <Slider {...settings} className={styles.modules}>
+                    {sliderss &&
+                      sliderss.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                            <div className={styles.partnerName}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              {data.attributes.name}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </Slider>
+                ) : (
+                  <Slider {...settings2} className={styles.modules}>
+                    {sliderss &&
+                      sliderss.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                            <div className={styles.partnerName}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              {data.attributes.name}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </Slider>
+                )}
+              </div>
+            </div>
+          )}
+          {slidersss.length === 0 ? (
+            <></>
+          ) : (
+            <div className={styles.slider}>
+              <div
+                className={styles.partner}
+                data-aos="zoom-in"
+                data-aos-duration="900"
+              >
+                <span>Đối Tác Xây Dựng</span>
+                {slidersss.length > 4 ? (
+                  <Slider {...settings} className={styles.modules}>
+                    {slidersss &&
+                      slidersss.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                            <div className={styles.partnerName}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              {data.attributes.name}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </Slider>
+                ) : (
+                  <Slider {...settings2} className={styles.modules}>
+                    {slidersss &&
+                      slidersss.map((data, index) => (
+                        <div className={styles.media} key={index}>
+                          <div className={styles.module}>
+                            <Image image={data.attributes.image} />
+                            <div className={styles.partnerName}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              {data.attributes.name}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </Slider>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>

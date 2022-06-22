@@ -2,15 +2,15 @@
  * @type {import('next').NextConfig}
  */
 
-const withCss = require('@zeit/next-css');
-const withPurgeCss = require('next-purgecss');
+// const withCss = require('@zeit/next-css');
+// const withPurgeCss = require('next-purgecss');
 
-module.exports = withCss(withPurgeCss());
+// module.exports = withCss(withPurgeCss());
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-module.exports = withBundleAnalyzer({});
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+// module.exports = withBundleAnalyzer({});
 
 const nextConfig = {
   images: {

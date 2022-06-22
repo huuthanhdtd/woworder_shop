@@ -55,8 +55,8 @@ const Image = ({ image, style }) => {
       {urlImage ? (
         <NextImage
           layout="responsive"
-          width={urlImage.width}
-          height={urlImage.height}
+          width={700}
+          height={400}
           objectFit="cover"
           src={getMediaFollowSize(urlImage)}
           alt={urlImage.alternativeText || ''}
