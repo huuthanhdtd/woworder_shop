@@ -243,7 +243,7 @@ export default function Address({ setMaps, contacts }) {
           className={clsx(styles.captCha, {
             [styles.active]: captChaActive == true,
           })}
-          sitekey="6LebPlggAAAAAJDKxPlK6GcLEKnB8Ug6RkVct02h"
+          sitekey="6LcfVtggAAAAANaidd-ehxNWHa5gZtlCPuvBIDkJ"
           onChange={handleOnChangeCaptCha}
         />
 
