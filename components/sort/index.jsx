@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckNation from './CheckNation';
-import CheckWed from './checkWeb';
+import CheckWed from './CheckWeb';
 import Search from './Search';
 import styles from './styles.module.scss';
 import { BsFunnel } from 'react-icons/bs';

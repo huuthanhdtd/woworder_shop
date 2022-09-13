@@ -1,0 +1,26 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 0px 20px;
+  h6 {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  p {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  a {
+    margin-bottom: 10px;
+    word-break: break-all;
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+  p:last-child {
+    margin-bottom: 0px;
+  }
+}

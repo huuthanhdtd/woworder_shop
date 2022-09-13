@@ -74,7 +74,7 @@ img:hover {
 }
 
 :root {
-  --primary-color-: rgb(255, 11, 11);
+  --primary-color-: #00c58e;
   --hover-color-: rgb(255, 221, 0);
   --hover-rgba-: rgba(255, 222, 4, 0.7);
   --border-color-: rgba(105, 27, 27, 0.5);
@@ -119,4 +119,7 @@ img:hover {
 }
 .styles_Checks__F3knP .PrivateSwitchBase-root-17 {
   /* display: ; */
+}
+.MuiPaginationItem-page.Mui-selected {
+  background-color: var(--primary-color-) !important;
 }

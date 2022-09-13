@@ -1,0 +1,29 @@
+.wrapper {
+  height: auto;
+  padding: 40px 0 0px;
+  background-color: rgba(0, 0, 0, 0);
+  .container {
+    position: relative;
+    margin: 20px auto 0 auto;
+    max-width: 1142px;
+    background-color: white;
+    .copyRight {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      border-top: 0.5px solid rgb(239, 231, 231);
+      padding: 20px 0 20px 0;
+      p {
+        color: black;
+      }
+      .barBottom {
+        a {
+          margin: 0 10px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

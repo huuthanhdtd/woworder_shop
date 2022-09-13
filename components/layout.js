@@ -1,6 +1,8 @@
 import ButtonToTop from './ScrollButton/ScrollButton';
 import ContextProvider from '../constants/Context';
 import { useState, useEffect, useMemo } from 'react';
+import Footer from './Footer';
+import Header from './Header';
 
 const Layout = ({ children }) => {
   const [scrollState, setScrollState] = useState(false);
@@ -34,8 +36,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <ContextProvider>
+        <Header />
         {children}
         <ButtonToTop onClick={scrollToTop} show={scrollState} />
+        <Footer />
       </ContextProvider>
     </>
   );
