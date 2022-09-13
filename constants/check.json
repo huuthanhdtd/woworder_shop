@@ -1,0 +1,9 @@
+[
+  { "name": "UK-GB", "slug": "uk-gb" },
+  { "name": "CN-CN", "slug": "cn-cn" },
+  { "name": "DE-DE", "slug": "de-de" },
+  { "name": "ES-ES", "slug": "ed-es" },
+  { "name": "FR-FR", "slug": "fr-fr" },
+  { "name": "HS-hàng sẵn", "slug": "hs-hang-san" },
+  { "name": "Jp-JP", "slug": "jp-jp" }
+]

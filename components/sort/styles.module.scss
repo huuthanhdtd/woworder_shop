@@ -1,20 +1,22 @@
 .Checks {
-  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 10px;
   .funnel {
     display: flex;
     align-items: center;
-    color: black;
+    padding: 0.6rem 0;
     .icons {
       svg {
-        height: 1.5rem;
-        width: 1.5rem;
+        font-size: 0.8rem;
+        margin-right: 0.625rem;
+        stroke: currentColor;
       }
     }
     .title {
-      margin-left: 10px;
-      font-weight: 500;
-      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: 700;
+      font-size: 1rem;
     }
   }
 }

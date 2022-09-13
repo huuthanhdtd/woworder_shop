@@ -4,6 +4,8 @@ import CheckWed from './CheckWeb';
 import Search from './Search';
 import styles from './styles.module.scss';
 import { BsFunnel } from 'react-icons/bs';
+import SearchPrice from './SearchPrice';
+import FormattedInputs from './SearchPrice';
 
 export default function Checked() {
   return (
@@ -17,6 +19,9 @@ export default function Checked() {
       </div>
       <CheckNation />
       <CheckWed />
+      {/* <SearchPrice />
+       */}
+      <FormattedInputs />
     </div>
   );
 }

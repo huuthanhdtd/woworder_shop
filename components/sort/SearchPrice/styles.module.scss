@@ -1,0 +1,16 @@
+.SearchPrice {
+  padding: 1rem 0;
+  .input {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  Button {
+    width: 100%;
+    background-color: #00c58e;
+    color: #fff;
+    &:hover {
+      background-color: #00c58e;
+    }
+  }
+}

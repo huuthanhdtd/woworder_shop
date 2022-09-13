@@ -1,7 +1,23 @@
 .search {
-  padding: 1.25rem 0;
+  position: relative;
   .input {
     background-color: #fff;
     border-radius: 5px;
+    width: 100%;
+  }
+  .icons {
+    position: absolute;
+    background: #fff;
+    top: 0px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    top: 10px;
+    left: 2px;
+    svg {
+      color: #333;
+      width: 20px;
+      height: 20px;
+    }
   }
 }
