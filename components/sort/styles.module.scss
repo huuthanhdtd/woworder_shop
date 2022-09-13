@@ -1,0 +1,20 @@
+.Checks {
+  max-width: 1200px;
+  margin: 0 auto;
+  .funnel {
+    display: flex;
+    align-items: center;
+    color: black;
+    .icons {
+      svg {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+    .title {
+      margin-left: 10px;
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+  }
+}
