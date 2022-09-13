@@ -14,7 +14,7 @@ import 'slick-carousel/slick/slick-theme.css';
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global, corpInfor, categories, homepage } = pageProps;
+  const { global } = pageProps;
   return (
     <>
       <Head>
@@ -24,11 +24,7 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <Layout
-          corpInfor={corpInfor}
-          categories={categories}
-          homepage={homepage}
-        >
+        <Layout>
           <Component {...pageProps} />
         </Layout>
       </GlobalContext.Provider>
@@ -64,9 +60,6 @@ MyApp.getInitialProps = async (ctx) => {
     ...appProps,
     pageProps: {
       global: globalRes.data,
-      corpInfor: corpRes.data,
-      categories: categoriesRes.data,
-      homepage: homepageRes.data,
     },
   };
 };
