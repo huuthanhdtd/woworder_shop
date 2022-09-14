@@ -84,3 +84,59 @@ export const footerData = {
     hotline: '(084) 986 779 777',
   },
 };
+
+export const orderButton = [
+  {
+    name: 'Phổ biến',
+  },
+  {
+    name: 'Mới nhất',
+  },
+  {
+    name: 'Bán chạy',
+  },
+];
+
+export const orderPrice = [
+  {
+    name: 'Từ thấp đến cao.',
+  },
+  {
+    name: 'Từ cao đến thấp.',
+  },
+];
+
+export const colorAndType = [
+  {
+    name: 'Màu',
+    data: [
+      {
+        attr: 'Dusty  rose',
+      },
+      {
+        attr: 'unicorns',
+      },
+    ],
+  },
+  {
+    name: 'Size',
+    data: [
+      {
+        attr: 'XS',
+      },
+      {
+        attr: 'S',
+      },
+      {
+        attr: 'M',
+      },
+
+      {
+        attr: 'L',
+      },
+      {
+        attr: 'XL',
+      },
+    ],
+  },
+];

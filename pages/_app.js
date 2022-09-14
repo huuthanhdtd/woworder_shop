@@ -10,13 +10,13 @@ import '../assets/css/style.css';
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global } = pageProps;
+  // const { global } = pageProps;
   return (
     <>
       <Head>
         <link
           rel="shortcut icon"
-          href={getStrapiMedia(global.attributes.favicon)}
+          // href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
@@ -37,26 +37,26 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Tpcapi
 
-  const [globalRes, corpRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI('/global', {
-      populate: {
-        favicon: '*',
-        defaultSeo: {
-          populate: '*',
-        },
-      },
-    }),
-    fetchAPI('/corp-infor', { populate: '*' }),
-    fetchAPI('/categories', { populate: '*' }),
-    fetchAPI('/homepage', { populate: '*' }),
-  ]);
+  // const [globalRes, corpRes, categoriesRes, homepageRes] = await Promise.all([
+  //   fetchAPI('/global', {
+  //     populate: {
+  //       favicon: '*',
+  //       defaultSeo: {
+  //         populate: '*',
+  //       },
+  //     },
+  //   }),
+  //   fetchAPI('/corp-infor', { populate: '*' }),
+  //   fetchAPI('/categories', { populate: '*' }),
+  //   fetchAPI('/homepage', { populate: '*' }),
+  // ]);
 
   // Pass the data to our page via props
   return {
-    ...appProps,
-    pageProps: {
-      global: globalRes.data,
-    },
+    // ...appProps,
+    // pageProps: {
+    //   global: globalRes.data,
+    // },
   };
 };
 

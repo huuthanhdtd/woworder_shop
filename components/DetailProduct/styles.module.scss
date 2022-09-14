@@ -1,0 +1,94 @@
+.root {
+  background-color: var(--background-primary--);
+  padding: 10px 0 30px;
+  .prop {
+    width: 100px;
+  }
+  .selectModel {
+    max-width: 1140px;
+    margin: auto;
+    background-color: white;
+    .image {
+      height: 30vw;
+      width: 300px;
+    }
+    .title {
+      margin-bottom: 20px;
+      p {
+        display: flex;
+        align-items: flex-start;
+        font-size: 25px;
+      }
+    }
+    .price {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      h6 {
+        color: gray;
+        text-decoration: line-through;
+        margin-right: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        span {
+          font-size: 15px;
+        }
+      }
+      h5 {
+        color: #dc2626;
+        font-weight: bold;
+        margin-right: 20px;
+        font-size: 40px;
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+    .colorsAndType {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      margin-bottom: 20px;
+      button {
+        background-color: white;
+        border: 1px solid gray;
+        margin-right: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: none;
+      }
+    }
+    .amount {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .inputBox {
+        margin-right: 40px;
+        .input {
+          width: 50px;
+        }
+        button {
+          border: 1px solid gray;
+          min-width: 40px;
+        }
+      }
+    }
+    .actions {
+      .addCart {
+        background-color: #dcfcf4;
+        border: 1px solid var(--primary-color-);
+        margin-right: 20px;
+      }
+      .buyNow {
+        background-color: var(--primary-color-);
+        color: white;
+      }
+    }
+    .share {
+      display: flex;
+      align-items: center;
+      p {
+      }
+    }
+  }
+}

@@ -8,12 +8,19 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import Infor from './Infor';
 import { useState } from 'react';
 import DeatailInfor from './DetailInfor';
+import { useRouter } from 'next/router';
 function CardProduct() {
   const [isDetail, setDetail] = useState(false);
+
+  const router = useRouter();
+  const handleDetailProduct = () => {
+    router.push('/detail-product/1');
+  };
   return (
     <div className={styles.all}>
       <div className={styles.imageWp}>
         <div
+          onClick={handleDetailProduct}
           className={clsx(styles.image, {
             [styles.imageDetail]: isDetail,
           })}

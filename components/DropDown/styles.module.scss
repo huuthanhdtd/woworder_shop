@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  border-radius: 4px;
+  background-color: white;
+  .toggle {
+    padding: 10px;
+    width: 200px;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -74,10 +74,11 @@ img:hover {
 }
 
 :root {
-  --primary-color-: #00c58e;
+  --primary-color-: #108775;
   --hover-color-: rgb(255, 221, 0);
   --hover-rgba-: rgba(255, 222, 4, 0.7);
   --border-color-: rgba(105, 27, 27, 0.5);
+  --background-primary--: #f4f4f5;
 }
 
 @media screen and (max-width: 960px) {
