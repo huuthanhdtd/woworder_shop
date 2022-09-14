@@ -14,12 +14,12 @@ export default function CheckNation({}) {
     { name: 'Jp-JP', slug: 'jp-jp' },
   ];
   const [checked, setChecked] = useState([]);
-  const handleChange1 = (isChecked) => {
+  const handleChangeOne = (isChecked) => {
     if (isChecked) return setChecked(checks.map((data) => data.slug));
     else setChecked([]);
   };
 
-  const handleChange2 = (isChecked, slug) => {
+  const handleChangeTwo = (isChecked, slug) => {
     const index = checked.indexOf(slug);
 
     if (isChecked) return setChecked((state) => [...state, slug]);
@@ -34,38 +34,21 @@ export default function CheckNation({}) {
   return (
     <div className={styles.checks}>
       <h2> Quốc gia</h2>
-      {/* <FormControlLabel
-        label="ALL"
-        control={
-          <Checkbox
-            size="small"
-            checked={checked.length === checks.length}
-            indeterminate={
-              checked.length !== checks.length && checked.length > 0
-            }
-            onChange={(event) => handleChange1(event.target.checked)}
-          />
-        }
-      /> */}
-      <Box className={styles.FormControl}>
+      <div className={styles.FormControl}>
         {checked &&
           checks.map((data, index) => (
-            <FormControlLabel
-              key={index}
-              label={data.name}
-              control={
-                <Checkbox
-                  size="small"
-                  checked={checked.includes(data.slug)}
-                  onChange={(event) =>
-                    handleChange2(event.target.checked, data.slug)
-                  }
-                  inputProps={{ 'aria-label': 'controlled' }}
-                />
-              }
-            />
+            <div key={index} className={styles.checked}>
+              <input
+                type="checkbox"
+                onChange={(event) =>
+                  handleChangeTwo(event.target.checked, data.slug)
+                }
+                className={styles.inputCheck}
+              />
+              <label> {data.name}</label>
+            </div>
           ))}
-      </Box>
+      </div>{' '}
     </div>
   );
 }

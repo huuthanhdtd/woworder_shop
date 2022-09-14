@@ -1,4 +1,4 @@
-import { Box, Checkbox, FormControlLabel } from '@material-ui/core';
+import { Checkbox, FormControlLabel } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import styles from './styles.module.scss';
@@ -47,25 +47,20 @@ export default function CheckWed({}) {
           />
         }
       /> */}
-      <Box className={styles.FormControl}>
+      <div className={styles.FormControl}>
         {checked &&
           checks.map((data, index) => (
-            <FormControlLabel
-              key={index}
-              label={data.name}
-              control={
-                <Checkbox
-                  size="small"
-                  checked={checked.includes(data.slug)}
-                  onChange={(event) =>
-                    handleChange2(event.target.checked, data.slug)
-                  }
-                  inputProps={{ 'aria-label': 'controlled' }}
-                />
-              }
-            />
+            <div key={index} className={styles.checked}>
+              <input
+                type="checkbox"
+                onChange={(event) =>
+                  handleChange2(event.target.checked, data.slug)
+                }
+              />
+              <label> {data.name}</label>
+            </div>
           ))}
-      </Box>
+      </div>
     </div>
   );
 }

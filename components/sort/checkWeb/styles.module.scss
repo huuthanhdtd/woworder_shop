@@ -10,5 +10,8 @@
   .FormControl {
     display: flex;
     flex-direction: column;
+    .checked {
+      padding: 5px 0;
+    }
   }
 }
