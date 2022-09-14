@@ -121,8 +121,20 @@ img:hover {
 .page5edit_media__Wix_v .page5edit_avatar__uiA5D span span {
   padding: 66% 0px !important;
 }
-.styles_Checks__wBpG7 .MuiInputBase-input {
+.styles_search__NzpYM .MuiInputBase-input {
   padding: 10px 0px 10px 32px;
+}
+.styles_search__1l6c9 .MuiInputBase-input {
+  width: 100%;
+  height: 100%;
+  padding-right: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  background: #fff;
+  border: 0;
+  box-shadow: inset 0 0.125rem 0 0 rgb(0 0 0 / 2%);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .MuiPaginationItem-page.Mui-selected {
   background-color: var(--primary-color-) !important;

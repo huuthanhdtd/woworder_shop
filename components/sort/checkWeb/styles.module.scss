@@ -14,18 +14,10 @@
       padding: 5px 0;
       .label {
         cursor: pointer;
+        font-size: 0.9rem;
         .inputCheck {
-          // justify-content: center;
-          // box-sizing: border-box;
-          // background-color: #fff;
-          // text-align: center;
-          // width: 0.8125rem;
-          // height: 0.8125rem;
-          // line-height: 0.6875rem;
-          // border: 1px solid rgba(0, 0, 0, 0.26);
-          // border-radius: 2px;
-          // flex-shrink: 0;
-          // box-shadow: inset 0 1px 0 0 rgb(0 0 0 / 5%);
+          width: 0.9rem;
+          height: 0.9rem;
           margin-right: 0.625rem;
         }
       }
@@ -34,5 +26,102 @@
   .loadMore {
     cursor: pointer;
     font-size: 0.8rem;
+    position: relative;
+    .backgroundModal {
+      display: none;
+    }
+    .backgroundModal.active {
+      display: block;
+      position: fixed;
+      background: rgb(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      z-index: 9;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    .show {
+      position: absolute;
+      list-style: none;
+      background-color: rgb(255 255 255 / 80%);
+      left: 20%;
+      top: 0px;
+      transform: scale(0);
+      transform-origin: top left;
+      transition: all 0.3s linear;
+      border: 0.5px inset rgba(0, 0, 0, 0.09);
+      z-index: 10;
+      opacity: 0;
+    }
+    .show.active {
+      opacity: 1;
+      transition: all 0.3s linear;
+      transform: scale(1);
+      top: 0px;
+      right: 0px;
+      background-color: #fff;
+      box-shadow: 0 0.125rem 0.25rem 0 rgb(0 0 0 / 50%);
+      position: absolute;
+      left: 50%;
+      width: 47.25rem;
+      padding: 1rem 1.25rem 1.625rem 1.5625rem;
+      border: 0.5px inset rgba(0, 0, 0, 0.09);
+      border-radius: 0.125rem;
+      z-index: 10;
+      .searchTitle {
+        display: flex;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.9375rem;
+        border-bottom: 0.0625rem solid #efefef;
+        width: 100%;
+        .title {
+          height: 2.375rem;
+          line-height: 2.375rem;
+          padding-right: 4.25rem;
+          font-size: 1.125rem;
+          font-weight: 500;
+        }
+        .search {
+          position: relative;
+          width: 100%;
+          .inputSearch {
+            width: 100%;
+            height: 100%;
+            font-size: 0.875rem;
+            font-weight: 400;
+            background: #fff;
+            border: 0;
+            box-shadow: inset 0 0.125rem 0 0 rgb(0 0 0 / 2%);
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+          }
+          .iconsInput {
+            position: absolute;
+            top: 0px;
+            right: 1.11px;
+            // background: #fff;
+            height: 95%;
+            width: 8%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+              height: 100%;
+              fill: #9b9b9b;
+              width: 1.1875rem;
+            }
+          }
+        }
+      }
+      .CheckTitle {
+        overflow: hidden;
+        height: 150px;
+        .GridCheckPosition {
+          height: 100%;
+          overflow-y: scroll;
+        }
+      }
+    }
   }
 }
