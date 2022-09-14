@@ -1,44 +1,59 @@
 import { Button } from '@material-ui/core';
-import React, { useState } from 'react';
+import clsx from 'clsx';
+import React, { useEffect, useState } from 'react';
 // import { currencyMask } from '../../../lib';
 import styles from './styles.module.scss';
 
 export default function SearchPrice() {
-  const [state, setState] = useState({ price: '' });
-  // const handleOnchange = (e) => {
-  //   setState({ ...state, [e.target.value]: e.target.value });
-  //   console.log(e.target.value);
-  // };
-  const handleOnchange = (e) => {
-    setState({ ...state, [e.target.value]: e.target.value });
-    let value = e.target.value;
-    value = value.replace(/\D/g, '');
-    value = value.replace(/(\d)(\d{2})$/, '$1. $2');
-    value = value.replace(/(?=(\d{3})+(\D))\B/g, ',');
-    e.target.value = value;
-
-    console.log(state.price);
+  const [formPrice, setFormPrice] = useState({ priceFirst: '', priceLast: '' });
+  const [msg, setmsg] = useState('');
+  const handleOnChange = (e) => {
+    let { name, value } = e.target;
+    value = Number(value);
+    setFormPrice({ ...formPrice, [name]: value });
+  };
+  useEffect(() => {
+    setmsg('');
+  }, [formPrice]);
+  const handleSubmit = () => {
+    if (
+      formPrice.priceFirst > formPrice.priceLast ||
+      formPrice.priceLast == 0
+    ) {
+      return setmsg('Vui lòng điền khoảng giá phù hợp');
+    }
   };
   return (
     <>
       <div className={styles.SearchPrice}>
+        <h2> Khoảng giá</h2>
         <div className={styles.input}>
           <input
             type="number"
-            style={{ width: '45%' }}
-            name="price"
+            style={{ width: '47%', padding: '5px' }}
+            name="priceFirst"
             placeholder="Từ"
-            // value={state.price}
-            onChange={(e) => handleOnchange(e)}
-            // onChange={(e) => {
-            //   const { value } = e.target;
-            //   e.target.value = normalizeCardNumber(value);
-            // }}
+            value={formPrice.priceFirst || ''}
+            onChange={(e) => handleOnChange(e)}
           />
           <div>-</div>
-          <input type="number" style={{ width: '45%' }} placeholder="Đến" />
+          <input
+            type="number"
+            style={{ width: '47%', padding: '5px' }}
+            name="priceLast"
+            placeholder="Đến"
+            value={formPrice.priceLast || ''}
+            onChange={(e) => handleOnChange(e)}
+          />
         </div>
-        <Button>Áp Dụng</Button>
+        <span
+          className={clsx(styles.msgError, {
+            [styles.active]: msg.length > 0,
+          })}
+        >
+          {msg}
+        </span>
+        <Button onClick={handleSubmit}>Áp Dụng</Button>
       </div>
     </>
   );

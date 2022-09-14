@@ -14,12 +14,12 @@ export default function CheckWed({}) {
     { name: 'IKEA', slug: 'IKEA' },
   ];
   const [checked, setChecked] = useState([]);
-  const handleChange1 = (isChecked) => {
-    if (isChecked) return setChecked(checks.map((data) => data.slug));
-    else setChecked([]);
-  };
+  // const handleChange1 = (isChecked) => {
+  //   if (isChecked) return setChecked(checks.map((data) => data.slug));
+  //   else setChecked([]);
+  // };
 
-  const handleChange2 = (isChecked, slug) => {
+  const handleChangeTwo = (isChecked, slug) => {
     const index = checked.indexOf(slug);
 
     if (isChecked) return setChecked((state) => [...state, slug]);
@@ -33,34 +33,24 @@ export default function CheckWed({}) {
 
   return (
     <div className={styles.checks}>
-      <h2> Website</h2>
-      {/* <FormControlLabel
-        label="All"
-        control={
-          <Checkbox
-            size="small"
-            checked={checked.length === checks.length}
-            indeterminate={
-              checked.length !== checks.length && checked.length > 0
-            }
-            onChange={(event) => handleChange1(event.target.checked)}
-          />
-        }
-      /> */}
+      <h2> Quốc gia</h2>
       <div className={styles.FormControl}>
         {checked &&
           checks.map((data, index) => (
             <div key={index} className={styles.checked}>
-              <input
-                type="checkbox"
-                onChange={(event) =>
-                  handleChange2(event.target.checked, data.slug)
-                }
-              />
-              <label> {data.name}</label>
+              <label className={styles.label}>
+                <input
+                  type="checkbox"
+                  onChange={(event) =>
+                    handleChangeTwo(event.target.checked, data.slug)
+                  }
+                  className={styles.inputCheck}
+                />
+                {data.name}
+              </label>
             </div>
           ))}
-      </div>
+      </div>{' '}
     </div>
   );
 }

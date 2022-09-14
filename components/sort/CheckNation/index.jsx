@@ -14,10 +14,10 @@ export default function CheckNation({}) {
     { name: 'Jp-JP', slug: 'jp-jp' },
   ];
   const [checked, setChecked] = useState([]);
-  const handleChangeOne = (isChecked) => {
-    if (isChecked) return setChecked(checks.map((data) => data.slug));
-    else setChecked([]);
-  };
+  // const handleChangeOne = (isChecked) => {
+  //   if (isChecked) return setChecked(checks.map((data) => data.slug));
+  //   else setChecked([]);
+  // };
 
   const handleChangeTwo = (isChecked, slug) => {
     const index = checked.indexOf(slug);
@@ -38,14 +38,16 @@ export default function CheckNation({}) {
         {checked &&
           checks.map((data, index) => (
             <div key={index} className={styles.checked}>
-              <input
-                type="checkbox"
-                onChange={(event) =>
-                  handleChangeTwo(event.target.checked, data.slug)
-                }
-                className={styles.inputCheck}
-              />
-              <label> {data.name}</label>
+              <label className={styles.label}>
+                <input
+                  type="checkbox"
+                  onChange={(event) =>
+                    handleChangeTwo(event.target.checked, data.slug)
+                  }
+                  className={styles.inputCheck}
+                />
+                {data.name}
+              </label>
             </div>
           ))}
       </div>{' '}
