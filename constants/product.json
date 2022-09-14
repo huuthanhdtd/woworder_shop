@@ -1,0 +1,62 @@
+[
+  {
+    "data": {
+      "name": "quần lững",
+      "img": "",
+      "color": "vàng",
+      "size": "XL",
+      "price": 12000,
+      "source": "us",
+      "slug": "quan",
+      "id": 1
+    }
+  },
+  {
+    "data": {
+      "name": "áo caro",
+      "img": "",
+      "color": "vàng",
+      "size": "XL",
+      "price": 17000,
+      "source": "us",
+      "slug": "ao",
+      "id": 2
+    }
+  },
+  {
+    "data": {
+      "name": "Giày Puma",
+      "img": "",
+      "color": "vàng",
+      "size": "XL",
+      "price": 18000,
+      "source": "us",
+      "slug": "giay",
+      "id": 3
+    }
+  },
+  {
+    "data": {
+      "name": "Nội y",
+      "img": "",
+      "color": "vàng",
+      "size": "XL",
+      "price": 15000,
+      "source": "us",
+      "slug": "noi-y",
+      "id": 4
+    }
+  },
+  {
+    "data": {
+      "name": "trang sức",
+      "img": "",
+      "color": "vàng",
+      "size": "XL",
+      "price": 10000,
+      "source": "us",
+      "slug": "trang-suc",
+      "id": 5
+    }
+  }
+]

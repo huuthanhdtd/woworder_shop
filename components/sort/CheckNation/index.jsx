@@ -1,24 +1,13 @@
-import { Box, Checkbox, FormControlLabel } from '@material-ui/core';
 import React from 'react';
-import { useState } from 'react';
 import styles from './styles.module.scss';
 
-export default function CheckNation({}) {
+export default function CheckNation({ checked, setChecked }) {
   const checks = [
-    { name: 'UK-GB', slug: 'uk-gb' },
-    { name: 'CN-CN', slug: 'cn-cn' },
-    { name: 'DE-DE', slug: 'de-de' },
-    { name: 'ES-ES', slug: 'ed-es' },
-    { name: 'FR-FR', slug: 'fr-fr' },
-    { name: 'HS-hàng sẵn', slug: 'hs-hang-san' },
-    { name: 'Jp-JP', slug: 'jp-jp' },
+    { name: 'Giày', slug: 'giay' },
+    { name: 'Quần áo', slug: 'quan' },
+    { name: 'Trang sức', slug: 'trang-suc' },
+    { name: 'Nội y', slug: 'noi-y' },
   ];
-  const [checked, setChecked] = useState([]);
-  // const handleChangeOne = (isChecked) => {
-  //   if (isChecked) return setChecked(checks.map((data) => data.slug));
-  //   else setChecked([]);
-  // };
-
   const handleChangeTwo = (isChecked, slug) => {
     const index = checked.indexOf(slug);
 
@@ -33,7 +22,7 @@ export default function CheckNation({}) {
 
   return (
     <div className={styles.checks}>
-      <h2> Quốc gia</h2>
+      <h2> Danh mục</h2>
       <div className={styles.FormControl}>
         {checked &&
           checks.map((data, index) => (

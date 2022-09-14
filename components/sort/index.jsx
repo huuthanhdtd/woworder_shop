@@ -7,20 +7,19 @@ import { BsFunnel } from 'react-icons/bs';
 import SearchPrice from './SearchPrice';
 import FormattedInputs from './SearchPrice';
 
-export default function Checked() {
+export default function Checked({ checked, setChecked }) {
   return (
     <div className={styles.Checks}>
-      <Search />
+      {/* <Search /> */}
       <div className={styles.funnel}>
         <span className={styles.icons}>
           <BsFunnel />
         </span>
         <span className={styles.title}> BỘ LỌC TÌM KIẾM</span>
       </div>
-      <CheckNation />
+      <CheckNation setChecked={setChecked} checked={checked} />
       <CheckWed />
-      {/* <SearchPrice />
-       */}
+      {/* <SearchPrice /> */}
       <FormattedInputs />
     </div>
   );

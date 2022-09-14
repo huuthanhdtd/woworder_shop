@@ -6,7 +6,7 @@ import { orderButton } from '../../constants/commonData';
 import CardProduct from '../CardProduct';
 import styles from './styles.module.scss';
 import SelectList from '../DropDown/DropDown';
-const Products = () => {
+const Products = ({ filteredResize }) => {
   const [isOrder, setOrder] = React.useState(null);
 
   const handleOrder = useCallback((type) => {
@@ -31,9 +31,14 @@ const Products = () => {
         <SelectList />
       </div>
       <Grid container>
-        {Array.from({ length: 20 }).map((it, idx) => (
+        {/* {Array.from({ length: 20 }).map((it, idx) => (
           <Grid key={idx} item lg={3} className={styles.card}>
             <CardProduct />
+          </Grid>
+        ))} */}
+        {filteredResize.map((data, index) => (
+          <Grid key={index} item lg={3} className={styles.card}>
+            <CardProduct data={data} />
           </Grid>
         ))}
       </Grid>

@@ -115,7 +115,7 @@ export default function CheckWed({}) {
                 <Grid container className={styles.GridCheckPosition}>
                   {checked &&
                     checks.map((data, index) => (
-                      <Grid item sm={3} md={3} key={index}>
+                      <Grid item xs={6} sm={6} md={3} key={index}>
                         <label className={styles.label}>
                           <input
                             type="checkbox"

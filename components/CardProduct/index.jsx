@@ -10,7 +10,7 @@ import Infor from './Infor';
 import { useState } from 'react';
 import DeatailInfor from './DetailInfor';
 import { useRouter } from 'next/router';
-function CardProduct() {
+function CardProduct({ data }) {
   const [isDetail, setDetail] = useState(false);
 
   const router = useRouter();
