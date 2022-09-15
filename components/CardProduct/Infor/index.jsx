@@ -8,10 +8,14 @@ function Infor() {
       <h3 className={styles.name}>
         https://img5.thuth uatphanmem.v n/uploads/2021/11/2
       </h3>
-      <span className={styles.fill}>Màu:</span>
-      <span className={styles.fill}>Size:</span>
+      <span className={styles.atb}>
+        Màu: <p className={styles.atbValues}>Đỏ Cam Vàng Lục Lam Chàm Tím</p>
+      </span>
+      <span className={styles.atb}>
+        Size: <p className={styles.atbValues}>Siêu to khổng lồ</p>
+      </span>
 
-      <span className={styles.fill}>
+      <span className={styles.atb} style={{ margin: '5px 0' }}>
         Giá gốc:
         <span className={styles.rating}>4.6</span>
         <span className={styles.from}>UK</span>
@@ -19,15 +23,19 @@ function Infor() {
       </span>
       <span className={styles.price}>
         <span className={styles.price}>
-          190.000 <p>đ</p>{' '}
+          <p className={styles.prevPrice}>300.000</p> 190.000 <p>đ</p>{' '}
         </span>
-        <a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
+        >
           <span className={styles.link}>
             <FaLink className={styles.linkIcon} />
           </span>
         </a>
       </span>
-      <span className={clsx(styles.fill, styles.status)}>
+      <span className={clsx(styles.atb, styles.status)}>
         <span>
           Tồn kho: <span className={styles.qty}>-5</span>
         </span>

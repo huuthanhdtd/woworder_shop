@@ -13,18 +13,26 @@ const lists = [
   'Tổng số chưa về VN',
   'Tồn kho',
 ];
-function DeatailInfor() {
+function DeatailInfor({ isDetail }) {
   return (
-    <div className={styles.infor}>
+    <div
+      className={clsx(styles.infor, {
+        [styles.active]: isDetail,
+      })}
+    >
       <h3 className={styles.name}>
         https://img5.thuth uatphanmem.v n/uploads/2021/11/2
       </h3>
-      <span className={styles.fill}>Màu:</span>
-      <span className={styles.fill}>Size:</span>
+      <span className={styles.atb}>Màu:</span>
+      <span className={styles.atb}>Size:</span>
       <span className={styles.btns}>
         <span className={styles.from}>UK</span>
         <span className={styles.trademark}>ZARA</span>
-        <a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
+        >
           <span className={styles.link}>
             <FaLink className={styles.linkIcon} />
           </span>

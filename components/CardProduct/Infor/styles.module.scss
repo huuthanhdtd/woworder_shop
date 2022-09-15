@@ -1,10 +1,8 @@
 .infor {
   padding: 12px;
   border-top: 1px solid #000;
-  // z-index: 1;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
+  z-index: 1;
+  background-color: #fff;
   .name {
     font-family: 'Roboto';
     font-style: normal;
@@ -15,8 +13,16 @@
     color: #000000;
     margin-bottom: 10px;
     cursor: pointer;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 18px;
+    -webkit-line-clamp: 2;
+    height: 36px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
-  .fill {
+  .atb {
     display: flex;
     flex-direction: row;
     color: #52525b;
@@ -24,6 +30,13 @@
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
+    .atbValues {
+      color: #000;
+      font-size: 13px;
+      margin-left: 20px;
+      margin-bottom: 0;
+    }
+
     .rating {
       margin-left: 15px;
     }
@@ -79,18 +92,27 @@
     align-items: center;
     color: #dc2626;
     justify-content: space-between;
+
+    .prevPrice {
+      color: #52525b;
+      text-decoration: line-through;
+      margin-right: 10px;
+      font-size: 16px;
+    }
     p {
       margin: 0 0 0 5px;
       font-size: 12px;
     }
-    .link {
+    a {
       cursor: pointer;
-      .linkIcon {
-        color: #3b82f6;
-        transition: all 0.25s ease-in-out;
+      .link {
+        .linkIcon {
+          color: #3b82f6;
+          transition: all 0.25s ease-in-out;
 
-        &:hover {
-          transform: scale(1.1);
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
     }
