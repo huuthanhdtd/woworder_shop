@@ -13,7 +13,6 @@ const SelectList = () => {
     setAnchorEl(event.currentTarget);
     setOpen((prev) => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
-    console.log(event);
   };
 
   const handleSelectOrder = () => {};

@@ -46,7 +46,7 @@ const NotFound = ({ category }) => {
   // console.log(category.map((item) => ({ slug: item.attributes.name })));
   return (
     <>
-      <Seo seo={seo} />
+      {/* <Seo seo={seo} /> */}
       <div style={styles.container}>
         <h3 style={styles.desc}>404 | Không tìm thấy trang này.</h3>
         <Link href="/">

@@ -2,31 +2,47 @@ import React from 'react';
 import styles from './styles.module.scss';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { AiFillFire } from 'react-icons/ai';
-import { BsCartPlus } from 'react-icons/bs';
+import { BsCartPlus, BsFacebook } from 'react-icons/bs';
+import { BiLink } from 'react-icons/bi';
 import {
   Button,
   CardMedia,
   Grid,
   TextField,
   Typography,
+  Link,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { colorAndType } from '../../constants/commonData';
-import { useCallback } from 'react';
+import Image from 'next/image';
+// import Link from 'next/link';
+
 const DetailProduct = () => {
   const router = useRouter();
-  const [input, setInput] = React.useState(1);
-  const handleInput = useCallback(
-    (e) => {
+  const [productInfor, setProductInfor] = React.useState({
+    name: '',
+    color: '',
+    size: '',
+    nums: 1,
+  });
+  const handleInput = React.useCallback(
+    (e, prop) => {
       if (e === 'down') {
-        setInput((prev) => prev - 1);
+        setProductInfor((prev) => ({ ...prev, [prop]: prev.nums - 1 }));
       } else if (e === 'up') {
-        setInput((prev) => prev + 1);
+        setProductInfor((prev) => ({ ...prev, [prop]: prev.nums + 1 }));
       }
     },
-    [input]
+    [productInfor.nums]
   );
-  console.log(input);
+
+  const handleColorAndType = React.useCallback(
+    (type, value) => {
+      setProductInfor((prev) => ({ ...prev, [type]: value }));
+    },
+    [productInfor.color, productInfor.size]
+  );
+
   return (
     <div className={styles.root}>
       <TiArrowBackOutline
@@ -72,19 +88,24 @@ const DetailProduct = () => {
               Số lượng:
             </Typography>
             <div className={styles.inputBox}>
-              <Button onClick={() => handleInput('down')}>-</Button>
-              <TextField
-                variant="outlined"
-                className={styles.input}
-                size="small"
-                value={input}
-                defaultValue={1}
-                type="number"
-                hiddenLabel={true}
-              />
-              <Button onClick={() => handleInput('up')}>+</Button>
+              <form action="" autoComplete="off">
+                <Button
+                  onClick={() => handleInput('down', 'nums')}
+                  disabled={productInfor.nums === 1 ? true : false}
+                >
+                  -
+                </Button>
+                <TextField
+                  variant="outlined"
+                  className={styles.input}
+                  size="small"
+                  value={productInfor.nums}
+                  type="number"
+                />
+                <Button onClick={() => handleInput('up', 'nums')}>+</Button>
+              </form>
             </div>
-            <Typography variant="body2">sản phẩm có sẵn</Typography>
+            <Typography variant="body2">25 sản phẩm có sẵn</Typography>
           </div>
           <div className={styles.actions}>
             <Button className={styles.addCart}>
@@ -95,12 +116,27 @@ const DetailProduct = () => {
           </div>
         </Grid>
         <Grid item lg={11} className={styles.share}>
-          <Typography variant="body1">Chia sẻ:</Typography>
+          <Typography variant="body2">Chia sẻ:</Typography>
+          <div className={styles.icons}>
+            <Link href={'/'}>
+              <Image src={'/messenger.svg'} width={30} height={30} />
+            </Link>
+            <Link href={'/'}>
+              <BsFacebook size={25} color="#2563EB" />
+            </Link>
+            <Link href={'/'}>
+              <BiLink className={styles.iconLink} />
+            </Link>
+          </div>
         </Grid>
       </Grid>
-      <div className={styles.detail}>detail</div>
+      <Grid container justifyContent="center" className={styles.detail}>
+        <Grid item lg={11}>
+          <Typography variant="h5">Chi tiết sản phẩm</Typography>
+        </Grid>
+      </Grid>
     </div>
   );
 };
 
-export default DetailProduct;
+export default React.memo(DetailProduct);

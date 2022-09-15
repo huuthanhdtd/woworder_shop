@@ -1,6 +1,5 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
-import ProductsPage from '../../pages/Products';
 import Paginate from '../Pagination';
 import Products from '../Products';
 import Checked from '../Sort';

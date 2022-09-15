@@ -140,3 +140,33 @@ export const colorAndType = [
     ],
   },
 ];
+
+export const navbar = [
+  {
+    name: 'Trang chủ',
+  },
+  {
+    name: 'Hướng dẫn đặt hàng',
+  },
+  {
+    name: 'Quy định đặt hàng',
+  },
+  {
+    name: 'Giới thiệu',
+  },
+  {
+    name: 'Tuyển dụng',
+  },
+];
+
+export const user = [
+  {
+    name: 'Giỏ hàng',
+  },
+  {
+    name: 'Đăng ký',
+  },
+  {
+    name: 'Đăng nhập',
+  },
+];

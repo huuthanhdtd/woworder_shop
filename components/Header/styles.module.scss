@@ -2,17 +2,37 @@
   height: 8vw;
   background-color: var(--primary-color-);
   .container {
-    max-width: 1142px;
+    max-width: 1440px;
     height: inherit;
     margin: auto;
+    padding-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     .logo {
       width: 100px;
       height: 50px;
       background-color: white;
+    }
+    .navbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-evenly;
+      padding-bottom: 10px;
+      .item a {
+        color: white;
+        font-family: 'Mulish';
+      }
+    }
+    .user {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      .item a {
+        color: white;
+        font-size: 14px;
+        font-family: 'Mulish';
+      }
     }
   }
 }
