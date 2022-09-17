@@ -9,9 +9,15 @@
 
 @font-face {
   font-family: 'Mulish';
-  src: local('Mulish'),
-    url('../font/Mulish-VariableFont_wght.ttf') format('ttf');
-  font-weight: bold;
+  src: local('Mulish'), url('../font/Mulish.woff') format('woff');
+  /* font-weight: bold; */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mulish Bold';
+  src: local('Mulish'), url('../font/Mulish-Bold.woff') format('woff');
   font-style: normal;
   font-display: swap;
 }
@@ -35,6 +41,7 @@
 * {
   box-sizing: border-box;
   scroll-margin-top: 60px;
+  margin: 0;
 }
 
 a {
@@ -43,6 +50,8 @@ a {
 
 html {
   scroll-behavior: smooth;
+  font-family: Roboto;
+  font-style: normal;
 }
 h1 {
   font-family: Roboto;

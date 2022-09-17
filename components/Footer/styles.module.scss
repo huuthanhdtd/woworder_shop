@@ -1,28 +1,27 @@
 .wrapper {
-  height: auto;
-  padding: 40px 0 0px;
+  height: 491px;
   background-color: rgba(0, 0, 0, 0);
   .container {
+    max-width: 1920px;
     position: relative;
-    margin: 20px auto 0 auto;
-    max-width: 1142px;
+    display: flex;
+    flex-direction: column;
     background-color: white;
     .copyRight {
+      margin: auto;
+      width: 488px;
+      height: 96px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: 20px;
-      border-top: 0.5px solid rgb(239, 231, 231);
-      padding: 20px 0 20px 0;
       p {
-        color: black;
-      }
-      .barBottom {
-        a {
-          margin: 0 10px;
-          font-weight: 600;
-        }
+        color: #71717a;
+        font-family: 'Mulish';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
       }
     }
   }

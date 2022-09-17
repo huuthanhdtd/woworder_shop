@@ -1,37 +1,198 @@
 .wrapper {
-  height: 8vw;
+  height: 113px;
+  padding-left: 66px;
+  padding-right: 38px;
   background-color: var(--primary-color-);
   .container {
-    max-width: 1440px;
+    max-width: 1920px;
     height: inherit;
-    margin: auto;
-    padding-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .logo {
-      width: 100px;
-      height: 50px;
-      background-color: white;
+      margin-top: 24px;
+      margin-bottom: 13.59px;
+      width: 298.68px;
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
     }
     .navbar {
+      height: 40px;
       display: flex;
-      align-items: flex-end;
-      justify-content: space-evenly;
-      padding-bottom: 10px;
-      .item a {
-        color: white;
-        font-family: 'Mulish';
+      align-items: center;
+      margin-top: 72px;
+      padding: 0px, 10px, 0px, 10px;
+      .item {
+        margin-right: 30px;
+        &:nth-last-child(1) {
+          margin-right: 0px;
+        }
+        a {
+          position: relative;
+          color: white;
+          text-transform: uppercase;
+          font-family: 'Mulish';
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 16px;
+          letter-spacing: 0.2px;
+          display: flex;
+          align-items: center;
+        }
       }
     }
     .user {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between;
-      .item a {
-        color: white;
-        font-size: 14px;
-        font-family: 'Mulish';
+      margin-top: 29px;
+      .item {
+        display: flex;
+        align-items: flex-start;
+        margin-right: 31px;
+        &:nth-last-child(1) {
+          margin-right: 0px;
+        }
+        .iconCart {
+          color: white;
+          font-size: 20px;
+          margin-right: 5px;
+        }
+        a {
+          position: relative;
+          color: white;
+          font-family: 'Mulish';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 16px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          letter-spacing: 0.2px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1665px) {
+  .wrapper {
+    .container {
+      .navbar {
+        .item {
+          margin-right: 20px;
+
+          a {
+            font-size: 18px;
+          }
+        }
+      }
+      .user {
+        .item {
+          margin-right: 21px;
+
+          a {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1560px) {
+  .wrapper {
+    .container {
+      .navbar {
+        .item {
+          a {
+            font-size: 15px;
+          }
+        }
+      }
+      .user {
+        .item {
+          a {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1345px) {
+  .wrapper {
+    .container {
+      .navbar {
+        .item {
+          // margin-right: 10px;
+          a {
+            font-size: 13px;
+          }
+        }
+      }
+      .user {
+        .item {
+          // margin-right: 11px;
+          a {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .wrapper {
+    .container {
+      .logo {
+        width: 218px;
+      }
+      .navbar {
+        .item {
+          // margin-right: 10px;
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+      .user {
+        .item {
+          // margin-right: 11px;
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wrapper {
+    .container {
+      .logo {
+        width: 12vw;
+      }
+      .navbar {
+        .item {
+          // margin-right: 10px;
+          a {
+            font-size: 13px;
+          }
+        }
+      }
+      .user {
+        .item {
+          // margin-right: 11px;
+          a {
+            font-size: 13px;
+          }
+        }
       }
     }
   }

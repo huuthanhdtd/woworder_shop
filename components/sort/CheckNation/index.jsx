@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-export default function CheckNation({ checked, setChecked }) {
+export default function CheckNation({ checked, setChecked, setPage }) {
   const checks = [
     { name: 'Giày', slug: 'giay' },
     { name: 'Quần áo', slug: 'quan' },
@@ -10,6 +10,7 @@ export default function CheckNation({ checked, setChecked }) {
   ];
   const handleChangeTwo = (isChecked, slug) => {
     const index = checked.indexOf(slug);
+    setPage(1);
 
     if (isChecked) return setChecked((state) => [...state, slug]);
 

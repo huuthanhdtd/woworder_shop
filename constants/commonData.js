@@ -56,32 +56,34 @@ export const filterDatas = [
 ];
 
 export const footerData = {
-  paymentData: {
-    payment: 'Hình thức thanh toán',
-    data: [
-      {
-        image: '',
-        title: 'Thanh toán tại nhà',
-        description: 'Thanh toán khi nhận hàng tại nhà hoặc COD',
-      },
-      {
-        image: '',
-        title: 'Thanh toán tiền mặt',
-        description: 'Thanh toán tiền mặt khi mua khi hàng tại shop ',
-      },
-      {
-        image: '',
-        title: 'Internet banking',
-        description: 'Thanh toán bằng chuyển khoản qua ngân hàng',
-      },
+  introduce: {
+    title: 'Giới thiệu Khánh Bùi Order',
+    description:
+      'Happy Mommy được thành lập từ 2006, chuyên cung cấp các mặt hàng cho mẹ và bé chuẩn nội địa các nước, kèm bill, bay air với slogan "MUA LẺ VỚI GIÁ SỈ". Khánh Bùi chuyên tã sữa, thực phẩm chức năng, thức ăn dặm, đồ chơi, đồ dùng gia đình và cho mẹ giá tốt.',
+  },
+  address: {
+    address: '229 Lê Thanh Nghị, quần Hải Châu, Tp. Đà Nẵng',
+    hotline: '(084) 986 779 777',
+    email: 'khanhbui.vn@gmail.com',
+  },
+  support: {
+    title: 'Hỗ trợ khách hàng',
+    items: [
+      { text: 'Giới thiệu' },
+      { text: 'Ưu đãi Happy Mommy Club' },
+      { text: 'Chính sách vận chuyển' },
+      { text: 'Chính sách thanh toán' },
+      { text: 'Chính sách đổi trả' },
+      { text: 'Chính sách bảo mật' },
+      { text: 'Điều khoản dịch vụ' },
+      { text: 'Liên hệ' },
     ],
   },
-  contactData: {
-    contact: 'Liên hệ',
-    address: '229 Lê Thanh Nghị, Đà Nẵng',
-    page: 'https://www.facebook.com/khachbuiorder',
-    facebook: 'https://www.facebook.com/khanhbui102',
-    hotline: '(084) 986 779 777',
+  takecare: {
+    title: 'Chăm sóc khách hàng',
+    phone: '(084) 986 779 777',
+    email: 'khanhbui.vn@gmail.com',
+    connect: 'Kết nối với Khanh Bui',
   },
 };
 

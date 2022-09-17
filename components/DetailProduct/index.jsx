@@ -16,6 +16,9 @@ import { useRouter } from 'next/router';
 import { colorAndType } from '../../constants/commonData';
 import Image from 'next/image';
 // import Link from 'next/link';
+import Hot from '../../assets//image/hot.svg';
+import Label from '../../assets/image/label2.svg';
+import { AttachFile } from '@material-ui/icons';
 
 const DetailProduct = () => {
   const router = useRouter();
@@ -59,30 +62,43 @@ const DetailProduct = () => {
         </Grid>
         <Grid item lg={6}>
           <div className={styles.title}>
-            <Typography variant="body1">
-              <AiFillFire color="#EF4444" size={50} />
+            <Image src={Hot} width={39.75} height={53} className={styles.hot} />
+            <Typography variant="h6">
               Blackmores Celery 3000 Mild Ache Relief 50 Tablets
             </Typography>
           </div>
           <div className={styles.price}>
-            <Typography variant="h6">
+            {/* <Typography variant="h6">
               350.000<span>đ</span>
-            </Typography>
+            </Typography> */}
             <Typography variant="h5">
               190.000<span>đ</span>
             </Typography>
-            <Typography variant="body2">Giảm 40%</Typography>
-          </div>
-          {colorAndType.map((data, idx) => (
-            <div key={idx} className={styles.colorsAndType}>
-              <Typography variant="body2" className={styles.prop}>
-                {data.name}:
-              </Typography>
-              {data.data.map((att, idx) => (
-                <Button key={idx}> {att.attr}</Button>
-              ))}
+            <div className={styles.label}>
+              <Image src={Label} />
+              <Typography variant="body2">Giảm 40%</Typography>
             </div>
-          ))}
+          </div>
+          <div className={styles.colorsAndType}>
+            <Typography variant="body2" className={styles.prop}>
+              {colorAndType[0].name}:
+            </Typography>
+            {colorAndType[0].data.map((att, idx) => (
+              <Typography key={idx} variant="body2">
+                {att.attr}{' '}
+              </Typography>
+            ))}
+          </div>
+          <div className={styles.colorsAndType}>
+            <Typography variant="body2" className={styles.prop}>
+              {colorAndType[1].name}:
+            </Typography>
+            {colorAndType[1].data.map((att, idx) => (
+              <Button key={idx} className={styles.color}>
+                {att.attr}
+              </Button>
+            ))}
+          </div>
           <div className={styles.amount}>
             <Typography variant="body2" className={styles.prop}>
               Số lượng:
