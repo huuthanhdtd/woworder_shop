@@ -50,7 +50,9 @@ export default function Cart({ openCart, setOpenCart }) {
           <span className={styles.total}>125,000nvd</span>
         </div>
         <div className={styles.viewsAll}>
-          <Button>Xem Giỏ hàng</Button>
+          <Button onClick={() => setOpenCart(false)}>
+            <span>Xem Giỏ hàng</span>
+          </Button>
         </div>
       </div>
     </div>

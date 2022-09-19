@@ -52,7 +52,7 @@ export default function Account({ openAccount, setOpenAccount }) {
               <Button>ĐĂNG NHẬP</Button>
             </div>
             <div className={styles.siteAccount}>
-              <div>
+              <div onClick={() => setOpenAccount(false)}>
                 Khách hàng mới?
                 <Link href="/account/register"> Tạo tài khoản</Link>
               </div>

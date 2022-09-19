@@ -16,6 +16,7 @@ import Category from './Category';
 import clsx from 'clsx';
 import Cart from './Cart/Cart';
 import Account from './Account/Account';
+// import HorizontalScroll from 'react-horizontal-scrolling';
 
 const Header = () => {
   const hot = [
