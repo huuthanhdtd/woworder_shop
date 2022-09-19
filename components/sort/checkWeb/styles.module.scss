@@ -120,7 +120,18 @@
         .GridCheckPosition {
           height: 100%;
           overflow-y: scroll;
+          .itemMore {
+            user-select: none;
+            padding: 0 0.3125rem 0.875rem 0;
+            font-size: 0.875rem;
+            font-weight: 400;
+          }
         }
+      }
+      .confirmTitle {
+        padding-top: 1.25rem;
+        display: flex;
+        justify-content: flex-end;
       }
     }
   }

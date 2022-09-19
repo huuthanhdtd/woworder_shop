@@ -1,0 +1,168 @@
+.showNav {
+  position: absolute;
+  width: 244px;
+  height: 100%;
+  left: 0;
+  top: 68px;
+  transform: scale(0);
+  transform-origin: 60px 60px;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+  opacity: 0;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(0 0 0 / 50%);
+  height: auto;
+  .dropUp {
+    position: absolute;
+    top: -18px;
+    left: 21px;
+    svg {
+      height: 30px;
+      width: 30px;
+      color: #fff;
+    }
+  }
+  .containerCategory {
+    .ul_ListCategory {
+      .home {
+        border-bottom: 1px solid #e7e7e7;
+        padding: 15px 12px 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .iconHome,
+        .close {
+          svg {
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+          }
+        }
+      }
+      color: #000;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      .li_ListCategory {
+        padding: 15px 12px 5px;
+        text-align: left;
+        color: #333333;
+        .nameDrop {
+          font-size: 13px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-weight: 700;
+          text-transform: uppercase;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          a {
+            color: #333333;
+          }
+          // .iconDrop {
+          //   .drop_Down_Up {
+          //     transition: all 0.3s ease-in-out;
+          //     transform: rotate(180deg);
+          //     svg {
+          //       width: 30px;
+          //       height: 30px;
+          //     }
+          //   }
+          //   .drop_Down_Up.active {
+          //     transition: all 0.3s ease-in-out;
+          //     transform: rotate(0deg);
+          //   }
+          // }
+        }
+        // .Ul_item {
+        //   position: initial;
+        //   top: initial;
+        //   left: initial;
+        //   transform: initial;
+        //   opacity: 1;
+        //   pointer-events: auto;
+        //   width: 100%;
+        //   padding: 0;
+        //   overflow-x: hidden;
+        //   overflow-y: hidden;
+        //   margin: 0;
+        //   transition: all 0.3s ease-in-out;
+        //   .li_item {
+        //     padding: 5px 10px;
+        //   }
+        // }
+      }
+    }
+  }
+}
+.showNav.active {
+  background-color: #ffffff;
+  color: #000;
+  width: 244px;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+  top: 68px;
+  left: 0px;
+  position: absolute;
+  border-radius: 0.125rem;
+  z-index: 10;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(0 0 0 / 50%);
+  height: auto;
+  .containerCategory {
+    .ul_ListCategory {
+      color: #000;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      .li_ListCategory {
+        padding: 0 10px;
+        text-align: left;
+        .nameDrop {
+          // padding: 5px 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .iconDrop {
+            .drop_Down_Up {
+              transition: all 0.3s ease-in-out;
+              transform: rotate(180deg);
+              svg {
+                width: 30px;
+                height: 30px;
+              }
+            }
+            .drop_Down_Up.active {
+              transition: all 0.3s ease-in-out;
+              transform: rotate(0deg);
+            }
+          }
+        }
+        // .Ul_item {
+        //   position: initial;
+        //   top: initial;
+        //   left: initial;
+        //   transform: initial;
+        //   opacity: 1;
+        //   pointer-events: auto;
+        //   width: 100%;
+        //   padding: 0;
+        //   overflow-x: hidden;
+        //   overflow-y: hidden;
+        //   margin: 0;
+        //   transition: all 0.3s ease-in-out;
+        //   .li_item {
+        //     padding: 5px 10px;
+        //   }
+        // }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .showNav {
+    width: 100%;
+  }
+  .showNav.active {
+    width: 100%;
+  }
+}
