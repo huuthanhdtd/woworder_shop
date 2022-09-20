@@ -1,0 +1,48 @@
+.boxOrder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #edebe9;
+  margin-bottom: 20px;
+  padding-right: 19px;
+  .orderBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 15px 0 15px 40px;
+    h6,
+    .button {
+      color: black;
+      margin-right: 15px;
+      font-size: 16px;
+    }
+
+    .button {
+      padding: 10px 30px;
+      font-weight: bold;
+      text-transform: none;
+      background-color: white;
+    }
+    .active {
+      color: white;
+      background-color: var(--primary-color-);
+    }
+  }
+  .selectPage {
+    display: flex;
+    align-items: center;
+    p {
+      margin-right: 15px;
+    }
+    .button {
+      background-color: white;
+      border: 1px solid #c4c4c4;
+      border-radius: 0;
+      height: 32px;
+      min-width: 32px;
+    }
+  }
+}

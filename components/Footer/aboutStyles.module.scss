@@ -53,6 +53,12 @@ $gray: #626262;
         margin-right: 8px;
       }
     }
+    .link:hover {
+      color: #1b8775;
+      .dot {
+        color: #1b8775;
+      }
+    }
     .socialMedia {
       width: 42%;
       display: flex;

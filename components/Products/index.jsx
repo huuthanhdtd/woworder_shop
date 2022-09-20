@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 import SelectList from '../DropDown/DropDown';
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri';
 
-const Products = ({ filteredResize, page, perPage, checked }) => {
+const Products = ({ filteredResize, page, perPage, checked, setPage }) => {
   const [isOrder, setOrder] = React.useState(null);
 
   const handleOrder = useCallback((type) => {
@@ -19,6 +19,14 @@ const Products = ({ filteredResize, page, perPage, checked }) => {
     return filteredResize?.slice(0 + perPage * (page - 1), perPage * page);
   }, [page, checked.length]);
 
+  const handleChangePage = React.useCallback((e) => {
+    if (e === 'prev') {
+      setPage((prev) => prev - 1);
+    } else if (e === 'next') {
+      setPage((prev) => prev + 1);
+    }
+  }, []);
+  const totalPage = Math.ceil(filteredResize.length / perPage);
   return (
     <div className={styles.wrapper}>
       <div className={styles.boxOrder}>
@@ -38,11 +46,21 @@ const Products = ({ filteredResize, page, perPage, checked }) => {
           <SelectList />
         </div>
         <div className={styles.selectPage}>
-          <Typography variant="body2">1/{filteredResize.length}</Typography>
-          <Button className={styles.button}>
+          <Typography variant="body2">
+            {page}/{totalPage}
+          </Typography>
+          <Button
+            disabled={page === 1 ? true : false}
+            className={styles.button}
+            onClick={() => handleChangePage('prev')}
+          >
             <RiArrowLeftSLine size={20} />
           </Button>
-          <Button className={styles.button}>
+          <Button
+            disabled={page === totalPage ? true : false}
+            className={styles.button}
+            onClick={() => handleChangePage('next')}
+          >
             <RiArrowRightSLine size={20} />
           </Button>
         </div>

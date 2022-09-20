@@ -99,6 +99,18 @@ export const orderButton = [
   },
 ];
 
+export const sortBarHome = [
+  {
+    name: 'Được yêu thích',
+  },
+  {
+    name: 'Mới về',
+  },
+  {
+    name: 'Bán chạy',
+  },
+];
+
 export const orderPrice = [
   {
     name: 'Từ thấp đến cao.',

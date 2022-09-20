@@ -2,28 +2,30 @@ import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.scss';
 import { FaLink } from 'react-icons/fa';
+import { BsBagPlus } from 'react-icons/bs';
+import { Button, Typography } from '@material-ui/core';
 function Infor() {
   return (
     <div className={styles.infor}>
-      <h3 className={styles.name}>
-        https://img5.thuth uatphanmem.v n/uploads/2021/11/2
-      </h3>
+      <Typography variant="h3" className={styles.name}>
+        Blackmores Celery 3000mg Mild Ache Relief 50 Tablets
+      </Typography>
       <span className={styles.atb}>
-        Màu: <p className={styles.atbValues}>Đỏ Cam Vàng Lục Lam Chàm Tím</p>
+        Màu: <p className={styles.atbValues}>Dusty rose/Unicorns</p>
       </span>
       <span className={styles.atb}>
-        Size: <p className={styles.atbValues}>Siêu to khổng lồ</p>
+        Size: <p className={styles.atbValues}> XS/S/M/L/XL/XXL</p>
       </span>
 
       <span className={styles.atb} style={{ margin: '5px 0' }}>
         Giá gốc:
         <span className={styles.rating}>4.6</span>
-        <span className={styles.from}>UK</span>
+        {/* <span className={styles.from}>UK</span> */}
         <span className={styles.trademark}>ZARA</span>
       </span>
       <span className={styles.price}>
-        <span className={styles.price}>
-          <p className={styles.prevPrice}>300.000</p> 190.000 <p>đ</p>{' '}
+        <span className={styles.prevPrice}>
+          190.000 <small>đ</small>
         </span>
         <a
           target="_blank"
@@ -35,14 +37,14 @@ function Infor() {
           </span>
         </a>
       </span>
-      <span className={clsx(styles.atb, styles.status)}>
-        <span>
-          Tồn kho: <span className={styles.qty}>-5</span>
-        </span>
-        <span>
-          Đã bán: <span className={styles.qty}>20</span>
-        </span>
-      </span>
+      <div className={styles.boxButton}>
+        <Button className={styles.button}>
+          <span className={styles.iconAdd}>
+            <BsBagPlus size={14} />
+          </span>
+          <span className={styles.label}>Chọn mua</span>
+        </Button>
+      </div>
     </div>
   );
 }

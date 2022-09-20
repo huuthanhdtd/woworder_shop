@@ -1,9 +1,4 @@
 import React from 'react';
-import styles from './styles.module.scss';
-import { TiArrowBackOutline } from 'react-icons/ti';
-import { AiFillFire } from 'react-icons/ai';
-import { BsCartPlus, BsFacebook } from 'react-icons/bs';
-import { BiLink } from 'react-icons/bi';
 import {
   Button,
   CardMedia,
@@ -13,39 +8,49 @@ import {
   Link,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import { BiLink } from 'react-icons/bi';
+import { TiArrowBackOutline } from 'react-icons/ti';
+import { BsCartPlus, BsFacebook } from 'react-icons/bs';
 import { colorAndType } from '../../constants/commonData';
+import styles from './styles.module.scss';
 import Image from 'next/image';
-// import Link from 'next/link';
 import Hot from '../../assets//image/hot.svg';
 import Label from '../../assets/image/label2.svg';
-import { AttachFile } from '@material-ui/icons';
+import Messenger from '../../assets/image/messenger.svg';
+import clsx from 'clsx';
 
 const DetailProduct = () => {
   const router = useRouter();
   const [productInfor, setProductInfor] = React.useState({
-    name: '',
-    color: '',
+    name: 'Jacket Jean',
+    color: 'Dusty rose/unicorns',
     size: '',
-    nums: 1,
+    qty: 1,
   });
   const handleInput = React.useCallback(
     (e, prop) => {
       if (e === 'down') {
-        setProductInfor((prev) => ({ ...prev, [prop]: prev.nums - 1 }));
+        setProductInfor((prev) => ({ ...prev, [prop]: prev.qty - 1 }));
       } else if (e === 'up') {
-        setProductInfor((prev) => ({ ...prev, [prop]: prev.nums + 1 }));
+        setProductInfor((prev) => ({ ...prev, [prop]: prev.qty + 1 }));
       }
     },
-    [productInfor.nums]
+    [productInfor.qty]
   );
 
-  const handleColorAndType = React.useCallback(
-    (type, value) => {
-      setProductInfor((prev) => ({ ...prev, [type]: value }));
+  const handleSize = React.useCallback(
+    (value) => {
+      setProductInfor((prev) => ({ ...prev, size: value }));
     },
-    [productInfor.color, productInfor.size]
+    [, productInfor.size]
   );
 
+  const handleAddCart = React.useCallback(() => {
+    if (productInfor.size && productInfor.qty !== '') {
+      console.log('add to store');
+    }
+  }, [productInfor.size, productInfor.qty]);
+  // console.log(productInfor);
   return (
     <div className={styles.root}>
       <TiArrowBackOutline
@@ -62,7 +67,9 @@ const DetailProduct = () => {
         </Grid>
         <Grid item lg={6}>
           <div className={styles.title}>
-            <Image src={Hot} width={39.75} height={53} className={styles.hot} />
+            <div className={styles.hot}>
+              <Image src={Hot} width={39.75} height={53} />
+            </div>
             <Typography variant="h6">
               Blackmores Celery 3000 Mild Ache Relief 50 Tablets
             </Typography>
@@ -85,7 +92,8 @@ const DetailProduct = () => {
             </Typography>
             {colorAndType[0].data.map((att, idx) => (
               <Typography key={idx} variant="body2">
-                {att.attr}{' '}
+                {att.attr}
+                {idx + 1 === colorAndType[0].data.length ? '' : '/'}
               </Typography>
             ))}
           </div>
@@ -94,7 +102,13 @@ const DetailProduct = () => {
               {colorAndType[1].name}:
             </Typography>
             {colorAndType[1].data.map((att, idx) => (
-              <Button key={idx} className={styles.color}>
+              <Button
+                key={idx}
+                className={clsx(styles.color, {
+                  [styles.active]: productInfor.size === att.attr,
+                })}
+                onClick={() => handleSize(att.attr)}
+              >
                 {att.attr}
               </Button>
             ))}
@@ -106,8 +120,8 @@ const DetailProduct = () => {
             <div className={styles.inputBox}>
               <form action="" autoComplete="off">
                 <Button
-                  onClick={() => handleInput('down', 'nums')}
-                  disabled={productInfor.nums === 1 ? true : false}
+                  onClick={() => handleInput('down', 'qty')}
+                  disabled={productInfor.qty === 1 ? true : false}
                 >
                   -
                 </Button>
@@ -115,17 +129,17 @@ const DetailProduct = () => {
                   variant="outlined"
                   className={styles.input}
                   size="small"
-                  value={productInfor.nums}
+                  value={productInfor.qty}
                   type="number"
                 />
-                <Button onClick={() => handleInput('up', 'nums')}>+</Button>
+                <Button onClick={() => handleInput('up', 'qty')}>+</Button>
               </form>
             </div>
             <Typography variant="body2">25 sản phẩm có sẵn</Typography>
           </div>
           <div className={styles.actions}>
-            <Button className={styles.addCart}>
-              <BsCartPlus />
+            <Button className={styles.addCart} onClick={handleAddCart}>
+              <BsCartPlus size={20} style={{ marginRight: 2 }} />
               Thêm vào giỏ hàng
             </Button>
             <Button className={styles.buyNow}>Mua ngay</Button>
@@ -135,7 +149,7 @@ const DetailProduct = () => {
           <Typography variant="body2">Chia sẻ:</Typography>
           <div className={styles.icons}>
             <Link href={'/'}>
-              <Image src={'/messenger.svg'} width={30} height={30} />
+              <Image src={Messenger} width={30} height={30} />
             </Link>
             <Link href={'/'}>
               <BsFacebook size={25} color="#2563EB" />

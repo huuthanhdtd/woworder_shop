@@ -44,7 +44,7 @@ const About = () => {
                 <Typography variant="h6">{support.title}</Typography>
                 {support.items.map((it, idx) => (
                   <Link href="/" key={idx}>
-                    <Typography variant="body2">
+                    <Typography variant="body2" className={styles.link}>
                       <GoPrimitiveDot className={styles.dot} />
                       {it.text}
                     </Typography>

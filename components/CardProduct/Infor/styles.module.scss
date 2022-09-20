@@ -1,48 +1,38 @@
 .infor {
   padding: 12px;
-  border-top: 1px solid #000;
   z-index: 1;
   background-color: #fff;
   .name {
-    font-family: 'Roboto';
+    font-family: 'Mulish';
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 14px;
     letter-spacing: 0.2px;
     color: #000000;
-    margin-bottom: 10px;
     cursor: pointer;
-
     overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 18px;
-    -webkit-line-clamp: 2;
-    height: 36px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
   }
   .atb {
     display: flex;
     flex-direction: row;
     color: #52525b;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     .atbValues {
       color: #000;
-      font-size: 13px;
       margin-left: 20px;
       margin-bottom: 0;
+      font-family: 'Roboto', sans-serif;
     }
-
     .rating {
       margin-left: 15px;
     }
     .from {
       padding: 2px 5px;
-      font-family: 'Roboto';
+      font-family: 'Roboto', sans-serif;
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -61,29 +51,21 @@
       margin-left: 15px;
       background: #e4e4e7;
       border-radius: 5px;
-      font-family: 'Roboto';
+      font-family: 'Roboto', sans-serif;
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
       line-height: 128.91%;
-      /* identical to box height, or 15px */
-
       display: flex;
       align-items: center;
       text-align: center;
-
       color: #3f3f46;
     }
-    .qty {
-      margin: 0 0 0 8px;
-    }
   }
-  .status {
-    justify-content: space-between;
-  }
+
   .price {
     margin: 5px 0;
-    font-family: 'Roboto';
+    font-family: 'Quick Sand';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -92,12 +74,10 @@
     align-items: center;
     color: #dc2626;
     justify-content: space-between;
-
     .prevPrice {
-      color: #52525b;
-      text-decoration: line-through;
+      color: #dc2626;
       margin-right: 10px;
-      font-size: 16px;
+      font-size: 14px;
     }
     p {
       margin: 0 0 0 5px;
@@ -113,6 +93,51 @@
           &:hover {
             transform: scale(1.1);
           }
+        }
+      }
+    }
+  }
+  .boxButton {
+    .button {
+      width: 196px;
+      height: 28px;
+      border-radius: 5px;
+      border: 1px solid #108775;
+      font-family: 'Quick Sand';
+      font-weight: 600;
+      overflow: hidden;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      z-index: 0;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 100%;
+        background: var(--primary-color-);
+        transition: 0.3s ease-in;
+        z-index: -1;
+      }
+      .iconAdd {
+        margin-right: 5px;
+        color: var(--primary-color-);
+        z-index: 0;
+      }
+      .label {
+        color: var(--primary-color-);
+        z-index: 0;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+          left: 0;
+        }
+        .iconAdd,
+        .label {
+          color: white;
         }
       }
     }

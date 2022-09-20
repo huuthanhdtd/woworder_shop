@@ -10,12 +10,15 @@ import Infor from './Infor';
 import { useState } from 'react';
 import DeatailInfor from './DetailInfor';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import Hot from '../../assets/image/hot.svg';
+
 function CardProduct({ data }) {
   const [isDetail, setDetail] = useState(false);
 
   const router = useRouter();
   const handleDetailProduct = () => {
-    router.push('/detail-product/1');
+    // router.push('/detail-product/1');
   };
   return (
     <div className={styles.all}>
@@ -34,20 +37,18 @@ function CardProduct({ data }) {
         </span>
       </div>
       <span className={styles.hot}>
-        <AiFillFire className={styles.hotIcon} />
-        <p>Hot</p>
+        <Image src={Hot} width={29.25} height={39} />
       </span>
-      <span className={styles.option} onClick={() => setDetail(!isDetail)}>
+      {/* <span className={styles.option} onClick={() => setDetail(!isDetail)}>
         {isDetail ? (
           <RiCloseCircleLine className={styles.optionIcon} />
         ) : (
           <HiOutlineDotsCircleHorizontal className={styles.optionIcon} />
         )}
-      </span>
+      </span> */}
       <div style={{ position: 'relative' }}>
         <Infor isDetail={isDetail} />
         <DeatailInfor isDetail={isDetail} />
-        {/* {!isDetail ? <Infor /> : <DeatailInfor />} */}
       </div>
     </div>
   );
