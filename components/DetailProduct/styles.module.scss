@@ -1,6 +1,7 @@
 .root {
   background-color: #fff;
   padding: 10px 0 30px;
+  margin-top: 150px;
   .prop {
     width: 100px;
   }
@@ -9,14 +10,14 @@
     color: white;
   }
   .selectModel {
-    max-width: 1140px;
+    max-width: 1200px;
     margin: auto;
     background-color: white;
     border-radius: 5px;
     border: 1px solid #ebebed;
     .image {
-      height: 30vw;
-      width: 300px;
+      height: 400px;
+      width: 250px;
     }
     .title {
       display: flex;
@@ -161,7 +162,7 @@
     }
   }
   .detail {
-    max-width: 1140px;
+    max-width: 1200px;
     margin: auto;
     margin-top: 30px;
     background-color: white;
@@ -169,14 +170,117 @@
     padding: 20px 0px;
     border: 1px solid #ebebed;
     h5 {
-      font-weight: bold;
+      font-family: 'Mulish M';
       text-transform: uppercase;
     }
   }
-  .relative {
-    max-width: 1140px;
-    margin: auto;
-    margin-top: 20px;
-    border: 1px solid #ebebed;
+}
+
+@media screen and(max-width: 1280px) {
+  .root {
+    .selectModel {
+      border: none;
+      .image {
+        margin: auto;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 780px) {
+  .root {
+    .selectModel {
+      .title {
+        h6 {
+          text-indent: 40px;
+          font-size: 20px;
+        }
+      }
+      .price {
+        // h6 {
+        //   color: gray;
+        //   text-decoration: line-through;
+        //   margin-right: 10px;
+        //   font-size: 20px;
+        //   font-weight: bold;
+        //   span {
+        //     font-size: 15px;
+        //   }
+        // }
+        h5 {
+          color: #dc2626;
+          font-weight: bold;
+          margin-right: 20px;
+          font-size: 30px;
+          font-family: 'Quick Sand Bold';
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .root {
+    margin-top: 200px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .root {
+    .prop {
+      width: auto;
+      margin-right: 10px;
+    }
+    .selectModel {
+      .amount {
+        .inputBox {
+          margin-right: 10px;
+
+          .input div {
+            input {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          button {
+            min-width: 25px;
+            height: 30px;
+          }
+        }
+        .description {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .root {
+    .prop {
+      font-size: 12px;
+    }
+    .selectModel {
+      .colorsAndType {
+        .color {
+          height: 30px;
+          min-width: 30px;
+          font-size: 10px;
+        }
+      }
+      .amount {
+        .description {
+          font-size: 10px;
+        }
+      }
+      .actions {
+        .addCart {
+          padding: 2px;
+          margin-right: 5px;
+        }
+        .buyNow {
+          padding: 2px;
+        }
+      }
+    }
   }
 }

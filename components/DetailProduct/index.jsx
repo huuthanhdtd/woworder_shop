@@ -55,13 +55,13 @@ const DetailProduct = () => {
   return (
     <div className={styles.root}>
       <Grid container className={styles.selectModel} justifyContent="center">
-        <Grid item lg={4}>
+        <Grid item lg={4} md={9} sm={9} xs={11}>
           <CardMedia
             className={styles.image}
             image="https://img5.thuthuatphanmem.vn/uploads/2021/11/22/hinh-anh-songoku-cap-cuoi-dep_101021714.png"
           />
         </Grid>
-        <Grid item lg={6}>
+        <Grid item lg={6} md={9} sm={9} xs={11}>
           <div className={styles.title}>
             <div className={styles.hot}>
               <Image src={Hot} width={39.75} height={53} />
@@ -131,7 +131,9 @@ const DetailProduct = () => {
                 <Button onClick={() => handleInput('up', 'qty')}>+</Button>
               </form>
             </div>
-            <Typography variant="body2">25 sản phẩm có sẵn</Typography>
+            <Typography variant="body2" className={styles.description}>
+              25 sản phẩm có sẵn
+            </Typography>
           </div>
           <div className={styles.actions}>
             <Button className={styles.addCart} onClick={handleAddCart}>
@@ -141,7 +143,7 @@ const DetailProduct = () => {
             <Button className={styles.buyNow}>Mua ngay</Button>
           </div>
         </Grid>
-        <Grid item lg={11} className={styles.share}>
+        <Grid item lg={11} md={9} sm={9} xs={11} className={styles.share}>
           <Typography variant="body2">Chia sẻ:</Typography>
           <div className={styles.icons}>
             <Link href={'/'}>
@@ -161,16 +163,10 @@ const DetailProduct = () => {
           <Typography variant="h5">Chi tiết sản phẩm</Typography>
         </Grid>
       </Grid>
-      <Grid container justifyContent="center" className={styles.relative}>
-        <Grid item lg={11}>
-          <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} />
-        </Grid>
-      </Grid>
-      <Grid container justifyContent="center" className={styles.relative}>
-        <Grid item lg={11}>
-          <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} />
-        </Grid>
-      </Grid>
+
+      <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} />
+
+      <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} />
     </div>
   );
 };

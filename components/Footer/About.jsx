@@ -44,7 +44,7 @@ const About = () => {
                 })}
                 onClick={() => setExpIntro(!expIntro)}
               />
-              <Grid item lg={5} md={5} sm={6} xs={6} className={styles.box}>
+              <Grid item lg={5} md={5} sm={6} xs={12} className={styles.box}>
                 <Typography variant="h6">{introduce.title}</Typography>
                 <div
                   className={clsx(styles.content, {
@@ -56,8 +56,10 @@ const About = () => {
                   </Typography>
                 </div>
               </Grid>
-              <Grid item lg={5} md={5} sm={6} xs={6} className={styles.box}>
-                <Typography variant="h6"> </Typography>
+              <Grid item lg={5} md={5} sm={6} xs={12} className={styles.box}>
+                <Typography variant="h6" className={styles.titleEmpty}>
+                  {' '}
+                </Typography>
                 <div
                   className={clsx(styles.content, {
                     [styles.close]: !expIntro,

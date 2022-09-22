@@ -45,10 +45,10 @@ $gray: #626262;
       font-family: 'Mulish Bold';
       font-size: 18px;
       color: #1b8775;
+      line-height: 1.2rem;
     }
     p {
-      font-weight: bold;
-      font-family: 'Mulish';
+      font-family: 'Mulish M';
       font-size: 14px;
       margin: 5px 0;
       padding-right: 20px;
@@ -101,12 +101,40 @@ $gray: #626262;
 
 @media screen and (min-width: 0px) {
   .root {
+    padding-top: 0;
     .expandIcon {
       display: block;
       right: 2%;
     }
+    .box {
+      .titleEmpty {
+        height: 0;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
   }
 }
+
+@media screen and (min-width: 600px) {
+  .root {
+    padding-top: 0;
+    .expandIcon {
+      display: block;
+      right: 2%;
+    }
+    .box {
+      .titleEmpty {
+        height: 45px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 960px) {
   .root {
     .expandIcon {
