@@ -60,12 +60,38 @@ const SlideProduct = ({ title }) => {
   const settings = {
     className: 'center',
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: 5,
     centerMode: true,
     centerPadding: '0px',
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1140,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+    ],
   };
   return (
     <div className={styles.wrapper}>

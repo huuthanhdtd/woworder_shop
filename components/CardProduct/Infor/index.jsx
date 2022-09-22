@@ -3,8 +3,20 @@ import React from 'react';
 import styles from './styles.module.scss';
 import { FaLink } from 'react-icons/fa';
 import { BsBagPlus } from 'react-icons/bs';
-import { Button, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 function Infor() {
+  const [isBuy, setIsBuy] = React.useState(false);
+
+  const [qtyValue, setQtyValue] = React.useState(1);
+
+  const handleSetQtyValue = React.useCallback((type) => {
+    if (type === 'up') {
+      setQtyValue((prev) => prev + 1);
+    }
+    if (type === 'down') {
+      setQtyValue((prev) => prev - 1);
+    }
+  }, []);
   return (
     <div className={styles.infor}>
       <Typography variant="h3" className={styles.name}>
@@ -37,13 +49,47 @@ function Infor() {
           </span>
         </a>
       </span>
-      <div className={styles.boxButton}>
-        <Button className={styles.button}>
-          <span className={styles.iconAdd}>
-            <BsBagPlus size={14} />
-          </span>
-          <span className={styles.label}>Chọn mua</span>
-        </Button>
+      <div className={styles.btnBuy}>
+        <div
+          className={clsx(styles.qtyInput, {
+            [styles.active]: isBuy,
+          })}
+        >
+          <Button
+            className={styles.qtyPress}
+            disabled={qtyValue === 1 ? true : false}
+            onClick={() => handleSetQtyValue('down')}
+          >
+            -
+          </Button>
+          <TextField
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+              readOnly: true,
+            }}
+            value={qtyValue}
+            focused={false}
+          />
+          <Button
+            className={styles.qtyPress}
+            onClick={() => handleSetQtyValue('up')}
+          >
+            +
+          </Button>
+        </div>
+        <div
+          className={clsx(styles.boxButton, {
+            [styles.close]: isBuy,
+          })}
+        >
+          <Button className={styles.button} onClick={() => setIsBuy(true)}>
+            <span className={styles.iconAdd}>
+              <BsBagPlus />
+            </span>
+            <span className={styles.label}>Chọn mua</span>
+          </Button>
+        </div>
       </div>
     </div>
   );

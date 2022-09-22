@@ -18,7 +18,7 @@ function CardProduct({ data }) {
 
   const router = useRouter();
   const handleDetailProduct = () => {
-    // router.push('/detail-product/1');
+    router.push('/product/1');
   };
   return (
     <div className={styles.all}>

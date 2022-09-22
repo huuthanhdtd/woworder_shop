@@ -18,6 +18,7 @@ import Hot from '../../assets//image/hot.svg';
 import Label from '../../assets/image/label2.svg';
 import Messenger from '../../assets/image/messenger.svg';
 import clsx from 'clsx';
+import RelativeProduct from './RelativeProduct';
 
 const DetailProduct = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const DetailProduct = () => {
     size: '',
     qty: 1,
   });
+
   const handleInput = React.useCallback(
     (e, prop) => {
       if (e === 'down') {
@@ -50,14 +52,8 @@ const DetailProduct = () => {
       console.log('add to store');
     }
   }, [productInfor.size, productInfor.qty]);
-  // console.log(productInfor);
   return (
     <div className={styles.root}>
-      <TiArrowBackOutline
-        size={40}
-        color="black"
-        onClick={() => router.push('/')}
-      />
       <Grid container className={styles.selectModel} justifyContent="center">
         <Grid item lg={4}>
           <CardMedia
@@ -79,7 +75,7 @@ const DetailProduct = () => {
               350.000<span>đ</span>
             </Typography> */}
             <Typography variant="h5">
-              190.000<span>đ</span>
+              190.000<small> đ</small>
             </Typography>
             <div className={styles.label}>
               <Image src={Label} />
@@ -163,6 +159,16 @@ const DetailProduct = () => {
       <Grid container justifyContent="center" className={styles.detail}>
         <Grid item lg={11}>
           <Typography variant="h5">Chi tiết sản phẩm</Typography>
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="center" className={styles.relative}>
+        <Grid item lg={11}>
+          <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} />
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="center" className={styles.relative}>
+        <Grid item lg={11}>
+          <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} />
         </Grid>
       </Grid>
     </div>

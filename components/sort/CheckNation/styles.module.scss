@@ -1,9 +1,11 @@
 .checks {
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  max-width: 236px;
   h2 {
-    font-weight: 500;
-    font-size: 1.3rem;
+    font-family: 'Mulish M';
+    font-style: normal;
+    font-size: 20px;
     margin: 0;
     color: #000;
   }
@@ -14,7 +16,13 @@
       padding: 5px 0;
       .label {
         cursor: pointer;
-        font-size: 0.9rem;
+        font-family: 'Helvetica Neue';
+        color: #71717a;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
         .inputCheck {
           width: 0.9rem;
           height: 0.9rem;

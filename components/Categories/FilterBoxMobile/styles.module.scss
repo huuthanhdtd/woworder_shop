@@ -1,0 +1,46 @@
+.wrapper {
+  z-index: 3;
+  height: auto;
+  width: 60vw;
+  left: 20px;
+  border-radius: 5px;
+  position: absolute;
+  transform-origin: 0% -5%;
+  background-color: white;
+  transition: all 0.3s ease-in;
+  box-shadow: 0px 2px 5px 0.5px var(--primary-color-);
+  transform: scale(1, 0) translateY(-5%);
+  overflow-y: scroll;
+  padding: 20px;
+  .content {
+    display: flex;
+    justify-content: space-around;
+    .title {
+      font-family: 'Mulish M';
+      font-size: 16px;
+    }
+    .checked {
+      padding: 5px 0;
+      .label {
+        cursor: pointer;
+        font-family: 'Helvetica Neue';
+        color: #71717a;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        .inputCheck {
+          width: 0.9rem;
+          height: 0.9rem;
+          margin-right: 0.625rem;
+        }
+      }
+    }
+  }
+  .buttons {
+  }
+}
+.active {
+  transform: scale(1, 1) translateY(-5%);
+}

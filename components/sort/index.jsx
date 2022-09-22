@@ -13,7 +13,7 @@ export default function Checked({ checked, setChecked, setPage }) {
       {/* <Search /> */}
       <div className={styles.funnel}>
         <span className={styles.icons}>
-          <BsFunnel />
+          <BsFunnel size={19} />
         </span>
         <span className={styles.title}> BỘ LỌC TÌM KIẾM</span>
       </div>
@@ -22,7 +22,7 @@ export default function Checked({ checked, setChecked, setPage }) {
         checked={checked}
         setPage={setPage}
       />
-      <CheckWed />
+      {/* <CheckWed /> */}
       {/* <SearchPrice /> */}
       <FormattedInputs />
     </div>

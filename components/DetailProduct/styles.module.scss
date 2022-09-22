@@ -1,5 +1,5 @@
 .root {
-  background-color: var(--background-primary-);
+  background-color: #fff;
   padding: 10px 0 30px;
   .prop {
     width: 100px;
@@ -13,6 +13,7 @@
     margin: auto;
     background-color: white;
     border-radius: 5px;
+    border: 1px solid #ebebed;
     .image {
       height: 30vw;
       width: 300px;
@@ -25,8 +26,7 @@
         text-indent: 40px;
         font-size: 25px;
         color: black;
-        font-family: 'Mulish';
-        font-weight: bold;
+        font-family: 'Mulish M';
       }
       .hot {
         position: absolute;
@@ -53,10 +53,7 @@
         font-weight: bold;
         margin-right: 20px;
         font-size: 40px;
-        font-family: 'Mulish Bold';
-        span {
-          font-size: 20px;
-        }
+        font-family: 'Quick Sand Bold';
       }
       .label {
         position: relative;
@@ -170,9 +167,16 @@
     background-color: white;
     border-radius: 5px;
     padding: 20px 0px;
+    border: 1px solid #ebebed;
     h5 {
       font-weight: bold;
       text-transform: uppercase;
     }
+  }
+  .relative {
+    max-width: 1140px;
+    margin: auto;
+    margin-top: 20px;
+    border: 1px solid #ebebed;
   }
 }

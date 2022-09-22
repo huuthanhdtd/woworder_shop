@@ -1,10 +1,20 @@
 $gray: #626262;
 .root {
-  max-width: 1174px;
-  height: 367px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 28px;
   padding-top: 40px;
+  .expandIcon {
+    color: var(--primary-color-);
+    font-size: 25px;
+    position: absolute;
+    right: 40px;
+    transition: all 0.5s ease;
+    display: none;
+  }
+  .rotate {
+    transform: rotate(180deg);
+  }
   .box {
     display: flex;
     flex-direction: column;
@@ -41,6 +51,8 @@ $gray: #626262;
       font-family: 'Mulish';
       font-size: 14px;
       margin: 5px 0;
+      padding-right: 20px;
+      text-align: justify;
       color: $gray;
       span {
         font-weight: bold;
@@ -60,7 +72,7 @@ $gray: #626262;
       }
     }
     .socialMedia {
-      width: 42%;
+      width: 100px;
       display: flex;
       justify-content: space-between;
       .icon {
@@ -73,6 +85,32 @@ $gray: #626262;
         border-radius: 4px;
         color: black;
       }
+    }
+    .content {
+      height: 100%;
+      transform-origin: 0% 0%;
+      transform: scale(1, 1);
+      transition: all 0.4s ease;
+    }
+    .close {
+      height: 0;
+      transform: scale(1, 0);
+    }
+  }
+}
+
+@media screen and (min-width: 0px) {
+  .root {
+    .expandIcon {
+      display: block;
+      right: 2%;
+    }
+  }
+}
+@media screen and (min-width: 960px) {
+  .root {
+    .expandIcon {
+      display: none;
     }
   }
 }

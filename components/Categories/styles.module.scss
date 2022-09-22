@@ -1,9 +1,48 @@
 .wrapper {
-  background-color: var(--background-primary-);
+  background-color: #ffffff;
   padding: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   .container {
-    max-width: 1920px;
+    max-width: 1500px;
     margin: auto;
+    .tabBar {
+      display: flex;
+      align-items: center;
+      height: 16px;
+      margin-bottom: 40px;
+
+      a p {
+        margin-right: 10px;
+      }
+      p {
+        font-family: 'Mulish';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 16px;
+        color: #000000;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .wrapper {
+    .container {
+      .tabBar {
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .wrapper {
+    .container {
+      .filterBox {
+        display: none;
+      }
+    }
   }
 }

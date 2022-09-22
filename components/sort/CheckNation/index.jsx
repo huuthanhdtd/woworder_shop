@@ -3,10 +3,13 @@ import styles from './styles.module.scss';
 
 export default function CheckNation({ checked, setChecked, setPage }) {
   const checks = [
-    { name: 'Giày', slug: 'giay' },
-    { name: 'Quần áo', slug: 'quan' },
-    { name: 'Trang sức', slug: 'trang-suc' },
-    { name: 'Nội y', slug: 'noi-y' },
+    { name: '1688', slug: '1688' },
+    { name: 'ADIDAS', slug: 'ADIDAS' },
+    { name: 'AMAZON', slug: 'AMAZON' },
+    { name: 'ASOS', slug: 'ASOS' },
+    { name: 'CONVERSE', slug: 'CONVERSE' },
+    { name: 'HM', slug: 'HM' },
+    { name: 'IKEA', slug: 'IKEA' },
   ];
   const handleChangeTwo = (isChecked, slug) => {
     const index = checked.indexOf(slug);
@@ -23,7 +26,7 @@ export default function CheckNation({ checked, setChecked, setPage }) {
 
   return (
     <div className={styles.checks}>
-      <h2> Danh mục</h2>
+      <h2>Website</h2>
       <div className={styles.FormControl}>
         {checked &&
           checks.map((data, index) => (
@@ -40,7 +43,7 @@ export default function CheckNation({ checked, setChecked, setPage }) {
               </label>
             </div>
           ))}
-      </div>{' '}
+      </div>
     </div>
   );
 }
