@@ -51,16 +51,10 @@ export default function Account({ openAccount, setOpenAccount }) {
             <div className={styles.ButtonLogin}>
               <Button>ĐĂNG NHẬP</Button>
             </div>
-            <div className={styles.ButtonGG}>
-              <Button>ĐĂNG NHẬP GOOGLE</Button>
-            </div>
-            <div className={styles.ButtonFB}>
-              <Button>ĐĂNG NHẬP FACEBOOK</Button>
-            </div>
             <div className={styles.siteAccount}>
               <div>
                 Khách hàng mới?
-                <Link href="/dang-ky-tai-khoan"> Tạo tài khoản</Link>
+                <Link href="/account/register"> Tạo tài khoản</Link>
               </div>
               <div className={styles.backup}>
                 Quên mật khẩu?{' '}

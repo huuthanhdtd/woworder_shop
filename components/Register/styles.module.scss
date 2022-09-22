@@ -2,6 +2,27 @@
   margin: 0 auto;
   margin-top: 168px;
   max-width: 1200px;
+  .title {
+    display: flex;
+    justify-content: center;
+    h6 {
+      position: relative;
+      font-family: 'Mulish Bold';
+      color: var(--primary-color-);
+      text-align: center;
+      width: fit-content;
+      &::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 50%;
+        background-color: var(--primary-color-);
+        transform: translate(50%, 100%);
+        left: 0;
+        bottom: -10px;
+      }
+    }
+  }
   .formRegister {
     max-width: 620px;
     margin: 35px auto 50px;
@@ -51,6 +72,27 @@
         color: #fff;
         height: 45px;
         width: 133px;
+        z-index: 0;
+        border: 1px solid var(--primary-color-);
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 0;
+          height: 100%;
+          background: #fff;
+          transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+          z-index: -1;
+          border-radius: 5px;
+        }
+        &:hover {
+          color: var(--primary-color-);
+          &::after {
+            width: 100%;
+            left: 0;
+          }
+        }
       }
     }
     .back {

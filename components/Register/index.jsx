@@ -5,6 +5,7 @@ import {
   Radio,
   RadioGroup,
   TextField,
+  Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -19,6 +20,9 @@ export default function Register() {
   };
   return (
     <div className={styles.register}>
+      <div className={styles.title}>
+        <Typography variant="h6">Tạo tài khoản</Typography>
+      </div>
       <div className={styles.formRegister}>
         <TextField
           variant="outlined"
@@ -37,13 +41,13 @@ export default function Register() {
           onChange={handleChange}
           className={styles.radio}
         >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
+          <FormControlLabel value="female" control={<Radio />} label="Nữ" />
+          <FormControlLabel value="male" control={<Radio />} label="Nam" />
         </RadioGroup>
         <TextField
           variant="outlined"
-          placeholder="mm/dd/yyyy"
-          type="date"
+          placeholder="dd/mm/yyyy"
+          // type="date"
           className={styles.inputForm}
         />
         <TextField
