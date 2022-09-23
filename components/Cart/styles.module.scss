@@ -1,13 +1,14 @@
 .carts {
   max-width: 1200px;
   margin: 0 auto;
-  .router {
+  .breadcrumb_shop {
     font-size: 13px;
     padding: 9px 0;
     background: transparent;
     border-radius: 0;
-    margin: 0;
-    list-style: none;
+    a {
+      color: #000;
+    }
   }
   .GridCart {
     .GridList {
@@ -77,6 +78,11 @@
                 font-size: 15px;
                 margin: 0px 0 2px;
                 font-weight: 500;
+                white-space: initial;
+                overflow: hidden;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
               }
               .Characteristics {
                 font-size: 12px;
@@ -187,6 +193,66 @@
         background-color: var(--primary-color-);
         color: #ffffff;
         height: 50px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .carts {
+    .breadcrumb_shop {
+      margin-top: 180px;
+      margin-bottom: 20px;
+    }
+    .GridCart {
+      .GridList {
+        padding: 0;
+        .listCart {
+          padding: 10px;
+          .boderCarts {
+            .product {
+              .media_image {
+                flex: 0 0 60px;
+                max-width: 60px;
+              }
+              .media_desc {
+                font-size: 15px;
+                flex: 1 1 auto;
+                padding-left: 8px;
+                padding-right: 8px;
+                .Characteristics {
+                  margin-bottom: 7px;
+                }
+              }
+              .media_totla {
+                font-size: 15px;
+              }
+            }
+          }
+        }
+        .note {
+          .formControl {
+            padding: 10px;
+          }
+        }
+        .invoice {
+        }
+      }
+      .GridPay {
+        padding: 0 15px;
+        .pay {
+          position: fixed;
+          width: 100%;
+          background-color: var(--primary-color-);
+          color: #ffffff;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 9;
+          padding: 5px 10px 8px;
+          -webkit-box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+          -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+        }
       }
     }
   }

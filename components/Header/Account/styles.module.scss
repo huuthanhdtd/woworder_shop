@@ -215,8 +215,7 @@
   right: 0px;
   position: absolute;
   border-radius: 0.125rem;
-  z-index: 1000000;
-
+  z-index: 100;
   .dropUp {
     display: block;
     position: absolute;
@@ -384,5 +383,8 @@
   }
   .showAccount.active {
     width: 100%;
+    .dropUp {
+      right: 52px;
+    }
   }
 }

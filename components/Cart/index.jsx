@@ -1,14 +1,16 @@
 import { Button, Grid, TextField } from '@material-ui/core';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import styles from './styles.module.scss';
 
 export default function Carts() {
-  const router = useRouter();
   return (
     <div className={styles.carts}>
-      <div className={styles.router}>Trang chủ {router.pathname}</div>
+      <div className={styles.breadcrumb_shop}>
+        <Link href="/"> Trang chủ</Link> / Liên hệ
+      </div>
       <Grid container className={styles.GridCart}>
         <Grid md={8} sm={12} xs={12} item className={styles.GridList}>
           <h3>Giỏ hàng của bạn</h3>

@@ -1,8 +1,8 @@
 .introduce {
-  max-width: 1200px;
-  margin: 0 auto;
   font-family: 'Nunito', sans-serif;
   .breadcrumb_shop {
+    max-width: 1200px;
+    margin: 0 auto;
     font-size: 13px;
     padding: 9px 0;
     background: transparent;
@@ -41,6 +41,185 @@
       .content {
         text-align: justify;
         padding: 0 50px;
+      }
+    }
+  }
+
+  .Grid_intro {
+    padding-bottom: 100px;
+    max-width: 1140px;
+    margin: 0 auto;
+    .image {
+      margin-top: 50px;
+    }
+    .commit {
+      background: #ffffff;
+      padding: 75px 80px 75px 80px;
+      .title_commit {
+        margin-bottom: 35px;
+        text-align: center;
+        p {
+          text-align: center;
+          position: relative;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+          padding-bottom: 15px;
+          color: var(--primary-color-);
+          font-weight: 500;
+          font-size: 14px;
+          letter-spacing: 3px;
+        }
+        h2 {
+          font-family: inherit;
+          font-size: 22px;
+          margin: 0;
+          color: var(--primary-color-);
+        }
+      }
+      p {
+        text-align: justify;
+        margin: 0;
+      }
+    }
+  }
+  .about_service {
+    border-top: 1px solid #e7e7e7;
+    padding: 60px 0;
+    background: #f5f8fd;
+    .services {
+      max-width: 1200px;
+      margin: 0 auto;
+      .support {
+        text-align: center;
+        margin-bottom: 10px;
+        .content_support {
+          img {
+            width: 100%;
+          }
+          h2 {
+            position: relative;
+            margin: 20px 0 12px;
+            padding-bottom: 20px;
+            color: var(--primary-color-);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1.2;
+            &::after {
+              content: '';
+              width: 6px;
+              height: 6px;
+              border: 1px solid var(--primary-color-);
+              position: absolute;
+              bottom: 2px;
+              left: calc(50% - 3px);
+              transform: rotate(135deg);
+              opacity: 0.5;
+            }
+          }
+          p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .introduce {
+    .breadcrumb_shop {
+      margin-top: 180px;
+    }
+    .about1_introduce {
+      .sitebox_content {
+        max-width: 1020px;
+        margin: 0 auto;
+        color: #000;
+        .content {
+          text-align: justify;
+          padding: 0 15px;
+        }
+      }
+    }
+    .Grid_intro {
+      padding-bottom: 50px;
+      max-width: 1140px;
+      margin: 0 auto;
+      .image {
+        margin-top: 0px;
+      }
+      .commit {
+        background: #ffffff;
+        padding: 30px 20px;
+        .title_commit {
+          margin-bottom: 35px;
+          text-align: center;
+          p {
+            text-align: center;
+            position: relative;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            color: var(--primary-color-);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 3px;
+          }
+          h2 {
+            font-family: inherit;
+            font-size: 22px;
+            margin: 0;
+            color: var(--primary-color-);
+          }
+        }
+        p {
+          text-align: justify;
+          margin: 0;
+        }
+      }
+    }
+    .about_service {
+      border-top: 1px solid #e7e7e7;
+      padding: 60px 0;
+      background: #f5f8fd;
+      .services {
+        max-width: 1200px;
+        margin: 0 auto;
+        .support {
+          text-align: center;
+          margin-bottom: 10px;
+          .content_support {
+            img {
+              width: 100%;
+            }
+            h2 {
+              position: relative;
+              margin: 20px 0 12px;
+              padding-bottom: 20px;
+              color: var(--primary-color-);
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 1.2;
+              &::after {
+                content: '';
+                width: 6px;
+                height: 6px;
+                border: 1px solid var(--primary-color-);
+                position: absolute;
+                bottom: 2px;
+                left: calc(50% - 3px);
+                transform: rotate(135deg);
+                opacity: 0.5;
+              }
+            }
+            p {
+              margin: 0;
+              font-size: 16px;
+              line-height: 1.7;
+            }
+          }
+        }
       }
     }
   }

@@ -99,6 +99,11 @@ const Header = () => {
       setOpenNav(false);
     }
   };
+  const handleMove = () => {
+    setOpenAccount(false);
+    setOpenCart(false);
+    setOpenNav(false);
+  };
   const handleBtn = (slug) => {
     setActiveBtn(slug);
   };
@@ -117,9 +122,16 @@ const Header = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.HeaderTop}>
+        <div
+          className={clsx(styles.modal, {
+            [styles.active]:
+              openNav === true || openCart === true || openAccount === true,
+          })}
+          onClick={handleMove}
+        ></div>
         <div className={styles.nav}>
-          <div className={styles.menu}>
-            <div className={styles.icons} onClick={handleOpen}>
+          <div className={styles.menu} onClick={handleOpen}>
+            <div className={styles.icons}>
               {openNav ? <AiOutlineClose /> : <AiOutlineMenu />}
             </div>
             <div className={styles.name}>MENU</div>
@@ -163,7 +175,11 @@ const Header = () => {
                 </div>
                 <div className={styles.nameCart}>Giỏ hàng</div>
               </div>
-              <div className={styles.taskbarCart}>
+              <div
+                className={clsx(styles.taskbarCart, {
+                  [styles.active]: router.asPath === '/',
+                })}
+              >
                 <div className={styles.product}>1 sản phẩm</div>
                 <div className={styles.totalPriceMobile}> 500,000</div>
                 <div
