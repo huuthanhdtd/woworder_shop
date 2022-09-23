@@ -1,0 +1,47 @@
+.introduce {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Nunito', sans-serif;
+  .breadcrumb_shop {
+    font-size: 13px;
+    padding: 9px 0;
+    background: transparent;
+    border-radius: 0;
+    a {
+      color: #000;
+    }
+  }
+  .about1_introduce {
+    padding: 65px 0;
+    font-size: 16px;
+    line-height: 1.7;
+    .title_page {
+      margin-bottom: 35px;
+      text-align: center;
+      p {
+        position: relative;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        padding-bottom: 15px;
+        color: var(--primary-color-);
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 5px;
+      }
+      h2 {
+        font-size: 26px;
+        margin: 0;
+        color: var(--primary-color-);
+      }
+    }
+    .sitebox_content {
+      max-width: 1020px;
+      margin: 0 auto;
+      color: #000;
+      .content {
+        text-align: justify;
+        padding: 0 50px;
+      }
+    }
+  }
+}

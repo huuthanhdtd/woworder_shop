@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import { IoMdArrowDropup } from 'react-icons/io';
 import Image from 'next/image';
 import { Button } from '@material-ui/core';
+import Link from 'next/link';
 
 export default function Cart({ openCart, setOpenCart }) {
   return (
@@ -51,7 +52,7 @@ export default function Cart({ openCart, setOpenCart }) {
         </div>
         <div className={styles.viewsAll}>
           <Button onClick={() => setOpenCart(false)}>
-            <span>Xem Giỏ hàng</span>
+            <Link href="/cart">Xem Giỏ hàng</Link>
           </Button>
         </div>
       </div>

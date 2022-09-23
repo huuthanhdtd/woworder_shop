@@ -6,7 +6,7 @@ import {
   AiOutlineClose,
   AiOutlineHome,
 } from 'react-icons/ai';
-import { BsCart } from 'react-icons/bs';
+import { BsCart, BsHouse } from 'react-icons/bs';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
@@ -16,7 +16,7 @@ import Category from './Category';
 import clsx from 'clsx';
 import Cart from './Cart/Cart';
 import Account from './Account/Account';
-// import HorizontalScroll from 'react-horizontal-scrolling';
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const hot = [
@@ -67,6 +67,7 @@ const Header = () => {
     },
   ];
   const statisticalRef = useRef(null);
+  const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
@@ -76,6 +77,8 @@ const Header = () => {
       setOpenNav(false);
     } else {
       setOpenNav(true);
+      setOpenCart(false);
+      setOpenAccount(false);
     }
   };
   const handleCart = () => {
@@ -83,6 +86,8 @@ const Header = () => {
       setOpenCart(false);
     } else {
       setOpenCart(true);
+      setOpenNav(false);
+      setOpenAccount(false);
     }
   };
   const handleAccount = () => {
@@ -90,6 +95,8 @@ const Header = () => {
       setOpenAccount(false);
     } else {
       setOpenAccount(true);
+      setOpenCart(false);
+      setOpenNav(false);
     }
   };
   const handleBtn = (slug) => {
@@ -118,9 +125,11 @@ const Header = () => {
             <div className={styles.name}>MENU</div>
           </div>
           <Category openNav={openNav} setOpenNav={setOpenNav} />
-          <div className={styles.logo}>
-            <Image src={Logo} width={220} height={47} />
-          </div>
+          <Link href="/">
+            <div className={styles.logo}>
+              <Image src={Logo} width={220} height={47} />
+            </div>
+          </Link>
           <div className={styles.search}>
             <TextField
               variant="outlined"
@@ -186,7 +195,7 @@ const Header = () => {
                   justifyContent: 'center',
                 }}
               >
-                <AiOutlineHome />
+                <BsHouse />
               </div>
             </Link>
           </div>
@@ -194,7 +203,8 @@ const Header = () => {
             {hot.map((data, index) => (
               <Button
                 className={clsx(styles.item, {
-                  [styles.active]: activeBtn === data.slug,
+                  [styles.active]:
+                    activeBtn === data.slug || router.asPath === data.slug,
                 })}
                 key={index}
                 onClick={() => handleBtn(data.slug)}

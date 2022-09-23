@@ -97,7 +97,7 @@ const About = () => {
                   })}
                 >
                   {support.items.map((it, idx) => (
-                    <Link href="/" key={idx}>
+                    <Link href={it.link} key={idx}>
                       <Typography variant="body2" className={styles.link}>
                         <GoPrimitiveDot className={styles.dot} />
                         {it.text}

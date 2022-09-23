@@ -23,7 +23,9 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <GlobalContext.Provider value={global.attributes}>
         <Layout>
-          <Component {...pageProps} />
+          <div style={{ marginTop: '155px' }}>
+            <Component {...pageProps} />
+          </div>
         </Layout>
       </GlobalContext.Provider>
     </>

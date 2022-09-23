@@ -69,14 +69,14 @@ export const footerData = {
   support: {
     title: 'Hỗ trợ khách hàng',
     items: [
-      { text: 'Giới thiệu' },
+      { text: 'Giới thiệu', link: '/introduce', slug: 'gioi-thieu' },
       { text: 'Ưu đãi Happy Mommy Club' },
       { text: 'Chính sách vận chuyển' },
       { text: 'Chính sách thanh toán' },
       { text: 'Chính sách đổi trả' },
       { text: 'Chính sách bảo mật' },
       { text: 'Điều khoản dịch vụ' },
-      { text: 'Liên hệ' },
+      { text: 'Liên hệ', link: 'contact', slug: 'lien-he' },
     ],
   },
   takecare: {
