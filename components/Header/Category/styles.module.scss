@@ -7,19 +7,14 @@
   transform: scale(0);
   transform-origin: 60px 60px;
   transition: all 0.3s ease-in-out;
-  z-index: 10;
   opacity: 0;
   box-shadow: 0 0.125rem 0.25rem 0 rgb(0 0 0 / 50%);
   height: auto;
+  background-color: #ffffff;
+  border-radius: 0.125rem;
+  z-index: 100;
   .dropUp {
-    position: absolute;
-    top: -18px;
-    left: 8px;
-    svg {
-      height: 30px;
-      width: 30px;
-      color: #fff;
-    }
+    display: none;
   }
   .containerCategory {
     .ul_ListCategory {
@@ -43,7 +38,7 @@
       margin: 0;
       padding: 0;
       .li_ListCategory {
-        padding: 15px 12px 5px;
+        padding: 0 10px;
         text-align: left;
         color: #333333;
         .nameDrop {
@@ -95,18 +90,19 @@
   }
 }
 .showNav.active {
-  background-color: #ffffff;
-  width: 244px;
   opacity: 1;
-  transition: all 0.3s ease-in-out;
   transform: scale(1);
-  top: 68px;
-  left: 0px;
-  position: absolute;
-  border-radius: 0.125rem;
-  z-index: 100;
-  box-shadow: 0 0.125rem 0.25rem 0 rgb(0 0 0 / 50%);
-  height: auto;
+  .dropUp {
+    display: block;
+    position: absolute;
+    top: -18px;
+    left: 8px;
+    svg {
+      height: 30px;
+      width: 30px;
+      color: #fff;
+    }
+  }
   .modal {
     display: block;
     position: fixed;
@@ -116,33 +112,25 @@
   }
   .containerCategory {
     .ul_ListCategory {
-      color: #000;
-      list-style: none;
-      margin: 0;
-      padding: 0;
       .li_ListCategory {
-        padding: 0 10px;
-        text-align: left;
-        .nameDrop {
-          // padding: 5px 10px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          .iconDrop {
-            .drop_Down_Up {
-              transition: all 0.3s ease-in-out;
-              transform: rotate(180deg);
-              svg {
-                width: 30px;
-                height: 30px;
-              }
-            }
-            .drop_Down_Up.active {
-              transition: all 0.3s ease-in-out;
-              transform: rotate(0deg);
-            }
-          }
-        }
+        // .nameDrop {
+        // padding: 5px 10px;
+
+        // .iconDrop {
+        //   .drop_Down_Up {
+        //     transition: all 0.3s ease-in-out;
+        //     transform: rotate(180deg);
+        //     svg {
+        //       width: 30px;
+        //       height: 30px;
+        //     }
+        //   }
+        //   .drop_Down_Up.active {
+        //     transition: all 0.3s ease-in-out;
+        //     transform: rotate(0deg);
+        //   }
+        // }
+        // }
         // .Ul_item {
         //   position: initial;
         //   top: initial;
@@ -161,6 +149,16 @@
         //   }
         // }
       }
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .showNav {
+  }
+  .showNav.active {
+    .dropUp {
+      top: -18px;
+      left: 13px;
     }
   }
 }

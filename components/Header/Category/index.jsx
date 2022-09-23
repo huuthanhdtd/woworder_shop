@@ -40,7 +40,9 @@ export default function Category({ openNav, setOpenNav }) {
           {category?.map((data, index) => (
             <li className={styles.li_ListCategory} key={index}>
               <div className={styles.nameDrop}>
-                <Link href={data.data.link}>{data?.data.name}</Link>
+                <Link href={data.data.link} onClick={() => setOpenNav(false)}>
+                  {data?.data.name}
+                </Link>
                 {/* icons drop Down category */}
                 {/* {data.data.list && (
                   <div

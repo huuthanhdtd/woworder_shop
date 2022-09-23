@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { IoMdArrowDropup } from 'react-icons/io';
+import { RiCloseFill } from 'react-icons/ri';
 import { Button, TextField } from '@material-ui/core';
 import Link from 'next/link';
 
@@ -92,6 +93,11 @@ export default function Account({ openAccount, setOpenAccount }) {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.buttonClose}>
+        <Button onClick={() => setOpenAccount(false)}>
+          <RiCloseFill fontSize={20} />
+        </Button>
       </div>
     </div>
   );

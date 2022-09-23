@@ -7,8 +7,11 @@ import styles from './styles.module.scss';
 import { MdLocationOn } from 'react-icons/md';
 import { FiMail, FiSmartphone } from 'react-icons/fi';
 import { BiTimeFive } from 'react-icons/bi';
+import { useRouter } from 'next/router';
 
 export default function Contact() {
+  const { router } = useRouter();
+  console.log(router);
   const contact = [
     {
       name: 'Địa chỉ',

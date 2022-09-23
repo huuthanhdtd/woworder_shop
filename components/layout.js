@@ -3,6 +3,7 @@ import ContextProvider from '../constants/Context';
 import { useState, useEffect, useMemo } from 'react';
 import Footer from './Footer';
 import Header from './Header';
+import ContactFixed from './contactFixed';
 
 const Layout = ({ children }) => {
   const [scrollState, setScrollState] = useState(false);
@@ -38,7 +39,8 @@ const Layout = ({ children }) => {
       <ContextProvider>
         <Header />
         {children}
-        <ButtonToTop onClick={scrollToTop} show={scrollState} />
+        <ContactFixed />
+        {/* <ButtonToTop onClick={scrollToTop} show={scrollState} /> */}
         <Footer />
       </ContextProvider>
     </>

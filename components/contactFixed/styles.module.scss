@@ -1,0 +1,161 @@
+.contact {
+  .contactFixed {
+    position: fixed;
+    bottom: 100px;
+    text-align: right;
+    right: 10px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color-);
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    z-index: 101;
+    animation: contact 1s cubic-bezier(0.12, 0.7, 0.74, 0.71) infinite
+      alternate-reverse;
+    // border: 0.5px solid #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-size: 8px;
+    padding: 3px;
+    cursor: pointer;
+  }
+  @keyframes contact {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .animation,
+  .animation1 {
+    position: fixed;
+    bottom: 100px;
+    text-align: right;
+    right: 10px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color-);
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    z-index: 101;
+    animation: scaling 2s linear infinite;
+  }
+  .animation {
+    animation-delay: 0s;
+  }
+  .animation1 {
+    animation-delay: 1s;
+  }
+  @keyframes scaling {
+    0% {
+      transform: scale(0.8);
+      background-color: var(--primary-color-);
+    }
+    100% {
+      transform: scale(1.5);
+      background-color: rgba(245, 0, 128, 0);
+    }
+  }
+  .modal {
+    display: none;
+  }
+  .modal.active {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    top: 0;
+    z-index: 99;
+  }
+  .mes {
+    animation-delay: 1s;
+    transform: scale(0);
+    transition-delay: 0.1s;
+    position: fixed;
+    bottom: 120px;
+    width: 100%;
+    border-radius: 12px;
+    right: 25px;
+    z-index: 100;
+    max-width: 300px;
+    background-color: #f5f6fa;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 20%);
+    transform-origin: 100% bottom;
+    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    .ul_mes {
+      list-style: none;
+      padding: 0px;
+      margin: 0;
+      .li_mes {
+        padding: 10px 15px;
+        // border-bottom: 1px solid #ecedf1;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .icon {
+          width: 28px;
+          height: 28px;
+          background-color: #146eb4;
+          text-align: center;
+          border-radius: 50%;
+          svg {
+            color: #fff;
+          }
+        }
+        .title {
+          opacity: 1;
+          visibility: visible;
+          position: initial;
+          width: calc(100% - 30px);
+          padding-left: 15px;
+          text-align: left;
+          background: transparent;
+          color: #1d243e;
+          font-size: 13px;
+          font-weight: 400;
+          &:hover {
+            color: var(--primary-color-);
+          }
+        }
+      }
+      div:nth-child(3) {
+        .icon {
+          background-color: var(--primary-color-);
+        }
+      }
+      div:nth-child(4) {
+        .icon {
+          background-color: #ee0000;
+        }
+      }
+    }
+  }
+  .mes.active {
+    transform: scale(1);
+  }
+}
+@media screen and (max-width: 600px) {
+  .contact {
+    .modal.active {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .mes {
+    }
+    .mes.active {
+      transform: scale(1);
+    }
+  }
+}

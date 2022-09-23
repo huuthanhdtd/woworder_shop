@@ -124,3 +124,38 @@
     }
   }
 }
+@media screen and (max-width: 600px) {
+  .contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    .breadcrumb_shop {
+      margin-top: 180px;
+      font-size: 13px;
+      padding: 9px 0;
+      background: transparent;
+      border-radius: 0;
+      a {
+        color: #000;
+      }
+    }
+    .Grid_Contact {
+      margin-bottom: 50px;
+      .Grid_itemContact {
+        padding: 0 15px;
+      }
+      .formContact {
+        padding: 0 15px;
+        .formInput {
+          .input:nth-child(2) {
+            width: 100%;
+            float: unset;
+          }
+          .input:nth-child(3) {
+            width: 100%;
+            float: unset;
+          }
+        }
+      }
+    }
+  }
+}

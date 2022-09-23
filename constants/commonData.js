@@ -70,7 +70,11 @@ export const footerData = {
     title: 'Hỗ trợ khách hàng',
     items: [
       { text: 'Giới thiệu', link: '/introduce', slug: 'gioi-thieu' },
-      { text: 'Ưu đãi Happy Mommy Club' },
+      {
+        text: 'Ưu đãi Happy Mommy Club',
+        link: '/support',
+        slug: 'uu-dai-thanh-vien-happy-mommy-club',
+      },
       { text: 'Chính sách vận chuyển' },
       { text: 'Chính sách thanh toán' },
       { text: 'Chính sách đổi trả' },

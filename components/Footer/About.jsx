@@ -12,8 +12,10 @@ import Tiktok from '../../assets/image/tiktok.svg';
 import { BsUiChecksGrid } from 'react-icons/bs';
 import clsx from 'clsx';
 import { useWindowSize } from 'react-use';
+import { useRouter } from 'next/router';
 
 const About = () => {
+  const { router } = useRouter();
   const { introduce, address, support, takecare } = footerData;
   const [expIntro, setExpIntro] = React.useState(false);
   const [expSupport, setExpSupport] = React.useState(false);
@@ -97,12 +99,20 @@ const About = () => {
                   })}
                 >
                   {support.items.map((it, idx) => (
-                    <Link href={it.link} key={idx}>
-                      <Typography variant="body2" className={styles.link}>
-                        <GoPrimitiveDot className={styles.dot} />
-                        {it.text}
-                      </Typography>
-                    </Link>
+                    <div key={idx}>
+                      <Link
+                        href={`${
+                          it.text === 'Giới thiệu' || it.text === 'Liên hệ'
+                            ? `${it.link}`
+                            : `/support/${it.slug}`
+                        }`}
+                      >
+                        <Typography variant="body2" className={styles.link}>
+                          <GoPrimitiveDot className={styles.dot} />
+                          {it.text}
+                        </Typography>
+                      </Link>
+                    </div>
                   ))}
                 </div>
               </Grid>

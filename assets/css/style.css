@@ -188,7 +188,15 @@ img:hover {
 }
 
 .styles_search__2RWOc .MuiInputBase-input {
-  padding: 10px 35px 10px 10px;
+  padding: 10px 50px 10px 10px;
+}
+.styles_search__2RWOc .MuiOutlinedInput-notchedOutline {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .styles_search__2RWOc .MuiInputBase-input {
+    padding: 10px 10px 10px 50px;
+  }
 }
 
 .styles_formRegister__t4llm .MuiOutlinedInput-notchedOutline {

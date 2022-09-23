@@ -17,6 +17,7 @@ import clsx from 'clsx';
 import Cart from './Cart/Cart';
 import Account from './Account/Account';
 import { useRouter } from 'next/router';
+import Sliders from './sliderHeaderMiddle';
 
 const Header = () => {
   const hot = [
@@ -71,14 +72,14 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
-  const [activeBtn, setActiveBtn] = useState('');
+
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
     } else {
       setOpenNav(true);
-      setOpenCart(false);
       setOpenAccount(false);
+      setOpenCart(false);
     }
   };
   const handleCart = () => {
@@ -86,8 +87,8 @@ const Header = () => {
       setOpenCart(false);
     } else {
       setOpenCart(true);
-      setOpenNav(false);
       setOpenAccount(false);
+      setOpenNav(false);
     }
   };
   const handleAccount = () => {
@@ -104,9 +105,7 @@ const Header = () => {
     setOpenCart(false);
     setOpenNav(false);
   };
-  const handleBtn = (slug) => {
-    setActiveBtn(slug);
-  };
+
   useEffect(() => {
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -121,14 +120,14 @@ const Header = () => {
   }, []);
   return (
     <div className={styles.wrapper}>
+      <div
+        className={clsx(styles.modal, {
+          [styles.active]:
+            openNav === true || openCart === true || openAccount === true,
+        })}
+        onClick={handleMove}
+      ></div>
       <div className={styles.HeaderTop}>
-        <div
-          className={clsx(styles.modal, {
-            [styles.active]:
-              openNav === true || openCart === true || openAccount === true,
-          })}
-          onClick={handleMove}
-        ></div>
         <div className={styles.nav}>
           <div className={styles.menu} onClick={handleOpen}>
             <div className={styles.icons}>
@@ -138,7 +137,7 @@ const Header = () => {
           </div>
           <Category openNav={openNav} setOpenNav={setOpenNav} />
           <Link href="/">
-            <div className={styles.logo}>
+            <div className={styles.logo} onClick={handleMove}>
               <Image src={Logo} width={220} height={47} />
             </div>
           </Link>
@@ -148,6 +147,7 @@ const Header = () => {
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."
               size="small"
               className={styles.inputSearch}
+              onChange={handleMove}
             />
             <div className={styles.icon}>
               <AiOutlineSearch />
@@ -174,6 +174,7 @@ const Header = () => {
                   <BsCart />
                 </div>
                 <div className={styles.nameCart}>Giỏ hàng</div>
+                <div className={styles.quatityCart}></div>
               </div>
               <div
                 className={clsx(styles.taskbarCart, {
@@ -199,37 +200,7 @@ const Header = () => {
         ref={statisticalRef}
         id="statisticalRef"
       >
-        <div className={styles.bgmiddle}>
-          <div className={styles.iconHome}>
-            <Link href="/">
-              <div
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <BsHouse />
-              </div>
-            </Link>
-          </div>
-          <div className={styles.Hot}>
-            {hot.map((data, index) => (
-              <Button
-                className={clsx(styles.item, {
-                  [styles.active]:
-                    activeBtn === data.slug || router.asPath === data.slug,
-                })}
-                key={index}
-                onClick={() => handleBtn(data.slug)}
-              >
-                {data.name}
-              </Button>
-            ))}
-          </div>
-        </div>
+        <Sliders />
       </div>
     </div>
   );

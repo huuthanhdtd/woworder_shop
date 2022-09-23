@@ -5,6 +5,7 @@ import { fetchAPI } from '../lib/api';
 import { getStrapiMedia } from '../lib/media';
 import Layout from '../components/layout';
 import '../assets/css/style.css';
+import '../assets/css/slick.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

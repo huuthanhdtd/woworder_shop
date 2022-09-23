@@ -1,0 +1,104 @@
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  .home {
+    width: 5%;
+    height: 100%;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sliderSlick {
+    width: 95%;
+    .Hot {
+      .item {
+        width: 127px;
+        height: 63px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        padding: 10px;
+        min-width: 127px;
+        line-height: 1.45;
+        background-color: rgb(16 135 117 / 10%);
+        text-transform: uppercase;
+        border: 1px solid var(--primary-color-);
+        transform: scale(1);
+        transition: all 0.3s linear;
+        font-size: 14px;
+        color: var(--primary-color-);
+        &:hover {
+          background-color: rgb(241 255 253);
+        }
+      }
+      .item.active {
+        background-color: var(--primary-color-);
+        color: #ffffff;
+      }
+    }
+    .hot_moblie {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .content {
+    .home {
+      width: 10%;
+      height: 100%;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+    }
+    .sliderSlick {
+      width: 90%;
+      .Hot {
+        display: none !important;
+      }
+      .hot_moblie {
+        max-width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        .item_mobile {
+          width: 94px;
+          height: 45px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+          margin-left: 10px;
+          padding: 0;
+          min-width: 94px;
+          min-height: 32px;
+          line-height: 1.35;
+          background-color: rgb(16 135 117 / 10%);
+          text-transform: uppercase;
+          border: 1px solid var(--primary-color-);
+          transform: scale(1);
+          transition: all 0.3s linear;
+          font-size: 12px;
+          color: var(--primary-color-);
+          &:hover {
+            background-color: rgb(241 255 253);
+          }
+        }
+        .item_mobile.active {
+          background-color: var(--primary-color-);
+          color: #ffffff;
+        }
+      }
+      .hot_moblie::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+    }
+  }
+}
