@@ -1,6 +1,6 @@
 .root {
-  margin-top: 168px;
   margin-bottom: 50px;
+  min-height: 600px;
   .title {
     display: flex;
     justify-content: center;
@@ -37,6 +37,12 @@
         font-size: 12px;
         margin-bottom: 20px;
       }
+      h6 {
+        font-family: 'Mulish M';
+        font-size: 18px;
+        color: var(--primary-color-);
+        margin-bottom: 10px;
+      }
       .request {
         display: flex;
         justify-content: center;
@@ -71,10 +77,16 @@
         }
         .reqAnother {
           font-size: 12px;
+
+          button,
           a {
+            text-transform: none;
             font-size: 14px;
             font-family: 'Mulish M';
             color: var(--primary-color-);
+          }
+          button {
+            padding: 0;
           }
         }
       }

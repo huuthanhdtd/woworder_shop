@@ -1,7 +1,12 @@
 import React from 'react';
+import MyAcount from '../../components/MyAccount';
 
-const MyAccount = () => {
-  return <div>MyAccount</div>;
+const Account = () => {
+  return (
+    <div>
+      <MyAcount />
+    </div>
+  );
 };
 
-export default MyAccount;
+export default Account;

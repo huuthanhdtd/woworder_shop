@@ -4,6 +4,11 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 const Login = () => {
+  const [change, setChange] = React.useState(false);
+  const handleForgetPassword = () => {
+    setChange(!change);
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.title}>
@@ -11,29 +16,58 @@ const Login = () => {
       </div>
       <div className={styles.wrapper}>
         <form action="" className={styles.form}>
-          <TextField
-            className={styles.input}
-            placeholder="Email"
-            variant="outlined"
-            type="text"
-          />
-          <TextField
-            className={styles.input}
-            placeholder="Mật khẩu"
-            type="password"
-            variant="outlined"
-          />
-          <Typography variant="body2">
-            This site is protected by reCAPTCHA and the Google Privacy Policy
-            and Terms of Service apply.
-          </Typography>
+          {change ? (
+            <>
+              <TextField
+                className={styles.input}
+                placeholder="Email"
+                variant="outlined"
+                type="text"
+              />
+              <TextField
+                className={styles.input}
+                placeholder="Mật khẩu"
+                type="password"
+                variant="outlined"
+              />
+              <Typography variant="body2">
+                This site is protected by reCAPTCHA and the Google Privacy
+                Policy and Terms of Service apply.
+              </Typography>
+            </>
+          ) : (
+            <>
+              <Typography variant="h6">Phục hồi mật khẩu</Typography>
+
+              <TextField
+                className={styles.input}
+                placeholder="Email"
+                variant="outlined"
+                type="text"
+              />
+            </>
+          )}
+
           <div className={styles.request}>
-            <Button className={styles.btn}>Đăng nhập</Button>
-            <div className={styles.reqAnother}>
-              <Link href={'/'}>Quên mật khẩu ?</Link>
-              <br />
-              hoặc <Link href="/account/register">Đăng ký</Link>
-            </div>
+            {change ? (
+              <>
+                <Button className={styles.btn}>Đăng nhập</Button>
+                <div className={styles.reqAnother}>
+                  <Button onClick={handleForgetPassword}>
+                    Quên mật khẩu ?
+                  </Button>
+                  <br />
+                  hoặc <Link href="/account/register">Đăng ký</Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <Button className={styles.btn} style={{ width: 100 }}>
+                  Gửi
+                </Button>
+                <Button onClick={handleForgetPassword}>Hủy</Button>
+              </>
+            )}
           </div>
         </form>
       </div>

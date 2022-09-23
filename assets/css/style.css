@@ -197,3 +197,7 @@ img:hover {
 .styles_input__OX_C5 .MuiOutlinedInput-notchedOutline {
   display: none;
 }
+
+.styles_input__ufZ_s .MuiOutlinedInput-adornedStart {
+  padding-left: 0px;
+}

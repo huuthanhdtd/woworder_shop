@@ -1,0 +1,55 @@
+.root {
+  margin-bottom: 50px;
+  min-height: 600px;
+  .wrapper {
+    max-width: 1200px;
+    margin: auto;
+    .title {
+      display: flex;
+      justify-content: center;
+      h6 {
+        position: relative;
+        font-family: 'Mulish Bold';
+        color: var(--primary-color-);
+        &::after {
+          content: '';
+          position: absolute;
+          height: 3px;
+          width: 50%;
+          background-color: var(--primary-color-);
+          transform: translate(50%, 100%);
+          bottom: -10px;
+          left: 0;
+        }
+      }
+    }
+    .account {
+      margin-top: 80px;
+      .tabAccount {
+        padding-left: 25px;
+        h6 {
+          color: var(--primary-color-);
+          font-family: 'Mulish M';
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        .tabBtn {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          .btn {
+            text-transform: none;
+            font-family: 'Mulish';
+            font-size: 13px;
+            padding: 0;
+            &:hover {
+              color: var(--primary-color-);
+            }
+          }
+        }
+      }
+      .infor {
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.wrapper {
+  .form {
+    .input {
+      margin-bottom: 16px;
+      width: 100%;
+      .iconStart {
+        background-color: rgb(235, 235, 235);
+        height: 40px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      input {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        font-size: 13px;
+      }
+      fieldset {
+        border-radius: 0;
+        border-color: #bbb8b8;
+      }
+    }
+    .wrapSelect {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 16px;
+      border: 1px solid #bbb8b8;
+      height: 40px;
+      overflow: hidden;
+      .iconSelect {
+        height: 40px;
+        width: 45px;
+        background-color: rgb(235, 235, 235);
+        display: flex;
+        justify-content: center;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      .select {
+        width: 100%;
+        border-radius: 0px;
+        padding: 12px 0;
+        border: none;
+        background-color: #fbfbfb;
+        color: rgba(0, 0, 0, 0.4);
+        outline: none;
+        padding-left: 16px;
+      }
+    }
+    .boxSubmit {
+      display: flex;
+      .submit {
+        background-color: var(--primary-color-);
+        color: #fff;
+        border-radius: 0;
+        padding: 5px 25px;
+        margin-right: 10px;
+      }
+      p {
+        button {
+          text-transform: none;
+          color: var(--primary-color-);
+          padding: 2px;
+        }
+      }
+    }
+  }
+}

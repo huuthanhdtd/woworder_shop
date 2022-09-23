@@ -1,0 +1,65 @@
+.inforAddress {
+  padding: 0px 20px;
+  .subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-color-);
+    background-color: rgba(21, 176, 153, 0.1);
+    padding: 12px 5px;
+    .name {
+      font-family: 'Mulish Bold';
+      font-size: 14px;
+      span {
+        font-family: 'Mulish M';
+      }
+    }
+    .iconActions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 15%;
+      .iconClick {
+        cursor: pointer;
+        width: 16px;
+      }
+    }
+  }
+  button {
+    border-radius: 0px;
+  }
+  .btnAddNew {
+    text-align: center;
+    width: 100%;
+    background-color: #595c59;
+    color: #fff;
+    margin-bottom: 10px;
+    &:hover {
+      background-color: #595c59;
+    }
+  }
+  .detail {
+    background-color: #fbfbfb;
+    padding: 10px 15px;
+    .fullName {
+      font-family: 'Mulish';
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+    .rowAddress {
+      display: flex;
+      padding: 10px 0;
+      .preText {
+        font-family: 'Mulish';
+        color: #333333;
+        font-weight: 600;
+        width: 120px;
+      }
+      .text {
+        font-family: 'Mulish';
+        color: #595c59;
+      }
+    }
+  }
+}

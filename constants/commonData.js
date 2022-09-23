@@ -76,7 +76,7 @@ export const footerData = {
       { text: 'Chính sách đổi trả' },
       { text: 'Chính sách bảo mật' },
       { text: 'Điều khoản dịch vụ' },
-      { text: 'Liên hệ', link: 'contact', slug: 'lien-he' },
+      { text: 'Liên hệ', link: '/contact', slug: 'lien-he' },
     ],
   },
   takecare: {
@@ -182,5 +182,20 @@ export const user = [
   },
   {
     name: 'Đăng nhập',
+  },
+];
+
+export const myAccount = [
+  {
+    name: 'Thông tin tài khoản',
+    link: '/account',
+  },
+  {
+    name: 'Danh sách địa chỉ',
+    link: '/account/address',
+  },
+  {
+    name: 'Đăng xuất',
+    link: '/',
   },
 ];
