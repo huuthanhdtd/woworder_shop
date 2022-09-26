@@ -17,7 +17,7 @@
     z-index: 101;
     animation: contact 1s cubic-bezier(0.12, 0.7, 0.74, 0.71) infinite
       alternate-reverse;
-    // border: 0.5px solid #fff;
+    border: 0.5px solid #fff;
     display: flex;
     flex-direction: column;
     font-size: 12px;
@@ -109,7 +109,9 @@
           width: 28px;
           height: 28px;
           background-color: #146eb4;
-          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           border-radius: 50%;
           svg {
             color: #fff;
@@ -151,8 +153,6 @@
   .contact {
     .modal.active {
       background-color: rgba(0, 0, 0, 0.5);
-    }
-    .mes {
     }
     .mes.active {
       transform: scale(1);

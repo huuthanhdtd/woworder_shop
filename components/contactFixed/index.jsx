@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import { RiMessage2Line, RiCloseFill } from 'react-icons/ri';
-import { BsMessenger } from 'react-icons/bs';
+import { GoMail } from 'react-icons/go';
 import { SiZalo } from 'react-icons/si';
 import { MdLocationOn } from 'react-icons/md';
 import { AiFillPhone } from 'react-icons/ai';
@@ -22,7 +22,7 @@ export default function ContactFixed() {
     },
     {
       name: 'đóng góp ý kiến giao diện cho Happy Mom',
-      icon: <BsMessenger fontSize={20} />,
+      icon: <GoMail fontSize={20} />,
       link: 'mailto:contact@gmail.com ',
     },
     {

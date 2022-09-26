@@ -6,6 +6,10 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 export default function Carts() {
+  const router = useRouter();
+  const handlePush = () => {
+    router.push('/checkouts/1');
+  };
   return (
     <div className={styles.carts}>
       <div className={styles.breadcrumb_shop}>
@@ -63,7 +67,9 @@ export default function Carts() {
             </li>
             <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
           </ul>
-          <Button className={styles.pay}>Thanh toán</Button>
+          <Button className={styles.pay} onClick={handlePush}>
+            Thanh toán
+          </Button>
         </Grid>
       </Grid>
     </div>

@@ -1,17 +1,12 @@
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  AiOutlineMenu,
-  AiOutlineSearch,
-  AiOutlineClose,
-  AiOutlineHome,
-} from 'react-icons/ai';
-import { BsCart, BsHouse } from 'react-icons/bs';
+import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
+import { BsCart } from 'react-icons/bs';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
 import styles from './styles.module.scss';
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
 import Cart from './Cart/Cart';
@@ -20,53 +15,6 @@ import { useRouter } from 'next/router';
 import Sliders from './sliderHeaderMiddle';
 
 const Header = () => {
-  const hot = [
-    {
-      name: 'Khuyến mãi',
-      slug: 'khuyen-mai',
-    },
-    {
-      name: 'sữa bột cao cấp',
-      slug: 'sua',
-    },
-    {
-      name: 'Vitamin & sức Khoẻ',
-      slug: 'vitamin',
-    },
-    {
-      name: 'Ăn dặm dinh dưỡng',
-      slug: 'an',
-    },
-    {
-      name: 'Cho mẹ bầu sau sinh',
-      slug: 'me-bau',
-    },
-    {
-      name: 'chăm sóc gia đình',
-      slug: 'gia-dinh',
-    },
-    {
-      name: 'chăm sóc gia đình',
-      slug: 'csgd',
-    },
-    ,
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'do-choi',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'do-choi',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'do-choi',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'do-choi',
-    },
-  ];
   const statisticalRef = useRef(null);
   const router = useRouter();
   const [openNav, setOpenNav] = useState(false);

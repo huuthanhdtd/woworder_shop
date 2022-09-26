@@ -110,51 +110,49 @@
     height: 100%;
     background-color: black;
   }
-  .containerCategory {
-    .ul_ListCategory {
-      .li_ListCategory {
-        // .nameDrop {
-        // padding: 5px 10px;
+  // .containerCategory {
+  //   .ul_ListCategory {
+  //     // .li_ListCategory {
+  //     //   // .nameDrop {
+  //     //   // padding: 5px 10px;
 
-        // .iconDrop {
-        //   .drop_Down_Up {
-        //     transition: all 0.3s ease-in-out;
-        //     transform: rotate(180deg);
-        //     svg {
-        //       width: 30px;
-        //       height: 30px;
-        //     }
-        //   }
-        //   .drop_Down_Up.active {
-        //     transition: all 0.3s ease-in-out;
-        //     transform: rotate(0deg);
-        //   }
-        // }
-        // }
-        // .Ul_item {
-        //   position: initial;
-        //   top: initial;
-        //   left: initial;
-        //   transform: initial;
-        //   opacity: 1;
-        //   pointer-events: auto;
-        //   width: 100%;
-        //   padding: 0;
-        //   overflow-x: hidden;
-        //   overflow-y: hidden;
-        //   margin: 0;
-        //   transition: all 0.3s ease-in-out;
-        //   .li_item {
-        //     padding: 5px 10px;
-        //   }
-        // }
-      }
-    }
-  }
+  //     //   // .iconDrop {
+  //     //   //   .drop_Down_Up {
+  //     //   //     transition: all 0.3s ease-in-out;
+  //     //   //     transform: rotate(180deg);
+  //     //   //     svg {
+  //     //   //       width: 30px;
+  //     //   //       height: 30px;
+  //     //   //     }
+  //     //   //   }
+  //     //   //   .drop_Down_Up.active {
+  //     //   //     transition: all 0.3s ease-in-out;
+  //     //   //     transform: rotate(0deg);
+  //     //   //   }
+  //     //   // }
+  //     //   // }
+  //     //   // .Ul_item {
+  //     //   //   position: initial;
+  //     //   //   top: initial;
+  //     //   //   left: initial;
+  //     //   //   transform: initial;
+  //     //   //   opacity: 1;
+  //     //   //   pointer-events: auto;
+  //     //   //   width: 100%;
+  //     //   //   padding: 0;
+  //     //   //   overflow-x: hidden;
+  //     //   //   overflow-y: hidden;
+  //     //   //   margin: 0;
+  //     //   //   transition: all 0.3s ease-in-out;
+  //     //   //   .li_item {
+  //     //   //     padding: 5px 10px;
+  //     //   //   }
+  //     //   // }
+  //     // }
+  //   }
+  // }
 }
 @media screen and (max-width: 900px) {
-  .showNav {
-  }
   .showNav.active {
     .dropUp {
       top: -18px;
