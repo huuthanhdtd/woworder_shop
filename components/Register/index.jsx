@@ -23,7 +23,7 @@ export default function Register() {
       <div className={styles.title}>
         <Typography variant="h6">Tạo tài khoản</Typography>
       </div>
-      <div className={styles.formRegister}>
+      <form className={styles.formRegister}>
         <TextField
           variant="outlined"
           placeholder="Họ"
@@ -60,7 +60,7 @@ export default function Register() {
           variant="outlined"
           placeholder="Họ"
           type="password"
-          className={styles.inputForms}
+          className={styles.inputForm}
         />
         <div className={styles.recap}>
           This site is protected by reCAPTCHA and the Google Privacy Policy and
@@ -73,7 +73,7 @@ export default function Register() {
           <BiArrowBack />
           <Link href="/">Quay lại trang chủ</Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

@@ -12,7 +12,14 @@ const LayoutAccount = ({ title, children }) => {
           <Typography variant="h6"> {title}</Typography>
         </div>
         <Grid container justifyContent="center" className={styles.account}>
-          <Grid item lg={3} className={styles.tabAccount}>
+          <Grid
+            item
+            lg={3}
+            md={3}
+            sm={11}
+            xs={12}
+            className={styles.tabAccount}
+          >
             <Typography variant="h6">Tài khoản</Typography>
             <div className={styles.tabBtn}>
               {myAccount.map((it, idx) => (
@@ -23,7 +30,7 @@ const LayoutAccount = ({ title, children }) => {
               ))}
             </div>
           </Grid>
-          <Grid item lg={9} className={styles.infor}>
+          <Grid item lg={9} md={9} sm={11} xs={12} className={styles.infor}>
             {children}
           </Grid>
         </Grid>

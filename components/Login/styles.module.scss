@@ -54,7 +54,7 @@
           margin-right: 20px;
           z-index: 0;
           border: 1px solid var(--primary-color-);
-
+          font-size: 12px;
           &::after {
             content: '';
             position: absolute;
@@ -88,6 +88,19 @@
           button {
             padding: 0;
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    margin-top: 50px;
+    .wrapper {
+      .form {
+        .input input {
+          padding: 12px;
         }
       }
     }

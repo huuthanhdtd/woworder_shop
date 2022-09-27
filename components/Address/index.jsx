@@ -25,7 +25,14 @@ const Addresses = () => {
   return (
     <LayoutAccount title={'Thông tin địa chỉ'}>
       <Grid container justifyContent="space-between">
-        <Grid item lg={6} className={styles.inforAddress}>
+        <Grid
+          item
+          lg={6}
+          md={6}
+          sm={12}
+          xs={12}
+          className={styles.inforAddress}
+        >
           <div className={styles.subtitle}>
             <Typography variant="body2" className={styles.name}>
               {upperFirstLetter('Trần quang huy')}
@@ -78,7 +85,14 @@ const Addresses = () => {
             )}
           </div>
         </Grid>
-        <Grid item lg={6} className={styles.inforAddress}>
+        <Grid
+          item
+          lg={6}
+          md={6}
+          sm={12}
+          xs={12}
+          className={styles.inforAddress}
+        >
           <Button className={styles.btnAddNew} onClick={handleOpenAddNew}>
             Nhập địa chỉ mới
           </Button>

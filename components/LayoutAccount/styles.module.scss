@@ -53,3 +53,21 @@
     }
   }
 }
+
+@media screen and (max-width: 960px) {
+  .root {
+    .wrapper {
+      .account {
+        .tabAccount {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    margin-top: 200px;
+  }
+}
