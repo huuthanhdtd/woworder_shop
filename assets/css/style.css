@@ -215,18 +215,14 @@ img:hover {
   white-space: initial;
 }
 
-.styles_selectForm__0yvvT .MuiInputLabel-outlined {
+.styles_selectForm__n3mkv .MuiInputLabel-outlined {
   transform: translate(14px, 16px) scale(1);
-}
-
-.styles_input__EAhfv .MuiInputLabel-outlined {
-  transform: translate(14px, 16px) scale(1);
-  font-size: 12px;
 }
 
 .styles_form__5_bBQ .MuiFormControl-root {
   min-width: 100% !important;
   margin-bottom: 8px;
+  margin-top: 6px;
 }
 .styles_form__5_bBQ .MuiOutlinedInput-input {
   padding: 14px;
@@ -236,25 +232,25 @@ img:hover {
   font-size: 14px;
 }
 
-.styles_rangeSlider__c6gg2 .MuiSlider-rail {
+.styles_rangeSlider__y_b91 .MuiSlider-rail {
   height: 10px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: #108775;
 }
-.styles_rangeSlider__c6gg2 .MuiSlider-track {
+.styles_rangeSlider__y_b91 .MuiSlider-track {
   height: 10px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   background-color: #108775;
 }
-.styles_rangeSlider__c6gg2 .MuiSlider-thumb {
+.styles_rangeSlider__y_b91 .MuiSlider-thumb {
   width: 21px;
   height: 21px;
   margin-top: -6px;
   background-color: #108775;
 }
-.styles_rangeSlider__c6gg2 .MuiSlider-valueLabel {
+.styles_rangeSlider__y_b91 .MuiSlider-valueLabel {
   left: calc(-50% + 4px);
 }
 .MuiSlider-root {

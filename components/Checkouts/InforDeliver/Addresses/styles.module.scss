@@ -1,0 +1,66 @@
+$borderColor: #c4c4c4;
+$textColorM: #757575;
+
+.iconCircle {
+  background-color: white;
+  border: 1px solid $borderColor;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  fill: white;
+  margin-right: 5px;
+  transition: all 0.3s ease-out;
+}
+.activeDeliver {
+  background-color: var(--primary-color-);
+  border: 1px solid var(--primary-color-);
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 18px;
+  fill: white;
+  margin-right: 5px;
+}
+.border {
+  border: 1px solid $borderColor;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+.text {
+  font-family: 'Mulish M';
+  font-size: 14px;
+  color: $textColorM;
+}
+
+.address {
+  .borderBottom {
+    border-bottom: 1px solid $borderColor;
+    border-radius: 0;
+  }
+  .addressTitle {
+    &:first-child {
+      border-bottom: 1px solid $borderColor;
+    }
+    &:last-child {
+      border-top: 1px solid $borderColor;
+    }
+    .button {
+      width: 100%;
+      text-transform: none;
+      display: flex;
+      justify-content: flex-start;
+      padding: 12px;
+    }
+  }
+  .selectAddress {
+    padding: 12px;
+    .input {
+      width: 100%;
+      margin: 6px 0;
+      color: $textColorM;
+      input {
+        font-size: 14px;
+        padding: 14px;
+      }
+    }
+  }
+}

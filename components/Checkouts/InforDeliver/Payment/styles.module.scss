@@ -1,0 +1,46 @@
+$borderColor: #c4c4c4;
+
+.iconCircle {
+  background-color: white;
+  border: 1px solid $borderColor;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  fill: white;
+  margin-right: 5px;
+  transition: all 0.3s ease-out;
+}
+.activeDeliver {
+  background-color: var(--primary-color-);
+  border: 1px solid var(--primary-color-);
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 18px;
+  fill: white;
+  margin-right: 5px;
+}
+
+.payment {
+  .btnPayment {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px 12px;
+    text-transform: none;
+    &:first-child {
+      border-bottom: 1px solid $borderColor;
+      border-radius: 0;
+    }
+    &:last-child {
+      border-top: 1px solid $borderColor;
+    }
+  }
+  .bottomBorder {
+    border-bottom: 1px solid $borderColor;
+  }
+  .desPayment {
+    padding: 20px 10px;
+    text-align: center;
+    background-color: #fafafa;
+  }
+}

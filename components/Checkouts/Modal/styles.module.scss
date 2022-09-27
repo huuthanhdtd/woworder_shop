@@ -1,0 +1,84 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .popup {
+    overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 10px;
+    width: fit-content;
+    min-height: 500px;
+    height: 500px;
+    box-shadow: 0px 2px 2px 5px #5b5a5a;
+    .title {
+      font-family: 'Mulish M';
+      padding: 12px;
+      border-bottom: 1px solid #e1e1e1;
+      color: #5b5a5a;
+      display: flex;
+      justify-content: space-between;
+      .close {
+        min-width: 40px;
+        padding: 6px;
+        border-color: var(--primary-color-);
+        color: var(--primary-color-);
+        font-size: 18px;
+      }
+    }
+    .listCoupon {
+      padding: 12px 18px;
+      .typeCoupon {
+        margin-top: 20px;
+        &:first-child {
+          margin-top: 0px;
+        }
+      }
+      p {
+        color: #5b5a5a;
+        font-family: 'Mulish M';
+      }
+      .coupon {
+        border: 1px solid #e1e1e1;
+        border-radius: 4px;
+        padding: 18px;
+        min-width: 400px;
+        .expired {
+          margin: 0 0 8px;
+          display: flex;
+          justify-content: flex-start;
+          img {
+            min-width: 40px;
+            min-height: 40px;
+          }
+          .content {
+            margin-left: 10px;
+            .name {
+              color: black;
+              font-weight: 600;
+            }
+            .date {
+              font-size: 14px;
+            }
+          }
+        }
+        .description {
+          font-size: 14px;
+        }
+        .applyBox {
+          display: flex;
+          justify-content: space-between;
+          .detail {
+            text-transform: none;
+            color: var(--primary-color-);
+          }
+          .accept {
+            text-transform: none;
+            background-color: var(--primary-color-);
+            color: #fff;
+            padding: 6px 10px;
+          }
+        }
+      }
+    }
+  }
+}

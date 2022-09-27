@@ -115,100 +115,7 @@ $borderColor: #c4c4c4;
         padding: 12px;
       }
     }
-    .address {
-      .borderBottom {
-        border-bottom: 1px solid $borderColor;
-        border-radius: 0;
-      }
-      .addressTitle {
-        &:first-child {
-          border-bottom: 1px solid $borderColor;
-        }
-        &:last-child {
-          border-top: 1px solid $borderColor;
-        }
-        .button {
-          width: 100%;
-          text-transform: none;
-          display: flex;
-          justify-content: flex-start;
-          padding: 12px;
-        }
-      }
-      .selectAddress {
-        padding: 12px;
-        .selectForm {
-          margin: 6px 0;
-          min-width: 100%;
-          .label {
-            font-size: 14px;
-            font-family: 'Mulish M';
-          }
-          select {
-            padding: 11px 0px 11px 8px;
-            font-size: 14px;
-          }
-          fieldset {
-            font-size: 14px;
-          }
-        }
-      }
-    }
-    .deliverBox {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .iconBox {
-        width: 10vw;
-        fill: #c4c4c4;
-      }
-      .description {
-        color: $textColorM;
-        font-size: 14px;
-      }
-    }
-    .addressLocal {
-      padding: 12px 14px;
-      cursor: pointer;
-      &:hover {
-        background-color: #f5f1f1;
-      }
-      strong {
-        margin-left: 6px;
-      }
-    }
-    .deliverCharges {
-      padding: 16px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .payment {
-      .btnPayment {
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        padding: 20px 12px;
-        text-transform: none;
-        &:first-child {
-          border-bottom: 1px solid $borderColor;
-          border-radius: 0;
-        }
-        &:last-child {
-          border-top: 1px solid $borderColor;
-        }
-      }
-      .bottomBorder {
-        border-bottom: 1px solid $borderColor;
-      }
-      .desPayment {
-        padding: 20px 10px;
-        text-align: center;
-        background-color: #fafafa;
-      }
-    }
+
     .boxSubmit {
       display: none;
       justify-content: space-between;
@@ -228,6 +135,13 @@ $borderColor: #c4c4c4;
 @media only screen and (max-width: 960px) {
   .infor {
     margin-right: 0;
+    padding-top: 20px;
+    .title {
+      display: none;
+    }
+    .tabMenu {
+      display: none;
+    }
     .form {
       .boxSubmit {
         display: flex;

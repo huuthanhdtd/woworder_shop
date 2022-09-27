@@ -1,27 +1,14 @@
-import {
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  Link,
-  Select,
-  TextField,
-  Typography,
-} from '@material-ui/core';
-import clsx from 'clsx';
+import { Button, Grid, Link, TextField, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import React from 'react';
-import {
-  RiArrowRightSLine,
-  RiCheckboxBlankCircleFill,
-  RiInboxArchiveLine,
-} from 'react-icons/ri';
+import { RiArrowRightSLine } from 'react-icons/ri';
 import { AiOutlineUser } from 'react-icons/ai';
 import { citieslist } from '../../../constants/selectListData';
 import styles from './styles.module.scss';
-import Image from 'next/image';
-import COD from '../../../assets/image/cod.svg';
-import BANK from '../../../assets/image/bank.svg';
+import SelectForm from './SelectForm';
+import Payments from './Payment';
+import Delivery from './Deliver';
+import Addresses from './Addresses';
 
 const addresses = [
   { name: 'Hòa khương, đà nẵng' },
@@ -33,14 +20,16 @@ const InforDeliver = ({ token, handleLogin, login }) => {
     city: '',
     district: '',
     wards: '',
+    addresses: '',
   });
+
+  const [addressUser, setAddressUser] = React.useState();
 
   const [data, setData] = React.useState({
     cities: citieslist[0].cities,
     districts: null,
     wards: null,
   });
-
   const [deliver, setDeliver] = React.useState('deliver');
   const [payment, setPayment] = React.useState('cash');
 
@@ -62,9 +51,15 @@ const InforDeliver = ({ token, handleLogin, login }) => {
     });
   }, []);
 
+  const handleUpdateAddress = React.useCallback((event) => {
+    setAddressUser(event.target.value);
+  }, []);
+
   const handleChange = (event) => {
     const name = event.target.name;
-    if (event.target.value === 'Chọn tỉnh / thành') {
+    const value = event.target.value;
+
+    if (value === '' && name === 'city') {
       setState({
         city: '',
         district: '',
@@ -87,7 +82,7 @@ const InforDeliver = ({ token, handleLogin, login }) => {
         districts: data.cities.find((it) => it.name === event.target.value),
       });
     }
-    if (name === 'district') {
+    if (name === 'district' && data.districts) {
       setData({
         ...data,
         wards: data.districts.districts.find(
@@ -98,37 +93,6 @@ const InforDeliver = ({ token, handleLogin, login }) => {
   };
 
   const router = useRouter();
-
-  const SelectForm = ({ label, title, name, data }) => {
-    return (
-      <FormControl variant="outlined" className={styles.selectForm}>
-        <InputLabel
-          htmlFor="outlined-age-native-simple"
-          className={styles.label}
-        >
-          {label}
-        </InputLabel>
-        <Select
-          native
-          value={state[name]}
-          onChange={handleChange}
-          label={label}
-          inputProps={{
-            name: name,
-            id: 'outlined-age-native-simple',
-          }}
-        >
-          <option defaultValue="#">{title}</option>
-          {data &&
-            data.map((it, idx) => (
-              <option value={it.name} key={idx}>
-                {it.name}
-              </option>
-            ))}
-        </Select>
-      </FormControl>
-    );
-  };
 
   return (
     <div className={styles.infor}>
@@ -173,8 +137,10 @@ const InforDeliver = ({ token, handleLogin, login }) => {
           <SelectForm
             label={'Thêm địa chỉ mới...'}
             title={'Địa chỉ đã lưu trữ'}
-            name="address"
+            name="addresses"
             data={addresses}
+            state={state}
+            handleChange={handleUpdateAddress}
           />
         )}
 
@@ -199,208 +165,18 @@ const InforDeliver = ({ token, handleLogin, login }) => {
             />
           </Grid>
         </Grid>
-        <div className={clsx(styles.address, styles.border)}>
-          <div className={styles.addressTitle}>
-            <Button
-              className={clsx(styles.text, styles.button)}
-              onClick={() => handleDeliver('deliver')}
-            >
-              <RiCheckboxBlankCircleFill
-                className={clsx(styles.iconCircle, {
-                  [styles.activeDeliver]: deliver === 'deliver',
-                })}
-              />
-              Giao tận nơi
-            </Button>
-          </div>
-          {deliver === 'deliver' && (
-            <div className={styles.selectAddress}>
-              <TextField
-                className={styles.input}
-                variant="outlined"
-                placeholder="Địa chỉ"
-              />
-              <Grid container spacing={1}>
-                <Grid item lg={4} md={4} sm={4} xs={12}>
-                  <SelectForm
-                    label={'Tỉnh / thành'}
-                    title={'Chọn tỉnh / thành'}
-                    name="city"
-                    data={data.cities}
-                  />
-                </Grid>
-                <Grid item lg={4} md={4} sm={4} xs={12}>
-                  <SelectForm
-                    label={'Quận / huyện'}
-                    title={'Chọn quận / huyện'}
-                    name="district"
-                    data={data?.districts?.districts}
-                  />
-                </Grid>
-                <Grid item lg={4} md={4} sm={4} xs={12}>
-                  <SelectForm
-                    label={'Phường / xã'}
-                    title={'Chọn phường / xã'}
-                    name="wards"
-                    data={data?.wards?.wards}
-                  />
-                </Grid>
-              </Grid>
-            </div>
-          )}
-          <div className={styles.addressTitle}>
-            <Button
-              className={clsx(styles.text, styles.button, {
-                [styles.borderBottom]: deliver === 'local',
-              })}
-              onClick={() => handleDeliver('local')}
-            >
-              <RiCheckboxBlankCircleFill
-                className={clsx(styles.iconCircle, {
-                  [styles.activeDeliver]: deliver === 'local',
-                })}
-              />
-              Nhận tại của hàng
-            </Button>
-          </div>
-          {deliver === 'local' && (
-            <div className={styles.selectAddress}>
-              <Grid container spacing={1}>
-                <Grid item lg={4} md={4} sm={4} xs={12}>
-                  <SelectForm
-                    label={'Tỉnh / thành'}
-                    title={'Chọn tỉnh / thành'}
-                    name="city"
-                    data={data.cities.filter((it) => it.code === 'DDN')}
-                  />
-                </Grid>
-                {data.districts && (
-                  <Grid item lg={4} md={4} sm={4} xs={12}>
-                    <SelectForm
-                      label={'Quận / huyện'}
-                      title={'Chọn quận / huyện'}
-                      name="district"
-                      data={data?.districts?.districts}
-                    />
-                  </Grid>
-                )}
-                {data.wards && (
-                  <Grid item lg={4} md={4} sm={4} xs={12}>
-                    <SelectForm
-                      label={'Phường / xã'}
-                      title={'Chọn phường / xã'}
-                      name="wards"
-                      data={data?.wards?.wards}
-                    />
-                  </Grid>
-                )}
-              </Grid>
-            </div>
-          )}
-        </div>
-        {deliver === 'local' ? (
-          <>
-            <Typography className={styles.caption}>
-              Chi nhánh còn hàng
-            </Typography>
-
-            <div className={clsx(styles.addressLocal, styles.border)}>
-              <RiCheckboxBlankCircleFill
-                className={clsx(styles.iconCircle, styles.activeDeliver)}
-              />
-              <strong>{`92 Nguyễn Du: `}</strong>
-              <small>92 Nguyễn Du, Quận Hải Châu, Đà Nẵng</small>
-            </div>
-          </>
-        ) : (
-          <>
-            <Typography className={styles.caption}>
-              Phương thức vận chuyển
-            </Typography>
-            {data.wards ? (
-              <div className={clsx(styles.border, styles.deliverCharges)}>
-                <Typography variant="h5" className={clsx(styles.text)}>
-                  <RiCheckboxBlankCircleFill
-                    className={clsx(styles.iconCircle, styles.activeDeliver)}
-                  />
-                  GIAO TIÊU CHUẨN từ 1-5 ngày
-                </Typography>
-                <Typography variant="body2" className={styles.text}>
-                  25.000 <sup>đ</sup>
-                </Typography>
-              </div>
-            ) : (
-              <div className={clsx(styles.border, styles.deliverBox)}>
-                <RiInboxArchiveLine className={styles.iconBox} />
-                <Typography className={styles.description}>
-                  Vui lòng chọn
-                  {data.districts === null
-                    ? ' tỉnh / thành '
-                    : data.wards === null
-                    ? ' quận / huyện '
-                    : ''}
-                  để có danh sách phương thức vận chuyển.
-                </Typography>
-              </div>
-            )}
-          </>
-        )}
-
+        <Addresses
+          data={data}
+          state={state}
+          deliver={deliver}
+          handleChange={handleChange}
+          handleDeliver={handleDeliver}
+        />
+        <Delivery deliver={deliver} data={data} />
         <Typography className={styles.caption}>
           Phương thức thanh toán
         </Typography>
-        <div className={clsx(styles.border, styles.payment)}>
-          <Button
-            className={clsx(styles.text, styles.btnPayment)}
-            onClick={() => handlePayment('cash')}
-          >
-            <RiCheckboxBlankCircleFill
-              className={clsx(styles.iconCircle, {
-                [styles.activeDeliver]: payment === 'cash',
-              })}
-            />
-            <Image src={COD} width={70} height={40} />
-            Thanh toán tiền mặt khi giao hàng (COD)
-          </Button>
-          {payment === 'cash' && (
-            <div className={styles.desPayment}>
-              <Typography variant="body2" className={styles.text}>
-                Cảm ơn bạn đã lựa chọn mua sắm tại Happy Mommy, <br /> Nhân viên
-                của chúng tôi sẽ sớm liên lạc với bạn qua điện thoại để
-                <br /> XÁC NHẬN ĐƠN HÀNG <br /> trước khi giao hàng!
-              </Typography>
-            </div>
-          )}
-          <Button
-            className={clsx(styles.text, styles.btnPayment, {
-              [styles.bottomBorder]: payment === 'bank',
-            })}
-            onClick={() => handlePayment('bank')}
-          >
-            <RiCheckboxBlankCircleFill
-              className={clsx(styles.iconCircle, {
-                [styles.activeDeliver]: payment === 'bank',
-              })}
-            />
-            <Image src={BANK} width={70} height={40} />
-            Chuyển khoản qua ngân hàng
-          </Button>
-          {payment === 'bank' && (
-            <div className={styles.desPayment}>
-              <Typography variant="body2" className={styles.text}>
-                Cảm ơn bạn đã lựa chọn mua sắm tại Happy Mommy. Bạn vui lòng
-                chuyển khoản số tiền qua:
-                <br />
-                Ngân hàng: Vietinbank <br />
-                STK: 1078 7579 2651 - Dương Thị Quỳnh Giao <br />
-                Nhân viên của chúng tôi sẽ sớm liên lạc với bạn qua điện thoại
-                để
-                <br />
-                XÁC NHẬN ĐƠN HÀNG.
-              </Typography>
-            </div>
-          )}
-        </div>
+        <Payments handlePayment={handlePayment} payment={payment} />
         <div className={styles.boxSubmit}>
           <Button variant="text" className={styles.gotoCarts}>
             Giỏ hàng
