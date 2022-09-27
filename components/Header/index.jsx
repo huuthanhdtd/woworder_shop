@@ -67,7 +67,11 @@ const Header = () => {
     };
   }, []);
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={clsx(styles.wrapper, {
+        [styles.none]: router.pathname === '/checkouts/[id]',
+      })}
+    >
       <div
         className={clsx(styles.modal, {
           [styles.active]:

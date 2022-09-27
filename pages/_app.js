@@ -8,12 +8,14 @@ import '../assets/css/style.css';
 import '../assets/css/slick.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useRouter } from 'next/router';
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
   // const { global } = pageProps;
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -24,7 +26,11 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <GlobalContext.Provider value={global.attributes}>
         <Layout>
-          <div style={{ marginTop: '155px' }}>
+          <div
+            style={{
+              marginTop: router.pathname === '/checkouts/[id]' ? 0 : '155px',
+            }}
+          >
             <Component {...pageProps} />
           </div>
         </Layout>

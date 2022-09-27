@@ -27,9 +27,6 @@ const Form = ({ submitTitle, cancel }) => {
     setForm((prev) => ({ ...prev, [input]: value }));
   }, []);
 
-  console.log(form);
-  // console.log(cities);
-
   return (
     <div className={styles.wrapper}>
       <form action="" className={styles.form}>

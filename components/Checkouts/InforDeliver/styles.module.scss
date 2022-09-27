@@ -1,0 +1,237 @@
+$titleColor: #333333;
+$textColor: #737373;
+$textColorM: #757575;
+$borderColor: #c4c4c4;
+
+.iconCircle {
+  background-color: white;
+  border: 1px solid $borderColor;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  fill: white;
+  margin-right: 5px;
+  transition: all 0.3s ease-out;
+}
+.activeDeliver {
+  background-color: var(--primary-color-);
+  border: 1px solid var(--primary-color-);
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 18px;
+  fill: white;
+  margin-right: 5px;
+}
+.border {
+  border: 1px solid $borderColor;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+.infor {
+  padding-top: 50px;
+  margin-right: 20px;
+  margin-bottom: 100px;
+  .text {
+    font-family: 'Mulish M';
+    font-size: 14px;
+    color: $textColorM;
+  }
+  .title {
+    font-family: 'Mulish Bold';
+    font-size: 30px;
+    color: $titleColor;
+  }
+  .tabMenu {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    justify-content: space-between;
+    margin: 10px 0;
+    a {
+      color: var(--primary-color-);
+    }
+    p {
+      color: $textColor;
+    }
+    a,
+    .iconArrow,
+    p {
+      font-size: 13px;
+      font-family: 'Mulish';
+    }
+  }
+  .caption {
+    margin: 10px 0;
+    font-family: 'Mulish Bold';
+    font-size: 18px;
+    color: $titleColor;
+  }
+  .questionLogin {
+    font-size: 14px;
+    a {
+      color: var(--primary-color-);
+    }
+  }
+  .user {
+    display: flex;
+    justify-content: flex-start;
+    .iconUser {
+      width: 50px;
+      height: 50px;
+      background-color: #e1e1e1;
+      border-radius: 5px;
+      font-size: 20px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 16px;
+    }
+    .userInfor {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      p {
+        font-family: 'Mulish M';
+        font-size: 14px;
+      }
+      .logout {
+        padding: 0;
+        font-family: 'Mulish M';
+        text-transform: none;
+        color: var(--primary-color-);
+      }
+    }
+  }
+  .form {
+    padding: 20px 0;
+    .input {
+      width: 100%;
+      margin: 6px 0;
+      color: $textColorM;
+      input {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+    .address {
+      .borderBottom {
+        border-bottom: 1px solid $borderColor;
+        border-radius: 0;
+      }
+      .addressTitle {
+        &:first-child {
+          border-bottom: 1px solid $borderColor;
+        }
+        &:last-child {
+          border-top: 1px solid $borderColor;
+        }
+        .button {
+          width: 100%;
+          text-transform: none;
+          display: flex;
+          justify-content: flex-start;
+          padding: 12px;
+        }
+      }
+      .selectAddress {
+        padding: 12px;
+        .selectForm {
+          margin: 6px 0;
+          min-width: 100%;
+          .label {
+            font-size: 14px;
+            font-family: 'Mulish M';
+          }
+          select {
+            padding: 11px 0px 11px 8px;
+            font-size: 14px;
+          }
+          fieldset {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .deliverBox {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .iconBox {
+        width: 10vw;
+        fill: #c4c4c4;
+      }
+      .description {
+        color: $textColorM;
+        font-size: 14px;
+      }
+    }
+    .addressLocal {
+      padding: 12px 14px;
+      cursor: pointer;
+      &:hover {
+        background-color: #f5f1f1;
+      }
+      strong {
+        margin-left: 6px;
+      }
+    }
+    .deliverCharges {
+      padding: 16px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .payment {
+      .btnPayment {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 20px 12px;
+        text-transform: none;
+        &:first-child {
+          border-bottom: 1px solid $borderColor;
+          border-radius: 0;
+        }
+        &:last-child {
+          border-top: 1px solid $borderColor;
+        }
+      }
+      .bottomBorder {
+        border-bottom: 1px solid $borderColor;
+      }
+      .desPayment {
+        padding: 20px 10px;
+        text-align: center;
+        background-color: #fafafa;
+      }
+    }
+    .boxSubmit {
+      display: none;
+      justify-content: space-between;
+      padding: 12px 18px;
+      .gotoCarts {
+        text-transform: none;
+      }
+      .submit {
+        text-transform: none;
+        background-color: var(--primary-color-);
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .infor {
+    margin-right: 0;
+    .form {
+      .boxSubmit {
+        display: flex;
+      }
+    }
+  }
+}

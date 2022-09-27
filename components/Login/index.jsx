@@ -16,7 +16,7 @@ const Login = () => {
       </div>
       <div className={styles.wrapper}>
         <form action="" className={styles.form}>
-          {change ? (
+          {!change ? (
             <>
               <TextField
                 className={styles.input}
@@ -49,7 +49,7 @@ const Login = () => {
           )}
 
           <div className={styles.request}>
-            {change ? (
+            {!change ? (
               <>
                 <Button className={styles.btn}>Đăng nhập</Button>
                 <div className={styles.reqAnother}>
