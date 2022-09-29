@@ -9,6 +9,7 @@ import '../assets/css/slick.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useRouter } from 'next/router';
+import { CartProvider } from 'react-use-cart';
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({});
@@ -31,7 +32,9 @@ const MyApp = ({ Component, pageProps }) => {
               marginTop: router.pathname === '/checkouts/[id]' ? 0 : '155px',
             }}
           >
+            <CartProvider>
             <Component {...pageProps} />
+            </CartProvider>
           </div>
         </Layout>
       </GlobalContext.Provider>
