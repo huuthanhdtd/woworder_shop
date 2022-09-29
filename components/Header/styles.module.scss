@@ -107,8 +107,8 @@
             .quatityCart {
               background-color: red;
               position: absolute;
-              top: -2px;
-              right: 15px;
+              top: -5px;
+              right: 11px;
               width: 15px;
               font-size: 12px;
               height: 15px;
@@ -170,8 +170,8 @@
             .beforeCart {
               margin: 0;
               .quatityCart {
-                top: -7px;
-                right: -3px;
+                top: -5px;
+                right: -5px;
               }
               .nameAccount,
               .nameCart {
@@ -267,7 +267,7 @@
               align-items: center;
               .quatityCart {
                 top: 4px;
-                right: 8px;
+                right: 5px;
               }
               .nameAccount,
               .nameCart {
@@ -316,7 +316,6 @@
       width: 100%;
       height: 67px;
       z-index: 98;
-      transition: top 0.3s;
     }
   }
 }

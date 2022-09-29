@@ -142,35 +142,36 @@ const Header = () => {
                   <></>
                 )}
               </div>
-              {totalItems > 0 ? (
-                <div
-                  className={clsx(styles.taskbarCart, {
-                    [styles.active]: router.asPath === '/',
-                  })}
-                >
+              <div suppressHydrationWarning={true}>
+                {totalItems > 0 ? (
                   <div
-                    className={styles.product}
-                    suppressHydrationWarning={true}
+                    className={clsx(styles.taskbarCart, {
+                      [styles.active]: router.asPath === '/',
+                    })}
                   >
-                    {totalItems} sản phẩm
+                    <div
+                      className={styles.product}
+                      suppressHydrationWarning={true}
+                    >
+                      {totalItems} sản phẩm
+                    </div>
+                    <div
+                      className={styles.totalPriceMobile}
+                      suppressHydrationWarning={true}
+                    >
+                      {cartTotal}
+                    </div>
+                    <div
+                      className={styles.detailCart}
+                      onClick={() => setOpenCart(true)}
+                    >
+                      Xem chi tiết
+                    </div>
                   </div>
-                  <div
-                    className={styles.totalPriceMobile}
-                    suppressHydrationWarning={true}
-                  >
-                    {' '}
-                    {cartTotal}
-                  </div>
-                  <div
-                    className={styles.detailCart}
-                    onClick={() => setOpenCart(true)}
-                  >
-                    Xem chi tiết
-                  </div>
-                </div>
-              ) : (
-                <></>
-              )}
+                ) : (
+                  <></>
+                )}
+              </div>
 
               <Cart openCart={openCart} setOpenCart={setOpenCart} />
             </div>
