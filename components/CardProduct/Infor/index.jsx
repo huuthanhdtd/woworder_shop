@@ -4,8 +4,33 @@ import styles from './styles.module.scss';
 import { FaLink } from 'react-icons/fa';
 import { BsBagPlus } from 'react-icons/bs';
 import { Button, TextField, Typography } from '@material-ui/core';
+import { useCart } from 'react-use-cart';
+
+const products = [
+  {
+    id: 1,
+    name: 'Malm',
+    price: 9900,
+    quantity: 1,
+  },
+  {
+    id: 2,
+    name: 'Nordli',
+    price: 16500,
+    quantity: 5,
+  },
+  {
+    id: 3,
+    name: 'Kullen',
+    price: 4500,
+    quantity: 1,
+  },
+];
+
 function Infor() {
   const [isBuy, setIsBuy] = React.useState(false);
+
+  const { addItem, updateItemQuantity } = useCart();
 
   const [qtyValue, setQtyValue] = React.useState(1);
 
@@ -58,7 +83,10 @@ function Infor() {
           <Button
             className={styles.qtyPress}
             disabled={qtyValue === 1 ? true : false}
-            onClick={() => handleSetQtyValue('down')}
+            onClick={() => {
+              updateItemQuantity(products[1].id, products[1].quantity - 1);
+              handleSetQtyValue('down');
+            }}
           >
             -
           </Button>
@@ -73,7 +101,10 @@ function Infor() {
           />
           <Button
             className={styles.qtyPress}
-            onClick={() => handleSetQtyValue('up')}
+            onClick={() => {
+              updateItemQuantity(products[1].id, products[1].quantity + 1);
+              handleSetQtyValue('up');
+            }}
           >
             +
           </Button>
@@ -83,7 +114,13 @@ function Infor() {
             [styles.close]: isBuy,
           })}
         >
-          <Button className={styles.button} onClick={() => setIsBuy(true)}>
+          <Button
+            className={styles.button}
+            onClick={() => {
+              addItem(products[1]);
+              setIsBuy(true);
+            }}
+          >
             <span className={styles.iconAdd}>
               <BsBagPlus />
             </span>
@@ -95,4 +132,4 @@ function Infor() {
   );
 }
 
-export default Infor;
+export default React.memo(Infor);

@@ -18,9 +18,6 @@ function CardProduct({ data }) {
   const [isDetail, setDetail] = useState(false);
 
   const router = useRouter();
-  const handleDetailProduct = () => {
-    router.push('/product/1');
-  };
   return (
     <div className={styles.all}>
       <div className={styles.imageWp}>
