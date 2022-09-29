@@ -13,10 +13,13 @@ import Cart from './Cart/Cart';
 import Account from './Account/Account';
 import { useRouter } from 'next/router';
 import Sliders from './sliderHeaderMiddle';
+import { useCart } from 'react-use-cart';
 
 const Header = () => {
+  const { items } = useCart();
+  console.log(items.length);
   const statisticalRef = useRef(null);
-  const router = useRouter();   
+  const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
@@ -126,7 +129,11 @@ const Header = () => {
                   <BsCart />
                 </div>
                 <div className={styles.nameCart}>Giỏ hàng</div>
-                <div className={styles.quatityCart}></div>
+                {items.length > 0 ? (
+                  <div className={styles.quatityCart}>{items.length}</div>
+                ) : (
+                  <></>
+                )}
               </div>
               <div
                 className={clsx(styles.taskbarCart, {

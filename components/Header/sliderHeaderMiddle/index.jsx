@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import styles from './styles.module.scss';
 import { BsHouse } from 'react-icons/bs';
@@ -38,27 +38,33 @@ export default function Sliders() {
       name: 'chăm sóc gia đình',
       slug: 'csgd',
     },
-    ,
     {
       name: 'đồ chơi cho bé',
       slug: 'do-choi',
     },
     {
       name: 'đồ chơi cho bé',
-      slug: 'do-choi',
+      slug: 'dp',
     },
     {
       name: 'đồ chơi cho bé',
-      slug: 'do-choi',
+      slug: 'da',
     },
     {
       name: 'đồ chơi cho bé',
-      slug: 'do-choi',
+      slug: 'd',
+    },
+    {
+      name: 'đồ chơi cho bé',
+      slug: 'g',
     },
   ];
-  const [activeBtn, setActiveBtn] = useState('');
-  const handleBtn = (slug) => {
-    setActiveBtn(slug);
+  const [selected, setSelected] = useState('null');
+  useEffect(() => {
+    // console.log(hot.filter((e,i)=> i === Number(selected)));
+  }, [selected]);
+  const onSelect = (key) => {
+    setSelected(key);
   };
   return (
     <div className={styles.content}>
@@ -72,14 +78,14 @@ export default function Sliders() {
       <div className={styles.sliderSlick}>
         <ScrollMenu
           alignCenter={false}
+          onSelect={onSelect}
           data={hot.map((data, idx) => {
             return (
               <div key={idx} className={styles.Hot}>
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]: activeBtn === data.slug,
+                    [styles.active]: Number(selected) === idx,
                   })}
-                  onClick={() => handleBtn(data.slug)}
                 >
                   {data.name}
                 </Button>

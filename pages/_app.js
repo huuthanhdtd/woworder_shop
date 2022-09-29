@@ -33,7 +33,7 @@ const MyApp = ({ Component, pageProps }) => {
             }}
           >
             <CartProvider>
-            <Component {...pageProps} />
+              <Component {...pageProps} />
             </CartProvider>
           </div>
         </Layout>
