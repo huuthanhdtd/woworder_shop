@@ -16,7 +16,7 @@ import Sliders from './sliderHeaderMiddle';
 
 const Header = () => {
   const statisticalRef = useRef(null);
-  const router = useRouter();
+  const router = useRouter();   
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
