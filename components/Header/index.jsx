@@ -17,7 +17,6 @@ import { useCart } from 'react-use-cart';
 
 const Header = () => {
   const { items } = useCart();
-  console.log(items.length);
   const statisticalRef = useRef(null);
   const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
