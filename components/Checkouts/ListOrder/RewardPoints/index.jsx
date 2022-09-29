@@ -1,4 +1,4 @@
-import { Button, Grid, TextField, Typography } from '@material-ui/core';
+import { Button, Checkbox, Grid, TextField, Typography } from '@material-ui/core';
 import Image from 'next/image';
 import React from 'react';
 import { BsDot } from 'react-icons/bs';
@@ -12,7 +12,9 @@ const RewardPoints = ({
   dataCoupon,
   handleShowPopup,
   rewardPoints,
+  checked, handleChecked
 }) => {
+  
   return (
     <div className={styles.wrapper}>
       {/* <div className={styles.codeDiscount}>
@@ -69,6 +71,8 @@ const RewardPoints = ({
         )}
       </div>
       {login && (
+        <div className={styles.wrapDiscountUser}>
+
         <div className={styles.discountUser}>
           <Typography variant="body2" className={styles.inforDiscount}>
             <Image
@@ -76,11 +80,19 @@ const RewardPoints = ({
               width={20}
               height={20}
               className={styles.crown}
-            />{' '}
-            Đồng
+              />{' '}
+            Điểm
             <BsDot /> {rewardPoints} điểm thưởng
           </Typography>
         </div>
+        <Checkbox
+        checked={checked}
+        onChange={handleChecked}
+        size="small"
+        style={{color: '#108775'}}
+        // inputProps={{ 'aria-label': 'checkbox with small size' }}
+      />
+              </div>
       )}
     </div>
   );

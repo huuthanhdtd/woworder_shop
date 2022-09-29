@@ -71,8 +71,12 @@
       padding: 8px 16px;
     }
   }
-  .discountUser {
-    padding: 0 18px;
+  .wrapDiscountUser{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .discountUser {
+      padding: 0 18px;
     .description {
       font-family: 'Mulish';
       font-size: 12px;
@@ -86,6 +90,7 @@
         min-width: 16px !important;
         margin-right: 5px !important;
       }
+    }
     }
   }
 }

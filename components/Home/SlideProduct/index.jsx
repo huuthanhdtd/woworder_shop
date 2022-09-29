@@ -97,7 +97,7 @@ const SlideProduct = ({ title }) => {
     <div className={styles.wrapper}>
       <SortBar title={title} />
       <Slider {...settings}>
-        {Array.from({ length: 10 }).map((it, idx) => (
+        {Array.from({ length: 6 }).map((it, idx) => (
           <CardProduct key={idx} />
         ))}
       </Slider>

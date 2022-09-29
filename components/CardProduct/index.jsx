@@ -12,6 +12,7 @@ import DeatailInfor from './DetailInfor';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Hot from '../../assets/image/hot.svg';
+import { Link } from '@material-ui/core';
 
 function CardProduct({ data }) {
   const [isDetail, setDetail] = useState(false);
@@ -23,15 +24,16 @@ function CardProduct({ data }) {
   return (
     <div className={styles.all}>
       <div className={styles.imageWp}>
-        <div
-          onClick={handleDetailProduct}
-          className={clsx(styles.image, {
-            [styles.imageDetail]: isDetail,
-          })}
-          style={{
-            backgroundImage: `url(https://img5.thuthuatphanmem.vn/uploads/2021/11/22/hinh-anh-songoku-cap-cuoi-dep_101021714.png)`,
-          }}
-        ></div>
+        <Link href={'/product/1'}>
+          <div
+            className={clsx(styles.image, {
+              [styles.imageDetail]: isDetail,
+            })}
+            style={{
+              backgroundImage: `url(https://img5.thuthuatphanmem.vn/uploads/2021/11/22/hinh-anh-songoku-cap-cuoi-dep_101021714.png)`,
+            }}
+          ></div>
+        </Link>
         <span className={styles.label}>
           <p>Giảm 40%</p>
         </span>
@@ -54,4 +56,4 @@ function CardProduct({ data }) {
   );
 }
 
-export default CardProduct;
+export default React.memo(CardProduct);

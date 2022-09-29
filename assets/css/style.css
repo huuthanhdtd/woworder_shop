@@ -236,19 +236,16 @@ img:hover {
   height: 10px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: #108775;
 }
 .styles_rangeSlider__y_b91 .MuiSlider-track {
   height: 10px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  background-color: #108775;
 }
 .styles_rangeSlider__y_b91 .MuiSlider-thumb {
   width: 21px;
   height: 21px;
   margin-top: -6px;
-  background-color: #108775;
 }
 .styles_rangeSlider__y_b91 .MuiSlider-valueLabel {
   left: calc(-50% + 4px);
@@ -256,3 +253,8 @@ img:hover {
 .MuiSlider-root {
   color: #108775 !important;
 }
+
+.MuiSlider-root .Mui-disabled{
+  color: #bdbdbd !important;
+}
+

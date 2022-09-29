@@ -30,6 +30,7 @@ const ListOrder = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(0);
+  const [isChecked, setCheck] = React.useState(false)
 
   const { width } = useWindowSize();
   React.useEffect(() => {
@@ -42,6 +43,12 @@ const ListOrder = ({
   const handleShowOrder = React.useCallback(() => {
     setOpen(!open);
   }, [open]);
+
+
+  const handleChecked = React.useCallback(()=> {
+    setCheck(!isChecked)
+    setValue(0)
+  }, [isChecked])
 
   /* 1 REWARD POINT EQUALS 1000 VND  */
 
@@ -110,6 +117,8 @@ const ListOrder = ({
               dataCoupon={dataCoupon}
               handleShowPopup={handleShowPopup}
               rewardPoints={rewardPoints}
+              handleChecked={handleChecked}
+              checked={isChecked}
             />
 
             <div className={styles.line} />
@@ -124,6 +133,7 @@ const ListOrder = ({
               coupon={coupon}
               handleRemoveCoupon={handleRemoveCoupon}
               maxRewardPoints={maxRewardPoints}
+              checked={isChecked}
             />
           </>
         )}
