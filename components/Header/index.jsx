@@ -9,16 +9,20 @@ import styles from './styles.module.scss';
 import { TextField } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
-import Cart from './Cart/Cart';
 import Account from './Account/Account';
 import { useRouter } from 'next/router';
 import Sliders from './sliderHeaderMiddle';
 import { useCart } from 'react-use-cart';
+// import Cart from './Cart/Cart';
+import dynamic from 'next/dynamic';
+const Cart = dynamic(() => import('./Cart/Cart'), {
+  ssr: false,
+});
 
 const Header = () => {
-  const { items } = useCart();
   const statisticalRef = useRef(null);
   const router = useRouter();
+  const { totalItems, cartTotal } = useCart();
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
@@ -123,31 +127,51 @@ const Header = () => {
               />
             </div>
             <div className={styles.cart}>
-              <div className={styles.beforeCart} onClick={handleCart}>
+              <div
+                className={styles.beforeCart}
+                onClick={handleCart}
+                suppressHydrationWarning={true}
+              >
                 <div className={styles.iconCart}>
                   <BsCart />
                 </div>
                 <div className={styles.nameCart}>Giỏ hàng</div>
-                {items.length > 0 ? (
-                  <div className={styles.quatityCart}>{items.length}</div>
+                {totalItems ? (
+                  <div className={styles.quatityCart}>{totalItems}</div>
                 ) : (
                   <></>
                 )}
               </div>
-              <div
-                className={clsx(styles.taskbarCart, {
-                  [styles.active]: router.asPath === '/',
-                })}
-              >
-                <div className={styles.product}>1 sản phẩm</div>
-                <div className={styles.totalPriceMobile}> 500,000</div>
+              {totalItems > 0 ? (
                 <div
-                  className={styles.detailCart}
-                  onClick={() => setOpenCart(true)}
+                  className={clsx(styles.taskbarCart, {
+                    [styles.active]: router.asPath === '/',
+                  })}
                 >
-                  Xem chi tiết
+                  <div
+                    className={styles.product}
+                    suppressHydrationWarning={true}
+                  >
+                    {totalItems} sản phẩm
+                  </div>
+                  <div
+                    className={styles.totalPriceMobile}
+                    suppressHydrationWarning={true}
+                  >
+                    {' '}
+                    {cartTotal}
+                  </div>
+                  <div
+                    className={styles.detailCart}
+                    onClick={() => setOpenCart(true)}
+                  >
+                    Xem chi tiết
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <></>
+              )}
+
               <Cart openCart={openCart} setOpenCart={setOpenCart} />
             </div>
           </div>

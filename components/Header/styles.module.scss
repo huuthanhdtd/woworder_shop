@@ -12,7 +12,8 @@
   justify-content: center;
   background-color: #ffffff;
   z-index: 999;
-  font-family: 'Mulish';
+  font-weight: 500;
+  font-size: 14px;
   color: #ffffff;
   .modal {
     display: none;
@@ -90,7 +91,6 @@
         margin-left: 25px;
         .cart,
         .account {
-          position: relative;
           display: inline-block;
           margin-left: 7px;
           display: flex;
@@ -103,19 +103,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            .quatityCart{
+            position: relative;
+            .quatityCart {
               background-color: red;
               position: absolute;
-              top: -7px;
-              right: 18px;
-              width: 10px;
-              font-size: 14px;
-              /* text-align: center; */
-              height: 19px;
+              top: -2px;
+              right: 15px;
+              width: 15px;
+              font-size: 12px;
+              height: 15px;
               display: flex;
               align-items: center;
               justify-content: center;
-              border-radius: 20px;
+              border-radius: 50%;
             }
             svg {
               width: 25px;
@@ -169,7 +169,7 @@
             margin: 0;
             .beforeCart {
               margin: 0;
-              .quatityCart{
+              .quatityCart {
                 top: -7px;
                 right: -3px;
               }
@@ -265,7 +265,7 @@
               flex-direction: column;
               justify-content: center;
               align-items: center;
-              .quatityCart{
+              .quatityCart {
                 top: 4px;
                 right: 8px;
               }

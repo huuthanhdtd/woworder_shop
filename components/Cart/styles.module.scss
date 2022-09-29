@@ -11,6 +11,7 @@
     }
   }
   .GridCart {
+    min-height: 80vh;
     .GridList {
       padding: 0 20px;
       h3 {
@@ -123,31 +124,29 @@
             }
           }
         }
-      }
-      .note {
-        margin: 20px 0 10px;
-        background: rgba(255, 86, 130, 0.03);
-        padding: 10px 12px 15px;
-        .title_label {
-          display: block;
-          margin: 0px 0 10px;
-          font-weight: 600;
-          font-size: 14px;
+        .note {
+          margin: 20px 0 10px;
+          background: rgba(255, 86, 130, 0.03);
+          padding: 10px 12px 15px;
+          .title_label {
+            display: block;
+            margin: 0px 0 10px;
+            font-weight: 600;
+            font-size: 14px;
+          }
+          .formControl {
+            padding: 10px 15px;
+            width: 100% !important;
+            height: 80px;
+            min-height: 80px;
+            max-width: 100%;
+            border-radius: 5px;
+            resize: auto;
+            border: 1px solid var(--primary-color-);
+            box-shadow: none;
+            outline: none;
+          }
         }
-        .formControl {
-          padding: 10px 15px;
-          width: 100% !important;
-          height: 80px;
-          min-height: 80px;
-          max-width: 100%;
-          border-radius: 5px;
-          resize: auto;
-          border: 1px solid var(--primary-color-);
-          box-shadow: none;
-          outline: none;
-        }
-      }
-      .invoice {
       }
     }
     .GridPay {

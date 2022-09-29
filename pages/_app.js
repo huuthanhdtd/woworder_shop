@@ -26,17 +26,21 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <CartProvider>
-          <Layout>
-            <div
-              style={{
-                marginTop: router.pathname === '/checkouts/[id]' ? 0 : '155px',
-              }}
-            >
-              <Component {...pageProps} />
-            </div>
-          </Layout>
-        </CartProvider>
+        <>
+          {' '}
+          <CartProvider>
+            <Layout>
+              <div
+                style={{
+                  marginTop:
+                    router.pathname === '/checkouts/[id]' ? 0 : '155px',
+                }}
+              >
+                <Component {...pageProps} />
+              </div>
+            </Layout>
+          </CartProvider>
+        </>
       </GlobalContext.Provider>
     </>
   );
