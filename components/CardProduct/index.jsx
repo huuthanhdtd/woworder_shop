@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
-import { useMemo } from 'react';
-import { useRef } from 'react';
 import styles from './styles.module.scss';
 import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
 import { RiCloseCircleLine } from 'react-icons/ri';
-import { AiFillFire } from 'react-icons/ai';
 import Infor from './Infor';
 import { useState } from 'react';
 import DeatailInfor from './DetailInfor';

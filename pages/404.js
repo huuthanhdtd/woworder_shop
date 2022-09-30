@@ -1,15 +1,8 @@
 import Link from 'next/link';
-import Seo from '../components/seo';
-import { fetchAPI } from '../lib/api';
-// import navBar from '../constants/navsBar.json';
-import { useMemo } from 'react';
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 import { Typography } from '@material-ui/core';
 
-const NotFound = ({ category }) => {
-  const seo = {
-    metaTitle: 'Not Found',
-  };
+const NotFound = () => {
   const styles = {
     container: {
       height: ' 80vh',
@@ -28,25 +21,8 @@ const NotFound = ({ category }) => {
     },
   };
 
-  /* @@ Add categories to NavBar.json */
-
-  // let newArray = [];
-  // newArray = category.map((item) => ({
-  //   title: item.attributes.name,
-  //   link: item.attributes.link,
-  //   slug: item.attributes.slug,
-  //   priority: item.attributes.priority,
-  // }));
-
-  // const rs = useMemo(() => {
-  //   const rr = navBar;
-  //   rr.find((item) => item.title === 'giới thiệu').list = newArray;
-  //   return rr;
-  // }, []);
-  // console.log(category.map((item) => ({ slug: item.attributes.name })));
   return (
     <>
-      {/* <Seo seo={seo} /> */}
       <div style={styles.container}>
         <h3 style={styles.desc}>404 | Không tìm thấy trang này.</h3>
         <Link href="/">
@@ -59,15 +35,5 @@ const NotFound = ({ category }) => {
     </>
   );
 };
-
-// export const getStaticProps = async () => {
-//   const categoryRes = await fetchAPI('/categories', { populate: '*' });
-//   return {
-//     props: {
-//       category: categoryRes.data,
-//     },
-//     revalidate: 1,
-//   };
-// };
 
 export default NotFound;

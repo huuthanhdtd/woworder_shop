@@ -17,7 +17,7 @@ const products = [
     id: 2,
     name: 'Nordli',
     price: 16500,
-    quantity: 5,
+    quantity: 1,
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const products = [
 function Infor() {
   const [isBuy, setIsBuy] = React.useState(false);
 
-  const { addItem, updateItemQuantity } = useCart();
+  const { addItem, updateItemQuantity, getItem, updateItem } = useCart();
 
   const [qtyValue, setQtyValue] = React.useState(1);
 
@@ -84,7 +84,7 @@ function Infor() {
             className={styles.qtyPress}
             disabled={qtyValue === 1 ? true : false}
             onClick={() => {
-              updateItemQuantity(products[1].id, products[1].quantity - 1);
+              updateItem(2, { quantity: qtyValue });
               handleSetQtyValue('down');
             }}
           >
@@ -102,7 +102,7 @@ function Infor() {
           <Button
             className={styles.qtyPress}
             onClick={() => {
-              updateItemQuantity(products[1].id, products[1].quantity + 1);
+              updateItem(2, { quantity: qtyValue });
               handleSetQtyValue('up');
             }}
           >
@@ -132,4 +132,4 @@ function Infor() {
   );
 }
 
-export default React.memo(Infor);
+export default Infor;
