@@ -16,25 +16,24 @@ const Bill = ({
   handleRemoveCoupon,
   maxRewardPoints,
   login,
-  checked
+  checked,
 }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.bill}>
         {login && (
-
           <Slider
-          disabled={!checked}
-          value={value}
-          onChange={handleChange}
-          aria-labelledby="point-slider"
-          valueLabelDisplay="on"
-          defaultValue={30}
-          min={0}
-          max={maxRewardPoints}
-          className={styles.rangeSlider}
+            disabled={!checked}
+            value={value}
+            onChange={handleChange}
+            aria-labelledby="point-slider"
+            valueLabelDisplay="on"
+            defaultValue={30}
+            min={0}
+            max={maxRewardPoints}
+            className={styles.rangeSlider}
           />
-          )}
+        )}
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Tạm tính</Typography>
           <Typography variant="body2">

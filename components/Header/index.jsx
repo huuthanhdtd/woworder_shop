@@ -26,7 +26,6 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
-
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -43,6 +42,10 @@ const Header = () => {
       setOpenCart(true);
       setOpenAccount(false);
       setOpenNav(false);
+    }
+    if (router.asPath === '/cart') {
+      setOpenCart(false);
+      router.push('/cart');
     }
   };
   const handleAccount = () => {

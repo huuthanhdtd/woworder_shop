@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Seo from '../components/seo';
 import { fetchAPI } from '../lib/api';
-import navBar from '../constants/navsBar.json';
+// import navBar from '../constants/navsBar.json';
 import { useMemo } from 'react';
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 import { Typography } from '@material-ui/core';

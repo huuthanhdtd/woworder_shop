@@ -30,7 +30,7 @@ const ListOrder = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(0);
-  const [isChecked, setCheck] = React.useState(false)
+  const [isChecked, setCheck] = React.useState(false);
 
   const { width } = useWindowSize();
   React.useEffect(() => {
@@ -44,11 +44,10 @@ const ListOrder = ({
     setOpen(!open);
   }, [open]);
 
-
-  const handleChecked = React.useCallback(()=> {
-    setCheck(!isChecked)
-    setValue(0)
-  }, [isChecked])
+  const handleChecked = React.useCallback(() => {
+    setCheck(!isChecked);
+    setValue(0);
+  }, [isChecked]);
 
   /* 1 REWARD POINT EQUALS 1000 VND  */
 

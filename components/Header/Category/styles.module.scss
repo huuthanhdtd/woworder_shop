@@ -96,7 +96,7 @@
     display: block;
     position: absolute;
     top: -18px;
-    left: 6px;
+    left: 16px;
     svg {
       height: 30px;
       width: 30px;
@@ -156,15 +156,20 @@
   .showNav.active {
     .dropUp {
       top: -18px;
-      left: 13px;
+      left: 20px;
     }
   }
 }
 @media screen and (max-width: 600px) {
   .showNav {
+    top: 67px;
     width: 100%;
   }
   .showNav.active {
     width: 100%;
+    .dropUp {
+      top: -18px;
+      left: 9px;
+    }
   }
 }

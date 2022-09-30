@@ -20,12 +20,11 @@ export default function Cart({ openCart, setOpenCart }) {
       <div className={styles.dropUp}>
         <IoMdArrowDropup />
       </div>
-
       <div className={styles.cart}>
         <div className={styles.taskName}>
           <div className={styles.name}>GIỎ HÀNG</div>
           <div className={styles.totalProduct}>{totalItems} sản phẩm</div>
-          <div className={styles.totalPrice}>{cartTotal} VND</div>
+          <div className={styles.totalPrice}>{cartTotal} ₫</div>
           <div className={styles.close} onClick={() => setOpenCart(false)}>
             Đóng
           </div>
@@ -39,7 +38,11 @@ export default function Cart({ openCart, setOpenCart }) {
                     <Image src="/cart/sp.png" width={85} height={85} />
                   </div>
                   <div className={styles.desc}>
-                    <span className={styles.nameProduct}>{data.name}</span>
+                    <span className={styles.nameProduct}>
+                      {data.name.length > 150
+                        ? `${data.name.slice(0, 150)}...`
+                        : data.name}
+                    </span>
                     <div className={styles.quantity}>
                       <div className={styles.quantity_selector}>
                         <button
@@ -60,7 +63,7 @@ export default function Cart({ openCart, setOpenCart }) {
                           +
                         </button>
                       </div>
-                      <div className={styles.price}>{data.price} VND</div>
+                      <div className={styles.price}>{data.price} ₫</div>
                     </div>
                     <div
                       className={styles.remove}
@@ -83,7 +86,7 @@ export default function Cart({ openCart, setOpenCart }) {
         </div>
         <div className={styles.totalPrice}>
           <span>TỔNG TIỀN:</span>
-          <span className={styles.total}>{cartTotal} VND</span>
+          <span className={styles.total}>{cartTotal} ₫</span>
         </div>
         <div className={styles.viewsAll}>
           <Button onClick={() => setOpenCart(false)}>
