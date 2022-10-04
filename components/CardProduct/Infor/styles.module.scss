@@ -2,101 +2,119 @@
   padding: 12px;
   z-index: 1;
   background-color: #fff;
-  .name {
-    font-family: 'Mulish';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 14px;
-    letter-spacing: 0.2px;
-    color: #000000;
-    cursor: pointer;
-    overflow: hidden;
-  }
-  .atb {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .description {
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    color: #52525b;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    .atbValues {
-      color: #000;
-      margin-left: 20px;
-      margin-bottom: 0;
-      font-family: 'Roboto', sans-serif;
-    }
-    .rating {
-      margin-left: 15px;
-    }
-    .from {
-      padding: 2px 5px;
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 128.91%;
-      background-color: #000;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      background: #71717a;
-      border-radius: 5px;
-      color: #ffffff;
-      margin-left: 15px;
-    }
-    .trademark {
-      padding: 2px 5px;
-      margin-left: 15px;
-      background: #e4e4e7;
-      border-radius: 5px;
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 128.91%;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #3f3f46;
-    }
-  }
-
-  .price {
-    margin: 5px 0;
-    font-family: 'Quick Sand';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 128.91%;
-    display: flex;
-    align-items: center;
-    color: #dc2626;
+    flex-direction: column;
     justify-content: space-between;
-    .prevPrice {
-      color: #dc2626;
-      margin-right: 10px;
+    .name {
+      font-family: 'Mulish M';
+      font-style: normal;
+      font-weight: 400;
       font-size: 14px;
-    }
-    p {
-      margin: 0 0 0 5px;
-      font-size: 12px;
-    }
-    a {
+      line-height: 14px;
+      letter-spacing: 0.2px;
+      color: #000000;
+      text-transform: lowercase;
       cursor: pointer;
-      .link {
-        .linkIcon {
-          color: #3b82f6;
-          transition: all 0.25s ease-in-out;
+      overflow: hidden;
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+    .atb {
+      display: flex;
+      flex-direction: row;
+      color: #52525b;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      .atbValues {
+        color: #000;
+        margin-left: 20px;
+        margin-bottom: 0;
+        font-family: 'Roboto', sans-serif;
+        text-transform: lowercase;
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+      .rating {
+        margin-left: 15px;
+      }
+      .from {
+        padding: 2px 5px;
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 128.91%;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background: #71717a;
+        border-radius: 5px;
+        color: #ffffff;
+        margin-left: 15px;
+      }
+      .trademark {
+        padding: 2px 5px;
+        margin-left: 15px;
+        background: #e4e4e7;
+        border-radius: 5px;
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 128.91%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #3f3f46;
+      }
+    }
 
-          &:hover {
-            transform: scale(1.1);
+    .price {
+      margin: 5px 0;
+      font-family: 'Quick Sand';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 128.91%;
+      display: flex;
+      align-items: center;
+      color: #dc2626;
+      justify-content: space-between;
+      .prevPrice {
+        color: #dc2626;
+        margin-right: 10px;
+        font-size: 14px;
+      }
+      p {
+        margin: 0 0 0 5px;
+        font-size: 12px;
+      }
+      a {
+        cursor: pointer;
+        .link {
+          .linkIcon {
+            color: #3b82f6;
+            transition: all 0.25s ease-in-out;
+
+            &:hover {
+              transform: scale(1.1);
+            }
           }
         }
       }
     }
   }
+
   .btnBuy {
     .boxButton {
       .button {

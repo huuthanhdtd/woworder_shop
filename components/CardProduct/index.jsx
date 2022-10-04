@@ -13,18 +13,17 @@ import { Link } from '@material-ui/core';
 
 function CardProduct({ data }) {
   const [isDetail, setDetail] = useState(false);
-
   const router = useRouter();
   return (
     <div className={styles.all}>
       <div className={styles.imageWp}>
-        <Link href={'/product/1'}>
+        <Link href={`/product/${data.id}`}>
           <div
             className={clsx(styles.image, {
               [styles.imageDetail]: isDetail,
             })}
             style={{
-              backgroundImage: `url(https://img5.thuthuatphanmem.vn/uploads/2021/11/22/hinh-anh-songoku-cap-cuoi-dep_101021714.png)`,
+              backgroundImage: `url(${data.imageUrl})`,
             }}
           ></div>
         </Link>
@@ -43,7 +42,7 @@ function CardProduct({ data }) {
         )}
       </span> */}
       <div style={{ position: 'relative' }}>
-        <Infor isDetail={isDetail} />
+        <Infor isDetail={isDetail} product={data} />
         <DeatailInfor isDetail={isDetail} />
       </div>
     </div>

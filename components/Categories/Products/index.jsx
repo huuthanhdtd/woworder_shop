@@ -113,14 +113,14 @@ const Products = ({
         setListInOrder={setListInOrder}
       />
       <OrderMobile listInOrder={listInOrder} setListFilter={setListFilter} />
-      <Grid container justifyContent="space-evenly">
+      <Grid container justifyContent="flex-start">
         {dataFilter.map((data, index) => (
           <Grid
             key={index}
             item
             lg={3}
             md={3}
-            sm={5}
+            sm={6}
             xs={12}
             className={styles.card}
           >

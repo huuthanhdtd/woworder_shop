@@ -19,14 +19,19 @@ import Label from '../../assets/image/label2.svg';
 import Messenger from '../../assets/image/messenger.svg';
 import clsx from 'clsx';
 import RelativeProduct from './RelativeProduct';
+import { useCart } from 'react-use-cart';
+import { convertCurrency } from '../../utils/convertCurrency';
 
-const DetailProduct = () => {
+const DetailProduct = ({ product }) => {
   const router = useRouter();
+  const { addItem } = useCart();
   const [productInfor, setProductInfor] = React.useState({
+    id: product.id,
     name: 'Jacket Jean',
     color: 'Dusty rose/unicorns',
     size: '',
     qty: 1,
+    price: product.sellPrice,
   });
 
   const handleInput = React.useCallback(
@@ -50,32 +55,39 @@ const DetailProduct = () => {
   const handleAddCart = React.useCallback(() => {
     if (productInfor.size && productInfor.qty !== '') {
       console.log('add to store');
+      addItem(productInfor);
     }
   }, [productInfor.size, productInfor.qty]);
+
+  const handleBuyNow = React.useCallback(() => {
+    if (productInfor.size && productInfor.qty !== '') {
+      console.log('add to store');
+      addItem(productInfor);
+      router.push('/cart');
+    }
+  }, [productInfor.size, productInfor.qty]);
+
+  console.log(productInfor.size);
+  console.log(product);
   return (
     <div className={styles.root}>
       <Grid container className={styles.selectModel} justifyContent="center">
         <Grid item lg={4} md={9} sm={9} xs={11}>
-          <CardMedia
-            className={styles.image}
-            image="https://img5.thuthuatphanmem.vn/uploads/2021/11/22/hinh-anh-songoku-cap-cuoi-dep_101021714.png"
-          />
+          <CardMedia className={styles.image} image={product.imageUrl} />
         </Grid>
         <Grid item lg={6} md={9} sm={9} xs={11}>
           <div className={styles.title}>
             <div className={styles.hot}>
               <Image src={Hot} width={39.75} height={53} />
             </div>
-            <Typography variant="h6">
-              Blackmores Celery 3000 Mild Ache Relief 50 Tablets
-            </Typography>
+            <Typography variant="h6">{product.name}</Typography>
           </div>
           <div className={styles.price}>
             {/* <Typography variant="h6">
               350.000<span>đ</span>
             </Typography> */}
             <Typography variant="h5">
-              190.000<small> đ</small>
+              {convertCurrency(product.sellPrice)}
             </Typography>
             <div className={styles.label}>
               <Image src={Label} />
@@ -84,30 +96,38 @@ const DetailProduct = () => {
           </div>
           <div className={styles.colorsAndType}>
             <Typography variant="body2" className={styles.prop}>
-              {colorAndType[0].name}:
+              Màu:
             </Typography>
-            {colorAndType[0].data.map((att, idx) => (
-              <Typography key={idx} variant="body2">
-                {att.attr}
-                {idx + 1 === colorAndType[0].data.length ? '' : '/'}
-              </Typography>
-            ))}
+            <Typography variant="body2">{product.color}</Typography>
           </div>
           <div className={styles.colorsAndType}>
             <Typography variant="body2" className={styles.prop}>
-              {colorAndType[1].name}:
+              Size:
             </Typography>
-            {colorAndType[1].data.map((att, idx) => (
+            {product.variation ? (
+              product.variation.sizes.map((att, idx) => (
+                <Button
+                  key={idx}
+                  className={clsx(styles.color, {
+                    [styles.active]: productInfor.size === att.size,
+                  })}
+                  onClick={() => handleSize(att.size)}
+                >
+                  {att.name}
+                </Button>
+              ))
+            ) : product.size ? (
               <Button
-                key={idx}
                 className={clsx(styles.color, {
-                  [styles.active]: productInfor.size === att.attr,
+                  [styles.active]: productInfor.size === product.size,
                 })}
-                onClick={() => handleSize(att.attr)}
+                onClick={() => handleSize(product.size)}
               >
-                {att.attr}
+                {product.size}
               </Button>
-            ))}
+            ) : (
+              ''
+            )}
           </div>
           <div className={styles.amount}>
             <Typography variant="body2" className={styles.prop}>
@@ -140,7 +160,9 @@ const DetailProduct = () => {
               <BsCartPlus size={20} style={{ marginRight: 2 }} />
               Thêm vào giỏ hàng
             </Button>
-            <Button className={styles.buyNow}>Mua ngay</Button>
+            <Button className={styles.buyNow} onClick={handleBuyNow}>
+              Mua ngay
+            </Button>
           </div>
         </Grid>
         <Grid item lg={11} md={9} sm={9} xs={11} className={styles.share}>
@@ -164,9 +186,9 @@ const DetailProduct = () => {
         </Grid>
       </Grid>
 
-      <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} />
+      {/* <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} /> */}
 
-      <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} />
+      {/* <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} /> */}
     </div>
   );
 };

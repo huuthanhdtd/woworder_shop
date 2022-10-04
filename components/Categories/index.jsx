@@ -6,13 +6,15 @@ import Checked from '../Sort';
 import styles from './styles.module.scss';
 import products from '../../constants/product.json';
 import { useRouter } from 'next/router';
+import database from '../../constants/database.json';
 
 const CategoriesPage = () => {
   const [checked, setChecked] = useState([]);
   const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(24);
+  const [perPage, setPerPage] = React.useState(5);
   const router = useRouter();
   const data = Array.from({ length: 200 });
+  const { items } = database;
 
   const filteredResize = products?.filter((item) =>
     checked.length ? checked.includes(item.data.slug) : true
@@ -21,7 +23,7 @@ const CategoriesPage = () => {
   const handleChange = (event, value) => {
     setPage(value);
   };
-
+  // console.log(items);
   return (
     <div className={styles.wrapper}>
       <Grid container justifyContent="center" className={styles.container}>
@@ -45,13 +47,13 @@ const CategoriesPage = () => {
             perPage={perPage}
             checked={checked}
             setPage={setPage}
-            data={data}
+            data={items}
             setChecked={setChecked}
           />
           <Grid container justifyContent="center">
             <Grid item>
               <Paginate
-                count={Math.ceil(data.length / perPage)}
+                count={Math.ceil(items.length / perPage)}
                 // count={Math.ceil(filteredResize.length / perPage)}
                 page={page}
                 onChange={handleChange}

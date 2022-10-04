@@ -7,9 +7,9 @@ const HomePage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        {data.map((it, idx) => (
+        {/* {data.map((it, idx) => (
           <SlideProduct key={idx} title={it} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

@@ -3,77 +3,89 @@ import React from 'react';
 import styles from './styles.module.scss';
 import { FaLink } from 'react-icons/fa';
 import { BsBagPlus } from 'react-icons/bs';
-import { Button, TextField, Typography } from '@material-ui/core';
+import { Button, Link, TextField, Typography } from '@material-ui/core';
 import { useCart } from 'react-use-cart';
+import { convertCurrency } from '../../../utils/convertCurrency';
 
-const products = [
-  {
-    id: 1,
-    name: 'Malm',
-    price: 9900,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: 'Nordli',
-    price: 16500,
-    quantity: 1,
-  },
-  {
-    id: 3,
-    name: 'Kullen',
-    price: 4500,
-    quantity: 1,
-  },
-];
-
-function Infor() {
+function Infor({ product }) {
   const [isBuy, setIsBuy] = React.useState(false);
 
   const { addItem, updateItemQuantity, getItem, updateItem } = useCart();
 
   const [qtyValue, setQtyValue] = React.useState(1);
 
-  const handleSetQtyValue = React.useCallback((type) => {
-    if (type === 'up') {
-      setQtyValue((prev) => prev + 1);
-    }
-    if (type === 'down') {
-      setQtyValue((prev) => prev - 1);
-    }
-  }, []);
+  const productCart = {
+    id: product.id,
+    name: product.name,
+    price: product.sellPrice,
+    // quantity: qtyValue,
+  };
+
+  const handleSetQtyValue = React.useCallback(
+    (type) => {
+      if (type === 'up') {
+        setQtyValue((prev) => prev + 1);
+      }
+      if (type === 'down') {
+        setQtyValue((prev) => prev - 1);
+      }
+    },
+    [qtyValue]
+  );
   return (
     <div className={styles.infor}>
-      <Typography variant="h3" className={styles.name}>
-        Blackmores Celery 3000mg Mild Ache Relief 50 Tablets
-      </Typography>
-      <span className={styles.atb}>
-        Màu: <p className={styles.atbValues}>Dusty rose/Unicorns</p>
-      </span>
-      <span className={styles.atb}>
-        Size: <p className={styles.atbValues}> XS/S/M/L/XL/XXL</p>
-      </span>
-
-      <span className={styles.atb} style={{ margin: '5px 0' }}>
-        Giá gốc:
-        <span className={styles.rating}>4.6</span>
-        {/* <span className={styles.from}>UK</span> */}
-        <span className={styles.trademark}>ZARA</span>
-      </span>
-      <span className={styles.price}>
-        <span className={styles.prevPrice}>
-          190.000 <small>đ</small>
-        </span>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
-        >
-          <span className={styles.link}>
-            <FaLink className={styles.linkIcon} />
+      <div className={styles.description}>
+        <Link href={`/product/${product.id}`}>
+          <Typography variant="h3" className={styles.name}>
+            {product.name}
+          </Typography>
+        </Link>
+        {product.color && (
+          <span className={styles.atb}>
+            Màu: <p className={styles.atbValues}>{product.color}</p>
           </span>
-        </a>
-      </span>
+        )}
+        {product.variation ? (
+          <span className={styles.atb}>
+            Size:
+            <p className={styles.atbValues}>
+              {product.variation.sizes.map((size, idx) => (
+                <span key={idx} style={{ textTransform: 'uppercase' }}>
+                  {size.name}
+                  {idx + 1 === product.variation.sizes.length ? '' : '/'}
+                </span>
+              ))}
+            </p>
+          </span>
+        ) : product.size ? (
+          <span className={styles.atb}>
+            Size: <p className={styles.atbValues}> {product.size}</p>
+          </span>
+        ) : (
+          ''
+        )}
+
+        <span className={styles.atb} style={{ margin: '5px 0' }}>
+          Giá gốc:
+          <span className={styles.rating}>{product.webPrice}</span>
+          {/* <span className={styles.from}>UK</span> */}
+          <span className={styles.trademark}>ZARA</span>
+        </span>
+        <span className={styles.price}>
+          <span className={styles.prevPrice}>
+            {convertCurrency(product.sellPrice)}
+          </span>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
+          >
+            <span className={styles.link}>
+              <FaLink className={styles.linkIcon} />
+            </span>
+          </a>
+        </span>
+      </div>
       <div className={styles.btnBuy}>
         <div
           className={clsx(styles.qtyInput, {
@@ -84,7 +96,7 @@ function Infor() {
             className={styles.qtyPress}
             disabled={qtyValue === 1 ? true : false}
             onClick={() => {
-              updateItem(2, { quantity: qtyValue });
+              updateItem(product.id, { quantity: qtyValue - 1 });
               handleSetQtyValue('down');
             }}
           >
@@ -102,7 +114,7 @@ function Infor() {
           <Button
             className={styles.qtyPress}
             onClick={() => {
-              updateItem(2, { quantity: qtyValue });
+              updateItem(product.id, { quantity: qtyValue + 1 });
               handleSetQtyValue('up');
             }}
           >
@@ -117,7 +129,7 @@ function Infor() {
           <Button
             className={styles.button}
             onClick={() => {
-              addItem(products[1]);
+              addItem(productCart);
               setIsBuy(true);
             }}
           >
