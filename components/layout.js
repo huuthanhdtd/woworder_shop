@@ -3,7 +3,7 @@ import ContextProvider from '../constants/Context';
 import { useState, useEffect, useMemo } from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import ContactFixed from './contactFixed';
+import ContactFixed from './ContactFixed';
 
 const Layout = ({ children }) => {
   const [scrollState, setScrollState] = useState(false);

@@ -6,15 +6,15 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
 import styles from './styles.module.scss';
-import { TextField } from '@material-ui/core';
+import { debounce, TextField } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
 import Account from './Account/Account';
 import { useRouter } from 'next/router';
-import Sliders from './sliderHeaderMiddle';
+import Sliders from './SliderHeaderMiddle';
 import { useCart } from 'react-use-cart';
-// import Cart from './Cart/Cart';
 import dynamic from 'next/dynamic';
+import { debouncee } from '../../lib';
 const Cart = dynamic(() => import('./Cart/Cart'), {
   ssr: false,
 });
@@ -26,6 +26,7 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(' ');
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -57,12 +58,19 @@ const Header = () => {
       setOpenNav(false);
     }
   };
-  const handleMove = () => {
+  const handleMove = (e) => {
+    setSearchTerm(e.target.value);
     setOpenAccount(false);
     setOpenCart(false);
     setOpenNav(false);
   };
-
+  const handleSearch = () => {
+    setSearchTerm('');
+    router.push({
+      pathname: '/PageSearch',
+      query: { searchTerm: searchTerm },
+    });
+  };
   useEffect(() => {
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -107,10 +115,11 @@ const Header = () => {
               variant="outlined"
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."
               size="small"
+              value={searchTerm || ''}
               className={styles.inputSearch}
               onChange={handleMove}
             />
-            <div className={styles.icon}>
+            <div className={styles.icon} onClick={handleSearch}>
               <AiOutlineSearch />
             </div>
           </div>

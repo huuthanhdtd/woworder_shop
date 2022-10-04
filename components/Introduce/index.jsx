@@ -15,19 +15,19 @@ export default function Introduce() {
       </div>
       <div className={styles.about1_introduce}>
         <div className={styles.title_page}>
-          <p>HAPPY MOMMY</p>
+          <p>KHÁNH BÙI</p>
           <h2>VỀ CHÚNG TÔI</h2>
         </div>
         <Grid container className={styles.sitebox_content}>
           <Grid item className={styles.content} md={6} sm={6} xs={12}>
-            Được thành lập vào năm 2016, Happy Mommy chuyên cung cấp các mặt
-            hàng cho mẹ và bé chuẩn nội địa các nước, kèm bill, bay air với
-            slogan “MUA LẺ VỚI GIÁ SỈ".
+            Được thành lập vào năm 2016, Khánh Bùi chuyên cung cấp các mặt hàng
+            cho mẹ và bé chuẩn nội địa các nước, kèm bill, bay air với slogan
+            “MUA LẺ VỚI GIÁ SỈ".
           </Grid>
           <Grid item className={styles.content} md={6} sm={6} xs={12}>
-            Happy Mommy cũng chính là mục đích kinh doanh của chúng tôi, mong
-            muốn mỗi sản phẩm và tư vấn mà chúng tôi mang đến sẽ giúp cho mỗi
-            người mẹ được hạnh phúc một cách trọn vẹn.
+            Khánh Bùi cũng chính là mục đích kinh doanh của chúng tôi, mong muốn
+            mỗi sản phẩm và tư vấn mà chúng tôi mang đến sẽ giúp cho mỗi người
+            mẹ được hạnh phúc một cách trọn vẹn.
           </Grid>
         </Grid>
       </div>
@@ -42,13 +42,13 @@ export default function Introduce() {
             <h2>CÂU CHUYỆN THƯƠNG HIỆU</h2>
           </div>
           <p>
-            Happy Mommy cam kết mang chỉ mang đến những sản phẩm nội địa được
-            mua trực tiếp tại nước ngoài hoặc nhập khẩu chính hãng bao gồm: bỉm,
-            sữa công thức, thức ăn dặm, vitamin và thực phẩm chức năng cho mẹ và
-            bé cho đến dụng cụ chăm sóc, xe đẩy, xe tập đi, đồ chơi cho bé...
+            Khánh Bùi cam kết mang chỉ mang đến những sản phẩm nội địa được mua
+            trực tiếp tại nước ngoài hoặc nhập khẩu chính hãng bao gồm: bỉm, sữa
+            công thức, thức ăn dặm, vitamin và thực phẩm chức năng cho mẹ và bé
+            cho đến dụng cụ chăm sóc, xe đẩy, xe tập đi, đồ chơi cho bé...
           </p>
           <p>
-            Tại Happy Mommy, chúng tôi còn cung cấp những sản phẩm gia dụng nội
+            Tại Khánh Bùi, chúng tôi còn cung cấp những sản phẩm gia dụng nội
             địa để chăm sóc mẹ và cả nhà. Hơn 2000 sản phẩm đa dạng tại Happy
             Mommy đều thuộc những thương hiệu lớn như Meiji, Merries, dm, HiPP,
             Gerber, Aptamil, Abbott, PediaSure, Nestle, Combi, Ildong Foodis...
@@ -56,12 +56,10 @@ export default function Introduce() {
           </p>
           <p>
             Với kiến thức và kinh nghiệm cùng với sự yêu thích trẻ con, đội ngũ
-            Happy Mommy tự tin mang đến những tư vấn chuẩn xác và phù hợp cho
-            con của bạn.
+            Khánh Bùi tự tin mang đến những tư vấn chuẩn xác và phù hợp cho con
+            của bạn.
           </p>
-          <p>
-            Happy Mommy - Siêu thị mẹ và bé - Nơi hành trình làm mẹ bắt đầu!
-          </p>
+          <p>Khánh Bùi - Siêu thị mẹ và bé - Nơi hành trình làm mẹ bắt đầu!</p>
         </Grid>
       </Grid>
       <div className={styles.about_service}>

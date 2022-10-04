@@ -18,7 +18,7 @@ export default function Contact() {
       icons: <MdLocationOn />,
       desc: '92 đường Nguyễn Du, phường Thạch Thang, quận Hải Châu, Thành phố Đà Nẵng',
     },
-    { name: 'Email', icons: <FiMail />, desc: 'happymommy.com.vn@gmail.com' },
+    { name: 'Email', icons: <FiMail />, desc: 'khanhbui.com.vn@gmail.com' },
     { name: 'Điện thoại', icons: <FiSmartphone />, desc: '0703256868' },
     {
       name: 'Thời gian làm việc',

@@ -1,0 +1,47 @@
+.PageSearch {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Mulish';
+  .heading_Page {
+    text-align: center;
+    h1 {
+      margin: 25px 0 5px;
+      font-size: 30px;
+      color: var(--primary-color-);
+    }
+    &::after {
+      content: '';
+      background: #252a2b;
+      display: block;
+      width: 60px;
+      height: 2px;
+      margin: 20px auto 30px;
+    }
+  }
+  .content_page {
+    text-align: center;
+    .err {
+      h2 {
+        font-weight: 600;
+        font-size: 20px;
+      }
+      span {
+        margin-bottom: 40px;
+      }
+    }
+
+    .subtext_result {
+      margin: 0 0 15px 0;
+      text-align: left;
+      strong {
+        font-weight: 700;
+        color: #000;
+      }
+    }
+    .Search_Product {
+      .item {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

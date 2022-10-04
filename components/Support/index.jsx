@@ -24,11 +24,11 @@ export default function Support() {
       <Grid container className={styles.detail}>
         <Grid item xs={12} sm={12} md={8} className={styles.item_detail}>
           <div className={styles.items}>
-            <h3>HAPPY MOMMY CLUB</h3>
+            <h3>KHANH BUI CLUB</h3>
             <h4>
               CHƯƠNG TRÌNH ƯU ĐÃI THÀNH VIÊN
               <br></br>
-              HAPPY MOMMY CLUB
+              KHANH BUI CLUB
             </h4>
             <br />
             <p>
@@ -43,8 +43,8 @@ export default function Support() {
                 từ thương hiệu
               </li>
             </ul>
-            Và hàng trăm ưu đãi hot mỗi tháng khi trở thành thành viên của Happy
-            Mommy Club!
+            Và hàng trăm ưu đãi hot mỗi tháng khi trở thành thành viên của Khánh
+            Bùi club!
           </div>
         </Grid>
         <Grid item xs={12} sm={12} md={4} className={styles.menu}>

@@ -209,11 +209,6 @@ img:hover {
 .styles_input__ufZ_s .MuiOutlinedInput-adornedStart {
   padding-left: 0px;
 }
-.menu-wrapper--inner {
-}
-.styles_Hot__3crOI .styles_item__OFxkL {
-  white-space: initial;
-}
 
 .styles_selectForm__n3mkv .MuiInputLabel-outlined {
   transform: translate(14px, 16px) scale(1);
@@ -254,7 +249,12 @@ img:hover {
   color: #108775 !important;
 }
 
-.MuiSlider-root .Mui-disabled{
+.MuiSlider-root .Mui-disabled {
   color: #bdbdbd !important;
 }
-
+.menu-wrapper--inner {
+  white-space: normal;
+}
+.styles_sliderSlick__Jc2sc .menu-wrapper--inner {
+  white-space: initial !important;
+}
