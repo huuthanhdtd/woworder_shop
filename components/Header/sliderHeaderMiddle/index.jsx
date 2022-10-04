@@ -10,63 +10,13 @@ import { useRouter } from 'next/router';
 
 export default function Sliders() {
   const router = useRouter();
-  const hot = [
-    {
-      name: 'Khuyến mãi',
-      slug: 'khuyen-mai',
-    },
-    {
-      name: 'sữa bột cao cấp',
-      slug: 'sua',
-    },
-    {
-      name: 'Vitamin & sức Khoẻ',
-      slug: 'vitamin',
-    },
-    {
-      name: 'Ăn dặm dinh dưỡng',
-      slug: 'an',
-    },
-    {
-      name: 'Cho mẹ bầu sau sinh',
-      slug: 'me-bau',
-    },
-    {
-      name: 'chăm sóc gia đình',
-      slug: 'gia-dinh',
-    },
-    {
-      name: 'chăm sóc gia đình',
-      slug: 'csgd',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'do-choi',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'dp',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'da',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'd',
-    },
-    {
-      name: 'đồ chơi cho bé',
-      slug: 'g',
-    },
-  ];
   const [selected, setSelected] = useState('null');
   const filcategories = data.included.categories.filter((data) => data);
   useEffect(() => {
     const fi = filcategories.find((e, i) => i === Number(selected));
     if (fi) {
       router.push({
-        pathname: fi.slug,
+        pathname: `/categories/${fi.slug}`,
       });
     }
   }, [selected]);
