@@ -7,6 +7,7 @@ import { Button } from '@material-ui/core';
 import Link from 'next/link';
 import { useCart } from 'react-use-cart';
 import { BsCart } from 'react-icons/bs';
+import { convertCurrency } from '../../../utils/convertCurrency';
 
 export default function Cart({ openCart, setOpenCart }) {
   const { items, totalItems, cartTotal, updateItemQuantity, removeItem } =
@@ -63,7 +64,9 @@ export default function Cart({ openCart, setOpenCart }) {
                           +
                         </button>
                       </div>
-                      <div className={styles.price}>{data.price} ₫</div>
+                      <div className={styles.price}>
+                        {convertCurrency(data.price)}
+                      </div>
                     </div>
                     <div
                       className={styles.remove}
@@ -86,7 +89,7 @@ export default function Cart({ openCart, setOpenCart }) {
         </div>
         <div className={styles.totalPrice}>
           <span>TỔNG TIỀN:</span>
-          <span className={styles.total}>{cartTotal} ₫</span>
+          <span className={styles.total}> {convertCurrency(cartTotal)} </span>
         </div>
         <div className={styles.viewsAll}>
           <Button onClick={() => setOpenCart(false)}>

@@ -327,6 +327,46 @@
         "businessId": "709313694273635330",
         "parentId": null,
         "slug": "medicine"
+      },
+      {
+        "id": "817043917106055031",
+        "createdAt": "2022-10-01T03:20:24.000Z",
+        "updatedAt": null,
+        "name": "Thuốc lào",
+        "description": "tipici.vn",
+        "businessId": "709313694273635330",
+        "parentId": null,
+        "slug": "medis"
+      },
+      {
+        "id": "817043917106055032",
+        "createdAt": "2022-10-01T03:20:24.000Z",
+        "updatedAt": null,
+        "name": "Thuốc ",
+        "description": "tipici.vn",
+        "businessId": "709313694273635330",
+        "parentId": null,
+        "slug": "medi"
+      },
+      {
+        "id": "817043917106055033",
+        "createdAt": "2022-10-01T03:20:24.000Z",
+        "updatedAt": null,
+        "name": "Thuốc diệt chuột",
+        "description": "tipici.vn",
+        "businessId": "709313694273635330",
+        "parentId": null,
+        "slug": "medici"
+      },
+      {
+        "id": "817043917106055034",
+        "createdAt": "2022-10-01T03:20:24.000Z",
+        "updatedAt": null,
+        "name": "Thuốc 555",
+        "description": "tipici.vn",
+        "businessId": "709313694273635330",
+        "parentId": null,
+        "slug": "medicin"
       }
     ],
     "productCategories": [

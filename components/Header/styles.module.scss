@@ -76,13 +76,15 @@
         }
         .icon {
           position: absolute;
-          top: 8px;
-          right: 25px;
-          cursor: pointer;
+          top: 4px;
+          right: 8px;
           svg {
             height: 20px;
             width: 20px;
             color: #c5c7cd;
+          }
+          &:hover {
+            background-color: transparent;
           }
         }
       }
@@ -105,18 +107,26 @@
             justify-content: center;
             align-items: center;
             position: relative;
+
             .quatityCart {
-              background-color: red;
+              background-color: white;
+              color: var(--primary-color-);
               position: absolute;
               top: -5px;
-              right: 11px;
-              width: 15px;
-              font-size: 12px;
+              right: 7px;
+              border: 0.125rem solid var(--primary-color-);
               height: 15px;
               display: flex;
               align-items: center;
               justify-content: center;
-              border-radius: 50%;
+              border-radius: 10px;
+              .bigcart {
+                padding: 5px;
+                font-size: 10px;
+              }
+            }
+            .quatityCart.active {
+              right: 0px;
             }
             svg {
               width: 25px;
@@ -172,7 +182,10 @@
               margin: 0;
               .quatityCart {
                 top: -5px;
-                right: -5px;
+                right: -10px;
+              }
+              .quatityCart.active {
+                right: -14px;
               }
               .nameAccount,
               .nameCart {
@@ -252,6 +265,7 @@
             align-items: center;
             transition: opacity 150ms linear;
             margin-left: 0;
+            position: relative;
             .beforeCart {
               padding: 10px;
               display: flex;
@@ -259,8 +273,12 @@
               justify-content: center;
               align-items: center;
               .quatityCart {
-                top: 4px;
-                right: 5px;
+                top: 5px;
+                right: 0px;
+              }
+              .quatityCart.active {
+                top: 5px;
+                right: -6px;
               }
               .nameAccount,
               .nameCart {

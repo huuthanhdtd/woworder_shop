@@ -6,7 +6,7 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
 import styles from './styles.module.scss';
-import { debounce, TextField } from '@material-ui/core';
+import { Button, FormGroup, FormLabel, TextField } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
 import Account from './Account/Account';
@@ -26,7 +26,7 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(' ');
+  const [searchTerm, setSearchTerm] = useState('');
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -65,11 +65,12 @@ const Header = () => {
     setOpenNav(false);
   };
   const handleSearch = () => {
+    // router.push({
+    //   pathname: '/PageSearch',
+    //   query: { searchTerm: searchTerm },
+    // });
+    localStorage.setItem('search', JSON.stringify(searchTerm));
     setSearchTerm('');
-    router.push({
-      pathname: '/PageSearch',
-      query: { searchTerm: searchTerm },
-    });
   };
   useEffect(() => {
     var prevScrollpos = window.pageYOffset;
@@ -110,7 +111,7 @@ const Header = () => {
               <Image src={Logo} width={220} height={47} />
             </div>
           </Link>
-          <div className={styles.search}>
+          <form className={styles.search} action="/PageSearch">
             <TextField
               variant="outlined"
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."
@@ -119,10 +120,14 @@ const Header = () => {
               className={styles.inputSearch}
               onChange={handleMove}
             />
-            <div className={styles.icon} onClick={handleSearch}>
+            <Button
+              type="submit"
+              className={styles.icon}
+              onClick={handleSearch}
+            >
               <AiOutlineSearch />
-            </div>
-          </div>
+            </Button>
+          </form>
           <div className={styles.wrap}>
             <div className={styles.account}>
               <div className={styles.beforeCart} onClick={handleAccount}>
@@ -149,7 +154,13 @@ const Header = () => {
                 </div>
                 <div className={styles.nameCart}>Giỏ hàng</div>
                 {totalItems ? (
-                  <div className={styles.quatityCart}>{totalItems}</div>
+                  <div
+                    className={clsx(styles.quatityCart, {
+                      [styles.active]: totalItems > 9,
+                    })}
+                  >
+                    <div className={styles.bigcart}>{totalItems}</div>
+                  </div>
                 ) : (
                   <></>
                 )}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useCart } from 'react-use-cart';
+import { convertCurrency } from '../../utils/convertCurrency';
 import styles from './styles.module.scss';
 
 export default function Carts() {
@@ -47,10 +48,14 @@ export default function Carts() {
                     <div className={styles.media_desc}>
                       <div className={styles.item_info}>{data.name}</div>
                       <div className={styles.Characteristics}>...</div>
-                      <div className={styles.item_price}>{data.price}₫</div>
+                      <div className={styles.item_price}>
+                        {convertCurrency(data.price)}
+                      </div>
                     </div>
                     <div className={styles.media_totla}>
-                      <div className={styles.item_price}>{data.price}₫</div>
+                      <div className={styles.item_price}>
+                        {convertCurrency(data.price)}
+                      </div>
                       <div className={styles.item_quatity}>
                         <button
                           onClick={() =>
@@ -95,7 +100,9 @@ export default function Carts() {
           <h3>Thông tin đơn hàng</h3>
           <div className={styles.total}>
             <div>Tổng tiền:</div>
-            <div className={styles.total_price}>{cartTotal}₫</div>
+            <div className={styles.total_price}>
+              {convertCurrency(cartTotal)}
+            </div>
           </div>
           <ul className={styles.information}>
             <li>

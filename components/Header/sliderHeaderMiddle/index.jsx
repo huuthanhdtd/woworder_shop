@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
 import styles from './styles.module.scss';
 import { BsHouse } from 'react-icons/bs';
 import { Button } from '@material-ui/core';
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import ScrollMenu from 'react-horizontal-scroll-menu';
+import data from '../../../constants/database.json';
+import { useRouter } from 'next/router';
 
 export default function Sliders() {
+  const router = useRouter();
   const hot = [
     {
       name: 'Khuyến mãi',
@@ -60,8 +61,14 @@ export default function Sliders() {
     },
   ];
   const [selected, setSelected] = useState('null');
+  const filcategories = data.included.categories.filter((data) => data);
   useEffect(() => {
-    // console.log(hot.filter((e,i)=> i === Number(selected)));
+    const fi = filcategories.find((e, i) => i === Number(selected));
+    if (fi) {
+      router.push({
+        pathname: fi.slug,
+      });
+    }
   }, [selected]);
   const onSelect = (key) => {
     setSelected(key);
@@ -79,16 +86,18 @@ export default function Sliders() {
         <ScrollMenu
           alignCenter={false}
           onSelect={onSelect}
-          data={hot.map((data, idx) => {
+          data={filcategories.map((data, idx) => {
             return (
               <div key={idx} className={styles.Hot}>
+                {/* <Link href={data.slug}> */}
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]: Number(selected) === idx,
+                    [styles.active]: router.asPath === `/${data.slug}`,
                   })}
                 >
                   {data.name}
                 </Button>
+                {/* </Link> */}
               </div>
             );
           })}
