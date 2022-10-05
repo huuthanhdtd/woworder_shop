@@ -36,7 +36,7 @@ export default function Carts() {
                   <div className={styles.product} key={index}>
                     <div className={styles.media_image}>
                       <div className={styles.item_image}>
-                        <Image src="/cart/sp.png" width={80} height={80} />
+                        <img src={data.imageUrl} />
                       </div>
                       <div
                         className={styles.item_Remove}

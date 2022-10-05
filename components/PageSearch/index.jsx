@@ -1,34 +1,46 @@
 import { Grid } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { checkIfAIsInB, ConvertViToEn } from '../../lib';
+import {
+  checkIfAIsInB,
+  ConvertViToEn,
+  getScoreByNumberOfPosition,
+} from '../../lib';
 import CardProduct from '../CardProduct';
 import styles from './styles.module.scss';
 import data from '../../constants/database.json';
 
 export default function PageSearch() {
-  // const router = useRouter();
-  // console.log(router.query.searchTerm);
   const [search, setSearch] = useState('');
   useEffect(() => {
     const see = JSON.parse(localStorage.getItem('search'));
     setSearch(see);
   }, []);
-  const filteredservice = data.items?.filter((i) => {
-    return search == ''
-      ? false
-      : checkIfAIsInB(ConvertViToEn(search), ConvertViToEn(i.name));
-  });
+
+  const dataSortedByScore = data.items
+    ?.sort(
+      (a, b) =>
+        getScoreByNumberOfPosition(
+          ConvertViToEn(search),
+          ConvertViToEn(b.name)
+        ) -
+        getScoreByNumberOfPosition(ConvertViToEn(search), ConvertViToEn(a.name))
+    )
+    .filter((i) => {
+      return search == ''
+        ? false
+        : checkIfAIsInB(ConvertViToEn(search), ConvertViToEn(i.name));
+    });
   return (
     <div className={styles.PageSearch}>
       <div className={styles.heading_Page}>
         <h1>Tìm kiếm</h1>
         <p>
-          Có <strong>{filteredservice.length} sản phẩm</strong> cho tìm kiếm
+          Có <strong>{dataSortedByScore.length} sản phẩm</strong> cho tìm kiếm
         </p>
       </div>
       <div className={styles.content_page}>
-        {filteredservice.length > 0 ? (
+        {dataSortedByScore.length > 0 ? (
           <p className={styles.subtext_result}>
             Kết quả tìm kiếm cho <strong>"{search}"</strong>
           </p>
@@ -40,7 +52,7 @@ export default function PageSearch() {
           </div>
         )}
         <Grid container className={styles.Search_Product}>
-          {filteredservice.map((data) => (
+          {dataSortedByScore.map((data) => (
             <Grid
               item
               xs={6}

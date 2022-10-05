@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.scss';
 import { IoMdArrowDropup } from 'react-icons/io';
-import Image from 'next/image';
 import { Button } from '@material-ui/core';
 import Link from 'next/link';
 import { useCart } from 'react-use-cart';
@@ -25,7 +24,7 @@ export default function Cart({ openCart, setOpenCart }) {
         <div className={styles.taskName}>
           <div className={styles.name}>GIỎ HÀNG</div>
           <div className={styles.totalProduct}>{totalItems} sản phẩm</div>
-          <div className={styles.totalPrice}>{cartTotal} ₫</div>
+          <div className={styles.totalPrice}>{convertCurrency(cartTotal)}</div>
           <div className={styles.close} onClick={() => setOpenCart(false)}>
             Đóng
           </div>
@@ -36,7 +35,7 @@ export default function Cart({ openCart, setOpenCart }) {
               {items.map((data, index) => (
                 <div className={styles.viewCart} key={index}>
                   <div className={styles.image}>
-                    <Image src="/cart/sp.png" width={85} height={85} />
+                    <img src={data.imageUrl} />
                   </div>
                   <div className={styles.desc}>
                     <span className={styles.nameProduct}>

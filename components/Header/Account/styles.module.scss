@@ -4,7 +4,7 @@
   right: 0;
   top: 68px;
   transform: scale(0);
-  transform-origin: 70% top;
+  transform-origin: 50% top;
   transition: all 0.3s ease-in-out;
   opacity: 0;
   height: auto;
@@ -159,7 +159,6 @@
   transform: scale(1);
   border-radius: 0.125rem;
   z-index: 100;
-  transform-origin: 70% top;
   transition: all 0.3s ease-in-out;
   .dropUp {
     display: block;

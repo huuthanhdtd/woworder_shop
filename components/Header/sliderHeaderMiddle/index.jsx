@@ -39,15 +39,14 @@ export default function Sliders() {
           data={filcategories.map((data, idx) => {
             return (
               <div key={idx} className={styles.Hot}>
-                {/* <Link href={data.slug}> */}
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]: router.asPath === `/${data.slug}`,
+                    [styles.active]:
+                      router.asPath === `/categories/${data.slug}`,
                   })}
                 >
                   {data.name}
                 </Button>
-                {/* </Link> */}
               </div>
             );
           })}
