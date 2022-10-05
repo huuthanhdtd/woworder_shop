@@ -11,7 +11,7 @@ import SelectList from '../../DropDown/DropDown';
 import styles from './styles.module.scss';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 
-const SortBar = ({ title }) => {
+const SortBar = ({ category }) => {
   const [isOrder, setOrder] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
@@ -22,8 +22,8 @@ const SortBar = ({ title }) => {
   return (
     <div className={styles.wrapper} onBlur={() => setOpen(false)}>
       <div className={styles.boxOrder}>
-        <Link href={`/categories/${title}`}>
-          <Typography variant="h5">{title}</Typography>
+        <Link href={`/categories/${category.slug}`}>
+          <Typography variant="h5">{category.name}</Typography>
         </Link>
         <div className={styles.orderBtn}>
           <Typography variant="h6">Sắp xếp theo</Typography>

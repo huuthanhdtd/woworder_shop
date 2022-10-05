@@ -18,6 +18,9 @@ function Infor({ product }) {
     id: product.id,
     name: product.name,
     price: product.sellPrice,
+    size: product.size,
+    imageUrl: product.imageUrl,
+    color: product.color,
     // quantity: qtyValue,
   };
 

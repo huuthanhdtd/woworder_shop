@@ -8,10 +8,10 @@ import products from '../../constants/product.json';
 import { useRouter } from 'next/router';
 import database from '../../constants/database.json';
 
-const CategoriesPage = () => {
+const CategoriesPage = ({ products }) => {
   const [checked, setChecked] = useState([]);
   const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(5);
+  const [perPage, setPerPage] = React.useState(8);
   const router = useRouter();
   const data = Array.from({ length: 200 });
   const { items } = database;
@@ -47,13 +47,13 @@ const CategoriesPage = () => {
             perPage={perPage}
             checked={checked}
             setPage={setPage}
-            data={items}
+            data={products}
             setChecked={setChecked}
           />
           <Grid container justifyContent="center">
             <Grid item>
               <Paginate
-                count={Math.ceil(items.length / perPage)}
+                count={Math.ceil(products.length / perPage)}
                 // count={Math.ceil(filteredResize.length / perPage)}
                 page={page}
                 onChange={handleChange}

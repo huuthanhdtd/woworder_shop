@@ -4,7 +4,6 @@ import Slider from 'react-slick';
 import CardProduct from '../../CardProduct';
 import SortBar from '../SortBar';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import { Button } from '@material-ui/core';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -56,11 +55,12 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SlideProduct = ({ title }) => {
+const SlideProduct = ({ category, products }) => {
   const settings = {
     className: 'center',
     infinite: true,
     slidesToShow: 5,
+    slidesToScroll: 1,
     centerMode: true,
     centerPadding: '0px',
     swipeToSlide: true,
@@ -93,12 +93,13 @@ const SlideProduct = ({ title }) => {
       },
     ],
   };
+
   return (
     <div className={styles.wrapper}>
-      <SortBar title={title} />
+      <SortBar category={category} />
       <Slider {...settings}>
-        {Array.from({ length: 6 }).map((it, idx) => (
-          <CardProduct key={idx} />
+        {products.map((item, idx) => (
+          <CardProduct key={item.id} data={item} />
         ))}
       </Slider>
     </div>

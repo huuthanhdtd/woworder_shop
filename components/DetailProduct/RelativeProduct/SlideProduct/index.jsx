@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import CardProduct from '../../../CardProduct';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import database from '../../../../constants/database.json';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -55,6 +56,7 @@ function SamplePrevArrow(props) {
 }
 
 const Slides = () => {
+  const { items } = database;
   const settings = {
     className: 'center',
     infinite: true,
@@ -94,8 +96,8 @@ const Slides = () => {
   return (
     <div className={styles.wrapper}>
       <Slider {...settings}>
-        {Array.from({ length: 10 }).map((it, idx) => (
-          <CardProduct key={idx} />
+        {items.map((it, idx) => (
+          <CardProduct key={idx} data={it} />
         ))}
       </Slider>
     </div>
