@@ -13,7 +13,7 @@ import { AiOutlineMenuFold } from 'react-icons/ai';
 import OrderMobile from '../OrderMobile';
 
 const Products = ({
-  filteredResize,
+  filteredProducts,
   page,
   perPage,
   checked,
@@ -31,8 +31,8 @@ const Products = ({
   }, []);
 
   const dataFilter = React.useMemo(() => {
-    return data?.slice(0 + perPage * (page - 1), perPage * page);
-  }, [page, checked.length]);
+    return filteredProducts?.slice(0 + perPage * (page - 1), perPage * page);
+  }, [page, checked.length, filteredProducts]);
 
   const handleChangePage = React.useCallback((e) => {
     if (e === 'prev') {
@@ -56,7 +56,7 @@ const Products = ({
     setListFilter(false);
     setListInOrder(false);
   };
-  const totalPage = Math.ceil(data.length / perPage);
+  const totalPage = Math.ceil(filteredProducts.length / perPage);
   return (
     <div className={styles.wrapper} onBlur={handleOnBlur}>
       <div className={styles.boxOrder}>

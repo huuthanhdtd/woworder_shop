@@ -10,18 +10,19 @@ const Categories = () => {
     included: { categories, productCategories },
   } = database;
   const category = categories.find((cate) => cate.slug === router.query.slug);
-  const products = React.useMemo(() => {
+  const [products, setProducts] = React.useState([]);
+  React.useEffect(() => {
     const result = [];
     productCategories.filter((product) => {
       if (product.categoryId === category.id) {
         result.push(items.find((it) => it.id === product.productId));
       }
     });
-    return result;
+    setProducts(result);
   }, [router.query.slug]);
   return (
     <div>
-      <CategoriesPage products={products} />
+      <CategoriesPage products={products && products} />
     </div>
   );
 };

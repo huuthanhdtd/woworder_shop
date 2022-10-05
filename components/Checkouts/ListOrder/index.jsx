@@ -1,4 +1,11 @@
-import { Button, Grid, Slider, TextField, Typography } from '@material-ui/core';
+import {
+  Button,
+  CardMedia,
+  Grid,
+  Slider,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import styles from './styles.module.scss';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -19,6 +26,7 @@ import { convertCurrency } from '../../../utils/convertCurrency';
 import { useWindowSize } from 'react-use';
 import Bill from './Bill';
 import RewardPoints from './RewardPoints';
+import { useCart } from 'react-use-cart';
 
 const ListOrder = ({
   handleShowPopup,
@@ -31,6 +39,8 @@ const ListOrder = ({
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(0);
   const [isChecked, setCheck] = React.useState(false);
+  const { cartTotal, items } = useCart();
+  const [cartsPrice, setTotal] = React.useState(0);
 
   const { width } = useWindowSize();
   React.useEffect(() => {
@@ -39,6 +49,10 @@ const ListOrder = ({
     }
     return () => setOpen(false);
   }, [width]);
+
+  React.useEffect(() => {
+    cartTotal !== 0 && setTotal(cartTotal);
+  }, [cartTotal]);
 
   const handleShowOrder = React.useCallback(() => {
     setOpen(!open);
@@ -53,12 +67,11 @@ const ListOrder = ({
 
   const discountPercent = process.env.NEXT_PUBLIC_DISCOUNT_PERCENT;
   const rewardPoints = 250 - value;
-  const provisionalPrice = 195000;
   const discount = value * 1000;
   const feeShip = 25000;
-  const totalPrice = provisionalPrice - discount + feeShip;
+  const totalPrice = cartsPrice - discount + feeShip;
   const maxRewardPoints = Math.floor(
-    (provisionalPrice * (discountPercent / 100)) / 1000
+    (cartsPrice * (discountPercent / 100)) / 1000
   );
 
   const handleChange = (event, newValue) => {
@@ -89,23 +102,25 @@ const ListOrder = ({
             )}
           </div>
           <Typography variant="body2" className={styles.price}>
-            {convertCurrency(provisionalPrice)}
+            {convertCurrency(cartsPrice)}
           </Typography>
         </Button>
         {open && (
           <>
-            {Array.from({ length: 3 }).map((it, idx) => (
+            {items.map((it, idx) => (
               <div className={styles.product} key={idx}>
                 <div className={styles.wrap}>
                   <div className={styles.borderImg}>
-                    <Image src={Product} width={52} height={50} />
+                    <CardMedia
+                      image={it.imageUrl}
+                      style={{ width: 52, height: 50 }}
+                    />
+                    {/* <Image src={Product} width={52} height={50} /> */}
                   </div>
-                  <Typography variant="body2">
-                    Băng vệ sinh hữu cơ Nateen Bỉ, 10 miếng
-                  </Typography>
+                  <Typography variant="body2">{`${it.name} - ${it.color} - ${it.size}`}</Typography>
                 </div>
                 <Typography variant="body2" className={styles.price}>
-                  25.000 <sup>đ</sup>
+                  {convertCurrency(it.price)}
                 </Typography>
               </div>
             ))}
@@ -125,7 +140,7 @@ const ListOrder = ({
               login={login}
               value={value}
               handleChange={handleChange}
-              provisionalPrice={provisionalPrice}
+              provisionalPrice={cartsPrice}
               discount={discount}
               feeShip={feeShip}
               totalPrice={totalPrice}
