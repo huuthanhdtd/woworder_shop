@@ -111,7 +111,7 @@ const Header = () => {
               <Image src={Logo} width={220} height={47} />
             </div>
           </Link>
-          <form className={styles.search} action="/PageSearch">
+          <form className={styles.search} action="/page-search">
             <TextField
               variant="outlined"
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."

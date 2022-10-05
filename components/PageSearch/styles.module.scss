@@ -19,8 +19,12 @@
     }
   }
   .content_page {
+    margin-bottom: 50px;
     text-align: center;
+
     .err {
+      max-width: 750px;
+      margin: 0 auto;
       h2 {
         font-weight: 600;
         font-size: 20px;
@@ -28,8 +32,37 @@
       span {
         margin-bottom: 40px;
       }
+      .Forminput {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 40px;
+        .input {
+          width: calc(100% - 55px);
+          outline: none;
+          height: 45px;
+          padding: 0 90px 0 20px;
+          background: #ededed;
+          border: 0;
+          box-shadow: none;
+        }
+        .iconsearch {
+          position: absolute;
+          top: 0px;
+          right: 26px;
+          background: var(--primary-color-);
+          width: 50px;
+          height: 45px;
+          border: none;
+          cursor: pointer;
+          svg {
+            color: #fff;
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
     }
-
     .subtext_result {
       margin: 0 0 15px 0;
       text-align: left;
@@ -39,9 +72,15 @@
       }
     }
     .Search_Product {
+      margin-bottom: 40px;
       .item {
         margin-bottom: 10px;
       }
+    }
+    .Pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
