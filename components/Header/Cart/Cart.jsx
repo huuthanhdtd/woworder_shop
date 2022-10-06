@@ -7,10 +7,18 @@ import Link from 'next/link';
 import { useCart } from 'react-use-cart';
 import { BsCart } from 'react-icons/bs';
 import { convertCurrency } from '../../../utils/convertCurrency';
+import { useRouter } from 'next/router';
 
 export default function Cart({ openCart, setOpenCart }) {
+  const router = useRouter();
   const { items, totalItems, cartTotal, updateItemQuantity, removeItem } =
     useCart();
+  const handlePushCart = () => {
+    router.push({
+      pathname: '/cart',
+    });
+    setOpenCart(false);
+  };
   return (
     <div
       className={clsx(styles.showCart, {
@@ -91,8 +99,8 @@ export default function Cart({ openCart, setOpenCart }) {
           <span className={styles.total}> {convertCurrency(cartTotal)} </span>
         </div>
         <div className={styles.viewsAll}>
-          <Button onClick={() => setOpenCart(false)}>
-            <Link href="/cart">Xem Giỏ hàng</Link>
+          <Button onClick={handlePushCart}>
+            <span>Xem Giỏ hàng</span>
           </Button>
         </div>
       </div>

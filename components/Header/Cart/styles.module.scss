@@ -166,7 +166,7 @@
         background-color: var(--primary-color-);
         border: 1px solid var(--primary-color-);
         transition: all 0.3s ease-in-out;
-        a {
+        span {
           color: #fff;
           font-weight: 500;
         }
@@ -182,7 +182,7 @@
           z-index: -1;
         }
         &:hover {
-          a {
+          span {
             color: var(--primary-color-);
             z-index: 3;
           }

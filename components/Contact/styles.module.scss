@@ -67,24 +67,30 @@
         color: var(--primary-color-);
       }
       .formInput {
-        .input {
-          color: #5c5c5c;
-          height: 45px;
-          width: 100%;
-          font-weight: 500;
-          padding: 8px 20px;
-          background: #fff;
-          border: 1px solid #e7e7e7;
-          box-shadow: none;
-          outline: none;
-          appearance: none;
-          margin-bottom: 20px;
+        .inputContact {
+          .input {
+            color: #5c5c5c;
+            height: 45px;
+            width: 100%;
+            font-weight: 500;
+            padding: 8px 20px;
+            background: #fff;
+            border: 1px solid #e7e7e7;
+            box-shadow: none;
+            outline: none;
+            appearance: none;
+          }
+          .err {
+            font-size: 12px;
+            color: red;
+            margin-bottom: 10px;
+          }
         }
-        .input:nth-child(2) {
+        .inputContact:nth-child(2) {
           width: 48%;
           float: left;
         }
-        .input:nth-child(3) {
+        .inputContact:nth-child(3) {
           width: 48%;
           float: right;
         }
@@ -131,7 +137,7 @@
     .breadcrumb_shop {
       margin-top: 180px;
       font-size: 13px;
-      padding: 9px 0;
+      padding: 9px 10px;
       background: transparent;
       border-radius: 0;
       a {
@@ -146,11 +152,11 @@
       .formContact {
         padding: 0 15px;
         .formInput {
-          .input:nth-child(2) {
+          .inputContact:nth-child(2) {
             width: 100%;
             float: unset;
           }
-          .input:nth-child(3) {
+          .inputContact:nth-child(3) {
             width: 100%;
             float: unset;
           }

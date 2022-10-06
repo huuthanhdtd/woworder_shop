@@ -1,7 +1,7 @@
 import { Grid, TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import {
-  checkIfAIsInB,
+  // checkIfAIsInB,
   ConvertViToEn,
   getScoreByNumberOfPosition,
 } from '../../lib';
@@ -35,14 +35,23 @@ export default function PageSearch() {
       (a, b) =>
         getScoreByNumberOfPosition(
           ConvertViToEn(search),
-          ConvertViToEn(b.name)
+          ConvertViToEn(b.name),
+          'number'
         ) -
-        getScoreByNumberOfPosition(ConvertViToEn(search), ConvertViToEn(a.name))
+        getScoreByNumberOfPosition(
+          ConvertViToEn(search),
+          ConvertViToEn(a.name),
+          'number'
+        )
     )
     .filter((i) => {
       return search == ''
         ? false
-        : checkIfAIsInB(ConvertViToEn(search), ConvertViToEn(i.name));
+        : getScoreByNumberOfPosition(
+            ConvertViToEn(search),
+            ConvertViToEn(i.name),
+            'boolean'
+          );
     });
   return (
     <div className={styles.PageSearch}>

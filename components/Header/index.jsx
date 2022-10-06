@@ -14,11 +14,15 @@ import { useRouter } from 'next/router';
 import Sliders from './SliderHeaderMiddle';
 import { useCart } from 'react-use-cart';
 import dynamic from 'next/dynamic';
-import { debouncee } from '../../lib';
+
+// import { ConvertViToEn, getScoreByNumberOfPosition } from '../../lib';
+// import Suggestions from './Suggestions';
 const Cart = dynamic(() => import('./Cart/Cart'), {
   ssr: false,
 });
-
+const Suggestions = dynamic(() => import('./Suggestions'), {
+  ssr: true,
+});
 const Header = () => {
   const statisticalRef = useRef(null);
   const router = useRouter();
@@ -27,6 +31,7 @@ const Header = () => {
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [suggestions, setSuggestions] = useState(false);
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -58,21 +63,31 @@ const Header = () => {
       setOpenNav(false);
     }
   };
-  const handleMove = (e) => {
+  const handleChange = (e) => {
     setSearchTerm(e.target.value);
+  };
+  const handleMove = () => {
     setOpenAccount(false);
     setOpenCart(false);
     setOpenNav(false);
+    setSuggestions(false);
   };
+  const onfocus = () => {
+    setSuggestions(true);
+  };
+  console.log(suggestions);
   const handleSearch = () => {
-    // router.push({
-    //   pathname: '/PageSearch',
-    //   query: { searchTerm: searchTerm },
-    // });
+    router.push({
+      pathname: '/page-search',
+      // query: { searchTerm: searchTerm },
+    });
     localStorage.setItem('search', JSON.stringify(searchTerm));
     setSearchTerm('');
   };
   useEffect(() => {
+    setOpenAccount(false);
+    setOpenCart(false);
+    setOpenNav(false);
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
       var currentScrollPos = window.pageYOffset;
@@ -83,7 +98,12 @@ const Header = () => {
       }
       prevScrollpos = currentScrollPos;
     };
-  }, []);
+    if (searchTerm.length > 0) {
+      setSuggestions(true);
+    } else {
+      setSuggestions(false);
+    }
+  }, [searchTerm]);
   return (
     <div
       className={clsx(styles.wrapper, {
@@ -93,7 +113,10 @@ const Header = () => {
       <div
         className={clsx(styles.modal, {
           [styles.active]:
-            openNav === true || openCart === true || openAccount === true,
+            openNav === true ||
+            openCart === true ||
+            openAccount === true ||
+            suggestions === true,
         })}
         onClick={handleMove}
       ></div>
@@ -113,12 +136,14 @@ const Header = () => {
           </Link>
           <form className={styles.search} action="/page-search">
             <TextField
+              id="myInput"
               variant="outlined"
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."
               size="small"
               value={searchTerm || ''}
               className={styles.inputSearch}
-              onChange={handleMove}
+              onChange={handleChange}
+              onFocus={onfocus}
             />
             <Button
               type="submit"
@@ -127,6 +152,12 @@ const Header = () => {
             >
               <AiOutlineSearch />
             </Button>
+            <Suggestions
+              searchTerm={searchTerm}
+              handleSearch={handleSearch}
+              suggestions={suggestions}
+              setSuggestions={setSuggestions}
+            />
           </form>
           <div className={styles.wrap}>
             <div className={styles.account}>

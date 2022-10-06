@@ -7,7 +7,6 @@ import styles from './styles.module.scss';
 
 export default function Introduce() {
   const router = useRouter();
-  console.log(router);
   return (
     <div className={styles.introduce}>
       <div className={styles.breadcrumb_shop}>
