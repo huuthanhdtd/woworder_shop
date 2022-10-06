@@ -11,10 +11,28 @@ const CategoriesPage = ({ products }) => {
   const [page, setPage] = React.useState(1);
   const [perPage, setPerPage] = React.useState(8);
   const router = useRouter();
+  /* formPrice value */
+  const [formPrice, setFormPrice] = useState({ priceFirst: '', priceLast: '' });
+  const { priceFirst, priceLast } = formPrice;
+  /* */
+  const filteredProducts = React.useMemo(() => {
+    return products?.filter((item) => {
+      const check = checked.length ? checked.includes(item.data.slug) : true;
 
-  const filteredProducts = products?.filter((item) =>
-    checked.length ? checked.includes(item.data.slug) : true
-  );
+      const checkPrice = !priceFirst && !priceLast;
+
+      if (checkPrice) {
+        return check;
+      } else {
+        let priceToNum = Number(item.sellPrice);
+        if (check && priceToNum >= priceFirst && priceToNum <= priceLast) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+  }, [products, formPrice]);
   React.useEffect(() => {
     setPage(1);
   }, [products]);
@@ -35,6 +53,8 @@ const CategoriesPage = ({ products }) => {
             setChecked={setChecked}
             checked={checked}
             setPage={setPage}
+            formPrice={formPrice}
+            setFormPrice={setFormPrice}
           />
         </Grid>
         <Grid item lg={9} md={11} sm={12}>
