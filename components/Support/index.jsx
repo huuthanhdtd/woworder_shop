@@ -8,7 +8,6 @@ import clsx from 'clsx';
 export default function Support() {
   const [activeNav, setActiveNav] = useState(true);
   const { support } = footerData;
-  console.log();
   const handleShowNavItem = () => {
     if (activeNav === true) {
       setActiveNav();
