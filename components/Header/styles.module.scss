@@ -73,6 +73,10 @@
           width: 100%;
           border-radius: 5px;
           background-color: #ffffff;
+          height: 40px;
+          outline: none;
+          border: none;
+          padding: 10px 70px 10px 25px;
         }
         .icon {
           position: absolute;
@@ -87,7 +91,6 @@
             background-color: transparent;
           }
         }
-     
       }
       .wrap {
         padding: 0 15px;

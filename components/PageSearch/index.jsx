@@ -1,33 +1,66 @@
-import { Grid, TextField } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import {
-  // checkIfAIsInB,
-  ConvertViToEn,
-  getScoreByNumberOfPosition,
-} from '../../lib';
+import { debounce, Grid } from '@material-ui/core';
+import React, { useEffect, useRef, useState } from 'react';
+import { ConvertViToEn, getScoreByNumberOfPosition } from '../../lib';
 import CardProduct from '../CardProduct';
 import styles from './styles.module.scss';
-// import data from '../../constants/database.json';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Pagination } from '@material-ui/lab';
-import data from '../../constants/database.json';
+import data from '../../constants/testdata.json';
+import { useRouter } from 'next/router';
 
 export default function PageSearch() {
+  const router = useRouter();
   const perPage = 12;
-  const [search, setSearch] = useState('');
   const [temporary, setTemporary] = useState('');
   const [page, setPage] = useState(1);
+  const typing = useRef(null);
   const handleTemporary = () => {
-    localStorage.setItem('search', JSON.stringify(temporary));
-  };
-  useEffect(() => {
-    const see = JSON.parse(localStorage.getItem('search'));
-    setSearch(see);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+    router.push({
+      pathname: '/page-search',
+      query: { searchTerm: temporary },
     });
-  }, [page]);
+  };
+  // const debounce = (e) => {
+  //   console.log(e);
+  // };
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setTemporary(value);
+    // if (typing.current) {
+    //   clearTimeout(typing.current);
+    // }
+
+    // typing.current = setTimeout(() => {
+    //   const form = {
+    //     searchTerm: e.target.value,
+    //   };
+    //   debounce(form);
+    // }, 250);
+  };
+
+  // const handlekeyup = (e) => {
+  //   // let inputs = document.getElementById('inputpage');
+  //   // inputs.addEventListener('keyup', (e) => {
+  //   //   if (e.keyCode === 13) {
+  //   //     console.log(e.target.value);
+  //   //     // router.push({
+  //   //     //   pathname: '/page-search',
+  //   //     //   query: { searchTerm: e.target.value },
+  //   //     // });
+  //   //   }
+  //   // });
+  // };
+  useEffect(() => {
+    let inputs = document.getElementById('inputpage');
+    inputs.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+        router.push({
+          pathname: '/page-search',
+          query: { searchTerm: e.target.value },
+        });
+      }
+    });
+  }, []);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
@@ -35,21 +68,21 @@ export default function PageSearch() {
     ?.sort(
       (a, b) =>
         getScoreByNumberOfPosition(
-          ConvertViToEn(search),
+          ConvertViToEn(router.query.searchTerm || ''),
           ConvertViToEn(b.name),
           'number'
         ) -
         getScoreByNumberOfPosition(
-          ConvertViToEn(search),
+          ConvertViToEn(router.query.searchTerm || ''),
           ConvertViToEn(a.name),
           'number'
         )
     )
     .filter((i) => {
-      return search == ''
+      return router.query.searchTerm == ''
         ? false
         : getScoreByNumberOfPosition(
-            ConvertViToEn(search),
+            ConvertViToEn(router.query.searchTerm || ''),
             ConvertViToEn(i.name),
             'boolean'
           );
@@ -65,7 +98,7 @@ export default function PageSearch() {
       <div className={styles.content_page}>
         {dataSortedByScore.length > 0 ? (
           <p className={styles.subtext_result}>
-            Kết quả tìm kiếm cho <strong>"{search}"</strong>
+            Kết quả tìm kiếm cho <strong>"{router.query.searchTerm}"</strong>
           </p>
         ) : (
           <div className={styles.err}>
@@ -73,27 +106,27 @@ export default function PageSearch() {
             <span>
               Không tìm thấy kết quả{' '}
               <span style={{ color: '#000', fontWeight: '700' }}>
-                "{search}"
+                "{router.query.searchTerm}"
               </span>
               .
             </span>
             <span> Vui lòng sử dụng các từ tổng quát hơn và thử lại!</span>
-            <form className={styles.Forminput}>
+            <div className={styles.Forminput}>
               <input
+                id="inputpage"
                 placeholder="Nhập url/mã/tên sản phẩm để tìm..."
-                value={temporary || ''}
+                value={temporary}
+                name="temporary"
                 type="text"
                 className={styles.input}
-                onChange={(e) => setTemporary(e.target.value)}
+                // onChange={debounce(handleChange, 250)}
+                onChange={handleChange}
+                // onKeyUp={handlekeyup}
               />
-              <button
-                type="submit"
-                className={styles.iconsearch}
-                onClick={handleTemporary}
-              >
+              <button className={styles.iconsearch} onClick={handleTemporary}>
                 <AiOutlineSearch />
               </button>
-            </form>
+            </div>
           </div>
         )}
         <Grid container className={styles.Search_Product}>
@@ -113,13 +146,17 @@ export default function PageSearch() {
             ))}
         </Grid>
         <div className={styles.Pagination}>
-          <Pagination
-            count={Math.ceil(dataSortedByScore.length / perPage)}
-            page={page}
-            onChange={handlePageChange}
-            color="primary"
-            shape="rounded"
-          />
+          {dataSortedByScore.length > 0 ? (
+            <Pagination
+              count={Math.ceil(dataSortedByScore.length / perPage)}
+              page={page}
+              onChange={handlePageChange}
+              color="primary"
+              shape="rounded"
+            />
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

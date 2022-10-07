@@ -6,7 +6,7 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
 import styles from './styles.module.scss';
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
 import Account from './Account/Account';
@@ -59,9 +59,6 @@ const Header = () => {
       setOpenNav(false);
     }
   };
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
   const handleMove = () => {
     setOpenAccount(false);
     setOpenCart(false);
@@ -74,10 +71,8 @@ const Header = () => {
   const handleSearch = () => {
     router.push({
       pathname: '/page-search',
-      // query: { searchTerm: searchTerm },
+      query: { searchTerm: searchTerm },
     });
-    localStorage.setItem('search', JSON.stringify(searchTerm));
-    setSearchTerm('');
   };
   useEffect(() => {
     setOpenAccount(false);
@@ -93,12 +88,16 @@ const Header = () => {
       }
       prevScrollpos = currentScrollPos;
     };
-    if (searchTerm.length > 0) {
-      setSuggestions(true);
-    } else {
-      setSuggestions(false);
-    }
-  }, [searchTerm]);
+    let input = document.getElementById('myInput');
+    input.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+        router.push({
+          pathname: '/page-search',
+          query: { searchTerm: e.target.value },
+        });
+      }
+    });
+  }, []);
   return (
     <div
       className={clsx(styles.wrapper, {
@@ -129,22 +128,16 @@ const Header = () => {
               <Image src={Logo} width={220} height={47} />
             </div>
           </Link>
-          <form className={styles.search} action="/page-search">
-            <TextField
+          <div className={styles.search}>
+            <input
               id="myInput"
-              variant="outlined"
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."
-              size="small"
               value={searchTerm || ''}
               className={styles.inputSearch}
-              onChange={handleChange}
+              onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={onfocus}
             />
-            <Button
-              type="submit"
-              className={styles.icon}
-              onClick={handleSearch}
-            >
+            <Button className={styles.icon} onClick={handleSearch}>
               <AiOutlineSearch />
             </Button>
             <Suggestions
@@ -153,7 +146,7 @@ const Header = () => {
               suggestions={suggestions}
               setSuggestions={setSuggestions}
             />
-          </form>
+          </div>
           <div className={styles.wrap}>
             <div className={styles.account}>
               <div className={styles.beforeCart} onClick={handleAccount}>
