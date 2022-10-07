@@ -13,7 +13,6 @@ import { Pagination } from '@material-ui/lab';
 import data from '../../constants/testdata.json';
 
 export default function PageSearch() {
-  console.log(data);
   const perPage = 12;
   const [search, setSearch] = useState('');
   const [temporary, setTemporary] = useState('');
