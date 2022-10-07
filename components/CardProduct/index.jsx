@@ -10,14 +10,19 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Hot from '../../assets/image/hot.svg';
 import { Link } from '@material-ui/core';
+import { addProduct } from '../../utils/localstorage';
 
 function CardProduct({ data }) {
   const [isDetail, setDetail] = useState(false);
   const router = useRouter();
+
+  const handleSaveProductToLocal = () => {
+    addProduct(data);
+  };
   return (
     <div className={styles.all}>
       <div className={styles.imageWp}>
-        <Link href={`/product/${data.id}`}>
+        <Link href={`/product/${data.id}`} onClick={handleSaveProductToLocal}>
           <div
             className={clsx(styles.image, {
               [styles.imageDetail]: isDetail,

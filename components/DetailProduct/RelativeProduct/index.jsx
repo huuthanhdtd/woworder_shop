@@ -3,11 +3,11 @@ import React from 'react';
 import Slides from './SlideProduct';
 import styles from './styles.module.scss';
 
-const RelativeProduct = ({ title }) => {
+const RelativeProduct = ({ title, products }) => {
   return (
     <div className={styles.wrapper}>
-      <Typography variant="h6">{title}</Typography>
-      <Slides />
+      {products.length > 0 && <Typography variant="h6">{title}</Typography>}
+      <Slides data={products} />
     </div>
   );
 };

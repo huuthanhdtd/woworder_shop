@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useRouter } from 'next/router';
 import { CartProvider } from 'react-use-cart';
+import { setProductViewed } from '../utils/localstorage';
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({});
@@ -17,6 +18,7 @@ export const GlobalContext = createContext({});
 const MyApp = ({ Component, pageProps }) => {
   // const { global } = pageProps;
   const router = useRouter();
+  setProductViewed();
   return (
     <>
       <Head>
@@ -26,21 +28,17 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <>
-          {' '}
-          <CartProvider>
-            <Layout>
-              <div
-                style={{
-                  marginTop:
-                    router.pathname === '/checkouts/[id]' ? 0 : '155px',
-                }}
-              >
-                <Component {...pageProps} />
-              </div>
-            </Layout>
-          </CartProvider>
-        </>
+        <CartProvider>
+          <Layout>
+            <div
+              style={{
+                marginTop: router.pathname === '/checkouts/[id]' ? 0 : '155px',
+              }}
+            >
+              <Component {...pageProps} />
+            </div>
+          </Layout>
+        </CartProvider>
       </GlobalContext.Provider>
     </>
   );

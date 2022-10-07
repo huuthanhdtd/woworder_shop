@@ -25,8 +25,9 @@ export default function SearchPrice({ formPrice, setFormPrice }) {
   }, [formPriceValues]);
   const handleSubmit = () => {
     if (
-      formPriceValues.priceFirst > formPriceValues.priceLast ||
-      formPriceValues.priceLast == 0
+      formPriceValues.priceFirst > formPriceValues.priceLast
+      // ||
+      // formPriceValues.priceLast == 0
     ) {
       return setmsg('Vui lòng điền khoảng giá phù hợp');
     } else {

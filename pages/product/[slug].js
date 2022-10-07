@@ -1,19 +1,47 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-import { useCart } from 'react-use-cart';
 import DetailProduct from '../../components/DetailProduct';
 import database from '../../constants/database.json';
+import { getProducts } from '../../utils/localstorage';
+
 const Product = () => {
   const router = useRouter();
-  const { items } = database;
-  const { getItem } = useCart();
-  const cartItem = getItem(router.query.slug);
+  const {
+    items,
+    included: { productCategories },
+  } = database;
+  const [productsViewed, setProduct] = React.useState(null);
 
-  const product = React.useMemo(() => {
-    return items.find((it) => it.id === router.query.slug);
-  }, [router.query.slug]);
+  React.useEffect(() => {
+    const response = getProducts();
+    setProduct(response);
+  }, []);
 
-  return <DetailProduct product={product} cartItem={cartItem} />;
+  const category = productCategories.find(
+    (it) => it.productId === router.query.slug
+  );
+
+  const [res, setData] = React.useState({
+    product: items.find((it) => it.id === router.query.slug),
+    products: productCategories.filter((it) => {
+      if (it.categoryId === category.categoryId) {
+        return items.find((it) => it.id === category.productId);
+      }
+    }),
+  });
+
+  const { product, products } = res;
+  return (
+    <>
+      {productsViewed && (
+        <DetailProduct
+          product={product}
+          productsViewed={productsViewed}
+          products={products}
+        />
+      )}
+    </>
+  );
 };
 
 export default Product;

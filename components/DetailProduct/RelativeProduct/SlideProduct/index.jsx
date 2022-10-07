@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 import CardProduct from '../../../CardProduct';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import database from '../../../../constants/database.json';
-
+import dynamic from 'next/dynamic';
+const Slider = dynamic(() => import('react-slick'));
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -55,12 +55,12 @@ function SamplePrevArrow(props) {
   );
 }
 
-const Slides = () => {
-  const { items } = database;
+const Slides = ({ data }) => {
   const settings = {
     className: 'center',
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: data.length < 5 ? data.length : 5,
+    slidesToScroll: 1,
     centerMode: true,
     centerPadding: '0px',
     swipeToSlide: true,
@@ -96,7 +96,7 @@ const Slides = () => {
   return (
     <div className={styles.wrapper}>
       <Slider {...settings}>
-        {items.map((it, idx) => (
+        {data?.map((it, idx) => (
           <CardProduct key={idx} data={it} />
         ))}
       </Slider>
