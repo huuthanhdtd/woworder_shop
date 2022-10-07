@@ -1,6 +1,5 @@
 import {
   TextField,
-  InputAdornment,
   Checkbox,
   FormControlLabel,
   Button,
@@ -16,17 +15,53 @@ import { citieslist, nations } from '../../../constants/selectListData';
 
 const Form = ({ submitTitle, cancel }) => {
   const [form, setForm] = React.useState({});
-  const [cities, setCities] = React.useState(null);
+  const [addresses, setAddresses] = React.useState({
+    cities: null,
+    districts: null,
+    wards: null,
+  });
 
-  const handleOnchangeNation = React.useCallback((input, value) => {
-    setForm((prev) => ({ ...prev, [input]: value }));
-    setCities(citieslist.find((it) => it.symbol === value));
-  }, []);
+  const { cities, districts, wards } = addresses;
+
+  const handleOnchangeAddress = React.useCallback(
+    (input, e) => {
+      const { name, value } = e.target;
+      setForm((prev) => ({ ...prev, [input]: value }));
+      if (name === 'nation') {
+        if (value === '') {
+          setAddresses({
+            cities: null,
+            districts: null,
+            wards: null,
+          });
+          return;
+        }
+        setAddresses((prev) => ({
+          ...prev,
+          cities: citieslist.find((it) => it.symbol === value),
+        }));
+      }
+      if (name === 'city') {
+        setAddresses((prev) => ({
+          ...prev,
+          districts: cities.cities.find((it) => it.code === value),
+        }));
+      }
+      if (name === 'district') {
+        setAddresses((prev) => ({
+          ...prev,
+          wards: districts.districts.find((it) => it.name === value),
+        }));
+      }
+    },
+    [addresses.cities, addresses.districts, addresses.wards]
+  );
 
   const handleOnchangeForm = React.useCallback((input, value) => {
     setForm((prev) => ({ ...prev, [input]: value }));
   }, []);
-
+  console.log(addresses);
+  console.log(form);
   return (
     <div className={styles.wrapper}>
       <form action="" className={styles.form}>
@@ -70,8 +105,8 @@ const Form = ({ submitTitle, cancel }) => {
           }}
         />
         <TextField
-          onChange={(e) => handleOnchangeForm('address1st', e.target.value)}
-          placeholder="Địa chỉ 1"
+          onChange={(e) => handleOnchangeForm('address', e.target.value)}
+          placeholder="Địa chỉ"
           variant="outlined"
           className={styles.input}
           InputProps={{
@@ -82,20 +117,6 @@ const Form = ({ submitTitle, cancel }) => {
             ),
           }}
         />
-        <TextField
-          onChange={(e) => handleOnchangeForm('address2nd', e.target.value)}
-          placeholder="Địa chỉ 2"
-          variant="outlined"
-          className={styles.input}
-          InputProps={{
-            startAdornment: (
-              <div className={styles.iconStart}>
-                <RiHome8Fill />
-              </div>
-            ),
-          }}
-        />
-
         <div className={styles.wrapSelect}>
           <div className={styles.iconSelect}>
             <ImLocation2 />
@@ -103,9 +124,9 @@ const Form = ({ submitTitle, cancel }) => {
           <select
             name="nation"
             className={styles.select}
-            onChange={(e) => handleOnchangeNation('nation', e.target.value)}
+            onChange={(e) => handleOnchangeAddress('nation', e)}
           >
-            <option value="#">-- Please Select --</option>
+            <option value="">-- Please Select --</option>
             {nations.map((na, idx) => (
               <option value={na.symbol} key={idx}>
                 {na.name}
@@ -116,15 +137,54 @@ const Form = ({ submitTitle, cancel }) => {
         {cities && (
           <div className={styles.wrapSelect}>
             <div className={styles.iconSelect}>
-              <ImLocation2 />
+              <RiHome8Fill />
             </div>
             <select
               name="city"
               className={styles.select}
-              onChange={(e) => handleOnchangeForm('city', e.target.value)}
+              onChange={(e) => handleOnchangeAddress('city', e)}
             >
+              <option value="">Tỉnh/ thành</option>
               {cities.cities.map((ct, idx) => (
                 <option value={ct.code} key={idx}>
+                  {ct.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        {districts && (
+          <div className={styles.wrapSelect}>
+            <div className={styles.iconSelect}>
+              <RiHome8Fill />
+            </div>
+            <select
+              name="district"
+              className={styles.select}
+              onChange={(e) => handleOnchangeAddress('districts', e)}
+            >
+              <option value="">Quận/ huyện</option>
+              {districts.districts.map((ct, idx) => (
+                <option value={ct.code} key={idx}>
+                  {ct.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        {wards && (
+          <div className={styles.wrapSelect}>
+            <div className={styles.iconSelect}>
+              <RiHome8Fill />
+            </div>
+            <select
+              name="ward"
+              className={styles.select}
+              onChange={(e) => handleOnchangeAddress('wards', e)}
+            >
+              <option value="">Xã/ phường</option>
+              {wards.wards.map((ct, idx) => (
+                <option value={ct.name} key={idx}>
                   {ct.name}
                 </option>
               ))}
@@ -144,7 +204,6 @@ const Form = ({ submitTitle, cancel }) => {
             ),
           }}
         />
-
         <FormControlLabel
           control={<Checkbox size="small" name="checkedA" />}
           label="Đặt làm địa chỉ mặc định."
