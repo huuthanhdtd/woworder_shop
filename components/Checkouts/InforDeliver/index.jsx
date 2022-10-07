@@ -15,21 +15,60 @@ const addresses = [
   { name: 'Quận 10, Hồ Chí Minh' },
 ];
 
-const InforDeliver = ({ token, handleLogin, login }) => {
+const InforDeliver = ({
+  token,
+  handleLogin,
+  login,
+  handleChangeInforDeliver,
+  setAllInforDeliver,
+}) => {
+  const userData = React.useMemo(() => {
+    if (localStorage.getItem('USER_INFOR')) {
+      return JSON.parse(localStorage.getItem('USER_INFOR'));
+    }
+  }, []);
+
+  /* set First data  */
+  const firstState = React.useMemo(() => {
+    const cities =
+      userData && citieslist[0].cities.find((it) => it.code === userData.city);
+    const districts =
+      userData &&
+      cities &&
+      cities.districts.find((it) => it.name === userData.districts);
+    const wards =
+      districts &&
+      userData &&
+      districts.wards.find((it) => it.name === userData.wards);
+    return {
+      cities,
+      districts,
+      wards,
+    };
+  }, [userData]);
+  const [data, setData] = React.useState({
+    cities: citieslist[0].cities,
+    districts: firstState?.cities ? firstState?.cities : null,
+    wards: firstState?.districts ? firstState?.districts : null,
+  });
+
   const [state, setState] = React.useState({
-    city: '',
-    district: '',
-    wards: '',
+    city: firstState ? firstState.cities.name : '',
+    district: firstState ? firstState.districts.name : '',
+    wards: firstState ? firstState.wards.name : '',
     addresses: '',
+  });
+
+  /* */
+
+  const [useFormValues, setUserFormValues] = React.useState({
+    name: userData ? `${userData?.lastname} ${userData.firstname}` : '',
+    email: userData?.email ? userData?.email : '',
+    phone: userData?.phone ? userData?.phone : '',
   });
 
   const [addressUser, setAddressUser] = React.useState();
 
-  const [data, setData] = React.useState({
-    cities: citieslist[0].cities,
-    districts: null,
-    wards: null,
-  });
   const [deliver, setDeliver] = React.useState('deliver');
   const [payment, setPayment] = React.useState('cash');
 
@@ -55,41 +94,81 @@ const InforDeliver = ({ token, handleLogin, login }) => {
     setAddressUser(event.target.value);
   }, []);
 
+  /* hanl onChang User form value */
+
+  const handleOnChangeFormUser = (value, type) => {
+    if (value !== '') {
+      handleChangeInforDeliver(type, value);
+    }
+    setUserFormValues((prev) => {
+      return {
+        ...prev,
+        [type]: value,
+      };
+    });
+  };
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-
-    if (value === '' && name === 'city') {
-      setState({
-        city: '',
-        district: '',
-        wards: '',
-      });
-      setData({
-        cities: citieslist[0].cities,
-        districts: null,
-        wards: null,
-      });
-      return;
+    if (value !== '') {
     }
+    if (value === '') {
+      if (name === 'city') {
+        setState({
+          city: '',
+          district: '',
+          wards: '',
+        });
+        setData({
+          cities: citieslist[0].cities,
+          districts: null,
+          wards: null,
+        });
+      }
+    } else {
+      if (name === 'city') {
+        setAllInforDeliver((prev) => {
+          return {
+            ...prev,
+            city: value,
+            district: '',
+            wards: '',
+          };
+        });
+
+        setData({
+          ...data,
+          districts: data.cities.find((it) => it.name === event.target.value),
+          wards: null,
+        });
+      } else if (name === 'district' && data.districts) {
+        setData({
+          ...data,
+          wards: data.districts.districts.find(
+            (it) => it.name === event.target.value
+          ),
+        });
+        setAllInforDeliver((prev) => {
+          return {
+            ...prev,
+            district: value,
+            wards: '',
+          };
+        });
+      } else if (name === 'wards') {
+        setAllInforDeliver((prev) => {
+          return {
+            ...prev,
+            wards: value,
+          };
+        });
+      }
+    }
+
     setState({
       ...state,
       [name]: event.target.value,
     });
-    if (name === 'city') {
-      setData({
-        ...data,
-        districts: data.cities.find((it) => it.name === event.target.value),
-      });
-    }
-    if (name === 'district' && data.districts) {
-      setData({
-        ...data,
-        wards: data.districts.districts.find(
-          (it) => it.name === event.target.value
-        ),
-      });
-    }
   };
 
   const router = useRouter();
@@ -119,7 +198,7 @@ const InforDeliver = ({ token, handleLogin, login }) => {
           </div>
           <div className={styles.userInfor}>
             <Typography variant="body2">
-              Trần Quang Huy (quanghuy.tipici@gmail.com)
+              {`${userData?.lastname} ${userData.firstname}`}
             </Typography>
             <Button
               variant="text"
@@ -148,6 +227,11 @@ const InforDeliver = ({ token, handleLogin, login }) => {
           className={styles.input}
           variant="outlined"
           placeholder="Họ và tên"
+          onChange={(e) => handleOnChangeFormUser(e.target.value, 'name')}
+          // defaultValue={
+          //   login ? `${userData?.lastname} ${userData.firstname}` : ''
+          // }
+          value={useFormValues?.name}
         />
         <Grid container spacing={1} justifyContent="space-between">
           <Grid item lg={8} md={8} sm={8} xs={12}>
@@ -155,6 +239,9 @@ const InforDeliver = ({ token, handleLogin, login }) => {
               className={styles.input}
               variant="outlined"
               placeholder="Email"
+              onChange={(e) => handleOnChangeFormUser(e.target.value, 'email')}
+              // defaultValue={login ? `${userData?.email}` : ''}
+              value={useFormValues?.email}
             />
           </Grid>
           <Grid item lg={4} md={4} sm={4} xs={12}>
@@ -162,6 +249,9 @@ const InforDeliver = ({ token, handleLogin, login }) => {
               className={styles.input}
               variant="outlined"
               placeholder="Số điện thoại"
+              onChange={(e) => handleOnChangeFormUser(e.target.value, 'phone')}
+              // defaultValue={login ? `${userData?.phone}` : ''}
+              value={useFormValues?.phone}
             />
           </Grid>
         </Grid>
@@ -171,12 +261,17 @@ const InforDeliver = ({ token, handleLogin, login }) => {
           deliver={deliver}
           handleChange={handleChange}
           handleDeliver={handleDeliver}
+          handleChangeInforDeliver={handleChangeInforDeliver}
         />
         <Delivery deliver={deliver} data={data} />
         <Typography className={styles.caption}>
           Phương thức thanh toán
         </Typography>
-        <Payments handlePayment={handlePayment} payment={payment} />
+        <Payments
+          handlePayment={handlePayment}
+          payment={payment}
+          setAllInforDeliver={setAllInforDeliver}
+        />
         <div className={styles.boxSubmit}>
           <Button variant="text" className={styles.gotoCarts}>
             Giỏ hàng

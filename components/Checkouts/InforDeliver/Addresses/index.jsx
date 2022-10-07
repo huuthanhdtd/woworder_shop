@@ -4,7 +4,14 @@ import Local from './Local';
 import styles from './styles.module.scss';
 import Transportation from './Transportation';
 
-const Addresses = ({ data, state, deliver, handleChange, handleDeliver }) => {
+const Addresses = ({
+  data,
+  state,
+  deliver,
+  handleChange,
+  handleDeliver,
+  handleChangeInforDeliver,
+}) => {
   return (
     <div className={clsx(styles.address, styles.border)}>
       <Transportation
@@ -13,6 +20,7 @@ const Addresses = ({ data, state, deliver, handleChange, handleDeliver }) => {
         deliver={deliver}
         handleChange={handleChange}
         handleDeliver={handleDeliver}
+        handleChangeInforDeliver={handleChangeInforDeliver}
       />
       <Local
         data={data}

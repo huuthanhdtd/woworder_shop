@@ -11,7 +11,18 @@ const Transportation = ({
   state,
   handleChange,
   handleDeliver,
+  handleChangeInforDeliver,
 }) => {
+  const userData = React.useMemo(() => {
+    if (localStorage.getItem('USER_INFOR')) {
+      return JSON.parse(localStorage.getItem('USER_INFOR'));
+    }
+  }, []);
+  const [addressInput, setAddressInput] = React.useState(userData?.address);
+  const handleOnChange = (e) => {
+    setAddressInput(e.target.value);
+    handleChangeInforDeliver('address', e.target.value);
+  };
   return (
     <>
       <div className={styles.addressTitle}>
@@ -33,6 +44,8 @@ const Transportation = ({
             className={styles.input}
             variant="outlined"
             placeholder="Địa chỉ"
+            value={addressInput}
+            onChange={handleOnChange}
           />
           <Grid container spacing={1}>
             <Grid item lg={4} md={4} sm={4} xs={12}>

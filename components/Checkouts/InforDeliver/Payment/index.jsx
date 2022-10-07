@@ -7,12 +7,18 @@ import styles from './styles.module.scss';
 import COD from '../../../../assets/image/cod.svg';
 import BANK from '../../../../assets/image/bank.svg';
 
-const Payments = ({ handlePayment, payment }) => {
+const Payments = ({ handlePayment, payment, setAllInforDeliver }) => {
+  const handleSelectPayment = (value) => {
+    handlePayment(value);
+    setAllInforDeliver((prev) => {
+      return { ...prev, payment: value };
+    });
+  };
   return (
     <div className={clsx(styles.border, styles.payment)}>
       <Button
         className={clsx(styles.text, styles.btnPayment)}
-        onClick={() => handlePayment('cash')}
+        onClick={() => handleSelectPayment('cash')}
       >
         <RiCheckboxBlankCircleFill
           className={clsx(styles.iconCircle, {
@@ -35,7 +41,7 @@ const Payments = ({ handlePayment, payment }) => {
         className={clsx(styles.text, styles.btnPayment, {
           [styles.bottomBorder]: payment === 'bank',
         })}
-        onClick={() => handlePayment('bank')}
+        onClick={() => handleSelectPayment('bank')}
       >
         <RiCheckboxBlankCircleFill
           className={clsx(styles.iconCircle, {

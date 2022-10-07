@@ -10,11 +10,21 @@ import styles from './styles.module.scss';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BsFillHouseFill } from 'react-icons/bs';
 import { RiHome8Fill } from 'react-icons/ri';
+import { MdOutlineMailOutline } from 'react-icons/md';
 import { ImLocation2, ImPhone } from 'react-icons/im';
 import { citieslist, nations } from '../../../constants/selectListData';
 
 const Form = ({ submitTitle, cancel }) => {
-  const [form, setForm] = React.useState({});
+  const [form, setForm] = React.useState({
+    address: '',
+    city: '',
+    company: '',
+    districts: '',
+    firstname: '',
+    lastname: '',
+    nation: '',
+    wards: '',
+  });
   const [addresses, setAddresses] = React.useState({
     cities: null,
     districts: null,
@@ -60,8 +70,9 @@ const Form = ({ submitTitle, cancel }) => {
   const handleOnchangeForm = React.useCallback((input, value) => {
     setForm((prev) => ({ ...prev, [input]: value }));
   }, []);
-  console.log(addresses);
-  console.log(form);
+  const handleSubmit = () => {
+    localStorage.setItem('USER_INFOR', JSON.stringify(form));
+  };
   return (
     <div className={styles.wrapper}>
       <form action="" className={styles.form}>
@@ -100,6 +111,19 @@ const Form = ({ submitTitle, cancel }) => {
             startAdornment: (
               <div className={styles.iconStart}>
                 <BsFillHouseFill />
+              </div>
+            ),
+          }}
+        />
+        <TextField
+          onChange={(e) => handleOnchangeForm('email', e.target.value)}
+          placeholder="Email"
+          variant="outlined"
+          className={styles.input}
+          InputProps={{
+            startAdornment: (
+              <div className={styles.iconStart}>
+                <MdOutlineMailOutline />
               </div>
             ),
           }}
@@ -209,7 +233,9 @@ const Form = ({ submitTitle, cancel }) => {
           label="Đặt làm địa chỉ mặc định."
         />
         <div className={styles.boxSubmit}>
-          <Button className={styles.submit}>{submitTitle}</Button>
+          <Button className={styles.submit} onClick={handleSubmit}>
+            {submitTitle}
+          </Button>
           <Typography variant="body2">
             hoặc
             <Button onClick={cancel}>Hủy</Button>

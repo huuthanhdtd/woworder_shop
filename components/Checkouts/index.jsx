@@ -52,6 +52,23 @@ const CheckoutDetail = () => {
 
   const [login, setLogin] = React.useState(false);
 
+  const userData = React.useMemo(() => {
+    if (localStorage.getItem('USER_INFOR')) {
+      return JSON.parse(localStorage.getItem('USER_INFOR'));
+    }
+  }, []);
+
+  const [allInforDeliver, setAllInforDeliver] = React.useState({
+    ...userData,
+    payment: 'cash',
+  });
+
+  const handleChangeInforDeliver = (key, value) => {
+    setAllInforDeliver((prev) => {
+      return { ...prev, [key]: value };
+    });
+  };
+
   const handleShowPopup = React.useCallback(() => {
     setPopup(!isPopup);
   }, [isPopup]);
@@ -76,6 +93,7 @@ const CheckoutDetail = () => {
   const handleLogin = React.useCallback(() => {
     setLogin(!login);
   }, [login]);
+  console.log(allInforDeliver);
 
   return (
     <>
@@ -98,6 +116,8 @@ const CheckoutDetail = () => {
               token={null}
               handleLogin={handleLogin}
               login={login}
+              handleChangeInforDeliver={handleChangeInforDeliver}
+              setAllInforDeliver={setAllInforDeliver}
             />
           </Grid>
           <Grid item lg={5} md={5} sm={10} xs={11} className={styles.right}>
