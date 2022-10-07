@@ -95,6 +95,7 @@ const Header = () => {
           pathname: '/page-search',
           query: { searchTerm: e.target.value },
         });
+        setSuggestions(false);
       }
     });
   }, []);

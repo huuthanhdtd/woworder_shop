@@ -1,22 +1,54 @@
-import { Button, Grid, TextField } from '@material-ui/core';
-import Image from 'next/image';
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+} from '@material-ui/core';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../utils/convertCurrency';
 import styles from './styles.module.scss';
 
 export default function Carts() {
-  const { items, totalItems, cartTotal, updateItemQuantity, removeItem } =
-    useCart();
   const router = useRouter();
+  const {
+    items,
+    totalItems,
+    cartTotal,
+    updateItemQuantity,
+    removeItem,
+    setCartMetadata,
+  } = useCart();
+  const [checked, setChecked] = useState([]);
+  console.log(checked);
   const handlePush = () => {
     if (items.length > 0) {
-      router.push('/checkouts/1');
+      router.push({
+        pathname: '/checkouts/1',
+      });
+      setCartMetadata({ notes: checked });
     } else {
       return;
     }
+  };
+  const handleChange1 = (isChecked) => {
+    if (isChecked) return setChecked(items.map((data) => data.id));
+    else setChecked([]);
+  };
+
+  const handleChange2 = (isChecked, id) => {
+    const index = checked.indexOf(id);
+
+    if (isChecked) return setChecked((state) => [...state, id]);
+
+    if (!isChecked && index > -1)
+      return setChecked((state) => {
+        state.splice(index, 1);
+        return JSON.parse(JSON.stringify(state));
+      });
   };
   return (
     <div className={styles.carts}>
@@ -32,8 +64,37 @@ export default function Carts() {
                 bạn đang có {totalItems} sản phẩm trong giỏ hàng
               </p>
               <div className={styles.boderCarts}>
+                <FormControlLabel
+                  label="Tất cả"
+                  control={
+                    <Checkbox
+                      size="small"
+                      checked={checked.length === items.length}
+                      indeterminate={
+                        checked.length !== items.items && checked.length > 0
+                      }
+                      onChange={(event) => handleChange1(event.target.checked)}
+                    />
+                  }
+                />
                 {items?.map((data, index) => (
                   <div className={styles.product} key={index}>
+                    <Box>
+                      {checked && (
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              size="small"
+                              checked={checked.includes(data.id)}
+                              onChange={(event) =>
+                                handleChange2(event.target.checked, data.id)
+                              }
+                              inputProps={{ 'aria-label': 'controlled' }}
+                            />
+                          }
+                        />
+                      )}
+                    </Box>
                     <div className={styles.media_image}>
                       <div className={styles.item_image}>
                         <img src={data.imageUrl} />

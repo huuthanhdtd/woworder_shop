@@ -13,6 +13,7 @@ import {
 } from 'react-icons/md';
 import ModalCheckouts from './Modal';
 import { getUserData } from '../../utils/localstorage';
+import { useRouter } from 'next/router';
 
 const coupons = [
   {
