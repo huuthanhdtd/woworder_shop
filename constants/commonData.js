@@ -118,9 +118,11 @@ export const sortBarHome = [
 export const orderPrice = [
   {
     name: 'Từ thấp đến cao.',
+    type: 'ascending',
   },
   {
     name: 'Từ cao đến thấp.',
+    type: 'decrease',
   },
 ];
 

@@ -11,14 +11,18 @@ import SelectList from '../../DropDown/DropDown';
 import styles from './styles.module.scss';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 
-const SortBar = ({ category }) => {
+const SortBar = ({ category, setSortPriceType }) => {
   const [isOrder, setOrder] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
 
-  const handleOrder = React.useCallback((type) => {
+  const handleOrder = (type) => {
     setOrder(type.name);
-  }, []);
+    if (type.type) {
+      setSortPriceType(type.type);
+    }
+  };
+
   return (
     <div className={styles.wrapper} onBlur={() => setOpen(false)}>
       <div className={styles.boxOrder}>
@@ -29,7 +33,7 @@ const SortBar = ({ category }) => {
           <Typography variant="h6">Sắp xếp theo</Typography>
           <Button className={styles.orderMobile} onClick={() => setOpen(!open)}>
             <AiOutlineMenuFold size={16} style={{ marginRight: 5 }} />
-            Sắp xếp theo
+            <span>Sắp xếp theo</span>
           </Button>
           <div
             className={clsx(styles.typeOrder, {
@@ -61,7 +65,7 @@ const SortBar = ({ category }) => {
               ))}
             </div>
           </div>
-          <SelectList />
+          <SelectList setSortPriceType={setSortPriceType} />
         </div>
       </div>
     </div>

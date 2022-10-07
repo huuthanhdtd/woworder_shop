@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import CardProduct from '../../CardProduct';
 import SortBar from '../SortBar';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { sortByPrice } from '../../../utils/sortByPrice';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -56,6 +57,7 @@ function SamplePrevArrow(props) {
 }
 
 const SlideProduct = ({ category, products }) => {
+  const [sortPriceType, setSortPriceType] = React.useState(null);
   const settings = {
     className: 'center',
     infinite: true,
@@ -93,12 +95,23 @@ const SlideProduct = ({ category, products }) => {
       },
     ],
   };
+  const sortProducts = React.useMemo(() => {
+    if (products?.length > 0) {
+      if (sortPriceType) {
+        return sortByPrice(products, sortPriceType);
+      } else {
+        return products;
+      }
+    } else {
+      return products;
+    }
+  }, [sortPriceType]);
 
   return (
     <div className={styles.wrapper}>
-      <SortBar category={category} />
+      <SortBar category={category} setSortPriceType={setSortPriceType} />
       <Slider {...settings}>
-        {products.map((item, idx) => (
+        {sortProducts?.map((item, idx) => (
           <CardProduct key={item.id} data={item} />
         ))}
       </Slider>

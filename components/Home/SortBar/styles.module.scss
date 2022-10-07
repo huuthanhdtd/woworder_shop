@@ -115,7 +115,11 @@
           display: none;
         }
         .orderMobile {
-          display: block;
+          display: flex;
+          align-items: center;
+        }
+        span {
+          font-size: 12px;
         }
         .button {
           width: 100%;

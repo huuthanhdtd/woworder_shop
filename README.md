@@ -8,7 +8,7 @@ tipicicms frontend example
 
 thêm biến môi trường vào file .env (nếu ko có thì tạo file này)
 `NEXT_PUBLIC_STRAPI_API_URL=https://tipicicms.herokuapp.com`
-
+`NEXT_PUBLIC_DISCOUNT_PERCENT = 30`
 `next dev`
 
 # warning
