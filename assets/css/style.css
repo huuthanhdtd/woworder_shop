@@ -258,3 +258,7 @@ img:hover {
 .styles_sliderSlick__Jc2sc .menu-wrapper--inner {
   white-space: initial !important;
 }
+/* cart */
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: var(--primary-color-) !important;
+}

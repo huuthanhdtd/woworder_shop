@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../utils/convertCurrency';
 import styles from './styles.module.scss';
@@ -23,7 +23,7 @@ export default function Carts() {
     setCartMetadata,
   } = useCart();
   const [checked, setChecked] = useState([]);
-  console.log(checked);
+  const [total, setTotal] = useState([]);
   const handlePush = () => {
     if (items.length > 0) {
       router.push({
@@ -41,7 +41,6 @@ export default function Carts() {
 
   const handleChange2 = (isChecked, id) => {
     const index = checked.indexOf(id);
-
     if (isChecked) return setChecked((state) => [...state, id]);
 
     if (!isChecked && index > -1)
@@ -50,6 +49,20 @@ export default function Carts() {
         return JSON.parse(JSON.stringify(state));
       });
   };
+  const filprice = items.filter((item) => checked.includes(item.id));
+  useEffect(() => {
+    handleChange1(true);
+  }, []);
+  useEffect(() => {
+    const filprices = filprice.map((data) => data.price);
+    const filamount = filprice.map((data) => data.quantity);
+    let sum = 0;
+    for (let i = 0; i < filprices.length; i++) {
+      Number(filprices[i]);
+      sum += Number(filprices[i] * filamount[i]);
+    }
+    setTotal(sum);
+  }, [checked, cartTotal]);
   return (
     <div className={styles.carts}>
       <div className={styles.breadcrumb_shop}>
@@ -61,7 +74,9 @@ export default function Carts() {
           {items.length > 0 ? (
             <div className={styles.listCart}>
               <p className={styles.title_cart}>
-                bạn đang có {totalItems} sản phẩm trong giỏ hàng
+                bạn đang có{' '}
+                <strong style={{ color: '#000' }}>{totalItems} sản phẩm</strong>{' '}
+                trong giỏ hàng
               </p>
               <div className={styles.boderCarts}>
                 <FormControlLabel
@@ -70,9 +85,9 @@ export default function Carts() {
                     <Checkbox
                       size="small"
                       checked={checked.length === items.length}
-                      indeterminate={
-                        checked.length !== items.items && checked.length > 0
-                      }
+                      // indeterminate={
+                      //   checked.length !== items.items && checked.length > 0
+                      // }
                       onChange={(event) => handleChange1(event.target.checked)}
                     />
                   }
@@ -161,9 +176,7 @@ export default function Carts() {
           <h3>Thông tin đơn hàng</h3>
           <div className={styles.total}>
             <div>Tổng tiền:</div>
-            <div className={styles.total_price}>
-              {convertCurrency(cartTotal)}
-            </div>
+            <div className={styles.total_price}>{convertCurrency(total)}</div>
           </div>
           <ul className={styles.information}>
             <li>

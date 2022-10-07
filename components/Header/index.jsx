@@ -6,7 +6,7 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
 import styles from './styles.module.scss';
-import { Button } from '@material-ui/core';
+import { Button, debounce } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
 import Account from './Account/Account';
@@ -68,11 +68,17 @@ const Header = () => {
   const onfocus = () => {
     setSuggestions(true);
   };
+  const unforcus = () => {
+    setSuggestions(false);
+  };
   const handleSearch = () => {
     router.push({
       pathname: '/page-search',
       query: { searchTerm: searchTerm },
     });
+  };
+  const handleOnchange = (e) => {
+    setSearchTerm(e.target.value);
   };
   useEffect(() => {
     setOpenAccount(false);
@@ -95,7 +101,11 @@ const Header = () => {
           pathname: '/page-search',
           query: { searchTerm: e.target.value },
         });
-        setSuggestions(false);
+        // setSuggestions(false);
+        unforcus();
+      } else {
+        // setSuggestions(true);
+        onfocus();
       }
     });
   }, []);
@@ -133,10 +143,11 @@ const Header = () => {
             <input
               id="myInput"
               placeholder="Nhập url/mã/tên sản phẩm để tìm..."
-              value={searchTerm || ''}
+              // value={searchTerm || ''}
               className={styles.inputSearch}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={debounce(handleOnchange, 250)}
               onFocus={onfocus}
+              onBlur={unforcus}
             />
             <Button className={styles.icon} onClick={handleSearch}>
               <AiOutlineSearch />
@@ -145,7 +156,6 @@ const Header = () => {
               searchTerm={searchTerm}
               handleSearch={handleSearch}
               suggestions={suggestions}
-              setSuggestions={setSuggestions}
             />
           </div>
           <div className={styles.wrap}>

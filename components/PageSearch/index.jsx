@@ -13,7 +13,7 @@ export default function PageSearch() {
   const perPage = 12;
   const [temporary, setTemporary] = useState('');
   const [page, setPage] = useState(1);
-  const typing = useRef(null);
+  // const typing = useRef(null);
   const handleTemporary = () => {
     router.push({
       pathname: '/page-search',
@@ -38,29 +38,29 @@ export default function PageSearch() {
     // }, 250);
   };
 
-  // const handlekeyup = (e) => {
-  //   // let inputs = document.getElementById('inputpage');
-  //   // inputs.addEventListener('keyup', (e) => {
-  //   //   if (e.keyCode === 13) {
-  //   //     console.log(e.target.value);
-  //   //     // router.push({
-  //   //     //   pathname: '/page-search',
-  //   //     //   query: { searchTerm: e.target.value },
-  //   //     // });
-  //   //   }
-  //   // });
-  // };
-  useEffect(() => {
+  const handlekeyup = (e) => {
     let inputs = document.getElementById('inputpage');
     inputs.addEventListener('keyup', (e) => {
       if (e.keyCode === 13) {
+        console.log(e.target.value);
         router.push({
           pathname: '/page-search',
           query: { searchTerm: e.target.value },
         });
       }
     });
-  }, []);
+  };
+  useEffect(() => {
+    // let inputs = document.getElementById('inputpage');
+    // inputs.addEventListener('keyup', (e) => {
+    //   if (e.keyCode === 13) {
+    //     router.push({
+    //       pathname: '/page-search',
+    //       query: { searchTerm: e.target.value },
+    //     });
+    //   }
+    // });
+  }, [temporary]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
@@ -92,7 +92,11 @@ export default function PageSearch() {
       <div className={styles.heading_Page}>
         <h1>Tìm kiếm</h1>
         <p>
-          Có <strong>{dataSortedByScore.length} sản phẩm</strong> cho tìm kiếm
+          Có{' '}
+          <strong style={{ color: '#000' }}>
+            {dataSortedByScore.length} sản phẩm
+          </strong>{' '}
+          cho tìm kiếm
         </p>
       </div>
       <div className={styles.content_page}>
@@ -104,7 +108,7 @@ export default function PageSearch() {
           <div className={styles.err}>
             <h2>Không tìm thấy nội dung bạn yêu cầu</h2>
             <span>
-              Không tìm thấy kết quả{' '}
+              Không tìm thấy kết quả
               <span style={{ color: '#000', fontWeight: '700' }}>
                 "{router.query.searchTerm}"
               </span>
@@ -115,13 +119,13 @@ export default function PageSearch() {
               <input
                 id="inputpage"
                 placeholder="Nhập url/mã/tên sản phẩm để tìm..."
-                value={temporary}
+                // value={temporary}
                 name="temporary"
                 type="text"
                 className={styles.input}
                 // onChange={debounce(handleChange, 250)}
                 onChange={handleChange}
-                // onKeyUp={handlekeyup}
+                onKeyUp={handlekeyup}
               />
               <button className={styles.iconsearch} onClick={handleTemporary}>
                 <AiOutlineSearch />
