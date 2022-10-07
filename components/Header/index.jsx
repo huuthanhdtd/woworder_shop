@@ -6,23 +6,19 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Logo from '../../assets/image/logo.svg';
 import styles from './styles.module.scss';
-import { Button, FormGroup, FormLabel, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import Category from './Category';
 import clsx from 'clsx';
 import Account from './Account/Account';
 import { useRouter } from 'next/router';
 import Sliders from './SliderHeaderMiddle';
 import { useCart } from 'react-use-cart';
+import Suggestions from './Suggestions';
 import dynamic from 'next/dynamic';
-
-// import { ConvertViToEn, getScoreByNumberOfPosition } from '../../lib';
-// import Suggestions from './Suggestions';
 const Cart = dynamic(() => import('./Cart/Cart'), {
   ssr: false,
 });
-const Suggestions = dynamic(() => import('./Suggestions'), {
-  ssr: true,
-});
+
 const Header = () => {
   const statisticalRef = useRef(null);
   const router = useRouter();
@@ -75,7 +71,6 @@ const Header = () => {
   const onfocus = () => {
     setSuggestions(true);
   };
-  console.log(suggestions);
   const handleSearch = () => {
     router.push({
       pathname: '/page-search',

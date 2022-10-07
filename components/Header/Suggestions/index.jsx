@@ -34,10 +34,6 @@ export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
   useEffect(() => {
     const see = JSON.parse(localStorage.getItem('search'));
     setSearch(see);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
   }, []);
   return (
     <>
