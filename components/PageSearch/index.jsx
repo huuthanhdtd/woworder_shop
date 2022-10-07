@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 // import data from '../../constants/database.json';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Pagination } from '@material-ui/lab';
-import data from '../../constants/testdata.json';
+import data from '../../constants/database.json';
 
 export default function PageSearch() {
   const perPage = 12;
