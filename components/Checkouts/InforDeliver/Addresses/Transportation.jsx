@@ -2,6 +2,7 @@ import { Button, Grid, TextField } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
 import { RiCheckboxBlankCircleFill } from 'react-icons/ri';
+import { getUserData } from '../../../../utils/localstorage';
 import SelectForm from '../SelectForm';
 import styles from './styles.module.scss';
 
@@ -14,9 +15,8 @@ const Transportation = ({
   handleChangeInforDeliver,
 }) => {
   const userData = React.useMemo(() => {
-    if (localStorage.getItem('USER_INFOR')) {
-      return JSON.parse(localStorage.getItem('USER_INFOR'));
-    }
+    const getUserDataaa = getUserData('USER_INFOR');
+    return getUserDataaa;
   }, []);
   const [addressInput, setAddressInput] = React.useState(userData?.address);
   const handleOnChange = (e) => {

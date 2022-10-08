@@ -12,6 +12,7 @@ import {
   MdClose,
 } from 'react-icons/md';
 import ModalCheckouts from './Modal';
+import { getUserData } from '../../utils/localstorage';
 
 const coupons = [
   {
@@ -53,9 +54,8 @@ const CheckoutDetail = () => {
   const [login, setLogin] = React.useState(false);
 
   const userData = React.useMemo(() => {
-    if (localStorage.getItem('USER_INFOR')) {
-      return JSON.parse(localStorage.getItem('USER_INFOR'));
-    }
+    const getUserDataaa = getUserData('USER_INFOR');
+    return getUserDataaa;
   }, []);
 
   const [allInforDeliver, setAllInforDeliver] = React.useState({

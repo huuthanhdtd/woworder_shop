@@ -9,6 +9,7 @@ import SelectForm from './SelectForm';
 import Payments from './Payment';
 import Delivery from './Deliver';
 import Addresses from './Addresses';
+import { getUserData } from '../../../utils/localstorage';
 
 const addresses = [
   { name: 'Hòa khương, đà nẵng' },
@@ -23,23 +24,21 @@ const InforDeliver = ({
   setAllInforDeliver,
 }) => {
   const userData = React.useMemo(() => {
-    if (localStorage.getItem('USER_INFOR')) {
-      return JSON.parse(localStorage.getItem('USER_INFOR'));
-    }
+    const getUserDataaa = getUserData('USER_INFOR');
+    return getUserDataaa;
   }, []);
 
   /* set First data  */
   const firstState = React.useMemo(() => {
-    const cities =
-      userData && citieslist[0].cities.find((it) => it.code === userData.city);
-    const districts =
-      userData &&
-      cities &&
-      cities.districts.find((it) => it.name === userData.districts);
-    const wards =
-      districts &&
-      userData &&
-      districts.wards.find((it) => it.name === userData.wards);
+    const cities = userData
+      ? citieslist[0].cities.find((it) => it.code === userData.city)
+      : null;
+    const districts = cities
+      ? cities.districts.find((it) => it.name === userData.districts)
+      : null;
+    const wards = districts
+      ? districts.wards.find((it) => it.name === userData.wards)
+      : null;
     return {
       cities,
       districts,
@@ -53,9 +52,9 @@ const InforDeliver = ({
   });
 
   const [state, setState] = React.useState({
-    city: firstState ? firstState.cities.name : '',
-    district: firstState ? firstState.districts.name : '',
-    wards: firstState ? firstState.wards.name : '',
+    city: firstState?.cities ? firstState.cities.name : '',
+    district: firstState?.districts ? firstState.districts.name : '',
+    wards: firstState?.wards ? firstState.wards.name : '',
     addresses: '',
   });
 
