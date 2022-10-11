@@ -23,7 +23,7 @@ const About = () => {
 
   const { width } = useWindowSize();
   React.useEffect(() => {
-    if (width - 5 >= 960) {
+    if (width >= 960) {
       setExpIntro(true);
       setExpSupport(true);
       setExpTakecare(true);
@@ -47,7 +47,9 @@ const About = () => {
                 onClick={() => setExpIntro(!expIntro)}
               />
               <Grid item lg={5} md={5} sm={6} xs={12} className={styles.box}>
-                <Typography variant="h6">{introduce.title}</Typography>
+                <Typography variant="h6" onClick={() => setExpIntro(!expIntro)}>
+                  {introduce.title}
+                </Typography>
                 <div
                   className={clsx(styles.content, {
                     [styles.close]: !expIntro,
@@ -86,7 +88,12 @@ const About = () => {
           <Grid item lg={6} md={6} sm={12} xs={12}>
             <Grid container justifyContent="space-evenly">
               <Grid item lg={5} md={5} sm={12} xs={12} className={styles.box}>
-                <Typography variant="h6">{support.title}</Typography>
+                <Typography
+                  variant="h6"
+                  onClick={() => setExpSupport(!expSupport)}
+                >
+                  {support.title}
+                </Typography>
                 <RiArrowDownSLine
                   className={clsx(styles.expandIcon, {
                     [styles.rotate]: expSupport,
@@ -117,7 +124,12 @@ const About = () => {
                 </div>
               </Grid>
               <Grid item lg={5} md={5} sm={12} xs={12} className={styles.box}>
-                <Typography variant="h6">{takecare.title}</Typography>
+                <Typography
+                  variant="h6"
+                  onClick={() => setExpTakecare(!expTakecare)}
+                >
+                  {takecare.title}
+                </Typography>
                 <RiArrowDownSLine
                   className={clsx(styles.expandIcon, {
                     [styles.rotate]: expTakecare,

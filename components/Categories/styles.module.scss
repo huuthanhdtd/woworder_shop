@@ -1,7 +1,7 @@
 .wrapper {
   background-color: #ffffff;
   padding: 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   .container {
     max-width: 1500px;
     margin: auto;
@@ -10,39 +10,50 @@
       align-items: center;
       height: 16px;
       margin-bottom: 40px;
-
-      a p {
-        margin-right: 10px;
-      }
+      a,
       p {
+        margin-right: 10px;
         font-family: 'Mulish';
         font-style: normal;
         font-weight: 600;
-        font-size: 24px;
+        font-size: 18px;
         line-height: 16px;
         color: #000000;
+      }
+      a:hover {
+        color: var(--primary-color-);
       }
     }
   }
 }
 
-@media screen and (max-width: 1440px) {
+@media only screen and (max-width: 960px) {
   .wrapper {
     .container {
       .tabBar {
+        margin-bottom: 20px;
+        a,
         p {
-          font-size: 20px;
+          font-size: 14px;
         }
+      }
+      .filterBox {
+        display: none;
+      }
+      .wrapProducts {
+        flex-basis: 100%;
+        max-width: 100%;
       }
     }
   }
 }
-@media only screen and (max-width: 1280px) {
+
+@media screen and (max-width: 600px) {
   .wrapper {
+    margin-top: 200px;
+    padding: 5px;
     .container {
-      .filterBox {
-        display: none;
-      }
+      width: 100%;
     }
   }
 }

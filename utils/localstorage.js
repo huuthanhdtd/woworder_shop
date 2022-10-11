@@ -47,7 +47,6 @@ export const getUserData = (key) => {
   const data = nextLocalStorage()?.getItem(key);
   if (typeof data !== 'undefined') {
     const items = JSON.parse(data);
-    console.log(items);
     return items;
   }
 };

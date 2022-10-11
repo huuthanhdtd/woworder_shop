@@ -94,35 +94,41 @@ export const footerData = {
 export const orderButton = [
   {
     name: 'Phổ biến',
+    type: 'popular',
   },
   {
     name: 'Mới nhất',
+    type: 'new',
   },
   {
     name: 'Bán chạy',
+    type: 'hot',
   },
 ];
 
 export const sortBarHome = [
   {
     name: 'Được yêu thích',
+    type: 'like',
   },
   {
     name: 'Mới về',
+    type: 'new',
   },
   {
     name: 'Bán chạy',
+    type: 'hot',
   },
 ];
 
 export const orderPrice = [
   {
-    name: 'Từ thấp đến cao.',
+    name: 'Từ thấp đến cao',
     type: 'ascending',
   },
   {
-    name: 'Từ cao đến thấp.',
-    type: 'decrease',
+    name: 'Từ cao đến thấp',
+    type: 'descending',
   },
 ];
 

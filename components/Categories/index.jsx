@@ -1,12 +1,14 @@
-import { Grid, Typography, Link } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import Paginate from '../Pagination';
 import Products from './Products';
 import Checked from '../Sort';
 import styles from './styles.module.scss';
 import { useRouter } from 'next/router';
+import SortBarMobile from '../SortBarMobile';
+import Link from 'next/link';
 
-const CategoriesPage = ({ products }) => {
+const CategoriesPage = ({ products, category }) => {
   const [checked, setChecked] = useState([]);
   const [page, setPage] = React.useState(1);
   const [perPage, setPerPage] = React.useState(8);
@@ -15,6 +17,13 @@ const CategoriesPage = ({ products }) => {
   const [formPrice, setFormPrice] = useState({ priceFirst: '', priceLast: '' });
   const { priceFirst, priceLast } = formPrice;
   /* */
+  const [filters, setFilters] = React.useState({
+    webs: [],
+    inOrder: null,
+    prices: { priceFirst: '', priceLast: '' },
+  });
+  const [sortPriceType, setSortPriceType] = React.useState(filters.inOrder);
+  const [open, setOpen] = React.useState(false);
   const filteredProducts = React.useMemo(() => {
     return products?.filter((item) => {
       const check = checked.length ? checked.includes(item.data.slug) : true;
@@ -41,14 +50,19 @@ const CategoriesPage = ({ products }) => {
   };
   return (
     <div className={styles.wrapper}>
+      <SortBarMobile
+        setSortPriceType={setSortPriceType}
+        open={open}
+        setOpen={setOpen}
+        filters={filters}
+        setFilters={setFilters}
+      />
       <Grid container justifyContent="center" className={styles.container}>
-        <Grid item lg={11} md={11} sm={11} className={styles.tabBar}>
-          <Link href={'/'}>
-            <Typography variant="body1">Trang chủ</Typography>
-          </Link>
-          <Typography variant="body2">{`/ ${router.query.slug}`}</Typography>
+        <Grid item lg={11} md={12} sm={12} xs={12} className={styles.tabBar}>
+          <Link href={'/'}>Trang chủ</Link>
+          <Typography variant="body2">{`/ ${category.name}`}</Typography>
         </Grid>
-        <Grid item lg={2} md={false} className={styles.filterBox}>
+        <Grid item lg={2} md={2} className={styles.filterBox}>
           <Checked
             setChecked={setChecked}
             checked={checked}
@@ -57,7 +71,14 @@ const CategoriesPage = ({ products }) => {
             setFormPrice={setFormPrice}
           />
         </Grid>
-        <Grid item lg={9} md={11} sm={12}>
+        <Grid
+          item
+          lg={9}
+          md={10}
+          sm={12}
+          xs={12}
+          className={styles.wrapProducts}
+        >
           <Products
             filteredProducts={filteredProducts}
             page={page}
@@ -65,6 +86,9 @@ const CategoriesPage = ({ products }) => {
             checked={checked}
             setPage={setPage}
             setChecked={setChecked}
+            category={category}
+            open={open}
+            setOpen={setOpen}
           />
           <Grid container justifyContent="center">
             <Grid item>

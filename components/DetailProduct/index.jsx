@@ -19,7 +19,10 @@ const DetailProduct = ({ product, productsViewed, products }) => {
     name: product.name,
     color: product.color,
     imageUrl: product.imageUrl,
-    size: '',
+    size:
+      product.size === null && product.variation === null
+        ? 'không có size'
+        : '',
     price: product.sellPrice,
   });
   const [alert, setAlert] = React.useState(false);

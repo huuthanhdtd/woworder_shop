@@ -1,5 +1,22 @@
-.wrapper {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+  .product {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .container {
+    padding: 7px;
+    transform: scaleY(0.95);
+    div {
+      transform: scale(0.99);
+      .product {
+        transform: scale(0.9);
+        padding: 0px 2px;
+      }
+    }
+  }
 }

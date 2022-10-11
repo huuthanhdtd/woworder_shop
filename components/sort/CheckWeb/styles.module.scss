@@ -9,7 +9,7 @@
     margin: 0;
     color: #000;
   }
-  .FormControl {
+  .formControl {
     display: flex;
     flex-direction: column;
     .checked {
@@ -27,6 +27,25 @@
           width: 0.9rem;
           height: 0.9rem;
           margin-right: 0.625rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .checks {
+    h2 {
+      font-size: 16px;
+    }
+    .formControl {
+      .checked {
+        .label {
+          font-size: 10px;
+          .inputCheck {
+            width: 0.8rem;
+            height: 0.8rem;
+          }
         }
       }
     }

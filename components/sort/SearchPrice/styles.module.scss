@@ -1,9 +1,9 @@
-.SearchPrice {
+.searchPrice {
   padding: 1rem 0;
   max-width: 236px;
   h2 {
-    font-weight: 500;
-    font-size: 1.3rem;
+    font-family: 'Mulish M';
+    font-size: 20px;
     margin: 0;
     color: #000;
   }
@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 5px 0;
   }
   .msgError {
     display: none;
@@ -37,6 +37,17 @@
     color: #fff;
     &:hover {
       background-color: #108775;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .searchPrice {
+    h2 {
+      font-size: 16px;
+    }
+    Button {
+      font-size: 12px;
     }
   }
 }

@@ -1,0 +1,60 @@
+$fontMulishM: 'Mulish M';
+.boxPrice {
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  h6 {
+    font-size: 16px;
+    font-family: $fontMulishM;
+    color: #000;
+  }
+  .inputs {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    justify-content: space-between;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .input {
+      width: 47%;
+    }
+  }
+  .msgError {
+    display: none;
+  }
+  .msgError.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 0;
+    text-align: center;
+    color: #ff424f;
+    font-size: 0.75rem;
+  }
+  Button {
+    width: 100%;
+    background-color: #108775;
+    color: #fff;
+    &:hover {
+      background-color: #108775;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .boxPrice {
+    h6 {
+      font-size: 14px;
+    }
+    .inputs {
+      .input {
+        label,
+        input {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

@@ -76,3 +76,11 @@
     position: relative;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .wrapProduct {
+    grid-template-rows: 45% 55%;
+    height: 320px;
+    width: 200px;
+  }
+}

@@ -95,9 +95,8 @@
     }
     .price {
       padding: 0 5px;
-      font-family: 'Quick Sand';
+      font-family: 'Quick Sand Bold';
       font-style: normal;
-      font-weight: 700;
       display: flex;
       align-items: center;
       color: var(--price-color-);
@@ -230,7 +229,7 @@
         border: 1px solid var(--primary-color-);
         font-family: 'Quick Sand';
         font-weight: 600;
-        font-size: 16px;
+        font-size: 14px;
         background-color: white;
         overflow: hidden;
         z-index: 0;
@@ -258,7 +257,7 @@
         }
         &:hover {
           background-color: var(--primary-color-);
-          transition-delay: 0.5s;
+          transition-delay: 0.3s;
           &::after {
             width: 100%;
             left: 0;
@@ -290,7 +289,7 @@
     .btnBuy {
       .boxButton {
         .button {
-          font-size: 14px;
+          font-size: 12px;
         }
       }
       .qtyInput {
@@ -300,152 +299,30 @@
   }
 }
 
-// @media screen and (max-width: 600px) {
-//   .infor {
-//     padding: 2px;
-//     height: 100%;
-
-//     .description {
-//       grid-template-columns: 100%;
-//       grid-template-rows: 65% 15% auto;
-//       .inforDetail {
-//         padding: 10px 0;
-//         height: inherit;
-//         margin: auto;
-//         width: 90%;
-//         .name {
-//           font-size: 14px;
-//           letter-spacing: 0.2px;
-//           margin-bottom: 5px;
-//         }
-//         .atb {
-//           font-size: 14px;
-//           .atbValues {
-//             margin-left: 15px;
-//           }
-//           .rating {
-//             margin-left: 10px;
-//           }
-//           .from {
-//             padding: 2px 5px;
-//             font-size: 12px;
-//             line-height: 12px;
-//           }
-//           .trademark {
-//             margin-left: 8px;
-//           }
-//         }
-//         .price {
-//           .prevPrice {
-//             font-size: 18px;
-//           }
-//         }
-//       }
-
-//       .optionBox {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: flex-start;
-//         padding-top: 10%;
-//         .atb {
-//           font-size: 14px;
-//           .atbValues {
-//             width: 150px;
-//             margin-left: 10px;
-//             .atbValueItem {
-//               margin: 0 3px;
-//               padding: 1px 8px;
-//               font-size: 14px;
-//             }
-//           }
-//         }
-//         .selectQty {
-//           span {
-//             font-size: 14px;
-//           }
-//         }
-//       }
-//       .btnBuy {
-//         .boxButton {
-//           width: 90%;
-//           .button {
-//             font-size: 12px;
-//             min-width: 100%;
-//           }
-//         }
-//         .qtyInput {
-//           left: 0;
-//           width: 100%;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 450px) {
-//   .infor {
-//     .description {
-//       grid-template-columns: 100%;
-//       height: inherit;
-//       .inforDetail {
-//         height: inherit;
-//         margin: auto;
-//         width: 90%;
-//         .name {
-//           font-size: 14px;
-//           letter-spacing: 0.2px;
-//           margin-bottom: 5px;
-//         }
-//         .atb {
-//           font-size: 12px;
-//           .atbValues {
-//             margin-left: 15px;
-//           }
-//           .rating {
-//             margin-left: 10px;
-//           }
-//           // .from {
-//           //   padding: 2px 5px;
-//           //   font-size: 14px;
-//           // }
-//           .trademark {
-//             margin-left: 4px;
-//             font-size: 10px;
-//           }
-//         }
-//         .price {
-//           .prevPrice {
-//             font-size: 14px;
-//           }
-//         }
-//       }
-//       .optionBox {
-//         padding-top: 15%;
-//         .atb {
-//           font-size: 12px;
-//           .atbValues {
-//             .atbValueItem {
-//               font-size: 12px;
-//             }
-//           }
-//         }
-//         .selectQty {
-//           span {
-//             font-size: 12px;
-//           }
-//         }
-//       }
-//       .btnBuy {
-//         .boxButton {
-//           width: 90%;
-//           .button {
-//             font-size: 12px;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+@media screen and (max-width: 450px) {
+  .infor {
+    .description {
+      .inforDetail {
+        .atb {
+          .rating {
+            margin-left: 4px;
+          }
+          .trademark {
+            margin-left: 4px;
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .btnBuy {
+      .boxButton {
+        .button {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 330px) {
   .infor {

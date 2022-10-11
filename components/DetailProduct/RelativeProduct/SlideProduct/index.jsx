@@ -57,13 +57,14 @@ function SamplePrevArrow(props) {
 
 const Slides = ({ data }) => {
   const settings = {
-    className: 'center',
+    className: 'slider variable-width',
     infinite: true,
-    slidesToShow: data.length < 5 ? data.length : 5,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: '0px',
+    slidesToShow: data.length < 5 ? data.length : 6,
+    slidesToScroll: -1,
+    // centerMode: false,
+    // centerPadding: '0px',
     swipeToSlide: true,
+    variableWidth: data?.length > 5 ? false : true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -86,9 +87,21 @@ const Slides = ({ data }) => {
       {
         breakpoint: 768,
         settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          nextArrow: '',
+          prevArrow: '',
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 560,
+        settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
+          nextArrow: '',
+          prevArrow: '',
+          dots: true,
         },
       },
     ],
@@ -97,7 +110,9 @@ const Slides = ({ data }) => {
     <div className={styles.wrapper}>
       <Slider {...settings}>
         {data?.map((it, idx) => (
-          <CardProduct key={idx} data={it} />
+          <div key={idx} className={styles.product}>
+            <CardProduct data={it} />
+          </div>
         ))}
       </Slider>
     </div>

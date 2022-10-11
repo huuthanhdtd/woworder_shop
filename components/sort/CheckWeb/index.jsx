@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-export default function CheckNation({ checked, setChecked, setPage }) {
+export default function CheckWeb({ checked, setChecked, setPage }) {
   const checks = [
     { name: '1688', slug: '1688' },
     { name: 'ADIDAS', slug: 'ADIDAS' },
@@ -27,8 +27,9 @@ export default function CheckNation({ checked, setChecked, setPage }) {
   return (
     <div className={styles.checks}>
       <h2>Website</h2>
-      <div className={styles.FormControl}>
-        {checked &&
+      <div className={styles.formControl}>
+        {
+          // checked &&
           checks.map((data, index) => (
             <div key={index} className={styles.checked}>
               <label className={styles.label}>
@@ -42,7 +43,8 @@ export default function CheckNation({ checked, setChecked, setPage }) {
                 {data.name}
               </label>
             </div>
-          ))}
+          ))
+        }
       </div>
     </div>
   );

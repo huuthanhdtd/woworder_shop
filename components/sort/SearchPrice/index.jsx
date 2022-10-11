@@ -36,7 +36,7 @@ export default function SearchPrice({ formPrice, setFormPrice }) {
   };
   return (
     <>
-      <div className={styles.SearchPrice}>
+      <div className={styles.searchPrice}>
         <h2> Khoảng giá</h2>
         <div className={styles.input}>
           <input

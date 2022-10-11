@@ -58,8 +58,8 @@ function Infor({ product }) {
     }
   };
   return (
-    <div className={styles.infor}>
-      <div className={styles.description} onMouseLeave={() => setIsBuy(false)}>
+    <div className={styles.infor} onMouseLeave={() => setIsBuy(false)}>
+      <div className={styles.description}>
         <div className={styles.inforDetail}>
           <Link href={`/product/${product.id}`}>
             <Typography variant="h6" className={styles.name}>

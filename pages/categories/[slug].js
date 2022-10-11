@@ -22,7 +22,7 @@ const Categories = () => {
   }, [router.query.slug]);
   return (
     <div>
-      <CategoriesPage products={products && products} />
+      {products && <CategoriesPage products={products} category={category} />}
     </div>
   );
 };

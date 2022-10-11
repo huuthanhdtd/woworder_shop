@@ -29,10 +29,10 @@ const InformationBox = ({
 }) => {
   return (
     <Grid container className={styles.selectModel} justifyContent="center">
-      <Grid item lg={4} md={9} sm={9} xs={11}>
+      <Grid item lg={4} md={4} sm={9} xs={11} className={styles.boxImage}>
         <CardMedia className={styles.image} image={product.imageUrl} />
       </Grid>
-      <Grid item lg={6} md={9} sm={9} xs={11}>
+      <Grid item lg={6} md={6} sm={9} xs={11}>
         <div className={styles.title}>
           <div className={styles.hot}>
             <Image src={Hot} width={39.75} height={53} />
@@ -55,7 +55,7 @@ const InformationBox = ({
             Màu:
           </Typography>
           <Typography variant="body2" className={styles.color}>
-            {product.color}
+            {product.color ? product.color : 'Không có màu'}
           </Typography>
         </div>
         <div className={styles.colorsAndType}>
@@ -84,45 +84,45 @@ const InformationBox = ({
               {product.size}
             </Button>
           ) : (
-            ''
+            <small className={styles.color}>Không có kích thước</small>
           )}
         </div>
         <div className={styles.amount}>
-          <Typography variant="body2" className={styles.prop}>
-            Số lượng:
-          </Typography>
-          <div className={styles.inputBox}>
-            <form action="" autoComplete="off">
-              <Button
-                onClick={() => {
-                  handleInput('down');
-                }}
-                disabled={quantity === 1 ? true : false}
-              >
-                -
-              </Button>
-              <TextField
-                variant="outlined"
-                className={styles.input}
-                size="small"
-                value={quantity}
-                type="number"
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-              <Button
-                onClick={() => {
-                  handleInput('up');
-                }}
-              >
-                +
-              </Button>
-            </form>
+          <div className={styles.wrapInput}>
+            <Typography variant="body2" className={styles.prop}>
+              Số lượng:
+            </Typography>
+            <div className={styles.inputBox}>
+              <form action="" autoComplete="off">
+                <Button
+                  onClick={() => {
+                    handleInput('down');
+                  }}
+                  disabled={quantity === 1 ? true : false}
+                >
+                  -
+                </Button>
+                <TextField
+                  variant="outlined"
+                  className={styles.input}
+                  size="small"
+                  value={quantity}
+                  type="number"
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+                <Button
+                  onClick={() => {
+                    handleInput('up');
+                  }}
+                >
+                  +
+                </Button>
+              </form>
+            </div>
           </div>
-          <Typography variant="body2" className={styles.description}>
-            25 sản phẩm có sẵn
-          </Typography>
+          <small className={styles.description}>25 sản phẩm có sẵn</small>
         </div>
         <div className={styles.actions}>
           <Button

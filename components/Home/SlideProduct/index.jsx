@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import CardProduct from '../../CardProduct';
-import SortBar from '../SortBar';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import { sortByPrice } from '../../../utils/sortByPrice';
+import dynamic from 'next/dynamic';
 
+// const Slider = dynamic(() => import('react-slick'));
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -56,16 +56,16 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SlideProduct = ({ category, products }) => {
-  const [sortPriceType, setSortPriceType] = React.useState(null);
+const SlideProduct = ({ sortProducts }) => {
   const settings = {
-    className: 'center',
+    className: 'slider variable-width',
     infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: '0px',
+    slidesToShow: sortProducts?.length > 5 ? 6 : sortProducts.length,
+    slidesToScroll: -1,
+    // centerMode: true,
+    // centerPadding: '0px',
     swipeToSlide: true,
+    variableWidth: sortProducts?.length > 5 ? false : true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -80,39 +80,47 @@ const SlideProduct = ({ category, products }) => {
       {
         breakpoint: 960,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 1,
           infinite: true,
+          nextArrow: '',
+          prevArrow: '',
+          dots: true,
+          variableWidth: false,
         },
       },
       {
         breakpoint: 768,
         settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          nextArrow: '',
+          prevArrow: '',
+          dots: true,
+          variableWidth: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 1,
+          nextArrow: '',
+          prevArrow: '',
+          dots: true,
+          variableWidth: false,
         },
       },
     ],
   };
-  const sortProducts = React.useMemo(() => {
-    if (products?.length > 0) {
-      if (sortPriceType) {
-        return sortByPrice(products, sortPriceType);
-      } else {
-        return products;
-      }
-    } else {
-      return products;
-    }
-  }, [sortPriceType]);
 
   return (
-    <div className={styles.wrapper}>
-      <SortBar category={category} setSortPriceType={setSortPriceType} />
+    <div className={styles.container}>
       <Slider {...settings}>
         {sortProducts?.map((item, idx) => (
-          <CardProduct key={item.id} data={item} />
+          <div key={item.id} className={styles.product}>
+            <CardProduct data={item} />
+          </div>
         ))}
       </Slider>
     </div>

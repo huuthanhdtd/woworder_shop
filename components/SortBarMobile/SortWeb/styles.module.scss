@@ -1,0 +1,40 @@
+$fontMulishM: 'Mulish M';
+.boxWeb {
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  h6 {
+    font-family: $fontMulishM;
+    font-style: normal;
+    font-size: 16px;
+    margin: 0;
+    color: #000;
+  }
+  .selectItems {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    .item {
+      font-size: 14px;
+      font-family: $fontMulishM;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .active {
+      background-color: var(--primary-color-);
+      color: #fff;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .boxWeb {
+    h6 {
+      font-size: 14px;
+    }
+    .selectItems {
+      .item {
+        font-size: 12px;
+      }
+    }
+  }
+}

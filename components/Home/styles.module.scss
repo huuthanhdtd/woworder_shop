@@ -1,8 +1,21 @@
-.wrapper {
-  background-color: white;
-  padding: 20px;
+.root {
   .container {
     max-width: 1200px;
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 1360px) {
+  .root {
+    .container {
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    margin-top: 200px;
+    .container {
+    }
   }
 }
