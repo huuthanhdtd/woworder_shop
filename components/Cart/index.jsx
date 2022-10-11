@@ -34,7 +34,7 @@ export default function Carts() {
       return;
     }
   };
-  const filprice = items.filter((item) => checked.includes(item.id));
+  const filprice = items.filter((item) => item.isCheck === true);
   useEffect(() => {
     const filprices = filprice.map((data) => data.price);
     const filamount = filprice.map((data) => data.quantity);

@@ -1,5 +1,6 @@
 import { Checkbox, FormControlLabel } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getItem } from '../../../lib';
 import Item from './Item';
 import styles from './styles.module.scss';
 
@@ -13,11 +14,26 @@ export default function GridList({
   updateItem,
 }) {
   const handleChangeAll = (isChecked) => {
-    if (isChecked) return setChecked(items.map((data) => data.id));
-    else setChecked([]);
+    if (isChecked) {
+      return setChecked(items.map((data) => data.id));
+    } else {
+      setChecked([]);
+      for (let i = 0; i < checked.length; i++) {
+        updateItem(checked[i], {
+          isCheck: false,
+        });
+      }
+    }
   };
+  useEffect(() => {
+    for (let i = 0; i < checked.length; i++) {
+      updateItem(checked[i], {
+        isCheck: true,
+      });
+    }
+  }, [checked]);
+
   const handleChangeItem = (isChecked, id) => {
-    console.log('id', isChecked);
     const index = checked.indexOf(id);
     if (isChecked) {
       updateItem(id, {
