@@ -259,6 +259,9 @@ img:hover {
   white-space: initial !important;
 }
 /* cart */
-.MuiCheckbox-colorSecondary.Mui-checked {
+.styles_listCart__Llxwt .MuiCheckbox-colorSecondary.Mui-checked {
   color: var(--primary-color-) !important;
+}
+.styles_product__063rb .MuiBox-root {
+  flex: 0 0;
 }

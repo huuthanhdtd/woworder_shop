@@ -28,6 +28,7 @@ const Header = () => {
   const [openAccount, setOpenAccount] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState(false);
+
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -101,11 +102,17 @@ const Header = () => {
           pathname: '/page-search',
           query: { searchTerm: e.target.value },
         });
-        // setSuggestions(false);
-        unforcus();
+        if (!localStorage.getItem('searchHistory')) {
+          localStorage.setItem('searchHistory', JSON.stringify('a'));
+        } else {
+          const dataHis = JSON.parse(localStorage?.getItem('searchHistory'));
+          const arr = [...dataHis, e.target.value];
+          localStorage.setItem('searchHistory', JSON.stringify(arr));
+        }
+
+        setSuggestions(false);
       } else {
-        // setSuggestions(true);
-        onfocus();
+        setSuggestions(true);
       }
     });
   }, []);
@@ -147,7 +154,6 @@ const Header = () => {
               className={styles.inputSearch}
               onChange={debounce(handleOnchange, 250)}
               onFocus={onfocus}
-              onBlur={unforcus}
             />
             <Button className={styles.icon} onClick={handleSearch}>
               <AiOutlineSearch />

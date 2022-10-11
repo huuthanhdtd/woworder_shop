@@ -1,13 +1,17 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import data from '../../../constants/testdata.json';
 import { ConvertViToEn, getScoreByNumberOfPosition } from '../../../lib';
 import styles from './styles.module.scss';
 
 export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
   const router = useRouter();
+  useEffect(() => {
+    const dataHis = JSON.parse(localStorage?.getItem('searchHistory'));
+    // console.log(dataHis);
+  }, []);
   const dataSortedByScore = data.items
     ?.sort(
       (a, b) =>
@@ -31,6 +35,12 @@ export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
             'boolean'
           );
     });
+  const history = () => {
+    router.push({
+      pathname: '/page-search',
+      query: { searchTerm: 'li su tim kiem' },
+    });
+  };
   return (
     <>
       <div
@@ -68,7 +78,7 @@ export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
         ) : (
           <div className={styles.history}>
             <h5> Lịch sử tìm kiếm :</h5>
-            <span>Lịch sử tìm kiếm</span>
+            <span onClick={history}>Lịch sử tìm kiếm</span>
             <span>Lịch sử tìm kiếm</span>
             <span>Lịch sử tìm kiếm</span>
             <span>Lịch sử tìm kiếm</span>
