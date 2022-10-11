@@ -1,100 +1,109 @@
 .infor {
-  padding: 12px;
   z-index: 1;
   background-color: #fff;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 80% auto;
+  align-items: center;
   .description {
+    padding: 5px 0;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
     position: relative;
-
-    .name {
-      font-family: 'Mulish M';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 14px;
-      letter-spacing: 0.2px;
-      color: #000000;
-      text-transform: lowercase;
-      cursor: pointer;
-      overflow: hidden;
-      &::first-letter {
-        text-transform: capitalize;
-      }
-    }
-    .atb {
+    grid-template-rows: 80% 20%;
+    align-items: center;
+    .inforDetail {
+      height: inherit;
       display: flex;
-      flex-direction: row;
-      color: #52525b;
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      align-items: center;
-      .atbValues {
-        color: #000;
-        margin-left: 20px;
-        margin-bottom: 0;
-        font-family: 'Roboto', sans-serif;
+      flex-direction: column;
+      justify-content: flex-start;
+      .name {
+        cursor: pointer;
+        font-family: 'Mulish M';
+        font-weight: 400;
+        font-size: 14px;
+        white-space: initial;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
         text-transform: lowercase;
-        &::first-letter {
-          text-transform: capitalize;
+        letter-spacing: 0.2px;
+        color: #000000;
+        max-width: 100%;
+        height: 35px;
+        max-height: 100%;
+        line-height: 16px;
+        span {
+          text-transform: uppercase !important;
         }
       }
-      .rating {
-        margin-left: 15px;
-      }
-      .from {
-        padding: 2px 5px;
+      .atb {
+        display: flex;
+        flex-direction: row;
+        color: #52525b;
         font-family: 'Roboto', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
-        line-height: 128.91%;
-        background-color: #000;
-        display: flex;
         align-items: center;
-        text-align: center;
-        background: #71717a;
-        border-radius: 5px;
-        color: #ffffff;
-        margin-left: 15px;
-      }
-      .trademark {
-        padding: 2px 5px;
-        margin-left: 15px;
-        background: #e4e4e7;
-        border-radius: 5px;
-        font-family: 'Roboto', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 128.91%;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: #3f3f46;
+        .atbValues {
+          color: #000;
+          margin-left: 20px;
+          margin-bottom: 0;
+          font-family: 'Roboto', sans-serif;
+          text-transform: lowercase;
+          &::first-letter {
+            text-transform: capitalize;
+          }
+        }
+        .rating {
+          margin-left: 15px;
+        }
+        .from {
+          padding: 2px 5px;
+          font-family: 'Roboto', sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 128.91%;
+          background-color: #000;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          background: #71717a;
+          border-radius: 5px;
+          color: #ffffff;
+          margin-left: 15px;
+        }
+        .trademark {
+          padding: 2px 5px;
+          margin-left: 15px;
+          background: #e4e4e7;
+          border-radius: 5px;
+          font-family: 'Roboto', sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 128.91%;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          color: #3f3f46;
+        }
       }
     }
-
     .price {
-      margin: 5px 0;
+      padding: 0 5px;
       font-family: 'Quick Sand';
       font-style: normal;
       font-weight: 700;
-      font-size: 14px;
-      line-height: 128.91%;
       display: flex;
       align-items: center;
-      color: #dc2626;
+      color: var(--price-color-);
       justify-content: space-between;
       .prevPrice {
-        color: #dc2626;
+        color: var(--price-color-);
         margin-right: 10px;
         font-size: 14px;
       }
@@ -206,79 +215,82 @@
       opacity: 1;
       transform: scaleY(1);
     }
-
-    .btnBuy {
-      z-index: 3;
-      .boxButton {
-        .button {
-          width: 195px;
-          height: 29px;
-          border-radius: 5px;
+  }
+  .btnBuy {
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .boxButton {
+      width: 100%;
+      .button {
+        width: 100%;
+        height: 29px;
+        border-radius: 5px;
+        border: 1px solid var(--primary-color-);
+        font-family: 'Quick Sand';
+        font-weight: 600;
+        font-size: 16px;
+        background-color: white;
+        overflow: hidden;
+        z-index: 0;
+        &::after {
+          content: '';
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          width: 0;
+          height: 120%;
+          background: var(--primary-color-);
+          transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+          z-index: -1;
           border: 1px solid var(--primary-color-);
-          font-family: 'Quick Sand';
-          font-weight: 600;
-          font-size: 16px;
-          background-color: white;
-          overflow: hidden;
+        }
+        .iconAdd {
+          margin-right: 5px;
+          color: var(--primary-color-);
           z-index: 0;
-          &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-color-);
-            transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-            z-index: -1;
-          }
-          .iconAdd {
-            margin-right: 5px;
-            color: var(--primary-color-);
-            z-index: 0;
-            margin-bottom: 3px;
-          }
-          .label {
-            color: var(--primary-color-);
-            z-index: 0;
-          }
-          &:hover {
-            &::after {
-              width: 100%;
-              left: 0;
-            }
-            .iconAdd,
-            .label {
-              color: white;
-            }
-          }
+          margin-bottom: 3px;
         }
-      }
-      .addToCart {
-        .button {
+        .label {
+          color: var(--primary-color-);
+          z-index: 0;
+        }
+        &:hover {
           background-color: var(--primary-color-);
-          .iconAdd {
-            color: #fff;
-           
+          transition-delay: 0.5s;
+          &::after {
+            width: 100%;
+            left: 0;
           }
+          .iconAdd,
           .label {
-            color: #fff;
-            z-index: 0;
+            color: white;
           }
         }
       }
-
+    }
+    .addToCart {
+      .button {
+        background-color: var(--primary-color-);
+        .iconAdd {
+          color: #fff;
+        }
+        .label {
+          color: #fff;
+          z-index: 0;
+        }
+      }
     }
   }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 960px) {
   .infor {
     .btnBuy {
       .boxButton {
         .button {
           font-size: 14px;
-          width: 100%;
         }
       }
       .qtyInput {
@@ -288,62 +300,171 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+// @media screen and (max-width: 600px) {
+//   .infor {
+//     padding: 2px;
+//     height: 100%;
+
+//     .description {
+//       grid-template-columns: 100%;
+//       grid-template-rows: 65% 15% auto;
+//       .inforDetail {
+//         padding: 10px 0;
+//         height: inherit;
+//         margin: auto;
+//         width: 90%;
+//         .name {
+//           font-size: 14px;
+//           letter-spacing: 0.2px;
+//           margin-bottom: 5px;
+//         }
+//         .atb {
+//           font-size: 14px;
+//           .atbValues {
+//             margin-left: 15px;
+//           }
+//           .rating {
+//             margin-left: 10px;
+//           }
+//           .from {
+//             padding: 2px 5px;
+//             font-size: 12px;
+//             line-height: 12px;
+//           }
+//           .trademark {
+//             margin-left: 8px;
+//           }
+//         }
+//         .price {
+//           .prevPrice {
+//             font-size: 18px;
+//           }
+//         }
+//       }
+
+//       .optionBox {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: flex-start;
+//         padding-top: 10%;
+//         .atb {
+//           font-size: 14px;
+//           .atbValues {
+//             width: 150px;
+//             margin-left: 10px;
+//             .atbValueItem {
+//               margin: 0 3px;
+//               padding: 1px 8px;
+//               font-size: 14px;
+//             }
+//           }
+//         }
+//         .selectQty {
+//           span {
+//             font-size: 14px;
+//           }
+//         }
+//       }
+//       .btnBuy {
+//         .boxButton {
+//           width: 90%;
+//           .button {
+//             font-size: 12px;
+//             min-width: 100%;
+//           }
+//         }
+//         .qtyInput {
+//           left: 0;
+//           width: 100%;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 450px) {
+//   .infor {
+//     .description {
+//       grid-template-columns: 100%;
+//       height: inherit;
+//       .inforDetail {
+//         height: inherit;
+//         margin: auto;
+//         width: 90%;
+//         .name {
+//           font-size: 14px;
+//           letter-spacing: 0.2px;
+//           margin-bottom: 5px;
+//         }
+//         .atb {
+//           font-size: 12px;
+//           .atbValues {
+//             margin-left: 15px;
+//           }
+//           .rating {
+//             margin-left: 10px;
+//           }
+//           // .from {
+//           //   padding: 2px 5px;
+//           //   font-size: 14px;
+//           // }
+//           .trademark {
+//             margin-left: 4px;
+//             font-size: 10px;
+//           }
+//         }
+//         .price {
+//           .prevPrice {
+//             font-size: 14px;
+//           }
+//         }
+//       }
+//       .optionBox {
+//         padding-top: 15%;
+//         .atb {
+//           font-size: 12px;
+//           .atbValues {
+//             .atbValueItem {
+//               font-size: 12px;
+//             }
+//           }
+//         }
+//         .selectQty {
+//           span {
+//             font-size: 12px;
+//           }
+//         }
+//       }
+//       .btnBuy {
+//         .boxButton {
+//           width: 90%;
+//           .button {
+//             font-size: 12px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+@media screen and (max-width: 330px) {
   .infor {
-    padding: 2px;
     .description {
-      .name {
-        font-size: 12px;
-        line-height: 12px;
-        letter-spacing: 0.2px;
-        margin-bottom: 5px;
-      }
-      .atb {
-        font-size: 10px;
-        .atbValues {
-          margin-left: 15px;
-        }
-        .rating {
-          margin-left: 10px;
-        }
-        .from {
-          padding: 2px 5px;
-          font-size: 12px;
-          line-height: 12px;
-        }
-        .trademark {
-          margin-left: 8px;
-        }
-      }
-      .optionBox {
-        .atb {
-          .atbValues {
-            .atbValueItem {
-              margin: 0 3px;
-              padding: 1px 8px;
-              font-size: 10px;
-            }
-            .selected {
-            }
-          }
-        }
-        .selectQty {
-          span {
-            font-size: 12px;
-          }
-        }
-      }
     }
     .btnBuy {
       .boxButton {
         .button {
-          font-size: 12px;
-          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .iconAdd {
+            font-size: 15px;
+            margin-left: 6px;
+          }
+          .label {
+            display: none;
+          }
         }
-      }
-      .qtyInput {
-        left: 0;
-        width: 100%;
       }
     }
   }

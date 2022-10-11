@@ -30,6 +30,7 @@ function Infor({ product }) {
     size: product.size,
     imageUrl: product.imageUrl,
     color: product.color,
+    isCheck: true,
     // quantity: qtyValue,
   };
 
@@ -49,7 +50,6 @@ function Infor({ product }) {
     if (isBuy) {
       const pro = getItem(product.id);
       if (pro) {
-        console.log(pro);
         updateItemQuantity(pro.id, pro.quantity + qtyValue);
       } else {
         addItem(productCart, qtyValue);
@@ -60,12 +60,23 @@ function Infor({ product }) {
   return (
     <div className={styles.infor}>
       <div className={styles.description} onMouseLeave={() => setIsBuy(false)}>
-        <div>
+        <div className={styles.inforDetail}>
           <Link href={`/product/${product.id}`}>
-            <Typography variant="h3" className={styles.name}>
-              {product.name}
+            <Typography variant="h6" className={styles.name}>
+              <span>{product.name.charAt(0).toUpperCase()}</span>
+              {product.name.slice(
+                1,
+                product.name.length
+                // > 50 ? 50 : product.name.length
+              )}
             </Typography>
           </Link>
+          <span className={styles.atb}>
+            Giá gốc:
+            <span className={styles.rating}>{product.webPrice}</span>
+            {/* <span className={styles.from}>UK</span> */}
+            <span className={styles.trademark}>ZARA</span>
+          </span>
           {product.color && (
             <span className={styles.atb}>
               Màu: <p className={styles.atbValues}>{product.color}</p>
@@ -90,29 +101,21 @@ function Infor({ product }) {
           ) : (
             ''
           )}
-
-          <span className={styles.atb} style={{ margin: '5px 0' }}>
-            Giá gốc:
-            <span className={styles.rating}>{product.webPrice}</span>
-            {/* <span className={styles.from}>UK</span> */}
-            <span className={styles.trademark}>ZARA</span>
-          </span>
-          <span className={styles.price}>
-            <span className={styles.prevPrice}>
-              {convertCurrency(product.sellPrice)}
-            </span>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
-            >
-              <span className={styles.link}>
-                <FaLink className={styles.linkIcon} />
-              </span>
-            </a>
-          </span>
         </div>
-
+        <span className={styles.price}>
+          <span className={styles.prevPrice}>
+            {convertCurrency(product.sellPrice)}
+          </span>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
+          >
+            <span className={styles.link}>
+              <FaLink className={styles.linkIcon} />
+            </span>
+          </a>
+        </span>
         <div
           className={clsx(styles.optionBox, {
             [styles.optionBoxActive]: isBuy,
@@ -189,21 +192,21 @@ function Infor({ product }) {
             </div>
           </div>
         </div>
-        <div className={styles.btnBuy}>
-          <div
-            className={clsx(styles.boxButton, {
-              [styles.addToCart]: isBuy,
-            })}
-          >
-            <Button className={styles.button} onClick={handleClickBuy}>
-              <span className={styles.iconAdd}>
-                <BsBagPlus />
-              </span>
-              <span className={styles.label}>
-                {isBuy ? 'Thêm vào giỏ' : 'Chọn mua'}
-              </span>
-            </Button>
-          </div>
+      </div>
+      <div className={styles.btnBuy}>
+        <div
+          className={clsx(styles.boxButton, {
+            [styles.addToCart]: isBuy,
+          })}
+        >
+          <Button className={styles.button} onClick={handleClickBuy}>
+            <span className={styles.iconAdd}>
+              <BsBagPlus />
+            </span>
+            <span className={styles.label}>
+              {isBuy ? 'Thêm vào giỏ' : 'Chọn mua'}
+            </span>
+          </Button>
         </div>
       </div>
     </div>
