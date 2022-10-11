@@ -139,6 +139,9 @@
       .atb {
         font-size: 14px;
         .atbValues {
+          background-color: red;
+          width: 80%;
+          display: block;
           .atbValueItem {
             margin: 0 5px;
             padding: 1px 10px;
@@ -310,6 +313,9 @@
           .trademark {
             margin-left: 4px;
             font-size: 10px;
+          }
+          .atbValues {
+            margin-left: 5px;
           }
         }
       }
