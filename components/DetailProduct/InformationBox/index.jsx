@@ -17,6 +17,8 @@ import Label from '../../../assets/image/label2.svg';
 import Hot from '../../../assets//image/hot.svg';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
+import Alerts from '../../Alerts';
+import { useEffect } from 'react';
 
 const InformationBox = ({
   alert,
@@ -26,7 +28,33 @@ const InformationBox = ({
   quantity,
   handleAddCart,
   productInfor,
+  setProductInfor,
+  firstProductInfor,
 }) => {
+  const [colorActive, setColorActive] = React.useState(
+    product?.variation?.colors && product?.variation?.colors[0]
+  );
+  const [sizeActive, setSizeActive] = React.useState();
+
+  useEffect(() => {
+    if (product?.variation?.colors) {
+      setColorActive(product?.variation?.colors[0]);
+      setSizeActive(product?.variation?.colors[0].sizes[0]);
+    } else if (product?.color) {
+      setColorActive(product?.color);
+    } else {
+      setColorActive(null);
+    }
+  }, []);
+  const handleChangeColor = (color) => {
+    setColorActive(color);
+    setProductInfor((prev) => {
+      return {
+        ...prev,
+        color: color.name,
+      };
+    });
+  };
   return (
     <Grid container className={styles.selectModel} justifyContent="center">
       <Grid item lg={4} md={4} sm={9} xs={11} className={styles.boxImage}>
@@ -50,43 +78,75 @@ const InformationBox = ({
             <Typography variant="body2">Giảm 40%</Typography>
           </div>
         </div>
-        <div className={styles.colorsAndType}>
-          <Typography variant="body2" className={styles.prop}>
-            Màu:
-          </Typography>
-          <Typography variant="body2" className={styles.color}>
-            {product.color ? product.color : 'Không có màu'}
-          </Typography>
-        </div>
-        <div className={styles.colorsAndType}>
-          <Typography variant="body2" className={styles.prop}>
-            Size:
-          </Typography>
-          {product.variation ? (
-            product.variation.sizes.map((att, idx) => (
-              <Button
-                key={idx}
-                className={clsx(styles.size, {
-                  [styles.active]: productInfor.size === att.size,
-                })}
-                onClick={() => handleSize(att)}
+        {productInfor?.color && (
+          <div className={styles.colorsAndType}>
+            <Typography variant="body2" className={styles.prop}>
+              Màu:
+            </Typography>
+            {product?.variation?.colors ? (
+              product?.variation?.colors.map((item) => (
+                <span
+                  onClick={() => handleChangeColor(item)}
+                  key={item.colorId}
+                  className={clsx(styles.colorsItem, {
+                    [styles.colorsItemActive]: productInfor.color === item.name,
+                  })}
+                >
+                  {item.name}
+                </span>
+              ))
+            ) : product?.color ? (
+              <span
+                className={clsx(styles.colorsItem, styles.colorsItemActive)}
               >
-                {att.name}
+                {product?.color}
+              </span>
+            ) : (
+              <Typography variant="body2" className={styles.color}>
+                {'Không có màu'}
+              </Typography>
+            )}
+          </div>
+        )}
+
+        {productInfor?.size && (
+          <div className={styles.colorsAndType}>
+            <Typography variant="body2" className={styles.prop}>
+              Size:
+            </Typography>
+            {colorActive?.sizes ? (
+              colorActive.sizes.map((att, idx) => (
+                <Button
+                  key={idx}
+                  className={clsx(styles.size, {
+                    [styles.active]: productInfor.size === att.size,
+                  })}
+                  onClick={() => handleSize(att)}
+                >
+                  {att.name}
+                </Button>
+              ))
+            ) : product?.variation?.sizes ? (
+              product.variation?.sizes.map((item) => (
+                <Button
+                  key={item.name}
+                  className={clsx(styles.size, {
+                    [styles.active]: productInfor.size === product.size,
+                  })}
+                  onClick={() => handleSize(product)}
+                >
+                  {item.name}
+                </Button>
+              ))
+            ) : product?.size ? (
+              <Button className={clsx(styles.size, styles.active)}>
+                {product?.size}
               </Button>
-            ))
-          ) : product.size ? (
-            <Button
-              className={clsx(styles.size, {
-                [styles.active]: productInfor.size === product.size,
-              })}
-              onClick={() => handleSize(product)}
-            >
-              {product.size}
-            </Button>
-          ) : (
-            <small className={styles.color}>Không có kích thước</small>
-          )}
-        </div>
+            ) : (
+              <small className={styles.color}>Không có kích thước</small>
+            )}
+          </div>
+        )}
         <div className={styles.amount}>
           <div className={styles.wrapInput}>
             <Typography variant="body2" className={styles.prop}>
@@ -138,11 +198,12 @@ const InformationBox = ({
           >
             Mua ngay
           </Button>
-          {alert && (
+
+          {/* {alert && (
             <Typography variant="body2" className={styles.alert}>
               Vui lòng chọn size cho sản phẩm
             </Typography>
-          )}
+          )} */}
         </div>
       </Grid>
       <Grid item lg={11} md={9} sm={9} xs={11} className={styles.share}>

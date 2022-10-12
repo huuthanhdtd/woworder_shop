@@ -7,6 +7,7 @@ import RelativeProduct from './RelativeProduct';
 import { useCart } from 'react-use-cart';
 import database from '../../constants/database.json';
 import InformationBox from './InformationBox';
+import Alerts from '../Alerts';
 
 const DetailProduct = ({ product, productsViewed, products }) => {
   const router = useRouter();
@@ -14,19 +15,54 @@ const DetailProduct = ({ product, productsViewed, products }) => {
   const { addItem, updateItem, getItem } = useCart();
   const [quantity, setQuantity] = React.useState(1);
   const [sizeCode, setSizeCode] = React.useState();
+
+  const [alertMsg, setAlertMsg] = React.useState({
+    open: false,
+    severity: 'success',
+    message: 'Sản phẩm của bạn đã được thêm vào giỏ hàng',
+  });
+
+  const firstProductInfor = React.useMemo(() => {
+    const arrColors = product?.variation?.colors && product.variation.colors;
+    const color = arrColors
+      ? arrColors[0].name
+      : product?.color
+      ? product?.color
+      : null;
+    let size;
+    let arrSizes;
+    if (product?.variation?.colors && product?.variation?.colors[0].sizes) {
+      arrSizes = product.variation.colors[0].sizes;
+      size = product.variation.colors[0].sizes[0].name;
+    } else if (product?.variation?.sizes) {
+      arrSizes = product.variation.sizes;
+      size = product.variation.sizes[0].name;
+    } else if (product?.size) {
+      arrSizes = null;
+      size = product.size;
+    } else {
+      arrSizes = null;
+
+      size = null;
+    }
+    return {
+      color,
+      size,
+      arrColors,
+      arrSizes,
+    };
+  }, []);
+
   const [productInfor, setProductInfor] = React.useState({
     id: product.id,
     name: product.name,
-    color: product.color,
+    color: firstProductInfor?.color,
     imageUrl: product.imageUrl,
-    size:
-      product.size === null && product.variation === null
-        ? 'không có size'
-        : '',
+    size: firstProductInfor?.size,
     price: product.sellPrice,
   });
   const [alert, setAlert] = React.useState(false);
-  const [notify, setNotify] = React.useState(false);
+  // const [notify, setNotify] = React.useState(false);
   const cartItem = getItem(product.id + sizeCode?.size);
 
   const result = React.useMemo(() => {
@@ -64,29 +100,36 @@ const DetailProduct = ({ product, productsViewed, products }) => {
 
   const handleAddCart = React.useCallback(
     (type) => {
-      if (productInfor.size !== '') {
-        if (!cartItem || cartItem.size !== productInfor.size) {
-          addItem(
-            { ...productInfor, id: productInfor.id + sizeCode.size },
-            quantity
-          );
-        }
-        if (cartItem) {
-          updateItem(productInfor.id + sizeCode.size, {
-            quantity: quantity + cartItem.quantity,
-          });
-        }
-        type === 'add' && setNotify(true);
-        type === 'buy' && router.push('/cart');
-      } else {
-        setAlert(true);
+      if (!cartItem || cartItem.size !== productInfor?.size) {
+        addItem(
+          {
+            ...productInfor,
+            id: productInfor?.id + sizeCode?.size,
+          },
+          quantity
+        );
       }
+      if (cartItem) {
+        updateItem(productInfor.id + sizeCode?.size, {
+          quantity: quantity + cartItem.quantity,
+        });
+      }
+      // type === 'add' && setNotify(true);
+      type === 'add' &&
+        setAlertMsg({
+          open: true,
+          severity: 'success',
+          message: 'Sản phẩm của bạn đã được thêm vào giỏ hàng',
+        });
+
+      type === 'buy' && router.push('/cart');
     },
     [productInfor.size, cartItem, quantity]
   );
+
   return (
     <div className={styles.root}>
-      {notify && (
+      {/* {notify && (
         <div className={styles.wrapNotify} onClick={() => setNotify(false)}>
           <div className={styles.notify}>
             <BsFillCheckCircleFill className={styles.iconCheck} />
@@ -95,7 +138,7 @@ const DetailProduct = ({ product, productsViewed, products }) => {
             </Typography>
           </div>
         </div>
-      )}
+      )} */}
       <InformationBox
         alert={alert}
         product={product}
@@ -104,6 +147,8 @@ const DetailProduct = ({ product, productsViewed, products }) => {
         quantity={quantity}
         handleAddCart={handleAddCart}
         productInfor={productInfor}
+        setProductInfor={setProductInfor}
+        firstProductInfor={firstProductInfor}
       />
       <Grid container justifyContent="center" className={styles.detail}>
         <Grid item lg={11}>
@@ -114,6 +159,7 @@ const DetailProduct = ({ product, productsViewed, products }) => {
       <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} products={result} />
 
       <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} products={productsViewed} />
+      <Alerts state={alertMsg} setState={setAlertMsg} />
     </div>
   );
 };

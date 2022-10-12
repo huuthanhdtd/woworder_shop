@@ -57,7 +57,7 @@ function Infor({ product }) {
       setQtyValue(1);
     }
   };
-  console.log(product);
+  // console.log(product);
   return (
     <div className={styles.infor} onMouseLeave={() => setIsBuy(false)}>
       <div className={styles.description}>

@@ -35,6 +35,8 @@ const ListOrder = ({
   handleRemoveCoupon,
   handleLogin,
   login,
+  setAllInforDeliver,
+  allInforDeliver,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(0);
@@ -50,9 +52,17 @@ const ListOrder = ({
     return () => setOpen(false);
   }, [width]);
 
+  const cartCheck = React.useMemo(() => {
+    return items.filter((it) => it.isCheck);
+  }, [items]);
   React.useEffect(() => {
-    cartTotal !== 0 && setTotal(cartTotal);
-  }, [cartTotal]);
+    if (cartCheck?.length > 0) {
+      const total = cartCheck.reduce((prev, curr) => {
+        return prev + Number(curr.price) * curr.quantity;
+      }, 0);
+      setTotal(total);
+    }
+  }, [cartCheck]);
 
   const handleShowOrder = React.useCallback(() => {
     setOpen(!open);
@@ -65,7 +75,7 @@ const ListOrder = ({
 
   /* 1 REWARD POINT EQUALS 1000 VND  */
 
-  const discountPercent = process.env.NEXT_PUBLIC_DISCOUNT_PERCENT;
+  const discountPercent = process.env.NEXT_PUBLIC_DISCOUNT_PERCENT || 30;
   const rewardPoints = 250 - value;
   const discount = value * 1000;
   const feeShip = 25000;
@@ -73,6 +83,18 @@ const ListOrder = ({
   const maxRewardPoints = Math.floor(
     (cartsPrice * (discountPercent / 100)) / 1000
   );
+
+  const objBill = React.useMemo(() => {
+    return {
+      value,
+      rewardPoints,
+      discount,
+      feeShip,
+      totalPrice,
+      maxRewardPoints,
+      cartsPrice,
+    };
+  }, [value]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -107,7 +129,7 @@ const ListOrder = ({
         </Button>
         {open && (
           <>
-            {items.map((it, idx) => (
+            {cartCheck.map((it, idx) => (
               <div className={styles.product} key={idx}>
                 <div className={styles.wrap}>
                   <div className={styles.borderImg}>
@@ -120,7 +142,7 @@ const ListOrder = ({
                   <Typography variant="body2">{`${it.name} - ${it.color} - ${it.size}`}</Typography>
                 </div>
                 <Typography variant="body2" className={styles.price}>
-                  {convertCurrency(it.price)}
+                  {`${convertCurrency(it.price)} x ${it.quantity}`}
                 </Typography>
               </div>
             ))}
@@ -138,16 +160,15 @@ const ListOrder = ({
             <div className={styles.line} />
             <Bill
               login={login}
-              value={value}
               handleChange={handleChange}
               provisionalPrice={cartsPrice}
-              discount={discount}
-              feeShip={feeShip}
-              totalPrice={totalPrice}
               coupon={coupon}
               handleRemoveCoupon={handleRemoveCoupon}
-              maxRewardPoints={maxRewardPoints}
               checked={isChecked}
+              setAllInforDeliver={setAllInforDeliver}
+              allInforDeliver={allInforDeliver}
+              objBill={objBill}
+              cartCheck={cartCheck}
             />
           </>
         )}

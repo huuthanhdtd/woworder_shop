@@ -3,34 +3,59 @@ import clsx from 'clsx';
 import React from 'react';
 import { AiFillCloseCircle, AiFillTag } from 'react-icons/ai';
 import { convertCurrency } from '../../../../utils/convertCurrency';
+import { useCart } from 'react-use-cart';
+import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
+import Alerts from '../../../Alerts';
 
 const Bill = ({
-  value,
   handleChange,
   provisionalPrice,
-  discount,
-  feeShip,
-  totalPrice,
   coupon,
   handleRemoveCoupon,
-  maxRewardPoints,
   login,
   checked,
+  setAllInforDeliver,
+  allInforDeliver,
+  objBill,
+  cartCheck,
 }) => {
+  const router = useRouter();
+  const { setItems, items } = useCart();
+  const [openSnackbar, setOpenSnackbar] = React.useState({
+    open: false,
+    severity: 'success',
+    message: 'Bạn đã đặt hàng thành công!!',
+  });
+  const newAllInforDeliver = React.useMemo(() => {
+    return { ...allInforDeliver, ...objBill, products: cartCheck };
+  }, [objBill, allInforDeliver]);
+  const handleFinish = () => {
+    setOpenSnackbar({
+      open: true,
+      severity: 'success',
+      message: 'Bạn đã đặt hàng thành công!! 3331132154',
+    });
+    const newItems = items.filter((it) => !it.isCheck);
+    setItems(newItems);
+    setAllInforDeliver(newAllInforDeliver);
+    const time = setTimeout(() => {
+      router.push('/cart');
+    }, 3000);
+    return () => clearTimeout(time);
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.bill}>
         {login && (
           <Slider
             disabled={!checked}
-            value={value}
+            value={objBill.value}
             onChange={handleChange}
             aria-labelledby="point-slider"
             valueLabelDisplay="on"
-            defaultValue={30}
             min={0}
-            max={maxRewardPoints}
+            max={objBill.maxRewardPoints}
             className={styles.rangeSlider}
           />
         )}
@@ -42,7 +67,9 @@ const Bill = ({
         </div>
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Giảm giá điểm thưởng</Typography>
-          <Typography variant="body2">-{convertCurrency(discount)}</Typography>
+          <Typography variant="body2">
+            -{convertCurrency(objBill.discount)}
+          </Typography>
         </div>
         {/* <div className={clsx(styles.discount, styles.borderFlex)}>
           <div className={styles.wrapBox}>
@@ -70,7 +97,9 @@ const Bill = ({
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Phí vận chuyển </Typography>
 
-          <Typography variant="body2">{convertCurrency(feeShip)}</Typography>
+          <Typography variant="body2">
+            {convertCurrency(objBill.feeShip)}
+          </Typography>
         </div>
       </div>
       <div className={styles.line} />
@@ -78,17 +107,22 @@ const Bill = ({
         <Typography className={styles.subtitle}>Tổng cộng</Typography>
         <Typography className={styles.totalPrice}>
           <span>vnd</span>
-          {convertCurrency(totalPrice)}
+          {convertCurrency(objBill.totalPrice)}
         </Typography>
       </div>
       <div className={styles.boxSubmit}>
         <Button variant="text" className={styles.gotoCarts}>
           Giỏ hàng
         </Button>
-        <Button variant="contained" className={styles.submit}>
+        <Button
+          variant="contained"
+          className={styles.submit}
+          onClick={handleFinish}
+        >
           Hoàn tất đơn hàng
         </Button>
       </div>
+      <Alerts state={openSnackbar} setState={setOpenSnackbar} />
     </div>
   );
 };

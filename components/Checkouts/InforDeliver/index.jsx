@@ -86,6 +86,7 @@ const InforDeliver = ({
       city: '',
       district: '',
       wards: '',
+      addresses: '',
     });
   }, []);
 

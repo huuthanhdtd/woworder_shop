@@ -94,7 +94,6 @@ const CheckoutDetail = () => {
   const handleLogin = React.useCallback(() => {
     setLogin(!login);
   }, [login]);
-  console.log(allInforDeliver);
 
   return (
     <>
@@ -129,6 +128,8 @@ const CheckoutDetail = () => {
               handleRemoveCoupon={handleRemoveCoupon}
               handleLogin={handleLogin}
               login={login}
+              setAllInforDeliver={setAllInforDeliver}
+              allInforDeliver={allInforDeliver}
             />
           </Grid>
         </Grid>

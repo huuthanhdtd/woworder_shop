@@ -118,6 +118,7 @@ img:hover {
   --border-color-: rgba(105, 27, 27, 0.5);
   --background-primary-: #f4f4f5;
   --price-color-: #dc2626;
+  --border-gray-: #c4c0c2
 }
 
 @media screen and (max-width: 960px) {
