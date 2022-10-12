@@ -55,6 +55,18 @@ const InformationBox = ({
       };
     });
   };
+  const handleChangeSize = (value) => {
+    if (value.size !== productInfor.size) {
+      setProductInfor((prev) => {
+        return {
+          ...prev,
+          size: value.size,
+        };
+      });
+      handleSize(value);
+    }
+    console.log(productInfor);
+  };
   return (
     <Grid container className={styles.selectModel} justifyContent="center">
       <Grid item lg={4} md={4} sm={9} xs={11} className={styles.boxImage}>
@@ -121,7 +133,7 @@ const InformationBox = ({
                   className={clsx(styles.size, {
                     [styles.active]: productInfor.size === att.size,
                   })}
-                  onClick={() => handleSize(att)}
+                  onClick={() => handleChangeSize(att)}
                 >
                   {att.name}
                 </Button>
@@ -133,7 +145,7 @@ const InformationBox = ({
                   className={clsx(styles.size, {
                     [styles.active]: productInfor.size === product.size,
                   })}
-                  onClick={() => handleSize(product)}
+                  onClick={() => handleChangeSize(item)}
                 >
                   {item.name}
                 </Button>

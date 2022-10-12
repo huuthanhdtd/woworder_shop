@@ -85,18 +85,15 @@ const DetailProduct = ({ product, productsViewed, products }) => {
     [quantity]
   );
 
-  const handleSize = React.useCallback(
-    (value) => {
-      setProductInfor((prev) => ({
-        ...prev,
-        size: value.size === productInfor.size ? '' : value.size,
-      }));
-      setAlert(false);
-      setQuantity(1);
-      setSizeCode(value);
-    },
-    [, productInfor.size, alert]
-  );
+  const handleSize = (value) => {
+    // setProductInfor((prev) => ({
+    //   ...prev,
+    //   size: value.size === productInfor.size ? '' : value.size,
+    // }));
+    // setAlert(false);
+    // setQuantity(1);
+    setSizeCode(value);
+  };
 
   const handleAddCart = React.useCallback(
     (type) => {
@@ -140,7 +137,7 @@ const DetailProduct = ({ product, productsViewed, products }) => {
         </div>
       )} */}
       <InformationBox
-        alert={alert}
+        // alert={alert}
         product={product}
         handleSize={handleSize}
         handleInput={handleInput}
