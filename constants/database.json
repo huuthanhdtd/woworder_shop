@@ -77,6 +77,129 @@
             "feeAmount": null,
             "sellPrice": "339940",
             "wholesalePrice": null
+          },
+          {
+            "name": "Acanomiac",
+            "sizes": [
+              {
+                "name": "XS",
+                "size": "XS",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "S",
+                "size": "S",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "M",
+                "size": "M",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "L",
+                "size": "L",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "XL",
+                "size": "XL",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "XXL",
+                "size": "XXS",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              }
+            ],
+            "colorId": "pomarańczowy",
+            "quantity": 0,
+            "webPrice": "49.99",
+            "colorCode": "pomarańczowy",
+            "feeAmount": null,
+            "sellPrice": "339940",
+            "wholesalePrice": null
+          },
+          {
+            "name": "Coacanomiac",
+            "sizes": [
+              {
+                "name": "XS",
+                "size": "XS",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "S",
+                "size": "S",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "M",
+                "size": "M",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "L",
+                "size": "L",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              },
+              {
+                "name": "XL",
+                "size": "XL",
+                "quantity": 0,
+                "webPrice": "49.99",
+                "feeAmount": null,
+                "sellPrice": "339940",
+                "wholesalePrice": null
+              }
+            ],
+            "colorId": "pomarańczowy",
+            "quantity": 0,
+            "webPrice": "49.99",
+            "colorCode": "pomarańczowy",
+            "feeAmount": null,
+            "sellPrice": "339940",
+            "wholesalePrice": null
           }
         ]
       },
