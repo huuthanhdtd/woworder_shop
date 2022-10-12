@@ -3,9 +3,7 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import CardProduct from '../../CardProduct';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import dynamic from 'next/dynamic';
 
-// const Slider = dynamic(() => import('react-slick'));
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -61,9 +59,7 @@ const SlideProduct = ({ sortProducts }) => {
     className: 'slider variable-width',
     infinite: true,
     slidesToShow: sortProducts?.length > 5 ? 6 : sortProducts.length,
-    slidesToScroll: -1,
-    // centerMode: true,
-    // centerPadding: '0px',
+    slidesToScroll: 1,
     swipeToSlide: true,
     variableWidth: sortProducts?.length > 5 ? false : true,
     nextArrow: <SampleNextArrow />,
@@ -72,43 +68,45 @@ const SlideProduct = ({ sortProducts }) => {
       {
         breakpoint: 1140,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: sortProducts?.length > 4 ? 5 : sortProducts.length,
           slidesToScroll: 3,
           infinite: true,
+          variableWidth: sortProducts?.length > 4 ? false : true,
         },
       },
       {
         breakpoint: 960,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: sortProducts?.length > 3 ? 4 : sortProducts.length,
           slidesToScroll: 1,
           infinite: true,
           nextArrow: '',
           prevArrow: '',
           dots: true,
-          variableWidth: false,
+          infinite: false,
+          variableWidth: sortProducts?.length > 3 ? false : true,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 820,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: sortProducts?.length > 2 ? 3 : sortProducts.length,
           slidesToScroll: 1,
           nextArrow: '',
           prevArrow: '',
           dots: true,
-          variableWidth: false,
+          variableWidth: sortProducts?.length > 2 ? false : true,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: sortProducts?.length > 1 ? 2 : sortProducts.length,
           slidesToScroll: 1,
           nextArrow: '',
           prevArrow: '',
           dots: true,
-          variableWidth: false,
+          variableWidth: sortProducts?.length > 1 ? false : true,
         },
       },
     ],

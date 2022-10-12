@@ -1,0 +1,39 @@
+.boxSizes {
+  display: flex;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: fit-content;
+  .preAtt {
+    color: #52525b;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 30%;
+  }
+  .sizes {
+    width: 100%;
+    height: auto;
+    grid-gap: 5px;
+    display: grid;
+    position: relative;
+    grid-template-columns: 30% 30% 30%;
+    .item {
+      padding: 1px;
+      overflow: hidden;
+      height: auto;
+      color: var(--primary-color-);
+      font-size: 11px;
+      border-radius: 4px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      border: 1px solid var(--primary-color-);
+    }
+    .selected {
+      background-color: var(--primary-color-);
+      color: #fff;
+      border: none;
+    }
+  }
+}

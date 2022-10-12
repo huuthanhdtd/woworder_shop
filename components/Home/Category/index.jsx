@@ -16,7 +16,7 @@ const Category = ({
   const sortProducts = React.useMemo(() => {
     if (products?.length > 0) {
       if (sortPriceType) {
-        console.log('type', sortPriceType);
+        // console.log('type', sortPriceType);
         return sortByPrice(products, sortPriceType);
       } else {
         return products;
@@ -26,9 +26,9 @@ const Category = ({
     }
   }, [sortPriceType]);
   return (
-    <div className={styles.container}>
+    <>
       {sortProducts?.length > 0 && (
-        <>
+        <div className={styles.container}>
           <SortBar
             category={category}
             setSortPriceType={setSortPriceType}
@@ -37,9 +37,9 @@ const Category = ({
             orderData={sortBarHome}
           />
           <SlidesProduct sortProducts={sortProducts} />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

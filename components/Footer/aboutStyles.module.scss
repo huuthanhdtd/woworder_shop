@@ -110,6 +110,9 @@ $gray: #626262;
       .titleEmpty {
         height: 0;
       }
+      h6 {
+        font-size: 14px;
+      }
       p {
         font-size: 12px;
       }
@@ -128,6 +131,9 @@ $gray: #626262;
       .titleEmpty {
         height: 45px;
       }
+      h6 {
+        font-size: 16px;
+      }
       p {
         font-size: 14px;
       }
@@ -139,6 +145,14 @@ $gray: #626262;
   .root {
     .expandIcon {
       display: none;
+    }
+    .box {
+      .titleEmpty {
+        height: 45px;
+      }
+      h6 {
+        font-size: 18px;
+      }
     }
   }
 }

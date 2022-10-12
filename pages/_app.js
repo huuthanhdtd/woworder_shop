@@ -17,6 +17,7 @@ export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
   // const { global } = pageProps;
+  // console.log(pageProps);
   const router = useRouter();
   setProductViewed();
   return (
@@ -66,12 +67,20 @@ MyApp.getInitialProps = async (ctx) => {
   //   fetchAPI('/categories', { populate: '*' }),
   //   fetchAPI('/homepage', { populate: '*' }),
   // ]);
+  // const categoriesRes = await fetchAPI('/stores/709313694365910020/products', {
+  //   limit: 8,
+  //   page: 1,
+  //   category: '',
+  //   populate: {
+  //     sort: { id: 'ASC', name: 'DESC' },
+  //   },
+  // });
 
   // Pass the data to our page via props
   return {
     // ...appProps,
     // pageProps: {
-    //   global: globalRes.data,
+    //   global: categoriesRes,
     // },
   };
 };

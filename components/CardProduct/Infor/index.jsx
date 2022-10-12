@@ -6,8 +6,7 @@ import { BsBagPlus } from 'react-icons/bs';
 import { Button, Link, TextField, Typography } from '@material-ui/core';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../../utils/convertCurrency';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import TypeBox from './TypeBox';
 
 function Infor({ product }) {
   const [isBuy, setIsBuy] = React.useState(false);
@@ -16,13 +15,26 @@ function Infor({ product }) {
 
   const [qtyValue, setQtyValue] = React.useState(1);
 
-  const [sizeSelected, setSizeSelected] = useState(
-    product.variation
-      ? product.variation?.sizes?.[0]?.name
+  const [sizeSelected, setSizeSelected] = React.useState({
+    name: product.variation
+      ? product.variation?.sizes?.[0]?.name ||
+        product.variation?.colors?.[0]?.sizes?.[0].size
       : product.size
       ? product.size
-      : ''
-  );
+      : '',
+  });
+  const [colorSelected, setColorSelected] = React.useState({
+    name: product.variation
+      ? product.variation?.colors
+        ? product.variation?.colors?.[0].name
+        : product.color
+      : product.color
+      ? product.color
+      : '',
+    index: 0,
+  });
+  // console.log(colorSelected);
+  // console.log(sizeSelected);
   const productCart = {
     id: product.id,
     name: product.name,
@@ -31,7 +43,13 @@ function Infor({ product }) {
     imageUrl: product.imageUrl,
     color: product.color,
     isCheck: true,
-    // quantity: qtyValue,
+  };
+
+  const handleSelectColor = (color) => {
+    setColorSelected({
+      name: color.name,
+      index: color.index,
+    });
   };
 
   const handleSetQtyValue = React.useCallback(
@@ -45,19 +63,26 @@ function Infor({ product }) {
     },
     [qtyValue]
   );
+
   const handleClickBuy = () => {
     setIsBuy(!isBuy);
     if (isBuy) {
-      const pro = getItem(product.id);
+      const pro = getItem(product.id + sizeSelected.name + colorSelected.name);
       if (pro) {
         updateItemQuantity(pro.id, pro.quantity + qtyValue);
       } else {
-        addItem(productCart, qtyValue);
+        addItem(
+          {
+            ...productCart,
+            size: sizeSelected.name,
+            id: product.id + sizeSelected.name + colorSelected.name,
+          },
+          qtyValue
+        );
       }
       setQtyValue(1);
     }
   };
-  // console.log(product);
   return (
     <div className={styles.infor} onMouseLeave={() => setIsBuy(false)}>
       <div className={styles.description}>
@@ -78,9 +103,9 @@ function Infor({ product }) {
             <span className={styles.atb}>
               Màu:
               <p className={styles.atbValues}>
-                {product.variation.colors?.map((color, idx) => (
+                {product.variation.colors?.slice(0, 2).map((color, idx) => (
                   <span key={idx}>
-                    {color.name}
+                    {color.name.slice(0, 5)}
                     {idx + 1 === product.variation.colors.length ? '' : '/'}
                   </span>
                 ))}
@@ -102,7 +127,7 @@ function Infor({ product }) {
                 Size:
                 {product.variation?.colors && (
                   <p className={styles.atbValues}>
-                    {product.variation?.colors?.map((color, idx) =>
+                    {product.variation?.colors?.slice(0, 1).map((color, idx) =>
                       color.sizes.map((size, idx) => (
                         <span key={idx} style={{ textTransform: 'uppercase' }}>
                           {size.name}
@@ -141,7 +166,7 @@ function Infor({ product }) {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.youtube.com/watch?v=0uDRsIYJ5X4&ab_channel=FendiMusic"
+            href={product.url ? product.url : ''}
           >
             <span className={styles.link}>
               <FaLink className={styles.linkIcon} />
@@ -150,80 +175,86 @@ function Infor({ product }) {
         </span>
         <div
           className={clsx(styles.optionBox, {
-            [styles.optionBoxActive]: true,
+            [styles.optionBoxActive]: isBuy,
           })}
         >
           {product.variation ? (
-            <div className={styles.boxSizes}>
-              <span>Size:</span>
+            <>
               {product.variation?.colors && (
-                <div className={styles.sizes}>
-                  {product.variation?.colors?.map((color, idx) =>
-                    color.sizes.map((size, idx) => (
-                      <span
-                        className={clsx(styles.atbValueItem, {
-                          [styles.selected]: size.name === sizeSelected,
-                        })}
-                        key={idx}
-                        style={{ textTransform: 'uppercase' }}
-                        onClick={() => setSizeSelected(size.name)}
-                      >
-                        {size.name}
-                      </span>
-                    ))
-                  )}
-                </div>
+                <>
+                  <TypeBox
+                    attKey={'Màu'}
+                    select={colorSelected}
+                    setSelect={handleSelectColor}
+                    types={product.variation?.colors}
+                  />
+                  <TypeBox
+                    attKey={'Size'}
+                    select={sizeSelected}
+                    setSelect={setSizeSelected}
+                    types={
+                      product.variation?.colors?.[colorSelected.index]?.sizes
+                    }
+                  />
+                </>
               )}
-            </div>
-          ) : // <span className={styles.atb}>
-          //   Size:
-          //   {product.variation?.colors && (
-          //     <span className={styles.atbValues}>
-          //       {product.variation?.colors?.map((color, idx) =>
-          //         color.sizes.map((size, idx) => (
-          //           <span
-          //             className={clsx(styles.atbValueItem, {
-          //               [styles.selected]: size.name === sizeSelected,
-          //             })}
-          //             key={idx}
-          //             style={{ textTransform: 'uppercase' }}
-          //             onClick={() => setSizeSelected(size.name)}
-          //           >
-          //             {size.name}
-          //           </span>
-          //         ))
-          //       )}
-          //     </span>
-          //   )}
-          //   <span className={styles.atbValues}>
-          //     {product.variation.sizes.map((size, idx) => (
-          //       <span
-          //         className={clsx(styles.atbValueItem, {
-          //           [styles.selected]: size.name === sizeSelected,
-          //         })}
-          //         key={idx}
-          //         style={{ textTransform: 'uppercase' }}
-          //         onClick={() => setSizeSelected(size.name)}
-          //       >
-          //         {size.name}
-          //       </span>
-          //     ))}
-          //   </span>
-          // </span>
-          product.size ? (
-            <span className={styles.atb}>
-              Size:{' '}
-              <span className={styles.atbValues}>
-                <span
-                  className={clsx(styles.atbValueItem, {
-                    [styles.selected]: true,
-                  })}
-                  style={{ textTransform: 'uppercase' }}
-                >
-                  {product.size}
-                </span>
-              </span>
-            </span>
+              {product.variation?.sizes && (
+                <>
+                  {product.color && (
+                    <TypeBox
+                      attKey={'Màu'}
+                      select={colorSelected}
+                      setSelect={handleSelectColor}
+                      types={[{ name: product.color }]}
+                    />
+                  )}
+                  <TypeBox
+                    attKey={'Size'}
+                    select={sizeSelected}
+                    setSelect={setSizeSelected}
+                    types={product.variation?.sizes}
+                  />
+                </>
+              )}
+            </>
+          ) : product.size ? (
+            <>
+              {product.color && (
+                <TypeBox
+                  attKey={'Màu'}
+                  select={colorSelected}
+                  setSelect={handleSelectColor}
+                  types={[{ name: product.color }]}
+                />
+              )}
+              {product.size && (
+                <TypeBox
+                  attKey={'Size'}
+                  select={sizeSelected}
+                  setSelect={setSizeSelected}
+                  types={[{ name: product.size }]}
+                />
+              )}
+            </>
+          ) : product.color ? (
+            <>
+              {product.color && (
+                <TypeBox
+                  attKey={'Màu'}
+                  select={colorSelected}
+                  setSelect={handleSelectColor}
+                  types={[{ name: product.color }]}
+                />
+              )}
+              {product.size && (
+                <TypeBox
+                  attKey={'Size'}
+                  select={sizeSelected}
+                  setSelect={setSizeSelected}
+                  types={[{ name: product.size }]}
+                />
+              )}
+            </>
           ) : (
             ''
           )}

@@ -136,35 +136,54 @@
       transform: scaleY(0);
       transform-origin: bottom;
       transition: all 0.25s ease-in-out;
-      .atb {
-        font-size: 14px;
-        .atbValues {
-          background-color: red;
-          width: 80%;
-          display: block;
-          .atbValueItem {
-            margin: 0 5px;
-            padding: 1px 10px;
-            border: 1px solid #c4c4c4;
-            background-color: transparent;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.25s ease-in-out;
-          }
-          .selected {
-            background-color: var(--primary-color-);
-            color: #fff;
-            border: none;
-          }
-        }
-      }
+      // .boxSizes {
+      //   display: flex;
+      //   height: auto;
+      //   margin-bottom: 10px;
+      //   margin-top: 10px;
+      //   height: fit-content;
+      //   .preAtt {
+      //     color: #52525b;
+      //     font-family: 'Roboto', sans-serif;
+      //     font-style: normal;
+      //     font-weight: 400;
+      //     font-size: 14px;
+      //     width: 30%;
+      //   }
+      //   .sizes {
+      //     width: 100%;
+      //     height: auto;
+      //     grid-gap: 5px;
+      //     display: grid;
+      //     position: relative;
+      //     grid-template-columns: 30% 30% 30%;
+      //     .item {
+      //       padding: 2px;
+      //       height: auto;
+      //       color: var(--primary-color-);
+      //       font-size: 12px;
+      //       border-radius: 4px;
+      //       text-align: center;
+      //       font-family: 'Roboto', sans-serif;
+      //       border: 1px solid var(--primary-color-);
+      //     }
+      //     .selected {
+      //       background-color: var(--primary-color-);
+      //       color: #fff;
+      //       border: none;
+      //     }
+      //   }
+      // }
+
       .selectQty {
         display: flex;
-        margin-top: 20px;
         width: 100%;
         align-items: center;
+        margin-top: 10px;
         span {
           font-size: 14px;
+          color: #52525b;
+          font-family: 'Roboto', sans-serif;
         }
         .qtyInput {
           border-radius: 5px;
@@ -289,6 +308,23 @@
 
 @media screen and (max-width: 960px) {
   .infor {
+    .description {
+      .optionBox {
+        .boxSizes {
+          .preAtt {
+            font-size: 12px;
+          }
+          .sizes {
+            grid-template-columns: 20% 20% 20%;
+          }
+        }
+        .selectQty {
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
     .btnBuy {
       .boxButton {
         .button {
