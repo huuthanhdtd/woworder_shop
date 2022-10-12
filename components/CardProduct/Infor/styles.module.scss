@@ -58,7 +58,7 @@
           }
         }
         .rating {
-          margin-left: 15px;
+          margin-left: 10px;
         }
         .from {
           padding: 2px 5px;
@@ -136,44 +136,6 @@
       transform: scaleY(0);
       transform-origin: bottom;
       transition: all 0.25s ease-in-out;
-      // .boxSizes {
-      //   display: flex;
-      //   height: auto;
-      //   margin-bottom: 10px;
-      //   margin-top: 10px;
-      //   height: fit-content;
-      //   .preAtt {
-      //     color: #52525b;
-      //     font-family: 'Roboto', sans-serif;
-      //     font-style: normal;
-      //     font-weight: 400;
-      //     font-size: 14px;
-      //     width: 30%;
-      //   }
-      //   .sizes {
-      //     width: 100%;
-      //     height: auto;
-      //     grid-gap: 5px;
-      //     display: grid;
-      //     position: relative;
-      //     grid-template-columns: 30% 30% 30%;
-      //     .item {
-      //       padding: 2px;
-      //       height: auto;
-      //       color: var(--primary-color-);
-      //       font-size: 12px;
-      //       border-radius: 4px;
-      //       text-align: center;
-      //       font-family: 'Roboto', sans-serif;
-      //       border: 1px solid var(--primary-color-);
-      //     }
-      //     .selected {
-      //       background-color: var(--primary-color-);
-      //       color: #fff;
-      //       border: none;
-      //     }
-      //   }
-      // }
 
       .selectQty {
         display: flex;
@@ -309,6 +271,18 @@
 @media screen and (max-width: 960px) {
   .infor {
     .description {
+      .inforDetail {
+        .atb {
+          .rating {
+            margin-left: 5px;
+          }
+          .trademark {
+            margin-left: 5px;
+            padding: 2px;
+            font-size: 10px;
+          }
+        }
+      }
       .optionBox {
         .boxSizes {
           .preAtt {

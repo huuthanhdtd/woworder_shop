@@ -48,3 +48,12 @@
     bottom: 10px;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .styles_wrapper__kWjeM .slick-track {
+    top: -25px;
+  }
+  .styles_wrapper__kWjeM .slick-dots {
+    bottom: 10px;
+  }
+}

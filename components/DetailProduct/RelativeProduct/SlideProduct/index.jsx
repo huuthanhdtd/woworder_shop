@@ -56,13 +56,62 @@ function SamplePrevArrow(props) {
 }
 
 const Slides = ({ data }) => {
+  // const settings = {
+  //   className: 'slider variable-width',
+  //   infinite: true,
+  //   slidesToShow: data.length > 5 ? 2 : data.length,
+  //   // slidesToShow: 6,
+  //   slidesToScroll: 1,
+  //   // centerMode: false,
+  //   // centerPadding: '0px',
+  //   swipeToSlide: true,
+  //   variableWidth: data?.length > 5 ? false : true,
+  //   nextArrow: <SampleNextArrow />,
+  //   prevArrow: <SamplePrevArrow />,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1140,
+  //       settings: {
+  //         slidesToShow: 4,
+  //         slidesToScroll: 3,
+  //         infinite: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 960,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 3,
+  //         infinite: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 3,
+  //         nextArrow: '',
+  //         prevArrow: '',
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 560,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //         nextArrow: '',
+  //         prevArrow: '',
+  //         dots: true,
+  //       },
+  //     },
+  //   ],
+  // };
   const settings = {
     className: 'slider variable-width',
     infinite: true,
-    slidesToShow: data.length < 5 ? data.length : 6,
-    slidesToScroll: -1,
-    // centerMode: false,
-    // centerPadding: '0px',
+    slidesToShow: data?.length > 5 ? 6 : data.length,
+    slidesToScroll: 1,
     swipeToSlide: true,
     variableWidth: data?.length > 5 ? false : true,
     nextArrow: <SampleNextArrow />,
@@ -71,37 +120,45 @@ const Slides = ({ data }) => {
       {
         breakpoint: 1140,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: data?.length > 4 ? 4 : data.length,
           slidesToScroll: 3,
           infinite: true,
+          variableWidth: data?.length > 4 ? false : true,
         },
       },
       {
         breakpoint: 960,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: data?.length > 3 ? 4 : data.length,
+          slidesToScroll: 1,
           infinite: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
           nextArrow: '',
           prevArrow: '',
           dots: true,
+          infinite: false,
+          variableWidth: data?.length > 3 ? false : true,
         },
       },
       {
-        breakpoint: 560,
+        breakpoint: 820,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: data?.length > 2 ? 3 : data.length,
+          slidesToScroll: 1,
           nextArrow: '',
           prevArrow: '',
           dots: true,
+          variableWidth: data?.length > 2 ? false : true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: data?.length > 1 ? 2 : data.length,
+          slidesToScroll: 1,
+          nextArrow: '',
+          prevArrow: '',
+          dots: true,
+          variableWidth: data?.length > 1 ? false : true,
         },
       },
     ],

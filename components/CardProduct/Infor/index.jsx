@@ -21,7 +21,7 @@ function Infor({ product }) {
         product.variation?.colors?.[0]?.sizes?.[0].size
       : product.size
       ? product.size
-      : '',
+      : null,
   });
   const [colorSelected, setColorSelected] = React.useState({
     name: product.variation
@@ -30,7 +30,7 @@ function Infor({ product }) {
         : product.color
       : product.color
       ? product.color
-      : '',
+      : null,
     index: 0,
   });
   // console.log(colorSelected);

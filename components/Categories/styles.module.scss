@@ -54,6 +54,11 @@
     padding: 5px;
     .container {
       width: 100%;
+      .wrapProducts {
+        .pagination {
+          transform: scale(0.8);
+        }
+      }
     }
   }
 }

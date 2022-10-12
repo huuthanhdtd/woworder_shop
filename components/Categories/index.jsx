@@ -90,7 +90,7 @@ const CategoriesPage = ({ products, category }) => {
             open={open}
             setOpen={setOpen}
           />
-          <Grid container justifyContent="center">
+          <Grid container justifyContent="center" className={styles.pagination}>
             <Grid item>
               <Paginate
                 count={Math.ceil(filteredProducts.length / perPage)}

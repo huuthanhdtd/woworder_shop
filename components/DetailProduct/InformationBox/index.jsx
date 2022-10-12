@@ -17,13 +17,11 @@ import Label from '../../../assets/image/label2.svg';
 import Hot from '../../../assets//image/hot.svg';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
-import Alerts from '../../Alerts';
 import { useEffect } from 'react';
 
 const InformationBox = ({
-  alert,
   product,
-  handleSize,
+  // handleSize,
   handleInput,
   quantity,
   handleAddCart,
@@ -34,12 +32,12 @@ const InformationBox = ({
   const [colorActive, setColorActive] = React.useState(
     product?.variation?.colors && product?.variation?.colors[0]
   );
-  const [sizeActive, setSizeActive] = React.useState();
+  // const [sizeActive, setSizeActive] = React.useState();
 
   useEffect(() => {
     if (product?.variation?.colors) {
       setColorActive(product?.variation?.colors[0]);
-      setSizeActive(product?.variation?.colors[0].sizes[0]);
+      // setSizeActive(product?.variation?.colors[0].sizes[0]);
     } else if (product?.color) {
       setColorActive(product?.color);
     } else {
@@ -52,6 +50,7 @@ const InformationBox = ({
       return {
         ...prev,
         color: color.name,
+        size: color.sizes[0].name,
       };
     });
   };
@@ -63,9 +62,9 @@ const InformationBox = ({
           size: value.size,
         };
       });
-      handleSize(value);
+      // handleSize(value);
     }
-    console.log(productInfor);
+    // console.log(productInfor);
   };
   return (
     <Grid container className={styles.selectModel} justifyContent="center">
@@ -95,29 +94,30 @@ const InformationBox = ({
             <Typography variant="body2" className={styles.prop}>
               Màu:
             </Typography>
-            {product?.variation?.colors ? (
-              product?.variation?.colors.map((item) => (
+            <div className={styles.boxColors}>
+              {product?.variation?.colors ? (
+                product?.variation?.colors.map((item, idx) => (
+                  <span
+                    onClick={() => handleChangeColor(item)}
+                    key={idx}
+                    className={clsx(styles.colorsItem, {
+                      [styles.colorsItemActive]:
+                        productInfor.color === item.name,
+                    })}
+                  >
+                    {item.name}
+                  </span>
+                ))
+              ) : product?.color ? (
                 <span
-                  onClick={() => handleChangeColor(item)}
-                  key={item.colorId}
-                  className={clsx(styles.colorsItem, {
-                    [styles.colorsItemActive]: productInfor.color === item.name,
-                  })}
+                  className={clsx(styles.colorsItem, styles.colorsItemActive)}
                 >
-                  {item.name}
+                  {product?.color}
                 </span>
-              ))
-            ) : product?.color ? (
-              <span
-                className={clsx(styles.colorsItem, styles.colorsItemActive)}
-              >
-                {product?.color}
-              </span>
-            ) : (
-              <Typography variant="body2" className={styles.color}>
-                {'Không có màu'}
-              </Typography>
-            )}
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         )}
 
@@ -126,37 +126,39 @@ const InformationBox = ({
             <Typography variant="body2" className={styles.prop}>
               Size:
             </Typography>
-            {colorActive?.sizes ? (
-              colorActive.sizes.map((att, idx) => (
-                <Button
-                  key={idx}
-                  className={clsx(styles.size, {
-                    [styles.active]: productInfor.size === att.size,
-                  })}
-                  onClick={() => handleChangeSize(att)}
-                >
-                  {att.name}
+            <div className={styles.boxSizes}>
+              {colorActive?.sizes ? (
+                colorActive.sizes.map((att, idx) => (
+                  <Button
+                    key={idx}
+                    className={clsx(styles.size, {
+                      [styles.active]: productInfor.size === att.size,
+                    })}
+                    onClick={() => handleChangeSize(att)}
+                  >
+                    {att.name}
+                  </Button>
+                ))
+              ) : product?.variation?.sizes ? (
+                product.variation?.sizes.map((item, idx) => (
+                  <Button
+                    key={idx}
+                    className={clsx(styles.size, {
+                      [styles.active]: productInfor.size === product.size,
+                    })}
+                    onClick={() => handleChangeSize(item)}
+                  >
+                    {item.name}
+                  </Button>
+                ))
+              ) : product?.size ? (
+                <Button className={clsx(styles.size, styles.active)}>
+                  {product?.size}
                 </Button>
-              ))
-            ) : product?.variation?.sizes ? (
-              product.variation?.sizes.map((item) => (
-                <Button
-                  key={item.name}
-                  className={clsx(styles.size, {
-                    [styles.active]: productInfor.size === product.size,
-                  })}
-                  onClick={() => handleChangeSize(item)}
-                >
-                  {item.name}
-                </Button>
-              ))
-            ) : product?.size ? (
-              <Button className={clsx(styles.size, styles.active)}>
-                {product?.size}
-              </Button>
-            ) : (
-              <small className={styles.color}>Không có kích thước</small>
-            )}
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         )}
         <div className={styles.amount}>
@@ -210,12 +212,6 @@ const InformationBox = ({
           >
             Mua ngay
           </Button>
-
-          {/* {alert && (
-            <Typography variant="body2" className={styles.alert}>
-              Vui lòng chọn size cho sản phẩm
-            </Typography>
-          )} */}
         </div>
       </Grid>
       <Grid item lg={11} md={9} sm={9} xs={11} className={styles.share}>

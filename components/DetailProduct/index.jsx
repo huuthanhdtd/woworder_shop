@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import { BsFillCheckCircleFill } from 'react-icons/bs';
 import styles from './styles.module.scss';
 import RelativeProduct from './RelativeProduct';
 import { useCart } from 'react-use-cart';
@@ -14,7 +13,7 @@ const DetailProduct = ({ product, productsViewed, products }) => {
   const { items } = database;
   const { addItem, updateItem, getItem } = useCart();
   const [quantity, setQuantity] = React.useState(1);
-  const [sizeCode, setSizeCode] = React.useState();
+  // const [sizeCode, setSizeCode] = React.useState();
 
   const [alertMsg, setAlertMsg] = React.useState({
     open: false,
@@ -60,10 +59,13 @@ const DetailProduct = ({ product, productsViewed, products }) => {
     imageUrl: product.imageUrl,
     size: firstProductInfor?.size,
     price: product.sellPrice,
+    isCheck: true,
   });
-  const [alert, setAlert] = React.useState(false);
+  // const [alert, setAlert] = React.useState(false);
   // const [notify, setNotify] = React.useState(false);
-  const cartItem = getItem(product.id + sizeCode?.size);
+  const cartItem = getItem(
+    product.id + productInfor?.size + productInfor.color
+  );
 
   const result = React.useMemo(() => {
     return products?.map((pro) => {
@@ -85,15 +87,9 @@ const DetailProduct = ({ product, productsViewed, products }) => {
     [quantity]
   );
 
-  const handleSize = (value) => {
-    // setProductInfor((prev) => ({
-    //   ...prev,
-    //   size: value.size === productInfor.size ? '' : value.size,
-    // }));
-    // setAlert(false);
-    // setQuantity(1);
-    setSizeCode(value);
-  };
+  // const handleSize = (value) => {
+  //   setSizeCode(value);
+  // };
 
   const handleAddCart = React.useCallback(
     (type) => {
@@ -101,17 +97,16 @@ const DetailProduct = ({ product, productsViewed, products }) => {
         addItem(
           {
             ...productInfor,
-            id: productInfor?.id + sizeCode?.size,
+            id: productInfor?.id + productInfor.size + productInfor.color,
           },
           quantity
         );
       }
       if (cartItem) {
-        updateItem(productInfor.id + sizeCode?.size, {
+        updateItem(productInfor.id + productInfor.size + productInfor.color, {
           quantity: quantity + cartItem.quantity,
         });
       }
-      // type === 'add' && setNotify(true);
       type === 'add' &&
         setAlertMsg({
           open: true,
@@ -121,25 +116,15 @@ const DetailProduct = ({ product, productsViewed, products }) => {
 
       type === 'buy' && router.push('/cart');
     },
-    [productInfor.size, cartItem, quantity]
+    [productInfor.size, productInfor?.color, cartItem, quantity]
   );
-
+  // console.log(firstProductInfor);
+  // console.log(productInfor);
   return (
     <div className={styles.root}>
-      {/* {notify && (
-        <div className={styles.wrapNotify} onClick={() => setNotify(false)}>
-          <div className={styles.notify}>
-            <BsFillCheckCircleFill className={styles.iconCheck} />
-            <Typography variant="body2">
-              Sản phẩm của bạn đã được thêm vào giỏ hàng
-            </Typography>
-          </div>
-        </div>
-      )} */}
       <InformationBox
-        // alert={alert}
         product={product}
-        handleSize={handleSize}
+        // handleSize={handleSize}
         handleInput={handleInput}
         quantity={quantity}
         handleAddCart={handleAddCart}
@@ -152,10 +137,12 @@ const DetailProduct = ({ product, productsViewed, products }) => {
           <Typography variant="h5">Chi tiết sản phẩm</Typography>
         </Grid>
       </Grid>
-
-      <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} products={result} />
-
-      <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} products={productsViewed} />
+      {result.length > 0 && (
+        <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} products={result} />
+      )}
+      {productsViewed.length > 0 && (
+        <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} products={productsViewed} />
+      )}
       <Alerts state={alertMsg} setState={setAlertMsg} />
     </div>
   );
