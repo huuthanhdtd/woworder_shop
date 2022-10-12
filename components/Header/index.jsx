@@ -15,11 +15,12 @@ import Sliders from './SliderHeaderMiddle';
 import { useCart } from 'react-use-cart';
 import Suggestions from './Suggestions';
 import dynamic from 'next/dynamic';
+import { local } from '../../lib';
 const Cart = dynamic(() => import('./Cart/Cart'), {
   ssr: false,
 });
 
-const Header = () => {
+const Header = ({ categories }) => {
   const statisticalRef = useRef(null);
   const router = useRouter();
   const { totalItems, cartTotal } = useCart();
@@ -69,17 +70,18 @@ const Header = () => {
   const onfocus = () => {
     setSuggestions(true);
   };
-  const unforcus = () => {
-    setSuggestions(false);
+  // const handleSearch = () => {};
+  const handleOnchange = (e) => {
+    setSearchTerm(e.target.value);
+    setSuggestions(true);
   };
-  const handleSearch = () => {
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
     router.push({
       pathname: '/page-search',
       query: { searchTerm: searchTerm },
     });
-  };
-  const handleOnchange = (e) => {
-    setSearchTerm(e.target.value);
+    setSuggestions(false);
   };
   useEffect(() => {
     setOpenAccount(false);
@@ -95,26 +97,6 @@ const Header = () => {
       }
       prevScrollpos = currentScrollPos;
     };
-    let input = document.getElementById('myInput');
-    input.addEventListener('keyup', (e) => {
-      if (e.keyCode === 13) {
-        router.push({
-          pathname: '/page-search',
-          query: { searchTerm: e.target.value },
-        });
-        if (!localStorage.getItem('searchHistory')) {
-          localStorage.setItem('searchHistory', JSON.stringify('a'));
-        } else {
-          const dataHis = JSON.parse(localStorage?.getItem('searchHistory'));
-          const arr = [...dataHis, e.target.value];
-          localStorage.setItem('searchHistory', JSON.stringify(arr));
-        }
-
-        setSuggestions(false);
-      } else {
-        setSuggestions(true);
-      }
-    });
   }, []);
   return (
     <div
@@ -140,28 +122,33 @@ const Header = () => {
             </div>
             <div className={styles.name}>MENU</div>
           </div>
-          <Category openNav={openNav} setOpenNav={setOpenNav} />
+          <Category
+            openNav={openNav}
+            setOpenNav={setOpenNav}
+            categories={categories}
+          />
           <Link href="/">
             <div className={styles.logo} onClick={handleMove}>
               <Image src={Logo} width={220} height={47} />
             </div>
           </Link>
           <div className={styles.search}>
-            <input
-              id="myInput"
-              placeholder="Nhập url/mã/tên sản phẩm để tìm..."
-              // value={searchTerm || ''}
-              className={styles.inputSearch}
-              onChange={debounce(handleOnchange, 250)}
-              onFocus={onfocus}
-            />
-            <Button className={styles.icon} onClick={handleSearch}>
-              <AiOutlineSearch />
-            </Button>
+            <form onSubmit={(e) => handleSubmitSearch(e)}>
+              <input
+                id="myInput"
+                placeholder="Nhập url/mã/tên sản phẩm để tìm..."
+                className={styles.inputSearch}
+                onChange={debounce(handleOnchange, 250)}
+                onFocus={onfocus}
+              />
+              <Button className={styles.icon} type="submit">
+                <AiOutlineSearch />
+              </Button>
+            </form>
             <Suggestions
               searchTerm={searchTerm}
-              handleSearch={handleSearch}
               suggestions={suggestions}
+              setSuggestions={setSuggestions}
             />
           </div>
           <div className={styles.wrap}>
@@ -242,7 +229,7 @@ const Header = () => {
         ref={statisticalRef}
         id="statisticalRef"
       >
-        <Sliders />
+        <Sliders categories={categories} />
       </div>
     </div>
   );

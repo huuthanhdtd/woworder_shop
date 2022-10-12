@@ -16,8 +16,7 @@ import { setProductViewed } from '../utils/localstorage';
 export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
-  // const { global } = pageProps;
-  // console.log(pageProps);
+  const { categories } = pageProps;
   const router = useRouter();
   setProductViewed();
   return (
@@ -30,7 +29,7 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <GlobalContext.Provider value={global.attributes}>
         <CartProvider>
-          <Layout>
+          <Layout categories={categories}>
             <div
               style={{
                 marginTop: router.pathname === '/checkouts/[id]' ? 0 : '155px',
@@ -54,34 +53,30 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Tpcapi
 
-  // const [globalRes, corpRes, categoriesRes, homepageRes] = await Promise.all([
-  //   fetchAPI('/global', {
-  //     populate: {
-  //       favicon: '*',
-  //       defaultSeo: {
-  //         populate: '*',
-  //       },
-  //     },
-  //   }),
-  //   fetchAPI('/corp-infor', { populate: '*' }),
-  //   fetchAPI('/categories', { populate: '*' }),
-  //   fetchAPI('/homepage', { populate: '*' }),
-  // ]);
-  // const categoriesRes = await fetchAPI('/stores/709313694365910020/products', {
-  //   limit: 8,
-  //   page: 1,
-  //   category: '',
-  //   populate: {
-  //     sort: { id: 'ASC', name: 'DESC' },
-  //   },
-  // });
+  const [globalRes] = await Promise.all([
+    // fetchAPI('/global', {
+    //   populate: {
+    //     favicon: '*',
+    //     defaultSeo: {
+    //       populate: '*',
+    //     },
+    //   },
+    // }),
+    fetchAPI(
+      '/stores/709313694365910020/products',
+      { limit: 8, page: 1, category: '' }
+      // {
+      //   populate: '*',
+      // }
+    ),
+  ]);
 
   // Pass the data to our page via props
   return {
-    // ...appProps,
-    // pageProps: {
-    //   global: categoriesRes,
-    // },
+    ...appProps,
+    pageProps: {
+      categories: globalRes,
+    },
   };
 };
 

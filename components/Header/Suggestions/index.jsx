@@ -1,17 +1,33 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import data from '../../../constants/testdata.json';
-import { ConvertViToEn, getScoreByNumberOfPosition } from '../../../lib';
+import { ConvertViToEn, getScoreByNumberOfPosition, local } from '../../../lib';
 import styles from './styles.module.scss';
+import { BiTimeFive } from 'react-icons/bi';
 
-export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
+export default function Suggestions({
+  searchTerm,
+  suggestions,
+  setSuggestions,
+}) {
   const router = useRouter();
+  const [hisSearch, setHisSearch] = useState();
+  useEffect(() => {
+    if (!hisSearch || !router.query.searchTerm) return;
+    local(router.query.searchTerm, hisSearch);
+  }, [router.query.searchTerm]);
   useEffect(() => {
     const dataHis = JSON.parse(localStorage?.getItem('searchHistory'));
-    // console.log(dataHis);
-  }, []);
+    if (dataHis >= 8) {
+    }
+    let arr = [];
+    for (let i = dataHis?.length - 1; i >= 0; i--) {
+      arr.push(dataHis[i]);
+    }
+    setHisSearch(arr);
+  }, [suggestions]);
   const dataSortedByScore = data.items
     ?.sort(
       (a, b) =>
@@ -35,11 +51,19 @@ export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
             'boolean'
           );
     });
-  const history = () => {
+  const handlemore = () => {
     router.push({
       pathname: '/page-search',
-      query: { searchTerm: 'li su tim kiem' },
+      query: { searchTerm: searchTerm },
     });
+    setSuggestions(false);
+  };
+  const history = (data) => {
+    router.push({
+      pathname: '/page-search',
+      query: { searchTerm: data },
+    });
+    setSuggestions(false);
   };
   return (
     <>
@@ -67,7 +91,11 @@ export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
                     </Link>
                   </div>
                 ))}
-                <div className={styles.more} onClick={handleSearch}>
+                <div
+                  href={`/${router.query.searchTerm}`}
+                  onClick={handlemore}
+                  className={styles.more}
+                >
                   xem thêm {dataSortedByScore.length} sản phẩm
                 </div>
               </>
@@ -78,10 +106,14 @@ export default function Suggestions({ searchTerm, handleSearch, suggestions }) {
         ) : (
           <div className={styles.history}>
             <h5> Lịch sử tìm kiếm :</h5>
-            <span onClick={history}>Lịch sử tìm kiếm</span>
-            <span>Lịch sử tìm kiếm</span>
-            <span>Lịch sử tìm kiếm</span>
-            <span>Lịch sử tìm kiếm</span>
+            {hisSearch?.map((data, idx) => (
+              <ul key={idx}>
+                <li onClick={() => history(data)}>
+                  <BiTimeFive />
+                  <span>{data}</span>
+                </li>
+              </ul>
+            ))}
           </div>
         )}
       </div>

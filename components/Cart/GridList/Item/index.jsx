@@ -38,7 +38,7 @@ export default function Item({
       </div>
       <div className={styles.media_desc}>
         <div className={styles.item_info}>{data.name}</div>
-        <div className={styles.Characteristics}>...</div>
+        <div className={styles.Characteristics}>{data.color}</div>
         <div className={styles.item_price}>{convertCurrency(data.price)}</div>
       </div>
       <div className={styles.media_totla}>

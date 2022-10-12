@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import category from '../../../constants/category.json';
 import Link from 'next/link';
 import { BsHouse } from 'react-icons/bs';
 import { IoMdArrowDropup, IoMdClose } from 'react-icons/io';
 import clsx from 'clsx';
 import { RiArrowDropUpLine } from 'react-icons/ri';
+import { useWindowSize } from 'react-use';
 
-export default function Category({ openNav, setOpenNav }) {
+export default function Category({ openNav, setOpenNav, categories }) {
   const [activeNav, setActiveNav] = useState();
+  const [he, setHe] = useState();
+  const { height } = useWindowSize();
   const handleShowNavItem = (index) => {
     if (activeNav === index) {
       setActiveNav();
@@ -16,6 +18,10 @@ export default function Category({ openNav, setOpenNav }) {
       setActiveNav(index);
     }
   };
+  useEffect(() => {
+    const h = height;
+    setHe(h);
+  }, [height]);
   return (
     <div
       className={clsx(styles.showNav, {
@@ -37,14 +43,18 @@ export default function Category({ openNav, setOpenNav }) {
               <IoMdClose />
             </div>
           </li>
-          {category?.map((data, index) => (
-            <li className={styles.li_ListCategory} key={index}>
-              <div className={styles.nameDrop}>
-                <Link href={data.data.link} onClick={() => setOpenNav(false)}>
-                  {data?.data.name}
-                </Link>
-                {/* icons drop Down category */}
-                {/* {data.data.list && (
+          <div
+            className={styles.scroll}
+            style={{ maxHeight: `calc(${he}px - 117px)` }}
+          >
+            {categories?.items.map((data, index) => (
+              <li className={styles.li_ListCategory} key={index}>
+                <div className={styles.nameDrop}>
+                  <Link href={`/${data.id}`} onClick={() => setOpenNav(false)}>
+                    {data.name}
+                  </Link>
+                  {/* icons drop Down category */}
+                  {/* {data.data.list && (
                   <div
                     className={styles.iconDrop}
                     onClick={() => handleShowNavItem(index)}
@@ -58,9 +68,9 @@ export default function Category({ openNav, setOpenNav }) {
                     </div>
                   </div>
                 )} */}
-              </div>
-              {/* drop Down category */}
-              {/* {data.data.list && (
+                </div>
+                {/* drop Down category */}
+                {/* {data.data.list && (
                 <ul
                   className={clsx(styles.Ul_item, {
                     [styles.active]: activeNav === index,
@@ -79,8 +89,9 @@ export default function Category({ openNav, setOpenNav }) {
                   ))}
                 </ul>
               )} */}
-            </li>
-          ))}
+              </li>
+            ))}
+          </div>
         </ul>
       </div>
     </div>

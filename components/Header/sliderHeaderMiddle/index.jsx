@@ -5,24 +5,38 @@ import { BsHouse } from 'react-icons/bs';
 import { Button } from '@material-ui/core';
 import clsx from 'clsx';
 import ScrollMenu from 'react-horizontal-scroll-menu';
-import data from '../../../constants/database.json';
 import { useRouter } from 'next/router';
 
-export default function Sliders() {
+export default function Sliders({ categories }) {
+  const b = JSON.parse(process.env.NEXT_PUBLIC_CATEGORY);
   const router = useRouter();
   const [selected, setSelected] = useState('null');
-  const filcategories = data.included.categories.filter((data) => data);
+  const [sort, setSortEnv] = useState([]);
+  const filtoEnv = categories.items.filter((item) => b.includes(item.name));
+  const notSort = categories.items.filter((item) => item.name);
+  const sortEnvs = filtoEnv.sort((p, c) =>
+    b.findIndex((i) => i === c.name) !== -1
+      ? b.findIndex((i) => i === p.name) - b.findIndex((i) => i === c.name)
+      : -999
+  );
+  const filcategories = categories.items.filter((data) => data);
   useEffect(() => {
     const fi = filcategories.find((e, i) => i === Number(selected));
     if (fi) {
       router.push({
-        pathname: `/categories/${fi.slug}`,
+        pathname: `/categories/${fi.id}`,
       });
+    }
+    if (filtoEnv.length !== b.length) {
+      setSortEnv(notSort);
+    } else {
+      setSortEnv(sortEnvs);
     }
   }, [selected]);
   const onSelect = (key) => {
     setSelected(key);
   };
+
   return (
     <div className={styles.content}>
       <div className={styles.home}>
@@ -36,13 +50,12 @@ export default function Sliders() {
         <ScrollMenu
           alignCenter={false}
           onSelect={onSelect}
-          data={filcategories.map((data, idx) => {
+          data={sort.map((data, idx) => {
             return (
               <div key={idx} className={styles.Hot}>
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]:
-                      router.asPath === `/categories/${data.slug}`,
+                    [styles.active]: router.asPath === `/categories/${data.id}`,
                   })}
                 >
                   {data.name}

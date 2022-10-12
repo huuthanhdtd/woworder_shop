@@ -11,56 +11,8 @@ import { useRouter } from 'next/router';
 export default function PageSearch() {
   const router = useRouter();
   const perPage = 12;
-  const [temporary, setTemporary] = useState('');
   const [page, setPage] = useState(1);
-  // const typing = useRef(null);
-  const handleTemporary = () => {
-    router.push({
-      pathname: '/page-search',
-      query: { searchTerm: temporary },
-    });
-  };
-  // const debounce = (e) => {
-  //   console.log(e);
-  // };
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setTemporary(value);
-    // if (typing.current) {
-    //   clearTimeout(typing.current);
-    // }
 
-    // typing.current = setTimeout(() => {
-    //   const form = {
-    //     searchTerm: e.target.value,
-    //   };
-    //   debounce(form);
-    // }, 250);
-  };
-
-  const handlekeyup = (e) => {
-    let inputs = document.getElementById('inputpage');
-    inputs.addEventListener('keyup', (e) => {
-      if (e.keyCode === 13) {
-        console.log(e.target.value);
-        router.push({
-          pathname: '/page-search',
-          query: { searchTerm: e.target.value },
-        });
-      }
-    });
-  };
-  useEffect(() => {
-    // let inputs = document.getElementById('inputpage');
-    // inputs.addEventListener('keyup', (e) => {
-    //   if (e.keyCode === 13) {
-    //     router.push({
-    //       pathname: '/page-search',
-    //       query: { searchTerm: e.target.value },
-    //     });
-    //   }
-    // });
-  }, [temporary]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
@@ -115,22 +67,6 @@ export default function PageSearch() {
               .
             </span>
             <span> Vui lòng sử dụng các từ tổng quát hơn và thử lại!</span>
-            <div className={styles.Forminput}>
-              <input
-                id="inputpage"
-                placeholder="Nhập url/mã/tên sản phẩm để tìm..."
-                // value={temporary}
-                name="temporary"
-                type="text"
-                className={styles.input}
-                // onChange={debounce(handleChange, 250)}
-                onChange={handleChange}
-                onKeyUp={handlekeyup}
-              />
-              <button className={styles.iconsearch} onClick={handleTemporary}>
-                <AiOutlineSearch />
-              </button>
-            </div>
           </div>
         )}
         <Grid container className={styles.Search_Product}>

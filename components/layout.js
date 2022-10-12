@@ -5,7 +5,7 @@ import Footer from './Footer';
 import Header from './Header';
 import ContactFixed from './ContactFixed';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, categories }) => {
   const [scrollState, setScrollState] = useState(false);
   const [isBarsSmall, setIsBarsSmall] = useState(false);
 
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <ContextProvider>
-        <Header />
+        <Header categories={categories} />
         {children}
         <ContactFixed />
         {/* <ButtonToTop onClick={scrollToTop} show={scrollState} /> */}

@@ -37,6 +37,14 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      ::-webkit-scrollbar {
+        width: 4px;
+        background-color: #fff;
+      }
+      .scroll {
+        overflow: hidden;
+        overflow-y: scroll;
+      }
       .li_ListCategory {
         padding: 0 10px;
         text-align: left;
