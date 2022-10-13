@@ -27,7 +27,7 @@ export default function Sliders({ categories }) {
         pathname: `/categories/${fi.id}`,
       });
     }
-    if (filtoEnv.length !== b.length) {
+    if (!b) {
       setSortEnv(notSort);
     } else {
       setSortEnv(sortEnvs);
