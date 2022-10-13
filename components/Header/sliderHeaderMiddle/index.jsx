@@ -8,35 +8,34 @@ import ScrollMenu from 'react-horizontal-scroll-menu';
 import { useRouter } from 'next/router';
 
 export default function Sliders({ categories }) {
-  const b = JSON.parse(process.env.NEXT_PUBLIC_CATEGORY);
+  const b = process.env.NEXT_PUBLIC_CATEGORY;
   const router = useRouter();
   const [selected, setSelected] = useState('null');
   const [sort, setSortEnv] = useState([]);
-  const filtoEnv = categories.items.filter((item) => b.includes(item.name));
-  const notSort = categories.items.filter((item) => item.name);
-  const sortEnvs = filtoEnv.sort((p, c) =>
-    b.findIndex((i) => i === c.name) !== -1
-      ? b.findIndex((i) => i === p.name) - b.findIndex((i) => i === c.name)
-      : -999
-  );
-  const filcategories = categories.items.filter((data) => data);
   useEffect(() => {
-    const fi = filcategories.find((e, i) => i === Number(selected));
-    if (fi) {
-      router.push({
-        pathname: `/categories/${fi.id}`,
-      });
-    }
-    if (!b) {
-      setSortEnv(notSort);
+    if (b === undefined) {
+      const SortProduct = categories.items.filter(
+        (item) => item.products.length > 0
+      );
+      setSortEnv(SortProduct);
     } else {
+      JSON.parse(process.env.NEXT_PUBLIC_CATEGORY);
+      const filtoEnv = categories.items.filter((item) =>
+        JSON.parse(b)?.includes(item.name)
+      );
+      const sortEnvs = filtoEnv.sort((p, c) =>
+        JSON.parse(b)?.findIndex((i) => i === c.name) !== -1
+          ? JSON.parse(b)?.findIndex((i) => i === p.name) -
+            JSON.parse(b)?.findIndex((i) => i === c.name)
+          : -999
+      );
       setSortEnv(sortEnvs);
     }
-  }, [selected]);
+  }, []);
+  useEffect(() => {}, [selected]);
   const onSelect = (key) => {
     setSelected(key);
   };
-
   return (
     <div className={styles.content}>
       <div className={styles.home}>
@@ -53,13 +52,16 @@ export default function Sliders({ categories }) {
           data={sort.map((data, idx) => {
             return (
               <div key={idx} className={styles.Hot}>
-                <Button
-                  className={clsx(styles.item, {
-                    [styles.active]: router.asPath === `/categories/${data.id}`,
-                  })}
-                >
-                  {data.name}
-                </Button>
+                <Link href={`/categories/${data.id}`}>
+                  <Button
+                    className={clsx(styles.item, {
+                      [styles.active]:
+                        router.asPath === `/categories/${data.id}`,
+                    })}
+                  >
+                    {data.name}
+                  </Button>
+                </Link>
               </div>
             );
           })}
