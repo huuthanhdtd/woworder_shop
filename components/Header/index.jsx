@@ -37,6 +37,7 @@ const Header = ({ categories }) => {
       setOpenNav(true);
       setOpenAccount(false);
       setOpenCart(false);
+      setSuggestions(false);
     }
   };
   const handleCart = () => {
@@ -46,6 +47,7 @@ const Header = ({ categories }) => {
       setOpenCart(true);
       setOpenAccount(false);
       setOpenNav(false);
+      setSuggestions(false);
     }
     if (router.asPath === '/cart') {
       setOpenCart(false);
@@ -59,6 +61,7 @@ const Header = ({ categories }) => {
       setOpenAccount(true);
       setOpenCart(false);
       setOpenNav(false);
+      setSuggestions(false);
     }
   };
   const handleMove = () => {
@@ -192,37 +195,6 @@ const Header = ({ categories }) => {
                   <></>
                 )}
               </div>
-              {/* <div suppressHydrationWarning={true}>
-                {totalItems > 0 ? (
-                  <div
-                    className={clsx(styles.taskbarCart, {
-                      [styles.active]: router.asPath === '/',
-                    })}
-                  >
-                    <div
-                      className={styles.product}
-                      suppressHydrationWarning={true}
-                    >
-                      {totalItems} sản phẩm
-                    </div>
-                    <div
-                      className={styles.totalPriceMobile}
-                      suppressHydrationWarning={true}
-                    >
-                      {cartTotal}
-                    </div>
-                    <div
-                      className={styles.detailCart}
-                      onClick={() => setOpenCart(true)}
-                    >
-                      Xem chi tiết
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div> */}
-
               <Cart openCart={openCart} setOpenCart={setOpenCart} />
             </div>
           </div>
