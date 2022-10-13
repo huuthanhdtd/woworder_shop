@@ -44,6 +44,9 @@
         margin-right: 15px;
         font-size: 16px;
       }
+      .expand {
+        transform: translateY(60%) scale(1, 1) !important;
+      }
       .typeOrder {
         .typeOrderMobile {
           display: none;
@@ -141,7 +144,40 @@
         }
       }
       .orderBtn {
-        display: none;
+        h6 {
+          display: none;
+        }
+        .typeOrder {
+          border-radius: 6px;
+          background-color: #fff;
+          box-shadow: 0px 0px 10px 0px var(--primary-color-);
+          position: absolute;
+          right: 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 105;
+          transform-origin: 0% 0%;
+          transform: translateY(60%) scale(1, 0);
+          transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+          .typeOrderMobile {
+            display: flex;
+            flex-direction: column;
+          }
+          .button {
+            color: black;
+            width: 100%;
+            margin-right: 0;
+            font-size: 12px;
+            padding: 10px 2vw;
+            text-transform: none;
+            background-color: white;
+            border-radius: 2px;
+            font-family: 'Mulish M';
+            font-style: normal;
+            cursor: pointer;
+          }
+        }
       }
       .selectPage {
         display: none;
@@ -155,6 +191,15 @@
     .boxOrder {
       padding: 0 2%;
       height: 35px;
+      .orderBtn {
+        .typeOrder {
+          right: 15px;
+          .button {
+            font-size: 10px;
+            padding: 4px 2vw;
+          }
+        }
+      }
       .menuBar {
         a {
           font-size: 16px;

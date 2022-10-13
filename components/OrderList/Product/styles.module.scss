@@ -1,0 +1,78 @@
+$fontMulishM: 'Mulish M';
+$fontQuicksanBold: 'Quick Sand Bold';
+.product {
+  position: relative;
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 15% 75% 10%;
+  border-bottom: 1px solid var(--primary-color-);
+  .image {
+    width: 70px;
+    height: 100%;
+    background-size: cover;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 4px;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    .name {
+      font-family: $fontMulishM;
+      font-size: 14px;
+      color: #000;
+    }
+    .detail {
+      font-family: $fontMulishM;
+      font-size: 12px;
+    }
+    .qty {
+      font-family: $fontMulishM;
+      font-size: 14px;
+      color: #000;
+    }
+  }
+  .price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    .discount {
+      text-decoration: line-through;
+      font-size: 12px;
+      font-family: $fontQuicksanBold;
+    }
+    .priceCurr {
+      font-size: 14px;
+      color: var(--price-color-);
+      font-family: $fontQuicksanBold;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product {
+    grid-template-columns: 15% 70% 15%;
+    grid-column-gap: 5px;
+    .image {
+      width: auto;
+      height: auto;
+    }
+    .description {
+      transform: scale(0.9);
+      padding-right: 20px;
+      .name,
+      .detail {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .product {
+    grid-template-columns: 20% 60% 20%;
+  }
+}

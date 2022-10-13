@@ -198,7 +198,7 @@ const InforDeliver = ({
           </div>
           <div className={styles.userInfor}>
             <Typography variant="body2">
-              {`${userData?.lastname} ${userData.firstname}`}
+              {`${userData?.lastname} ${userData?.firstname}`}
             </Typography>
             <Button
               variant="text"

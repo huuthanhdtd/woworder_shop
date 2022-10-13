@@ -33,11 +33,16 @@
           font-size: 20px;
           margin-bottom: 10px;
         }
+        .iconMenu {
+          display: none;
+          color: var(--primary-color-);
+        }
         .tabBtn {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           .btn {
+            cursor: pointer;
             text-transform: none;
             font-family: 'Mulish';
             font-size: 13px;
@@ -58,6 +63,7 @@
   .root {
     .wrapper {
       .account {
+        margin-top: 40px;
         .tabAccount {
           margin-bottom: 30px;
         }
@@ -69,5 +75,33 @@
 @media screen and (max-width: 600px) {
   .root {
     margin-top: 200px;
+    .wrapper {
+      .account {
+        .tabAccount {
+          position: relative;
+          h6 {
+            font-size: 16px;
+            display: flex;
+          }
+          .iconMenu {
+            display: block;
+            margin-right: 5px;
+          }
+          .tabBtn {
+            position: sticky;
+            width: 50%;
+            height: 0px;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          .active {
+            transform: translateX(0%);
+            height: 80px;
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
 }

@@ -4,9 +4,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import {
+  RiArrowLeftSLine,
+  RiArrowRightSLine,
+  RiListUnordered,
+} from 'react-icons/ri';
 import { useWindowSize } from 'react-use';
-import { sortBarHome } from '../../constants/commonData';
+import { orderPrice, sortBarHome } from '../../constants/commonData';
 import SelectList from '../DropDown/DropDown';
 import styles from './styles.module.scss';
 
@@ -20,20 +24,24 @@ const SortBar = ({
   setOpen,
   orderData,
 }) => {
-  const router = useRouter();
+  const { asPath } = useRouter();
   const [isOrder, setOrder] = React.useState(null);
   const [cateName, setCateName] = React.useState(false);
+  const [dropdown, setDropdown] = React.useState(false);
   const { width } = useWindowSize();
-  const { asPath } = router;
 
   const handleOrder = (type) => {
     setOrder(type.name);
-    if (type.type) {
+    if (type.type === 'ascending' || type.type === 'descending') {
       setSortPriceType(type.type);
     }
   };
   const handleOpenSortMobile = () => {
     setOpen(!open);
+  };
+
+  const handleActiveDropdown = () => {
+    setDropdown(!dropdown);
   };
   React.useEffect(() => {
     if (asPath !== '/') {
@@ -49,12 +57,12 @@ const SortBar = ({
     }
   }, [width]);
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onBlur={() => setDropdown(false)}>
       <div className={styles.boxOrder}>
         <div
           className={clsx(styles.menuBar, {
-            [styles.none]: router?.asPath !== '/' && width && width > 960,
-            [styles.flex]: router?.asPath === '/',
+            [styles.none]: asPath && asPath !== '/' && width && width > 960,
+            [styles.flex]: asPath && asPath === '/',
           })}
           suppressHydrationWarning={true}
         >
@@ -66,18 +74,35 @@ const SortBar = ({
               {category.name}
             </Link>
           )}
-          <Button className={styles.orderMobile} onClick={handleOpenSortMobile}>
-            <AiOutlineMenuFold />
-          </Button>
+          {asPath === '/' ? (
+            <Button
+              className={styles.orderMobile}
+              onClick={handleActiveDropdown}
+            >
+              <RiListUnordered />
+            </Button>
+          ) : (
+            <Button
+              className={styles.orderMobile}
+              onClick={handleOpenSortMobile}
+            >
+              <AiOutlineMenuFold />
+            </Button>
+          )}
         </div>
         <div
           className={clsx(styles.orderBtn, {
-            [styles.width]: asPath === '/categories/[slug]',
+            // [styles.width]: asPath === '/categories/[id]',
           })}
         >
           <Typography variant="h6">Sắp xếp theo</Typography>
 
-          <div className={clsx(styles.typeOrder)}>
+          <div
+            className={clsx(styles.typeOrder, {
+              [styles.expand]: dropdown,
+            })}
+            // style={{ height: dropdown ? 'auto' : 0 }}
+          >
             {orderData.map((it, idx) => (
               <Button
                 key={idx}
@@ -89,6 +114,21 @@ const SortBar = ({
                 {it.name}
               </Button>
             ))}
+            {asPath === '/' && (
+              <div className={styles.typeOrderMobile}>
+                {orderPrice.map((it, idx) => (
+                  <Button
+                    key={idx}
+                    className={clsx(styles.button, {
+                      [styles.active]: isOrder === it.name,
+                    })}
+                    onClick={() => handleOrder(it)}
+                  >
+                    {it.name}
+                  </Button>
+                ))}
+              </div>
+            )}
           </div>
           <SelectList setSortPriceType={setSortPriceType} />
         </div>
@@ -105,7 +145,7 @@ const SortBar = ({
               <RiArrowLeftSLine />
             </Button>
             <Button
-              disabled={page === totalPage ? true : false}
+              disabled={page === totalPage || totalPage == 0 ? true : false}
               className={styles.arrow}
               onClick={() => handleChangePage('next')}
             >

@@ -1,46 +1,50 @@
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import React from 'react';
 import DetailProduct from '../../components/DetailProduct';
-import database from '../../constants/database.json';
 import { fetchAPI } from '../../lib/api';
 import { getProducts } from '../../utils/localstorage';
 
 const Product = ({ productData }) => {
-  const router = useRouter();
-  // const {
-  //   items,
-  //   included: { productCategories },
-  // } = database;
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api`;
+  const { query } = useRouter();
   const [productsViewed, setProduct] = React.useState(null);
-  // const { item } = productData;
+  const [resp, setGetData] = React.useState({
+    allProduct: null,
+    product: null,
+  });
+  const { allProduct, product } = resp;
 
   React.useEffect(() => {
     const response = getProducts();
     setProduct(response);
   }, []);
 
-  // const category = productCategories.find(
-  //   (it) => it.productId === router.query.id
-  // );
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const [productRes, allProductRes] = await Promise.all([
+        axios.get(`${url}/stores/products/824276472079320166`),
+        axios.get(
+          `${url}/stores/categories/824195071376098350?limit=100&page=1`
+        ),
+      ]);
+      setGetData({
+        allProduct: allProductRes.data?.items,
+        product: productRes.data,
+      });
+    };
 
-  // const [res, setData] = React.useState({
-  //   product: items.find((it) => it.id === router.query.id),
-  //   products: productCategories.filter((it) => {
-  //     if (it.categoryId === category.categoryId) {
-  //       return items.find((it) => it.id === category.productId);
-  //     }
-  //   }),
-  // });
-
-  // const { product, products } = res;
+    fetchData();
+  }, [query.id]);
+  // console.log(resp);
   return (
     <>
-      {productsViewed && (
+      {productsViewed && resp.allProduct && resp.product && (
         <DetailProduct
-          // product={product}
-          product={productData.item}
+          product={product.item}
           productsViewed={productsViewed}
-          products={[]}
+          products={allProduct.products}
+          category={allProduct}
         />
       )}
     </>
@@ -49,27 +53,27 @@ const Product = ({ productData }) => {
 
 export default Product;
 
-export const getStaticPaths = async () => {
-  const productsRes = [
-    { id: '824276472079320166' },
-    { id: '825130375608010312' },
-    { id: '824305328496575631' },
-    { id: '825126470971033135' },
-    { id: '825206572647974665' },
-  ];
-  return {
-    paths: productsRes.map((product) => ({
-      params: { id: product.id },
-    })),
-    fallback: true,
-  };
-};
+// export const getStaticPaths = async () => {
+//   const productsRes = [
+//     { id: '824276472079320166' },
+//     { id: '825130375608010312' },
+//     { id: '824305328496575631' },
+//     { id: '825126470971033135' },
+//     { id: '825206572647974665' },
+//   ];
+//   return {
+//     paths: productsRes.map((product) => ({
+//       params: { id: product.id },
+//     })),
+//     fallback: true,
+//   };
+// };
 
-export const getStaticProps = async ({ params }) => {
-  const productRes = await fetchAPI(`/stores/products/${params.id}`);
-  return {
-    props: {
-      productData: productRes,
-    },
-  };
-};
+// export const getStaticProps = async ({ params }) => {
+//   const productRes = await fetchAPI(`/stores/products/${params.id}`);
+//   return {
+//     props: {
+//       productData: productRes,
+//     },
+//   };
+// };

@@ -92,17 +92,24 @@ const CategoriesPage = ({ products, category }) => {
             setOpen={setOpen}
             setSortPriceType={setSortPriceType}
             sortPriceType={sortPriceType}
+            products={products}
           />
-          <Grid container justifyContent="center" className={styles.pagination}>
-            <Grid item>
-              <Paginate
-                count={Math.ceil(filteredProducts.length / perPage)}
-                page={page}
-                onChange={handleChange}
-                color="primary"
-              />
+          {products.length > 0 && (
+            <Grid
+              container
+              justifyContent="center"
+              className={styles.pagination}
+            >
+              <Grid item>
+                <Paginate
+                  count={Math.ceil(filteredProducts.length / perPage)}
+                  page={page}
+                  onChange={handleChange}
+                  color="primary"
+                />
+              </Grid>
             </Grid>
-          </Grid>
+          )}
         </Grid>
       </Grid>
     </div>

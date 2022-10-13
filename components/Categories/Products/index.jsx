@@ -6,6 +6,7 @@ import CardProduct from '../../CardProduct';
 import styles from './styles.module.scss';
 import SortBar from '../../SortBar';
 import { sortByPrice } from '../../../utils/sortByPrice';
+import Link from 'next/link';
 
 const Products = ({
   filteredProducts,
@@ -21,6 +22,7 @@ const Products = ({
   setOpen,
   sortPriceType,
   setSortPriceType,
+  products,
 }) => {
   const dataFilter = React.useMemo(() => {
     const newData = filteredProducts?.slice(
@@ -55,25 +57,34 @@ const Products = ({
         handleChangePage={handleChangePage}
         setSortPriceType={setSortPriceType}
       />
-      <Grid
-        container
-        justifyContent="flex-start"
-        className={styles.containerProducts}
-      >
-        {dataFilter?.map((data, index) => (
-          <Grid
-            key={index}
-            item
-            lg={2}
-            md={3}
-            sm={4}
-            xs={6}
-            className={styles.card}
-          >
-            <CardProduct data={data} />
-          </Grid>
-        ))}
-      </Grid>
+      {products.length > 0 ? (
+        <Grid
+          container
+          justifyContent="flex-start"
+          className={styles.containerProducts}
+        >
+          {dataFilter?.map((data, index) => (
+            <Grid
+              key={index}
+              item
+              lg={2}
+              md={3}
+              sm={4}
+              xs={6}
+              className={styles.card}
+            >
+              <CardProduct data={data} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <div className={styles.notify}>
+          <Typography variant="body2" className={styles.notification}>
+            Danh mục này chưa có sản phẩm.
+          </Typography>
+          <Link href={'/'}> Trang chủ</Link>
+        </div>
+      )}
     </div>
   );
 };

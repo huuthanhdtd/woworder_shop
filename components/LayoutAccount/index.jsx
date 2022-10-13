@@ -3,8 +3,12 @@ import React from 'react';
 import { myAccount } from '../../constants/commonData';
 import { CgEditBlackPoint } from 'react-icons/cg';
 import styles from './styles.module.scss';
+import Link from 'next/link';
+import { BsMenuUp } from 'react-icons/bs';
+import clsx from 'clsx';
 
 const LayoutAccount = ({ title, children }) => {
+  const [open, setOpen] = React.useState(false);
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
@@ -20,13 +24,23 @@ const LayoutAccount = ({ title, children }) => {
             xs={12}
             className={styles.tabAccount}
           >
-            <Typography variant="h6">Tài khoản</Typography>
-            <div className={styles.tabBtn}>
+            <Typography variant="h6" onClick={() => setOpen(!open)}>
+              <BsMenuUp className={styles.iconMenu} />
+              Tài khoản
+            </Typography>
+
+            <div
+              className={clsx(styles.tabBtn, {
+                [styles.active]: open,
+              })}
+            >
               {myAccount.map((it, idx) => (
-                <Button key={idx} className={styles.btn} href={it.link}>
-                  <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
-                  {it.name}
-                </Button>
+                <Link key={idx} href={it.link}>
+                  <div className={styles.btn}>
+                    <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
+                    {it.name}
+                  </div>
+                </Link>
               ))}
             </div>
           </Grid>

@@ -5,15 +5,8 @@ import SortBar from '../../SortBar';
 import SlidesProduct from '../SlideProduct';
 import styles from './styles.module.scss';
 
-const Category = ({
-  category,
-  products,
-  open,
-  setOpen,
-  sortPriceType,
-  setSortPriceType,
-}) => {
-  // const [sortPriceType, setSortPriceType] = React.useState(null);
+const Category = ({ category, products }) => {
+  const [sortPriceType, setSortPriceType] = React.useState(null);
   const sortProducts = React.useMemo(() => {
     if (products?.length > 0) {
       if (sortPriceType) {
@@ -33,8 +26,6 @@ const Category = ({
           <SortBar
             category={category}
             setSortPriceType={setSortPriceType}
-            open={open}
-            setOpen={setOpen}
             orderData={sortBarHome}
           />
           <SlidesProduct sortProducts={sortProducts} />

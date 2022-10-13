@@ -59,7 +59,7 @@ export const footerData = {
   introduce: {
     title: 'Giới thiệu Khánh Bùi Order',
     description:
-      'Happy Mommy được thành lập từ 2006, chuyên cung cấp các mặt hàng cho mẹ và bé chuẩn nội địa các nước, kèm bill, bay air với slogan "MUA LẺ VỚI GIÁ SỈ". Khánh Bùi chuyên tã sữa, thực phẩm chức năng, thức ăn dặm, đồ chơi, đồ dùng gia đình và cho mẹ giá tốt.',
+      'Khánh Bùi được thành lập từ 2006, chuyên cung cấp các mặt hàng cho mẹ và bé chuẩn nội địa các nước, kèm bill, bay air với slogan "MUA LẺ VỚI GIÁ SỈ". Khánh Bùi chuyên tã sữa, thực phẩm chức năng, thức ăn dặm, đồ chơi, đồ dùng gia đình và cho mẹ giá tốt.',
   },
   address: {
     address: '229 Lê Thanh Nghị, quần Hải Châu, Tp. Đà Nẵng',
@@ -71,9 +71,9 @@ export const footerData = {
     items: [
       { text: 'Giới thiệu', link: '/introduce', slug: 'gioi-thieu' },
       {
-        text: 'Ưu đãi Happy Mommy Club',
+        text: 'Ưu đãi Khánh Bùi',
         link: '/support',
-        slug: 'uu-dai-thanh-vien-happy-mommy-club',
+        slug: 'uu-dai-thanh-vien-khanh-bui',
       },
       { text: 'Chính sách vận chuyển' },
       { text: 'Chính sách thanh toán' },
@@ -201,6 +201,10 @@ export const myAccount = [
   {
     name: 'Thông tin tài khoản',
     link: '/account',
+  },
+  {
+    name: 'Danh sách đơn hàng',
+    link: '/account/order-list',
   },
   {
     name: 'Danh sách địa chỉ',

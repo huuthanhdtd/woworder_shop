@@ -8,7 +8,7 @@ import database from '../../constants/database.json';
 import InformationBox from './InformationBox';
 import Alerts from '../Alerts';
 
-const DetailProduct = ({ product, productsViewed, products }) => {
+const DetailProduct = ({ product, productsViewed, products, category }) => {
   const router = useRouter();
   const { items } = database;
   const { addItem, updateItem, getItem } = useCart();
@@ -67,14 +67,15 @@ const DetailProduct = ({ product, productsViewed, products }) => {
     product.id + productInfor?.size + productInfor.color
   );
 
-  const result = React.useMemo(() => {
-    return products?.map((pro) => {
-      const item = items.find((it) => it.id === pro.productId);
-      if (item?.id === pro.productId) {
-        return item;
-      }
-    });
-  }, [products]);
+  // const result = React.useMemo(() => {
+  //   return products?.map((pro) => {
+  //     const item = items.find((it) => it.id === pro.productId);
+  //     if (item?.id === pro.productId) {
+  //       return item;
+  //     }
+  //     return [];
+  //   });
+  // }, [products]);
 
   const handleInput = React.useCallback(
     (e, prop) => {
@@ -137,8 +138,8 @@ const DetailProduct = ({ product, productsViewed, products }) => {
           <Typography variant="h5">Chi tiết sản phẩm</Typography>
         </Grid>
       </Grid>
-      {result.length > 0 && (
-        <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} products={result} />
+      {products.length > 0 && (
+        <RelativeProduct title={'SẢN PHẨM LIÊN QUAN'} products={products} />
       )}
       {productsViewed.length > 0 && (
         <RelativeProduct title={'SẢN PHẨM ĐÃ XEM'} products={productsViewed} />
