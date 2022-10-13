@@ -8,11 +8,12 @@ import styles from './styles.module.scss';
 const Category = ({
   category,
   products,
-  sortPriceType,
-  setSortPriceType,
   open,
   setOpen,
+  sortPriceType,
+  setSortPriceType,
 }) => {
+  // const [sortPriceType, setSortPriceType] = React.useState(null);
   const sortProducts = React.useMemo(() => {
     if (products?.length > 0) {
       if (sortPriceType) {

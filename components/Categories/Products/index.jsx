@@ -5,6 +5,7 @@ import { orderButton } from '../../../constants/commonData';
 import CardProduct from '../../CardProduct';
 import styles from './styles.module.scss';
 import SortBar from '../../SortBar';
+import { sortByPrice } from '../../../utils/sortByPrice';
 
 const Products = ({
   filteredProducts,
@@ -18,10 +19,20 @@ const Products = ({
   category,
   open,
   setOpen,
+  sortPriceType,
+  setSortPriceType,
 }) => {
   const dataFilter = React.useMemo(() => {
-    return filteredProducts?.slice(0 + perPage * (page - 1), perPage * page);
-  }, [page, checked.length, filteredProducts]);
+    const newData = filteredProducts?.slice(
+      0 + perPage * (page - 1),
+      perPage * page
+    );
+    if (sortPriceType) {
+      return sortByPrice(newData, sortPriceType);
+    } else {
+      return newData;
+    }
+  }, [page, checked.length, filteredProducts, sortPriceType]);
 
   const handleChangePage = React.useCallback((e) => {
     if (e === 'prev') {
@@ -42,13 +53,14 @@ const Products = ({
         setOpen={setOpen}
         orderData={orderButton}
         handleChangePage={handleChangePage}
+        setSortPriceType={setSortPriceType}
       />
       <Grid
         container
         justifyContent="flex-start"
         className={styles.containerProducts}
       >
-        {dataFilter.map((data, index) => (
+        {dataFilter?.map((data, index) => (
           <Grid
             key={index}
             item
@@ -66,4 +78,4 @@ const Products = ({
   );
 };
 
-export default React.memo(Products);
+export default Products;

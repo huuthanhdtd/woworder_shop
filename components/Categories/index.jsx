@@ -41,7 +41,8 @@ const CategoriesPage = ({ products, category }) => {
         }
       }
     });
-  }, [products, formPrice]);
+  }, [products, formPrice, sortPriceType]);
+
   React.useEffect(() => {
     setPage(1);
   }, [products]);
@@ -89,6 +90,8 @@ const CategoriesPage = ({ products, category }) => {
             category={category}
             open={open}
             setOpen={setOpen}
+            setSortPriceType={setSortPriceType}
+            sortPriceType={sortPriceType}
           />
           <Grid container justifyContent="center" className={styles.pagination}>
             <Grid item>
