@@ -31,6 +31,9 @@
         display: none;
       }
     }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
     .viewMobile {
       padding: 20px 20px;
       overflow-y: scroll;
@@ -234,9 +237,9 @@
     position: fixed;
     width: 100%;
     background-color: #fff;
-    transform: translateY(100%);
-    width: 100%;
-    transition: all 0.5s linear;
+    transform: translateX(100%);
+    transition: all 0.5s ease-out;
+    top: 0;
     bottom: 0;
     box-shadow: rgb(0 0 0 / 15%) 0px 1px 18px;
     left: 0;
@@ -250,7 +253,6 @@
         height: 44px;
         border-bottom: 1px solid #e7e7e7;
         padding: 10px;
-        border-radius: 16px 16px 0 0;
         .name {
           display: none;
         }
@@ -261,8 +263,12 @@
           display: block;
         }
         .close {
+          cursor: pointer;
           display: block;
         }
+      }
+      .viewMobile {
+        max-height: unset;
       }
       .totalPrice {
         padding: 5px 15px;
@@ -274,11 +280,11 @@
   }
   .showCart.active {
     position: fixed;
-    transition: all 0.3s linear;
-    transform: translateY(0%);
+    transition: all 0.5s ease-out;
+    transform: translateX(0%);
     width: 100%;
-    top: unset;
     background-color: #fff;
+    top: 0;
     bottom: 0;
     box-shadow: rgb(0 0 0 / 15%) 0px 1px 18px;
     border-radius: 16px 16px 0 0;

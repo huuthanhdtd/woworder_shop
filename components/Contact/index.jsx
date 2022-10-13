@@ -1,13 +1,11 @@
 import { Grid } from '@material-ui/core';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import Map from './map';
+import Map from './Map';
 import styles from './styles.module.scss';
 import { MdLocationOn } from 'react-icons/md';
 import { FiMail, FiSmartphone } from 'react-icons/fi';
 import { BiTimeFive } from 'react-icons/bi';
-import { useRouter } from 'next/router';
 
 export default function Contact() {
   const [validationMsg, setValidationMsg] = useState({});

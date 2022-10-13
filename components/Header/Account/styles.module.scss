@@ -155,7 +155,6 @@
   background-color: #ffffff;
   color: #000;
   opacity: 1;
-  transition: all 0.3s ease-in-out;
   transform: scale(1);
   border-radius: 0.125rem;
   z-index: 100;
@@ -199,8 +198,7 @@
     }
   }
   .showAccount.active {
-    transform-origin: 100% top;
-    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.3s ease-in-out;
     width: 100%;
     .dropUp {
       display: none;

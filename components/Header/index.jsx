@@ -90,7 +90,11 @@ const Header = ({ categories }) => {
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
       var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
+      if (
+        prevScrollpos > currentScrollPos &&
+        prevScrollpos !== null &&
+        currentScrollPos !== null
+      ) {
         document.getElementById('statisticalRef').style.top = '';
       } else {
         document.getElementById('statisticalRef').style.top = '-50px';
@@ -188,7 +192,7 @@ const Header = ({ categories }) => {
                   <></>
                 )}
               </div>
-              <div suppressHydrationWarning={true}>
+              {/* <div suppressHydrationWarning={true}>
                 {totalItems > 0 ? (
                   <div
                     className={clsx(styles.taskbarCart, {
@@ -217,7 +221,7 @@ const Header = ({ categories }) => {
                 ) : (
                   <></>
                 )}
-              </div>
+              </div> */}
 
               <Cart openCart={openCart} setOpenCart={setOpenCart} />
             </div>

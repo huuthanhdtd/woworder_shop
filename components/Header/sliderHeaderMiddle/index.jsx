@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
 import { BsHouse } from 'react-icons/bs';
 import { Button } from '@material-ui/core';
@@ -12,7 +12,7 @@ export default function Sliders({ categories }) {
   const router = useRouter();
   const [selected, setSelected] = useState('null');
   const [sort, setSortEnv] = useState([]);
-  useEffect(() => {
+  useMemo(() => {
     if (b === undefined) {
       const SortProduct = categories.items.filter(
         (item) => item.products.length > 0
@@ -32,6 +32,7 @@ export default function Sliders({ categories }) {
       setSortEnv(sortEnvs);
     }
   }, []);
+
   useEffect(() => {}, [selected]);
   const onSelect = (key) => {
     setSelected(key);
