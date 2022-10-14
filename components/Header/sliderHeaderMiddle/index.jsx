@@ -11,13 +11,12 @@ export default function Sliders({ categories }) {
   const b = process.env.NEXT_PUBLIC_CATEGORY;
   const router = useRouter();
   const [selected, setSelected] = useState('null');
-  const [sort, setSortEnv] = useState([]);
-  useMemo(() => {
+  const sort = useMemo(() => {
     if (b === undefined) {
       const SortProduct = categories.items.filter(
         (item) => item.products.length > 0
       );
-      setSortEnv(SortProduct);
+      return SortProduct;
     } else {
       JSON.parse(process.env.NEXT_PUBLIC_CATEGORY);
       const filtoEnv = categories.items.filter((item) =>
@@ -29,10 +28,9 @@ export default function Sliders({ categories }) {
             JSON.parse(b)?.findIndex((i) => i === c.name)
           : -999
       );
-      setSortEnv(sortEnvs);
+      return sortEnvs;
     }
   }, []);
-
   useEffect(() => {}, [selected]);
   const onSelect = (key) => {
     setSelected(key);

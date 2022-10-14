@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { IoMdArrowDropup } from 'react-icons/io';
 import { Button } from '@material-ui/core';
-import Link from 'next/link';
 import { useCart } from 'react-use-cart';
 import { BsCart } from 'react-icons/bs';
-import { convertCurrency } from '../../../utils/convertCurrency';
 import { useRouter } from 'next/router';
 import { useWindowSize } from 'react-use';
+import { convertCurrency } from '../../../../utils/convertCurrency';
+import ItemCart from './ItemCart';
 
 export default function Cart({ openCart, setOpenCart }) {
   const { height, width } = useWindowSize();
@@ -53,48 +53,12 @@ export default function Cart({ openCart, setOpenCart }) {
           {items.length > 0 ? (
             <>
               {items.map((data, index) => (
-                <div className={styles.viewCart} key={index}>
-                  <div className={styles.image}>
-                    <img src={data.imageUrl} />
-                  </div>
-                  <div className={styles.desc}>
-                    <span className={styles.nameProduct}>
-                      {data.name.length > 150
-                        ? `${data.name.slice(0, 150)}...`
-                        : data.name}
-                    </span>
-                    <div className={styles.quantity}>
-                      <div className={styles.quantity_selector}>
-                        <button
-                          className={styles.plus_or_minus}
-                          onClick={() =>
-                            updateItemQuantity(data.id, data.quantity - 1)
-                          }
-                        >
-                          -
-                        </button>
-                        <div className={styles.amount}>{data.quantity}</div>
-                        <button
-                          className={styles.plus_or_minus}
-                          onClick={() =>
-                            updateItemQuantity(data.id, data.quantity + 1)
-                          }
-                        >
-                          +
-                        </button>
-                      </div>
-                      <div className={styles.price}>
-                        {convertCurrency(data.price)}
-                      </div>
-                    </div>
-                    <div
-                      className={styles.remove}
-                      onClick={() => removeItem(data.id)}
-                    >
-                      X
-                    </div>
-                  </div>
-                </div>
+                <ItemCart
+                  data={data}
+                  index={index}
+                  updateItemQuantity={updateItemQuantity}
+                  removeItem={removeItem}
+                />
               ))}
             </>
           ) : (

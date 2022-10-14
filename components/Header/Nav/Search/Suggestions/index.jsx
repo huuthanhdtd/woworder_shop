@@ -2,8 +2,12 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import data from '../../../constants/testdata.json';
-import { ConvertViToEn, getScoreByNumberOfPosition, local } from '../../../lib';
+import data from '../../../../../constants/testdata.json';
+import {
+  ConvertViToEn,
+  getScoreByNumberOfPosition,
+  local,
+} from '../../../../../lib';
 import styles from './styles.module.scss';
 import { BiTimeFive } from 'react-icons/bi';
 

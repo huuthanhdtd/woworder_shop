@@ -1,16 +1,12 @@
-import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.scss';
 import Infor from './Infor';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Hot from '../../assets/image/hot.svg';
 import { CardMedia, Link } from '@material-ui/core';
 import { addProduct } from '../../utils/localstorage';
 
 function CardProduct({ data }) {
-  const router = useRouter();
-
   const handleSaveProductToLocal = () => {
     addProduct(data);
   };

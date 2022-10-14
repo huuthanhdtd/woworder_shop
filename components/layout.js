@@ -36,13 +36,15 @@ const Layout = ({ children, categories }) => {
 
   return (
     <>
-      <ContextProvider>
-        <Header categories={categories} />
-        {children}
-        <ContactFixed />
-        {/* <ButtonToTop onClick={scrollToTop} show={scrollState} /> */}
-        <Footer />
-      </ContextProvider>
+      {categories && (
+        <ContextProvider>
+          <Header categories={categories} />
+          {children}
+          <ContactFixed />
+          {/* <ButtonToTop onClick={scrollToTop} show={scrollState} /> */}
+          <Footer />
+        </ContextProvider>
+      )}
     </>
   );
 };
