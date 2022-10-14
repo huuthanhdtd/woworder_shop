@@ -1,14 +1,9 @@
-import { useRouter } from 'next/router';
 import React from 'react';
 import CategoriesPage from '../../components/Categories';
 import { fetchAPI } from '../../lib/api';
 
 const Categories = ({ category }) => {
-  const router = useRouter();
-  const {
-    items,
-    included: { categories, productCategories },
-  } = category;
+  const { items } = category;
 
   return (
     <div>

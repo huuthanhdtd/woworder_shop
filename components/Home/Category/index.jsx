@@ -23,11 +23,13 @@ const Category = ({ category, products }) => {
     <>
       {sortProducts?.length > 0 && (
         <div className={styles.container}>
-          <SortBar
-            category={category}
-            setSortPriceType={setSortPriceType}
-            orderData={sortBarHome}
-          />
+          {category?.name && (
+            <SortBar
+              category={category}
+              setSortPriceType={setSortPriceType}
+              orderData={sortBarHome}
+            />
+          )}
           <SlidesProduct sortProducts={sortProducts} />
         </div>
       )}

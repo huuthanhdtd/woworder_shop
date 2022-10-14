@@ -3,8 +3,9 @@ import styles from './styles.module.scss';
 import Infor from './Infor';
 import Image from 'next/image';
 import Hot from '../../assets/image/hot.svg';
-import { CardMedia, Link } from '@material-ui/core';
+import { CardMedia } from '@material-ui/core';
 import { addProduct } from '../../utils/localstorage';
+import Link from 'next/link';
 
 function CardProduct({ data }) {
   const handleSaveProductToLocal = () => {
@@ -12,8 +13,8 @@ function CardProduct({ data }) {
   };
   return (
     <div className={styles.wrapProduct}>
-      <div className={styles.imageWp}>
-        <Link href={`/product/${data.id}`} onClick={handleSaveProductToLocal}>
+      <div className={styles.imageWp} onClick={handleSaveProductToLocal}>
+        <Link href={`/product/${data.id}`}>
           <CardMedia className={styles.image} image={data.imageUrl}></CardMedia>
         </Link>
         <span className={styles.label}>
