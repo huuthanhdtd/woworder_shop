@@ -4,16 +4,7 @@ import PageSearch from '../../components/PageSearch';
 import { fetchAPI } from '../../lib/api';
 
 export default function index({ category }) {
-  const [loadinged, setLoadinged] = useState(true);
-  console.log(category);
-  useEffect(() => {
-    if (category.item) {
-      setLoadinged(false);
-    }
-  }, []);
-  return loadinged ? (
-    <Loading />
-  ) : (
+  return (
     <div>
       <PageSearch />
     </div>

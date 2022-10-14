@@ -6,12 +6,18 @@ import styles from './styles.module.scss';
 import { Pagination } from '@material-ui/lab';
 import data from '../../constants/testdata.json';
 import { useRouter } from 'next/router';
+import Loading from '../Loading';
 
 export default function PageSearch() {
   const router = useRouter();
   const perPage = 12;
   const [page, setPage] = useState(1);
-
+  const [loadinged, setLoadinged] = useState(true);
+  useEffect(() => {
+    if (dataSortedByScore) {
+      setLoadinged(false);
+    }
+  }, [router.query.searchTerm]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
@@ -38,7 +44,9 @@ export default function PageSearch() {
             'boolean'
           );
     });
-  return (
+  return loadinged ? (
+    <Loading />
+  ) : (
     <div className={styles.PageSearch}>
       <div className={styles.heading_Page}>
         <h1>Tìm kiếm</h1>

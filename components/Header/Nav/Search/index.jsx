@@ -1,9 +1,10 @@
 import { Button, debounce } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Suggestions from './Suggestions';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useRouter } from 'next/router';
+import Loading from '../../../Loading';
 
 export default function Search({
   searchTerm,
@@ -13,7 +14,7 @@ export default function Search({
   onfocus,
 }) {
   const router = useRouter();
-
+  const [loading, setLoading] = useState(false);
   const handleOnchange = (e) => {
     setSearchTerm(e.target.value);
     setSuggestions(true);
@@ -24,8 +25,12 @@ export default function Search({
       pathname: '/page-search',
       query: { searchTerm: searchTerm },
     });
+    setLoading(true);
     setSuggestions(false);
   };
+  useEffect(() => {
+    setLoading(false);
+  }, [router.query.searchTerm]);
   return (
     <div className={styles.search}>
       <form onSubmit={(e) => handleSubmitSearch(e)}>
@@ -36,9 +41,15 @@ export default function Search({
           onChange={debounce(handleOnchange, 250)}
           onFocus={onfocus}
         />
-        <Button className={styles.icon} type="submit">
-          <AiOutlineSearch />
-        </Button>
+        {loading ? (
+          <div className={styles.icon}>
+            <Loading />
+          </div>
+        ) : (
+          <Button className={styles.icon} type="submit">
+            <AiOutlineSearch />
+          </Button>
+        )}
       </form>
       <Suggestions
         searchTerm={searchTerm}
