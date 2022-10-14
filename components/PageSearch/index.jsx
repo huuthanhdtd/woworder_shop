@@ -1,9 +1,8 @@
 import { debounce, Grid } from '@material-ui/core';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ConvertViToEn, getScoreByNumberOfPosition } from '../../lib';
 import CardProduct from '../CardProduct';
 import styles from './styles.module.scss';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { Pagination } from '@material-ui/lab';
 import data from '../../constants/testdata.json';
 import { useRouter } from 'next/router';

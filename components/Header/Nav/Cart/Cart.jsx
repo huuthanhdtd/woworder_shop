@@ -55,7 +55,7 @@ export default function Cart({ openCart, setOpenCart }) {
               {items.map((data, index) => (
                 <ItemCart
                   data={data}
-                  index={index}
+                  key={index}
                   updateItemQuantity={updateItemQuantity}
                   removeItem={removeItem}
                 />

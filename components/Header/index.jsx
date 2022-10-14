@@ -37,7 +37,7 @@ const Header = ({ categories }) => {
   return (
     <div
       className={clsx(styles.wrapper, {
-        [styles.none]: router.pathname === '/checkouts/[id]',
+        [styles.none]: router.pathname === '/checkouts',
       })}
     >
       <div

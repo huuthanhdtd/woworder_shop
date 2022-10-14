@@ -2,14 +2,9 @@ import React from 'react';
 import { convertCurrency } from '../../../../../utils/convertCurrency';
 import styles from './styles.module.scss';
 
-export default function ItemCart({
-  data,
-  index,
-  updateItemQuantity,
-  removeItem,
-}) {
+export default function ItemCart({ data, updateItemQuantity, removeItem }) {
   return (
-    <div className={styles.viewCart} key={index}>
+    <div className={styles.viewCart}>
       <div className={styles.image}>
         <img src={data.imageUrl} />
       </div>

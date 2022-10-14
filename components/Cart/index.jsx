@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../utils/convertCurrency';
+import Loading from '../Loading';
 import GridList from './GridList';
 import styles from './styles.module.scss';
 
@@ -51,6 +52,7 @@ export default function Carts() {
       <div className={styles.breadcrumb_shop}>
         <Link href="/"> Trang chủ</Link> / Giỏ hàng
       </div>
+      <Loading />
       <Grid container className={styles.GridCart}>
         <Grid md={8} sm={12} xs={12} item className={styles.GridList}>
           <GridList
