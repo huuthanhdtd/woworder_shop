@@ -1,5 +1,6 @@
-import Link from 'next/link';
+import { Link } from '@material-ui/core';
 import React from 'react';
+import { myAccount } from '../../../../../constants/commonData';
 import styles from './styles.module.scss';
 
 export default function LoginSuccess({ userData, setOpenAccount }) {
@@ -16,12 +17,11 @@ export default function LoginSuccess({ userData, setOpenAccount }) {
         {userData.firstname} {userData.lastname}
       </div>
       <ul>
-        <li>
-          <Link href="/account">Tài khoản của tôi</Link>
-        </li>
-        <li>
-          <Link href="/account/address">Danh sách địa chỉ</Link>
-        </li>
+        {myAccount.slice(0, 3).map((data, index) => (
+          <li key={index}>
+            <Link href={data.link}>{data.name}</Link>
+          </li>
+        ))}
         <li onClick={Logout}>Đăng xuất</li>
       </ul>
     </div>

@@ -42,7 +42,6 @@ export default function Nav({
   useEffect(() => {
     setWid(width);
   }, [width]);
-  console.log(openAccount);
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('USER_INFOR'));
     setUserData(userData);
@@ -87,8 +86,6 @@ export default function Nav({
     setOpenCart(false);
     setOpenNav(false);
   };
-
-  useEffect(() => {}, [suggestions]);
   return (
     <div className={styles.nav}>
       <div className={styles.menu} onClick={handleOpen}>

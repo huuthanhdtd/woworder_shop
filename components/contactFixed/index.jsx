@@ -11,17 +11,12 @@ import Link from 'next/link';
 export default function ContactFixed() {
   const contact = [
     {
-      name: 'gọi ngay cho Khánh Bùi',
+      name: 'Gọi ngay cho Khánh Bùi',
       icon: <AiFillPhone fontSize={20} />,
       link: 'tel:0987965512',
     },
     {
-      name: 'nhận tư vấn qua zalo',
-      icon: <SiZalo fontSize={20} />,
-      link: 'http://zalo.me/0352998934',
-    },
-    {
-      name: 'đóng góp ý kiến giao diện cho Khánh Bùi',
+      name: 'Đóng góp ý kiến giao diện cho Khánh Bùi',
       icon: <GoMail fontSize={20} />,
       link: 'mailto:contact@gmail.com ',
     },
@@ -38,6 +33,11 @@ export default function ContactFixed() {
     } else {
       setOpenContact(true);
     }
+  };
+
+  const newTab = () => {
+    const url = 'http://zalo.me/0352998934';
+    window.open(url);
   };
 
   return (
@@ -64,6 +64,12 @@ export default function ContactFixed() {
         className={clsx(styles.mes, { [styles.active]: openContact == true })}
       >
         <ul className={styles.ul_mes}>
+          <li className={styles.li_mes} onClick={newTab}>
+            <div className={styles.icon}>
+              <SiZalo fontSize={20} />
+            </div>
+            <div className={styles.title}>Nhận tư vấn qua zalo</div>
+          </li>
           {contact?.map((data, index) => (
             <div key={index}>
               <Link href={data.link}>

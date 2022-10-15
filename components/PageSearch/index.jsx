@@ -43,7 +43,8 @@ export default function PageSearch() {
             ConvertViToEn(i.name),
             'boolean'
           );
-    });
+    })
+    .slice(0, 120);
   return loadinged ? (
     <Loading />
   ) : (

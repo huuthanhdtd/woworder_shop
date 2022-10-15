@@ -1,7 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { fetchAPI } from '../../lib/api';
-
 const Carts = dynamic(() => import('../../components/Cart'), { ssr: false });
 
 export default function index() {
