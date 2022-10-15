@@ -24,6 +24,7 @@ const Form = ({ submitTitle, cancel }) => {
     lastname: '',
     nation: '',
     wards: '',
+    rewardPoint: 300,
   });
   const [addresses, setAddresses] = React.useState({
     cities: null,

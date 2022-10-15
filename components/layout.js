@@ -1,13 +1,15 @@
 // import ButtonToTop from './ScrollButton/ScrollButton';
 import ContextProvider from '../constants/Context';
 // import { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import ContactFixed from './ContactFixed';
-
+import { getUserData } from '../utils/localstorage';
 const Layout = ({ children, categories }) => {
   // const [scrollState, setScrollState] = useState(false);
   // const [isBarsSmall, setIsBarsSmall] = useState(false);
+  const [userData, setUserData] = React.useState(null);
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -33,12 +35,17 @@ const Layout = ({ children, categories }) => {
   //     behavior: 'smooth',
   //   });
   // };
-
+  React.useEffect(() => {
+    const userData = getUserData('USER_INFOR');
+    if (userData) {
+      setUserData(userData);
+    }
+  }, []);
   return (
     <>
       {categories && (
         <ContextProvider>
-          <Header categories={categories} />
+          <Header categories={categories} userData={userData} />
           {children}
           <ContactFixed />
           {/* <ButtonToTop onClick={scrollToTop} show={scrollState} /> */}

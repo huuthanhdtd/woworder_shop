@@ -1,31 +1,32 @@
 import { Button, Grid, Link, TextField, Typography } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import { AiOutlineUser } from 'react-icons/ai';
 import { citieslist } from '../../../constants/selectListData';
 import styles from './styles.module.scss';
-import SelectForm from './SelectForm';
+// import SelectForm from './SelectForm';
 import Payments from './Payment';
 import Delivery from './Deliver';
 import Addresses from './Addresses';
 import { getUserData } from '../../../utils/localstorage';
 
-const addresses = [
-  { name: 'Hòa khương, đà nẵng' },
-  { name: 'Quận 10, Hồ Chí Minh' },
-];
+// const addresses = [
+//   { name: 'Hòa khương, đà nẵng' },
+//   { name: 'Quận 10, Hồ Chí Minh' },
+// ];
 
 const InforDeliver = ({
-  token,
-  handleLogin,
-  login,
-  handleChangeInforDeliver,
+  // token,
+  // handleLogin,
+  // login,
+  handleFinish,
+  allInforDeliver,
   setAllInforDeliver,
+  handleChangeInforDeliver,
 }) => {
   const userData = React.useMemo(() => {
-    const getUserDataaa = getUserData('USER_INFOR');
-    return getUserDataaa;
+    const userData = getUserData('USER_INFOR');
+    return userData;
   }, []);
 
   /* set First data  */
@@ -45,12 +46,15 @@ const InforDeliver = ({
       wards,
     };
   }, [userData]);
+
+  /* List data location city, district, wards */
   const [data, setData] = React.useState({
     cities: citieslist[0].cities,
     districts: firstState?.cities ? firstState?.cities : null,
     wards: firstState?.districts ? firstState?.districts : null,
   });
 
+  /*Value of location has been chosen */
   const [state, setState] = React.useState({
     city: firstState?.cities ? firstState.cities.name : '',
     district: firstState?.districts ? firstState.districts.name : '',
@@ -58,18 +62,16 @@ const InforDeliver = ({
     addresses: '',
   });
 
-  /* */
-
+  /*Infor customer */
   const [useFormValues, setUserFormValues] = React.useState({
-    name: userData ? `${userData?.lastname} ${userData.firstname}` : '',
+    name: userData ? `${userData.firstname} ${userData?.lastname}` : '',
     email: userData?.email ? userData?.email : '',
     phone: userData?.phone ? userData?.phone : '',
   });
 
-  const [addressUser, setAddressUser] = React.useState();
-
   const [deliver, setDeliver] = React.useState('deliver');
   const [payment, setPayment] = React.useState('cash');
+  // const [addressUser, setAddressUser] = React.useState();
 
   const handlePayment = React.useCallback((type) => {
     setPayment(type);
@@ -90,11 +92,11 @@ const InforDeliver = ({
     });
   }, []);
 
-  const handleUpdateAddress = React.useCallback((event) => {
-    setAddressUser(event.target.value);
-  }, []);
+  // const handleUpdateAddress = React.useCallback((event) => {
+  //   setAddressUser(event.target.value);
+  // }, []);
 
-  /* hanl onChang User form value */
+  /* handle onChang User form value */
 
   const handleOnChangeFormUser = (value, type) => {
     if (value !== '') {
@@ -171,48 +173,50 @@ const InforDeliver = ({
     });
   };
 
-  const router = useRouter();
-
   return (
     <div className={styles.infor}>
-      <Typography className={styles.title}>Khanh Bui</Typography>
+      <Typography variant="h6" className={styles.title}>
+        Khanh Bui
+      </Typography>
       <div className={styles.tabMenu}>
         <Link href="/">Trang chủ</Link>
         <RiArrowRightSLine className={styles.iconArrow} />
         <Typography variant="body2">Thông tin giao hàng</Typography>
       </div>
-      <Typography className={styles.caption}>Thông tin giao hàng</Typography>
-      {!login ? (
-        <Typography className={styles.questionLogin}>
+      <Typography variant="body2" className={styles.caption}>
+        Thông tin giao hàng
+      </Typography>
+      {/* {!login ? (
+        <Typography variant="body2" className={styles.questionLogin}>
           Bạn đã có tài khoản?
-          {/* <Link href="/account/login"> Đăng nhập</Link> */}
+          <Link href="/account/login"> Đăng nhập</Link>
           <Link href="#" onClick={handleLogin}>
             {' '}
             Đăng nhập
           </Link>
         </Typography>
-      ) : (
-        <div className={styles.user}>
-          <div className={styles.iconUser}>
-            <AiOutlineUser />
-          </div>
-          <div className={styles.userInfor}>
-            <Typography variant="body2">
-              {`${userData?.lastname} ${userData?.firstname}`}
-            </Typography>
-            <Button
-              variant="text"
-              className={styles.logout}
-              onClick={handleLogin}
-            >
-              Đăng xuất
-            </Button>
-          </div>
+      ) : ( */}
+      <div className={styles.user}>
+        <div className={styles.iconUser}>
+          <AiOutlineUser />
         </div>
-      )}
+        <div className={styles.userInfor}>
+          <Typography variant="body2">
+            {`${allInforDeliver?.firstname} ${allInforDeliver?.lastname}`}
+          </Typography>
+          <Button
+            variant="text"
+            className={styles.logout}
+            // onClick={handleLogin}
+          >
+            Đăng xuất
+          </Button>
+        </div>
+      </div>
+      {/* )} */}
 
       <form action="" className={styles.form}>
-        {login && (
+        {/* {login && (
           <SelectForm
             label={'Thêm địa chỉ mới...'}
             title={'Địa chỉ đã lưu trữ'}
@@ -221,16 +225,13 @@ const InforDeliver = ({
             state={state}
             handleChange={handleUpdateAddress}
           />
-        )}
+        )} */}
 
         <TextField
           className={styles.input}
           variant="outlined"
           placeholder="Họ và tên"
           onChange={(e) => handleOnChangeFormUser(e.target.value, 'name')}
-          // defaultValue={
-          //   login ? `${userData?.lastname} ${userData.firstname}` : ''
-          // }
           value={useFormValues?.name}
         />
         <Grid container spacing={1} justifyContent="space-between">
@@ -240,7 +241,6 @@ const InforDeliver = ({
               variant="outlined"
               placeholder="Email"
               onChange={(e) => handleOnChangeFormUser(e.target.value, 'email')}
-              // defaultValue={login ? `${userData?.email}` : ''}
               value={useFormValues?.email}
             />
           </Grid>
@@ -250,7 +250,6 @@ const InforDeliver = ({
               variant="outlined"
               placeholder="Số điện thoại"
               onChange={(e) => handleOnChangeFormUser(e.target.value, 'phone')}
-              // defaultValue={login ? `${userData?.phone}` : ''}
               value={useFormValues?.phone}
             />
           </Grid>
@@ -264,7 +263,7 @@ const InforDeliver = ({
           handleChangeInforDeliver={handleChangeInforDeliver}
         />
         <Delivery deliver={deliver} data={data} />
-        <Typography className={styles.caption}>
+        <Typography variant="body2" className={styles.caption}>
           Phương thức thanh toán
         </Typography>
         <Payments
@@ -276,7 +275,11 @@ const InforDeliver = ({
           <Button variant="text" className={styles.gotoCarts}>
             Giỏ hàng
           </Button>
-          <Button variant="contained" className={styles.submit}>
+          <Button
+            variant="contained"
+            className={styles.submit}
+            onClick={handleFinish}
+          >
             Hoàn tất đơn hàng
           </Button>
         </div>

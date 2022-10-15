@@ -18,9 +18,10 @@
   background-color: transparent;
   height: 100%;
   border-bottom: 1px solid #e1e1e1;
+  margin-top: 50px;
   .btnShowOrder {
     width: 100%;
-    display: flex;
+    display: none;
     justify-content: space-between;
     border: 1px solid #e1e1e1;
     border-radius: 0;
@@ -60,35 +61,14 @@
   }
 }
 
-@media screen and (min-width: 0px) and (max-width: 640px) {
+@media screen and (max-width: 960px) {
   .listOrder {
+    margin-top: 0;
     .btnShowOrder {
       display: flex;
     }
   }
   .background {
-    background-color: #fff;
-    border-left: none;
-  }
-}
-
-@media screen and (min-width: 640px) and (max-width: 959px) {
-  .listOrder {
-    .btnShowOrder {
-      display: flex;
-    }
-  }
-  .background {
-    background-color: #fff;
-    border-left: none;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .listOrder {
-    margin-top: 50px;
-    .btnShowOrder {
-      display: none;
-    }
+    display: none;
   }
 }

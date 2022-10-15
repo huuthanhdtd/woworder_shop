@@ -1,68 +1,39 @@
-import {
-  Button,
-  CardMedia,
-  Grid,
-  Slider,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Button, CardMedia, Typography } from '@material-ui/core';
 import React from 'react';
 import styles from './styles.module.scss';
 import { FiShoppingCart } from 'react-icons/fi';
 import {
   MdOutlineKeyboardArrowUp,
   MdOutlineKeyboardArrowDown,
-  MdOutlineClose,
 } from 'react-icons/md';
-import { RiCoupon2Line } from 'react-icons/ri';
-import Product from '../../../assets/image/product.png';
-import Image from 'next/image';
-import { AiFillTag, AiFillCloseCircle } from 'react-icons/ai';
-import { BsDot } from 'react-icons/bs';
-
-import Coupon from '../../../assets/image/coupon.svg';
-import clsx from 'clsx';
 import { convertCurrency } from '../../../utils/convertCurrency';
-import { useWindowSize } from 'react-use';
 import Bill from './Bill';
 import RewardPoints from './RewardPoints';
-import { useCart } from 'react-use-cart';
+import { Context } from '../../../constants/Context';
 
 const ListOrder = ({
-  handleShowPopup,
-  coupon,
-  dataCoupon,
-  handleRemoveCoupon,
-  handleLogin,
-  login,
-  setAllInforDeliver,
+  // login,
+  objBill,
+  cartCheck,
+  // handleLogin,
+  handleFinish,
   allInforDeliver,
+  handleShowPopup,
+  setAllInforDeliver,
+  // coupon,
+  // dataCoupon,
+  // handleRemoveCoupon,
 }) => {
+  const { setPointUsed, width } = React.useContext(Context);
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(0);
   const [isChecked, setCheck] = React.useState(false);
-  const { cartTotal, items } = useCart();
-  const [cartsPrice, setTotal] = React.useState(0);
 
-  const { width } = useWindowSize();
   React.useEffect(() => {
-    if (width > 959) {
+    if (width > 960) {
       setOpen(true);
     }
     return () => setOpen(false);
   }, [width]);
-
-  const cartCheck = React.useMemo(() => {
-    return items.filter((it) => it.isCheck);
-  }, [items]);
-  React.useEffect(() => {
-    if (cartCheck?.length > 0) {
-      const total = cartCheck.reduce((prev, curr) => {
-        return prev + Number(curr.price) * curr.quantity;
-      }, 0);
-      setTotal(total);
-    }
-  }, [cartCheck]);
 
   const handleShowOrder = React.useCallback(() => {
     setOpen(!open);
@@ -70,35 +41,8 @@ const ListOrder = ({
 
   const handleChecked = React.useCallback(() => {
     setCheck(!isChecked);
-    setValue(0);
+    setPointUsed(0);
   }, [isChecked]);
-
-  /* 1 REWARD POINT EQUALS 1000 VND  */
-
-  const discountPercent = process.env.NEXT_PUBLIC_DISCOUNT_PERCENT || 30;
-  const rewardPoints = 250 - value;
-  const discount = value * 1000;
-  const feeShip = 25000;
-  const totalPrice = cartsPrice - discount + feeShip;
-  const maxRewardPoints = Math.floor(
-    (cartsPrice * (discountPercent / 100)) / 1000
-  );
-
-  const objBill = React.useMemo(() => {
-    return {
-      value,
-      rewardPoints,
-      discount,
-      feeShip,
-      totalPrice,
-      maxRewardPoints,
-      cartsPrice,
-    };
-  }, [value]);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <>
@@ -124,7 +68,7 @@ const ListOrder = ({
             )}
           </div>
           <Typography variant="body2" className={styles.price}>
-            {convertCurrency(cartsPrice)}
+            {convertCurrency(objBill.cartsPrice)}
           </Typography>
         </Button>
         {open && (
@@ -137,9 +81,10 @@ const ListOrder = ({
                       image={it.imageUrl}
                       style={{ width: 52, height: 50 }}
                     />
-                    {/* <Image src={Product} width={52} height={50} /> */}
                   </div>
-                  <Typography variant="body2">{`${it.name} - ${it.color} - ${it.size}`}</Typography>
+                  <Typography variant="body2">{`${it.name} ${
+                    it.color ? `${it.color}` : ''
+                  } ${it.size ? `${it.size}` : ''}`}</Typography>
                 </div>
                 <Typography variant="body2" className={styles.price}>
                   {`${convertCurrency(it.price)} x ${it.quantity}`}
@@ -148,27 +93,28 @@ const ListOrder = ({
             ))}
             <div className={styles.line} />
             <RewardPoints
-              login={login}
-              handleLogin={handleLogin}
-              dataCoupon={dataCoupon}
-              handleShowPopup={handleShowPopup}
-              rewardPoints={rewardPoints}
-              handleChecked={handleChecked}
+              // login={login}
               checked={isChecked}
+              // handleLogin={handleLogin}
+              handleChecked={handleChecked}
+              handleShowPopup={handleShowPopup}
+              rewardPoints={objBill.rewardPoints}
+              // dataCoupon={dataCoupon}
             />
 
             <div className={styles.line} />
             <Bill
-              login={login}
-              handleChange={handleChange}
-              provisionalPrice={cartsPrice}
-              coupon={coupon}
-              handleRemoveCoupon={handleRemoveCoupon}
-              checked={isChecked}
-              setAllInforDeliver={setAllInforDeliver}
-              allInforDeliver={allInforDeliver}
+              // login={login}
               objBill={objBill}
+              checked={isChecked}
               cartCheck={cartCheck}
+              handleFinish={handleFinish}
+              allInforDeliver={allInforDeliver}
+              provisionalPrice={objBill.cartsPrice}
+              setAllInforDeliver={setAllInforDeliver}
+              // coupon={coupon}
+              // handleChange={handleChange}
+              // handleRemoveCoupon={handleRemoveCoupon}
             />
           </>
         )}

@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div
       className={clsx(styles.wrapper, {
-        [styles.none]: router.pathname === '/checkouts/[id]',
+        [styles.none]: router.pathname === '/checkouts',
       })}
     >
       <div className={styles.container}>

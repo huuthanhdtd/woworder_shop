@@ -4,13 +4,13 @@ import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
 import RelativeProduct from './RelativeProduct';
 import { useCart } from 'react-use-cart';
-import database from '../../constants/database.json';
+// import database from '../../constants/database.json';
 import InformationBox from './InformationBox';
 import Alerts from '../Alerts';
 
 const DetailProduct = ({ product, productsViewed, products, category }) => {
   const router = useRouter();
-  const { items } = database;
+  // const { items } = database;
   const { addItem, updateItem, getItem } = useCart();
   const [quantity, setQuantity] = React.useState(1);
   // const [sizeCode, setSizeCode] = React.useState();
@@ -59,6 +59,7 @@ const DetailProduct = ({ product, productsViewed, products, category }) => {
     imageUrl: product.imageUrl,
     size: firstProductInfor?.size,
     price: product.sellPrice,
+    feeAmount: product.feeAmount,
     isCheck: true,
   });
   // const [alert, setAlert] = React.useState(false);

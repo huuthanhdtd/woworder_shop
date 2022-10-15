@@ -42,6 +42,7 @@ function Infor({ product }) {
     size: product.size,
     imageUrl: product.imageUrl,
     color: product.color,
+    feeAmount: product.feeAmount,
     isCheck: true,
   };
 
@@ -163,7 +164,7 @@ function Infor({ product }) {
           <span className={styles.prevPrice}>
             {convertCurrency(product.sellPrice)}
           </span>
-          <a
+          {/* <a
             target="_blank"
             rel="noopener noreferrer"
             href={product.url ? product.url : ''}
@@ -171,7 +172,7 @@ function Infor({ product }) {
             <span className={styles.link}>
               <FaLink className={styles.linkIcon} />
             </span>
-          </a>
+          </a> */}
         </span>
         <div
           className={clsx(styles.optionBox, {

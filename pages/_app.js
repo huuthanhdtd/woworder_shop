@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }) => {
           <Layout categories={categories}>
             <div
               style={{
-                marginTop: router.pathname === '/checkouts/[id]' ? 0 : '155px',
+                marginTop: router.pathname === '/checkouts' ? 0 : '155px',
               }}
             >
               <Component {...pageProps} />

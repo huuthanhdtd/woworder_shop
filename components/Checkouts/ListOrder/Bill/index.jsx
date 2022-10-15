@@ -1,64 +1,38 @@
 import { Button, Slider, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
-import { AiFillCloseCircle, AiFillTag } from 'react-icons/ai';
 import { convertCurrency } from '../../../../utils/convertCurrency';
-import { useCart } from 'react-use-cart';
-import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
-import Alerts from '../../../Alerts';
+import { Context } from '../../../../constants/Context';
 
 const Bill = ({
-  handleChange,
-  provisionalPrice,
-  coupon,
-  handleRemoveCoupon,
-  login,
-  checked,
-  setAllInforDeliver,
-  allInforDeliver,
+  // coupon,
+  // handleRemoveCoupon,
+  // login,
   objBill,
-  cartCheck,
+  checked,
+  handleFinish,
+  provisionalPrice,
 }) => {
-  const router = useRouter();
-  const { setItems, items } = useCart();
-  const [openSnackbar, setOpenSnackbar] = React.useState({
-    open: false,
-    severity: 'success',
-    message: 'Bạn đã đặt hàng thành công!!',
-  });
-  const newAllInforDeliver = React.useMemo(() => {
-    return { ...allInforDeliver, ...objBill, products: cartCheck };
-  }, [objBill, allInforDeliver]);
-  const handleFinish = () => {
-    setOpenSnackbar({
-      open: true,
-      severity: 'success',
-      message: 'Bạn đã đặt hàng thành công!! 3331132154',
-    });
-    const newItems = items.filter((it) => !it.isCheck);
-    setItems(newItems);
-    setAllInforDeliver(newAllInforDeliver);
-    const time = setTimeout(() => {
-      router.push('/cart');
-    }, 3000);
-    return () => clearTimeout(time);
+  const { setPointUsed } = React.useContext(Context);
+  const handleChange = (event, newValue) => {
+    setPointUsed(newValue);
   };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.bill}>
-        {login && (
-          <Slider
-            disabled={!checked}
-            value={objBill.value}
-            onChange={handleChange}
-            aria-labelledby="point-slider"
-            valueLabelDisplay="on"
-            min={0}
-            max={objBill.maxRewardPoints}
-            className={styles.rangeSlider}
-          />
-        )}
+        {/* {login && ( */}
+        <Slider
+          disabled={!checked}
+          value={objBill.pointUsed}
+          onChange={handleChange}
+          aria-labelledby="point-slider"
+          valueLabelDisplay="on"
+          max={objBill.maxRewardPoints}
+          className={styles.rangeSlider}
+        />
+        {/* )} */}
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Tạm tính</Typography>
           <Typography variant="body2">
@@ -95,6 +69,13 @@ const Bill = ({
           <Typography variant="body2">-{convertCurrency(discount)}</Typography>
         </div> */}
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
+          <Typography variant="body2">Phí đặt hàng </Typography>
+
+          <Typography variant="body2">
+            {convertCurrency(objBill.totalFeeAmount)}
+          </Typography>
+        </div>
+        <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Phí vận chuyển </Typography>
 
           <Typography variant="body2">
@@ -122,7 +103,6 @@ const Bill = ({
           Hoàn tất đơn hàng
         </Button>
       </div>
-      <Alerts state={openSnackbar} setState={setOpenSnackbar} />
     </div>
   );
 };
