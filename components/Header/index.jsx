@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Sliders from './SliderHeaderMiddle';
 import Nav from './Nav';
 
-const Header = ({ categories }) => {
+const Header = ({ categories, userData }) => {
   const statisticalRef = useRef(null);
   const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
@@ -62,6 +62,7 @@ const Header = ({ categories }) => {
           setOpenAccount={setOpenAccount}
           suggestions={suggestions}
           setSuggestions={setSuggestions}
+          userData={userData}
         />
       </div>
       <div

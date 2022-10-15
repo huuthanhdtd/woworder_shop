@@ -1,5 +1,4 @@
 import React from 'react';
-// import Carts from '../../components/Cart';
 import dynamic from 'next/dynamic';
 import { fetchAPI } from '../../lib/api';
 

@@ -1,20 +1,18 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import { IoMdArrowDropup } from 'react-icons/io';
 import { RiCloseFill } from 'react-icons/ri';
 import { Button, TextField } from '@material-ui/core';
-import Link from 'next/link';
+import Login from './Login';
+import LoginSuccess from './loginSuccess';
 
-export default function Account({ openAccount, setOpenAccount, Success }) {
-  const [backUp, setBackUp] = useState(false);
-  const handleBackup = () => {
-    if (backUp === true) {
-      setBackUp(false);
-    } else {
-      setBackUp(true);
-    }
-  };
+export default function Account({
+  openAccount,
+  setOpenAccount,
+  setSuccess,
+  userData,
+}) {
   return (
     <div
       className={clsx(styles.showAccount, {
@@ -24,95 +22,16 @@ export default function Account({ openAccount, setOpenAccount, Success }) {
       <div className={styles.dropUp}>
         <IoMdArrowDropup />
       </div>
-      {Success == false ? (
-        <div className={styles.account}>
-          <div
-            className={clsx(styles.one, { [styles.active]: backUp === false })}
-          >
-            <div className={styles.headerAccount}>
-              <h3>ĐĂNG NHẬP TÀI KHOẢN</h3>
-              <h5>Nhập email và mật khẩu của bạn:</h5>
-            </div>
-            <div className={styles.formLogin}>
-              <TextField
-                variant="outlined"
-                label="Email"
-                size="small"
-                className={styles.input}
-              />
-              <TextField
-                variant="outlined"
-                label="Mật khẩu"
-                size="small"
-                className={styles.input}
-              />
-              <div className={styles.recap}>
-                This site is protected by reCAPTCHA and the Google Privacy
-                Policy and Terms of Service apply.
-              </div>
-              <div className={styles.ButtonLogin}>
-                <Button>ĐĂNG NHẬP</Button>
-              </div>
-              <div className={styles.siteAccount}>
-                <div onClick={() => setOpenAccount(false)}>
-                  Khách hàng mới?
-                  <Link href="/account/register"> Tạo tài khoản</Link>
-                </div>
-                <div className={styles.backup}>
-                  Quên mật khẩu?{' '}
-                  <span onClick={handleBackup}>Khôi Phục mật khẩu</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={clsx(styles.two, { [styles.active]: backUp === true })}
-          >
-            <div className={styles.FormBackUp}>
-              <div className={styles.headerTitle}>
-                <h3>KHÔI PHỤC MẬT KHẨU</h3>
-                <h5>Nhập email của bạn:</h5>
-              </div>
-              <div className={styles.BackUpForm}>
-                <TextField
-                  variant="outlined"
-                  label="email"
-                  className={styles.inputBackup}
-                  size="small"
-                />
-              </div>
-              <div className={styles.recap}>
-                This site is protected by reCAPTCHA and the Google Privacy
-                Policy and Terms of Service apply.
-              </div>
-              <div className={styles.buttonbackup}>
-                <Button>Khôi phục</Button>
-              </div>
-              <div className={styles.siteAccount}>
-                <div className={styles.backup}>
-                  Bạn đã nhớ mật khẩu?
-                  <span onClick={handleBackup}> Trở về đăng nhập</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {userData ? (
+        <>
+          <LoginSuccess
+            setSuccess={setSuccess}
+            setOpenAccount={setOpenAccount}
+            userData={userData}
+          />
+        </>
       ) : (
-        <div className={styles.loginSuccess}>
-          <div className={styles.titleLogin}>
-            <p>Thông tin tài khoản</p>
-          </div>
-          <div>Quyn le</div>
-          <ul>
-            <li>
-              <Link href="/account">Tài khoản của tôi</Link>
-            </li>
-            <li>
-              <Link href="/account/address">Danh sách địa chỉ</Link>
-            </li>
-            <li>Đăng xuất</li>
-          </ul>
-        </div>
+        <Login setSuccess={setSuccess} setOpenAccount={setOpenAccount} />
       )}
       <div className={styles.buttonClose}>
         <Button onClick={() => setOpenAccount(false)}>

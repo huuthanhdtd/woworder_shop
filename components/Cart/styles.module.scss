@@ -198,11 +198,13 @@
           text-align: left;
         }
       }
-      .pay {
-        width: 100%;
-        background-color: var(--primary-color-);
-        color: #ffffff;
-        height: 50px;
+      a {
+        .pay {
+          width: 100%;
+          background-color: var(--primary-color-);
+          color: #ffffff;
+          height: 50px;
+        }
       }
     }
   }

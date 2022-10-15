@@ -1,16 +1,8 @@
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-} from '@material-ui/core';
-import Link from 'next/link';
+import { Button, Grid, Link } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../utils/convertCurrency';
-import Loading from '../Loading';
 import GridList from './GridList';
 import styles from './styles.module.scss';
 
@@ -26,27 +18,20 @@ export default function Carts() {
   } = useCart();
   const [checked, setChecked] = useState([]);
   const [total, setTotal] = useState([]);
-  const handlePush = () => {
-    if (items.length > 0) {
-      router.push({
-        pathname: '/checkouts/1',
-      });
-    } else {
-      return;
-    }
-  };
   const filprice = items.filter((item) => item.isCheck === true);
   useEffect(() => {
     const filprices = filprice.map((data) => data.price);
     const filamount = filprice.map((data) => data.quantity);
     let sum = 0;
     for (let i = 0; i < filprices.length; i++) {
-      Number(filprices[i]);
       sum += Number(filprices[i] * filamount[i]);
     }
     setTotal(sum);
   }, [checked, cartTotal, items]);
-
+  const userData = useMemo(
+    () => localStorage.getItem('USER_INFOR'),
+    [router.query.searchTerm]
+  );
   return (
     <div className={styles.carts}>
       <div className={styles.breadcrumb_shop}>
@@ -77,9 +62,17 @@ export default function Carts() {
             </li>
             <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
           </ul>
-          <Button className={styles.pay} onClick={handlePush}>
-            Thanh toán
-          </Button>
+          <Link
+            href={
+              userData
+                ? checked.length > 0
+                  ? '/checkouts'
+                  : '#'
+                : '/account/login'
+            }
+          >
+            <Button className={styles.pay}>Thanh toán</Button>
+          </Link>
         </Grid>
       </Grid>
     </div>

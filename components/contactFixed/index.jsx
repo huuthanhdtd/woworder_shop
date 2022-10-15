@@ -11,7 +11,7 @@ import Link from 'next/link';
 export default function ContactFixed() {
   const contact = [
     {
-      name: 'gọi ngay cho happy mom',
+      name: 'gọi ngay cho Khánh Bùi',
       icon: <AiFillPhone fontSize={20} />,
       link: 'tel:0987965512',
     },
@@ -21,7 +21,7 @@ export default function ContactFixed() {
       link: 'http://zalo.me/0352998934',
     },
     {
-      name: 'đóng góp ý kiến giao diện cho Happy Mom',
+      name: 'đóng góp ý kiến giao diện cho Khánh Bùi',
       icon: <GoMail fontSize={20} />,
       link: 'mailto:contact@gmail.com ',
     },

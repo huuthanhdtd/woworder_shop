@@ -1,0 +1,36 @@
+.loginSuccess {
+  position: relative;
+  overflow: hidden;
+  width: 260px;
+  padding: 20px 20px;
+  .titleLogin {
+    position: relative;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: center;
+    p {
+      font-size: 18px;
+      color: var(--primary-color-);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+  ul {
+    margin: 10px 0;
+    li {
+      cursor: pointer;
+      margin: 5px 0;
+      a {
+        color: #000;
+        &:hover {
+          color: var(--primary-color-);
+        }
+      }
+      &:hover {
+        color: var(--primary-color-);
+      }
+    }
+  }
+}

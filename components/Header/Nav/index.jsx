@@ -35,13 +35,18 @@ export default function Nav({
 }) {
   const { totalItems } = useCart();
   const router = useRouter();
-  let Success = true;
   const { width } = useWindowSize();
   const [searchTerm, setSearchTerm] = useState('');
   const [wid, setWid] = useState();
+  const [userData, setUserData] = useState();
   useEffect(() => {
     setWid(width);
   }, [width]);
+  console.log(openAccount);
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('USER_INFOR'));
+    setUserData(userData);
+  }, [openAccount]);
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -82,6 +87,8 @@ export default function Nav({
     setOpenCart(false);
     setOpenNav(false);
   };
+
+  useEffect(() => {}, [suggestions]);
   return (
     <div className={styles.nav}>
       <div className={styles.menu} onClick={handleOpen}>
@@ -109,20 +116,13 @@ export default function Nav({
       />
       <div className={styles.wrap}>
         <div className={styles.account}>
-          {Success === false ? (
-            <div className={styles.beforeCart} onClick={handleAccount}>
-              <div className={styles.iconAccount}>
-                <MdOutlineAccountCircle />
-              </div>
-              <div className={styles.nameAccount}>Tài khoản</div>
-            </div>
-          ) : (
+          {userData ? (
             <div className={styles.loginSuccess} onClick={handleAccount}>
               {wid >= 900 ? (
                 <>
                   <div>Tài khoản</div>
                   <div>
-                    Quyn le
+                    {userData.firstname} {userData.lastname}
                     <span>
                       <MdOutlineKeyboardArrowDown />
                     </span>
@@ -134,6 +134,13 @@ export default function Nav({
                 </>
               )}
             </div>
+          ) : (
+            <div className={styles.beforeCart} onClick={handleAccount}>
+              <div className={styles.iconAccount}>
+                <MdOutlineAccountCircle />
+              </div>
+              <div className={styles.nameAccount}>Tài khoản</div>
+            </div>
           )}
 
           <Account
@@ -141,7 +148,7 @@ export default function Nav({
             setOpenNav={setOpenNav}
             openAccount={openAccount}
             setOpenAccount={setOpenAccount}
-            Success={Success}
+            userData={userData}
           />
         </div>
         <div className={styles.cart}>
