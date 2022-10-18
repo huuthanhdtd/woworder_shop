@@ -1,38 +1,28 @@
 import { Button, Link, TextField } from '@material-ui/core';
+import axios from 'axios';
 import clsx from 'clsx';
 import React, { useState } from 'react';
+import { logIn } from '../../../../../../store/actions/auth';
 import styles from './styles.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function FormLogin({ backUp, setBackUp, setOpenAccount }) {
+  const dispatch = useDispatch();
+
   const [validationMsg, setValidationMsg] = useState({});
   const [formValue, setFormValue] = useState({
-    account: '',
+    codeOrUsername: '',
     password: '',
   });
-  const form = {
-    address: 'hoa vang da nang',
-    city: 'DDN',
-    company: 'Tipici',
-    districts: 'Hòa Vang',
-    email: 'huy@gmail.com',
-    firstname: 'Tran',
-    lastname: 'Quang Huy',
-    nation: 'VN',
-    phone: '0909000000',
-    rewardPoint: 300,
-    wards: 'Hòa Khương',
-    customerCode: 'M90C90',
-  };
-
-  const { account, password } = formValue;
+  const { codeOrUsername, password } = formValue;
   const handleOnChange = (e) => {
     let { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
   };
   const validatorAll = () => {
     const msg = {};
-    if (account.length <= 0) {
-      msg.account = 'vui lòng nhập tài khoản';
+    if (codeOrUsername.length <= 0) {
+      msg.codeOrUsername = 'vui lòng nhập tài khoản';
     }
     if (password.length <= 0) {
       msg.password = 'vui lòng nhập mât khẩu';
@@ -41,12 +31,12 @@ export default function FormLogin({ backUp, setBackUp, setOpenAccount }) {
     if (Object.keys(msg).length > 0) return false;
     return true;
   };
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const valid = validatorAll();
     if (!valid) return;
     if (valid) {
+      dispatch(logIn(formValue));
       setOpenAccount(false);
-      localStorage.setItem('USER_INFOR', JSON.stringify(form));
     }
   };
   return (
@@ -59,16 +49,16 @@ export default function FormLogin({ backUp, setBackUp, setOpenAccount }) {
         <TextField
           variant="outlined"
           label="Email"
-          name="account"
+          name="codeOrUsername"
           size="small"
-          value={account || ''}
+          value={codeOrUsername || ''}
           onChange={handleOnChange}
           className={styles.input}
           style={{
-            marginBottom: `${validationMsg.account ? '0' : '15px'}`,
+            marginBottom: `${validationMsg.codeOrUsername ? '0' : '15px'}`,
           }}
         />
-        <div className={styles.err}>{validationMsg.account}</div>
+        <div className={styles.err}>{validationMsg.codeOrUsername}</div>
         <TextField
           type="password"
           variant="outlined"

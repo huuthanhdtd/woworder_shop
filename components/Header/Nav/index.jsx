@@ -17,6 +17,7 @@ import Account from './Account/Account';
 import Search from './Search';
 import clsx from 'clsx';
 import { useWindowSize } from 'react-use';
+import { useSelector } from 'react-redux';
 const Cart = dynamic(() => import('./Cart/Cart'), {
   ssr: false,
 });
@@ -33,19 +34,21 @@ export default function Nav({
   openCart,
   setOpenCart,
 }) {
+  const { auth, customer } = useSelector((state) => state);
+  console.log(customer.user.item.name);
   const { totalItems } = useCart();
   const router = useRouter();
   const { width } = useWindowSize();
   const [searchTerm, setSearchTerm] = useState('');
   const [wid, setWid] = useState();
-  const [userData, setUserData] = useState();
+  // const [userData, setUserData] = useState();
   useEffect(() => {
     setWid(width);
   }, [width]);
-  useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('USER_INFOR'));
-    setUserData(userData);
-  }, [openAccount]);
+  // useEffect(() => {
+  //   const userData = JSON.parse(localStorage.getItem('USER_INFOR'));
+  //   setUserData(userData);
+  // }, [openAccount]);
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);
@@ -113,13 +116,13 @@ export default function Nav({
       />
       <div className={styles.wrap}>
         <div className={styles.account}>
-          {userData ? (
+          {auth.token !== null ? (
             <div className={styles.loginSuccess} onClick={handleAccount}>
               {wid >= 900 ? (
                 <>
                   <div>Tài khoản</div>
                   <div>
-                    {userData.firstname} {userData.lastname}
+                    {customer.user.item.name}
                     <span>
                       <MdOutlineKeyboardArrowDown />
                     </span>
@@ -145,7 +148,8 @@ export default function Nav({
             setOpenNav={setOpenNav}
             openAccount={openAccount}
             setOpenAccount={setOpenAccount}
-            userData={userData}
+            auth={auth}
+            name={customer.user.item.name}
           />
         </div>
         <div className={styles.cart}>

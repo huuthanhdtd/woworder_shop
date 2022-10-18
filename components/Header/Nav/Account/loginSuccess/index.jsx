@@ -1,11 +1,15 @@
 import { Link } from '@material-ui/core';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { myAccount } from '../../../../../constants/commonData';
+import { logOut } from '../../../../../store/actions/auth';
 import styles from './styles.module.scss';
 
-export default function LoginSuccess({ userData, setOpenAccount }) {
+export default function LoginSuccess({ setOpenAccount, name }) {
+  console.log(name);
+  const dispatch = useDispatch();
   const Logout = () => {
-    localStorage.removeItem('USER_INFOR');
+    dispatch(logOut());
     setOpenAccount(false);
   };
   return (
@@ -13,9 +17,7 @@ export default function LoginSuccess({ userData, setOpenAccount }) {
       <div className={styles.titleLogin}>
         <p>Thông tin tài khoản</p>
       </div>
-      <div>
-        {userData.firstname} {userData.lastname}
-      </div>
+      <div>{name}</div>
       <ul>
         {myAccount.slice(0, 3).map((data, index) => (
           <li key={index}>

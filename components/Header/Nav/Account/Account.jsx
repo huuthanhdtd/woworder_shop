@@ -11,7 +11,8 @@ export default function Account({
   openAccount,
   setOpenAccount,
   setSuccess,
-  userData,
+  auth,
+  name,
 }) {
   return (
     <div
@@ -22,12 +23,12 @@ export default function Account({
       <div className={styles.dropUp}>
         <IoMdArrowDropup />
       </div>
-      {userData ? (
+      {auth.token !== null ? (
         <>
           <LoginSuccess
             setSuccess={setSuccess}
             setOpenAccount={setOpenAccount}
-            userData={userData}
+            name={name}
           />
         </>
       ) : (
