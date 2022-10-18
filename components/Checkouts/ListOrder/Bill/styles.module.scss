@@ -1,3 +1,4 @@
+$QuicksandBold: 'Quick Sand Bold';
 .wrapper {
   .bill {
     padding: 10px 18px;
@@ -12,6 +13,16 @@
       p {
         font-size: 13px;
         font-family: 'Mulish';
+      }
+      .proviPrice,
+      .feePrice,
+      .discountPrice,
+      .deliPrice {
+        font-family: $QuicksandBold;
+        color: var(--primary-color-);
+      }
+      .discountPrice {
+        color: var(--price-color-);
       }
     }
     .prevPrice {
@@ -60,14 +71,9 @@
       font-size: 13px;
     }
     .totalPrice {
-      font-family: 'Quick Sand Bold';
+      font-family: $QuicksandBold;
       font-size: 24px;
-      span {
-        font-family: 'Mulish';
-
-        font-size: 13px;
-        margin-right: 10px;
-      }
+      color: var(--price-color-);
     }
   }
   .boxSubmit {

@@ -35,13 +35,13 @@ const Bill = ({
         {/* )} */}
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Tạm tính</Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" className={styles.proviPrice}>
             {convertCurrency(provisionalPrice)}
           </Typography>
         </div>
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Giảm giá điểm thưởng</Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" className={styles.discountPrice}>
             -{convertCurrency(objBill.discount)}
           </Typography>
         </div>
@@ -71,14 +71,14 @@ const Bill = ({
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Phí đặt hàng </Typography>
 
-          <Typography variant="body2">
+          <Typography variant="body2" className={styles.feePrice}>
             {convertCurrency(objBill.totalFeeAmount)}
           </Typography>
         </div>
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Phí vận chuyển </Typography>
 
-          <Typography variant="body2">
+          <Typography variant="body2" className={styles.deliPrice}>
             {convertCurrency(objBill.feeShip)}
           </Typography>
         </div>
@@ -87,7 +87,6 @@ const Bill = ({
       <div className={styles.total}>
         <Typography className={styles.subtitle}>Tổng cộng</Typography>
         <Typography className={styles.totalPrice}>
-          <span>vnd</span>
           {convertCurrency(objBill.totalPrice)}
         </Typography>
       </div>

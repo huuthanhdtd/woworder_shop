@@ -9,7 +9,7 @@ import {
 import Image from 'next/image';
 import React from 'react';
 import { BiLink } from 'react-icons/bi';
-import { BsCartPlus, BsFacebook } from 'react-icons/bs';
+import { BsCartPlus, BsCheck, BsFacebook } from 'react-icons/bs';
 import { convertCurrency } from '../../../utils/convertCurrency';
 import { upperFirstLetter } from '../../../utils/styleText';
 import Messenger from '../../../assets/image/messenger.svg';
@@ -17,7 +17,6 @@ import Label from '../../../assets/image/label2.svg';
 import Hot from '../../../assets//image/hot.svg';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
-import { useEffect } from 'react';
 
 const InformationBox = ({
   product,
@@ -27,14 +26,14 @@ const InformationBox = ({
   handleAddCart,
   productInfor,
   setProductInfor,
-  firstProductInfor,
+  // firstProductInfor,
 }) => {
   const [colorActive, setColorActive] = React.useState(
     product?.variation?.colors && product?.variation?.colors[0]
   );
   // const [sizeActive, setSizeActive] = React.useState();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (product?.variation?.colors) {
       setColorActive(product?.variation?.colors[0]);
       // setSizeActive(product?.variation?.colors[0].sizes[0]);
@@ -97,23 +96,31 @@ const InformationBox = ({
             <div className={styles.boxColors}>
               {product?.variation?.colors ? (
                 product?.variation?.colors.map((item, idx) => (
-                  <span
-                    onClick={() => handleChangeColor(item)}
-                    key={idx}
-                    className={clsx(styles.colorsItem, {
+                  <div
+                    className={clsx(styles.type, {
                       [styles.colorsItemActive]:
                         productInfor.color === item.name,
                     })}
+                    key={idx}
                   >
-                    {item.name}
-                  </span>
+                    <span
+                      onClick={() => handleChangeColor(item)}
+                      className={styles.colorsItem}
+                    >
+                      {item.name}
+                    </span>
+                    {productInfor.color === item.name && (
+                      <BsCheck className={styles.iconChecked} />
+                    )}
+                  </div>
                 ))
               ) : product?.color ? (
-                <span
-                  className={clsx(styles.colorsItem, styles.colorsItemActive)}
-                >
-                  {product?.color}
-                </span>
+                <div className={clsx(styles.type, styles.colorsItemActive)}>
+                  <span className={clsx(styles.colorsItem)}>
+                    {product?.color}
+                  </span>
+                  <BsCheck className={styles.iconChecked} />
+                </div>
               ) : (
                 ''
               )}
@@ -137,6 +144,9 @@ const InformationBox = ({
                     onClick={() => handleChangeSize(att)}
                   >
                     {att.name}
+                    {productInfor.size === att.size && (
+                      <BsCheck className={styles.checked} />
+                    )}
                   </Button>
                 ))
               ) : product?.variation?.sizes ? (
@@ -149,11 +159,15 @@ const InformationBox = ({
                     onClick={() => handleChangeSize(item)}
                   >
                     {item.name}
+                    {productInfor.size === product.size && (
+                      <BsCheck className={styles.checked} />
+                    )}
                   </Button>
                 ))
               ) : product?.size ? (
                 <Button className={clsx(styles.size, styles.active)}>
                   {product?.size}
+                  <BsCheck className={styles.checked} />
                 </Button>
               ) : (
                 ''

@@ -2,7 +2,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import { createContext } from 'react';
 import { fetchAPI } from '../lib/api';
-import { getStrapiMedia } from '../lib/media';
+// import { getStrapiMedia } from '../lib/media';
 import Layout from '../components/layout';
 import '../assets/css/style.css';
 import '../assets/css/slick.css';
@@ -11,6 +11,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useRouter } from 'next/router';
 import { CartProvider } from 'react-use-cart';
 import { setProductViewed } from '../utils/localstorage';
+import { Provider } from 'react-redux';
+import { store, persistor } from '../store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({});
@@ -27,19 +30,23 @@ const MyApp = ({ Component, pageProps }) => {
           // href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>
-      <GlobalContext.Provider value={global.attributes}>
-        <CartProvider>
-          <Layout categories={categories}>
-            <div
-              style={{
-                marginTop: router.pathname === '/checkouts' ? 0 : '155px',
-              }}
-            >
-              <Component {...pageProps} />
-            </div>
-          </Layout>
-        </CartProvider>
-      </GlobalContext.Provider>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <GlobalContext.Provider value={global.attributes}>
+            <CartProvider>
+              <Layout categories={categories}>
+                <div
+                  style={{
+                    marginTop: router.pathname === '/checkouts' ? 0 : '155px',
+                  }}
+                >
+                  <Component {...pageProps} />
+                </div>
+              </Layout>
+            </CartProvider>
+          </GlobalContext.Provider>
+        </PersistGate>
+      </Provider>
     </>
   );
 };

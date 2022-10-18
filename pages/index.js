@@ -30,9 +30,6 @@ export const getStaticProps = async () => {
     limit: 8,
     page: 1,
     category: '',
-    populate: {
-      sort: { id: 'ASC', name: 'DESC' },
-    },
   });
 
   return {

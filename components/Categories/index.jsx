@@ -12,7 +12,6 @@ const CategoriesPage = ({ products, category }) => {
   const [checked, setChecked] = useState([]);
   const [page, setPage] = React.useState(1);
   const [perPage, setPerPage] = React.useState(8);
-  const router = useRouter();
   /* formPrice value */
   const [formPrice, setFormPrice] = useState({ priceFirst: '', priceLast: '' });
   const { priceFirst, priceLast } = formPrice;
@@ -57,6 +56,8 @@ const CategoriesPage = ({ products, category }) => {
         setOpen={setOpen}
         filters={filters}
         setFilters={setFilters}
+        formPrice={formPrice}
+        setFormPrice={setFormPrice}
       />
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item lg={11} md={12} sm={12} xs={12} className={styles.tabBar}>

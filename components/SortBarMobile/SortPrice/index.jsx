@@ -8,6 +8,8 @@ export default function SortPrice({
   formPriceValues,
   setFilters,
   filters,
+  formPrice,
+  setFormPrice,
 }) {
   const [msg, setmsg] = React.useState('');
   const { prices } = filters;
@@ -19,7 +21,7 @@ export default function SortPrice({
     if (e.target.value.length == 10) return false;
     let { name, value } = e.target;
     value = Number(value);
-    setFilters({ ...filters, prices: { ...prices, [name]: value } });
+    setFormPrice({ ...formPrice, [name]: value });
   };
   // useEffect(() => {
   //   setmsg('');
@@ -38,7 +40,7 @@ export default function SortPrice({
             variant="outlined"
             name="priceFirst"
             label="Từ"
-            value={prices.priceFirst || ''}
+            value={formPrice.priceFirst || ''}
             onChange={(e) => handleOnChange(e)}
             size="small"
           />
@@ -49,7 +51,7 @@ export default function SortPrice({
             variant="outlined"
             name="priceLast"
             label="Đến"
-            value={prices.priceLast || ''}
+            value={formPrice.priceLast || ''}
             onChange={(e) => handleOnChange(e)}
             size="small"
           />

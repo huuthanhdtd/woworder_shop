@@ -2,7 +2,7 @@ import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { BsShieldFillPlus } from 'react-icons/bs';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { convertCurrency } from '../../../utils/convertCurrency';
+import { convertCurrency } from '../../../../utils/convertCurrency';
 import Product from '../Product';
 import styles from './styles.module.scss';
 const Order = ({ items, cartTotal, idx }) => {
@@ -33,10 +33,11 @@ const Order = ({ items, cartTotal, idx }) => {
         className={styles.boxProducts}
         style={{
           height:
-            isLoadmore.isLoad && idx === isLoadmore.idx ? length * 80 : 160,
+            isLoadmore.isLoad && idx === isLoadmore.idx ? length * 80 : 170,
         }}
+        suppressHydrationWarning
       >
-        {items?.slice(3, 10).map((it, idx) => (
+        {items.map((it, idx) => (
           <Product key={idx} item={it} />
         ))}
       </div>
@@ -61,7 +62,9 @@ const Order = ({ items, cartTotal, idx }) => {
         <div className={styles.boxTotal}>
           <BsShieldFillPlus className={styles.icon} />
           <span className={styles.attTotal}>Tổng số tiền:</span>
-          <span className={styles.costTotal}>{convertCurrency(cartTotal)}</span>
+          <span className={styles.costTotal} suppressHydrationWarning>
+            {convertCurrency(cartTotal)}
+          </span>
         </div>
 
         <div className={styles.actions}>

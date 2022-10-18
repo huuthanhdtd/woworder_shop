@@ -6,7 +6,8 @@ import ListOrder from './ListOrder';
 // import ModalCheckouts from './Modal';
 import { useCart } from 'react-use-cart';
 import { Context } from '../../constants/Context';
-import Alerts from '../Alerts';
+// import Alerts from '../Alerts';
+import Notify from './Notify';
 
 // const coupons = [
 //   {
@@ -43,18 +44,20 @@ const CheckoutDetail = ({ userData }) => {
   // const [coupon, setCoupon] = React.useState([]);
 
   const { pointUsed, router } = React.useContext(Context);
-  const [isPopup, setPopup] = React.useState(false);
+  // const [isPopup, setPopup] = React.useState(false);
+  const [isNotify, setNotify] = React.useState(false);
+
   const [allInforDeliver, setAllInforDeliver] = React.useState({
     ...userData,
     payment: 'cash',
   });
   const [totalFeeAmount, setTotalFeeAmount] = React.useState(0);
   const [cartsPrice, setTotal] = React.useState(0);
-  const [openSnackbar, setOpenSnackbar] = React.useState({
-    open: false,
-    severity: 'success',
-    message: 'Bạn đã đặt hàng thành công!!',
-  });
+  // const [openSnackbar, setOpenSnackbar] = React.useState({
+  //   open: false,
+  //   severity: 'success',
+  //   message: 'Bạn đã đặt hàng thành công!!',
+  // });
 
   const { items, setItems } = useCart();
 
@@ -111,26 +114,26 @@ const CheckoutDetail = ({ userData }) => {
     });
   };
 
-  const handleShowPopup = React.useCallback(() => {
-    setPopup(!isPopup);
-  }, [isPopup]);
-
   const handleFinish = () => {
     const newItems = items.filter((it) => !it.isCheck);
     setItems(newItems);
     setAllInforDeliver(newAllInforDeliver);
-    setOpenSnackbar({
-      open: true,
-      severity: 'success',
-      message: 'Bạn đã đặt hàng thành công!! 3331132154',
-    });
+    // setOpenSnackbar({
+    //   open: true,
+    //   severity: 'success',
+    //   message: 'Bạn đã đặt hàng thành công!',
+    // });
+    setNotify(!isNotify);
     const time = setTimeout(() => {
       router.push('/');
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(time);
   };
-
   // console.log(allInforDeliver);
+
+  // const handleShowPopup = React.useCallback(() => {
+  //   setPopup(!isPopup);
+  // }, [isPopup]);
 
   // const handleLogin = React.useCallback(() => {
   //   setLogin(!login);
@@ -162,8 +165,9 @@ const CheckoutDetail = ({ userData }) => {
         coupons={coupons}
         showDetail={showDetail}
       /> */}
+      <Notify isNotify={isNotify} />
       <div className={styles.root}>
-        <Alerts state={openSnackbar} setState={setOpenSnackbar} />
+        {/* <Alerts state={openSnackbar} setState={setOpenSnackbar} /> */}
 
         <div className={styles.container}>
           <div className={styles.left}>
@@ -183,8 +187,8 @@ const CheckoutDetail = ({ userData }) => {
               cartCheck={cartCheck}
               handleFinish={handleFinish}
               allInforDeliver={allInforDeliver}
-              handleShowPopup={handleShowPopup}
               setAllInforDeliver={setAllInforDeliver}
+              // handleShowPopup={handleShowPopup}
               // login={login}
               // coupon={coupon}
               // dataCoupon={coupons}

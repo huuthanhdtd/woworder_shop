@@ -7,10 +7,6 @@
   background-color: white;
   border-radius: 5px;
   border: 1px solid #ebebed;
-  .active {
-    background-color: var(--primary-color-);
-    color: white;
-  }
   .image {
     height: 400px;
     width: 250px;
@@ -72,20 +68,44 @@
     margin: 10px 0;
     margin-bottom: 20px;
     .boxColors {
-      .colorsItem {
-        padding: 2px 5px;
-        border-radius: 5px;
-        cursor: pointer;
+      .type {
+        position: relative;
         border: 1px solid var(--border-gray-);
-        background-color: transparent;
-        color: black;
-        margin: 0 2px;
-        font-size: 16px;
+        border-radius: 3px;
+        padding: 5px 8px;
+        margin: 2px 1px;
+        margin-right: 4px;
+        .colorsItem {
+          cursor: pointer;
+          background-color: transparent;
+          color: black;
+          font-size: 16px;
+        }
+        .iconChecked {
+          color: #fff;
+          font-size: 16px;
+          position: absolute;
+          transform: translateY(40%);
+          right: -3px;
+          z-index: 1;
+          bottom: 3px;
+        }
       }
       .colorsItemActive {
-        border: 1px solid transparent;
-        background-color: var(--primary-color-);
-        color: #fff;
+        border: 1px solid var(--primary-color-);
+        .colorsItem {
+          color: var(--primary-color-);
+        }
+        &::after {
+          content: '';
+          border: 10px solid;
+          border-color: transparent var(--primary-color-) var(--primary-color-)
+            transparent;
+          position: absolute;
+          border-bottom-right-radius: 3px;
+          right: -1px;
+          bottom: -1px;
+        }
       }
     }
     .boxSizes {
@@ -93,10 +113,34 @@
         height: 40px;
         min-width: 40px;
         border: 1px solid #c4c4c4;
+        margin: 2px 1px 2px;
         margin-right: 5px;
         font-size: 12px;
         font-weight: bold;
         text-transform: none;
+        overflow: hidden;
+        .checked {
+          position: absolute;
+          right: -3px;
+          bottom: -2px;
+          color: #fff;
+          z-index: 1;
+          font-size: 16px;
+        }
+      }
+      .active {
+        border: 1px solid var(--primary-color-);
+        color: var(--primary-color-);
+        &::after {
+          content: '';
+          border: 10px solid;
+          border-color: transparent var(--primary-color-) var(--primary-color-)
+            transparent;
+          position: absolute;
+          border-bottom-right-radius: 3px;
+          right: -1px;
+          bottom: -1px;
+        }
       }
     }
   }

@@ -1,9 +1,9 @@
 import { Link, Typography } from '@material-ui/core';
 import React from 'react';
 import styles from './styles.module.scss';
-import LayoutAccount from '../LayoutAccount';
+import LayoutAccount from '../../LayoutAccount';
 
-const MyAcount = () => {
+const MyAccount = () => {
   return (
     <LayoutAccount title={'Tài khoản của tôi'}>
       <div className={styles.inforAccount}>
@@ -26,4 +26,4 @@ const MyAcount = () => {
   );
 };
 
-export default MyAcount;
+export default MyAccount;

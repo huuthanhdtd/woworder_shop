@@ -18,7 +18,7 @@ const ListOrder = ({
   // handleLogin,
   handleFinish,
   allInforDeliver,
-  handleShowPopup,
+  // handleShowPopup,
   setAllInforDeliver,
   // coupon,
   // dataCoupon,
@@ -86,7 +86,7 @@ const ListOrder = ({
                     it.color ? `${it.color}` : ''
                   } ${it.size ? `${it.size}` : ''}`}</Typography>
                 </div>
-                <Typography variant="body2" className={styles.price}>
+                <Typography variant="body2" className={styles.productPrice}>
                   {`${convertCurrency(it.price)} x ${it.quantity}`}
                 </Typography>
               </div>
@@ -97,7 +97,7 @@ const ListOrder = ({
               checked={isChecked}
               // handleLogin={handleLogin}
               handleChecked={handleChecked}
-              handleShowPopup={handleShowPopup}
+              // handleShowPopup={handleShowPopup}
               rewardPoints={objBill.rewardPoints}
               // dataCoupon={dataCoupon}
             />

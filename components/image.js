@@ -1,25 +1,25 @@
-import { getStrapiMedia } from '../lib/media';
-import NextImage from 'next/image';
+// import { getStrapiMedia } from '../lib/media';
+// import NextImage from 'next/image';
 
-const Image = ({ image, style }) => {
-  const { url, alternativeText, width, height } = image.data.attributes;
+// const Image = ({ image, style }) => {
+//   const { url, alternativeText, width, height } = image.data.attributes;
 
-  // const loader = () => {
-  //   return getStrapiMedia(image)
-  // }
+//   // const loader = () => {
+//   //   return getStrapiMedia(image)
+//   // }
 
-  return (
-    <NextImage
-      // loader={loader}
-      layout="responsive"
-      width={width}
-      height={height}
-      objectFit="contain"
-      src={getStrapiMedia(image)}
-      alt={alternativeText || ''}
-      loading="eager"
-    />
-  );
-};
+//   return (
+//     <NextImage
+//       // loader={loader}
+//       layout="responsive"
+//       width={width}
+//       height={height}
+//       objectFit="contain"
+//       src={getStrapiMedia(image)}
+//       alt={alternativeText || ''}
+//       loading="eager"
+//     />
+//   );
+// };
 
-export default Image;
+// export default Image;

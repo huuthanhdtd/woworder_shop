@@ -50,3 +50,7 @@ export const getUserData = (key) => {
     return items;
   }
 };
+
+export const setLocalStorage = (key, value) => {
+  nextLocalStorage()?.setItem(key, JSON.stringify(value));
+};
