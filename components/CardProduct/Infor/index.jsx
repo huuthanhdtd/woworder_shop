@@ -76,7 +76,10 @@ function Infor({ product }) {
           {
             ...productCart,
             size: sizeSelected.name,
-            id: product.id + sizeSelected.name + colorSelected.name,
+            id: `${product.id}-${sizeSelected.name || ''}-${
+              colorSelected.name || ''
+            }`,
+            productId: product.id,
           },
           qtyValue
         );
