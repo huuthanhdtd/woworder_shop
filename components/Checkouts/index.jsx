@@ -138,7 +138,7 @@ const CheckoutDetail = ({ userData, address }) => {
       customerId: userData.id,
       description: 'Ghi chú đơn hàng',
       products: cartCheck.map((pro) => ({
-        id: spliceString(pro.id, pro.size, pro.color),
+        id: pro.id,
         color: pro.color,
         size: pro.size,
         quantity: pro.quantity,
