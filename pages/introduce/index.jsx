@@ -8,3 +8,10 @@ export default function index() {
     </div>
   );
 }
+export const getStaticProps = async () => {
+  return {
+    props: {
+      category: [],
+    },
+  };
+};

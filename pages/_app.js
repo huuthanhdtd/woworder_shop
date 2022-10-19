@@ -69,13 +69,11 @@ MyApp.getInitialProps = async (ctx) => {
     //     },
     //   },
     // }),
-    fetchAPI(
-      '/stores/709313694365910020/products',
-      { limit: 8, page: 1, category: '' }
-      // {
-      //   populate: '*',
-      // }
-    ),
+    fetchAPI('/stores/709313694365910020/products', {
+      limit: 8,
+      page: 1,
+      category: '',
+    }),
   ]);
 
   // Pass the data to our page via props

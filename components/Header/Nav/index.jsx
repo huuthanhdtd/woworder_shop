@@ -35,20 +35,14 @@ export default function Nav({
   setOpenCart,
 }) {
   const { auth, customer } = useSelector((state) => state);
-  console.log(customer.user.item.name);
   const { totalItems } = useCart();
   const router = useRouter();
   const { width } = useWindowSize();
   const [searchTerm, setSearchTerm] = useState('');
   const [wid, setWid] = useState();
-  // const [userData, setUserData] = useState();
   useEffect(() => {
     setWid(width);
   }, [width]);
-  // useEffect(() => {
-  //   const userData = JSON.parse(localStorage.getItem('USER_INFOR'));
-  //   setUserData(userData);
-  // }, [openAccount]);
   const handleOpen = () => {
     if (openNav === true) {
       setOpenNav(false);

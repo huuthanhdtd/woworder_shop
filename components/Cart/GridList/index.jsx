@@ -1,6 +1,5 @@
 import { Checkbox, FormControlLabel } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import { getItem } from '../../../lib';
+import React, { useEffect } from 'react';
 import Item from './Item';
 import styles from './styles.module.scss';
 
@@ -12,6 +11,8 @@ export default function GridList({
   setChecked,
   updateItemQuantity,
   updateItem,
+  setNote,
+  note,
 }) {
   const handleChangeAll = (isChecked) => {
     if (isChecked) {
@@ -32,7 +33,6 @@ export default function GridList({
       });
     }
   }, [checked]);
-
   const handleChangeItem = (isChecked, id) => {
     const index = checked.indexOf(id);
     if (isChecked) {
@@ -41,7 +41,6 @@ export default function GridList({
       });
     }
     if (isChecked) return setChecked((state) => [...state, id]);
-
     if (!isChecked && index > -1)
       updateItem(id, {
         isCheck: false,
@@ -54,6 +53,9 @@ export default function GridList({
   useEffect(() => {
     handleChangeAll(true);
   }, []);
+  const handleOnChange = (e) => {
+    setNote(e.target.value);
+  };
   return (
     <div className={styles.GridList}>
       <h3>Giỏ hàng của bạn</h3>
@@ -92,7 +94,13 @@ export default function GridList({
           </div>
           <div className={styles.note}>
             <label className={styles.title_label}>Ghi chú đơn hàng</label>
-            <textarea rows={5} className={styles.formControl}></textarea>
+            <textarea
+              rows={5}
+              className={styles.formControl}
+              name="note"
+              value={note || ''}
+              onChange={handleOnChange}
+            ></textarea>
           </div>
           <div className={styles.invoice}></div>
         </div>

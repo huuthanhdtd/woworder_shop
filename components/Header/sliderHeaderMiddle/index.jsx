@@ -12,7 +12,7 @@ export default function Sliders({ categories }) {
   const router = useRouter();
   const [selected, setSelected] = useState('null');
   const sort = useMemo(() => {
-    if (b === undefined) {
+    if (b !== undefined) {
       const SortProduct = categories.items.filter(
         (item) => item.products.length > 0
       );

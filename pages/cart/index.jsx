@@ -1,6 +1,5 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { fetchAPI } from '../../lib/api';
 const Carts = dynamic(() => import('../../components/Cart'), { ssr: false });
 
 export default function index() {
@@ -11,11 +10,9 @@ export default function index() {
   );
 }
 export const getStaticProps = async () => {
-  const categoryRes = await fetchAPI('/stores/products/728247300324853559');
   return {
     props: {
-      category: categoryRes,
+      category: [],
     },
-    revalidate: 1,
   };
 };

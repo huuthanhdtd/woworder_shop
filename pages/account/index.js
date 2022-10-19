@@ -12,19 +12,18 @@ const Account = () => {
 export default Account;
 
 export const getStaticProps = async () => {
-  const categoriesRes = await fetchAPI('/stores/709313694365910020/products', {
-    limit: 8,
-    page: 1,
-    category: '',
-    populate: {
-      sort: { id: 'ASC', name: 'DESC' },
-    },
-  });
-
+  // const categoriesRes = await fetchAPI('/stores/709313694365910020/products', {
+  //   limit: 8,
+  //   page: 1,
+  //   category: '',
+  //   populate: {
+  //     sort: { id: 'ASC', name: 'DESC' },
+  //   },
+  // });
   return {
     props: {
-      categoriesData: categoriesRes,
+      categoriesData: [],
     },
-    revalidate: 1,
+    // revalidate: 1,
   };
 };

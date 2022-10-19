@@ -1,13 +1,12 @@
 import { Button, Grid, Link } from '@material-ui/core';
-import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../utils/convertCurrency';
 import GridList from './GridList';
 import styles from './styles.module.scss';
 
 export default function Carts() {
-  const router = useRouter();
   const {
     items,
     totalItems,
@@ -15,8 +14,11 @@ export default function Carts() {
     updateItemQuantity,
     removeItem,
     updateItem,
+    setCartMetadata,
   } = useCart();
+  const { auth } = useSelector((state) => state);
   const [checked, setChecked] = useState([]);
+  const [note, setNote] = useState('');
   const [total, setTotal] = useState([]);
   const filprice = items.filter((item) => item.isCheck === true);
   useEffect(() => {
@@ -28,10 +30,9 @@ export default function Carts() {
     }
     setTotal(sum);
   }, [checked, cartTotal, items]);
-  const userData = useMemo(
-    () => localStorage.getItem('USER_INFOR'),
-    [router.query.searchTerm]
-  );
+  const handleSubmit = () => {
+    setCartMetadata({ notes: note });
+  };
   return (
     <div className={styles.carts}>
       <div className={styles.breadcrumb_shop}>
@@ -47,6 +48,8 @@ export default function Carts() {
             setChecked={setChecked}
             updateItemQuantity={updateItemQuantity}
             updateItem={updateItem}
+            note={note}
+            setNote={setNote}
           />
         </Grid>
         <Grid md={4} sm={12} xs={12} item className={styles.GridPay}>
@@ -64,14 +67,16 @@ export default function Carts() {
           </ul>
           <Link
             href={
-              userData
+              auth
                 ? checked.length > 0
                   ? '/checkouts'
                   : '#'
                 : '/account/login'
             }
           >
-            <Button className={styles.pay}>Thanh toán</Button>
+            <Button className={styles.pay} onClick={handleSubmit}>
+              Thanh toán
+            </Button>
           </Link>
         </Grid>
       </Grid>
