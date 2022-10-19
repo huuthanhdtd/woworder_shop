@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logInUser } from '../../../lib/services/login';
 import { logIn } from '../../../store/actions/auth';
 import styles from './styles.module.scss';
+import authError from '../../../constants/authError';
 
 const isEmpty = (value) => {
   if (value === null || value === '') return true;
@@ -88,11 +89,7 @@ const Login = () => {
     [codeOrUsername, password]
   );
 
-  const { isLoading, error } = useSelector((state) => state.app);
-  const { user } = useSelector((state) => state.customer);
-  // console.log(isLoading, error);
-  // console.log('user', user);
-  // console.log(errors);
+  const { error } = useSelector((state) => state.app);
   return (
     <Grid container justifyContent="center">
       <Grid item xs={11}>
@@ -130,6 +127,19 @@ const Login = () => {
                     This site is protected by reCAPTCHA and the Google Privacy
                     Policy and Terms of Service apply.
                   </Typography> */}
+                  <Typography
+                    variant="body2"
+                    style={{
+                      color: 'var(--price-color-)',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {error === authError.E_PASSWORD
+                      ? 'Mật khẩu không đúng'
+                      : error === authError.E_UNAUTHORIZED
+                      ? 'Mã hoặc sđt của bạn chưa đúng'
+                      : ''}
+                  </Typography>
                 </>
               ) : (
                 <>
@@ -163,7 +173,7 @@ const Login = () => {
                       </Button>
                       <br />
                       hoặc  */}
-                      <Link href="/account/register">Đăng ký</Link>
+                      {/* <Link href="/account/register">Đăng ký</Link> */}
                     </div>
                   </>
                 ) : (

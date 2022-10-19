@@ -8,6 +8,9 @@ import { useCart } from 'react-use-cart';
 import { Context } from '../../constants/Context';
 // import Alerts from '../Alerts';
 import Notify from './Notify';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkouts } from '../../lib/services/customer';
+import { checkoutsRequest } from '../../store/actions/customer';
 
 // const coupons = [
 //   {
@@ -39,16 +42,18 @@ import Notify from './Notify';
 //   },
 // ];
 
-const CheckoutDetail = ({ userData }) => {
+const CheckoutDetail = ({ userData, address }) => {
   // const [showDetail, setShow] = React.useState(false);
   // const [coupon, setCoupon] = React.useState([]);
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
 
   const { pointUsed, router } = React.useContext(Context);
   // const [isPopup, setPopup] = React.useState(false);
   const [isNotify, setNotify] = React.useState(false);
 
   const [allInforDeliver, setAllInforDeliver] = React.useState({
-    ...userData,
+    ...address,
     payment: 'cash',
   });
   const [totalFeeAmount, setTotalFeeAmount] = React.useState(0);
@@ -114,20 +119,39 @@ const CheckoutDetail = ({ userData }) => {
     });
   };
 
+  const spliceString = (string, first, second) => {
+    const mapObj = {
+      [`${first}`]: '',
+      [`${second}`]: '',
+    };
+    const reg = new RegExp(Object.keys(mapObj).join('|'), 'gi');
+    string = string.replace(reg, function (matched) {
+      return mapObj[matched];
+    });
+    return string;
+  };
   const handleFinish = () => {
     const newItems = items.filter((it) => !it.isCheck);
-    setItems(newItems);
-    setAllInforDeliver(newAllInforDeliver);
-    // setOpenSnackbar({
-    //   open: true,
-    //   severity: 'success',
-    //   message: 'Bạn đã đặt hàng thành công!',
-    // });
-    setNotify(!isNotify);
-    const time = setTimeout(() => {
-      router.push('/');
-    }, 10000);
-    return () => clearTimeout(time);
+    // setItems(newItems);
+    // setAllInforDeliver(newAllInforDeliver);
+    const checkoutsForm = {
+      customerId: userData.id,
+      description: 'Ghi chú đơn hàng',
+      products: cartCheck.map((pro) => ({
+        id: spliceString(pro.id, pro.size, pro.color),
+        color: pro.color,
+        size: pro.size,
+        quantity: pro.quantity,
+      })),
+      deliveryAddressId: userData.addressId,
+    };
+
+    dispatch(checkoutsRequest(checkoutsForm));
+    // setNotify(!isNotify);
+    // router.push('/cart');
+    // const time = setTimeout(() => {
+    // }, 10000);
+    // return () => clearTimeout(time);
   };
   // console.log(allInforDeliver);
 
@@ -155,6 +179,7 @@ const CheckoutDetail = ({ userData }) => {
   // const handleRemoveCoupon = React.useCallback((item) => {
   //   setCoupon((prev) => prev.filter((it) => it.name !== item.name));
   // }, []);
+  // console.log(allInforDeliver);
   return (
     <>
       {/* <ModalCheckouts

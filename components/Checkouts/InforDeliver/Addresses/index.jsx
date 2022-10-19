@@ -10,6 +10,7 @@ const Addresses = ({
   deliver,
   handleChange,
   handleDeliver,
+  allInforDeliver,
   handleChangeInforDeliver,
 }) => {
   return (
@@ -20,15 +21,16 @@ const Addresses = ({
         deliver={deliver}
         handleChange={handleChange}
         handleDeliver={handleDeliver}
+        allInforDeliver={allInforDeliver}
         handleChangeInforDeliver={handleChangeInforDeliver}
       />
-      <Local
+      {/* <Local
         data={data}
         state={state}
         deliver={deliver}
         handleChange={handleChange}
         handleDeliver={handleDeliver}
-      />
+      /> */}
     </div>
   );
 };

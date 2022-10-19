@@ -12,13 +12,12 @@ const Transportation = ({
   state,
   handleChange,
   handleDeliver,
+  allInforDeliver,
   handleChangeInforDeliver,
 }) => {
-  const userData = React.useMemo(() => {
-    const getUserDataaa = getUserData('USER_INFOR');
-    return getUserDataaa;
-  }, []);
-  const [addressInput, setAddressInput] = React.useState(userData?.address);
+  const [addressInput, setAddressInput] = React.useState(
+    allInforDeliver?.address
+  );
   const handleOnChange = (e) => {
     setAddressInput(e.target.value);
     handleChangeInforDeliver('address', e.target.value);

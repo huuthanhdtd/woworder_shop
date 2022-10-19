@@ -19,8 +19,10 @@ export default (state = initialState, action) => {
     case types.GET_CUSTOMER_FAIL:
       return {
         ...state,
-        error: action.payload.error,
+        error: action.payload,
       };
+    case types.LOGOUT_SUCCESS:
+      return initialState;
     default:
       return state;
   }

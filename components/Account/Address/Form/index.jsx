@@ -12,22 +12,29 @@ import { BsFillHouseFill } from 'react-icons/bs';
 import { RiHome8Fill } from 'react-icons/ri';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { ImLocation2, ImPhone } from 'react-icons/im';
-import { citieslist, nations } from '../../../constants/selectListData';
+import { citieslist, nations } from '../../../../constants/selectListData';
+import { useSelector } from 'react-redux';
 
 const Form = ({ submitTitle, cancel }) => {
+  const {
+    user: { included },
+  } = useSelector((state) => state.customer);
   const [form, setForm] = React.useState({
-    address: '',
-    city: '',
-    company: '',
-    districts: '',
-    firstname: '',
-    lastname: '',
-    nation: '',
-    wards: '',
+    fullname: included.addresses[0].name,
+    phone: included.addresses[0].phone,
+    address: included.addresses[0].address,
+    province: included.addresses[0].province,
+    district: included.addresses[0].district,
+    ward: included.addresses[0].ward,
     rewardPoint: 300,
+    // email: '',
+    // company: '',
+    // firstname: '',
+    // nation: '',
   });
+  // console.log(included.addresses[0].address);
   const [addresses, setAddresses] = React.useState({
-    cities: null,
+    cities: citieslist.find((it) => it.symbol === 'VN'),
     districts: null,
     wards: null,
   });
@@ -38,25 +45,32 @@ const Form = ({ submitTitle, cancel }) => {
     (input, e) => {
       const { name, value } = e.target;
       setForm((prev) => ({ ...prev, [input]: value }));
-      if (name === 'nation') {
-        if (value === '') {
-          setAddresses({
-            cities: null,
-            districts: null,
-            wards: null,
-          });
-          return;
-        }
-        setAddresses((prev) => ({
-          ...prev,
-          cities: citieslist.find((it) => it.symbol === value),
-        }));
-      }
+      // if (name === 'nation') {
+      //   if (value === '') {
+      //     setAddresses({
+      //       cities: null,
+      //       districts: null,
+      //       wards: null,
+      //     });
+      //     return;
+      //   }
+      //   setAddresses((prev) => ({
+      //     ...prev,
+      //     cities: citieslist.find((it) => it.symbol === value),
+      //   }));
+      // }
       if (name === 'city') {
         setAddresses((prev) => ({
           ...prev,
           districts: cities.cities.find((it) => it.code === value),
         }));
+        if (value === '') {
+          setAddresses({
+            cities: citieslist.find((it) => it.symbol === 'VN'),
+            districts: null,
+            wards: null,
+          });
+        }
       }
       if (name === 'district') {
         setAddresses((prev) => ({
@@ -72,16 +86,19 @@ const Form = ({ submitTitle, cancel }) => {
     setForm((prev) => ({ ...prev, [input]: value }));
   }, []);
   const handleSubmit = () => {
-    localStorage.setItem('USER_INFOR', JSON.stringify(form));
+    // localStorage.setItem('USER_INFOR', JSON.stringify(form));
   };
+
+  console.log(form);
   return (
     <div className={styles.wrapper}>
       <form action="" className={styles.form}>
-        <TextField
+        {/* <TextField
           onChange={(e) => handleOnchangeForm('firstname', e.target.value)}
           placeholder="Họ"
           variant="outlined"
           className={styles.input}
+          value={form.address || ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
@@ -89,25 +106,13 @@ const Form = ({ submitTitle, cancel }) => {
               </div>
             ),
           }}
-        />
-        <TextField
-          onChange={(e) => handleOnchangeForm('lastname', e.target.value)}
-          placeholder="Tên"
-          variant="outlined"
-          className={styles.input}
-          InputProps={{
-            startAdornment: (
-              <div className={styles.iconStart}>
-                <AiOutlineUser />
-              </div>
-            ),
-          }}
-        />
-        <TextField
+        /> */}
+        {/* <TextField
           onChange={(e) => handleOnchangeForm('company', e.target.value)}
           placeholder="Công ty"
           variant="outlined"
           className={styles.input}
+          value={form.company || ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
@@ -115,16 +120,31 @@ const Form = ({ submitTitle, cancel }) => {
               </div>
             ),
           }}
-        />
-        <TextField
+        /> */}
+        {/* <TextField
           onChange={(e) => handleOnchangeForm('email', e.target.value)}
           placeholder="Email"
           variant="outlined"
           className={styles.input}
+          value={form.email || ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
                 <MdOutlineMailOutline />
+                </div>
+                ),
+              }}
+            /> */}
+        <TextField
+          onChange={(e) => handleOnchangeForm('fullname', e.target.value)}
+          placeholder="Tên"
+          variant="outlined"
+          className={styles.input}
+          value={form.fullname || ''}
+          InputProps={{
+            startAdornment: (
+              <div className={styles.iconStart}>
+                <AiOutlineUser />
               </div>
             ),
           }}
@@ -134,6 +154,7 @@ const Form = ({ submitTitle, cancel }) => {
           placeholder="Địa chỉ"
           variant="outlined"
           className={styles.input}
+          value={form.address || ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
@@ -142,7 +163,7 @@ const Form = ({ submitTitle, cancel }) => {
             ),
           }}
         />
-        <div className={styles.wrapSelect}>
+        {/* <div className={styles.wrapSelect}>
           <div className={styles.iconSelect}>
             <ImLocation2 />
           </div>
@@ -158,7 +179,7 @@ const Form = ({ submitTitle, cancel }) => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
         {cities && (
           <div className={styles.wrapSelect}>
             <div className={styles.iconSelect}>
@@ -167,7 +188,7 @@ const Form = ({ submitTitle, cancel }) => {
             <select
               name="city"
               className={styles.select}
-              onChange={(e) => handleOnchangeAddress('city', e)}
+              onChange={(e) => handleOnchangeAddress('province', e)}
             >
               <option value="">Tỉnh/ thành</option>
               {cities.cities.map((ct, idx) => (
@@ -186,7 +207,7 @@ const Form = ({ submitTitle, cancel }) => {
             <select
               name="district"
               className={styles.select}
-              onChange={(e) => handleOnchangeAddress('districts', e)}
+              onChange={(e) => handleOnchangeAddress('district', e)}
             >
               <option value="">Quận/ huyện</option>
               {districts.districts.map((ct, idx) => (
@@ -205,7 +226,7 @@ const Form = ({ submitTitle, cancel }) => {
             <select
               name="ward"
               className={styles.select}
-              onChange={(e) => handleOnchangeAddress('wards', e)}
+              onChange={(e) => handleOnchangeAddress('ward', e)}
             >
               <option value="">Xã/ phường</option>
               {wards.wards.map((ct, idx) => (
@@ -221,6 +242,7 @@ const Form = ({ submitTitle, cancel }) => {
           placeholder="Sđt"
           variant="outlined"
           className={styles.input}
+          value={form.phone || ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
@@ -229,10 +251,10 @@ const Form = ({ submitTitle, cancel }) => {
             ),
           }}
         />
-        <FormControlLabel
+        {/* <FormControlLabel
           control={<Checkbox size="small" name="checkedA" />}
           label="Đặt làm địa chỉ mặc định."
-        />
+        /> */}
         <div className={styles.boxSubmit}>
           <Button className={styles.submit} onClick={handleSubmit}>
             {submitTitle}

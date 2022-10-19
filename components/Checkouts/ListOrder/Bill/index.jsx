@@ -4,6 +4,7 @@ import React from 'react';
 import { convertCurrency } from '../../../../utils/convertCurrency';
 import styles from './styles.module.scss';
 import { Context } from '../../../../constants/Context';
+import Link from 'next/link';
 
 const Bill = ({
   // coupon,
@@ -91,7 +92,7 @@ const Bill = ({
         </Typography>
       </div>
       <div className={styles.boxSubmit}>
-        <Button variant="text" className={styles.gotoCarts}>
+        <Button href={'/cart'} className={styles.gotoCarts}>
           Giỏ hàng
         </Button>
         <Button

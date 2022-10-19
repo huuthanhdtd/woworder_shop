@@ -17,7 +17,7 @@ const Order = ({ items, cartTotal, idx }) => {
       idx: index,
     });
   };
-  const length = items?.slice(3, 10).length;
+  const length = items.length;
 
   return (
     <div className={styles.orderList}>
@@ -33,7 +33,11 @@ const Order = ({ items, cartTotal, idx }) => {
         className={styles.boxProducts}
         style={{
           height:
-            isLoadmore.isLoad && idx === isLoadmore.idx ? length * 80 : 170,
+            isLoadmore.isLoad && idx === isLoadmore.idx
+              ? length * 80
+              : length > 2
+              ? 170
+              : length * 85,
         }}
         suppressHydrationWarning
       >

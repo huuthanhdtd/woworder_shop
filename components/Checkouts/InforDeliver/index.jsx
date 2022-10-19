@@ -24,28 +24,23 @@ const InforDeliver = ({
   setAllInforDeliver,
   handleChangeInforDeliver,
 }) => {
-  const userData = React.useMemo(() => {
-    const userData = getUserData('USER_INFOR');
-    return userData;
-  }, []);
-
   /* set First data  */
   const firstState = React.useMemo(() => {
-    const cities = userData
-      ? citieslist[0].cities.find((it) => it.code === userData.city)
+    const cities = allInforDeliver
+      ? citieslist[0].cities.find((it) => it.code === allInforDeliver.province)
       : null;
     const districts = cities
-      ? cities.districts.find((it) => it.name === userData.districts)
+      ? cities.districts.find((it) => it.name === allInforDeliver.district)
       : null;
     const wards = districts
-      ? districts.wards.find((it) => it.name === userData.wards)
+      ? districts.wards.find((it) => it.name === allInforDeliver.ward)
       : null;
     return {
       cities,
       districts,
       wards,
     };
-  }, [userData]);
+  }, [allInforDeliver]);
 
   /* List data location city, district, wards */
   const [data, setData] = React.useState({
@@ -64,9 +59,9 @@ const InforDeliver = ({
 
   /*Infor customer */
   const [useFormValues, setUserFormValues] = React.useState({
-    name: userData ? `${userData.firstname} ${userData?.lastname}` : '',
-    email: userData?.email ? userData?.email : '',
-    phone: userData?.phone ? userData?.phone : '',
+    name: allInforDeliver?.name ? `${allInforDeliver.name}` : '',
+    email: allInforDeliver?.email ? allInforDeliver?.email : '',
+    phone: allInforDeliver?.phone ? allInforDeliver?.phone : '',
   });
 
   const [deliver, setDeliver] = React.useState('deliver');
@@ -201,9 +196,7 @@ const InforDeliver = ({
           <AiOutlineUser />
         </div>
         <div className={styles.userInfor}>
-          <Typography variant="body2">
-            {`${allInforDeliver?.firstname} ${allInforDeliver?.lastname}`}
-          </Typography>
+          <Typography variant="body2">{`${allInforDeliver?.name}`}</Typography>
           <Button
             variant="text"
             className={styles.logout}
@@ -260,19 +253,20 @@ const InforDeliver = ({
           deliver={deliver}
           handleChange={handleChange}
           handleDeliver={handleDeliver}
+          allInforDeliver={allInforDeliver}
           handleChangeInforDeliver={handleChangeInforDeliver}
         />
         <Delivery deliver={deliver} data={data} />
-        <Typography variant="body2" className={styles.caption}>
+        {/* <Typography variant="body2" className={styles.caption}>
           Phương thức thanh toán
         </Typography>
         <Payments
           handlePayment={handlePayment}
           payment={payment}
           setAllInforDeliver={setAllInforDeliver}
-        />
+        /> */}
         <div className={styles.boxSubmit}>
-          <Button variant="text" className={styles.gotoCarts}>
+          <Button href="/cart" className={styles.gotoCarts}>
             Giỏ hàng
           </Button>
           <Button

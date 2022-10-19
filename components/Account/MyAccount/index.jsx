@@ -1,9 +1,10 @@
-import { Link, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import styles from './styles.module.scss';
 import LayoutAccount from '../../LayoutAccount';
+import Link from 'next/link';
 
-const MyAccount = () => {
+const MyAccount = ({ user, detail }) => {
   return (
     <LayoutAccount title={'Tài khoản của tôi'}>
       <div className={styles.inforAccount}>
@@ -12,16 +13,22 @@ const MyAccount = () => {
         </Typography>
         <div className={styles.detail}>
           <Typography variant="body1" className={styles.name}>
-            Trần quang huy
+            {user.name}
           </Typography>
-          <Typography variant="body2">quanghuy.tipici@gmail.com</Typography>
-          <Typography variant="body2">Viet Nam</Typography>
-          <Link href="/account/address">Xem địa chỉ</Link>
+          <Typography variant="body1" className={styles.name}>
+            {user.phone}
+          </Typography>
+          <Typography variant="body1" className={styles.name}>
+            {detail.address}
+          </Typography>
+          <Link href={user.facebook}>{user.facebook}</Link>
+          <Typography variant="body2"></Typography>
+          {/* <Link href="/account/address">Xem địa chỉ</Link> */}
         </div>
       </div>
-      <div className={styles.history}>
+      {/* <div className={styles.history}>
         <Typography variant="body2">Bạn chưa mua sản phẩm nào</Typography>
-      </div>
+      </div> */}
     </LayoutAccount>
   );
 };

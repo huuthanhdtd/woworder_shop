@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import * as types from '../../constants/types';
 
 export const logIn = (form) => ({
@@ -5,13 +6,16 @@ export const logIn = (form) => ({
   payload: form,
 });
 
-export const logInSuccess = (token) => ({
+export const logInSuccess = ({ token, user }) => ({
   type: types.LOGIN_SUCCESS,
-  payload: token,
+  payload: { token, user },
 });
-export const logOut = () => ({
-  type: types.LOGOUT,
-});
+export const logOut = () => {
+  Router.push('/');
+  return {
+    type: types.LOGOUT,
+  };
+};
 
 export const logOutSuccess = () => ({
   type: types.LOGOUT_SUCCESS,

@@ -6,7 +6,7 @@ import { logOut } from '../../../../../store/actions/auth';
 import styles from './styles.module.scss';
 
 export default function LoginSuccess({ setOpenAccount, name }) {
-  console.log(name);
+  // console.log(name);
   const dispatch = useDispatch();
   const Logout = () => {
     dispatch(logOut());

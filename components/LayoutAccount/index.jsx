@@ -6,9 +6,16 @@ import styles from './styles.module.scss';
 import Link from 'next/link';
 import { BsMenuUp } from 'react-icons/bs';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../store/actions/auth';
 
 const LayoutAccount = ({ title, children }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
@@ -34,14 +41,20 @@ const LayoutAccount = ({ title, children }) => {
                 [styles.active]: open,
               })}
             >
-              {myAccount.map((it, idx) => (
-                <Link key={idx} href={it.link}>
+              {myAccount.slice(0, 3).map((it, idx) => (
+                <Button key={idx} href={it.link}>
                   <div className={styles.btn}>
                     <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
                     {it.name}
                   </div>
-                </Link>
+                </Button>
               ))}
+              <Button onClick={handleLogout}>
+                <div className={styles.btn}>
+                  <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
+                  {myAccount[3].name}
+                </div>
+              </Button>
             </div>
           </Grid>
           <Grid item lg={9} md={9} sm={11} xs={12} className={styles.infor}>

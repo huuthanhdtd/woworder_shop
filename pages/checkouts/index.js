@@ -1,24 +1,24 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import CheckoutDetail from '../../components/Checkouts';
-import { getUserData } from '../../utils/localstorage';
 
 const Checkout = () => {
-  const [userData, setUserData] = React.useState(null);
+  const { user } = useSelector((state) => state.customer);
   const router = useRouter();
   React.useEffect(() => {
-    const userData = getUserData('USER_INFOR');
-    if (userData) {
-      setUserData(userData);
-    } else {
+    if (!user) {
       router.push('/account/login');
     }
   }, []);
   return (
     <>
-      {userData && (
+      {user && (
         <div>
-          <CheckoutDetail userData={userData} />
+          <CheckoutDetail
+            userData={user?.item}
+            address={user.included.addresses[0]}
+          />
         </div>
       )}
     </>

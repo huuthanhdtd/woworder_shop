@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import HomePage from '../components/Home';
 // import database from '../constants/database.json';
@@ -10,7 +11,6 @@ const Home = ({ categoriesData, cate }) => {
   // } = database;
 
   // // console.log(categories);
-  // console.log(categoriesData);
   return (
     <>
       <HomePage

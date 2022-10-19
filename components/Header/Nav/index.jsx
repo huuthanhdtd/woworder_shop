@@ -143,7 +143,7 @@ export default function Nav({
             openAccount={openAccount}
             setOpenAccount={setOpenAccount}
             auth={auth}
-            name={customer.user.item.name}
+            name={customer?.user?.item?.name}
           />
         </div>
         <div className={styles.cart}>

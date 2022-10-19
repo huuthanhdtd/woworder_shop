@@ -1,11 +1,15 @@
 import React from 'react';
 import { fetchAPI } from '../../../lib/api';
-import Addresses from '../../../components/Address';
+import Addresses from '../../../components/Account/Address';
+import { useSelector } from 'react-redux';
 
 const index = () => {
+  const { user } = useSelector((state) => state.customer);
   return (
     <div>
-      <Addresses />
+      {user && (
+        <Addresses user={user?.item} detail={user?.included.addresses[0]} />
+      )}
     </div>
   );
 };
@@ -13,18 +17,10 @@ const index = () => {
 export default index;
 
 export const getStaticProps = async () => {
-  // const categoriesRes = await fetchAPI('/stores/709313694365910020/products', {
-  //   limit: 8,
-  //   page: 1,
-  //   category: '',
-  //   populate: {
-  //     sort: { id: 'ASC', name: 'DESC' },
-  //   },
-  // });
   return {
     props: {
-      categoriesData: [],
+      data: [],
     },
-    // revalidate: 1,
+    revalidate: 1,
   };
 };

@@ -1,7 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import * as types from '../../constants/types';
 import { logInUser } from '../../lib/services/login';
-import { setLocalStorage } from '../../utils/localstorage';
 import {
   authenticating,
   authError,
@@ -10,7 +9,7 @@ import {
 } from '../actions/auth';
 import Router from 'next/router';
 import { getCustomerFail, getCustomerSuccess } from '../actions/customer';
-import { customer } from '../../lib/services/customer';
+import { checkouts, customer } from '../../lib/services/customer';
 
 function* handleError(e) {
   yield put(authenticating(false));
@@ -31,7 +30,7 @@ export function* authSaga({ type, payload }) {
           yield handleError(res.error);
         } else {
           try {
-            const user = yield call(customer, res);
+            const user = yield call(customer, res.token, res?.user?.id);
             if (user.status === 'E_NOT_FOUND') {
               yield put(getCustomerFail(user.error));
             } else {
@@ -40,7 +39,6 @@ export function* authSaga({ type, payload }) {
           } catch (error) {
             yield put(getCustomerFail(error));
           }
-          yield call(setLocalStorage, 'token', res);
           yield put(logInSuccess(res));
           yield put(authenticating(false));
           Router.push('/');
@@ -58,6 +56,11 @@ export function* authSaga({ type, payload }) {
       } catch (error) {
         yield handleError(error);
       }
+    case types.CHECKOUT:
+      try {
+        const res = yield call(checkouts, payload);
+      } catch (error) {}
+      break;
     default:
       break;
   }

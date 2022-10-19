@@ -2,6 +2,7 @@ import * as types from '../../constants/types';
 
 const initialState = {
   token: null,
+  user: null,
 };
 
 export default (state = initialState, action) => {
@@ -10,9 +11,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         token: action.payload.token,
+        user: action.payload.user,
       };
     case types.LOGOUT_SUCCESS:
-      return {};
+      return initialState;
     default:
       return state;
   }

@@ -118,7 +118,7 @@ img:hover {
   --border-color-: rgba(105, 27, 27, 0.5);
   --background-primary-: #f4f4f5;
   --price-color-: #dc2626;
-  --border-gray-: #c4c0c2
+  --border-gray-: #c4c0c2;
 }
 
 @media screen and (max-width: 960px) {
@@ -260,6 +260,10 @@ img:hover {
 .styles_sliderSlick__Jc2sc .menu-wrapper--inner {
   white-space: initial !important;
 }
+.styles_input__3y_02 .MuiOutlinedInput-adornedStart {
+  padding-left: 0px;
+}
+
 /* cart */
 .styles_listCart__Llxwt .MuiCheckbox-colorSecondary.Mui-checked {
   color: var(--primary-color-) !important;
