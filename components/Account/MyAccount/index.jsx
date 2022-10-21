@@ -13,15 +13,15 @@ const MyAccount = ({ user, detail }) => {
         </Typography>
         <div className={styles.detail}>
           <Typography variant="body1" className={styles.name}>
-            {user.name}
+            {user?.name}
           </Typography>
           <Typography variant="body1" className={styles.name}>
-            {user.phone}
+            {user?.phone}
           </Typography>
           <Typography variant="body1" className={styles.name}>
-            {detail.address}
+            {detail?.address}
           </Typography>
-          <Link href={user.facebook}>{user.facebook}</Link>
+          <Link href={user?.facebook}>{user?.facebook}</Link>
           <Typography variant="body2"></Typography>
           {/* <Link href="/account/address">Xem địa chỉ</Link> */}
         </div>

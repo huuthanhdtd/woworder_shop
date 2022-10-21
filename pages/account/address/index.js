@@ -5,10 +5,11 @@ import { useSelector } from 'react-redux';
 
 const index = () => {
   const { user } = useSelector((state) => state.customer);
+  // console.log(user);
   return (
     <div>
       {user && (
-        <Addresses user={user?.item} detail={user?.included.addresses[0]} />
+        <Addresses user={user?.item} addresses={user?.included?.addresses} />
       )}
     </div>
   );

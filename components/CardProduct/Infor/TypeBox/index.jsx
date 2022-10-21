@@ -3,11 +3,15 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 const TypeBox = ({ attKey, types, select, setSelect }) => {
-  // console.log(select);
   return (
     <div className={styles.boxSizes}>
       <span className={styles.preAtt}>{attKey}:</span>
-      <div className={styles.sizes}>
+      <div
+        className={styles.sizes}
+        style={{
+          gridTemplateColumns: attKey === 'Màu' && '90%',
+        }}
+      >
         {types.map((type, idx) => (
           <span
             className={clsx(styles.item, {
@@ -17,7 +21,7 @@ const TypeBox = ({ attKey, types, select, setSelect }) => {
             style={{ textTransform: 'uppercase' }}
             onClick={() => setSelect({ name: type.name, index: idx })}
           >
-            {type.name.length > 3 ? type.name.slice(0, 7) : type.name}
+            {type.name.length > 3 ? type.name : type.name}
           </span>
         ))}
       </div>

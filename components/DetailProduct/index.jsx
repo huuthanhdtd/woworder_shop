@@ -4,13 +4,11 @@ import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
 import RelativeProduct from './RelativeProduct';
 import { useCart } from 'react-use-cart';
-// import database from '../../constants/database.json';
 import InformationBox from './InformationBox';
 import Alerts from '../Alerts';
 
 const DetailProduct = ({ product, productsViewed, products, category }) => {
   const router = useRouter();
-  // const { items } = database;
   const { addItem, updateItem, getItem } = useCart();
   const [quantity, setQuantity] = React.useState(1);
   // const [sizeCode, setSizeCode] = React.useState();
@@ -54,6 +52,7 @@ const DetailProduct = ({ product, productsViewed, products, category }) => {
 
   const [productInfor, setProductInfor] = React.useState({
     id: product.id,
+    productId: product.id,
     name: product.name,
     color: firstProductInfor?.color,
     imageUrl: product.imageUrl,
@@ -99,15 +98,22 @@ const DetailProduct = ({ product, productsViewed, products, category }) => {
         addItem(
           {
             ...productInfor,
-            id: productInfor?.id + productInfor.size + productInfor.color,
+            id: `${productInfor?.id}-${productInfor.size || ''}-${
+              productInfor.color || ''
+            }`,
           },
           quantity
         );
       }
       if (cartItem) {
-        updateItem(productInfor.id + productInfor.size + productInfor.color, {
-          quantity: quantity + cartItem.quantity,
-        });
+        updateItem(
+          `${productInfor?.id}-${productInfor.size || ''}-${
+            productInfor.color || ''
+          }`,
+          {
+            quantity: quantity + cartItem.quantity,
+          }
+        );
       }
       type === 'add' &&
         setAlertMsg({

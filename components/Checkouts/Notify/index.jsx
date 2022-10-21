@@ -7,7 +7,7 @@ import Link from 'next/link';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 
-const Notify = ({ isNotify }) => {
+const Notify = ({ isNotify, checkoutsMess }) => {
   return (
     <div
       className={clsx(styles.container, {
@@ -19,7 +19,7 @@ const Notify = ({ isNotify }) => {
           <BsCheckSquareFill className={styles.iconCheck} />
         </div>
         <div className={styles.content}>
-          <Typography variant="body2">Bạn đã đặt hàng thành công</Typography>
+          <Typography variant="body2">{checkoutsMess}</Typography>
           <div className={styles.routes}>
             <Link href={'/'}>
               <div className={styles.wrapRoute}>

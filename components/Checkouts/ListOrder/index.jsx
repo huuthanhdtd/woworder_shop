@@ -91,8 +91,8 @@ const ListOrder = ({
                 </Typography>
               </div>
             ))}
-            <div className={styles.line} />
-            <RewardPoints
+            {/* <div className={styles.line} /> */}
+            {/* <RewardPoints
               // login={login}
               checked={isChecked}
               // handleLogin={handleLogin}
@@ -100,7 +100,7 @@ const ListOrder = ({
               // handleShowPopup={handleShowPopup}
               rewardPoints={objBill.rewardPoints}
               // dataCoupon={dataCoupon}
-            />
+            /> */}
 
             <div className={styles.line} />
             <Bill

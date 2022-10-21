@@ -46,11 +46,12 @@ const CheckoutDetail = ({ userData, address }) => {
   // const [showDetail, setShow] = React.useState(false);
   // const [coupon, setCoupon] = React.useState([]);
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  const { isCheckouts, checkoutsMess, isAlert } = useSelector(
+    (state) => state.app
+  );
 
   const { pointUsed, router } = React.useContext(Context);
   // const [isPopup, setPopup] = React.useState(false);
-  const [isNotify, setNotify] = React.useState(false);
 
   const [allInforDeliver, setAllInforDeliver] = React.useState({
     ...address,
@@ -64,7 +65,7 @@ const CheckoutDetail = ({ userData, address }) => {
   //   message: 'Bạn đã đặt hàng thành công!!',
   // });
 
-  const { items, setItems } = useCart();
+  const { items, setItems, metadata } = useCart();
 
   const cartCheck = React.useMemo(() => {
     return items.filter((it) => it.isCheck);
@@ -109,34 +110,20 @@ const CheckoutDetail = ({ userData, address }) => {
     };
   }, [pointUsed, maxPoints]);
 
-  const newAllInforDeliver = React.useMemo(() => {
-    return { ...allInforDeliver, ...objBill, products: cartCheck };
-  }, [objBill, allInforDeliver]);
+  // const newAllInforDeliver = React.useMemo(() => {
+  //   return { ...allInforDeliver, ...objBill, products: cartCheck };
+  // }, [objBill, allInforDeliver]);
 
   const handleChangeInforDeliver = (key, value) => {
     setAllInforDeliver((prev) => {
       return { ...prev, [key]: value };
     });
   };
-
-  const spliceString = (string, first, second) => {
-    const mapObj = {
-      [`${first}`]: '',
-      [`${second}`]: '',
-    };
-    const reg = new RegExp(Object.keys(mapObj).join('|'), 'gi');
-    string = string.replace(reg, function (matched) {
-      return mapObj[matched];
-    });
-    return string;
-  };
   const handleFinish = () => {
-    const newItems = items.filter((it) => !it.isCheck);
-    // setItems(newItems);
     // setAllInforDeliver(newAllInforDeliver);
     const checkoutsForm = {
       customerId: userData.id,
-      description: 'Ghi chú đơn hàng',
+      description: metadata.notes || 'Ghi chú đơn hàng',
       products: cartCheck.map((pro) => ({
         id: pro.productId,
         color: pro.color,
@@ -147,12 +134,19 @@ const CheckoutDetail = ({ userData, address }) => {
     };
 
     dispatch(checkoutsRequest(checkoutsForm));
-    // setNotify(!isNotify);
-    // router.push('/cart');
-    // const time = setTimeout(() => {
-    // }, 10000);
-    // return () => clearTimeout(time);
   };
+
+  React.useEffect(() => {
+    const newItems = items.filter((it) => !it.isCheck);
+
+    if (isCheckouts) {
+      const time = setTimeout(() => {
+        setItems(newItems);
+        router.push('/');
+      }, 5000);
+      return () => clearTimeout(time);
+    }
+  }, [isCheckouts]);
   // console.log(allInforDeliver);
 
   // const handleShowPopup = React.useCallback(() => {
@@ -190,7 +184,7 @@ const CheckoutDetail = ({ userData, address }) => {
         coupons={coupons}
         showDetail={showDetail}
       /> */}
-      <Notify isNotify={isNotify} />
+      <Notify isNotify={isAlert} checkoutsMess={checkoutsMess} />
       <div className={styles.root}>
         {/* <Alerts state={openSnackbar} setState={setOpenSnackbar} /> */}
 

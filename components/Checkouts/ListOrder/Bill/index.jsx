@@ -24,7 +24,7 @@ const Bill = ({
     <div className={styles.wrapper}>
       <div className={styles.bill}>
         {/* {login && ( */}
-        <Slider
+        {/* <Slider
           disabled={!checked}
           value={objBill.pointUsed}
           onChange={handleChange}
@@ -32,7 +32,7 @@ const Bill = ({
           valueLabelDisplay="on"
           max={objBill.maxRewardPoints}
           className={styles.rangeSlider}
-        />
+        /> */}
         {/* )} */}
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Tạm tính</Typography>
@@ -40,12 +40,12 @@ const Bill = ({
             {convertCurrency(provisionalPrice)}
           </Typography>
         </div>
-        <div className={clsx(styles.prevPrice, styles.borderFlex)}>
+        {/* <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Giảm giá điểm thưởng</Typography>
           <Typography variant="body2" className={styles.discountPrice}>
             -{convertCurrency(objBill.discount)}
           </Typography>
-        </div>
+        </div> */}
         {/* <div className={clsx(styles.discount, styles.borderFlex)}>
           <div className={styles.wrapBox}>
             <Typography variant="body2" className={styles.attr}>

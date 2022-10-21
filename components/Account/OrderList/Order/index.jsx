@@ -5,7 +5,7 @@ import { RiArrowDownSLine } from 'react-icons/ri';
 import { convertCurrency } from '../../../../utils/convertCurrency';
 import Product from '../Product';
 import styles from './styles.module.scss';
-const Order = ({ items, cartTotal, idx }) => {
+const Order = ({ idx, code, orders }) => {
   const [isLoadmore, setLoadmore] = React.useState({
     isLoad: false,
     idx: null,
@@ -17,17 +17,20 @@ const Order = ({ items, cartTotal, idx }) => {
       idx: index,
     });
   };
-  const length = items.length;
+  const length = orders.length;
 
+  const totalPrice = orders.reduce((prev, curr) => {
+    return prev + Number(curr.sellPrice) * curr.quantity;
+  }, 0);
   return (
     <div className={styles.orderList}>
       <div className={styles.header}>
         <Typography variant="body2" className={styles.orderCode}>
-          M0A93747
+          {code}
         </Typography>
-        <Typography variant="body2" className={styles.status}>
+        {/* <Typography variant="body2" className={styles.status}>
           Đã giao
-        </Typography>
+        </Typography> */}
       </div>
       <div
         className={styles.boxProducts}
@@ -41,7 +44,7 @@ const Order = ({ items, cartTotal, idx }) => {
         }}
         suppressHydrationWarning
       >
-        {items.map((it, idx) => (
+        {orders.map((it, idx) => (
           <Product key={idx} item={it} />
         ))}
       </div>
@@ -67,7 +70,7 @@ const Order = ({ items, cartTotal, idx }) => {
           <BsShieldFillPlus className={styles.icon} />
           <span className={styles.attTotal}>Tổng số tiền:</span>
           <span className={styles.costTotal} suppressHydrationWarning>
-            {convertCurrency(cartTotal)}
+            {convertCurrency(totalPrice)}
           </span>
         </div>
 

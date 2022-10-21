@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.scss';
-import { FaLink } from 'react-icons/fa';
 import { BsBagPlus } from 'react-icons/bs';
 import { Button, Link, TextField, Typography } from '@material-ui/core';
 import { useCart } from 'react-use-cart';
@@ -107,10 +106,12 @@ function Infor({ product }) {
             <span className={styles.atb}>
               Màu:
               <p className={styles.atbValues}>
-                {product.variation.colors?.slice(0, 2).map((color, idx) => (
+                {product.variation.colors?.slice(0, 1).map((color, idx) => (
                   <span key={idx}>
-                    {color.name.slice(0, 5)}
-                    {idx + 1 === product.variation.colors.length ? '' : '/'}
+                    {color.name.slice(0, 10)}
+                    {idx + 1 === product.variation.colors.slice(0, 1).length
+                      ? '...'
+                      : '/'}
                   </span>
                 ))}
               </p>
@@ -120,7 +121,10 @@ function Infor({ product }) {
               <span className={styles.atb}>
                 Màu:
                 <p className={styles.atbValues}>
-                  <span>{product.color}</span>
+                  <span>
+                    {product.color.slice(0, 10)}
+                    {product.color.length > 10 ? '...' : ''}
+                  </span>
                 </p>
               </span>
             )
@@ -132,10 +136,14 @@ function Infor({ product }) {
                 {product.variation?.colors && (
                   <p className={styles.atbValues}>
                     {product.variation?.colors?.slice(0, 1).map((color, idx) =>
-                      color.sizes.map((size, idx) => (
+                      color?.sizes.slice(0, 1).map((size, idx) => (
                         <span key={idx} style={{ textTransform: 'uppercase' }}>
-                          {size.name}
-                          {idx + 1 === color.sizes.length ? '' : '/'}
+                          {size.name.length > 5
+                            ? size.name.slice(0, 4)
+                            : size.name}
+                          {idx + 1 === color.sizes.slice(0, 1).length
+                            ? '...'
+                            : '/'}
                         </span>
                       ))
                     )}
@@ -143,11 +151,14 @@ function Infor({ product }) {
                 )}
                 {product.variation?.sizes && (
                   <p className={styles.atbValues}>
-                    {product.variation?.sizes?.map((size, idx) => (
+                    {product.variation?.sizes?.slice(0, 2).map((size, idx) => (
                       <span key={idx} style={{ textTransform: 'uppercase' }}>
-                        {size.name}
-                        {idx + 1 === product.variation?.sizes?.length
-                          ? ''
+                        {size.name.length > 5
+                          ? size.name.slice(0, 4)
+                          : size.name}
+                        {idx + 1 ===
+                        product.variation?.sizes?.slice(0, 2).length
+                          ? '...'
                           : '/'}
                       </span>
                     ))}

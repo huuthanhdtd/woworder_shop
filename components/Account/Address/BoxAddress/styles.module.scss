@@ -1,0 +1,79 @@
+.container {
+  margin-bottom: 20px;
+  .subtitle {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-color-);
+    background-color: rgba(21, 176, 153, 0.1);
+    padding: 12px 5px;
+    .name {
+      font-family: 'Mulish Bold';
+      font-size: 14px;
+      span {
+        font-family: 'Mulish M';
+      }
+    }
+    .iconActions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 15%;
+      .iconClick {
+        cursor: pointer;
+        width: 16px;
+      }
+    }
+    .popup {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0px 0px 5px 1px var(--primary-color-);
+      padding: 4px;
+      transform: translateY(-50%) scale(0.5, 0.5);
+      right: 0;
+      z-index: 10;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+      .actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        .func {
+          padding: 3px;
+          font-size: 24px;
+          color: var(--primary-color-);
+        }
+      }
+    }
+    .show {
+      transform: translateY(-100%) scale(1, 1);
+      opacity: 1;
+    }
+  }
+  .detail {
+    background-color: #fbfbfb;
+    padding: 10px 15px;
+    .fullName {
+      font-family: 'Mulish';
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+    .rowAddress {
+      display: flex;
+      padding: 10px 0;
+      .preText {
+        font-family: 'Mulish';
+        color: #333333;
+        font-weight: 600;
+        width: 120px;
+      }
+      .text {
+        font-family: 'Mulish';
+        color: #595c59;
+      }
+    }
+  }
+}

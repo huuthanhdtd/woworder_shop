@@ -116,7 +116,7 @@ export default function Nav({
                 <>
                   <div>Tài khoản</div>
                   <div>
-                    {customer.user.item.name}
+                    {auth?.user?.name}
                     <span>
                       <MdOutlineKeyboardArrowDown />
                     </span>
@@ -143,7 +143,7 @@ export default function Nav({
             openAccount={openAccount}
             setOpenAccount={setOpenAccount}
             auth={auth}
-            name={customer?.user?.item?.name}
+            name={auth?.user?.name}
           />
         </div>
         <div className={styles.cart}>

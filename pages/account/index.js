@@ -2,18 +2,18 @@ import React from 'react';
 import { fetchAPI } from '../../lib/api';
 import MyAccount from '../../components/Account/MyAccount';
 import { useSelector } from 'react-redux';
-import Router from 'next/router';
+
 const Account = ({ customer, userData }) => {
   const { user } = useSelector((state) => state.customer);
-  React.useEffect(() => {
-    if (!user) {
-      Router.push('/account/login');
-    }
-  }, [user]);
+  // React.useEffect(() => {
+  //   if (!user) {
+  //     Router.push('/account/login');
+  //   }
+  // }, []);
   return (
     <div>
-      {user && (
-        <MyAccount user={user.item} detail={user.included.addresses[0]} />
+      {user && Object.keys(user).length > 0 && (
+        <MyAccount user={user.item} detail={user?.included?.addresses[0]} />
       )}
     </div>
   );

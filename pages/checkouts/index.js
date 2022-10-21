@@ -7,7 +7,7 @@ const Checkout = () => {
   const { user } = useSelector((state) => state.customer);
   const router = useRouter();
   React.useEffect(() => {
-    if (!user) {
+    if (!user || Object.keys(user).length <= 0) {
       router.push('/account/login');
     }
   }, []);
@@ -17,7 +17,7 @@ const Checkout = () => {
         <div>
           <CheckoutDetail
             userData={user?.item}
-            address={user.included.addresses[0]}
+            address={user?.included?.addresses[0]}
           />
         </div>
       )}
@@ -26,3 +26,12 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      data: [],
+    },
+    revalidate: 1,
+  };
+};

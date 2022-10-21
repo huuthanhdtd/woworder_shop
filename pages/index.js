@@ -1,24 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 import HomePage from '../components/Home';
-// import database from '../constants/database.json';
 import { fetchAPI } from '../lib/api';
 
 const Home = ({ categoriesData, cate }) => {
-  // const {
-  //   items,
-  //   included: { categories, productCategories },
-  // } = database;
-
-  // // console.log(categories);
   return (
     <>
-      <HomePage
-        // categories={categories}
-        // productCategories={productCategories}
-        // items={items}
-        categories={categoriesData}
-      />
+      <HomePage categories={categoriesData} />
     </>
   );
 };

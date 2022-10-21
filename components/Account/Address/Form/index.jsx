@@ -13,25 +13,31 @@ import { RiHome8Fill } from 'react-icons/ri';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { ImLocation2, ImPhone } from 'react-icons/im';
 import { citieslist, nations } from '../../../../constants/selectListData';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  createAddressRequest,
+  updateAddressRequest,
+} from '../../../../store/actions/customer';
 
-const Form = ({ submitTitle, cancel }) => {
+const Form = ({ submitTitle, cancel, detail }) => {
   const {
     user: { included },
   } = useSelector((state) => state.customer);
+  const dispatch = useDispatch();
   const [form, setForm] = React.useState({
-    fullname: included.addresses[0].name,
-    phone: included.addresses[0].phone,
-    address: included.addresses[0].address,
-    province: included.addresses[0].province,
-    district: included.addresses[0].district,
-    ward: included.addresses[0].ward,
-    rewardPoint: 300,
+    name: detail.name,
+    phone: detail.phone,
+    province: detail.province || '-',
+    district: detail.district || '-',
+    ward: detail.ward || '-',
+    address: detail.address,
+    // rewardPoint: 300,
     // email: '',
     // company: '',
     // firstname: '',
     // nation: '',
   });
+  // console.log(form);
   // console.log(included.addresses[0].address);
   const [addresses, setAddresses] = React.useState({
     cities: citieslist.find((it) => it.symbol === 'VN'),
@@ -62,7 +68,7 @@ const Form = ({ submitTitle, cancel }) => {
       if (name === 'city') {
         setAddresses((prev) => ({
           ...prev,
-          districts: cities.cities.find((it) => it.code === value),
+          districts: cities.cities.find((it) => it.name === value),
         }));
         if (value === '') {
           setAddresses({
@@ -86,10 +92,15 @@ const Form = ({ submitTitle, cancel }) => {
     setForm((prev) => ({ ...prev, [input]: value }));
   }, []);
   const handleSubmit = () => {
+    if (submitTitle === 'Thêm mới') {
+      dispatch(createAddressRequest(form));
+    }
+    if (submitTitle === 'Cập nhật') {
+      dispatch(updateAddressRequest(form, detail.id));
+    }
     // localStorage.setItem('USER_INFOR', JSON.stringify(form));
   };
-
-  console.log(form);
+  console.log(detail.id);
   return (
     <div className={styles.wrapper}>
       <form action="" className={styles.form}>
@@ -140,7 +151,7 @@ const Form = ({ submitTitle, cancel }) => {
           placeholder="Tên"
           variant="outlined"
           className={styles.input}
-          value={form.fullname || ''}
+          value={form.name || ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
@@ -155,6 +166,8 @@ const Form = ({ submitTitle, cancel }) => {
           variant="outlined"
           className={styles.input}
           value={form.address || ''}
+          error={form.address === '' ? true : false}
+          helperText={form.address === '' ? 'Nhập địa chỉ của bạn' : ''}
           InputProps={{
             startAdornment: (
               <div className={styles.iconStart}>
@@ -192,7 +205,7 @@ const Form = ({ submitTitle, cancel }) => {
             >
               <option value="">Tỉnh/ thành</option>
               {cities.cities.map((ct, idx) => (
-                <option value={ct.code} key={idx}>
+                <option value={ct.name} key={idx}>
                   {ct.name}
                 </option>
               ))}
@@ -256,7 +269,15 @@ const Form = ({ submitTitle, cancel }) => {
           label="Đặt làm địa chỉ mặc định."
         /> */}
         <div className={styles.boxSubmit}>
-          <Button className={styles.submit} onClick={handleSubmit}>
+          <Button
+            className={styles.submit}
+            disabled={
+              form.address === '' || form.name === '' || form.phone === ''
+                ? true
+                : false
+            }
+            onClick={handleSubmit}
+          >
             {submitTitle}
           </Button>
           <Typography variant="body2">
@@ -269,4 +290,4 @@ const Form = ({ submitTitle, cancel }) => {
   );
 };
 
-export default Form;
+export default React.memo(Form);

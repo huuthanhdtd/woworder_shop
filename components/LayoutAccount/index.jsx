@@ -42,18 +42,18 @@ const LayoutAccount = ({ title, children }) => {
               })}
             >
               {myAccount.slice(0, 3).map((it, idx) => (
-                <Button key={idx} href={it.link}>
-                  <div className={styles.btn}>
-                    <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
-                    {it.name}
-                  </div>
+                <Button key={idx} href={it.link} className={styles.btn}>
+                  {/* <div> */}
+                  <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
+                  {it.name}
+                  {/* </div> */}
                 </Button>
               ))}
-              <Button onClick={handleLogout}>
-                <div className={styles.btn}>
-                  <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
-                  {myAccount[3].name}
-                </div>
+              <Button onClick={handleLogout} className={styles.btn}>
+                {/* <div> */}
+                <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
+                {myAccount[3].name}
+                {/* </div> */}
               </Button>
             </div>
           </Grid>

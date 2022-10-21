@@ -4,6 +4,8 @@ const initialState = {
   isLoading: false,
   error: null,
   isCheckouts: false,
+  checkoutsMess: null,
+  isAlert: false,
 };
 
 export default (state = initialState, action) => {
@@ -18,24 +20,22 @@ export default (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
-    case types.CHECKOUT:
-      return {
-        ...state,
-        isLoading: action.payload,
-      };
     case types.CHECKOUT_SUCCESS:
       return {
         ...state,
-        isLoading: false,
+        isAlert: true,
         isCheckouts: true,
+        checkoutsMess: 'Bạn đã đặt hàng thành công',
       };
     case types.CHECKOUT_FAIL:
       return {
         ...state,
-        isLoading: false,
+        isAlert: true,
         isCheckouts: false,
-        error: action.payload,
+        checkoutsMess: 'Sản phẩm hoặc thông tin chưa đúng. Hãy kiểm tra lại',
       };
+    case types.CHECKOUT_RESET:
+      return initialState;
     default:
       return state;
   }
