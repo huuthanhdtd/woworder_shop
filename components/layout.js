@@ -8,27 +8,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCustomer } from '../store/actions/customer';
 const Layout = ({ children, categories }) => {
   const { user } = useSelector((state) => state.customer);
+  const { token } = useSelector((state) => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
   React.useEffect(() => {
-    if (user) {
-      if (
-        router.asPath === '/account' ||
-        router.asPath === '/account/order-list' ||
-        router.asPath === '/account/address'
-      ) {
+    if (
+      router.asPath === '/account' ||
+      router.asPath === '/account/order-list' ||
+      router.asPath === '/account/address'
+    ) {
+      if (token) {
         dispatch(getCustomer());
-      }
-    } else {
-      if (
-        router.asPath === '/account' ||
-        router.asPath === '/account/order-list' ||
-        router.asPath === '/account/address'
-      ) {
+      } else {
         router.push('/account/login');
       }
     }
-  }, [router.asPath, user]);
+  }, [router.asPath]);
   return (
     <>
       {categories && (
