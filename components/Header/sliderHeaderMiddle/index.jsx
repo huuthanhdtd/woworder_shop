@@ -31,10 +31,19 @@ export default function Sliders({ categories }) {
       return sortEnvs;
     }
   }, []);
-  useEffect(() => {}, [selected]);
+  console.log(selected);
+  useEffect(() => {
+    const fi = sort.find((e, i) => i === Number(selected));
+    if (fi) {
+      router.push({
+        pathname: `/categories/${fi.id}`,
+      });
+    }
+  }, [selected]);
   const onSelect = (key) => {
     setSelected(key);
   };
+
   return (
     <div className={styles.content}>
       <div className={styles.home}>
@@ -51,16 +60,13 @@ export default function Sliders({ categories }) {
           data={sort.map((data, idx) => {
             return (
               <div key={idx} className={styles.Hot}>
-                <Link href={`/categories/${data.id}`}>
-                  <Button
-                    className={clsx(styles.item, {
-                      [styles.active]:
-                        router.asPath === `/categories/${data.id}`,
-                    })}
-                  >
-                    {data.name}
-                  </Button>
-                </Link>
+                <Button
+                  className={clsx(styles.item, {
+                    [styles.active]: router.asPath === `/categories/${data.id}`,
+                  })}
+                >
+                  {data.name}
+                </Button>
               </div>
             );
           })}
