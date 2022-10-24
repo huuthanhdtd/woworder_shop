@@ -1,29 +1,38 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
-import { RiMessage2Line, RiCloseFill } from 'react-icons/ri';
+import { RiMessengerLine, RiCloseFill } from 'react-icons/ri';
+import { FaFacebookMessenger } from 'react-icons/fa';
+import contactImg from '../../assets/image/contact.svg';
 import { GoMail } from 'react-icons/go';
 import { SiZalo } from 'react-icons/si';
 import { MdLocationOn } from 'react-icons/md';
-import { AiFillPhone } from 'react-icons/ai';
+import { BsTelephoneFill } from 'react-icons/bs';
 import styles from './styles.module.scss';
 import Link from 'next/link';
+import messengers from '../../assets/image/messengers.svg';
 
 export default function ContactFixed() {
   const contact = [
     {
       name: 'Gọi ngay cho Khánh Bùi',
-      icon: <AiFillPhone fontSize={20} />,
-      link: 'tel:0987965512',
+      icon: <BsTelephoneFill fontSize={25} />,
+      link: 'tel:0986779777',
     },
     {
       name: 'Đóng góp ý kiến giao diện cho Khánh Bùi',
-      icon: <GoMail fontSize={20} />,
+      icon: <GoMail fontSize={30} />,
       link: 'mailto:contact@gmail.com ',
     },
     {
+      name: 'Nhận tư vấn qua zalo',
+      icon: <SiZalo fontSize={30} />,
+      link: 'http://zalo.me/0986779777',
+    },
+    {
       name: 'Xem địa chỉ doanh nghiệp',
-      icon: <MdLocationOn fontSize={20} />,
-      link: '/contact',
+      // icon: <RiMessengerLine fontSize={40} />,
+      img: messengers.src,
+      link: 'https://www.facebook.com/khanhbuiorder',
     },
   ];
   const [openContact, setOpenContact] = useState(false);
@@ -35,25 +44,37 @@ export default function ContactFixed() {
     }
   };
 
-  const newTab = () => {
-    const url = 'http://zalo.me/0352998934';
+  const newTab = (link) => {
+    const url = link;
     window.open(url);
   };
 
   return (
     <div className={styles.contact}>
+      <div className={styles.bgcl}></div>
+      <div
+        className={clsx(styles.hoverContact, {
+          [styles.active]: openContact == true,
+        })}
+      >
+        Liên Hệ
+      </div>
       <div className={styles.animation}></div>
       <div className={styles.animation1}></div>
       <div className={styles.contactFixed} onClick={handleOpen}>
         {!openContact ? (
           <>
-            <RiMessage2Line fontSize={20} />
-            Liên hệ
+            <img
+              src={contactImg.src}
+              alt=""
+              style={{ heigth: '20px', width: '20px' }}
+            />
           </>
         ) : (
           <RiCloseFill fontSize={20} />
         )}
       </div>
+
       <div
         className={clsx(styles.modal, {
           [styles.active]: openContact === true,
@@ -64,20 +85,12 @@ export default function ContactFixed() {
         className={clsx(styles.mes, { [styles.active]: openContact == true })}
       >
         <ul className={styles.ul_mes}>
-          <li className={styles.li_mes} onClick={newTab}>
-            <div className={styles.icon}>
-              <SiZalo fontSize={20} />
-            </div>
-            <div className={styles.title}>Nhận tư vấn qua zalo</div>
-          </li>
           {contact?.map((data, index) => (
             <div key={index}>
-              <Link href={data.link}>
-                <li className={styles.li_mes}>
-                  <div className={styles.icon}>{data.icon}</div>
-                  <div className={styles.title}>{data.name}</div>
-                </li>
-              </Link>
+              <li className={styles.li_mes} onClick={() => newTab(data.link)}>
+                <div className={styles.icon}>{data.icon}</div>
+                <img src={data?.img} />
+              </li>
             </div>
           ))}
         </ul>

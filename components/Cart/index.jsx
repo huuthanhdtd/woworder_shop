@@ -1,4 +1,5 @@
-import { Button, Grid, Link } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useCart } from 'react-use-cart';
@@ -50,6 +51,7 @@ export default function Carts() {
             updateItem={updateItem}
             note={note}
             setNote={setNote}
+            filprice={filprice}
           />
         </Grid>
         <Grid md={4} sm={12} xs={12} item className={styles.GridPay}>
@@ -67,7 +69,7 @@ export default function Carts() {
           </ul>
           <Link
             href={
-              auth
+              auth.token
                 ? checked.length > 0
                   ? '/checkouts'
                   : '#'

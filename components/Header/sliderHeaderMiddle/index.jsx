@@ -31,7 +31,6 @@ export default function Sliders({ categories }) {
       return sortEnvs;
     }
   }, []);
-  console.log(selected);
   useEffect(() => {
     const fi = sort.find((e, i) => i === Number(selected));
     if (fi) {

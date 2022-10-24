@@ -11,15 +11,7 @@ export default function index({ category }) {
   );
 }
 export const getStaticProps = async () => {
-  const categoryRes = await fetchAPI('/stores/products/728247300324853559', {
-    limit: 8,
-    page: 1,
-    category: '',
-  });
   return {
-    props: {
-      category: categoryRes,
-    },
-    revalidate: 1,
+    props: {},
   };
 };

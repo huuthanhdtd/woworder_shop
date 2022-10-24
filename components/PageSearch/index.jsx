@@ -10,14 +10,14 @@ import Loading from '../Loading';
 
 export default function PageSearch() {
   const router = useRouter();
-  const perPage = 12;
+  const perPage = 10;
   const [page, setPage] = useState(1);
   const [loadinged, setLoadinged] = useState(true);
   useEffect(() => {
     if (dataSortedByScore) {
       setLoadinged(false);
     }
-  }, [router.query.searchTerm]);
+  }, [router.query.query]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
@@ -25,21 +25,21 @@ export default function PageSearch() {
     ?.sort(
       (a, b) =>
         getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.searchTerm || ''),
+          ConvertViToEn(router.query.query || ''),
           ConvertViToEn(b.name),
           'number'
         ) -
         getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.searchTerm || ''),
+          ConvertViToEn(router.query.query || ''),
           ConvertViToEn(a.name),
           'number'
         )
     )
     .filter((i) => {
-      return router.query.searchTerm == ''
+      return router.query.query == ''
         ? false
         : getScoreByNumberOfPosition(
-            ConvertViToEn(router.query.searchTerm || ''),
+            ConvertViToEn(router.query.query || ''),
             ConvertViToEn(i.name),
             'boolean'
           );
@@ -62,7 +62,7 @@ export default function PageSearch() {
       <div className={styles.content_page}>
         {dataSortedByScore.length > 0 ? (
           <p className={styles.subtext_result}>
-            Kết quả tìm kiếm cho <strong>"{router.query.searchTerm}"</strong>
+            Kết quả tìm kiếm cho <strong>"{router.query.query}"</strong>
           </p>
         ) : (
           <div className={styles.err}>
@@ -70,7 +70,7 @@ export default function PageSearch() {
             <span>
               Không tìm thấy kết quả
               <span style={{ color: '#000', fontWeight: '700' }}>
-                "{router.query.searchTerm}"
+                "{router.query.query}"
               </span>
               .
             </span>

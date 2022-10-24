@@ -19,9 +19,9 @@ export default function Suggestions({
   const router = useRouter();
   const [hisSearch, setHisSearch] = useState();
   useEffect(() => {
-    if (!hisSearch || !router.query.searchTerm) return;
-    local(router.query.searchTerm, hisSearch);
-  }, [router.query.searchTerm]);
+    if (!hisSearch || !router.query.query) return;
+    local(router.query.query, hisSearch);
+  }, [router.query.query]);
   useEffect(() => {
     const dataHis = JSON.parse(localStorage?.getItem('searchHistory'));
     if (dataHis >= 8) {
@@ -36,12 +36,12 @@ export default function Suggestions({
     ?.sort(
       (a, b) =>
         getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.searchTerm || '' || searchTerm),
+          ConvertViToEn(router.query.query || '' || searchTerm),
           ConvertViToEn(b.name),
           'number'
         ) -
         getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.searchTerm || '' || searchTerm),
+          ConvertViToEn(router.query.query || '' || searchTerm),
           ConvertViToEn(a.name),
           'number'
         )
@@ -50,7 +50,7 @@ export default function Suggestions({
       return searchTerm == ''
         ? false
         : getScoreByNumberOfPosition(
-            ConvertViToEn(router.query.searchTerm || '' || searchTerm),
+            ConvertViToEn(router.query.query || '' || searchTerm),
             ConvertViToEn(i.name),
             'boolean'
           );
@@ -58,14 +58,14 @@ export default function Suggestions({
   const handlemore = () => {
     router.push({
       pathname: '/page-search',
-      query: { searchTerm: searchTerm },
+      query: { query: searchTerm },
     });
     setSuggestions(false);
   };
   const history = (data) => {
     router.push({
       pathname: '/page-search',
-      query: { searchTerm: data },
+      query: { query: data },
     });
     setSuggestions(false);
   };
@@ -96,7 +96,7 @@ export default function Suggestions({
                   </div>
                 ))}
                 <div
-                  href={`/${router.query.searchTerm}`}
+                  href={`/${router.query.query}`}
                   onClick={handlemore}
                   className={styles.more}
                 >

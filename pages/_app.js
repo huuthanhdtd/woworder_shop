@@ -60,7 +60,7 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Tpcapi
 
-  const [globalRes] = await Promise.all([
+  const [categoryRes, searchRes] = await Promise.all([
     // fetchAPI('/global', {
     //   populate: {
     //     favicon: '*',
@@ -80,7 +80,7 @@ MyApp.getInitialProps = async (ctx) => {
   return {
     ...appProps,
     pageProps: {
-      categories: globalRes,
+      categories: categoryRes,
     },
   };
 };

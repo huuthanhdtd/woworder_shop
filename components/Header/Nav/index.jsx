@@ -38,8 +38,9 @@ export default function Nav({
   const { totalItems } = useCart();
   const router = useRouter();
   const { width } = useWindowSize();
-  const [searchTerm, setSearchTerm] = useState('');
+
   const [wid, setWid] = useState();
+
   useEffect(() => {
     setWid(width);
   }, [width]);
@@ -102,8 +103,6 @@ export default function Nav({
         </div>
       </Link>
       <Search
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
         suggestions={suggestions}
         setSuggestions={setSuggestions}
         onfocus={onfocus}

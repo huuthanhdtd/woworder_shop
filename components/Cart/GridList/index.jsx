@@ -13,6 +13,7 @@ export default function GridList({
   updateItem,
   setNote,
   note,
+  filprice,
 }) {
   const handleChangeAll = (isChecked) => {
     if (isChecked) {
@@ -72,10 +73,7 @@ export default function GridList({
               control={
                 <Checkbox
                   size="small"
-                  checked={checked.length === items.length}
-                  // indeterminate={
-                  //   checked.length !== items.items && checked.length > 0
-                  // }
+                  checked={filprice.length === items.length}
                   onChange={(event) => handleChangeAll(event.target.checked)}
                 />
               }
