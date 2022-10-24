@@ -1,26 +1,30 @@
 .contact {
   .bgcl {
     visibility: hidden;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
     background-color: #fff;
     z-index: 8;
     position: fixed;
     bottom: 100px;
     text-align: right;
     right: 0px;
-    width: 60px;
+    width: 33px;
     height: 40px;
   }
   .hoverContact {
-    transform: translateX(15px);
+    cursor: pointer;
+    text-align: center;
+    transform: translateX(55px);
     z-index: 3;
     visibility: hidden;
-    bottom: 102px;
-    right: 10px;
+    bottom: 105px;
+    width: 120px;
+    right: -17px;
     position: fixed;
-    transition: 0.5s ease-in-out;
-    background: var(--primary-color-, 0.5);
-    border-radius: 3px;
+    transition: 0.3s ease-in-out;
+    background: var(--primary-color-);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     padding: 3px;
     color: #fff;
   }
@@ -36,8 +40,8 @@
     }
   }
   .hoverContact.active {
-    transform: translateX(15px);
-    transition: 0.2s linear;
+    transform: translateX(55px);
+    transition: 0.3s linear;
   }
   .contactFixed {
     position: fixed;
@@ -206,17 +210,6 @@
       }
       div:nth-child(4) {
         background-color: unset;
-        // .icon {
-        //   background: radial-gradient(
-        //     108.96% 108.96% at 19.25% 99.46%,
-        //     #0099ff 0%,
-        //     #a033ff 60.97%,
-        //     #ff5280 93.48%,
-        //     #ff7061 100%
-        //   );
-        //   svg {
-        //   }
-        // }
       }
     }
   }

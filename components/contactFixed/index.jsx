@@ -56,8 +56,9 @@ export default function ContactFixed() {
         className={clsx(styles.hoverContact, {
           [styles.active]: openContact == true,
         })}
+        onClick={handleOpen}
       >
-        Liên Hệ
+        Liên hệ
       </div>
       <div className={styles.animation}></div>
       <div className={styles.animation1}></div>

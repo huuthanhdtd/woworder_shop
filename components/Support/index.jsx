@@ -15,10 +15,11 @@ export default function Support() {
       setActiveNav(true);
     }
   };
+
   return (
     <div className={styles.support}>
       <div className={styles.breadcrumb_shop}>
-        <Link href="/"> Trang chủ</Link> / Liên hệ
+        <Link href="/"> Trang chủ</Link> / Hỗ trợ khách hàng
       </div>
       <Grid container className={styles.detail}>
         <Grid item xs={12} sm={12} md={8} className={styles.item_detail}>
