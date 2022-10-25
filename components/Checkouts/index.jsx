@@ -9,7 +9,6 @@ import { Context } from '../../constants/Context';
 // import Alerts from '../Alerts';
 import Notify from './Notify';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkouts } from '../../lib/services/customer';
 import { checkoutsRequest } from '../../store/actions/customer';
 
 // const coupons = [
@@ -142,7 +141,6 @@ const CheckoutDetail = ({ userData, address }) => {
     if (isCheckouts) {
       const time = setTimeout(() => {
         setItems(newItems);
-        router.push('/');
       }, 5000);
       return () => clearTimeout(time);
     }

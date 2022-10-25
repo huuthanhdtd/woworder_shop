@@ -1,11 +1,17 @@
 import axios from 'axios';
 import React from 'react';
 import HomePage from '../components/Home';
+import Seo from '../components/seo';
 import { fetchAPI } from '../lib/api';
 
 const Home = ({ categoriesData, cate }) => {
+  const seo = {
+    metaTitle: 'Trang Chủ',
+    metaDescription: `Khanh Bui Trang Chủ`,
+  };
   return (
     <>
+      <Seo seo={seo} />
       <HomePage categories={categoriesData} />
     </>
   );

@@ -10,12 +10,16 @@ const SortBarMobile = ({
   setSortPriceType,
   open,
   setOpen,
-  filters,
-  setFilters,
-  formPrice,
   setFormPrice,
+  category,
+  setChecked,
 }) => {
   const filterConstant = sortBarHome.concat(orderPrice);
+  const [filters, setFilters] = React.useState({
+    webs: [],
+    inOrder: null,
+    prices: { priceFirst: '', priceLast: '' },
+  });
 
   const { webs, inOrder, prices } = filters;
 
@@ -25,8 +29,11 @@ const SortBarMobile = ({
 
   const handleApplyFilter = () => {
     setSortPriceType(inOrder);
+    setFormPrice(prices);
+    setChecked(webs);
     setOpen(!open);
   };
+
   const handleResetFilters = () => {
     setFilters({
       webs: [],
@@ -54,13 +61,12 @@ const SortBarMobile = ({
         <Typography variant="h6" className={styles.title}>
           Bộ lọc tìm kiếm
         </Typography>
-        <SortWeb setFilters={setFilters} filters={filters} />
-        <SortPrice
+        <SortWeb
           setFilters={setFilters}
           filters={filters}
-          formPrice={formPrice}
-          setFormPrice={setFormPrice}
+          category={category}
         />
+        <SortPrice setFilters={setFilters} filters={filters} />
         <div className={styles.inOrder}>
           <Typography variant="h6" className={styles.typeTitle}>
             Sắp xếp

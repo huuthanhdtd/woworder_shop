@@ -1,4 +1,4 @@
-import { Grid, Link, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { footerData } from '../../constants/commonData';
 import styles from './aboutStyles.module.scss';
@@ -13,6 +13,7 @@ import { BsUiChecksGrid } from 'react-icons/bs';
 import clsx from 'clsx';
 import { useWindowSize } from 'react-use';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const About = () => {
   const { router } = useRouter();
@@ -154,14 +155,16 @@ const About = () => {
                   </div>
                   <Typography variant="h6">{takecare.connect}</Typography>
                   <div className={styles.socialMedia}>
-                    <Link href="/" className={styles.icon}>
-                      <TiSocialFacebook size={20} />
+                    <Link href="/">
+                      <TiSocialFacebook size={20} className={styles.icon} />
                     </Link>
-                    <Link href="/" className={styles.icon}>
-                      <IoLogoInstagram size={20} />
+                    <Link href="/">
+                      <IoLogoInstagram size={20} className={styles.icon} />
                     </Link>
-                    <Link href="/" className={styles.icon}>
-                      <Image src={Tiktok} width={20} height={20} />
+                    <Link href="/">
+                      <div className={styles.icon}>
+                        <Image src={Tiktok} width={20} height={20} />
+                      </div>
                     </Link>
                   </div>
                 </div>

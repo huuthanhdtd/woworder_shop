@@ -18,7 +18,7 @@ const SortBar = ({
   category,
   setSortPriceType,
   page,
-  totalPage,
+  // totalPage,
   handleChangePage,
   open,
   setOpen,
@@ -68,7 +68,7 @@ const SortBar = ({
         >
           {cateName && (
             <Link
-              href={`/categories/${category.id}`}
+              href={`/categories/${category.id}/1`}
               className={styles.category}
             >
               {category.name}
@@ -135,7 +135,8 @@ const SortBar = ({
         {asPath !== '/' && (
           <div className={styles.selectPage}>
             <Typography variant="body2">
-              {page}/{totalPage}
+              {page}/100
+              {/* /{totalPage} */}
             </Typography>
             <Button
               disabled={page === 1 ? true : false}
@@ -145,7 +146,7 @@ const SortBar = ({
               <RiArrowLeftSLine />
             </Button>
             <Button
-              disabled={page === totalPage || totalPage == 0 ? true : false}
+              // disabled={page === totalPage || totalPage == 0 ? true : false}
               className={styles.arrow}
               onClick={() => handleChangePage('next')}
             >

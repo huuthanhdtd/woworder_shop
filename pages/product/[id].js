@@ -1,12 +1,17 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import DetailProduct from '../../components/DetailProduct';
+import Seo from '../../components/seo';
 import { fetchAPI } from '../../lib/api';
 import { getProducts } from '../../utils/localstorage';
 
 const Product = ({ productData, products }) => {
   const { query } = useRouter();
   const [productsViewed, setProduct] = React.useState(null);
+  const seo = {
+    metaTitle: productData.item.name,
+    metaDescription: `Khanh Bui ${productData.item.name}`,
+  };
 
   React.useEffect(() => {
     const response = getProducts();
@@ -15,6 +20,7 @@ const Product = ({ productData, products }) => {
 
   return (
     <>
+      <Seo seo={seo} />
       {productsViewed && productData && products && (
         <DetailProduct
           product={productData.item}

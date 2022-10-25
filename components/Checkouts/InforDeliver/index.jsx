@@ -2,18 +2,12 @@ import { Button, Grid, Link, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import { AiOutlineUser } from 'react-icons/ai';
-import { citieslist } from '../../../constants/selectListData';
+import cityData from '../../../constants/local.json';
 import styles from './styles.module.scss';
 // import SelectForm from './SelectForm';
 import Payments from './Payment';
 import Delivery from './Deliver';
 import Addresses from './Addresses';
-import { getUserData } from '../../../utils/localstorage';
-
-// const addresses = [
-//   { name: 'Hòa khương, đà nẵng' },
-//   { name: 'Quận 10, Hồ Chí Minh' },
-// ];
 
 const InforDeliver = ({
   // token,
@@ -27,7 +21,7 @@ const InforDeliver = ({
   /* set First data  */
   const firstState = React.useMemo(() => {
     const cities = allInforDeliver
-      ? citieslist[0].cities.find((it) => it.code === allInforDeliver.province)
+      ? cityData.find((it) => it.code === allInforDeliver.province)
       : null;
     const districts = cities
       ? cities.districts.find((it) => it.name === allInforDeliver.district)
@@ -44,7 +38,7 @@ const InforDeliver = ({
 
   /* List data location city, district, wards */
   const [data, setData] = React.useState({
-    cities: citieslist[0].cities,
+    cities: cityData,
     districts: firstState?.cities ? firstState?.cities : null,
     wards: firstState?.districts ? firstState?.districts : null,
   });
@@ -75,7 +69,7 @@ const InforDeliver = ({
   const handleDeliver = React.useCallback((type) => {
     setDeliver(type);
     setData({
-      cities: citieslist[0].cities,
+      cities: cityData,
       districts: null,
       wards: null,
     });
@@ -117,7 +111,7 @@ const InforDeliver = ({
           wards: '',
         });
         setData({
-          cities: citieslist[0].cities,
+          cities: cityData,
           districts: null,
           wards: null,
         });

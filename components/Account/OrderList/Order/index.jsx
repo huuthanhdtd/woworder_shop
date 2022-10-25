@@ -37,10 +37,10 @@ const Order = ({ idx, code, orders }) => {
         style={{
           height:
             isLoadmore.isLoad && idx === isLoadmore.idx
-              ? length * 80
+              ? length * 90
               : length > 2
-              ? 170
-              : length * 85,
+              ? 180
+              : length * 90,
         }}
         suppressHydrationWarning
       >

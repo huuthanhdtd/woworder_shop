@@ -1,8 +1,6 @@
 import * as types from '../../constants/types';
-import userData from '../../constants/userdata.json';
 import { deleteAddressUser, updateAddressUser } from '../utils/userAddress';
 const initialState = {
-  // user: null,
   user: null,
   error: null,
 };

@@ -1,63 +1,67 @@
 import { Grid, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import Paginate from '../Pagination';
 import Products from './Products';
 import Checked from '../Sort';
 import styles from './styles.module.scss';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import SortBarMobile from '../SortBarMobile';
 import Link from 'next/link';
 
 const CategoriesPage = ({ products, category }) => {
-  const [checked, setChecked] = useState([]);
+  /* Filter website */
+  const [checked, setChecked] = React.useState([]);
+  /* Set page category */
   const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(8);
-  /* formPrice value */
-  const [formPrice, setFormPrice] = useState({ priceFirst: '', priceLast: '' });
-  const { priceFirst, priceLast } = formPrice;
-  /* */
-  const [filters, setFilters] = React.useState({
-    webs: [],
-    inOrder: null,
-    prices: { priceFirst: '', priceLast: '' },
+  /* Set page item per page */
+  const [perPage, setPerPage] = React.useState(10);
+  /* Set Price filter */
+  const [formPrice, setFormPrice] = React.useState({
+    priceFirst: '',
+    priceLast: '',
   });
-  const [sortPriceType, setSortPriceType] = React.useState(filters.inOrder);
+  /* Set type in order */
+  const [sortPriceType, setSortPriceType] = React.useState(null);
+  /*Show filter box mobile */
   const [open, setOpen] = React.useState(false);
+
+  const { priceFirst, priceLast } = formPrice;
+
   const filteredProducts = React.useMemo(() => {
     return products?.filter((item) => {
-      const check = checked.length ? checked.includes(item.data.slug) : true;
-
+      const check = checked.length > 0 ? checked.includes(item.brandId) : true;
       const checkPrice = !priceFirst && !priceLast;
-
-      if (checkPrice) {
-        return check;
-      } else {
+      if (check && checkPrice) return check;
+      if (!checkPrice && check) {
         let priceToNum = Number(item.sellPrice);
-        if (check && priceToNum >= priceFirst && priceToNum <= priceLast) {
+        if (priceToNum >= priceFirst && priceToNum <= priceLast) {
           return true;
         } else {
           return false;
         }
       }
     });
-  }, [products, formPrice, sortPriceType]);
+  }, [products, checked, priceFirst, priceLast, sortPriceType]);
 
-  React.useEffect(() => {
-    setPage(1);
-  }, [products]);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
+  const handleChange = React.useCallback(
+    (event, value) => {
+      Router.push(`/categories/${category.id}/${value}`);
+      setPage(value);
+    },
+    [page]
+  );
+
   return (
     <div className={styles.wrapper}>
       <SortBarMobile
+        category={category}
         setSortPriceType={setSortPriceType}
         open={open}
         setOpen={setOpen}
-        filters={filters}
-        setFilters={setFilters}
         formPrice={formPrice}
         setFormPrice={setFormPrice}
+        setChecked={setChecked}
+        checked={checked}
       />
       <Grid container justifyContent="center" className={styles.container}>
         <Grid item lg={11} md={12} sm={12} xs={12} className={styles.tabBar}>
@@ -71,6 +75,7 @@ const CategoriesPage = ({ products, category }) => {
             setPage={setPage}
             formPrice={formPrice}
             setFormPrice={setFormPrice}
+            category={category}
           />
         </Grid>
         <Grid
@@ -85,9 +90,7 @@ const CategoriesPage = ({ products, category }) => {
             filteredProducts={filteredProducts}
             page={page}
             perPage={perPage}
-            checked={checked}
             setPage={setPage}
-            setChecked={setChecked}
             category={category}
             open={open}
             setOpen={setOpen}
@@ -95,22 +98,19 @@ const CategoriesPage = ({ products, category }) => {
             sortPriceType={sortPriceType}
             products={products}
           />
-          {products.length > 0 && (
-            <Grid
-              container
-              justifyContent="center"
-              className={styles.pagination}
-            >
-              <Grid item>
-                <Paginate
-                  count={Math.ceil(filteredProducts.length / perPage)}
-                  page={page}
-                  onChange={handleChange}
-                  color="primary"
-                />
-              </Grid>
+          {/* {products.length > 0 && ( */}
+          <Grid container justifyContent="center" className={styles.pagination}>
+            <Grid item>
+              <Paginate
+                // count={Math.ceil(filteredProducts.length / perPage)}
+                count={100}
+                page={page}
+                onChange={handleChange}
+                color="primary"
+              />
             </Grid>
-          )}
+          </Grid>
+          {/* )} */}
         </Grid>
       </Grid>
     </div>

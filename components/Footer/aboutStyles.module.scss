@@ -65,10 +65,13 @@ $gray: #626262;
         margin-right: 8px;
       }
     }
-    .link:hover {
-      color: #1b8775;
-      .dot {
+    .link {
+      cursor: pointer;
+      &:hover {
         color: #1b8775;
+        .dot {
+          color: #1b8775;
+        }
       }
     }
     .socialMedia {
@@ -76,6 +79,7 @@ $gray: #626262;
       display: flex;
       justify-content: space-between;
       .icon {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;

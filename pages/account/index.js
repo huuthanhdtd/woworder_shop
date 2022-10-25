@@ -1,17 +1,18 @@
 import React from 'react';
-import { fetchAPI } from '../../lib/api';
-import MyAccount from '../../components/Account/MyAccount';
 import { useSelector } from 'react-redux';
+import MyAccount from '../../components/Account/MyAccount';
+import Seo from '../../components/seo';
+// import { fetchAPI } from '../../lib/api';
 
 const Account = ({ customer, userData }) => {
+  const seo = {
+    metaTitle: 'Thông tin tài khoản',
+    metaDescription: `Khanh Bui `,
+  };
   const { user } = useSelector((state) => state.customer);
-  // React.useEffect(() => {
-  //   if (!user) {
-  //     Router.push('/account/login');
-  //   }
-  // }, []);
   return (
     <div>
+      <Seo seo={seo} />
       {user && Object.keys(user).length > 0 && (
         <MyAccount user={user.item} detail={user?.included?.addresses[0]} />
       )}

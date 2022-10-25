@@ -41,7 +41,8 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          .btn {
+          .btn,
+          .link {
             cursor: pointer;
             text-transform: none;
             font-family: 'Mulish';

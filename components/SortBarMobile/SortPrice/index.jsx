@@ -1,16 +1,9 @@
-import { Button, TextField, Typography } from '@material-ui/core';
+import { TextField, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 
-export default function SortPrice({
-  setFormPriceValues,
-  formPriceValues,
-  setFilters,
-  filters,
-  formPrice,
-  setFormPrice,
-}) {
+export default function SortPrice({ setFilters, filters }) {
   const [msg, setmsg] = React.useState('');
   const { prices } = filters;
   const handleOnChange = (e) => {
@@ -21,11 +14,8 @@ export default function SortPrice({
     if (e.target.value.length == 10) return false;
     let { name, value } = e.target;
     value = Number(value);
-    setFormPrice({ ...formPrice, [name]: value });
+    setFilters({ ...filters, prices: { ...prices, [name]: value } });
   };
-  // useEffect(() => {
-  //   setmsg('');
-  // }, [prices]);
 
   return (
     <>
@@ -40,7 +30,7 @@ export default function SortPrice({
             variant="outlined"
             name="priceFirst"
             label="Từ"
-            value={formPrice.priceFirst || ''}
+            value={prices.priceFirst || ''}
             onChange={(e) => handleOnChange(e)}
             size="small"
           />
@@ -51,7 +41,7 @@ export default function SortPrice({
             variant="outlined"
             name="priceLast"
             label="Đến"
-            value={formPrice.priceLast || ''}
+            value={prices.priceLast || ''}
             onChange={(e) => handleOnChange(e)}
             size="small"
           />

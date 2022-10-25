@@ -1,10 +1,16 @@
 import React from 'react';
 import Login from '../../../components/Account/Login';
-import { fetchAPI } from '../../../lib/api';
+import Seo from '../../../components/seo';
+// import { fetchAPI } from '../../../lib/api';
 
 const index = () => {
+  const seo = {
+    metaTitle: 'Đăng nhập tài khoản',
+    metaDescription: `Khanh Bui `,
+  };
   return (
     <div>
+      <Seo seo={seo} />
       <Login />
     </div>
   );

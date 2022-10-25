@@ -2,9 +2,10 @@ import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.scss';
 import { BsBagPlus } from 'react-icons/bs';
-import { Button, Link, TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 import { useCart } from 'react-use-cart';
 import { convertCurrency } from '../../../utils/convertCurrency';
+import Link from 'next/link';
 import TypeBox from './TypeBox';
 
 function Infor({ product }) {

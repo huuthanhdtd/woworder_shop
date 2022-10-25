@@ -10,6 +10,7 @@ export default function Checked({
   setPage,
   formPrice,
   setFormPrice,
+  category,
 }) {
   return (
     <div className={styles.checks}>
@@ -19,7 +20,12 @@ export default function Checked({
         </span>
         <span className={styles.title}> BỘ LỌC TÌM KIẾM</span>
       </div>
-      <CheckWeb setChecked={setChecked} checked={checked} setPage={setPage} />
+      <CheckWeb
+        setChecked={setChecked}
+        checked={checked}
+        setPage={setPage}
+        brands={category?.brands}
+      />
       <SearchPrice formPrice={formPrice} setFormPrice={setFormPrice} />
     </div>
   );

@@ -1,18 +1,18 @@
-import { useRouter } from 'next/router';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import CheckoutDetail from '../../components/Checkouts';
+import Seo from '../../components/seo';
 
 const Checkout = () => {
-  const { user } = useSelector((state) => state.customer);
-  const router = useRouter();
-  React.useEffect(() => {
-    if (!user || Object.keys(user).length <= 0) {
-      router.push('/account/login');
-    }
-  }, []);
+  const { user, token } = useSelector((state) => state.customer);
+  const seo = {
+    metaTitle: 'Thanh toán',
+    metaDescription: `Khanh Bui `,
+  };
+
   return (
     <>
+      <Seo seo={seo} />
       {user && (
         <div>
           <CheckoutDetail

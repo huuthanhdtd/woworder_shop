@@ -3,24 +3,13 @@ import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.scss';
 
-export default function SortWeb({ setPage, setFilters, filters }) {
-  const websites = [
-    { name: '1688', slug: '1688' },
-    { name: 'ADIDAS', slug: 'ADIDAS' },
-    { name: 'AMAZON', slug: 'AMAZON' },
-    { name: 'ASOS', slug: 'ASOS' },
-    { name: 'CONVERSE', slug: 'CONVERSE' },
-    { name: 'HM', slug: 'HM' },
-    { name: 'IKEA', slug: 'IKEA' },
-  ];
+export default function SortWeb({ setFilters, filters, category }) {
   const { webs } = filters;
-  const handleChangeTwo = (name, slug) => {
-    const index = webs.indexOf(slug);
-    const isExisted = webs.includes(slug);
-    // setPage(1);
-
+  const handleChangeTwo = (name, id) => {
+    const index = webs.indexOf(id);
+    const isExisted = webs.includes(id);
     if (!isExisted)
-      return setFilters((state) => ({ ...state, webs: [...webs, slug] }));
+      return setFilters((state) => ({ ...state, webs: [...webs, id] }));
 
     if (isExisted)
       return setFilters((state) => {
@@ -30,22 +19,21 @@ export default function SortWeb({ setPage, setFilters, filters }) {
   };
   return (
     <div className={styles.boxWeb}>
-      <Typography variant="h6">Website</Typography>
+      {category?.brands?.length > 0 && (
+        <Typography variant="h6">Website</Typography>
+      )}
       <div className={styles.selectItems}>
-        {
-          // checked &&
-          websites.map((data, idx) => (
-            <Button
-              key={idx}
-              onClick={(event) => handleChangeTwo(data.name, data.slug)}
-              className={clsx(styles.item, {
-                [styles.active]: webs.includes(data.slug),
-              })}
-            >
-              {data.name}
-            </Button>
-          ))
-        }
+        {category?.brands?.map((data, idx) => (
+          <Button
+            key={idx}
+            onClick={(event) => handleChangeTwo(data.name, data.id)}
+            className={clsx(styles.item, {
+              [styles.active]: webs.includes(data.id),
+            })}
+          >
+            {data.name}
+          </Button>
+        ))}
       </div>
     </div>
   );

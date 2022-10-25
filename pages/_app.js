@@ -2,7 +2,6 @@ import App from 'next/app';
 import Head from 'next/head';
 import { createContext } from 'react';
 import { fetchAPI } from '../lib/api';
-// import { getStrapiMedia } from '../lib/media';
 import Layout from '../components/layout';
 import '../assets/css/style.css';
 import '../assets/css/slick.css';
@@ -27,6 +26,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Head>
         <link
           rel="shortcut icon"
+          href="/favicon.svg"
           // href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>

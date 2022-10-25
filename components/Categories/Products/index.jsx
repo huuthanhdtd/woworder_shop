@@ -1,22 +1,19 @@
 import { Button, Grid, Typography } from '@material-ui/core';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import React from 'react';
 import { orderButton } from '../../../constants/commonData';
 import CardProduct from '../../CardProduct';
 import styles from './styles.module.scss';
 import SortBar from '../../SortBar';
 import { sortByPrice } from '../../../utils/sortByPrice';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Router from 'next/router';
 
 const Products = ({
   filteredProducts,
   page,
-  perPage,
-  checked,
+  // perPage,
   setPage,
-  data,
-  setChecked,
-  handleClearFilter,
   category,
   open,
   setOpen,
@@ -25,31 +22,36 @@ const Products = ({
   products,
 }) => {
   const dataFilter = React.useMemo(() => {
-    const newData = filteredProducts?.slice(
-      0 + perPage * (page - 1),
-      perPage * page
-    );
+    // const newData = filteredProducts?.slice(
+    //   0 + perPage * (page - 1),
+    //   perPage * page
+    // );
     if (sortPriceType) {
-      return sortByPrice(newData, sortPriceType);
+      return sortByPrice(filteredProducts, sortPriceType);
     } else {
-      return newData;
+      return filteredProducts;
     }
-  }, [page, checked.length, filteredProducts, sortPriceType]);
+  }, [filteredProducts, sortPriceType]);
 
-  const handleChangePage = React.useCallback((e) => {
-    if (e === 'prev') {
-      setPage((prev) => prev - 1);
-    } else if (e === 'next') {
-      setPage((prev) => prev + 1);
-    }
-  }, []);
+  const handleChangePage = React.useCallback(
+    (e) => {
+      if (e === 'prev') {
+        Router.push(`/categories/${category.id}/${page - 1}`);
+        setPage((prev) => prev - 1);
+      } else if (e === 'next') {
+        Router.push(`/categories/${category.id}/${page + 1}`);
+        setPage((prev) => prev + 1);
+      }
+    },
+    [page]
+  );
 
-  const totalPage = Math.ceil(filteredProducts.length / perPage);
+  // const totalPage = Math.ceil(filteredProducts.length / perPage);
   return (
     <div className={styles.wrapper}>
       <SortBar
         page={page}
-        totalPage={totalPage}
+        // totalPage={totalPage}
         category={category}
         open={open}
         setOpen={setOpen}
@@ -80,9 +82,9 @@ const Products = ({
       ) : (
         <div className={styles.notify}>
           <Typography variant="body2" className={styles.notification}>
-            Danh mục này chưa có sản phẩm.
+            Trang này không có sản phẩm.
           </Typography>
-          <Link href={'/'}> Trang chủ</Link>
+          {/* <Link href={'/'}> Trang chủ</Link> */}
         </div>
       )}
     </div>

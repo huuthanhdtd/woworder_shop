@@ -1,21 +1,12 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-export default function CheckWeb({ checked, setChecked, setPage }) {
-  const checks = [
-    { name: '1688', slug: '1688' },
-    { name: 'ADIDAS', slug: 'ADIDAS' },
-    { name: 'AMAZON', slug: 'AMAZON' },
-    { name: 'ASOS', slug: 'ASOS' },
-    { name: 'CONVERSE', slug: 'CONVERSE' },
-    { name: 'HM', slug: 'HM' },
-    { name: 'IKEA', slug: 'IKEA' },
-  ];
-  const handleChangeTwo = (isChecked, slug) => {
-    const index = checked.indexOf(slug);
+export default function CheckWeb({ checked, setChecked, setPage, brands }) {
+  const handleChangeTwo = (isChecked, id) => {
+    const index = checked.indexOf(id);
     setPage(1);
 
-    if (isChecked) return setChecked((state) => [...state, slug]);
+    if (isChecked) return setChecked((state) => [...state, id]);
 
     if (!isChecked && index > -1)
       return setChecked((state) => {
@@ -28,23 +19,21 @@ export default function CheckWeb({ checked, setChecked, setPage }) {
     <div className={styles.checks}>
       <h2>Website</h2>
       <div className={styles.formControl}>
-        {
-          // checked &&
-          checks.map((data, index) => (
+        {brands?.length > 0 &&
+          brands?.map((data, index) => (
             <div key={index} className={styles.checked}>
               <label className={styles.label}>
                 <input
                   type="checkbox"
                   onChange={(event) =>
-                    handleChangeTwo(event.target.checked, data.slug)
+                    handleChangeTwo(event.target.checked, data.id)
                   }
                   className={styles.inputCheck}
                 />
                 {data.name}
               </label>
             </div>
-          ))
-        }
+          ))}
       </div>
     </div>
   );

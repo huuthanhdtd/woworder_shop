@@ -1,12 +1,11 @@
-import { Link } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { myAccount } from '../../../../../constants/commonData';
 import { logOut } from '../../../../../store/actions/auth';
 import styles from './styles.module.scss';
+import Link from 'next/link';
 
 export default function LoginSuccess({ setOpenAccount, name }) {
-  // console.log(name);
   const dispatch = useDispatch();
   const Logout = () => {
     dispatch(logOut());

@@ -35,7 +35,7 @@ export default function Sliders({ categories }) {
     const fi = sort.find((e, i) => i === Number(selected));
     if (fi) {
       router.push({
-        pathname: `/categories/${fi.id}`,
+        pathname: `/categories/${fi.id}/1`,
       });
     }
   }, [selected]);
@@ -61,7 +61,8 @@ export default function Sliders({ categories }) {
               <div key={idx} className={styles.Hot}>
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]: router.asPath === `/categories/${data.id}`,
+                    [styles.active]:
+                      router.asPath === `/categories/${data.id}/1`,
                   })}
                 >
                   {data.name}

@@ -53,18 +53,20 @@ export function* authSaga({ type, payload }) {
         if (res.status === 'E_UNAUTHORIZED') {
           yield handleError(res.error);
         } else {
-          try {
-            const user = yield call(customer, res.token, res?.user?.id);
-            if (user.status === 'E_NOT_FOUND') {
-              yield put(getCustomerFail(user.error));
-            } else {
-              yield put(getCustomerSuccess(user));
-            }
-          } catch (error) {
-            yield put(getCustomerFail(error));
-          }
+          // try {
+          //   const user = yield call(customer, res.token, res?.user?.id);
+          //   if (user.status === 'E_NOT_FOUND') {
+          //     yield put(getCustomerFail(user.error));
+          //   } else {
+          //     yield put(getCustomerSuccess(user));
+          //   }
+          // } catch (error) {
+          //   yield put(getCustomerFail(error));
+          // }
           yield put(logInSuccess(res));
           yield put(authenticating(false));
+          yield resetCheckout();
+
           Router.push('/');
         }
       } catch (error) {
@@ -80,6 +82,7 @@ export function* authSaga({ type, payload }) {
       } catch (error) {
         yield handleError(error);
       }
+      break;
     case types.GET_CUSTOMER:
       try {
         const { user, token } = yield select(auth);
@@ -98,7 +101,7 @@ export function* authSaga({ type, payload }) {
     case types.CHECKOUT:
       try {
         const { token } = yield select(auth);
-        if (accessToken) {
+        if (token) {
           const res = yield call(checkouts, payload, token);
           if (
             res.status === 'E_NOT_FOUND' ||
@@ -110,12 +113,14 @@ export function* authSaga({ type, payload }) {
           } else {
             yield put(checkoutsSuccess());
             yield resetCheckout();
+            Router.push('/');
           }
         }
       } catch (error) {
         yield put(checkoutsFail(error.response));
         yield resetCheckout();
       }
+      break;
     case types.CREATE_ADDRESS:
       try {
         const { user, token } = yield select(auth);
@@ -143,7 +148,7 @@ export function* authSaga({ type, payload }) {
         const { user, token } = yield select(auth);
         const res = yield call(deleteAddress, payload, token, user.id);
         if (res.item) {
-          yield put(deleteAddressSuccess(item.item));
+          yield put(deleteAddressSuccess(res.item));
         }
       } catch (error) {
         yield put(deleteAddressFail(error.response));

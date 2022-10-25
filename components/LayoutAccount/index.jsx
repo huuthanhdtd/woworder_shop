@@ -42,11 +42,13 @@ const LayoutAccount = ({ title, children }) => {
               })}
             >
               {myAccount.slice(0, 3).map((it, idx) => (
-                <Button key={idx} href={it.link} className={styles.btn}>
-                  {/* <div> */}
-                  <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
-                  {it.name}
-                  {/* </div> */}
+                <Button key={idx} className={styles.btn}>
+                  <Link href={it.link} className={styles.link}>
+                    <div>
+                      <CgEditBlackPoint size={10} style={{ marginRight: 5 }} />
+                      {it.name}
+                    </div>
+                  </Link>
                 </Button>
               ))}
               <Button onClick={handleLogout} className={styles.btn}>

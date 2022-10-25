@@ -1,0 +1,156 @@
+{
+  "items": {
+    "id": "824518933259224712",
+    "createdAt": "2022-10-11T09:51:56.000Z",
+    "updatedAt": "2022-10-13T04:30:53.000Z",
+    "name": "Quần áo nữ",
+    "description": "Home",
+    "businessId": "709313694273635330",
+    "parentId": null,
+    "products": [
+      {
+        "id": "828141400179607269",
+        "name": "CAMISETA DE CANALÉ",
+        "url": "https://www.lefties.com/es/mujer/camiseta-de-canal%C3%A9-c1030267502p533763437.html?colorId=627",
+        "imageUrl": "https://static.lefties.com/9/photos2/2022/I/0/1/p/5027/300/250/5027300250_2_6_1.jpg?t=1658924910105",
+        "variation": null,
+        "color": "Blanco",
+        "size": null,
+        "unit": null,
+        "webPrice": "5.99",
+        "sellPrice": "197000",
+        "brandId": "709313694818894977"
+      },
+      {
+        "id": "827996088802739812",
+        "name": "Geripptes Shirt mit Kragen",
+        "url": "https://www2.hm.com/de_de/productpage.1003438001.html",
+        "imageUrl": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F50%2F6a%2F506ae523683cc59b6cdcf86ecb1bd58b09ff0467.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+        "variation": null,
+        "color": "Weiß",
+        "size": "XXS",
+        "webPrice": "5.99",
+        "sellPrice": "179000",
+        "brandId": "709313694802117699"
+      },
+      {
+        "id": "827947444565181991",
+        "name": "Ribbed T-shirt",
+        "url": "https://www.lefties.com/es/mujer/camiseta-de-canal%C3%A9-c1030267502p533763437.html?colorId=627",
+        "imageUrl": "https://static.lefties.com/9/photos2/2022/I/0/1/p/5027/300/607/5027300607_2_6_1.jpg?t=1658915960240",
+        "variation": null,
+        "color": " Arcilla",
+        "size": null,
+        "webPrice": "5.99",
+        "sellPrice": "197000",
+        "brandId": "7093136948188949780"
+      },
+      {
+        "id": "827915371636852205",
+        "name": "Kardigan",
+        "url": "https://www2.hm.com/pl_pl/productpage.1059988001.html",
+        "imageUrl": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fbb%2F3e%2Fbb3e3690247b3869c72009cd20fb01cc24771daf.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+        "variation": null,
+        "color": "Malinoworóżowy",
+        "size": "XS",
+        "webPrice": "34.99",
+        "sellPrice": "179000",
+        "brandId": "7093136948188949780"
+      },
+      {
+        "id": "827451692705383884",
+        "name": "PACK OF 2 LACE TRIM STRAPPY TOPS",
+        "url": "https://www.lefties.com/es/en/woman/pack-of-2-lace-trim-strappy-tops-c1030267502p523610888.html?colorId=616",
+        "imageUrl": "https://static.lefties.com/9/photos2/2022/I/0/1/p/5122/322/616/5122322616_2_1_1.jpg?t=1657283375054",
+        "variation": null,
+        "color": "Geraniu",
+        "size": null,
+        "webPrice": "4.99",
+        "sellPrice": "249000",
+        "brandId": "709313694818894979"
+      },
+      {
+        "id": "826747708172666118",
+        "name": "FULL LENGTH TROUSERS",
+        "url": "https://www.zara.com/es/en/full-length-trousers-p07385548.html",
+        "imageUrl": "https://static.zara.net/photos///2022/I/0/1/p/7385/548/916/2/w/750/7385548916_6_1_1.jpg?ts=1664525620625",
+        "variation": null,
+        "color": "GREY GREEN",
+        "size": "S",
+        "webPrice": "29.95",
+        "sellPrice": "794000",
+        "brandId": "709313694818894979"
+      },
+      {
+        "id": "826671650769470667",
+        "name": "SPODNIE FULL LENGTH Z ZASZEWKAMI",
+        "url": "https://www.zara.com/pl/pl/spodnie-full-length-z-zaszewkami-p07385535.html?v1=195901609",
+        "imageUrl": "https://static.zara.net/photos///2022/I/0/1/p/7385/535/514/2/w/850/7385535514_6_1_1.jpg?ts=1661439182783",
+        "variation": null,
+        "color": "ZIELONKAWY ",
+        "size": null,
+        "webPrice": "139.00",
+        "sellPrice": "794000",
+        "brandId": "709313694818894978"
+      },
+      {
+        "id": "826670420538164420",
+        "name": "TALIOWANA KAMIZELKA O KRÓTKIM KROJU",
+        "url": "https://www.zara.com/pl/pl/taliowana-kamizelka-o-krotkim-kroju-p02010811.html?v1=199479151",
+        "imageUrl": "https://static.zara.net/photos///2022/I/0/1/p/2010/811/514/2/w/850/2010811514_6_1_1.jpg?ts=1661437001715",
+        "variation": null,
+        "color": "ZIELONKAWY ",
+        "size": null,
+        "webPrice": "119.00",
+        "sellPrice": "687000",
+        "brandId": "709313694818894979"
+      },
+      {
+        "id": "826629531031831620",
+        "name": "PUFFER GILET",
+        "url": "https://www.zara.com/es/en/puffer-gilet-p03427713.html?v1=177653119",
+        "imageUrl": "https://static.zara.net/photos///2022/I/0/1/p/3427/713/712/2/w/850/3427713712_6_1_1.jpg?ts=1661237805324",
+        "variation": null,
+        "color": "ECRU ",
+        "size": null,
+        "webPrice": "19.99",
+        "sellPrice": "530000",
+        "brandId": "7093136948188949780"
+      },
+      {
+        "id": "825310035717392347",
+        "name": "2-PACK OF LONG LEGGINGS",
+        "url": "https://www.lefties.com/es/en/woman/2-pack-of-long-leggings-c1030267502p523611679.html?colorId=800",
+        "imageUrl": "https://static.lefties.com/9/photos2/2022/I/0/1/p/5042/300/800/5042300800_2_1_1.jpg?t=1664349493654",
+        "variation": null,
+        "color": null,
+        "size": "S",
+        "webPrice": "7.99",
+        "sellPrice": "249000",
+        "brandId": "709313694802117699"
+      }
+    ],
+    "brands": [
+      {
+        "id": "709313694802117699",
+        "name": "ADIDAS"
+      },
+      {
+        "id": "7093136948188949780",
+        "name": "NIKE"
+      },
+      {
+        "id": "709313694818894979",
+        "name": "GUCCI"
+      },
+      {
+        "id": "709313694818894978",
+        "name": "DOLCE"
+      },
+      {
+        "id": "709313694818894977",
+        "name": "LOUIS VUITTON"
+      }
+    ]
+  }
+}

@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCustomer } from '../store/actions/customer';
 const Layout = ({ children, categories }) => {
-  const { user } = useSelector((state) => state.customer);
   const { token } = useSelector((state) => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -15,7 +14,8 @@ const Layout = ({ children, categories }) => {
     if (
       router.asPath === '/account' ||
       router.asPath === '/account/order-list' ||
-      router.asPath === '/account/address'
+      router.asPath === '/account/address' ||
+      router.asPath === '/checkouts'
     ) {
       if (token) {
         dispatch(getCustomer());

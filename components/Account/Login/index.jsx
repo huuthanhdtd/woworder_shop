@@ -1,12 +1,11 @@
-import { Button, Grid, TextField, Typography } from '@material-ui/core';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import Link from 'next/link';
+// import { useRouter } from 'next/router';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { logInUser } from '../../../lib/services/login';
-import { logIn } from '../../../store/actions/auth';
 import styles from './styles.module.scss';
+import { logIn } from '../../../store/actions/auth';
 import authError from '../../../constants/authError';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Grid, TextField, Typography } from '@material-ui/core';
 
 const isEmpty = (value) => {
   if (value === null || value === '') return true;
@@ -26,32 +25,11 @@ const Login = () => {
   });
   const { codeOrUsername, password } = formLogin;
   const { errUsername, errPassword } = errors;
-  const router = useRouter();
   const handleForgetPassword = () => {
     setChange(!change);
   };
-  const form = {
-    address: 'hoa vang da nang',
-    city: 'DDN',
-    company: 'Tipici',
-    districts: 'Hòa Vang',
-    email: 'huy@gmail.com',
-    firstname: 'Tran',
-    lastname: 'Quang Huy',
-    nation: 'VN',
-    phone: '0909000000',
-    rewardPoint: 300,
-    wards: 'Hòa Khương',
-    customerCode: 'M90C90',
-  };
+
   const handleSubmit = () => {
-    // localStorage.setItem('USER_INFOR', JSON.stringify(form));
-    // router.push('/cart');
-    // if (isEmpty(codeOrUsername) || isEmpty(password)) {
-    //   console.log('work');
-    // }
-    // const response = logInUser(formLogin);
-    // console.log(response);
     dispatch(logIn(formLogin));
   };
 
