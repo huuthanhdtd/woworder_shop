@@ -1,4 +1,4 @@
-import { debounce, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { ConvertViToEn, getScoreByNumberOfPosition } from '../../lib';
 import CardProduct from '../CardProduct';
@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 import { Pagination } from '@material-ui/lab';
 import data from '../../constants/testdata.json';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import Loading from '../Loading';
 
 export default function PageSearch() {
@@ -14,10 +15,23 @@ export default function PageSearch() {
   const [page, setPage] = useState(1);
   const [loadinged, setLoadinged] = useState(true);
   useEffect(() => {
-    if (dataSortedByScore) {
-      setLoadinged(false);
-    }
+    if (!router.isReady) return;
+    axios
+      .get(
+        // `https://2658-113-176-100-45.ap.ngrok.io/api/stores/search?limit=10&page=1&brandIds=&query=${router.query.query}`
+        `https://khanhbui.vn/api/stores/search?limit=10&page=1&brandIds=&query=${router.query.query}`
+        // {
+        //   params: {
+        //     limit: 10,
+        //     page: 1,
+        //     brandIds: '',
+        //     query: router.query.query,
+        //   },
+        // }
+      )
+      .then((res) => setLoadinged(false));
   }, [router.query.query]);
+  useEffect(() => {}, [router.query]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };

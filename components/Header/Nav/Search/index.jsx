@@ -5,11 +5,10 @@ import Suggestions from './Suggestions';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import Loading from '../../../Loading';
-import axios from 'axios';
 
 export default function Search({ suggestions, setSuggestions, onfocus }) {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState(router.query.query || '');
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const handleOnchange = (e) => {
     setSearchTerm(e.target.value);
@@ -25,23 +24,7 @@ export default function Search({ suggestions, setSuggestions, onfocus }) {
     setSuggestions(false);
   };
   useEffect(() => {
-    if (!router.isReady) return;
-    axios
-      .get(
-        `https://khanhbui.vn/api/stores/search?limit=10&page=1&brandIds=&query=${router.query.query}`
-        // {
-        // params: {
-        //   limit: 10,
-        //   page: 1,
-        //   brandIds: '',
-        //   query: searchTerm,
-        // },
-        // }
-      )
-      .then((res) =>
-        // console.log(res),
-        setLoading(false)
-      );
+    setLoading(false);
   }, [router.query]);
 
   return (
