@@ -88,7 +88,7 @@ const InformationBox = ({
             <Typography variant="body2">Giảm 40%</Typography>
           </div>
         </div>
-        {productInfor?.color && (
+        {product?.color && (
           <div className={styles.colorsAndType}>
             <Typography variant="body2" className={styles.prop}>
               Màu:
@@ -128,7 +128,7 @@ const InformationBox = ({
           </div>
         )}
 
-        {productInfor?.size && (
+        {product?.size && (
           <div className={styles.colorsAndType}>
             <Typography variant="body2" className={styles.prop}>
               Size:

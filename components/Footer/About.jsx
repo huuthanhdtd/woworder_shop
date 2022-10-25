@@ -156,10 +156,14 @@ const About = () => {
                   <Typography variant="h6">{takecare.connect}</Typography>
                   <div className={styles.socialMedia}>
                     <Link href="/">
-                      <TiSocialFacebook size={20} className={styles.icon} />
+                      <div className={styles.icon}>
+                        <TiSocialFacebook size={20} />
+                      </div>
                     </Link>
                     <Link href="/">
-                      <IoLogoInstagram size={20} className={styles.icon} />
+                      <div className={styles.icon}>
+                        <IoLogoInstagram size={20} />
+                      </div>
                     </Link>
                     <Link href="/">
                       <div className={styles.icon}>
