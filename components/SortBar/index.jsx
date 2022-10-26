@@ -23,7 +23,6 @@ const SortBar = ({
   open,
   setOpen,
   orderData,
-  categoryData,
 }) => {
   const { asPath } = useRouter();
   const [isOrder, setOrder] = React.useState(null);
@@ -136,7 +135,7 @@ const SortBar = ({
         {asPath !== '/' && (
           <div className={styles.selectPage}>
             <Typography variant="body2">
-              {page}/{categoryData.productCount}
+              {page}/{category.productCount}
               {/* /{totalPage} */}
             </Typography>
             <Button
@@ -148,8 +147,7 @@ const SortBar = ({
             </Button>
             <Button
               disabled={
-                page === categoryData.productCount ||
-                categoryData.productCount == 0
+                page === category.productCount || category.productCount == 0
                   ? true
                   : false
               }

@@ -8,7 +8,7 @@ import Router, { useRouter } from 'next/router';
 import SortBarMobile from '../SortBarMobile';
 import Link from 'next/link';
 
-const CategoriesPage = ({ products, category, categoryData }) => {
+const CategoriesPage = ({ products, category }) => {
   const { query } = useRouter();
   /* Filter website */
   const [checked, setChecked] = React.useState([]);
@@ -102,14 +102,13 @@ const CategoriesPage = ({ products, category, categoryData }) => {
             setSortPriceType={setSortPriceType}
             sortPriceType={sortPriceType}
             products={products}
-            categoryData={categoryData}
           />
           {/* {products.length > 0 && ( */}
           <Grid container justifyContent="center" className={styles.pagination}>
             <Grid item>
               <Paginate
                 // count={Math.ceil(filteredProducts.length / perPage)}
-                count={categoryData.productCount}
+                count={category.productCount}
                 page={page}
                 onChange={handleChange}
                 color="primary"

@@ -20,7 +20,6 @@ const Products = ({
   sortPriceType,
   setSortPriceType,
   products,
-  categoryData,
 }) => {
   const dataFilter = React.useMemo(() => {
     // const newData = filteredProducts?.slice(
@@ -59,7 +58,6 @@ const Products = ({
         orderData={orderButton}
         handleChangePage={handleChangePage}
         setSortPriceType={setSortPriceType}
-        categoryData={categoryData}
       />
       {products.length > 0 ? (
         <Grid

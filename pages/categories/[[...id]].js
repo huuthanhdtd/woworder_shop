@@ -3,21 +3,18 @@ import CategoriesPage from '../../components/Categories';
 import { fetchAPI } from '../../lib/api';
 import { spliceBrandId } from '../../utils/filterBrandId';
 import Seo from '../../components/seo';
+import axiosApi from '../../lib/services/axiosApi';
 
-const Categories = ({ category, categoryData }) => {
-  const { items } = category;
+const Categories = ({ category }) => {
+  const { items } = category && category;
   const seo = {
-    metaTitle: items.name,
-    metaDescription: `Khanh Bui ${items.name}`,
+    metaTitle: items?.name,
+    metaDescription: `Khanh Bui ${items?.name}`,
   };
   return (
     <div>
       <Seo seo={seo} />
-      <CategoriesPage
-        products={items.products}
-        category={items}
-        categoryData={categoryData}
-      />
+      <CategoriesPage products={items?.products} category={items} />
     </div>
   );
 };
@@ -28,34 +25,30 @@ export const getStaticPaths = async () => {
   const categoriesRes = await fetchAPI('/stores/categories');
 
   return {
-    paths: categoriesRes.items.map((category) => ({
-      params: {
-        id: [`${category.id}`, '1'],
-      },
-    })),
-    fallback: 'blocking',
+    paths: categoriesRes?.items
+      ? categoriesRes?.items.map((category) => ({
+          params: {
+            id: [`${category.id}`, '1'],
+          },
+        }))
+      : [],
+    fallback: true,
   };
 };
 
 export const getStaticProps = async ({ params }) => {
-  const brandIdStr = spliceBrandId(params.id);
+  const brandIdStr = spliceBrandId(params?.id);
 
-  const [categoryRes, categoryAllRes] = await Promise.all([
-    fetchAPI(`/stores/categories/${params.id[0]}`, {
-      limit: 10,
-      page: params.id[1],
-      brandIds: params.id.length > 2 ? brandIdStr : '',
-    }),
-    fetchAPI(`/stores/categories `),
-  ]);
+  const categoryRes = await fetchAPI(`/stores/categories/${params?.id?.[0]}`, {
+    limit: 10,
+    page: params?.id?.[1],
+    brandIds: params?.id?.length > 2 ? brandIdStr : '',
+  });
 
   return {
     props: {
       category: categoryRes,
-      categoryData: categoryAllRes.items.filter(
-        (it) => it.id === params.id[0]
-      )[0],
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
