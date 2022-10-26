@@ -20,6 +20,7 @@ const Products = ({
   sortPriceType,
   setSortPriceType,
   products,
+  categoryData,
 }) => {
   const dataFilter = React.useMemo(() => {
     // const newData = filteredProducts?.slice(
@@ -43,7 +44,7 @@ const Products = ({
         setPage((prev) => prev + 1);
       }
     },
-    [page]
+    [category.id, page]
   );
 
   // const totalPage = Math.ceil(filteredProducts.length / perPage);
@@ -58,6 +59,7 @@ const Products = ({
         orderData={orderButton}
         handleChangePage={handleChangePage}
         setSortPriceType={setSortPriceType}
+        categoryData={categoryData}
       />
       {products.length > 0 ? (
         <Grid

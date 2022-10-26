@@ -42,7 +42,6 @@ export default function Sliders({ categories }) {
   const onSelect = (key) => {
     setSelected(key);
   };
-
   return (
     <div className={styles.content}>
       <div className={styles.home}>
@@ -62,7 +61,8 @@ export default function Sliders({ categories }) {
                 <Button
                   className={clsx(styles.item, {
                     [styles.active]:
-                      router.asPath === `/categories/${data.id}/1`,
+                      router.asPath ===
+                      `/categories/${data.id}/${router.query?.id?.[1]}`,
                   })}
                 >
                   {data.name}

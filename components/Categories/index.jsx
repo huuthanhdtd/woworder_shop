@@ -4,15 +4,16 @@ import Paginate from '../Pagination';
 import Products from './Products';
 import Checked from '../Sort';
 import styles from './styles.module.scss';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import SortBarMobile from '../SortBarMobile';
 import Link from 'next/link';
 
-const CategoriesPage = ({ products, category }) => {
+const CategoriesPage = ({ products, category, categoryData }) => {
+  const { query } = useRouter();
   /* Filter website */
   const [checked, setChecked] = React.useState([]);
   /* Set page category */
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(Number(query.id[1]));
   /* Set page item per page */
   const [perPage, setPerPage] = React.useState(10);
   /* Set Price filter */
@@ -26,6 +27,10 @@ const CategoriesPage = ({ products, category }) => {
   const [open, setOpen] = React.useState(false);
 
   const { priceFirst, priceLast } = formPrice;
+
+  React.useEffect(() => {
+    setPage(Number(query.id[1]));
+  }, [Number(query.id[1])]);
 
   const filteredProducts = React.useMemo(() => {
     return products?.filter((item) => {
@@ -48,7 +53,7 @@ const CategoriesPage = ({ products, category }) => {
       Router.push(`/categories/${category.id}/${value}`);
       setPage(value);
     },
-    [page]
+    [category.id]
   );
 
   return (
@@ -97,13 +102,14 @@ const CategoriesPage = ({ products, category }) => {
             setSortPriceType={setSortPriceType}
             sortPriceType={sortPriceType}
             products={products}
+            categoryData={categoryData}
           />
           {/* {products.length > 0 && ( */}
           <Grid container justifyContent="center" className={styles.pagination}>
             <Grid item>
               <Paginate
                 // count={Math.ceil(filteredProducts.length / perPage)}
-                count={100}
+                count={categoryData.productCount}
                 page={page}
                 onChange={handleChange}
                 color="primary"
