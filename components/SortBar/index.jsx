@@ -68,7 +68,8 @@ const SortBar = ({
         >
           {cateName && (
             <Link
-              href={`/categories/${category.id}/1`}
+              href={`/categories/[[...id]]`}
+              as={`/categories/${category.id}/1`}
               className={styles.category}
             >
               {category.name}

@@ -35,7 +35,8 @@ export default function Sliders({ categories }) {
     const fi = sort.find((e, i) => i === Number(selected));
     if (fi) {
       router.push({
-        pathname: `/categories/${fi.id}/1`,
+        pathname: `/categories/[[...id]]`,
+        query: { id: [`${fi.id}`, '1'] },
       });
     }
   }, [selected]);
