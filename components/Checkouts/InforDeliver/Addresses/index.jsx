@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import Local from './Local';
+// import Local from './Local';
 import styles from './styles.module.scss';
 import Transportation from './Transportation';
 
@@ -9,9 +9,9 @@ const Addresses = ({
   state,
   deliver,
   handleChange,
-  handleDeliver,
   allInforDeliver,
   handleChangeInforDeliver,
+  // handleDeliver,
 }) => {
   return (
     <div className={clsx(styles.address, styles.border)}>
@@ -20,9 +20,9 @@ const Addresses = ({
         state={state}
         deliver={deliver}
         handleChange={handleChange}
-        handleDeliver={handleDeliver}
         allInforDeliver={allInforDeliver}
         handleChangeInforDeliver={handleChangeInforDeliver}
+        // handleDeliver={handleDeliver}
       />
       {/* <Local
         data={data}

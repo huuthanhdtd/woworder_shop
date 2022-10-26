@@ -4,22 +4,21 @@ import React from 'react';
 import { convertCurrency } from '../../../../utils/convertCurrency';
 import styles from './styles.module.scss';
 import { Context } from '../../../../constants/Context';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 const Bill = ({
   // coupon,
   // handleRemoveCoupon,
   // login,
   objBill,
-  checked,
+  // checked,
   handleFinish,
   provisionalPrice,
 }) => {
   const { setPointUsed } = React.useContext(Context);
-  const handleChange = (event, newValue) => {
-    setPointUsed(newValue);
-  };
-
+  // const handleChange = (event, newValue) => {
+  //   setPointUsed(newValue);
+  // };
   return (
     <div className={styles.wrapper}>
       <div className={styles.bill}>
@@ -69,11 +68,11 @@ const Bill = ({
 
           <Typography variant="body2">-{convertCurrency(discount)}</Typography>
         </div> */}
-        <div className={clsx(styles.prevPrice, styles.borderFlex)}>
+        {/* <div className={clsx(styles.prevPrice, styles.borderFlex)}>
           <Typography variant="body2">Phí đặt hàng </Typography>
 
           <Typography variant="body2" className={styles.feePrice}>
-            {convertCurrency(objBill.totalFeeAmount)}
+            {convertCurrency(objBill.totalFee)}
           </Typography>
         </div>
         <div className={clsx(styles.prevPrice, styles.borderFlex)}>
@@ -82,7 +81,7 @@ const Bill = ({
           <Typography variant="body2" className={styles.deliPrice}>
             {convertCurrency(objBill.feeShip)}
           </Typography>
-        </div>
+        </div> */}
       </div>
       <div className={styles.line} />
       <div className={styles.total}>

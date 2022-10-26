@@ -1,36 +1,43 @@
-import { Button, Grid, Link, TextField, Typography } from '@material-ui/core';
+import {
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  Link,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import { AiOutlineUser } from 'react-icons/ai';
 import cityData from '../../../constants/local.json';
 import styles from './styles.module.scss';
-// import SelectForm from './SelectForm';
-import Payments from './Payment';
+import SelectForm from './SelectForm';
+// import Payments from './Payment';
 import Delivery from './Deliver';
 import Addresses from './Addresses';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../../store/actions/auth';
 
 const InforDeliver = ({
-  // token,
-  // handleLogin,
-  // login,
+  addresses,
   handleFinish,
   allInforDeliver,
   setAllInforDeliver,
   handleChangeInforDeliver,
 }) => {
+  const dispatch = useDispatch();
   /* set First data  */
   const firstState = React.useMemo(() => {
-    const cities = allInforDeliver
-      ? cityData.find((it) => it.code === allInforDeliver.province)
-      : null;
-    const districts = cities
-      ? cities.districts.find((it) => it.name === allInforDeliver.district)
+    const districts = allInforDeliver.province
+      ? cityData.find((it) => it.name === allInforDeliver.province)
       : null;
     const wards = districts
-      ? districts.wards.find((it) => it.name === allInforDeliver.ward)
+      ? districts.districts.find((it) => it.name === allInforDeliver.district)
       : null;
     return {
-      cities,
       districts,
       wards,
     };
@@ -39,127 +46,164 @@ const InforDeliver = ({
   /* List data location city, district, wards */
   const [data, setData] = React.useState({
     cities: cityData,
-    districts: firstState?.cities ? firstState?.cities : null,
-    wards: firstState?.districts ? firstState?.districts : null,
+    districts: firstState?.districts ? firstState?.districts.districts : null,
+    wards: firstState?.wards ? firstState?.wards.wards : null,
   });
 
   /*Value of location has been chosen */
   const [state, setState] = React.useState({
-    city: firstState?.cities ? firstState.cities.name : '',
-    district: firstState?.districts ? firstState.districts.name : '',
-    wards: firstState?.wards ? firstState.wards.name : '',
-    addresses: '',
+    city:
+      addresses[0].province === '' || addresses[0].province === '-'
+        ? ''
+        : addresses[0].province,
+    district:
+      addresses[0].province === '' || addresses[0].province === '-'
+        ? ''
+        : addresses[0].district,
+    ward:
+      addresses[0].ward === '' || addresses[0].ward === '-'
+        ? ''
+        : addresses[0].ward,
+    address: addresses[0].address,
   });
+
+  const [addressIdx, setAddressIdx] = React.useState(0);
 
   /*Infor customer */
-  const [useFormValues, setUserFormValues] = React.useState({
-    name: allInforDeliver?.name ? `${allInforDeliver.name}` : '',
-    email: allInforDeliver?.email ? allInforDeliver?.email : '',
-    phone: allInforDeliver?.phone ? allInforDeliver?.phone : '',
-  });
 
   const [deliver, setDeliver] = React.useState('deliver');
-  const [payment, setPayment] = React.useState('cash');
-  // const [addressUser, setAddressUser] = React.useState();
+  // const [payment, setPayment] = React.useState('cash');
 
-  const handlePayment = React.useCallback((type) => {
-    setPayment(type);
-  }, []);
-
-  const handleDeliver = React.useCallback((type) => {
-    setDeliver(type);
-    setData({
-      cities: cityData,
-      districts: null,
-      wards: null,
-    });
-    setState({
-      city: '',
-      district: '',
-      wards: '',
-      addresses: '',
-    });
-  }, []);
-
-  // const handleUpdateAddress = React.useCallback((event) => {
-  //   setAddressUser(event.target.value);
+  // const handlePayment = React.useCallback((type) => {
+  //   setPayment(type);
   // }, []);
 
-  /* handle onChang User form value */
+  // const handleDeliver = React.useCallback((type) => {
+  //   setDeliver(type);
+  //   setData({
+  //     cities: cityData,
+  //     districts: null,
+  //     wards: null,
+  //   });
+  //   setState({
+  //     city: '',
+  //     district: '',
+  //     wards: '',
+  //     address: '',
+  //   });
+  // }, []);
 
-  const handleOnChangeFormUser = (value, type) => {
+  /* Handle onChange address value */
+  const handleOnChangeAddress = (event) => {
+    const { name, value } = event.target;
     if (value !== '') {
-      handleChangeInforDeliver(type, value);
-    }
-    setUserFormValues((prev) => {
-      return {
-        ...prev,
-        [type]: value,
-      };
-    });
-  };
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    if (value !== '') {
-    }
-    if (value === '') {
-      if (name === 'city') {
-        setState({
-          city: '',
-          district: '',
-          wards: '',
-        });
+      setAddressIdx(value);
+      setState({
+        city:
+          addresses[value].province === '' || addresses[value].province === '-'
+            ? ''
+            : addresses[value].province,
+        district:
+          addresses[value].district === '' || addresses[value].district === '-'
+            ? ''
+            : addresses[value].district,
+        ward:
+          addresses[value].ward === '' || addresses[value].ward === '-'
+            ? ''
+            : addresses[value].ward,
+        address: addresses[value].address,
+      });
+      if (addresses[value].province !== '-' || '') {
+        const districts = cityData.find(
+          (it) => it.name === addresses[value].province
+        );
+        const wards =
+          districts &&
+          districts.districts &&
+          districts.districts.find(
+            (it) => it.name === addresses[value].district
+          );
         setData({
           cities: cityData,
-          districts: null,
-          wards: null,
+          districts: districts ? districts : null,
+          wards: wards ? wards : null,
         });
       }
-    } else {
-      if (name === 'city') {
-        setAllInforDeliver((prev) => {
-          return {
-            ...prev,
-            city: value,
-            district: '',
-            wards: '',
-          };
-        });
-
-        setData({
-          ...data,
-          districts: data.cities.find((it) => it.name === event.target.value),
-          wards: null,
-        });
-      } else if (name === 'district' && data.districts) {
-        setData({
-          ...data,
-          wards: data.districts.districts.find(
-            (it) => it.name === event.target.value
-          ),
-        });
-        setAllInforDeliver((prev) => {
-          return {
-            ...prev,
-            district: value,
-            wards: '',
-          };
-        });
-      } else if (name === 'wards') {
-        setAllInforDeliver((prev) => {
-          return {
-            ...prev,
-            wards: value,
-          };
-        });
-      }
+      setAllInforDeliver((prev) => {
+        return {
+          ...prev,
+          addressId: addresses[value].id,
+          province: addresses[value].province,
+          district: addresses[value].district,
+          ward: addresses[value].ward,
+          address: addresses[value].address,
+        };
+      });
     }
+  };
+  const handleChange = (event) => {
+    // const name = event.target.name;
+    // const value = event.target.value;
+    // if (value === '') {
+    //   if (name === 'city') {
+    //     setState({
+    //       city: '',
+    //       district: '',
+    //       wards: '',
+    //       address: '',
+    //     });
+    //     setData({
+    //       cities: cityData,
+    //       districts: null,
+    //       wards: null,
+    //     });
+    //   }
+    // } else {
+    //   if (name === 'city') {
+    //     setAllInforDeliver((prev) => {
+    //       return {
+    //         ...prev,
+    //         city: value,
+    //         district: '',
+    //         wards: '',
+    //       };
+    //     });
+    //     setData({
+    //       ...data,
+    //       districts: data.cities.find((it) => it.name === event.target.value),
+    //       wards: null,
+    //     });
+    //   } else if (name === 'district' && data.districts) {
+    //     setData({
+    //       ...data,
+    //       wards: data.districts.districts.find(
+    //         (it) => it.name === event.target.value
+    //       ),
+    //     });
+    //     setAllInforDeliver((prev) => {
+    //       return {
+    //         ...prev,
+    //         district: value,
+    //         wards: '',
+    //       };
+    //     });
+    //   } else if (name === 'wards') {
+    //     setAllInforDeliver((prev) => {
+    //       return {
+    //         ...prev,
+    //         wards: value,
+    //       };
+    //     });
+    //   }
+    //   setState({
+    //     ...state,
+    //     [name]: value,
+    //   });
+    // }
+  };
 
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
+  const handleLogOut = () => {
+    dispatch(logOut());
   };
 
   return (
@@ -175,16 +219,7 @@ const InforDeliver = ({
       <Typography variant="body2" className={styles.caption}>
         Thông tin giao hàng
       </Typography>
-      {/* {!login ? (
-        <Typography variant="body2" className={styles.questionLogin}>
-          Bạn đã có tài khoản?
-          <Link href="/account/login"> Đăng nhập</Link>
-          <Link href="#" onClick={handleLogin}>
-            {' '}
-            Đăng nhập
-          </Link>
-        </Typography>
-      ) : ( */}
+
       <div className={styles.user}>
         <div className={styles.iconUser}>
           <AiOutlineUser />
@@ -194,50 +229,45 @@ const InforDeliver = ({
           <Button
             variant="text"
             className={styles.logout}
-            // onClick={handleLogin}
+            onClick={handleLogOut}
           >
             Đăng xuất
           </Button>
         </div>
       </div>
-      {/* )} */}
 
       <form action="" className={styles.form}>
-        {/* {login && (
-          <SelectForm
-            label={'Thêm địa chỉ mới...'}
-            title={'Địa chỉ đã lưu trữ'}
-            name="addresses"
-            data={addresses}
-            state={state}
-            handleChange={handleUpdateAddress}
-          />
-        )} */}
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="address" className={styles.label}>
+            Địa chỉ lưu trữ
+          </InputLabel>
+          <Select
+            value={addressIdx}
+            onChange={handleOnChangeAddress}
+            label={'Địa chỉ lưu trữ'}
+            inputProps={{
+              id: 'address',
+            }}
+          >
+            {addresses &&
+              addresses.map((it, idx) => (
+                <MenuItem value={idx} key={idx}>
+                  {it.address}
+                </MenuItem>
+              ))}
+            {/* <MenuItem value="">Thêm địa chỉ mới ...</MenuItem> */}
+          </Select>
+        </FormControl>
 
-        <TextField
-          className={styles.input}
-          variant="outlined"
-          placeholder="Họ và tên"
-          onChange={(e) => handleOnChangeFormUser(e.target.value, 'name')}
-          value={useFormValues?.name}
-        />
         <Grid container spacing={1} justifyContent="space-between">
-          <Grid item lg={8} md={8} sm={8} xs={12}>
+          <Grid item lg={12} md={12} sm={12} xs={12}>
             <TextField
-              className={styles.input}
-              variant="outlined"
-              placeholder="Email"
-              onChange={(e) => handleOnChangeFormUser(e.target.value, 'email')}
-              value={useFormValues?.email}
-            />
-          </Grid>
-          <Grid item lg={4} md={4} sm={4} xs={12}>
-            <TextField
+              disabled
               className={styles.input}
               variant="outlined"
               placeholder="Số điện thoại"
-              onChange={(e) => handleOnChangeFormUser(e.target.value, 'phone')}
-              value={useFormValues?.phone}
+              onChange={(e) => handleChange(e.target.value, 'phone')}
+              value={allInforDeliver?.phone}
             />
           </Grid>
         </Grid>
@@ -246,9 +276,9 @@ const InforDeliver = ({
           state={state}
           deliver={deliver}
           handleChange={handleChange}
-          handleDeliver={handleDeliver}
           allInforDeliver={allInforDeliver}
           handleChangeInforDeliver={handleChangeInforDeliver}
+          // handleDeliver={handleDeliver}
         />
         <Delivery deliver={deliver} data={data} />
         {/* <Typography variant="body2" className={styles.caption}>

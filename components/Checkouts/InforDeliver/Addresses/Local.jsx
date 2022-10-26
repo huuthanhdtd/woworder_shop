@@ -53,7 +53,7 @@ const Local = ({ handleDeliver, deliver, data, state, handleChange }) => {
                 <SelectForm
                   label={'Phường / xã'}
                   title={'Chọn phường / xã'}
-                  name="wards"
+                  name="ward"
                   data={data?.wards?.wards}
                   state={state}
                   handleChange={handleChange}

@@ -40,7 +40,19 @@
         "province": "Thừa Thiên Huế",
         "district": "Hương Thủy",
         "ward": "Thủy Thanh",
-        "address": "san one opera 115 nguyen van linh",
+        "address": "Novotal Bạch Đằng",
+        "customerId": "709509416277247213"
+      },
+      {
+        "id": "831028550646629948",
+        "createdAt": "2022-10-20T09:25:23.000Z",
+        "updatedAt": null,
+        "name": "Lê Nữ Tư Dung",
+        "phone": "0983241083",
+        "province": "Đà Nẵng",
+        "district": "Hòa Vang",
+        "ward": "Hòa Tiến",
+        "address": "Thôn 3 An Vinh",
         "customerId": "709509416277247213"
       }
     ],

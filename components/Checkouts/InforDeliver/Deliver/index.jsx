@@ -32,9 +32,9 @@ const Delivery = ({ deliver, data }) => {
                 />
                 GIAO TIÊU CHUẨN từ 1-5 ngày
               </Typography>
-              <Typography variant="body2" className={styles.text}>
+              {/* <Typography variant="body2" className={styles.text}>
                 25.000 <sup>đ</sup>
-              </Typography>
+              </Typography> */}
             </div>
           ) : (
             <div className={clsx(styles.border, styles.deliverBox)}>

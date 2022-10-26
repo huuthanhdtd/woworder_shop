@@ -68,7 +68,7 @@ const ListOrder = ({
             )}
           </div>
           <Typography variant="body2" className={styles.price}>
-            {convertCurrency(objBill.cartsPrice)}
+            {convertCurrency(objBill.total)}
           </Typography>
         </Button>
         {open && (
@@ -110,7 +110,7 @@ const ListOrder = ({
               cartCheck={cartCheck}
               handleFinish={handleFinish}
               allInforDeliver={allInforDeliver}
-              provisionalPrice={objBill.cartsPrice}
+              provisionalPrice={objBill.total}
               setAllInforDeliver={setAllInforDeliver}
               // coupon={coupon}
               // handleChange={handleChange}

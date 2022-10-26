@@ -41,7 +41,7 @@ import { checkoutsRequest } from '../../store/actions/customer';
 //   },
 // ];
 
-const CheckoutDetail = ({ userData, address }) => {
+const CheckoutDetail = ({ userData, addresses }) => {
   // const [showDetail, setShow] = React.useState(false);
   // const [coupon, setCoupon] = React.useState([]);
   const dispatch = useDispatch();
@@ -53,59 +53,49 @@ const CheckoutDetail = ({ userData, address }) => {
   // const [isPopup, setPopup] = React.useState(false);
 
   const [allInforDeliver, setAllInforDeliver] = React.useState({
-    ...address,
     payment: 'cash',
+    ...addresses[0],
+    id: userData.id,
+    addressId: addresses[0].id,
   });
-  const [totalFeeAmount, setTotalFeeAmount] = React.useState(0);
-  const [cartsPrice, setTotal] = React.useState(0);
-  // const [openSnackbar, setOpenSnackbar] = React.useState({
-  //   open: false,
-  //   severity: 'success',
-  //   message: 'Bạn đã đặt hàng thành công!!',
-  // });
-
   const { items, setItems, metadata } = useCart();
 
   const cartCheck = React.useMemo(() => {
     return items.filter((it) => it.isCheck);
   }, [items]);
 
-  React.useEffect(() => {
-    if (cartCheck?.length > 0) {
-      const total = cartCheck.reduce((prev, curr) => {
-        return prev + Number(curr.price) * curr.quantity;
-      }, 0);
-      const totalFee = cartCheck.reduce((prev, curr) => {
-        return prev + Number(curr.feeAmount);
-      }, 0);
-      setTotal(total);
-      setTotalFeeAmount(totalFee);
-    }
-  }, [cartCheck]);
+  const total = cartCheck.reduce((prev, curr) => {
+    return prev + Number(curr.price) * curr.quantity;
+  }, 0);
+
+  // const totalFee = cartCheck.reduce((prev, curr) => {
+  //   return prev + Number(curr.feeAmount);
+  // }, 0);
 
   /* 1 REWARD POINT EQUALS 1000 VND  */
 
   const discountPercent = process.env.NEXT_PUBLIC_DISCOUNT_PERCENT || 30;
-  const rewardPoints = allInforDeliver.rewardPoint - pointUsed;
-  const discount = pointUsed * 1000;
-  const feeShip = 25000;
-  const totalPrice = cartsPrice - discount + feeShip + totalFeeAmount;
-  const maxPoints = Math.floor((cartsPrice * (discountPercent / 100)) / 1000);
-  const maxRewardPoints =
-    maxPoints > allInforDeliver.rewardPoint
-      ? allInforDeliver.rewardPoint
-      : maxPoints;
+  // const rewardPoints = allInforDeliver.rewardPoint || 0 - pointUsed;
+  // const discount = pointUsed * 1000;
+  // const feeShip = 25000;
+  // const totalPrice = total - discount + feeShip + totalFee;
+  const totalPrice = total;
+  const maxPoints = Math.floor((total * (discountPercent / 100)) / 1000);
+  // const maxRewardPoints =
+  //   maxPoints > allInforDeliver.rewardPoint
+  //     ? allInforDeliver.rewardPoint
+  //     : maxPoints;
 
   const objBill = React.useMemo(() => {
     return {
-      pointUsed,
-      rewardPoints,
-      discount,
-      feeShip,
+      // pointUsed,
+      // rewardPoints,
+      // discount,
+      // feeShip,
+      // maxRewardPoints,
+      // totalFee,
+      total,
       totalPrice,
-      maxRewardPoints,
-      cartsPrice,
-      totalFeeAmount,
     };
   }, [pointUsed, maxPoints]);
 
@@ -119,7 +109,6 @@ const CheckoutDetail = ({ userData, address }) => {
     });
   };
   const handleFinish = () => {
-    // setAllInforDeliver(newAllInforDeliver);
     const checkoutsForm = {
       customerId: userData.id,
       description: metadata.notes || 'Ghi chú đơn hàng',
@@ -129,7 +118,7 @@ const CheckoutDetail = ({ userData, address }) => {
         size: pro.size,
         quantity: pro.quantity,
       })),
-      deliveryAddressId: userData.addressId,
+      deliveryAddressId: allInforDeliver.addressId,
     };
 
     dispatch(checkoutsRequest(checkoutsForm));
@@ -145,15 +134,10 @@ const CheckoutDetail = ({ userData, address }) => {
       return () => clearTimeout(time);
     }
   }, [isCheckouts]);
-  // console.log(allInforDeliver);
 
   // const handleShowPopup = React.useCallback(() => {
   //   setPopup(!isPopup);
   // }, [isPopup]);
-
-  // const handleLogin = React.useCallback(() => {
-  //   setLogin(!login);
-  // }, [login]);
 
   // const handleShowDetail = React.useCallback(() => {
   //   setShow(!showDetail);
@@ -171,7 +155,6 @@ const CheckoutDetail = ({ userData, address }) => {
   // const handleRemoveCoupon = React.useCallback((item) => {
   //   setCoupon((prev) => prev.filter((it) => it.name !== item.name));
   // }, []);
-  // console.log(allInforDeliver);
   return (
     <>
       {/* <ModalCheckouts
@@ -189,9 +172,7 @@ const CheckoutDetail = ({ userData, address }) => {
         <div className={styles.container}>
           <div className={styles.left}>
             <InforDeliver
-              // token={null}
-              // login={login}
-              // handleLogin={handleLogin}
+              addresses={addresses}
               handleFinish={handleFinish}
               allInforDeliver={allInforDeliver}
               setAllInforDeliver={setAllInforDeliver}
@@ -206,10 +187,8 @@ const CheckoutDetail = ({ userData, address }) => {
               allInforDeliver={allInforDeliver}
               setAllInforDeliver={setAllInforDeliver}
               // handleShowPopup={handleShowPopup}
-              // login={login}
               // coupon={coupon}
               // dataCoupon={coupons}
-              // handleLogin={handleLogin}
               // handleRemoveCoupon={handleRemoveCoupon}
             />
           </div>

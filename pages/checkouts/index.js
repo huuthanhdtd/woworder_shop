@@ -17,7 +17,7 @@ const Checkout = () => {
         <div>
           <CheckoutDetail
             userData={user?.item}
-            address={user?.included?.addresses[0]}
+            addresses={user?.included?.addresses}
           />
         </div>
       )}

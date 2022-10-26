@@ -11,9 +11,9 @@ const Transportation = ({
   data,
   state,
   handleChange,
-  handleDeliver,
   allInforDeliver,
   handleChangeInforDeliver,
+  // handleDeliver,
 }) => {
   const [addressInput, setAddressInput] = React.useState(
     allInforDeliver?.address
@@ -27,7 +27,7 @@ const Transportation = ({
       <div className={styles.addressTitle}>
         <Button
           className={clsx(styles.text, styles.button)}
-          onClick={() => handleDeliver('deliver')}
+          // onClick={() => handleDeliver('deliver')}
         >
           <RiCheckboxBlankCircleFill
             className={clsx(styles.iconCircle, {
@@ -43,7 +43,7 @@ const Transportation = ({
             className={styles.input}
             variant="outlined"
             placeholder="Địa chỉ"
-            value={addressInput}
+            value={state?.address || ''}
             onChange={handleOnChange}
           />
           <Grid container spacing={1}>
@@ -71,7 +71,7 @@ const Transportation = ({
               <SelectForm
                 label={'Phường / xã'}
                 title={'Chọn phường / xã'}
-                name="wards"
+                name="ward"
                 data={data?.wards?.wards}
                 state={state}
                 handleChange={handleChange}
