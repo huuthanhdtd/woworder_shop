@@ -13,7 +13,7 @@ export default function UseList({ dataPolicy }) {
     }
   };
   const list = dataPolicy.map((data) => data.title);
-  const s = dataPolicy.find((data) => data.title === 'Hỗ trợ khách hàng').items;
+  const s = dataPolicy.find((data) => data.title == list).items;
 
   return (
     <div className={styles.menu}>

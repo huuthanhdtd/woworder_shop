@@ -10,7 +10,6 @@ export default function index() {
   const filPolicy = Policy.items.find(
     (item) => `/support${item.link}` === router.asPath
   );
-  console.log(filPolicy);
   const seo = {
     metaTitle: `${filPolicy.title || filPolicy.name} `,
     metaDescription: `  hỗ trợ `,

@@ -10,12 +10,11 @@ import styles from './styles.module.scss';
 export default function Support({ dataPolicy, filPolicy }) {
   const router = useRouter();
   const nameClass = useMemo(() => {
-    if (router.asPath === '/support/support') return styles.support;
+    if (router.asPath === '/support/customer') return styles.support;
     else {
       return styles.item_detail;
     }
   }, [router.asPath]);
-  // console.log(nameClass);
   return (
     <div className={styles.support}>
       <div className={styles.breadcrumb_shop}>
