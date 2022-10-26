@@ -1,20 +1,29 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import styles from './styles.module.scss';
 
 export default function CheckWeb({ checked, setChecked, setPage, brands }) {
+  const router = useRouter();
   const handleChangeTwo = (isChecked, id) => {
-    const index = checked.indexOf(id);
-    setPage(1);
-
-    if (isChecked) return setChecked((state) => [...state, id]);
-
-    if (!isChecked && index > -1)
-      return setChecked((state) => {
-        state.splice(index, 1);
-        return JSON.parse(JSON.stringify(state));
+    let arrIds = [];
+    arrIds = router.query.id;
+    const index = arrIds.indexOf(id);
+    if (isChecked) {
+      arrIds.push(id);
+      router.push({
+        pathname: '/categories/[[...id]]',
+        query: { id: arrIds },
       });
-  };
+    }
 
+    if (!isChecked && index > -1) {
+      arrIds.splice(index, 1);
+      router.push({
+        pathname: '/categories/[[...id]]',
+        query: { id: arrIds },
+      });
+    }
+  };
   return (
     <div className={styles.checks}>
       <h2>Website</h2>

@@ -26,13 +26,14 @@ export default Categories;
 
 export const getStaticPaths = async () => {
   const categoriesRes = await fetchAPI('/stores/categories');
+
   return {
     paths: categoriesRes.items.map((category) => ({
       params: {
         id: [`${category.id}`, '1'],
       },
     })),
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
