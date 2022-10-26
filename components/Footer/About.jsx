@@ -14,6 +14,7 @@ import clsx from 'clsx';
 import { useWindowSize } from 'react-use';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import dataPolicy from '../../constants/ShippingPolicy.json';
 
 const About = () => {
   const { router } = useRouter();
@@ -34,7 +35,8 @@ const About = () => {
       setExpTakecare(false);
     }
   }, [width]);
-
+  const title = dataPolicy.map((data) => data.title);
+  const filPolicy = dataPolicy.find((data) => data.items).items;
   return (
     <Grid container justifyContent="center" className={styles.root}>
       <Grid item lg={12} md={11} sm={10} xs={11}>
@@ -93,7 +95,7 @@ const About = () => {
                   variant="h6"
                   onClick={() => setExpSupport(!expSupport)}
                 >
-                  {support.title}
+                  {title}
                 </Typography>
                 <RiArrowDownSLine
                   className={clsx(styles.expandIcon, {
@@ -106,18 +108,18 @@ const About = () => {
                     [styles.close]: !expSupport,
                   })}
                 >
-                  {support.items.map((it, idx) => (
+                  {filPolicy.map((it, idx) => (
                     <div key={idx}>
                       <Link
                         href={`${
-                          it.text === 'Giới thiệu' || it.text === 'Liên hệ'
+                          it.name === 'Giới thiệu' || it.name === 'Liên hệ'
                             ? `${it.link}`
-                            : `/support/${it.slug}`
+                            : `/support${it.link}`
                         }`}
                       >
                         <Typography variant="body2" className={styles.link}>
                           <GoPrimitiveDot className={styles.dot} />
-                          {it.text}
+                          {it.name}
                         </Typography>
                       </Link>
                     </div>

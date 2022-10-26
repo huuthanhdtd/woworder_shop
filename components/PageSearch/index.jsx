@@ -19,7 +19,7 @@ export default function PageSearch() {
     axios
       .get(
         // `https://2658-113-176-100-45.ap.ngrok.io/api/stores/search?limit=10&page=1&brandIds=&query=${router.query.query}`
-        `https://khanhbui.vn/api/stores/search?limit=10&page=1&brandIds=&query=${router.query.query}`
+        `https://khanhbui.vn/api/stores/search?limit=${perPage}&page=${page}&brandIds=&query=${router.query.query}`
         // {
         //   params: {
         //     limit: 10,

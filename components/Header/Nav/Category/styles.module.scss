@@ -58,9 +58,13 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          a {
-            color: #333333;
+          .nameCate {
+            cursor: pointer;
+            a {
+              color: #333333;
+            }
           }
+
           // .iconDrop {
           //   .drop_Down_Up {
           //     transition: all 0.3s ease-in-out;
