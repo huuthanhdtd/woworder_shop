@@ -1,7 +1,7 @@
 import { Button, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
-import { orderPrice, sortBarHome } from '../../constants/commonData';
+import { orderPrice, orderButton } from '../../constants/commonData';
 import SortPrice from './SortPrice';
 import SortWeb from './SortWeb';
 import styles from './styles.module.scss';
@@ -14,7 +14,7 @@ const SortBarMobile = ({
   category,
   setChecked,
 }) => {
-  const filterConstant = sortBarHome.concat(orderPrice);
+  const filterConstant = orderButton.concat(orderPrice);
   const [filters, setFilters] = React.useState({
     webs: [],
     inOrder: null,

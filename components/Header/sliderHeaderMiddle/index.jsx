@@ -62,7 +62,7 @@ export default function Sliders({ categories }) {
               <div key={idx} className={styles.Hot}>
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]: data.id === router.query.id[0],
+                    [styles.active]: data.id === router.query.id?.[0],
                   })}
                 >
                   {data.name}

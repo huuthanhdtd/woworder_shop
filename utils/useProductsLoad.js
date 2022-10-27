@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function useProductsLoad(data, pageNumber, limit, categoryId) {
+export default function useProductsLoad(
+  data,
+  pageNumber,
+  limit,
+  categoryId,
+  page
+) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [hasMore, setHasMore] = useState(false);
@@ -9,7 +15,7 @@ export default function useProductsLoad(data, pageNumber, limit, categoryId) {
   useEffect(() => {
     setProducts([]);
     setHasMore(true);
-  }, [data.length, categoryId]);
+  }, [data.length, categoryId, page]);
 
   useEffect(() => {
     setLoading(true);
@@ -33,7 +39,7 @@ export default function useProductsLoad(data, pageNumber, limit, categoryId) {
     return () => {
       unmounted.current = true;
     };
-  }, [pageNumber, data.length, categoryId]);
+  }, [pageNumber, data.length, categoryId, page]);
 
   return { loading, products, hasMore };
 }

@@ -4,6 +4,7 @@ import { fetchAPI } from '../../lib/api';
 import { spliceBrandId } from '../../utils/filterBrandId';
 import Seo from '../../components/seo';
 import useProductsLoad from '../../utils/useProductsLoad';
+import { useRouter } from 'next/router';
 
 const Categories = ({ category }) => {
   const limit = 20;
@@ -12,13 +13,15 @@ const Categories = ({ category }) => {
     metaTitle: items?.name,
     metaDescription: `Khanh Bui ${items?.name}`,
   };
+  const { query } = useRouter();
   const [pageNumber, setPageNumber] = React.useState(1);
 
   const { products, hasMore, loading } = useProductsLoad(
     items?.products,
     pageNumber,
     limit,
-    items.id
+    items.id,
+    query.id?.[1]
   );
   const observer = React.useRef();
 
@@ -40,7 +43,7 @@ const Categories = ({ category }) => {
     <div>
       <Seo seo={seo} />
       <CategoriesPage
-        //  products={items?.products}
+        // products={items?.products}
         products={
           products.length > 0 ? products : items.products.slice(0, limit)
         }
