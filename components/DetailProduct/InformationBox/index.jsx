@@ -210,7 +210,9 @@ const InformationBox = ({
               </form>
             </div>
           </div>
-          <small className={styles.description}>25 sản phẩm có sẵn</small>
+          <small className={styles.description}>
+            {product.stockCount} sản phẩm có sẵn, Đã bán {product.sellCount}
+          </small>
         </div>
         <div className={styles.actions}>
           <Button
