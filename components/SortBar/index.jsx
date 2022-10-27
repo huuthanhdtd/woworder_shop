@@ -10,7 +10,7 @@ import {
   RiListUnordered,
 } from 'react-icons/ri';
 import { useWindowSize } from 'react-use';
-import { orderPrice, sortBarHome } from '../../constants/commonData';
+import { orderPrice, orderButton } from '../../constants/commonData';
 import SelectList from '../DropDown/DropDown';
 import styles from './styles.module.scss';
 
@@ -18,11 +18,10 @@ const SortBar = ({
   category,
   setSortPriceType,
   page,
-  // totalPage,
+  totalPage,
   handleChangePage,
   open,
   setOpen,
-  orderData,
 }) => {
   const { asPath } = useRouter();
   const [isOrder, setOrder] = React.useState(null);
@@ -32,9 +31,9 @@ const SortBar = ({
 
   const handleOrder = (type) => {
     setOrder(type.name);
-    if (type.type === 'ascending' || type.type === 'descending') {
-      setSortPriceType(type.type);
-    }
+    // if (type.type === 'ascending' || type.type === 'descending') {
+    setSortPriceType(type.type);
+    // }
   };
   const handleOpenSortMobile = () => {
     setOpen(!open);
@@ -104,7 +103,7 @@ const SortBar = ({
             })}
             // style={{ height: dropdown ? 'auto' : 0 }}
           >
-            {orderData.map((it, idx) => (
+            {orderButton.map((it, idx) => (
               <Button
                 key={idx}
                 className={clsx(styles.button, {
@@ -136,8 +135,7 @@ const SortBar = ({
         {asPath !== '/' && (
           <div className={styles.selectPage}>
             <Typography variant="body2">
-              {page}/{category.productCount}
-              {/* /{totalPage} */}
+              {page}/{totalPage}
             </Typography>
             <Button
               disabled={page === 1 ? true : false}
@@ -147,11 +145,7 @@ const SortBar = ({
               <RiArrowLeftSLine />
             </Button>
             <Button
-              disabled={
-                page === category.productCount || category.productCount == 0
-                  ? true
-                  : false
-              }
+              disabled={page === totalPage || totalPage == 0 ? true : false}
               className={styles.arrow}
               onClick={() => handleChangePage('next')}
             >

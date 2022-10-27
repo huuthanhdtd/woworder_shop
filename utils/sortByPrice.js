@@ -7,5 +7,13 @@ export const sortByPrice = (data, type) => {
     return data?.sort((a, b) => {
       return Number(b.sellPrice) - Number(a.sellPrice);
     });
+  } else if (type === 'createdAt') {
+    return data?.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+  } else if (type === 'updatedAt') {
+    return data?.sort((a, b) => {
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    });
   }
 };

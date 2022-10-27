@@ -3,18 +3,50 @@ import CategoriesPage from '../../components/Categories';
 import { fetchAPI } from '../../lib/api';
 import { spliceBrandId } from '../../utils/filterBrandId';
 import Seo from '../../components/seo';
-import axiosApi from '../../lib/services/axiosApi';
+import useProductsLoad from '../../utils/useProductsLoad';
 
 const Categories = ({ category }) => {
+  const limit = 20;
   const { items } = category && category;
   const seo = {
     metaTitle: items?.name,
     metaDescription: `Khanh Bui ${items?.name}`,
   };
+  const [pageNumber, setPageNumber] = React.useState(1);
+
+  const { products, hasMore, loading } = useProductsLoad(
+    items?.products,
+    pageNumber,
+    limit,
+    items.id
+  );
+  const observer = React.useRef();
+
+  const lastBookElementRef = React.useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPageNumber((prevPageNumber) => prevPageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+      if (!hasMore) setPageNumber(1);
+    },
+    [loading, hasMore, category.id, items?.products]
+  );
   return (
     <div>
       <Seo seo={seo} />
-      <CategoriesPage products={items?.products} category={items} />
+      <CategoriesPage
+        //  products={items?.products}
+        products={
+          products.length > 0 ? products : items.products.slice(0, limit)
+        }
+        category={items}
+        lastProductRef={lastBookElementRef}
+      />
     </div>
   );
 };
@@ -44,7 +76,11 @@ export const getStaticProps = async ({ params }) => {
     page: params?.id?.[1],
     brandIds: params?.id?.length > 2 ? brandIdStr : '',
   });
-
+  // categoryRes.items.products = Array.from({ length: 6 })
+  //   .map((a) => {
+  //     return [...categoryRes.items.products.map((it) => it)];
+  //   })
+  //   .flat(1);
   return {
     props: {
       category: categoryRes,

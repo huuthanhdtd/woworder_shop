@@ -26,7 +26,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Head>
         <link
           rel="shortcut icon"
-          href="/favicon.svg"
+          href="/khanhbui.ico"
           // href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>

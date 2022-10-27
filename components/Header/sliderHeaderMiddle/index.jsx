@@ -6,6 +6,7 @@ import { Button } from '@material-ui/core';
 import clsx from 'clsx';
 import ScrollMenu from 'react-horizontal-scroll-menu';
 import { useRouter } from 'next/router';
+import { spliceBrandId } from '../../../utils/filterBrandId';
 
 export default function Sliders({ categories }) {
   const b = process.env.NEXT_PUBLIC_CATEGORY;
@@ -61,9 +62,7 @@ export default function Sliders({ categories }) {
               <div key={idx} className={styles.Hot}>
                 <Button
                   className={clsx(styles.item, {
-                    [styles.active]:
-                      router.asPath ===
-                      `/categories/${data.id}/${router.query?.id?.[1]}`,
+                    [styles.active]: data.id === router.query.id[0],
                   })}
                 >
                   {data.name}

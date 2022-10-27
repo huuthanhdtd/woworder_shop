@@ -35,32 +35,32 @@ export const footerData = {
 };
 
 export const orderButton = [
-  {
-    name: 'Phổ biến',
-    type: 'popular',
-  },
+  // {
+  //   name: 'Phổ biến',
+  //   type: 'popular',
+  // },
   {
     name: 'Mới nhất',
-    type: 'new',
+    type: 'createdAt',
   },
   {
     name: 'Bán chạy',
-    type: 'hot',
+    type: 'updatedAt',
   },
 ];
 
 export const sortBarHome = [
-  {
-    name: 'Được yêu thích',
-    type: 'like',
-  },
+  // {
+  //   name: 'Được yêu thích',
+  //   type: 'like',
+  // },
   {
     name: 'Mới về',
-    type: 'new',
+    type: 'createdAt',
   },
   {
     name: 'Bán chạy',
-    type: 'hot',
+    type: 'type',
   },
 ];
 

@@ -14,7 +14,7 @@ function CardProduct({ data }) {
   return (
     <div className={styles.wrapProduct}>
       <div className={styles.imageWp} onClick={handleSaveProductToLocal}>
-        <Link href={`/product/${data.id}`}>
+        <Link href="/product/[id]" as={`/product/${data.id}`}>
           <CardMedia className={styles.image} image={data.imageUrl}></CardMedia>
         </Link>
         <span className={styles.label}>

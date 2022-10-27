@@ -24,11 +24,7 @@ const Category = ({ category, products }) => {
       {sortProducts?.length > 0 && (
         <div className={styles.container}>
           {category?.name && (
-            <SortBar
-              category={category}
-              setSortPriceType={setSortPriceType}
-              orderData={sortBarHome}
-            />
+            <SortBar category={category} setSortPriceType={setSortPriceType} />
           )}
           <SlidesProduct sortProducts={sortProducts} />
         </div>

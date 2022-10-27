@@ -8,7 +8,7 @@ import Router, { useRouter } from 'next/router';
 import SortBarMobile from '../SortBarMobile';
 import Link from 'next/link';
 
-const CategoriesPage = ({ products, category }) => {
+const CategoriesPage = ({ products, category, lastProductRef }) => {
   const { query } = useRouter();
   /* Filter website */
   const [checked, setChecked] = React.useState([]);
@@ -50,12 +50,13 @@ const CategoriesPage = ({ products, category }) => {
 
   const handleChange = React.useCallback(
     (event, value) => {
-      Router.push(`/categories/${category.id}/${value}`);
+      const { id } = query;
+      id.splice(1, 1, value);
+      Router.push({ pathname: `/categories/[[...id]]`, query: { id } });
       setPage(value);
     },
     [category.id]
   );
-
   return (
     <div className={styles.wrapper}>
       <SortBarMobile
@@ -102,20 +103,29 @@ const CategoriesPage = ({ products, category }) => {
             setSortPriceType={setSortPriceType}
             sortPriceType={sortPriceType}
             products={products}
+            query={query}
+            lastProductRef={lastProductRef}
           />
-          {/* {products.length > 0 && ( */}
-          <Grid container justifyContent="center" className={styles.pagination}>
-            <Grid item>
-              <Paginate
-                // count={Math.ceil(filteredProducts.length / perPage)}
-                count={category.productCount}
-                page={page}
-                onChange={handleChange}
-                color="primary"
-              />
-            </Grid>
-          </Grid>
-          {/* )} */}
+          {products.length > 0 && (
+            <div
+            // ref={lastProductRef}
+            >
+              <Grid
+                container
+                justifyContent="center"
+                className={styles.pagination}
+              >
+                <Grid item>
+                  <Paginate
+                    count={Math.ceil(category.productCount / 10)}
+                    page={page}
+                    onChange={handleChange}
+                    color="primary"
+                  />
+                </Grid>
+              </Grid>
+            </div>
+          )}
         </Grid>
       </Grid>
     </div>

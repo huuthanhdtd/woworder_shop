@@ -1,13 +1,12 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 // import clsx from 'clsx';
 import React from 'react';
-import { orderButton } from '../../../constants/commonData';
 import CardProduct from '../../CardProduct';
 import styles from './styles.module.scss';
 import SortBar from '../../SortBar';
 import { sortByPrice } from '../../../utils/sortByPrice';
 // import Link from 'next/link';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 const Products = ({
   filteredProducts,
@@ -20,6 +19,8 @@ const Products = ({
   sortPriceType,
   setSortPriceType,
   products,
+  lastProductRef,
+  query,
 }) => {
   const dataFilter = React.useMemo(() => {
     // const newData = filteredProducts?.slice(
@@ -35,50 +36,56 @@ const Products = ({
 
   const handleChangePage = React.useCallback(
     (e) => {
+      const { id } = query;
       if (e === 'prev') {
-        Router.push(`/categories/${category.id}/${page - 1}`);
+        id.splice(1, 1, page - 1);
+        Router.push({ pathname: `/categories/[[...id]]`, query: { id } });
         setPage((prev) => prev - 1);
       } else if (e === 'next') {
-        Router.push(`/categories/${category.id}/${page + 1}`);
+        id.splice(1, 1, page + 1);
+        Router.push({ pathname: `/categories/[[...id]]`, query: { id } });
         setPage((prev) => prev + 1);
       }
     },
     [category.id, page]
   );
 
-  // const totalPage = Math.ceil(filteredProducts.length / perPage);
+  const totalPage = category?.productCount
+    ? Math.ceil(category.productCount / 10)
+    : 0;
   return (
     <div className={styles.wrapper}>
       <SortBar
         page={page}
-        // totalPage={totalPage}
+        totalPage={totalPage}
         category={category}
         open={open}
         setOpen={setOpen}
-        orderData={orderButton}
         handleChangePage={handleChangePage}
         setSortPriceType={setSortPriceType}
       />
       {products.length > 0 ? (
-        <Grid
-          container
-          justifyContent="flex-start"
+        <div
+          // container
+          // justifyContent="flex-start"
           className={styles.containerProducts}
         >
-          {dataFilter?.map((data, index) => (
-            <Grid
-              key={index}
-              item
-              lg={2}
-              md={3}
-              sm={4}
-              xs={6}
-              className={styles.card}
-            >
-              <CardProduct data={data} />
-            </Grid>
-          ))}
-        </Grid>
+          {dataFilter?.map((data, index) => {
+            if (dataFilter.length === index + 1) {
+              return (
+                <div key={index} className={styles.card} ref={lastProductRef}>
+                  <CardProduct data={data} />
+                </div>
+              );
+            } else {
+              return (
+                <div key={index} className={styles.card}>
+                  <CardProduct data={data} />
+                </div>
+              );
+            }
+          })}
+        </div>
       ) : (
         <div className={styles.notify}>
           <Typography variant="body2" className={styles.notification}>
