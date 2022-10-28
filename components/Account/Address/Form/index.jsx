@@ -35,12 +35,14 @@ const Form = ({ submitTitle, cancel, detail }) => {
   });
   const listLocations = React.useMemo(() => {
     const cityData = cityList;
-    const districtData = cityData.find(
-      (it) => it.name === detail.province
-    ).districts;
-    const wardData = districtData.find(
-      (it) => it.name === detail.district
-    ).wards;
+    const districtData =
+      detail.province !== '' && detail.province !== '-'
+        ? cityData.find((it) => it.name === detail.province).districts
+        : null;
+    const wardData = districtData
+      ? districtData.find((it) => it.name === detail.district).wards
+      : null;
+
     return {
       cityData,
       districtData,
