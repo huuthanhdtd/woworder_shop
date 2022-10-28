@@ -10,6 +10,8 @@ import {
 } from '../../../../../lib';
 import styles from './styles.module.scss';
 import { BiTimeFive } from 'react-icons/bi';
+import axios from 'axios';
+import { convertCurrency } from '../../../../../utils/convertCurrency';
 
 export default function Suggestions({
   searchTerm,
@@ -18,6 +20,7 @@ export default function Suggestions({
 }) {
   const router = useRouter();
   const [hisSearch, setHisSearch] = useState();
+  const [dataSearch, setDataSearch] = useState([]);
   useEffect(() => {
     if (!hisSearch || !router.query.query) return;
     local(router.query.query, hisSearch);
@@ -32,29 +35,38 @@ export default function Suggestions({
     }
     setHisSearch(arr);
   }, [suggestions]);
-  const dataSortedByScore = data.items
-    ?.sort(
-      (a, b) =>
-        getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.query || '' || searchTerm),
-          ConvertViToEn(b.name),
-          'number'
-        ) -
-        getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.query || '' || searchTerm),
-          ConvertViToEn(a.name),
-          'number'
-        )
-    )
-    .filter((i) => {
-      return searchTerm == ''
-        ? false
-        : getScoreByNumberOfPosition(
-            ConvertViToEn(router.query.query || '' || searchTerm),
-            ConvertViToEn(i.name),
-            'boolean'
-          );
-    });
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stores/search?limit=10&page=1&brandIds=&query=${searchTerm}`
+      )
+      .then((res) => setDataSearch(res.data.items));
+  }, [searchTerm]);
+  // const dataSortedByScore = data.items
+  //   ?.sort(
+  //     (a, b) =>
+  //       getScoreByNumberOfPosition(
+  //         ConvertViToEn(router.query.query || '' || searchTerm),
+  //         ConvertViToEn(b.name),
+  //         'number'
+  //       ) -
+  //       getScoreByNumberOfPosition(
+  //         ConvertViToEn(router.query.query || '' || searchTerm),
+  //         ConvertViToEn(a.name),
+  //         'number'
+  //       )
+  //   )
+  //   .filter((i) => {
+  //     return searchTerm == ''
+  //       ? false
+  //       : getScoreByNumberOfPosition(
+  //           ConvertViToEn(router.query.query || '' || searchTerm),
+  //           ConvertViToEn(i.name),
+  //           'boolean'
+  //         );
+  //   });
   const handlemore = () => {
     router.push({
       pathname: '/page-search',
@@ -78,14 +90,16 @@ export default function Suggestions({
       >
         {searchTerm.length > 0 ? (
           <>
-            {dataSortedByScore.length > 0 ? (
+            {dataSearch?.length > 0 ? (
               <>
-                {dataSortedByScore.slice(0, 5).map((data, index) => (
+                {dataSearch?.slice(0, 5).map((data, index) => (
                   <div className={styles.item} key={index}>
                     <Link href={`/product/${data.id}`}>
                       <div className={styles.nameAndPrice}>
                         <div className={styles.name}>{data.name}</div>
-                        <div className={styles.name}>{data.sellPrice}</div>
+                        <div className={styles.name}>
+                          {convertCurrency(data.sellPrice)}
+                        </div>
                       </div>
                     </Link>
                     <Link href={`/product/${data.id}`}>
@@ -100,7 +114,7 @@ export default function Suggestions({
                   onClick={handlemore}
                   className={styles.more}
                 >
-                  xem thêm {dataSortedByScore.length} sản phẩm
+                  xem thêm {dataSearch.length} sản phẩm
                 </div>
               </>
             ) : (

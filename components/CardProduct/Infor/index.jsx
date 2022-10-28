@@ -18,7 +18,7 @@ function Infor({ product }) {
   const [sizeSelected, setSizeSelected] = React.useState({
     name: product.variation
       ? product.variation?.sizes?.[0]?.name ||
-        product.variation?.colors?.[0]?.sizes?.[0].size
+        product.variation?.colors?.[0]?.sizes?.[0]?.size
       : product.size
       ? product.size
       : null,

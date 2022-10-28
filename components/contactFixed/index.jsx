@@ -9,30 +9,36 @@ import { MdLocationOn } from 'react-icons/md';
 import { BsTelephoneFill } from 'react-icons/bs';
 import styles from './styles.module.scss';
 import Link from 'next/link';
-import messengers from '../../assets/image/messengers.svg';
+import messenger from '../../assets/image/messenger.svg';
+import zalo from '../../assets/image/zalo.svg';
+import phone from '../../assets/image/phone.svg';
+import mail from '../../assets/image/mail.svg';
 import Image from 'next/image';
 
 export default function ContactFixed() {
   const contact = [
     {
       name: 'Gọi ngay cho Khánh Bùi',
-      icon: <BsTelephoneFill fontSize={25} />,
+      // icon: <BsTelephoneFill fontSize={25} />,
+      img: phone.src,
       link: 'tel:0986779777',
     },
     {
       name: 'Đóng góp ý kiến giao diện cho Khánh Bùi',
-      icon: <GoMail fontSize={30} />,
+      // icon: <GoMail fontSize={30} />,
+      img: mail.src,
       link: 'mailto:contact@gmail.com ',
     },
     {
       name: 'Nhận tư vấn qua zalo',
-      icon: <SiZalo fontSize={30} />,
+      // icon: <SiZalo fontSize={30} />,
+      img: zalo.src,
       link: 'http://zalo.me/0986779777',
     },
     {
       name: 'Xem địa chỉ doanh nghiệp',
       // icon: <RiMessengerLine fontSize={40} />,
-      img: messengers.src,
+      img: messenger.src,
       link: 'https://www.facebook.com/khanhbuiorder',
     },
   ];
@@ -86,7 +92,7 @@ export default function ContactFixed() {
           {contact?.map((data, index) => (
             <div key={index}>
               <li className={styles.li_mes} onClick={() => newTab(data.link)}>
-                <div className={styles.icon}>{data.icon}</div>
+                {/* <div className={styles.icon}>{data.icon}</div> */}
                 <img src={data?.img} />
               </li>
             </div>

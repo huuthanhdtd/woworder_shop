@@ -17,7 +17,15 @@ export default function index() {
   );
 }
 export const getStaticProps = async () => {
+  // const categoriesRes = await fetchAPI('/stores/search', {
+  //   limit: 10,
+  //   page: 1,
+  //   query: 'ao',
+  // });
   return {
-    props: {},
+    props: {
+      // categoriesData: categoriesRes,
+    },
+    // revalidate: 1,
   };
 };

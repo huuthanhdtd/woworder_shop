@@ -170,17 +170,19 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        .icon {
+        // .icon {
+        //   background-color: #3b82f6;
+        //   display: flex;
+        //   justify-content: center;
+        //   align-items: center;
+        //   border-radius: 50%;
+        //   svg {
+        //     color: #fff;
+        //   }
+        // }
+        img {
           width: 40px;
           height: 40px;
-          background-color: #3b82f6;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 50%;
-          svg {
-            color: #fff;
-          }
         }
         .title {
           opacity: 1;

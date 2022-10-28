@@ -14,71 +14,47 @@ export default function PageSearch() {
   const perPage = 10;
   const [page, setPage] = useState(1);
   const [loadinged, setLoadinged] = useState(true);
+  const [dataSearch, setDataSearch] = useState([]);
   useEffect(() => {
     const scrolltotop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     scrolltotop();
   }, [page]);
-
   useEffect(() => {
     if (!router.isReady) return;
     axios
       .get(
-        // `https://2658-113-176-100-45.ap.ngrok.io/api/stores/search?limit=10&page=1&brandIds=&query=${router.query.query}`
-        `https://khanhbui.vn/api/stores/search?limit=${perPage}&page=${page}&brandIds=&query=${router.query.query}`
-        // {
-        //   params: {
-        //     limit: 10,
-        //     page: 1,
-        //     brandIds: '',
-        //     query: router.query.query,
-        //   },
-        // }
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stores/search?limit=${perPage}&page=${page}&brandIds=&query=${router.query.query}`
       )
-      .then((res) => setLoadinged(false));
+      .then((res) => setDataSearch(res.data.items), setLoadinged(false));
   }, [router.query.query]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
 
-  const dataSortedByScore = data.items
-    ?.sort(
-      (a, b) =>
-        getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.query || ''),
-          ConvertViToEn(b.name),
-          'number'
-        ) -
-        getScoreByNumberOfPosition(
-          ConvertViToEn(router.query.query || ''),
-          ConvertViToEn(a.name),
-          'number'
-        )
-    )
-    .filter((i) => {
-      return router.query.query == ''
-        ? false
-        : getScoreByNumberOfPosition(
-            ConvertViToEn(router.query.query || ''),
-            ConvertViToEn(i.name),
-            'boolean'
-          );
-    })
-    .slice(0, 120);
-  // useEffect(() => {
-  //   var prevScrollpos = window.pageYOffset;
-  //   document.addEventListener('scroll', () => {
-  //     var currentScrollPos = window.pageYOffset;
-  //     console.log('prevScrollpos', prevScrollpos);
-  //     console.log('currentScrollPos', currentScrollPos);
-  //     // if (prevScrollpos > currentScrollPos) {
-  //     //   // console.log('a');
-  //     // } else {
-  //     //   console.log('b');
-  //     // }
-  //     prevScrollpos = currentScrollPos;
-  //   });
-  // }, []);
-  useEffect(() => {}, []);
+  // const dataSortedByScore = data.items
+  //   ?.sort(
+  //     (a, b) =>
+  //       getScoreByNumberOfPosition(
+  //         ConvertViToEn(router.query.query || ''),
+  //         ConvertViToEn(b.name),
+  //         'number'
+  //       ) -
+  //       getScoreByNumberOfPosition(
+  //         ConvertViToEn(router.query.query || ''),
+  //         ConvertViToEn(a.name),
+  //         'number'
+  //       )
+  //   )
+  //   .filter((i) => {
+  //     return router.query.query == ''
+  //       ? false
+  //       : getScoreByNumberOfPosition(
+  //           ConvertViToEn(router.query.query || ''),
+  //           ConvertViToEn(i.name),
+  //           'boolean'
+  //         );
+  //   })
+  //   .slice(0, 120);
   return loadinged ? (
     <Loading />
   ) : (
@@ -88,13 +64,14 @@ export default function PageSearch() {
         <p>
           Có{' '}
           <strong style={{ color: '#000' }}>
-            {dataSortedByScore.length} sản phẩm
+            {dataSearch.length}
+            sản phẩm
           </strong>{' '}
           cho tìm kiếm
         </p>
       </div>
       <div className={styles.content_page}>
-        {dataSortedByScore.length > 0 ? (
+        {dataSearch.length > 0 ? (
           <p className={styles.subtext_result}>
             Kết quả tìm kiếm cho <strong>"{router.query.query}"</strong>
           </p>
@@ -112,7 +89,7 @@ export default function PageSearch() {
           </div>
         )}
         <Grid container className={styles.Search_Product}>
-          {dataSortedByScore
+          {dataSearch
             .slice((page - 1) * perPage, page * perPage)
             .map((data) => (
               <Grid item xs={6} sm={4} md key={data.id} className={styles.item}>
@@ -121,9 +98,9 @@ export default function PageSearch() {
             ))}
         </Grid>
         <div className={styles.Pagination}>
-          {dataSortedByScore.length > 0 ? (
+          {dataSearch.length > 0 ? (
             <Pagination
-              count={Math.ceil(dataSortedByScore.length / perPage)}
+              count={Math.ceil(dataSearch.length / perPage)}
               page={page}
               onChange={handlePageChange}
               color="primary"
