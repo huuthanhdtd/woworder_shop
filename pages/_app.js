@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { createContext } from 'react';
 import { fetchAPI } from '../lib/api';
 import Layout from '../components/layout';
+import 'aos/dist/aos.css';
 import '../assets/css/style.css';
 import '../assets/css/slick.css';
 import 'slick-carousel/slick/slick.css';

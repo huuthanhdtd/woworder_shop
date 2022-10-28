@@ -7,6 +7,9 @@ import SortBar from '../../SortBar';
 import { sortByPrice } from '../../../utils/sortByPrice';
 // import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
+import Loading from '../../Loading';
+import { wait } from '../../../utils/wait';
+import Aos from 'aos';
 
 const Products = ({
   filteredProducts,
@@ -22,6 +25,10 @@ const Products = ({
   lastProductRef,
   query,
 }) => {
+  const [notify, setNotify] = React.useState(false);
+
+  wait(20000).then(() => setNotify(true));
+
   const dataFilter = React.useMemo(() => {
     // const newData = filteredProducts?.slice(
     //   0 + perPage * (page - 1),
@@ -65,11 +72,7 @@ const Products = ({
         setSortPriceType={setSortPriceType}
       />
       {products.length > 0 ? (
-        <div
-          // container
-          // justifyContent="flex-start"
-          className={styles.containerProducts}
-        >
+        <div className={styles.containerProducts}>
           {dataFilter?.map((data, index) => {
             if (dataFilter.length === index + 1) {
               return (
@@ -88,9 +91,14 @@ const Products = ({
         </div>
       ) : (
         <div className={styles.notify}>
-          <Typography variant="body2" className={styles.notification}>
-            Trang này không có sản phẩm.
-          </Typography>
+          {notify ? (
+            <Typography variant="body2" className={styles.notification}>
+              Trang này không có sản phẩm.
+            </Typography>
+          ) : (
+            <Loading />
+          )}
+
           {/* <Link href={'/'}> Trang chủ</Link> */}
         </div>
       )}

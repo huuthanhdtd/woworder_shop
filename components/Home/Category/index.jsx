@@ -1,5 +1,4 @@
-import React from 'react';
-import { sortBarHome } from '../../../constants/commonData';
+import React, { lazy } from 'react';
 import { sortByPrice } from '../../../utils/sortByPrice';
 import SortBar from '../../SortBar';
 import SlidesProduct from '../SlideProduct';
@@ -10,7 +9,6 @@ const Category = ({ category, products }) => {
   const sortProducts = React.useMemo(() => {
     if (products?.length > 0) {
       if (sortPriceType) {
-        // console.log('type', sortPriceType);
         return sortByPrice(products, sortPriceType);
       } else {
         return products;
@@ -22,8 +20,14 @@ const Category = ({ category, products }) => {
   return (
     <>
       {sortProducts?.length > 0 && (
-        <div className={styles.container}>
-          {category?.name && (
+        <div
+          className={styles.container}
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+        >
+          {category.name && (
             <SortBar category={category} setSortPriceType={setSortPriceType} />
           )}
           <SlidesProduct sortProducts={sortProducts} />

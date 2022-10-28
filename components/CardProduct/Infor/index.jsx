@@ -26,7 +26,7 @@ function Infor({ product }) {
   const [colorSelected, setColorSelected] = React.useState({
     name: product.variation
       ? product.variation?.colors
-        ? product.variation?.colors?.[0].name
+        ? product.variation?.colors?.[0]?.name
         : product.color
       : product.color
       ? product.color
@@ -109,7 +109,7 @@ function Infor({ product }) {
               <p className={styles.atbValues}>
                 {product.variation.colors?.slice(0, 1).map((color, idx) => (
                   <span key={idx}>
-                    {color.name.slice(0, 10)}
+                    {color?.name.slice(0, 10)}
                     {idx + 1 === product.variation.colors.slice(0, 1).length
                       ? '...'
                       : '/'}
@@ -139,10 +139,10 @@ function Infor({ product }) {
                     {product.variation?.colors?.slice(0, 1).map((color, idx) =>
                       color?.sizes.slice(0, 1).map((size, idx) => (
                         <span key={idx} style={{ textTransform: 'uppercase' }}>
-                          {size.name.length > 5
-                            ? size.name.slice(0, 4)
-                            : size.name}
-                          {idx + 1 === color.sizes.slice(0, 1).length
+                          {size?.name.length > 5
+                            ? size?.name.slice(0, 4)
+                            : size?.name}
+                          {idx + 1 === color?.sizes?.slice(0, 1)?.length
                             ? '...'
                             : '/'}
                         </span>
@@ -155,8 +155,8 @@ function Infor({ product }) {
                     {product.variation?.sizes?.slice(0, 2).map((size, idx) => (
                       <span key={idx} style={{ textTransform: 'uppercase' }}>
                         {size.name.length > 5
-                          ? size.name.slice(0, 4)
-                          : size.name}
+                          ? size?.name.slice(0, 4)
+                          : size?.name}
                         {idx + 1 ===
                         product.variation?.sizes?.slice(0, 2).length
                           ? '...'
@@ -175,7 +175,7 @@ function Infor({ product }) {
             ''
           )}
         </div>
-        <span className={styles.price}>
+        <Typography variant="body2" className={styles.price}>
           <span className={styles.prevPrice}>
             {convertCurrency(product.sellPrice)}
           </span>
@@ -188,7 +188,7 @@ function Infor({ product }) {
               <FaLink className={styles.linkIcon} />
             </span>
           </a> */}
-        </span>
+        </Typography>
         <div
           className={clsx(styles.optionBox, {
             [styles.optionBoxActive]: isBuy,

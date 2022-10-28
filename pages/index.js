@@ -28,7 +28,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      categoriesData: categoriesRes,
+      categoriesData: categoriesRes.items.filter(
+        (item) => item.products.length > 0
+      ),
     },
     revalidate: 1,
   };

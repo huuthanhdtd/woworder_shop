@@ -37,7 +37,8 @@ const CategoriesPage = ({ products, category, lastProductRef, limit }) => {
 
   const filteredProducts = React.useMemo(() => {
     return products?.filter((item) => {
-      const check = checked.length > 0 ? checked.includes(item.brandId) : true;
+      // const check = checked.length > 0 ? checked.includes(item.brandId) : true;
+      const check = true;
       const checkPrice = !priceFirst && !priceLast;
       if (check && checkPrice) return check;
       if (!checkPrice && check) {

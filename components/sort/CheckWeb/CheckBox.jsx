@@ -5,7 +5,6 @@ const CheckBox = ({ styles, handleChangeTwo, data, checked }) => {
       <label className={styles.label}>
         <input
           type="checkbox"
-          defaultChecked={false}
           checked={checked.includes(data.id) ? true : false}
           onChange={(event) => handleChangeTwo(event.target.checked, data.id)}
           className={styles.inputCheck}
