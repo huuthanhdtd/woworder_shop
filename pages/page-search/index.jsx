@@ -4,7 +4,7 @@ import PageSearch from '../../components/PageSearch';
 import { fetchAPI } from '../../lib/api';
 import Seo from '../../components/seo';
 
-export default function index({ category }) {
+export default function index() {
   const seo = {
     metaTitle: 'Tìm kiếm sản phẩm',
     metaDescription: `Khanh Bui `,

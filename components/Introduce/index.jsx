@@ -33,7 +33,7 @@ export default function Introduce() {
 
       <Grid container className={styles.Grid_intro}>
         <Grid item md={6} sm={6} xs={12} className={styles.image}>
-          <Image src="/cart/sua.png" width={570} height={669} />
+          <Image src="/cart/sua.png" width={570} height={669} loading="lazy" />
         </Grid>
         <Grid item md={6} sm={6} xs={12} className={styles.commit}>
           <div className={styles.title_commit}>
@@ -64,7 +64,12 @@ export default function Introduce() {
       <div className={styles.about_service}>
         <Grid container className={styles.services}>
           <Grid item sm={4} xs={12} className={styles.support}>
-            <Image src="/cart/service1.png" width={50} height={50} />
+            <Image
+              src="/cart/service1.png"
+              width={50}
+              height={50}
+              loading="lazy"
+            />
             <div className={styles.content_support}>
               <h2>Hỗ trợ khách hàng 24/7</h2>
               <p>
@@ -75,7 +80,7 @@ export default function Introduce() {
             </div>
           </Grid>
           <Grid item sm={4} xs={12} className={styles.support}>
-            <Image src="/cart/a1.png" width={50} height={50} />
+            <Image src="/cart/a1.png" width={50} height={50} loading="lazy" />
             <div className={styles.content_support}>
               <h2>Đổi trả, hoàn tiền</h2>
               <p>
@@ -86,7 +91,7 @@ export default function Introduce() {
             </div>
           </Grid>
           <Grid item sm={4} xs={12} className={styles.support}>
-            <Image src="/cart/a2.png" width={50} height={50} />
+            <Image src="/cart/a2.png" width={50} height={50} loading="lazy" />
             <div className={styles.content_support}>
               <h2>Chính sách bảo mật </h2>
               <p>

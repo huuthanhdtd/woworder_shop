@@ -15,6 +15,11 @@ export default function PageSearch() {
   const [page, setPage] = useState(1);
   const [loadinged, setLoadinged] = useState(true);
   useEffect(() => {
+    const scrolltotop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrolltotop();
+  }, [page]);
+
+  useEffect(() => {
     if (!router.isReady) return;
     axios
       .get(
@@ -31,10 +36,10 @@ export default function PageSearch() {
       )
       .then((res) => setLoadinged(false));
   }, [router.query.query]);
-  useEffect(() => {}, [router.query]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
+
   const dataSortedByScore = data.items
     ?.sort(
       (a, b) =>
@@ -59,10 +64,25 @@ export default function PageSearch() {
           );
     })
     .slice(0, 120);
+  // useEffect(() => {
+  //   var prevScrollpos = window.pageYOffset;
+  //   document.addEventListener('scroll', () => {
+  //     var currentScrollPos = window.pageYOffset;
+  //     console.log('prevScrollpos', prevScrollpos);
+  //     console.log('currentScrollPos', currentScrollPos);
+  //     // if (prevScrollpos > currentScrollPos) {
+  //     //   // console.log('a');
+  //     // } else {
+  //     //   console.log('b');
+  //     // }
+  //     prevScrollpos = currentScrollPos;
+  //   });
+  // }, []);
+  useEffect(() => {}, []);
   return loadinged ? (
     <Loading />
   ) : (
-    <div className={styles.PageSearch}>
+    <div className={styles.PageSearch} id="Page_search">
       <div className={styles.heading_Page}>
         <h1>Tìm kiếm</h1>
         <p>
@@ -95,14 +115,7 @@ export default function PageSearch() {
           {dataSortedByScore
             .slice((page - 1) * perPage, page * perPage)
             .map((data) => (
-              <Grid
-                item
-                xs={6}
-                sm={4}
-                md={3}
-                key={data.id}
-                className={styles.item}
-              >
+              <Grid item xs={6} sm={4} md key={data.id} className={styles.item}>
                 <CardProduct data={data} />
               </Grid>
             ))}

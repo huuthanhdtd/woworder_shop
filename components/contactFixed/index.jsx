@@ -10,6 +10,7 @@ import { BsTelephoneFill } from 'react-icons/bs';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import messengers from '../../assets/image/messengers.svg';
+import Image from 'next/image';
 
 export default function ContactFixed() {
   const contact = [
@@ -65,11 +66,7 @@ export default function ContactFixed() {
       <div className={styles.contactFixed} onClick={handleOpen}>
         {!openContact ? (
           <>
-            <img
-              src={contactImg.src}
-              alt=""
-              style={{ heigth: '20px', width: '20px' }}
-            />
+            <Image src={contactImg.src} width={20} height={20} />
           </>
         ) : (
           <RiCloseFill fontSize={20} />

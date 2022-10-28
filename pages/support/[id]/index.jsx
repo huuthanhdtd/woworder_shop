@@ -21,3 +21,14 @@ export default function index() {
     </div>
   );
 }
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
+export const getStaticProps = async () => {
+  return {
+    props: {},
+  };
+};

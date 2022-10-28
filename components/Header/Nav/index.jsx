@@ -99,7 +99,7 @@ export default function Nav({
       />
       <Link href="/">
         <div className={styles.logo} onClick={handleMove}>
-          <Image src={Logo} width={220} height={47} />
+          <Image src={Logo} width={220} height={47} loading="lazy" />
         </div>
       </Link>
       <Search

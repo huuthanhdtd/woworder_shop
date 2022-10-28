@@ -7,7 +7,13 @@ import styles from './styles.module.scss';
 export default function Loading() {
   return (
     <div className={styles.load}>
-      <Image src={loading} width={30} height={30} alt="...loading" />
+      <Image
+        src={loading}
+        width={30}
+        height={30}
+        alt="...loading"
+        loading="lazy"
+      />
       {/* <Image src={loadingText} width={50} height={15} alt="...loading" /> */}
     </div>
   );

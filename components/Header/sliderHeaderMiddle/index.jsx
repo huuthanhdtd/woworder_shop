@@ -32,6 +32,7 @@ export default function Sliders({ categories }) {
       return sortEnvs;
     }
   }, []);
+
   useEffect(() => {
     const fi = sort.find((e, i) => i === Number(selected));
     if (fi) {
@@ -46,7 +47,7 @@ export default function Sliders({ categories }) {
   };
   return (
     <div className={styles.content}>
-      <div className={styles.home}>
+      <div className={styles.home} onClick={() => setSelected('null')}>
         <Link href="/">
           <div>
             <BsHouse fontSize={35} />
