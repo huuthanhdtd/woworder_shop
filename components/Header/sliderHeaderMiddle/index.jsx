@@ -32,7 +32,11 @@ export default function Sliders({ categories }) {
       return sortEnvs;
     }
   }, []);
-
+  useMemo(() => {
+    if (router.asPath === '/') {
+      setSelected('null');
+    }
+  }, [router.asPath]);
   useEffect(() => {
     const fi = sort.find((e, i) => i === Number(selected));
     if (fi) {
@@ -47,7 +51,7 @@ export default function Sliders({ categories }) {
   };
   return (
     <div className={styles.content}>
-      <div className={styles.home} onClick={() => setSelected('null')}>
+      <div className={styles.home}>
         <Link href="/">
           <div>
             <BsHouse fontSize={35} />
