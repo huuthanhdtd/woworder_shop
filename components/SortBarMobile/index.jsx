@@ -1,5 +1,6 @@
 import { Button, Typography } from '@material-ui/core';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { orderPrice, orderButton } from '../../constants/commonData';
 import SortPrice from './SortPrice';
@@ -14,12 +15,15 @@ const SortBarMobile = ({
   category,
   setChecked,
 }) => {
+  const router = useRouter();
   const filterConstant = orderButton.concat(orderPrice);
   const [filters, setFilters] = React.useState({
-    webs: [],
+    webs: router.query.id.slice(2),
     inOrder: null,
     prices: { priceFirst: '', priceLast: '' },
   });
+
+  const routeIds = [`${category.id}`, '1'];
 
   const { webs, inOrder, prices } = filters;
 
@@ -28,18 +32,29 @@ const SortBarMobile = ({
   };
 
   const handleApplyFilter = () => {
+    const newArr = routeIds.concat(webs);
+    newArr.splice(1, 1, '1');
+    router.push({
+      pathname: `/categories/[[...id]]`,
+      query: { id: newArr },
+    });
     setSortPriceType(inOrder);
     setFormPrice(prices);
     setChecked(webs);
     setOpen(!open);
   };
-
   const handleResetFilters = () => {
+    router.push({
+      pathname: `/categories/[[...id]]`,
+      query: { id: routeIds },
+    });
     setFilters({
       webs: [],
       inOrder: null,
       prices: { priceFirst: '', priceLast: '' },
     });
+    setChecked([]);
+    setOpen(!open);
   };
   return (
     <>
@@ -89,14 +104,14 @@ const SortBarMobile = ({
           <Button
             variant="contained"
             className={styles.reset}
-            onClick={handleResetFilters}
+            onClick={() => handleResetFilters()}
           >
             Thiết lập lại
           </Button>
           <Button
             variant="contained"
             className={styles.btn}
-            onClick={handleApplyFilter}
+            onClick={() => handleApplyFilter()}
           >
             Áp dụng
           </Button>

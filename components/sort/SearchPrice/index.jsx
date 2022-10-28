@@ -72,7 +72,7 @@ export default function SearchPrice({ formPrice, setFormPrice }) {
         >
           {msg}
         </span>
-        <Button onClick={handleSubmit}>Áp Dụng</Button>
+        <Button onClick={() => handleSubmit()}>Áp Dụng</Button>
       </div>
     </>
   );

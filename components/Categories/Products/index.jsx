@@ -11,7 +11,7 @@ import Router, { useRouter } from 'next/router';
 const Products = ({
   filteredProducts,
   page,
-  // perPage,
+  perPage,
   setPage,
   category,
   open,
@@ -51,7 +51,7 @@ const Products = ({
   );
 
   const totalPage = category?.productCount
-    ? Math.ceil(category.productCount / 10)
+    ? Math.ceil(category.productCount / perPage)
     : 0;
   return (
     <div className={styles.wrapper}>

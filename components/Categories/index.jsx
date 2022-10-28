@@ -8,14 +8,14 @@ import Router, { useRouter } from 'next/router';
 import SortBarMobile from '../SortBarMobile';
 import Link from 'next/link';
 
-const CategoriesPage = ({ products, category, lastProductRef }) => {
+const CategoriesPage = ({ products, category, lastProductRef, limit }) => {
   const { query } = useRouter();
   /* Filter website */
   const [checked, setChecked] = React.useState([]);
   /* Set page category */
   const [page, setPage] = React.useState(Number(query.id[1]));
   /* Set page item per page */
-  const [perPage, setPerPage] = React.useState(10);
+  const [perPage, setPerPage] = React.useState(limit);
   /* Set Price filter */
   const [formPrice, setFormPrice] = React.useState({
     priceFirst: '',
@@ -31,6 +31,9 @@ const CategoriesPage = ({ products, category, lastProductRef }) => {
   React.useEffect(() => {
     setPage(Number(query.id[1]));
   }, [Number(query.id[1])]);
+  React.useEffect(() => {
+    setChecked(query.id.slice(2));
+  }, [category.id]);
 
   const filteredProducts = React.useMemo(() => {
     return products?.filter((item) => {
@@ -55,8 +58,9 @@ const CategoriesPage = ({ products, category, lastProductRef }) => {
       Router.push({ pathname: `/categories/[[...id]]`, query: { id } });
       setPage(value);
     },
-    [category.id]
+    [category.id, query.id]
   );
+  // console.log(query.id);
   return (
     <div className={styles.wrapper}>
       <SortBarMobile
@@ -117,7 +121,11 @@ const CategoriesPage = ({ products, category, lastProductRef }) => {
               >
                 <Grid item>
                   <Paginate
-                    count={Math.ceil(category.productCount / 10)}
+                    count={
+                      query.id.length > 2
+                        ? 1
+                        : Math.ceil(category.productCount / limit)
+                    }
                     page={page}
                     onChange={handleChange}
                     color="primary"

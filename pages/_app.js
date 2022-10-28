@@ -60,21 +60,19 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Tpcapi
 
-  const [categoryRes, searchRes] = await Promise.all([
-    // fetchAPI('/global', {
-    //   populate: {
-    //     favicon: '*',
-    //     defaultSeo: {
-    //       populate: '*',
-    //     },
-    //   },
-    // }),
-    fetchAPI('/stores/709313694365910020/products', {
-      limit: 8,
-      page: 1,
-      category: '',
-    }),
-  ]);
+  const categoryRes = await // fetchAPI('/global', {
+  //   populate: {
+  //     favicon: '*',
+  //     defaultSeo: {
+  //       populate: '*',
+  //     },
+  //   },
+  // }),
+  fetchAPI('/stores/709313694365910020/products', {
+    limit: 8,
+    page: 1,
+    category: '',
+  });
 
   // Pass the data to our page via props
   return {

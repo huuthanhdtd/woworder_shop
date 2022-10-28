@@ -77,14 +77,14 @@ const SortBar = ({
           {asPath === '/' ? (
             <Button
               className={styles.orderMobile}
-              onClick={handleActiveDropdown}
+              onClick={() => handleActiveDropdown()}
             >
               <RiListUnordered />
             </Button>
           ) : (
             <Button
               className={styles.orderMobile}
-              onClick={handleOpenSortMobile}
+              onClick={() => handleOpenSortMobile()}
             >
               <AiOutlineMenuFold />
             </Button>
