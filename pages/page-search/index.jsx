@@ -18,14 +18,15 @@ export default function index() {
 }
 export const getStaticProps = async () => {
   // const categoriesRes = await fetchAPI('/stores/search', {
-  //   limit: 10,
+  //   limit: 33,
   //   page: 1,
   //   query: 'ao',
   // });
+
   return {
     props: {
       // categoriesData: categoriesRes,
     },
-    // revalidate: 1,
+    revalidate: 1,
   };
 };

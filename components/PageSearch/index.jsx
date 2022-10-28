@@ -15,18 +15,17 @@ export default function PageSearch() {
   const [page, setPage] = useState(1);
   const [loadinged, setLoadinged] = useState(true);
   const [dataSearch, setDataSearch] = useState([]);
+
   useEffect(() => {
     const scrolltotop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     scrolltotop();
-  }, [page]);
-  useEffect(() => {
     if (!router.isReady) return;
     axios
       .get(
         `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stores/search?limit=${perPage}&page=${page}&brandIds=&query=${router.query.query}`
       )
-      .then((res) => setDataSearch(res.data.items), setLoadinged(false));
-  }, [router.query.query]);
+      .then((res) => setDataSearch(res.data), setLoadinged(false));
+  }, [router.query.query, page]);
   const handlePageChange = (e, value) => {
     setPage(value);
   };
@@ -64,14 +63,14 @@ export default function PageSearch() {
         <p>
           Có{' '}
           <strong style={{ color: '#000' }}>
-            {dataSearch.length}
+            {dataSearch?.included?.totalResult}
             sản phẩm
           </strong>{' '}
           cho tìm kiếm
         </p>
       </div>
       <div className={styles.content_page}>
-        {dataSearch.length > 0 ? (
+        {dataSearch?.included?.totalResult > 0 ? (
           <p className={styles.subtext_result}>
             Kết quả tìm kiếm cho <strong>"{router.query.query}"</strong>
           </p>
@@ -89,18 +88,18 @@ export default function PageSearch() {
           </div>
         )}
         <Grid container className={styles.Search_Product}>
-          {dataSearch
-            .slice((page - 1) * perPage, page * perPage)
-            .map((data) => (
+          {dataSearch.items
+            // .slice((page - 1) * perPage, page * perPage)
+            ?.map((data) => (
               <Grid item xs={6} sm={4} md key={data.id} className={styles.item}>
                 <CardProduct data={data} />
               </Grid>
             ))}
         </Grid>
         <div className={styles.Pagination}>
-          {dataSearch.length > 0 ? (
+          {dataSearch?.included?.totalResult > 0 ? (
             <Pagination
-              count={Math.ceil(dataSearch.length / perPage)}
+              count={Math.ceil(dataSearch?.included?.totalResult / perPage)}
               page={page}
               onChange={handlePageChange}
               color="primary"

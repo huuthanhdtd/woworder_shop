@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import data from '../../../../../constants/testdata.json';
+// import data from '../../../../../constants/testdata.json';
 import {
   ConvertViToEn,
   getScoreByNumberOfPosition,
@@ -17,10 +17,10 @@ export default function Suggestions({
   searchTerm,
   suggestions,
   setSuggestions,
+  dataSearch,
 }) {
   const router = useRouter();
   const [hisSearch, setHisSearch] = useState();
-  const [dataSearch, setDataSearch] = useState([]);
   useEffect(() => {
     if (!hisSearch || !router.query.query) return;
     local(router.query.query, hisSearch);
@@ -35,15 +35,6 @@ export default function Suggestions({
     }
     setHisSearch(arr);
   }, [suggestions]);
-
-  useEffect(() => {
-    if (!router.isReady) return;
-    axios
-      .get(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/stores/search?limit=10&page=1&brandIds=&query=${searchTerm}`
-      )
-      .then((res) => setDataSearch(res.data.items));
-  }, [searchTerm]);
   // const dataSortedByScore = data.items
   //   ?.sort(
   //     (a, b) =>
@@ -67,6 +58,7 @@ export default function Suggestions({
   //           'boolean'
   //         );
   //   });
+
   const handlemore = () => {
     router.push({
       pathname: '/page-search',
@@ -90,10 +82,14 @@ export default function Suggestions({
       >
         {searchTerm.length > 0 ? (
           <>
-            {dataSearch?.length > 0 ? (
+            {dataSearch?.included?.totalResult > 0 ? (
               <>
-                {dataSearch?.slice(0, 5).map((data, index) => (
-                  <div className={styles.item} key={index}>
+                {dataSearch?.items.slice(0, 5).map((data, index) => (
+                  <div
+                    className={styles.item}
+                    key={index}
+                    onClick={() => setSuggestions(false)}
+                  >
                     <Link href={`/product/${data.id}`}>
                       <div className={styles.nameAndPrice}>
                         <div className={styles.name}>{data.name}</div>
@@ -114,7 +110,7 @@ export default function Suggestions({
                   onClick={handlemore}
                   className={styles.more}
                 >
-                  xem thêm {dataSearch.length} sản phẩm
+                  xem thêm {dataSearch?.included?.totalResult} sản phẩm
                 </div>
               </>
             ) : (
