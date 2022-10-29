@@ -8,6 +8,7 @@ import { RiArrowDropUpLine } from 'react-icons/ri';
 import { useWindowSize } from 'react-use';
 
 export default function Category({ openNav, setOpenNav, categories }) {
+  const cate = categories?.items.filter((item) => item.products.length > 0);
   const [activeNav, setActiveNav] = useState();
   const [he, setHe] = useState();
   const { height } = useWindowSize();
@@ -47,7 +48,7 @@ export default function Category({ openNav, setOpenNav, categories }) {
             className={styles.scroll}
             style={{ maxHeight: `calc(${he}px - 117px)` }}
           >
-            {categories?.items.map((data, index) => (
+            {cate?.map((data, index) => (
               <li className={styles.li_ListCategory} key={index}>
                 <div className={styles.nameDrop}>
                   <div
