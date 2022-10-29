@@ -23,9 +23,9 @@ const Products = ({
   setSortPriceType,
   products,
   lastProductRef,
-  query,
 }) => {
   const [notify, setNotify] = React.useState(false);
+  const { query } = useRouter();
 
   wait(20000).then(() => setNotify(true));
 

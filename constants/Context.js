@@ -49,6 +49,8 @@ export default function ContextProvider({ children }) {
   // }
 
   const [pointUsed, setPointUsed] = React.useState(0);
+  const [closeDropDown, setCloseDrop] = React.useState(false);
+
   const { width } = useWindowSize();
   const router = useRouter();
 
@@ -57,6 +59,8 @@ export default function ContextProvider({ children }) {
     pointUsed,
     width,
     router,
+    closeDropDown,
+    setCloseDrop,
     // type,
     // handleTypeProjects,
     // setType,

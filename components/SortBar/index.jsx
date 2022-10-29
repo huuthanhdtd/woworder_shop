@@ -11,6 +11,7 @@ import {
 } from 'react-icons/ri';
 import { useWindowSize } from 'react-use';
 import { orderPrice, orderButton } from '../../constants/commonData';
+import { Context } from '../../constants/Context';
 import SelectList from '../DropDown/DropDown';
 import styles from './styles.module.scss';
 
@@ -23,6 +24,7 @@ const SortBar = ({
   open,
   setOpen,
 }) => {
+  const { setCloseDrop, closeDropDown } = React.useContext(Context);
   const { asPath } = useRouter();
   const [isOrder, setOrder] = React.useState(null);
   const [cateName, setCateName] = React.useState(false);
@@ -56,8 +58,17 @@ const SortBar = ({
     }
   }, [width]);
   return (
-    <div className={styles.wrapper} onBlur={() => setDropdown(false)}>
-      <div className={styles.boxOrder}>
+    <div
+      className={styles.wrapper}
+      onBlur={() => {
+        setDropdown(false);
+        // setCloseDrop(!closeDropDown);
+      }}
+    >
+      <div
+        className={styles.boxOrder}
+        onClick={() => setCloseDrop(!closeDropDown)}
+      >
         <div
           className={clsx(styles.menuBar, {
             [styles.none]: asPath && asPath !== '/' && width && width > 960,

@@ -122,11 +122,7 @@ const CategoriesPage = ({ products, category, lastProductRef, limit }) => {
               >
                 <Grid item>
                   <Paginate
-                    count={
-                      query.id.length > 2
-                        ? 1
-                        : Math.ceil(category.productCount / limit)
-                    }
+                    count={Math.ceil(category.productCount / limit)}
                     page={page}
                     onChange={handleChange}
                     color="primary"

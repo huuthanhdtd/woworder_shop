@@ -40,12 +40,12 @@
   color: var(--primary-color-);
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
   .styles_container__yAtCK .slick-track {
-    top: -25px;
+    top: -45px;
   }
   .styles_container__yAtCK .slick-dots {
-    bottom: 30px;
+    bottom: 50px;
   }
 }
 

@@ -2,12 +2,7 @@ import React from 'react';
 import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import { Skeleton } from '@material-ui/lab';
-import dynamic from 'next/dynamic';
-
-const CardProduct = dynamic(() => import('../../CardProduct'), {
-  ssr: false,
-});
+import Box from './Box';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -116,30 +111,11 @@ const SlideProduct = ({ sortProducts }) => {
       },
     ],
   };
-  const [isVisible, setVisible] = React.useState(false);
   return (
     <div className={styles.container}>
       <Slider {...settings}>
         {sortProducts?.map((item, idx) => (
-          <div key={item.id}>
-            <div
-              className={styles.product}
-              onLoad={() => {
-                setVisible(true);
-              }}
-            >
-              <CardProduct data={item} />
-              {!isVisible && (
-                <div className={styles.skeleton}>
-                  <Skeleton variant="rect" width="100%" height="50%" />
-                  <Skeleton variant="text" width="100%" />
-                  <Skeleton variant="text" width="100%" />
-                  <Skeleton variant="text" width="100%" />
-                  <Skeleton variant="rect" width="80%" height="10%" />
-                </div>
-              )}
-            </div>
-          </div>
+          <Box data={item} key={idx} styles={styles} />
         ))}
       </Slider>
     </div>
