@@ -3,6 +3,7 @@ import React from 'react';
 import DetailProduct from '../../components/DetailProduct';
 import Seo from '../../components/seo';
 import { fetchAPI } from '../../lib/api';
+import { reduceCategoryProducts } from '../../utils/common';
 import { getProducts } from '../../utils/localstorage';
 
 const Product = ({ productData, products }) => {
@@ -24,8 +25,8 @@ const Product = ({ productData, products }) => {
       {productsViewed && productData && products && (
         <DetailProduct
           product={productData.item}
-          productsViewed={productsViewed}
-          products={products}
+          productsViewed={productsViewed.slice(0, 10)}
+          products={products.slice(0, 10)}
         />
       )}
     </>
@@ -46,10 +47,18 @@ export const getStaticProps = async ({ params }) => {
   const {
     included: { categories },
   } = productRes;
+  // const [categoryRes, brandsRes] = await Promise.all([
+  //   fetchAPI(`/stores/categories/${categories[0].id}`, {
+  //     limit: 100,
+  //     page: 1,
+  //   }),
+  //   fetchAPI('/stores/brands'),
+  // ]);
   const categoryRes = await fetchAPI(`/stores/categories/${categories[0].id}`, {
     limit: 100,
     page: 1,
   });
+  const brandsRes = await fetchAPI('/stores/brands');
   const {
     items: { products },
   } = categoryRes;
@@ -57,7 +66,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       productData: productRes,
-      products: products,
+      products: reduceCategoryProducts(products, brandsRes.items),
     },
     revalidate: 10,
   };

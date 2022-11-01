@@ -12,3 +12,13 @@ export const reduceHomeProducts = (categoriesData, brandsData) => {
     }
   }, []);
 };
+
+export const reduceCategoryProducts = (categoriesData, brandsData) => {
+  return categoriesData.length > 0
+    ? categoriesData?.reduce((result, curr) => {
+        const brandName = brandsData.find((br) => br.id === curr.brandId);
+        result = [...result, { ...curr, brandName: brandName.name }];
+        return result;
+      }, [])
+    : [];
+};
