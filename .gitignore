@@ -118,3 +118,5 @@ build
 package-lock.json
 backend/package-lock.json
 yarn.lock
+# Local Netlify folder
+.netlify
