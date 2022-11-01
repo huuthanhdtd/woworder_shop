@@ -3,8 +3,10 @@ import React from 'react';
 import DetailProduct from '../../components/DetailProduct';
 import Seo from '../../components/seo';
 import { fetchAPI } from '../../lib/api';
-import { reduceCategoryProducts } from '../../utils/common';
-import { getProducts } from '../../utils/localstorage';
+// import { reduceCategoryProducts } from '../../utils/common';
+import { getFetchLimit, getProducts } from '../../utils/localstorage';
+
+const limit = getFetchLimit();
 
 const Product = ({ productData, products }) => {
   const { query } = useRouter();
@@ -25,8 +27,8 @@ const Product = ({ productData, products }) => {
       {productsViewed && productData && products && (
         <DetailProduct
           product={productData.item}
-          productsViewed={productsViewed.slice(0, 10)}
-          products={products.slice(0, 10)}
+          productsViewed={productsViewed.slice(0, limit)}
+          products={products.slice(0, limit)}
         />
       )}
     </>
@@ -54,19 +56,21 @@ export const getStaticProps = async ({ params }) => {
   //   }),
   //   fetchAPI('/stores/brands'),
   // ]);
-  const categoryRes = await fetchAPI(`/stores/categories/${categories[0].id}`, {
-    limit: 100,
-    page: 1,
-  });
-  const brandsRes = await fetchAPI('/stores/brands');
   const {
     items: { products },
-  } = categoryRes;
+  } = await fetchAPI(`/stores/categories/${categories[0].id}`, {
+    limit,
+    page: 1,
+  });
+  // const brandsRes = await fetchAPI('/stores/brands');
+  // const {
+  //   items: { products },
+  // } = categoryRes;
 
   return {
     props: {
       productData: productRes,
-      products: reduceCategoryProducts(products, brandsRes.items),
+      products,
     },
     revalidate: 10,
   };

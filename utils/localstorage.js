@@ -54,3 +54,7 @@ export const getUserData = (key) => {
 export const setLocalStorage = (key, value) => {
   nextLocalStorage()?.setItem(key, JSON.stringify(value));
 };
+
+export const getFetchLimit = () => {
+  return 10;
+};

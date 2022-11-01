@@ -3,10 +3,10 @@ import CategoriesPage from '../../components/Categories';
 import { fetchAPI } from '../../lib/api';
 import { spliceBrandId } from '../../utils/filterBrandId';
 import Seo from '../../components/seo';
-import { reduceCategoryProducts } from '../../utils/common';
+// import { reduceCategoryProducts } from '../../utils/common';
 
 const limit = 10;
-const Categories = ({ category, products }) => {
+const Categories = ({ category }) => {
   const { items } = category && category;
   const seo = {
     metaTitle: items?.name,
@@ -16,7 +16,11 @@ const Categories = ({ category, products }) => {
   return (
     <div>
       <Seo seo={seo} />
-      <CategoriesPage products={products} category={items} limit={limit} />
+      <CategoriesPage
+        products={items?.products}
+        category={items}
+        limit={limit}
+      />
     </div>
   );
 };
@@ -41,22 +45,27 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const brandIdStr = spliceBrandId(params?.id);
 
-  const [categoryRes, brandsRes] = await Promise.all([
-    fetchAPI(`/stores/categories/${params?.id?.[0]}`, {
-      limit: limit,
-      page: params?.id?.[1],
-      brandIds: params?.id?.length > 2 ? brandIdStr : '',
-    }),
-    fetchAPI('/stores/brands'),
-  ]);
+  // const [categoryRes, brandsRes] = await Promise.all([
+  //   fetchAPI(`/stores/categories/${params?.id?.[0]}`, {
+  //     limit: limit,
+  //     page: params?.id?.[1],
+  //     brandIds: params?.id?.length > 2 ? brandIdStr : '',
+  //   }),
+  //   fetchAPI('/stores/brands'),
+  // ]);
+  const category = await fetchAPI(`/stores/categories/${params?.id?.[0]}`, {
+    limit: limit,
+    page: params?.id?.[1],
+    brandIds: params?.id?.length > 2 ? brandIdStr : '',
+  });
 
   return {
     props: {
-      products: reduceCategoryProducts(
-        categoryRes.items.products,
-        brandsRes.items
-      ),
-      category: categoryRes,
+      // products: reduceCategoryProducts(
+      //   categoryRes.items.products,
+      //   brandsRes.items
+      // ),
+      category,
     },
     revalidate: 10,
   };

@@ -17,9 +17,11 @@ function CardProduct({ data }) {
         <Link href="/product/[id]" as={`/product/${data.id}`}>
           <CardMedia className={styles.image} image={data.imageUrl}></CardMedia>
         </Link>
-        <span className={styles.label}>
-          <p>Giảm 40%</p>
-        </span>
+        {data.webExtra && (
+          <span className={styles.label}>
+            <p>Giảm {data.webExtra * 1}%</p>
+          </span>
+        )}
         <span className={styles.hot}>
           <Image src={Hot} width={29.25} height={39} />
         </span>
