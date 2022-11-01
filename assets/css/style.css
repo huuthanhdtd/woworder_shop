@@ -25,7 +25,7 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
+/* @font-face {
   font-family: 'Helvetica Neue M';
   src: local('Helvetica Neue'),
     url('../font/helvetica-neue-medium.woff2') format('woff2');
@@ -39,7 +39,7 @@
     url('../font/helvetica-neue-bold.woff2') format('woff2');
   font-style: normal;
   font-display: swap;
-}
+} */
 
 @font-face {
   font-family: 'Quick Sand';
@@ -80,38 +80,6 @@ html {
   scroll-behavior: smooth;
   font-family: 'Mulish';
   font-style: normal;
-}
-h1 {
-  font-family: Roboto;
-  font-size: 120px;
-}
-
-#category {
-  font-family: Roboto;
-  font-weight: 500;
-}
-
-#title {
-  letter-spacing: 0.4px;
-  font-size: 22px;
-  font-size: 1.375rem;
-  line-height: 1.13636;
-}
-
-#banner {
-  margin: 20px;
-  height: 800px;
-}
-
-#editor {
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.uk-navbar-container {
-  background: #fff !important;
-  font-family: Roboto;
 }
 
 img:hover {

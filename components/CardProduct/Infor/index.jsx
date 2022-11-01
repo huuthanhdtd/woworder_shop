@@ -101,7 +101,13 @@ function Infor({ product }) {
             Giá gốc:
             <span className={styles.rating}>{product.webPrice}</span>
             {/* <span className={styles.from}>UK</span> */}
-            <span className={styles.trademark}>ZARA</span>
+            <span className={styles.trademark}>
+              {product?.brandName
+                ? `${product.brandName
+                    .charAt(0)
+                    .toUpperCase()}${product.brandName.slice(1).toLowerCase()}`
+                : null}
+            </span>
           </span>
           {product.variation?.colors ? (
             <span className={styles.atb}>

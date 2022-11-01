@@ -1,54 +1,26 @@
 .container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 10px 20px;
   .product {
     padding: 0 10px;
     max-width: 220px;
     height: 360px;
     position: relative;
-    .skeleton {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: 0 10px;
-      max-width: 100%;
-      z-index: -1;
-      height: 360px;
-      width: 100%;
-      padding: 0 10px;
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .remove {
-      opacity: 0;
-      z-index: -1;
-    }
   }
 }
 
 @media screen and (max-width: 600px) {
   .container {
-    div {
-      .product {
-        max-width: none;
-      }
+    .product {
+      max-width: none;
     }
   }
 }
 
 @media screen and (max-width: 400px) {
   .container {
-    padding: 7px;
-    transform: scaleY(0.95);
-    div {
-      transform: scale(0.99);
-      .product {
-        transform: scale(0.9);
-        padding: 0px 2px;
-      }
+    transform: scale(0.95);
+    .product {
+      height: 320px;
+      padding: 0px 5px;
     }
   }
 }

@@ -20,13 +20,7 @@ const Category = ({ category, products }) => {
   return (
     <>
       {sortProducts?.length > 0 && (
-        <div
-          className={styles.container}
-          data-aos="fade-zoom-in"
-          data-aos-easing="ease-in-back"
-          data-aos-delay="300"
-          data-aos-offset="0"
-        >
+        <div className={styles.container}>
           {category.name && (
             <SortBar category={category} setSortPriceType={setSortPriceType} />
           )}

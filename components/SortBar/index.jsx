@@ -67,7 +67,7 @@ const SortBar = ({
     >
       <div
         className={styles.boxOrder}
-        onClick={() => setCloseDrop(!closeDropDown)}
+        //  onClick={() => setCloseDrop(false)}
       >
         <div
           className={clsx(styles.menuBar, {

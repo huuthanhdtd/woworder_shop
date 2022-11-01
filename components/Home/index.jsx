@@ -1,14 +1,11 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Category from './Category';
-import Aos from 'aos';
 import { Context } from '../../constants/Context';
 
-const HomePage = ({ categories }) => {
+const HomePage = ({ categories, endElementRef }) => {
   const { closeDropDown, setCloseDrop } = React.useContext(Context);
-  // React.useEffect(() => {
-  Aos.init({ delay: 100 });
-  // }, []);
+
   return (
     <div className={styles.root}>
       <div
@@ -24,9 +21,10 @@ const HomePage = ({ categories }) => {
         }}
         onClick={() => setCloseDrop(!closeDropDown)}
       />
-      {categories.slice(0, 10).map((cate, idx) => {
+      {categories.map((cate, idx) => {
         return <Category key={idx} category={cate} products={cate.products} />;
       })}
+      <div ref={endElementRef} />
     </div>
   );
 };

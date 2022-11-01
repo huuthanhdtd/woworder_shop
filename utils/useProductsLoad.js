@@ -1,45 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function useProductsLoad(
-  data,
-  pageNumber,
-  limit,
-  categoryId,
-  page
-) {
+export default function useProductsLoad(data, pageNumber, limit) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const unmounted = useRef(false);
-
   useEffect(() => {
-    setProducts([]);
+    setProducts(data.slice(0, 2));
     setHasMore(true);
-  }, [data.length, categoryId, page]);
-
+  }, [data.length]);
   useEffect(() => {
     setLoading(true);
-    if (products.length === data.length) {
+    if (products.length === limit) {
       setHasMore(false);
     } else {
       setHasMore(true);
+      setProducts((prevProducts) => {
+        return [...prevProducts, ...data.slice(pageNumber - 1, pageNumber)];
+      });
+      setLoading(false);
     }
-    setProducts((prevProducts) => {
-      return [
-        ...new Set([
-          ...prevProducts,
-          ...data
-            .slice(0 + (pageNumber - 1) * limit, pageNumber * limit)
-            .map((b) => b),
-        ]),
-      ];
-    });
-    setLoading(false);
 
     return () => {
       unmounted.current = true;
     };
-  }, [pageNumber, data.length, categoryId, page]);
+  }, [pageNumber, data.length]);
 
   return { loading, products, hasMore };
 }
