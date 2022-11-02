@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FormLogin from './FormLogin';
-import Restore from './restore';
+import Restore from './Restore';
 import styles from './styles.module.scss';
 
 export default function Login({ setSuccess, setOpenAccount }) {
