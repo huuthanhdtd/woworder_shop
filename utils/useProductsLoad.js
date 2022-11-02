@@ -16,7 +16,7 @@ export default function useProductsLoad(data, pageNumber, limit) {
     } else {
       setHasMore(true);
       setProducts((prevProducts) => {
-        return [...prevProducts, ...data.slice(pageNumber - 1, pageNumber)];
+        return [...prevProducts, ...data.slice(pageNumber - 2, pageNumber)];
       });
       setLoading(false);
     }

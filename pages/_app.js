@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { createContext } from 'react';
 import { fetchAPI } from '../lib/api';
 import Layout from '../components/layout';
-import 'aos/dist/aos.css';
 import '../assets/css/style.css';
 import '../assets/css/slick.css';
 import 'slick-carousel/slick/slick.css';
@@ -14,6 +13,7 @@ import { setProductViewed } from '../utils/localstorage';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../store';
 import { PersistGate } from 'redux-persist/integration/react';
+// import './swiper/css/bundle';
 
 // Store Tpcapi Global object in context
 export const GlobalContext = createContext({});
@@ -79,7 +79,7 @@ MyApp.getInitialProps = async (ctx) => {
   return {
     ...appProps,
     pageProps: {
-      categories: categoryRes,
+      categories: categoryRes ? categoryRes : {},
     },
   };
 };

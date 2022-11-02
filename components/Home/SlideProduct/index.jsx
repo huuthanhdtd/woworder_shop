@@ -16,7 +16,7 @@ const SlidesProduct = ({ sortProducts }) => {
         // slidesPerView={6}
         spaceBetween={0}
         slidesPerGroup={1}
-        loop={true}
+        loop={sortProducts.length > 6 ? true : false}
         loopFillGroupWithBlank={true}
         pagination={{
           clickable: true,
@@ -43,7 +43,7 @@ const SlidesProduct = ({ sortProducts }) => {
         }}
       >
         {sortProducts?.map((item, idx) => (
-          <SwiperSlide key={idx}>
+          <SwiperSlide key={item.id}>
             <Box data={item} styles={styles} />
           </SwiperSlide>
         ))}

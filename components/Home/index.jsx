@@ -22,9 +22,18 @@ const HomePage = ({ categories, endElementRef }) => {
         onClick={() => setCloseDrop(!closeDropDown)}
       />
       {categories.map((cate, idx) => {
-        return <Category key={idx} category={cate} products={cate.products} />;
+        if (idx + 1 === categories.length) {
+          return (
+            <div ref={endElementRef} key={idx}>
+              <Category category={cate} products={cate.products} />
+            </div>
+          );
+        } else {
+          return (
+            <Category key={idx} category={cate} products={cate.products} />
+          );
+        }
       })}
-      <div ref={endElementRef} />
     </div>
   );
 };

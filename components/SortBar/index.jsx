@@ -26,11 +26,10 @@ const SortBar = ({
 }) => {
   const { setCloseDrop, closeDropDown } = React.useContext(Context);
   const { asPath } = useRouter();
-  const [isOrder, setOrder] = React.useState(null);
+  const [isOrder, setOrder] = React.useState('Mới nhất');
   const [cateName, setCateName] = React.useState(false);
   const [dropdown, setDropdown] = React.useState(false);
   const { width } = useWindowSize();
-
   const handleOrder = (type) => {
     setOrder(type.name);
     // if (type.type === 'ascending' || type.type === 'descending') {
